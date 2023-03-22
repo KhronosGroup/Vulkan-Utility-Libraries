@@ -34,13 +34,8 @@ if (UPDATE_DEPS)
         set(_build_type ${CMAKE_BUILD_TYPE})
     endif()
 
-    message("********************************************************************************")
-    message("* NOTE: Adding target vvl_update_deps to run as needed for updating            *")
-    message("*       dependencies.                                                          *")
-    message("********************************************************************************")
-
     set(optional_args)
-    if (NOT BUILD_TESTS)
+    if (NOT VUL_BUILD_TESTS)
         set(optional_args "--optional=tests")
     endif()
 
@@ -53,39 +48,29 @@ if (UPDATE_DEPS)
         set(optional_args ${optional_args} "CMAKE_TOOLCHAIN_FILE=${CMAKE_TOOLCHAIN_FILE}")
     endif()
 
-    set(_update_deps_dir ${VVL_SOURCE_DIR}/external/${_build_type})
-    if (UPDATE_DEPS_DIR)
-        set(_update_deps_dir ${UPDATE_DEPS_DIR})
-    endif()
-    set(_helper_file "${_update_deps_dir}/helper.cmake")
-
-    set(update_dep_py "${CMAKE_CURRENT_LIST_DIR}/update_deps.py")
-    set(known_good_json "${CMAKE_CURRENT_LIST_DIR}/known_good.json")
-
     # Add a target so that update_deps.py will run when necessary
     # NOTE: This is triggered off of the timestamps of known_good.json and helper.cmake
     add_custom_command(
-        OUTPUT ${_helper_file}
-        COMMAND ${PYTHON_EXECUTABLE} ${update_dep_py}
-            --dir ${_update_deps_dir} --arch ${_target_arch} --config ${_build_type} --generator "${CMAKE_GENERATOR}" ${optional_args}
-        DEPENDS ${known_good_json}
+        OUTPUT ${PROJECT_SOURCE_DIR}/external/helper.cmake
+        COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_LIST_DIR}/update_deps.py
+            --dir ${PROJECT_SOURCE_DIR}/external --arch ${_target_arch} --config ${_build_type} --generator "${CMAKE_GENERATOR}" ${optional_args}
+        DEPENDS ${CMAKE_CURRENT_LIST_DIR}/known_good.json
     )
 
-    add_custom_target(vvl_update_deps ALL DEPENDS ${_helper_file})
 
     # Check if update_deps.py needs to be run on first cmake run
-    if (${known_good_json} IS_NEWER_THAN ${_helper_file})
+    if (${CMAKE_CURRENT_LIST_DIR}/known_good.json IS_NEWER_THAN ${PROJECT_SOURCE_DIR}/external/helper.cmake)
         execute_process(
-            COMMAND ${PYTHON_EXECUTABLE} ${update_dep_py}
-                --dir ${_update_deps_dir} --arch ${_target_arch} --config ${_build_type} --generator "${CMAKE_GENERATOR}" ${optional_args}
-            WORKING_DIRECTORY ${VVL_SOURCE_DIR}
+            COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_LIST_DIR}/update_deps.py
+                --dir ${PROJECT_SOURCE_DIR}/external --arch ${_target_arch} --config ${_build_type} --generator "${CMAKE_GENERATOR}" ${optional_args}
+            WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
             RESULT_VARIABLE _update_deps_result
         )
         if (NOT (${_update_deps_result} EQUAL 0))
             message(FATAL_ERROR "Could not run update_deps.py which is necessary to download dependencies.")
         endif()
     endif()
-    include(${_helper_file})
+    include(${PROJECT_SOURCE_DIR}/external/helper.cmake)
 else()
     message("********************************************************************************")
     message("* NOTE: Not adding target to run update_deps.py automatically.                 *")
