@@ -1,6 +1,5 @@
-#
-# Copyright (c) 2023-2023 Valve Corporation
-# Copyright (c) 2023-2023 LunarG, Inc.
+# Copyright (c) 2023 Valve Corporation
+# Copyright (c) 2023 LunarG, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,13 +12,14 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
 
 cmake_minimum_required(VERSION 3.17.2)
 
 project(VULKAN_UTILITY_LIBRARIES LANGUAGES CXX)
 
 include(GNUInstallDirs)
+
+set_property(GLOBAL PROPERTY USE_FOLDERS ON) # Remove when min is 3.26, see CMP0143 
 
 option(UTILITY_LIBRARIES_BUILD_TESTS "Build utility libraries tests" ON)
 
@@ -31,33 +31,33 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 set(CMAKE_CXX_VISIBILITY_PRESET "hidden")
 set(CMAKE_VISIBILITY_INLINES_HIDDEN "YES")
 
-find_package(PythonInterp 3.7.2 REQUIRED)
-
-add_subdirectory(scripts)
-
-find_package(VulkanHeaders REQUIRED CONFIG QUIET)
-
 if(UTILITY_LIBRARIES_BUILD_TESTS)
     enable_testing()
     find_package(GTest REQUIRED CONFIG)
 endif()
-
-# Enable GUI folders
-set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
 # NOTE: The idiom for open source projects is to not enable warnings as errors.
 # This reduces problems for users who simply want to build the repository.
 option(BUILD_WERROR "Treat compiler warnings as errors")
 if (BUILD_WERROR)
     add_compile_options("$<IF:$<CXX_COMPILER_ID:MSVC>,/WX,-Werror>")
+    if (MSVC)
+        add_link_options(/WX)
+    endif()
 endif()
 
+find_package(PythonInterp 3.7.2 REQUIRED)
+
+add_subdirectory(scripts)
+
+find_package(VulkanHeaders REQUIRED CONFIG QUIET)
+
 # Platform-specific compiler switches
-if(${CMAKE_C_COMPILER_ID} MATCHES "(GNU|Clang)")
-    add_compile_options(-Werror)
-elseif(MSVC)
-        add_compile_options(/W4 /WX)
-        add_link_options(/WX)
+#if(${CMAKE_C_COMPILER_ID} MATCHES "(GNU|Clang)")
+#    add_compile_options(-Werror)
+#elseif(MSVC)
+#        add_compile_options(/W4 /WX)
+#        add_link_options(/WX)
         # Ignore some warnings that we know we'll generate.  In the future the
         # code that generates these warnings should be fixed properly.
         # vk_loader_platform.h provokes:
@@ -65,8 +65,8 @@ elseif(MSVC)
         # gtest.h provokes:
         #    warning C4389: '==': signed/unsigned mismatch
         #    warning C4018: '>=': signed/unsigned mismatch
-        add_compile_options(/wd4505 /wd4389 /wd4018)
-endif()
+#        add_compile_options(/wd4505 /wd4389 /wd4018)
+#endif()
 
 add_subdirectory(layer_utils)
 

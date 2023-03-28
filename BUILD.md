@@ -3,32 +3,22 @@ This document contains the instructions for building this repository on Linux, m
 
 ## Getting Started Build Instructions
 
-### 64-bit Windows Build 
-```
-git clone git@github.com:KhronosGroup/Vulkan-Profiles.git
-cd Vulkan-Profiles
-cmake -S . -B build/ -D CMAKE_BUILD_TYPE=Debug -D UPDATE_DEPS=ON -A x64
-cmake --build . --config Debug
-```
+### Build
 
-### Windows Unit Tests
-
-```
-cd build/
-ctest -C Debug --output-on-failure --parallel 16
-```
-
-### Linux and macOS Build
-```
+```bash
 git clone git@github.com:KhronosGroup/Vulkan-Profiles.git
 cd Vulkan-Profiles
 cmake -S . -B build/ -D CMAKE_BUILD_TYPE=Debug -D UPDATE_DEPS=ON
-cmake --build .
+cmake --build build --config Debug
 ```
 
-### Linux and macOS Unit Tests
+# Recommended setup for developers
 
-```
+cmake -S . -B build/ -D BUILD_WERROR=ON -D UTILITY_LIBRARIES_BUILD_TESTS=ON -D CMAKE_BUILD_TYPE=Debug -D UPDATE_DEPS=ON
+
+### Unit Tests
+
+```bash
 cd build/
-ctest --parallel 8 --output-on-failure
+ctest -C Debug --parallel 8 --output-on-failure
 ```
