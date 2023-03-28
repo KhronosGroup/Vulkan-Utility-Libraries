@@ -1,20 +1,34 @@
 # Build Instructions
+
 This document contains the instructions for building this repository on Linux, macOS and Windows.
 
-## Getting Started Build Instructions
+1. [Requirements](#requirements)
+1. [Building Overview](#building-overview)
+1. [CMake](#cmake)
 
-### Build
+## Requirements
+
+1. CMake >= 3.17.2
+2. C++ >= c++17 compiler. See platform-specific sections below for supported compiler versions.
+3. Python >= 3.8
+
+## Building Overview
+
+The following will be enough for most people, for more detailed instructions, see below.
 
 ```bash
 git clone git@github.com:KhronosGroup/Vulkan-Profiles.git
 cd Vulkan-Profiles
+
 cmake -S . -B build/ -D CMAKE_BUILD_TYPE=Debug -D UPDATE_DEPS=ON
 cmake --build build --config Debug
 ```
 
-# Recommended setup for developers
+### Recommended setup for developers
 
+```bash
 cmake -S . -B build/ -D BUILD_WERROR=ON -D UTILITY_LIBRARIES_BUILD_TESTS=ON -D CMAKE_BUILD_TYPE=Debug -D UPDATE_DEPS=ON
+```
 
 ### Unit Tests
 
@@ -22,3 +36,17 @@ cmake -S . -B build/ -D BUILD_WERROR=ON -D UTILITY_LIBRARIES_BUILD_TESTS=ON -D C
 cd build/
 ctest -C Debug --parallel 8 --output-on-failure
 ```
+
+## CMake
+
+### Warnings as errors off by default!
+
+By default `BUILD_WERROR` is `OFF`
+
+The idiom for open source projects is to NOT enable warnings as errors.
+
+System package managers, and language package managers have to build on multiple different platforms and compilers.
+
+By defaulting to `ON` we cause issues for package managers since there is no standard way to disable warnings until CMake 3.24
+
+Add `-D BUILD_WERROR=ON` to your workflow. Or use the `dev` preset shown below which will also enabling warnings as errors.

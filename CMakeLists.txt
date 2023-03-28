@@ -31,11 +31,6 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 set(CMAKE_CXX_VISIBILITY_PRESET "hidden")
 set(CMAKE_VISIBILITY_INLINES_HIDDEN "YES")
 
-if(UTILITY_LIBRARIES_BUILD_TESTS)
-    enable_testing()
-    find_package(GTest REQUIRED CONFIG)
-endif()
-
 # NOTE: The idiom for open source projects is to not enable warnings as errors.
 # This reduces problems for users who simply want to build the repository.
 option(BUILD_WERROR "Treat compiler warnings as errors")
@@ -52,21 +47,9 @@ add_subdirectory(scripts)
 
 find_package(VulkanHeaders REQUIRED CONFIG QUIET)
 
-# Platform-specific compiler switches
-#if(${CMAKE_C_COMPILER_ID} MATCHES "(GNU|Clang)")
-#    add_compile_options(-Werror)
-#elseif(MSVC)
-#        add_compile_options(/W4 /WX)
-#        add_link_options(/WX)
-        # Ignore some warnings that we know we'll generate.  In the future the
-        # code that generates these warnings should be fixed properly.
-        # vk_loader_platform.h provokes:
-        #    warning C4505: unreferenced local function has been removed
-        # gtest.h provokes:
-        #    warning C4389: '==': signed/unsigned mismatch
-        #    warning C4018: '>=': signed/unsigned mismatch
-#        add_compile_options(/wd4505 /wd4389 /wd4018)
-#endif()
+if (UTILITY_LIBRARIES_BUILD_TESTS)
+    enable_testing()
+endif()
 
 add_subdirectory(layer_utils)
 
