@@ -14,6 +14,8 @@
 # limitations under the License.
 
 add_library(VulkanLayerUtils STATIC)
+add_library(Vulkan::LayerUtils ALIAS VulkanLayerUtils)
+
 target_sources(VulkanLayerUtils PRIVATE
    vk_layer_settings.cpp
    vk_layer_settings.h
@@ -25,5 +27,6 @@ if(WIN32)
 endif()
 
 if(UTILITY_LIBRARIES_BUILD_TESTS)
+    enable_testing()
     add_subdirectory(tests)
 endif()
