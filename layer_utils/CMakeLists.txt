@@ -26,7 +26,7 @@ if(WIN32)
    target_compile_definitions(VulkanLayerUtils PUBLIC _CRT_SECURE_NO_WARNINGS)
 endif()
 
-if(UTILITY_LIBRARIES_BUILD_TESTS)
+if(VUL_TESTS)
     enable_testing()
     add_subdirectory(tests)
 endif()

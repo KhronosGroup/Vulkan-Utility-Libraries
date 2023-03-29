@@ -35,7 +35,7 @@ jobs:
         with:
           python-version: '3.8'
       - name: Configure
-        run: cmake -S. -B build -D BUILD_WERROR=ON -D UTILITY_LIBRARIES_BUILD_TESTS=ON -D CMAKE_BUILD_TYPE=${{matrix.config}} -D UPDATE_DEPS=ON
+        run: cmake -S. -B build -D VUL_WERROR=ON -D VUL_TESTS=ON -D CMAKE_BUILD_TYPE=${{matrix.config}} -D UPDATE_DEPS=ON
       - name: Build
         run: cmake --build build --config ${{matrix.config}}
       - name: Tests
