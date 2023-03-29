@@ -27,7 +27,7 @@ cmake --build build --config Debug
 ### Recommended setup for developers
 
 ```bash
-cmake -S . -B build/ -D BUILD_WERROR=ON -D UTILITY_LIBRARIES_BUILD_TESTS=ON -D CMAKE_BUILD_TYPE=Debug -D UPDATE_DEPS=ON
+cmake -S . -B build/ -D VUL_WERROR=ON -D VUL_TESTS=ON -D CMAKE_BUILD_TYPE=Debug -D UPDATE_DEPS=ON
 ```
 
 ### Unit Tests
@@ -41,7 +41,7 @@ ctest -C Debug --parallel 8 --output-on-failure
 
 ### Warnings as errors off by default!
 
-By default `BUILD_WERROR` is `OFF`
+By default `VUL_WERROR` is `OFF`
 
 The idiom for open source projects is to NOT enable warnings as errors.
 
@@ -49,4 +49,4 @@ System package managers, and language package managers have to build on multiple
 
 By defaulting to `ON` we cause issues for package managers since there is no standard way to disable warnings until CMake 3.24
 
-Add `-D BUILD_WERROR=ON` to your workflow. Or use the `dev` preset shown below which will also enabling warnings as errors.
+Add `-D VUL_WERROR=ON` to your workflow. Or use the `dev` preset shown below which will also enabling warnings as errors.

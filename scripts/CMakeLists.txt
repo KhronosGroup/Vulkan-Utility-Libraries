@@ -33,7 +33,7 @@ if (UPDATE_DEPS)
     endif()
 
     set(optional_args)
-    if (NOT UTILITY_LIBRARIES_BUILD_TESTS)
+    if (NOT VUL_TESTS)
         set(optional_args "--optional=tests")
     endif()
 
