@@ -3,8 +3,8 @@
 This document contains the instructions for building this repository on Linux, macOS and Windows.
 
 1. [Requirements](#requirements)
-1. [Building Overview](#building-overview)
-1. [CMake](#cmake)
+2. [Building Overview](#building-overview)
+3. [CMake](#cmake)
 
 ## Requirements
 
