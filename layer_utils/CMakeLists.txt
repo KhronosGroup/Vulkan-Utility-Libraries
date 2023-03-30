@@ -26,7 +26,11 @@ if(WIN32)
    target_compile_definitions(VulkanLayerUtils PUBLIC _CRT_SECURE_NO_WARNINGS)
 endif()
 
+set(LAYER_INSTALL_DIR ${CMAKE_INSTALL_LIBDIR})
+
+install(FILES vk_layer_settings.h DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+install(TARGETS VulkanLayerUtils DESTINATION ${CMAKE_INSTALL_LIBDIR})
+
 if(VUL_TESTS)
-    enable_testing()
     add_subdirectory(tests)
 endif()
