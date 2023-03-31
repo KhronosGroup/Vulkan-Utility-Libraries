@@ -12,23 +12,23 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+set(CMAKE_FOLDER "${CMAKE_FOLDER}/tests")
 
 find_package(GTest REQUIRED CONFIG)
-include(GoogleTest)
 
-add_executable(tests_util)
+add_executable(vul_tests)
 
-target_sources(tests_util PRIVATE
+target_sources(vul_tests PRIVATE
     test_util.cpp
 )
 
-target_link_libraries(tests_util PRIVATE 
+target_link_libraries(vul_tests PRIVATE 
     GTest::gtest
     GTest::gtest_main
     Vulkan::Headers
-    VulkanLayerUtils
+    Vulkan::LayerUtils
 )
 
-set_target_properties(tests_util PROPERTIES FOLDER "VulkanLayerUtils-tests")
+include(GoogleTest)
 
-gtest_discover_tests(tests_util)
+gtest_discover_tests(vul_tests)

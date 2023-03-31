@@ -22,8 +22,7 @@
  * - Courtney Goeltzenleuchter
  * - Tobin Ehlis
  */
-
-#include "vk_layer_settings.h"
+#include "vulkan/layer/vk_layer_settings.h"
 
 #include <cstdlib>
 #include <cassert>

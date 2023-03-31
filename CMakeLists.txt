@@ -16,21 +16,16 @@ cmake_minimum_required(VERSION 3.17.2)
 
 project(VUL LANGUAGES CXX)
 
-include(GNUInstallDirs)
+string(COMPARE EQUAL ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_SOURCE_DIR} VUL_IS_TOP_LEVEL) # Remove when min is 3.21
 
-set_property(GLOBAL PROPERTY USE_FOLDERS ON) # Remove when min is 3.26, see CMP0143 
+set_property(GLOBAL PROPERTY USE_FOLDERS ON) # Remove when min is 3.26, see CMP0143
 
-option(VUL_TESTS "Build utility libraries tests")
-
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
-set(CMAKE_CXX_VISIBILITY_PRESET "hidden")
-set(CMAKE_VISIBILITY_INLINES_HIDDEN "YES")
 
-# NOTE: The idiom for open source projects is to not enable warnings as errors.
-# This reduces problems for users who simply want to build the repository.
+add_subdirectory(scripts)
+
+find_package(VulkanHeaders CONFIG QUIET)
+
 option(VUL_WERROR "Treat compiler warnings as errors")
 if (VUL_WERROR)
     add_compile_options("$<IF:$<CXX_COMPILER_ID:MSVC>,/WX,-Werror>")
@@ -39,14 +34,20 @@ if (VUL_WERROR)
     endif()
 endif()
 
-find_package(PythonInterp 3.7.2 REQUIRED)
+add_subdirectory(src)
+add_subdirectory(include)
 
-add_subdirectory(scripts)
+if (VUL_IS_TOP_LEVEL)
+    option(VUL_TESTS "Build tests")
+    if (VUL_TESTS)
+        enable_testing()
+        add_subdirectory(tests)
+    endif()
 
-find_package(VulkanHeaders REQUIRED CONFIG QUIET)
-
-if (VUL_TESTS)
-    enable_testing()
+    include(GNUInstallDirs)
+    
+    install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/include/vulkan" DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+    set_target_properties(VulkanLayerUtils PROPERTIES EXPORT_NAME "LayerUtils")
+    install(TARGETS VulkanLayerUtils EXPORT VulkanUtilityLibrariesConfig INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+    install(EXPORT VulkanUtilityLibrariesConfig DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/VulkanUtilityLibraries NAMESPACE Vulkan::)
 endif()
-
-add_subdirectory(layer_utils)
