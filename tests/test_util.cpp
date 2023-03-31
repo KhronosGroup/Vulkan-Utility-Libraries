@@ -18,12 +18,11 @@
  * - Christophe Riccio <christophe@lunarg.com>
  */
 
-#include <vulkan/vulkan.h>
 #include <gtest/gtest.h>
 
-#include "../vk_layer_settings.h"
+#include "vulkan/layer/vk_layer_settings.h"
 
-TEST(test_library_util, Something) { 
+TEST(test_library_util, Something) {
     EXPECT_TRUE(true);
     EXPECT_FALSE(vku::IsLayerSetting("layer_name", "setting_key"));
 }

@@ -1,7 +1,7 @@
 /*
- * Copyright (c) 2015-2023 The Khronos Group Inc.
- * Copyright (c) 2015-2023 Valve Corporation
- * Copyright (c) 2015-2023 LunarG, Inc.
+ * Copyright (c) 2023 The Khronos Group Inc.
+ * Copyright (c) 2023 Valve Corporation
+ * Copyright (c) 2023 LunarG, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -60,4 +60,5 @@ Strings GetLayerSettingStrings(const char *layer_key, const char *setting_key);
 
 // Query setting data for LIST setting type in the layer manifest
 List GetLayerSettingList(const char *layer_key, const char *setting_key);
+
 }  // namespace vku
