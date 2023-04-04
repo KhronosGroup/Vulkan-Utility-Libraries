@@ -1,7 +1,7 @@
 /*
- * Copyright (c) 2015-2023 The Khronos Group Inc.
- * Copyright (c) 2015-2023 Valve Corporation
- * Copyright (c) 2015-2023 LunarG, Inc.
+ * Copyright (c) 2023 The Khronos Group Inc.
+ * Copyright (c) 2023 Valve Corporation
+ * Copyright (c) 2023 LunarG, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -57,7 +57,7 @@ static std::string format(const char *message, ...) {
     std::size_t const STRING_BUFFER(4096);
 
     assert(message != nullptr);
-    assert(strlen(message) >= 0 && strlen(message) < STRING_BUFFER);
+    assert(strlen(message) >= 1 && strlen(message) < STRING_BUFFER);
 
     char buffer[STRING_BUFFER];
     va_list list;

@@ -34,6 +34,13 @@ if (VUL_WERROR)
     endif()
 endif()
 
+if(${CMAKE_CXX_COMPILER_ID} MATCHES "(GNU|Clang)")
+    add_compile_options(
+        -Wall
+        -Wextra
+    )
+endif()
+
 add_subdirectory(src)
 add_subdirectory(include)
 
