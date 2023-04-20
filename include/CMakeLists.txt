@@ -12,8 +12,9 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-target_include_directories(VulkanLayerUtils PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>)
+target_include_directories(VulkanLayerSettings PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>)
 
-target_compile_features(VulkanLayerUtils PUBLIC cxx_std_17)
-
-target_sources(VulkanLayerUtils PRIVATE vulkan/layer/vk_layer_settings.h)
+target_sources(VulkanLayerSettings PRIVATE
+	vulkan/layer/vk_layer_settings.h
+	vulkan/layer/vk_layer_settings_ext.h
+)
