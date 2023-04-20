@@ -12,19 +12,5 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-set(CMAKE_FOLDER "${CMAKE_FOLDER}/libs")
 
-add_library(VulkanLayerUtils STATIC)
-add_library(Vulkan::LayerUtils ALIAS VulkanLayerUtils)
-
-target_sources(VulkanLayerUtils PRIVATE
-   vk_layer_settings.cpp
-)
-
-# NOTE: Because Vulkan::Headers header files are exposed in the public facing interface
-# we must expose this library as public to users.
-target_link_Libraries(VulkanLayerUtils PUBLIC Vulkan::Headers)
-
-if(WIN32)
-   target_compile_definitions(VulkanLayerUtils PRIVATE _CRT_SECURE_NO_WARNINGS)
-endif()
+add_subdirectory(layer)
