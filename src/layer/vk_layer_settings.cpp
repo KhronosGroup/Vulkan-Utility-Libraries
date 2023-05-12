@@ -29,6 +29,7 @@
 #include <cassert>
 #include <cstring>
 #include <cctype>
+#include <cstring>
 
 static std::unique_ptr<vl::LayerSettings> vk_layer_settings;
 
