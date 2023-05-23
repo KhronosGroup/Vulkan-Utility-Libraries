@@ -24,6 +24,7 @@
 
 #include <vector>
 #include <string>
+#include <cstring>
 #include <cstdarg>
 
 namespace vl {
