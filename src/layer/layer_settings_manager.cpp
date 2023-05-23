@@ -311,10 +311,10 @@ void LayerSettings::SetFileSetting(const char *pSettingName, const std::string &
     this->setting_file_values.insert({pSettingName, value});
 }
 
-const VkLayerSettingDataEXT *LayerSettings::GetAPISetting(const char *pSettingName) { 
+const LayerSetting *LayerSettings::GetAPISetting(const char *pSettingName) { 
     assert(pSettingName != nullptr);
 
-    return &this->FindLayerSettingValue(pSettingName)->data;
+    return reinterpret_cast<const LayerSetting *>(this->FindLayerSettingValue(pSettingName));
 }
 
 }  // namespace vl

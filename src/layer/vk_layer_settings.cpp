@@ -80,7 +80,7 @@ VkResult vlGetLayerSettingValues(const char *pSettingName, VkLayerSettingTypeEXT
     const std::string &file_setting_list = vk_layer_settings->GetFileSetting(pSettingName);
 
     // Third: search from VK_EXT_layer_settings usage
-    const VkLayerSettingDataEXT *api_setting = vk_layer_settings->GetAPISetting(pSettingName);
+    const vl::LayerSetting *api_setting = vk_layer_settings->GetAPISetting(pSettingName);
 
     // Environment variables overrides the values set by vk_layer_settings
     const std::string setting_list = env_setting_list.empty() ? file_setting_list : env_setting_list;
@@ -134,7 +134,7 @@ VkResult vlGetLayerSettingValues(const char *pSettingName, VkLayerSettingTypeEXT
                         result = VK_INCOMPLETE;
                     }
                     const std::uint32_t size = std::min(*pValueCount, api_setting->count);
-                    values.assign(api_setting->asBool, api_setting->asBool + size);
+                    values.assign(api_setting->asBool32, api_setting->asBool32 + size);
                 } else {
                     *pValueCount = api_setting->count;
                 }
@@ -259,7 +259,7 @@ VkResult vlGetLayerSettingValues(const char *pSettingName, VkLayerSettingTypeEXT
                     if (*pValueCount < api_setting->count) {
                         result = VK_INCOMPLETE;
                     }
-                    const std::uint32_t size = std::min(*pValueCount, api_setting->count);
+                    const uint32_t size = std::min(*pValueCount, api_setting->count);
                     values.assign(api_setting->asUint32, api_setting->asUint32 + size);
                 } else {
                     *pValueCount = api_setting->count;

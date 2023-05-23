@@ -27,6 +27,24 @@
 #include <map>
 
 namespace vl {
+    struct LayerSetting {
+        const char *pLayerName;
+        const char *pSettingName;
+        VkLayerSettingTypeEXT type;
+        uint32_t count;
+        union {
+            const VkBool32 *asBool32;
+            const int32_t *asInt32;
+            const int64_t *asInt64;
+            const uint32_t *asUint32;
+            const uint64_t *asUint64;
+            const float *asFloat;
+            const double *asDouble;
+            const VkFrameset *asFrameset;
+            const char **asString;
+        };
+    };
+
     class LayerSettings {
       public:
         LayerSettings(const char *pLayerName, const void *pNext, VL_LAYER_SETTING_LOG_CALLBACK callback);
@@ -44,7 +62,7 @@ namespace vl {
 
         void SetFileSetting(const char *pSettingName, const std::string& value);
 
-        const VkLayerSettingDataEXT *GetAPISetting(const char *pSettingName);
+        const LayerSetting *GetAPISetting(const char *pSettingName);
 
         void Log(const char *pSettingName, const char *pMessage);
 
