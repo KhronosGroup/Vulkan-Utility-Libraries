@@ -110,26 +110,23 @@ typedef struct VkFrameset {
     uint32_t step;
 } VkFrameset;
 
-typedef struct VkLayerSettingDataEXT {
-    uint32_t count;
-    union {
-        const VkBool32* asBool;
-        const int32_t* asInt32;
-        const int64_t* asInt64;
-        const uint32_t* asUint32;
-        const uint64_t* asUint64;
-        const float* asFloat;
-        const double* asDouble;
-        const VkFrameset* asFrameset;
-        const char* const* asString;
-    };
-} VkLayerSettingDataEXT;
-
 typedef struct VkLayerSettingEXT {
     const char *pLayerName;
     const char *pSettingName;
     VkLayerSettingTypeEXT type;
-    VkLayerSettingDataEXT data;
+    uint32_t count;
+    union {
+        const void *value;
+        const VkBool32 *asBool32;
+        const int32_t *asInt32;
+        const int64_t *asInt64;
+        const uint32_t *asUint32;
+        const uint64_t *asUint64;
+        const float *asFloat;
+        const double *asDouble;
+        const VkFrameset *asFrameset;
+        const char **asString;
+    };
 } VkLayerSettingEXT;
 
 typedef struct VkLayerSettingsCreateInfoEXT {
