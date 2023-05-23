@@ -131,9 +131,9 @@ typedef struct VkLayerSettingEXT {
 
 typedef struct VkLayerSettingsCreateInfoEXT {
     VkStructureType sType;
-    void *pNext;
+    const void *pNext;
     uint32_t settingCount;
-    VkLayerSettingEXT *pSettings;
+    const VkLayerSettingEXT *pSettings;
 } VkLayerSettingsCreateInfoEXT;
 
 #ifdef __cplusplus
