@@ -355,13 +355,7 @@ double GetLayerSettingFloat(const char *layer_key, const char *setting_key) {
 std::string GetLayerSettingString(const char *layer_key, const char *setting_key) {
     assert(IsLayerSetting(layer_key, setting_key));
 
-    std::string setting = GetLayerSettingData(layer_key, setting_key);
-    if (setting.empty()) {
-        std::string message = "The setting is used but the value is empty which is invalid for a string setting type.";
-        vk_layer_settings.Log(setting_key, message);
-    }
-
-    return setting;
+    return GetLayerSettingData(layer_key, setting_key);
 }
 
 std::string GetLayerSettingFrames(const char *layer_key, const char *setting_key) {
