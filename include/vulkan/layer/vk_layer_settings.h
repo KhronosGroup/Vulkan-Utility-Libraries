@@ -30,7 +30,7 @@ extern "C" {
 typedef void *(*VL_LAYER_SETTING_LOG_CALLBACK)(const char *pSettingName, const char *pMessage);
 
 // Initialize the layer settings. If 'pCallback' is set to NULL, the messages are outputed to stderr.
-void vlInitLayerSettings(const char *pLayerName, const void *pNext, VL_LAYER_SETTING_LOG_CALLBACK pCallback);
+void vlInitLayerSettings(const char *pLayerName, const VkInstanceCreateInfo *pCreateInfo, VL_LAYER_SETTING_LOG_CALLBACK pCallback);
 
 // Check whether a setting was set either programmatically, from vk_layer_settings.txt or an environment variable
 VkBool32 vlHasLayerSetting(const char *pSettingName);

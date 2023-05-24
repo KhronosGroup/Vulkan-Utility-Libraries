@@ -47,7 +47,7 @@ namespace vl {
 
     class LayerSettings {
       public:
-        LayerSettings(const char *pLayerName, const void *pNext, VL_LAYER_SETTING_LOG_CALLBACK callback);
+        LayerSettings(const char *pLayerName, const VkInstanceCreateInfo *pCreateInfo, VL_LAYER_SETTING_LOG_CALLBACK callback);
         ~LayerSettings();
 
 	    bool HasEnvSetting(const char *pSettingName);

@@ -41,8 +41,8 @@ void test_helper_SetLayerSetting(const char *pSettingName, const char* pValue) {
     vk_layer_settings->SetFileSetting(pSettingName, pValue);
 }
 
-void vlInitLayerSettings(const char *pLayerName, const void *pNext, VL_LAYER_SETTING_LOG_CALLBACK pCallback) {
-    vk_layer_settings = std::make_unique<vl::LayerSettings>(pLayerName, pNext, pCallback);
+void vlInitLayerSettings(const char *pLayerName, const VkInstanceCreateInfo *pCreateInfo, VL_LAYER_SETTING_LOG_CALLBACK pCallback) {
+    vk_layer_settings = std::make_unique<vl::LayerSettings>(pLayerName, pCreateInfo, pCallback);
 }
 
 VkBool32 vlHasLayerSetting(const char *pSettingName) {
@@ -86,9 +86,7 @@ VkResult vlGetLayerSettingValues(const char *pSettingName, VkLayerSettingTypeEXT
     const std::string setting_list = env_setting_list.empty() ? file_setting_list : env_setting_list;
 
     if (setting_list.empty() && api_setting == nullptr) {
-        std::string message = "The setting is used but the value is empty which is invalid for a integer setting type.";
-        vk_layer_settings->Log(pSettingName, message.c_str());
-        return VK_ERROR_UNKNOWN;
+        return VK_INCOMPLETE;
     }
 
     const char deliminater = vl::FindDelimiter(setting_list);

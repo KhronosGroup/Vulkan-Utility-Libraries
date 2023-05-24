@@ -31,7 +31,7 @@ const VkLayerSettingsCreateInfoEXT *FindSettingsInChain(const void *next) {
     const VkBaseOutStructure *current = reinterpret_cast<const VkBaseOutStructure *>(next);
     const VkLayerSettingsCreateInfoEXT *found = nullptr;
     while (current) {
-        if (VK_STRUCTURE_TYPE_INSTANCE_LAYER_SETTINGS_EXT == current->sType) {
+        if (VK_STRUCTURE_TYPE_LAYER_SETTINGS_EXT == current->sType) {
             found = reinterpret_cast<const VkLayerSettingsCreateInfoEXT *>(current);
             current = nullptr;
         } else {
