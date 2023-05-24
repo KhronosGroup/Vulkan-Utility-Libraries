@@ -103,8 +103,8 @@ static inline bool IsHighIntegrity() {
 
 namespace vl {
 
-LayerSettings::LayerSettings(const char *pLayerName, const void *pNext, VL_LAYER_SETTING_LOG_CALLBACK callback)
-    : layer_name(pLayerName), create_info(FindSettingsInChain(pNext)), callback(callback) {
+LayerSettings::LayerSettings(const char *pLayerName, const VkInstanceCreateInfo *pCreateInfo, VL_LAYER_SETTING_LOG_CALLBACK callback)
+    : layer_name(pLayerName), create_info(FindSettingsInChain(pCreateInfo)), callback(callback) {
     assert(pLayerName != nullptr);
 
     std::string settings_file = this->FindSettingsFile();
@@ -219,17 +219,19 @@ const VkLayerSettingEXT *LayerSettings::FindLayerSettingValue(const char *pSetti
         return nullptr;
     }
 
+    const std::string setting_name(pSettingName);
+
     for (std::size_t i = 0, n = this->create_info->settingCount; i < n; ++i) {
-        const VkLayerSettingEXT *pSettings = &this->create_info->pSettings[i];
-        if (std::strcmp(pSettings->pLayerName, this->layer_name.c_str()) != 0) {
+        const VkLayerSettingEXT *setting = &this->create_info->pSettings[i];
+        if (setting->pLayerName != this->layer_name) {
             continue;
         }
 
-        if (std::strcmp(pSettings->pSettingName, pSettingName) != 0) {
+        if (setting->pSettingName != setting_name) {
             continue;
         }
 
-        return pSettings;
+        return setting;
     }
 
     return nullptr;
