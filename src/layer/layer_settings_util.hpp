@@ -50,6 +50,9 @@ namespace vl {
     // Find the delimiter (, ; :) in a string made of tokens. Return ',' by default
     char FindDelimiter(const std::string &s);
 
+    // ';' on WIN32 and ':' on Unix
+    char GetEnvDelimiter();
+
     // Remove whitespaces at the beginning of the end
     std::string TrimWhitespace(const std::string &s);
 
