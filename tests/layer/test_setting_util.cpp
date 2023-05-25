@@ -68,11 +68,13 @@ TEST(test_layer_settings_util, FindDelimiter) {
     char A = vl::FindDelimiter("VALUE_A,VALUE_B");
     EXPECT_EQ(',', A);
 
+#ifdef WIN32
     char B = vl::FindDelimiter("VALUE_A;VALUE_B");
     EXPECT_EQ(';', B);
-
+#else
     char C = vl::FindDelimiter("VALUE_A:VALUE_B");
     EXPECT_EQ(':', C);
+#endif
 
     EXPECT_EQ(',', vl::FindDelimiter("VALUE_A"));
 

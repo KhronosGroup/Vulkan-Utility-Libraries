@@ -112,13 +112,19 @@ std::string GetEnvSettingName(const char *layer_key, const char *setting_key, Tr
     return result.str();
 }
 
+char GetEnvDelimiter() {
+#ifdef WIN32 // a define is necessary because ':' is used for disk drives on Windows path
+    return ';';
+#else
+    return ':';
+#endif
+}
+
 char FindDelimiter(const std::string& s) {
     if (s.find(',') != std::string::npos) {
         return ',';
-    } else if (s.find(':') != std::string::npos) { // Typically Unix env variables
-        return ':';
-    } else if (s.find(';') != std::string::npos) { // Typically Win32 env variables
-        return ';';
+    } else if (s.find(GetEnvDelimiter()) != std::string::npos) {
+        return GetEnvDelimiter();
     } else {
         return ',';
     }
