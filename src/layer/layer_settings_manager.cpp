@@ -293,7 +293,7 @@ std::string LayerSettings::GetEnvSetting(const char *pSettingName) {
         }
     }
 
-    return vl::ToLower(result);
+    return result;
 }
 
 std::string LayerSettings::GetFileSetting(const char *pSettingName) {
