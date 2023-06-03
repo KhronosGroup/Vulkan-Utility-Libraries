@@ -30,6 +30,7 @@
 #include <cstring>
 #include <cctype>
 #include <cstring>
+#include <cstdint>
 
 static std::unique_ptr<vl::LayerSettings> vk_layer_settings;
 
