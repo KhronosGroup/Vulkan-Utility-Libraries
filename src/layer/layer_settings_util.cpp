@@ -24,6 +24,7 @@
 #include <regex>
 #include <cstdlib>
 #include <cassert>
+#include <cstdint>
 
 namespace vl {
 
