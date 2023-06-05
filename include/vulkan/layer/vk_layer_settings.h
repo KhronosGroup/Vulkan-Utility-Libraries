@@ -27,16 +27,23 @@ extern "C" {
 
 #include "vk_layer_settings_ext.h"
 
+VK_DEFINE_HANDLE(VlLayerSettingSet)
+
 typedef void *(*VL_LAYER_SETTING_LOG_CALLBACK)(const char *pSettingName, const char *pMessage);
 
-// Initialize the layer settings. If 'pCallback' is set to NULL, the messages are outputed to stderr.
-void vlInitLayerSettings(const char *pLayerName, const VkInstanceCreateInfo *pCreateInfo, VL_LAYER_SETTING_LOG_CALLBACK pCallback);
+// Create a layer setting set. If 'pCallback' is set to NULL, the messages are outputed to stderr.
+VkResult vlCreateLayerSettingSet(const char *pLayerName, const VkLayerSettingsCreateInfoEXT *pCreateInfo,
+                             const VkAllocationCallbacks *pAllocator,
+                           VL_LAYER_SETTING_LOG_CALLBACK pCallback, VlLayerSettingSet *pLayerSettingSet);
+
+void vlDestroyLayerSettingSet(VlLayerSettingSet layerSettingSet, const VkAllocationCallbacks *pAllocator);
 
 // Check whether a setting was set either programmatically, from vk_layer_settings.txt or an environment variable
-VkBool32 vlHasLayerSetting(const char *pSettingName);
+VkBool32 vlHasLayerSetting(VlLayerSettingSet layerSettingSet, const char *pSettingName);
 
 // Query setting values
-VkResult vlGetLayerSettingValues(const char *pSettingName, VkLayerSettingTypeEXT type, uint32_t *pValueCount, void *pValues);
+VkResult vlGetLayerSettingValues(VlLayerSettingSet layerSettingSet, const char *pSettingName, VkLayerSettingTypeEXT type,
+                                 uint32_t *pValueCount, void *pValues);
 
 #ifdef __cplusplus
 }

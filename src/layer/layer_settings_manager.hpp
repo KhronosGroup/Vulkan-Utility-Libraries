@@ -47,7 +47,8 @@ namespace vl {
 
     class LayerSettings {
       public:
-        LayerSettings(const char *pLayerName, const VkInstanceCreateInfo *pCreateInfo, VL_LAYER_SETTING_LOG_CALLBACK callback);
+        LayerSettings(const char *pLayerName, const VkLayerSettingsCreateInfoEXT *pCreateInfo,
+                      const VkAllocationCallbacks *pAllocator, VL_LAYER_SETTING_LOG_CALLBACK callback);
         ~LayerSettings();
 
 	    bool HasEnvSetting(const char *pSettingName);
@@ -81,7 +82,7 @@ namespace vl {
         void ParseSettingsFile(const char *filename);
 
         std::string layer_name;
-        const VkLayerSettingsCreateInfoEXT *create_info;
+        const VkLayerSettingsCreateInfoEXT *create_info{nullptr};
         VL_LAYER_SETTING_LOG_CALLBACK callback{nullptr};
     };
 }// namespace vl
