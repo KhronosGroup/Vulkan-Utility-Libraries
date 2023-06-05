@@ -32,40 +32,58 @@
 #include <cstring>
 #include <cstdint>
 
-static std::unique_ptr<vl::LayerSettings> vk_layer_settings;
-
-void test_helper_SetLayerSetting(const char *pSettingName, const char* pValue) {
-    assert(vk_layer_settings);
+// This is used only for unit tests in test_layer_setting_file
+void test_helper_SetLayerSetting(VlLayerSettingSet layerSettingSet, const char *pSettingName, const char *pValue) {
+    assert(layerSettingSet != VK_NULL_HANDLE);
     assert(pSettingName != nullptr);
     assert(pValue != nullptr);
 
-    vk_layer_settings->SetFileSetting(pSettingName, pValue);
+    vl::LayerSettings *layer_setting_set = (vl::LayerSettings *)layerSettingSet;
+
+    layer_setting_set->SetFileSetting(pSettingName, pValue);
 }
 
-void vlInitLayerSettings(const char *pLayerName, const VkInstanceCreateInfo *pCreateInfo, VL_LAYER_SETTING_LOG_CALLBACK pCallback) {
-    vk_layer_settings = std::make_unique<vl::LayerSettings>(pLayerName, pCreateInfo, pCallback);
+VkResult vlCreateLayerSettingSet(const char *pLayerName, const VkLayerSettingsCreateInfoEXT *pCreateInfo,
+    const VkAllocationCallbacks *pAllocator, VL_LAYER_SETTING_LOG_CALLBACK pCallback,
+    VlLayerSettingSet *pLayerSettingSet) {
+    (void)pAllocator;
+
+    vl::LayerSettings* layer_setting_set = new vl::LayerSettings(pLayerName, pCreateInfo, pAllocator, pCallback);
+    *pLayerSettingSet = (VlLayerSettingSet)layer_setting_set;
+
+    return VK_SUCCESS;
 }
 
-VkBool32 vlHasLayerSetting(const char *pSettingName) {
-    assert(vk_layer_settings);
+void vlDestroyLayerSettingSet(VlLayerSettingSet layerSettingSet, const VkAllocationCallbacks *pAllocator) {
+    (void)pAllocator;
+
+    vl::LayerSettings *layer_setting_set = (vl::LayerSettings*)layerSettingSet;
+    delete layer_setting_set;
+}
+
+VkBool32 vlHasLayerSetting(VlLayerSettingSet layerSettingSet, const char *pSettingName) {
+    assert(layerSettingSet != VK_NULL_HANDLE);
     assert(pSettingName);
     assert(!std::string(pSettingName).empty());
 
-    const bool has_env_setting = vk_layer_settings->HasEnvSetting(pSettingName);
-    const bool has_file_setting = vk_layer_settings->HasFileSetting(pSettingName);
-    const bool has_api_setting = vk_layer_settings->HasAPISetting(pSettingName);
+    vl::LayerSettings *layer_setting_set = (vl::LayerSettings *)layerSettingSet;
+
+    const bool has_env_setting = layer_setting_set->HasEnvSetting(pSettingName);
+    const bool has_file_setting = layer_setting_set->HasFileSetting(pSettingName);
+    const bool has_api_setting = layer_setting_set->HasAPISetting(pSettingName);
 
     return (has_env_setting || has_file_setting || has_api_setting) ? VK_TRUE : VK_FALSE;
 }
 
-VkResult vlGetLayerSettingValues(const char *pSettingName, VkLayerSettingTypeEXT type, uint32_t *pValueCount, void *pValues) {
+VkResult vlGetLayerSettingValues(VlLayerSettingSet layerSettingSet, const char *pSettingName, VkLayerSettingTypeEXT type,
+                                 uint32_t *pValueCount, void *pValues) {
     assert(pValueCount != nullptr);
 
-    if (!vk_layer_settings) {
+    if (layerSettingSet == VK_NULL_HANDLE) {
         return VK_ERROR_INITIALIZATION_FAILED;
     }
 
-    if (!vlHasLayerSetting(pSettingName)) {
+    if (!vlHasLayerSetting(layerSettingSet, pSettingName)) {
         *pValueCount = 0;
         return VK_SUCCESS;
     }
@@ -74,14 +92,16 @@ VkResult vlGetLayerSettingValues(const char *pSettingName, VkLayerSettingTypeEXT
         return VK_ERROR_UNKNOWN;
     }
 
+    vl::LayerSettings *layer_setting_set = (vl::LayerSettings *)layerSettingSet;
+
     // First: search in the environment variables
-    const std::string &env_setting_list = vk_layer_settings->GetEnvSetting(pSettingName);
+    const std::string &env_setting_list = layer_setting_set->GetEnvSetting(pSettingName);
 
     // Second: search in vk_layer_settings.txt
-    const std::string &file_setting_list = vk_layer_settings->GetFileSetting(pSettingName);
+    const std::string &file_setting_list = layer_setting_set->GetFileSetting(pSettingName);
 
     // Third: search from VK_EXT_layer_settings usage
-    const vl::LayerSetting *api_setting = vk_layer_settings->GetAPISetting(pSettingName);
+    const vl::LayerSetting *api_setting = layer_setting_set->GetAPISetting(pSettingName);
 
     // Environment variables overrides the values set by vk_layer_settings
     const std::string setting_list = env_setting_list.empty() ? file_setting_list : env_setting_list;
@@ -98,7 +118,7 @@ VkResult vlGetLayerSettingValues(const char *pSettingName, VkLayerSettingTypeEXT
     switch (type) {
         default: {
             const std::string& message = vl::Format("Unknown VkLayerSettingTypeEXT `type` value: %d.", type);
-            vk_layer_settings->Log(pSettingName, message.c_str());
+            layer_setting_set->Log(pSettingName, message.c_str());
             return VK_ERROR_UNKNOWN;
         }
         case VK_LAYER_SETTING_TYPE_BOOL_EXT: {
@@ -121,7 +141,7 @@ VkResult vlGetLayerSettingValues(const char *pSettingName, VkLayerSettingTypeEXT
                         } else {
                             const std::string &message =
                                 vl::Format("The data provided (%s) is not a boolean value.", setting_value.c_str());
-                            vk_layer_settings->Log(pSettingName, message.c_str());
+                            layer_setting_set->Log(pSettingName, message.c_str());
                         }
                     }
                 } else {
@@ -163,7 +183,7 @@ VkResult vlGetLayerSettingValues(const char *pSettingName, VkLayerSettingTypeEXT
                         } else {
                             const std::string &message =
                                 vl::Format("The data provided (%s) is not an integer value.", setting_value.c_str());
-                            vk_layer_settings->Log(pSettingName, message.c_str());
+                            layer_setting_set->Log(pSettingName, message.c_str());
                         }
                     }
                 } else {
@@ -205,7 +225,7 @@ VkResult vlGetLayerSettingValues(const char *pSettingName, VkLayerSettingTypeEXT
                         } else {
                             const std::string &message =
                                 vl::Format("The data provided (%s) is not an integer value.", setting_value.c_str());
-                            vk_layer_settings->Log(pSettingName, message.c_str());
+                            layer_setting_set->Log(pSettingName, message.c_str());
                         }
                     }
                 } else {
@@ -247,7 +267,7 @@ VkResult vlGetLayerSettingValues(const char *pSettingName, VkLayerSettingTypeEXT
                         } else {
                             const std::string &message =
                                 vl::Format("The data provided (%s) is not an integer value.", setting_value.c_str());
-                            vk_layer_settings->Log(pSettingName, message.c_str());
+                            layer_setting_set->Log(pSettingName, message.c_str());
                         }
                     }
                 } else {
@@ -289,7 +309,7 @@ VkResult vlGetLayerSettingValues(const char *pSettingName, VkLayerSettingTypeEXT
                         } else {
                             const std::string &message =
                                 vl::Format("The data provided (%s) is not an integer value.", setting_value.c_str());
-                            vk_layer_settings->Log(pSettingName, message.c_str());
+                            layer_setting_set->Log(pSettingName, message.c_str());
                         }
                     }
                 } else {
@@ -331,7 +351,7 @@ VkResult vlGetLayerSettingValues(const char *pSettingName, VkLayerSettingTypeEXT
                         } else {
                             const std::string &message =
                                 vl::Format("The data provided (%s) is not a floating-point value.", setting_value.c_str());
-                            vk_layer_settings->Log(pSettingName, message.c_str());
+                            layer_setting_set->Log(pSettingName, message.c_str());
                         }
                     }
                 } else {
@@ -373,7 +393,7 @@ VkResult vlGetLayerSettingValues(const char *pSettingName, VkLayerSettingTypeEXT
                         } else {
                             const std::string &message =
                                 vl::Format("The data provided (%s) is not a floating-point value.", setting_value.c_str());
-                            vk_layer_settings->Log(pSettingName, message.c_str());
+                            layer_setting_set->Log(pSettingName, message.c_str());
                         }
                     }
                 } else {
@@ -415,7 +435,7 @@ VkResult vlGetLayerSettingValues(const char *pSettingName, VkLayerSettingTypeEXT
                         } else {
                             const std::string &message =
                                 vl::Format("The data provided (%s) is not a FrameSet value.", setting_value.c_str());
-                            vk_layer_settings->Log(pSettingName, message.c_str());
+                            layer_setting_set->Log(pSettingName, message.c_str());
                         }
                     }
                 } else {
@@ -444,7 +464,7 @@ VkResult vlGetLayerSettingValues(const char *pSettingName, VkLayerSettingTypeEXT
                 VkResult result = VK_SUCCESS;
 
                 if (!settings.empty()) {  // From env variable or setting file
-                    std::vector<std::string> &settings_cache = vk_layer_settings->GetSettingCache(pSettingName);
+                    std::vector<std::string> &settings_cache = layer_setting_set->GetSettingCache(pSettingName);
                     settings_cache = settings;
 
                     if (copy_values) {

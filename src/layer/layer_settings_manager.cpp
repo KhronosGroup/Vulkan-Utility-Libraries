@@ -103,8 +103,10 @@ static inline bool IsHighIntegrity() {
 
 namespace vl {
 
-LayerSettings::LayerSettings(const char *pLayerName, const VkInstanceCreateInfo *pCreateInfo, VL_LAYER_SETTING_LOG_CALLBACK callback)
-    : layer_name(pLayerName), create_info(FindSettingsInChain(pCreateInfo)), callback(callback) {
+LayerSettings::LayerSettings(const char *pLayerName, const VkLayerSettingsCreateInfoEXT *pCreateInfo,
+                             const VkAllocationCallbacks *pAllocator, VL_LAYER_SETTING_LOG_CALLBACK callback)
+    : layer_name(pLayerName), create_info(pCreateInfo), callback(callback) {
+    (void)pAllocator;
     assert(pLayerName != nullptr);
 
     std::string settings_file = this->FindSettingsFile();
