@@ -60,6 +60,28 @@ include(GoogleTest)
 
 gtest_discover_tests(test_layer_settings_api)
 
+# test_layer_setting_env
+add_executable(test_layer_settings_env)
+
+target_include_directories(test_layer_settings_env PRIVATE
+    ${CMAKE_SOURCE_DIR}/src/layer
+)
+
+target_sources(test_layer_settings_env PRIVATE
+    test_setting_env.cpp
+)
+
+target_link_libraries(test_layer_settings_env PRIVATE 
+    GTest::gtest
+    GTest::gtest_main
+    Vulkan::Headers
+    Vulkan::LayerSettings
+)
+
+include(GoogleTest)
+
+gtest_discover_tests(test_layer_settings_env)
+
 # test_layer_setting_file
 add_executable(test_layer_setting_file)
 
