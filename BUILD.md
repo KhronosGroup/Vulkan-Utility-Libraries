@@ -27,7 +27,7 @@ cmake --build build --config Debug
 ### Recommended setup for developers
 
 ```bash
-cmake -S . -B build/ -D VUL_WERROR=ON -D VUL_TESTS=ON -D CMAKE_BUILD_TYPE=Debug -D UPDATE_DEPS=ON
+cmake -S . -B build/ -D VUL_WERROR=ON -D BUILD_TESTS=ON  -D UPDATE_DEPS=ON -D CMAKE_BUILD_TYPE=Debug
 ```
 
 ### Unit Tests
