@@ -51,6 +51,8 @@ static std::string GetAndroidProperty(const char *name) {
         __system_property_read_callback(
             pi,
             [](void *cookie, const char *name, const char *value, uint32_t serial) {
+                (void)name;
+                (void)serial;
                 reinterpret_cast<std::string *>(cookie)->assign(value);
             },
             reinterpret_cast<void *>(&output));
