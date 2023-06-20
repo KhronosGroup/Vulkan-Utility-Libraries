@@ -25,7 +25,6 @@ jobs:
   build_and_test:
     runs-on: ${{matrix.os}}
     strategy:
-      fail-fast: false
       matrix:
         config: [Debug, Release]
         os: [ ubuntu-20.04, ubuntu-22.04, windows-latest, macos-latest ]
@@ -51,3 +50,27 @@ jobs:
         run: |
           cmake -S tests/add_subdirectory -B tests/add_subdirectory/build -D CMAKE_BUILD_TYPE=${{matrix.config}} -D GITHUB_VULKAN_HEADER_SOURCE_DIR=${{ github.workspace }}/external/${{matrix.config}}/Vulkan-Headers/
           cmake --build tests/add_subdirectory/build --config ${{matrix.config}} --verbose
+
+  android:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.8'
+      - uses: lukka/get-cmake@latest
+      - name: Configure
+        run: |
+          cmake -S . -B build/ --toolchain $ANDROID_NDK_ROOT/build/cmake/android.toolchain.cmake \
+          -D ANDROID_PLATFORM=26 \
+          -D CMAKE_ANDROID_ARCH_ABI=x86_64 \
+          -D CMAKE_ANDROID_STL_TYPE=c++_static \
+          -D CMAKE_ANDROID_RTTI=YES \
+          -D CMAKE_ANDROID_EXCEPTIONS=YES \
+          -D ANDROID_USE_LEGACY_TOOLCHAIN_FILE=NO \
+          -D VUL_WERROR=ON \
+          -D CMAKE_BUILD_TYPE=Release \
+          -D UPDATE_DEPS=ON \
+          -G "Ninja"
+      - name: Build
+        run: cmake --build build
