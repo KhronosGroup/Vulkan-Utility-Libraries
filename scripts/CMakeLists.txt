@@ -1,3 +1,4 @@
+# ~~~
 # Copyright (c) 2023 LunarG, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -11,18 +12,24 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+# ~~~
 
 option(UPDATE_DEPS "Run update_deps.py for user")
 if (UPDATE_DEPS)
-    find_package(PythonInterp 3 REQUIRED)
+    find_package(Python3 REQUIRED QUIET)
+
+    set(update_dep_py "${CMAKE_CURRENT_LIST_DIR}/update_deps.py")
+    set(known_good_json "${CMAKE_CURRENT_LIST_DIR}/known_good.json")
+
+    set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS ${update_dep_py} ${known_good_json})
+
+    list(APPEND update_dep_command "${update_dep_py}")
+    list(APPEND update_dep_command "--generator")
+    list(APPEND update_dep_command "${CMAKE_GENERATOR}")
 
     if (CMAKE_GENERATOR_PLATFORM)
-        set(_target_arch ${CMAKE_GENERATOR_PLATFORM})
-    else()
-        if (MSVC_IDE)
-            message(WARNING "CMAKE_GENERATOR_PLATFORM not set. Using x64 as target architecture.")
-        endif()
-        set(_target_arch x64)
+        list(APPEND update_dep_command "--arch")
+        list(APPEND update_dep_command "${CMAKE_GENERATOR_PLATFORM}")
     endif()
 
     if (NOT CMAKE_BUILD_TYPE)
@@ -31,51 +38,69 @@ if (UPDATE_DEPS)
     else()
         set(_build_type ${CMAKE_BUILD_TYPE})
     endif()
+    list(APPEND update_dep_command "--config")
+    list(APPEND update_dep_command "${_build_type}")
 
-    set(optional_args)
-    if (NOT VUL_TESTS)
-        set(optional_args "--optional=tests")
+    set(UPDATE_DEPS_DIR_SUFFIX "${_build_type}")
+    if (ANDROID)
+        set(UPDATE_DEPS_DIR_SUFFIX "android/${UPDATE_DEPS_DIR_SUFFIX}")
+    endif()
+    set(UPDATE_DEPS_DIR "${PROJECT_SOURCE_DIR}/external/${UPDATE_DEPS_DIR_SUFFIX}" CACHE PATH "Location where update_deps.py installs packages")
+    list(APPEND update_dep_command "--dir" )
+    list(APPEND update_dep_command "${UPDATE_DEPS_DIR}")
+
+    if (NOT BUILD_TESTS)
+        list(APPEND update_dep_command "--optional=tests")
     endif()
 
     if (UPDATE_DEPS_SKIP_EXISTING_INSTALL)
-        set(optional_args ${optional_args} "--skip-existing-install")
+        list(APPEND update_dep_command "--skip-existing-install")
     endif()
 
-    if (DEFINED CMAKE_TOOLCHAIN_FILE)
-        set(optional_args ${optional_args} "--cmake_var")
-        set(optional_args ${optional_args} "CMAKE_TOOLCHAIN_FILE=${CMAKE_TOOLCHAIN_FILE}")
+    list(APPEND cmake_vars "CMAKE_TOOLCHAIN_FILE")
+    if (ANDROID)
+        list(APPEND cmake_vars "ANDROID_PLATFORM" "CMAKE_ANDROID_ARCH_ABI" "CMAKE_ANDROID_STL_TYPE" "CMAKE_ANDROID_RTTI" "CMAKE_ANDROID_EXCEPTIONS" "ANDROID_USE_LEGACY_TOOLCHAIN_FILE")
     endif()
 
-    # Add a target so that update_deps.py will run when necessary
-    # NOTE: This is triggered off of the timestamps of known_good.json and helper.cmake
-    add_custom_command(
-        OUTPUT ${PROJECT_SOURCE_DIR}/external/helper.cmake
-        COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_LIST_DIR}/update_deps.py
-            --dir ${PROJECT_SOURCE_DIR}/external --arch ${_target_arch} --config ${_build_type} --generator "${CMAKE_GENERATOR}" ${optional_args}
-        DEPENDS ${CMAKE_CURRENT_LIST_DIR}/known_good.json
-    )
+    set(cmake_var)
+    foreach(var IN LISTS cmake_vars)
+        if (DEFINED ${var})
+            list(APPEND update_dep_command "--cmake_var")
+            list(APPEND update_dep_command "${var}=${${var}}")
+        endif()
+    endforeach()
 
+    if (cmake_var)
+        list(APPEND update_dep_command "${cmake_var}")
+    endif()
 
-    # Check if update_deps.py needs to be run on first cmake run
-    if (${CMAKE_CURRENT_LIST_DIR}/known_good.json IS_NEWER_THAN ${PROJECT_SOURCE_DIR}/external/helper.cmake)
+    file(TIMESTAMP ${update_dep_py} timestamp_1)
+    file(TIMESTAMP ${known_good_json} timestamp_2)
+
+    string("MD5" md5_hash "${timestamp_1}-${timestamp_2}-${update_dep_command}")
+
+    set(UPDATE_DEPS_HASH "0" CACHE STRING "Default value until we run update_deps.py")
+    mark_as_advanced(UPDATE_DEPS_HASH)
+
+    if ("${UPDATE_DEPS_HASH}" STREQUAL "0")
+        list(APPEND update_dep_command "--clean-build")
+        list(APPEND update_dep_command "--clean-install")
+    endif()
+
+    if ("${md5_hash}" STREQUAL $CACHE{UPDATE_DEPS_HASH})
+        message(DEBUG "update_deps.py: no work to do.")
+    else()
         execute_process(
-            COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_LIST_DIR}/update_deps.py
-                --dir ${PROJECT_SOURCE_DIR}/external --arch ${_target_arch} --config ${_build_type} --generator "${CMAKE_GENERATOR}" ${optional_args}
-            WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
+            COMMAND ${Python3_EXECUTABLE} ${update_dep_command}
             RESULT_VARIABLE _update_deps_result
         )
         if (NOT (${_update_deps_result} EQUAL 0))
             message(FATAL_ERROR "Could not run update_deps.py which is necessary to download dependencies.")
         endif()
+        set(UPDATE_DEPS_HASH ${md5_hash} CACHE STRING "Ensure we only run update_deps.py when we need to." FORCE)
+        include("${UPDATE_DEPS_DIR}/helper.cmake")
     endif()
-    include(${PROJECT_SOURCE_DIR}/external/helper.cmake)
-else()
-    message("********************************************************************************")
-    message("* NOTE: Not adding target to run update_deps.py automatically.                 *")
-    message("********************************************************************************")
-    find_package(PythonInterp 3 QUIET)
 endif()
-# Dependencies can be installed in arbitrary locations. This is done by update_deps.py / users.
 if (GOOGLETEST_INSTALL_DIR)
     list(APPEND CMAKE_PREFIX_PATH ${GOOGLETEST_INSTALL_DIR})
 endif()
@@ -83,4 +108,8 @@ if (VULKAN_HEADERS_INSTALL_DIR)
     list(APPEND CMAKE_PREFIX_PATH ${VULKAN_HEADERS_INSTALL_DIR})
 endif()
 
-set(CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH} PARENT_SCOPE)
+if (CMAKE_CROSSCOMPILING)
+    set(CMAKE_FIND_ROOT_PATH ${CMAKE_FIND_ROOT_PATH} ${CMAKE_PREFIX_PATH} PARENT_SCOPE)
+else()
+    set(CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH} PARENT_SCOPE)
+endif()
