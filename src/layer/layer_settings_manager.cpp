@@ -107,7 +107,7 @@ static inline bool IsHighIntegrity() {
 // To prevent exposing an interface that would make it easy to use inconsistent setting naming,
 // we hide here workaround of existing layers to preserve backward compatibility
 static void AddWorkaroundLayerNames(std::vector<std::string> &layer_names) { 
-    if (std::find(layer_names.begin(), layer_names.end(), std::string("VK_LAYER_KHRONOS_synchronization2")) != layer_names.end()) {
+    if (std::find(layer_names.begin(), layer_names.end(), "VK_LAYER_KHRONOS_synchronization2") != layer_names.end()) {
         layer_names.push_back("VK_LAYER_KHRONOS_sync2");
         return;
     }
