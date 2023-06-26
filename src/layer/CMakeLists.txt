@@ -22,6 +22,7 @@ target_compile_features(VulkanLayerSettings PRIVATE cxx_std_17)
 
 target_sources(VulkanLayerSettings PRIVATE
    vk_layer_settings.cpp
+   vk_layer_settings_helper.cpp
    layer_settings_manager.cpp
    layer_settings_manager.hpp
    layer_settings_util.cpp
