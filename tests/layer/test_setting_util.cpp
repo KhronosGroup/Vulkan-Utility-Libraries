@@ -35,7 +35,7 @@ TEST(test_layer_settings_util, FindSettingsInChain_found_first) {
     instanceCreateInfo.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
     instanceCreateInfo.pNext = &layerSettingsCreateInfo;
 
-    EXPECT_EQ(&layerSettingsCreateInfo, vl::FindSettingsInChain(&instanceCreateInfo));
+    EXPECT_EQ(&layerSettingsCreateInfo, vlFindLayerSettingsCreateInfo(&instanceCreateInfo));
 }
 
 TEST(test_layer_settings_util, FindSettingsInChain_found_last) {
@@ -50,7 +50,7 @@ TEST(test_layer_settings_util, FindSettingsInChain_found_last) {
     instanceCreateInfo.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
     instanceCreateInfo.pNext = &debugReportCallbackCreateInfo;
 
-    EXPECT_EQ(&layerSettingsCreateInfo, vl::FindSettingsInChain(&instanceCreateInfo));
+    EXPECT_EQ(&layerSettingsCreateInfo, vlFindLayerSettingsCreateInfo(&instanceCreateInfo));
 }
 
 TEST(test_layer_settings_util, FindSettingsInChain_found_not) {
@@ -61,7 +61,7 @@ TEST(test_layer_settings_util, FindSettingsInChain_found_not) {
     instanceCreateInfo.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
     instanceCreateInfo.pNext = &debugReportCallbackCreateInfo;
 
-    EXPECT_EQ(nullptr, vl::FindSettingsInChain(&instanceCreateInfo));
+    EXPECT_EQ(nullptr, vlFindLayerSettingsCreateInfo(&instanceCreateInfo));
 }
 
 TEST(test_layer_settings_util, FindDelimiter) {
