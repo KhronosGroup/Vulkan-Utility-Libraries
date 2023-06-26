@@ -42,6 +42,7 @@
 #include <fstream>
 #include <sstream>
 #include <array>
+#include <algorithm>
 
 #if defined(__ANDROID__)
 static std::string GetAndroidProperty(const char *name) {
@@ -102,6 +103,15 @@ static inline bool IsHighIntegrity() {
     return false;
 }
 #endif
+
+// To prevent exposing an interface that would make it easy to use inconsistent setting naming,
+// we hide here workaround of existing layers to preserve backward compatibility
+static void AddWorkaroundLayerNames(std::vector<std::string> &layer_names) { 
+    if (std::find(layer_names.begin(), layer_names.end(), std::string("VK_LAYER_KHRONOS_synchronization2")) != layer_names.end()) {
+        layer_names.push_back("VK_LAYER_KHRONOS_sync2");
+        return;
+    }
+}
 
 namespace vl {
 
@@ -290,10 +300,16 @@ bool LayerSettings::HasAPISetting(const char *pSettingName) {
 std::string LayerSettings::GetEnvSetting(const char *pSettingName) {
     std::string result;
 
-    for (int i = TRIM_FIRST, n = TRIM_LAST; i < n; ++i) {
-        result = GetEnvironment(GetEnvSettingName(this->layer_name.c_str(), pSettingName, static_cast<TrimMode>(i)).c_str());
-        if (!result.empty()) {
-            break;
+    std::vector<std::string> layer_names;
+    layer_names.push_back(this->layer_name);
+    ::AddWorkaroundLayerNames(layer_names);
+
+    for (std::size_t layer_index = 0, layer_count = layer_names.size(); layer_index < layer_count; ++layer_index) {
+        for (int i = TRIM_FIRST, n = TRIM_LAST; i < n; ++i) {
+            result = GetEnvironment(GetEnvSettingName(layer_names[layer_index].c_str(), pSettingName, static_cast<TrimMode>(i)).c_str());
+            if (!result.empty()) {
+                break;
+            }
         }
     }
 
