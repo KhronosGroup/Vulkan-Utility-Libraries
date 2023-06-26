@@ -28,20 +28,6 @@
 
 namespace vl {
 
-const VkLayerSettingsCreateInfoEXT *FindSettingsInChain(const void *next) {
-    const VkBaseOutStructure *current = reinterpret_cast<const VkBaseOutStructure *>(next);
-    const VkLayerSettingsCreateInfoEXT *found = nullptr;
-    while (current) {
-        if (VK_STRUCTURE_TYPE_LAYER_SETTINGS_EXT == current->sType) {
-            found = reinterpret_cast<const VkLayerSettingsCreateInfoEXT *>(current);
-            current = nullptr;
-        } else {
-            current = current->pNext;
-        }
-    }
-    return found;
-}
-
 std::vector<std::string> Split(const std::string &value, char delimiter) {
     std::vector<std::string> result;
 

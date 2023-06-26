@@ -45,6 +45,8 @@ VkBool32 vlHasLayerSetting(VlLayerSettingSet layerSettingSet, const char *pSetti
 VkResult vlGetLayerSettingValues(VlLayerSettingSet layerSettingSet, const char *pSettingName, VkLayerSettingTypeEXT type,
                                  uint32_t *pValueCount, void *pValues);
 
+const VkLayerSettingsCreateInfoEXT *vlFindLayerSettingsCreateInfo(const VkInstanceCreateInfo *pCreateInfo);
+
 #ifdef __cplusplus
 }
 #endif
