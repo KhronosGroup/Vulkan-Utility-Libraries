@@ -58,6 +58,26 @@ target_link_libraries(test_layer_settings_api PRIVATE
 
 gtest_discover_tests(test_layer_settings_api)
 
+# test_layer_setting_cpp
+add_executable(test_layer_settings_cpp)
+
+target_include_directories(test_layer_settings_cpp PRIVATE
+    ${CMAKE_SOURCE_DIR}/src/layer
+)
+
+target_sources(test_layer_settings_cpp PRIVATE
+    test_setting_cpp.cpp
+)
+
+target_link_libraries(test_layer_settings_cpp PRIVATE 
+    GTest::gtest
+    GTest::gtest_main
+    Vulkan::Headers
+    Vulkan::LayerSettings
+)
+
+gtest_discover_tests(test_layer_settings_cpp)
+
 # test_layer_setting_env
 add_executable(test_layer_settings_env)
 
