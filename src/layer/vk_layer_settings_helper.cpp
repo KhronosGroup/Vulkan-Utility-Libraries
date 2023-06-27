@@ -125,11 +125,10 @@ void vlGetLayerSettingValues(VlLayerSettingSet layerSettingSet, const char *pSet
 }
 
 void vlGetLayerSettingValue(VlLayerSettingSet layerSettingSet, const char *pSettingName, std::string &settingValue) {
-    std::vector<std::string> settingValues;
-    vlGetLayerSettingValues(layerSettingSet, pSettingName, settingValues);
-    if (!settingValues.empty()) {
-        settingValue = settingValues[0];
-    }
+    uint32_t value_count = 1;
+    const char *value;
+    vlGetLayerSettingValues(layerSettingSet, pSettingName, VK_LAYER_SETTING_TYPE_STRING_EXT, &value_count, &value);
+    settingValue = value;
 }
 
 void vlGetLayerSettingValues(VlLayerSettingSet layerSettingSet, const char *pSettingName, std::vector<std::string> &settingValues) {
