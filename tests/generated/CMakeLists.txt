@@ -1,0 +1,13 @@
+
+if(${CMAKE_C_COMPILER_ID} MATCHES "(GNU|Clang)")
+    add_compile_options(-Wpedantic -Wall -Wextra -Werror)
+endif()
+
+if (MSVC)
+    add_compile_options(/W4 /permissive- /WX)
+endif()
+
+# Test vk_enum_string_helper.h
+add_executable(vk_enum_string_helper vk_enum_string_helper.cpp)
+target_include_directories(vk_enum_string_helper PRIVATE ${VUL_SOURCE_DIR}/include)
+target_link_libraries(vk_enum_string_helper PRIVATE Vulkan::Headers)

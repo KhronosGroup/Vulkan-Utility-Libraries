@@ -37,14 +37,17 @@ def RunGenerators(api: str, registry: str, targetFilter: str) -> None:
 
     # Build up a list of all generators and custom options
     generators = {
-        'vk_dispatch_table_helper.h' : {
-            'generator' : DispatchTableHelperOutputGenerator,
-            'directory' : 'include/vulkan',
-        },
-        'vk_layer_dispatch_table.h' : {
-            'generator' : LayerDispatchTableOutputGenerator,
-            'directory' : 'include/vulkan',
-        },
+        # TODO: vk_dispatch_table_helper.h doesn't compile.
+        # 'vk_dispatch_table_helper.h' : {
+        #    'generator' : DispatchTableHelperOutputGenerator,
+        #    'directory' : 'include/vulkan',
+        #},
+        # TODO: vk_layer_dispatch_table.h doesn't compile.
+        #
+        #'vk_layer_dispatch_table.h' : {
+        #    'generator' : LayerDispatchTableOutputGenerator,
+        #    'directory' : 'include/vulkan',
+        #},
         'vk_enum_string_helper.h' : {
             'generator' : EnumStringHelperOutputGenerator,
             'directory' : 'include/vulkan',
