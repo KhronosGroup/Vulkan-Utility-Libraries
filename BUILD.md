@@ -17,9 +17,6 @@ This document contains the instructions for building this repository on Linux, m
 The following will be enough for most people, for more detailed instructions, see below.
 
 ```bash
-git clone git@github.com:KhronosGroup/Vulkan-Profiles.git
-cd Vulkan-Profiles
-
 cmake -S . -B build/ -D CMAKE_BUILD_TYPE=Debug -D UPDATE_DEPS=ON
 cmake --build build --config Debug
 ```
