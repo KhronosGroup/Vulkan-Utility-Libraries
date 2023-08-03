@@ -134,7 +134,9 @@ VkResult vlGetLayerSettingValues(VlLayerSettingSet layerSettingSet, const char *
                     *pValueCount = static_cast<std::uint32_t>(settings.size());
                 }
             } else if (api_setting != nullptr) { // From Vulkan Layer Setting API
-                if (copy_values) {
+                if (api_setting->type != type) {
+                    result = VK_ERROR_FORMAT_NOT_SUPPORTED;
+                } else if (copy_values) {
                     if (*pValueCount < api_setting->count) {
                         result = VK_INCOMPLETE;
                     }
@@ -176,7 +178,9 @@ VkResult vlGetLayerSettingValues(VlLayerSettingSet layerSettingSet, const char *
                     *pValueCount = static_cast<std::uint32_t>(settings.size());
                 }
             } else if (api_setting != nullptr) {  // From Vulkan Layer Setting API
-                if (copy_values) {
+                if (api_setting->type != type) {
+                    result = VK_ERROR_FORMAT_NOT_SUPPORTED;
+                } else if (copy_values) {
                     if (*pValueCount < api_setting->count) {
                         result = VK_INCOMPLETE;
                     }
@@ -218,7 +222,9 @@ VkResult vlGetLayerSettingValues(VlLayerSettingSet layerSettingSet, const char *
                     *pValueCount = static_cast<std::uint32_t>(settings.size());
                 }
             } else if (api_setting != nullptr) {  // From Vulkan Layer Setting API
-                if (copy_values) {
+                if (api_setting->type != type) {
+                    result = VK_ERROR_FORMAT_NOT_SUPPORTED;
+                } else if (copy_values) {
                     if (*pValueCount < api_setting->count) {
                         result = VK_INCOMPLETE;
                     }
@@ -260,7 +266,9 @@ VkResult vlGetLayerSettingValues(VlLayerSettingSet layerSettingSet, const char *
                     *pValueCount = static_cast<std::uint32_t>(settings.size());
                 }
             } else if (api_setting != nullptr) {  // From Vulkan Layer Setting API
-                if (copy_values) {
+                if (api_setting->type != type) {
+                    result = VK_ERROR_FORMAT_NOT_SUPPORTED;
+                } else if (copy_values) {
                     if (*pValueCount < api_setting->count) {
                         result = VK_INCOMPLETE;
                     }
@@ -302,7 +310,9 @@ VkResult vlGetLayerSettingValues(VlLayerSettingSet layerSettingSet, const char *
                     *pValueCount = static_cast<std::uint32_t>(settings.size());
                 }
             } else if (api_setting != nullptr) {  // From Vulkan Layer Setting API
-                if (copy_values) {
+                if (api_setting->type != type) {
+                    result = VK_ERROR_FORMAT_NOT_SUPPORTED;
+                } else if (copy_values) {
                     if (*pValueCount < api_setting->count) {
                         result = VK_INCOMPLETE;
                     }
@@ -344,7 +354,9 @@ VkResult vlGetLayerSettingValues(VlLayerSettingSet layerSettingSet, const char *
                     *pValueCount = static_cast<std::uint32_t>(settings.size());
                 }
             } else if (api_setting != nullptr) {  // From Vulkan Layer Setting API
-                if (copy_values) {
+                if (api_setting->type != type) {
+                    result = VK_ERROR_FORMAT_NOT_SUPPORTED;
+                } else if (copy_values) {
                     if (*pValueCount < api_setting->count) {
                         result = VK_INCOMPLETE;
                     }
@@ -386,7 +398,9 @@ VkResult vlGetLayerSettingValues(VlLayerSettingSet layerSettingSet, const char *
                     *pValueCount = static_cast<std::uint32_t>(settings.size());
                 }
             } else if (api_setting != nullptr) {  // From Vulkan Layer Setting API
-                if (copy_values) {
+                if (api_setting->type != type) {
+                    result = VK_ERROR_FORMAT_NOT_SUPPORTED;
+                } else if (copy_values) {
                     if (*pValueCount < api_setting->count) {
                         result = VK_INCOMPLETE;
                     }
@@ -428,7 +442,9 @@ VkResult vlGetLayerSettingValues(VlLayerSettingSet layerSettingSet, const char *
                     *pValueCount = static_cast<std::uint32_t>(settings.size());
                 }
             } else if (api_setting != nullptr) {  // From Vulkan Layer Setting API
-                if (copy_values) {
+                if (api_setting->type != type) {
+                    result = VK_ERROR_FORMAT_NOT_SUPPORTED;
+                } else if (copy_values) {
                     if (*pValueCount < api_setting->count) {
                         result = VK_INCOMPLETE;
                     }
@@ -466,7 +482,9 @@ VkResult vlGetLayerSettingValues(VlLayerSettingSet layerSettingSet, const char *
                         *pValueCount = static_cast<std::uint32_t>(settings_cache.size());
                     }
                 } else if (api_setting != nullptr) {  // From Vulkan Layer Setting API
-                    if (copy_values) {
+                    if (api_setting->type != type) {
+                        result = VK_ERROR_FORMAT_NOT_SUPPORTED;
+                    } else if (copy_values) {
                         if (*pValueCount < api_setting->count) {
                             result = VK_INCOMPLETE;
                         }
