@@ -109,3 +109,22 @@ target_link_libraries(test_layer_setting_file PRIVATE
 
 gtest_discover_tests(test_layer_setting_file)
 
+# test_layer_setting_cast
+add_executable(test_layer_setting_cast)
+
+target_include_directories(test_layer_setting_cast PRIVATE
+    ${CMAKE_SOURCE_DIR}/src/layer
+)
+
+target_sources(test_layer_setting_cast PRIVATE
+    test_setting_cast.cpp
+)
+
+target_link_libraries(test_layer_setting_cast PRIVATE 
+    GTest::gtest
+    GTest::gtest_main
+    Vulkan::Headers
+    Vulkan::LayerSettings
+)
+
+gtest_discover_tests(test_layer_setting_cast)

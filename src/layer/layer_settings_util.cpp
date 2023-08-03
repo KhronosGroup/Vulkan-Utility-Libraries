@@ -158,6 +158,46 @@ std::string ToUpper(const std::string &s) {
     return result;
 }
 
+uint32_t ToUint32(const std::string &token) {
+    uint32_t int_id = 0;
+    if ((token.find("0x") == 0) || token.find("0X") == 0) {  // Handle hex format
+        int_id = static_cast<uint32_t>(std::strtoul(token.c_str(), nullptr, 16));
+    } else {
+        int_id = static_cast<uint32_t>(std::strtoul(token.c_str(), nullptr, 10));  // Decimal format
+    }
+    return int_id;
+}
+
+uint64_t ToUint64(const std::string &token) {
+    uint64_t int_id = 0;
+    if ((token.find("0x") == 0) || token.find("0X") == 0) {  // Handle hex format
+        int_id = static_cast<uint64_t>(std::strtoull(token.c_str(), nullptr, 16));
+    } else {
+        int_id = static_cast<uint64_t>(std::strtoull(token.c_str(), nullptr, 10));  // Decimal format
+    }
+    return int_id;
+}
+
+int32_t ToInt32(const std::string &token) {
+    int32_t int_id = 0;
+    if (token.find("0x") == 0 || token.find("0X") == 0 || token.find("-0x") == 0 || token.find("-0X") == 0) {  // Handle hex format
+        int_id = static_cast<int32_t>(std::strtol(token.c_str(), nullptr, 16));
+    } else {
+        int_id = static_cast<int32_t>(std::strtol(token.c_str(), nullptr, 10));  // Decimal format
+    }
+    return int_id;
+}
+
+int64_t ToInt64(const std::string &token) {
+    int64_t int_id = 0;
+    if (token.find("0x") == 0 || token.find("0X") == 0 || token.find("-0x") == 0 || token.find("-0X") == 0) {  // Handle hex format
+        int_id = static_cast<uint64_t>(std::strtoll(token.c_str(), nullptr, 16));
+    } else {
+        int_id = static_cast<uint64_t>(std::strtoll(token.c_str(), nullptr, 10));  // Decimal format
+    }
+    return int_id;
+}
+
 VkFrameset ToFrameSet(const std::string &s) {
     assert(IsFrameSets(s));
 
