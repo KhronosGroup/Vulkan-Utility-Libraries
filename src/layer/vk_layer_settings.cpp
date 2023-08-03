@@ -462,45 +462,94 @@ VkResult vlGetLayerSettingValues(VlLayerSettingSet layerSettingSet, const char *
             return result;
         }
         case VK_LAYER_SETTING_TYPE_STRING_EXT: {
-                std::vector<const char*> values;
-                VkResult result = VK_SUCCESS;
+            VkResult result = VK_SUCCESS;
 
-                if (!settings.empty()) {  // From env variable or setting file
-                    std::vector<std::string> &settings_cache = layer_setting_set->GetSettingCache(pSettingName);
-                    settings_cache = settings;
+            std::vector<std::string> &settings_cache = layer_setting_set->GetSettingCache(pSettingName);
 
-                    if (copy_values) {
-                        if (static_cast<std::size_t>(*pValueCount) < settings_cache.size()) {
-                            result = VK_INCOMPLETE;
-                        }
-                        values.resize(std::min(static_cast<std::size_t>(*pValueCount), settings_cache.size()));
-
-                        for (std::size_t i = 0, n = values.size(); i < n; ++i) {
-                            values[i] = settings_cache[i].c_str();
-                        }
-                    } else {
-                        *pValueCount = static_cast<std::uint32_t>(settings_cache.size());
-                    }
-                } else if (api_setting != nullptr) {  // From Vulkan Layer Setting API
-                    if (api_setting->type != type) {
-                        result = VK_ERROR_FORMAT_NOT_SUPPORTED;
-                    } else if (copy_values) {
-                        if (*pValueCount < api_setting->count) {
-                            result = VK_INCOMPLETE;
-                        }
-                        const std::uint32_t size = std::min(*pValueCount, api_setting->count);
-                        values.assign(api_setting->asString, api_setting->asString + size);
-                    } else {
-                        *pValueCount = api_setting->count;
-                    }
-                }
+            if (!settings.empty()) {  // From env variable or setting file
+                settings_cache = settings;
 
                 if (copy_values) {
-                    std::copy(values.begin(), values.end(), reinterpret_cast<const char **>(pValues));
+                    if (static_cast<std::size_t>(*pValueCount) < settings_cache.size()) {
+                        result = VK_INCOMPLETE;
+                    }
+                } else {
+                    *pValueCount = static_cast<std::uint32_t>(settings_cache.size());
                 }
+            } else if (api_setting != nullptr) {  // From Vulkan Layer Setting API
+                if (copy_values) {
+                    if (*pValueCount < api_setting->count) {
+                        result = VK_INCOMPLETE;
+                    }
+                    const std::uint32_t size = std::min(*pValueCount, api_setting->count);
+                    settings_cache.resize(size);
 
-                return result;
+                    switch (api_setting->type) {
+                        case VK_LAYER_SETTING_TYPE_STRING_EXT:
+                            for (std::size_t i = 0, n = settings_cache.size(); i < n; ++i) {
+                                settings_cache[i] = api_setting->asString[i];
+                            }
+                            break;
+                        case VK_LAYER_SETTING_TYPE_BOOL_EXT:
+                            for (std::size_t i = 0, n = settings_cache.size(); i < n; ++i) {
+                                settings_cache[i] = api_setting->asBool32[i] == VK_TRUE ? "true" : "false";
+                            }
+                            break;
+                        case VK_LAYER_SETTING_TYPE_INT32_EXT:
+                            for (std::size_t i = 0, n = settings_cache.size(); i < n; ++i) {
+                                settings_cache[i] = vl::Format("%d", api_setting->asInt32[i]);
+                            }
+                            break;
+                        case VK_LAYER_SETTING_TYPE_INT64_EXT:
+                            for (std::size_t i = 0, n = settings_cache.size(); i < n; ++i) {
+                                settings_cache[i] = vl::Format("%d", api_setting->asInt64[i]);
+                            }
+                            break;
+                        case VK_LAYER_SETTING_TYPE_UINT32_EXT:
+                            for (std::size_t i = 0, n = settings_cache.size(); i < n; ++i) {
+                                settings_cache[i] = vl::Format("%u", api_setting->asUint32[i]);
+                            }
+                            break;
+                        case VK_LAYER_SETTING_TYPE_UINT64_EXT:
+                            for (std::size_t i = 0, n = settings_cache.size(); i < n; ++i) {
+                                settings_cache[i] = vl::Format("%u", api_setting->asUint64[i]);
+                            }
+                            break;
+                        case VK_LAYER_SETTING_TYPE_FLOAT_EXT:
+                            for (std::size_t i = 0, n = settings_cache.size(); i < n; ++i) {
+                                settings_cache[i] = vl::Format("%f", api_setting->asFloat[i]);
+                            }
+                            break;
+                        case VK_LAYER_SETTING_TYPE_DOUBLE_EXT:
+                            for (std::size_t i = 0, n = settings_cache.size(); i < n; ++i) {
+                                settings_cache[i] = vl::Format("%f", api_setting->asDouble[i]);
+                            }
+                            break;
+                        case VK_LAYER_SETTING_TYPE_FRAMESET_EXT:
+                            for (std::size_t i = 0, n = settings_cache.size(); i < n; ++i) {
+                                settings_cache[i] = vl::Format("%d-%d-%d",
+                                    api_setting->asFrameset[i].first,
+                                    api_setting->asFrameset[i].count,
+                                    api_setting->asFrameset[i].step);
+                            }
+                            break;
+                        default:
+                            result = VK_ERROR_FORMAT_NOT_SUPPORTED;
+                            break;
+                    }
+                } else {
+                    *pValueCount = api_setting->count;
+                }
             }
+
+            if (copy_values) {
+                for (std::size_t i = 0, n = std::min(static_cast<std::size_t>(*pValueCount), settings_cache.size()); i < n; ++i) {
+                    reinterpret_cast<const char **>(pValues)[i] = settings_cache[i].c_str();
+                }
+            }
+
+            return result;
+        }
     }
 
     return VK_ERROR_UNKNOWN;

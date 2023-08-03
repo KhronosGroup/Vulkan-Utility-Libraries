@@ -52,6 +52,14 @@ namespace vl {
 
     std::string ToUpper(const std::string &s);
 
+    uint32_t ToUint32(const std::string &token);
+
+    uint64_t ToUint64(const std::string &token);
+
+    int32_t ToInt32(const std::string &token);
+
+    int64_t ToInt64(const std::string &token);
+
     bool IsFrameSets(const std::string &s);
 
     VkFrameset ToFrameSet(const std::string &s);

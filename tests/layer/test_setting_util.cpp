@@ -319,6 +319,53 @@ TEST(test_layer_settings_util, is_float) {
     EXPECT_EQ(false, vl::IsFloat("A"));
 }
 
+TEST(test_layer_settings_util, ToUint32) {
+    EXPECT_EQ(24, vl::ToUint32("24"));
+    EXPECT_EQ(3000300000, vl::ToUint32("3000300000"));
+    EXPECT_EQ(15, vl::ToUint32("0xF"));
+    EXPECT_EQ(15, vl::ToUint32("0XF"));
+    EXPECT_EQ(4294967295, vl::ToUint32("0xFFFFFFFF"));
+}
+
+TEST(test_layer_settings_util, ToUint64) {
+    EXPECT_EQ(24, vl::ToUint64("24"));
+    EXPECT_EQ(3000300000, vl::ToUint64("3000300000"));
+    EXPECT_EQ(15, vl::ToUint64("0xF"));
+    EXPECT_EQ(15, vl::ToUint64("0XF"));
+    EXPECT_EQ(4294967295, vl::ToUint64("0xFFFFFFFF"));
+    EXPECT_EQ(4294967296ull, vl::ToUint64("0x100000000"));
+}
+
+TEST(test_layer_settings_util, ToInt32) {
+    EXPECT_EQ(24, vl::ToInt32("24"));
+    EXPECT_EQ(-24, vl::ToInt32("-24"));
+    EXPECT_EQ(2147483647, vl::ToInt32("2147483647"));
+    EXPECT_EQ(-2147483648, vl::ToInt32("-2147483648"));
+    EXPECT_EQ(65535, vl::ToInt32("0xFFFF"));
+    EXPECT_EQ(-65535, vl::ToInt32("-0xFFFF"));
+    EXPECT_EQ(15, vl::ToInt32("0xF"));
+    EXPECT_EQ(-15, vl::ToInt32("-0xF"));
+    EXPECT_EQ(15, vl::ToInt32("0XF"));
+    EXPECT_EQ(-15, vl::ToInt32("-0XF"));
+}
+
+TEST(test_layer_settings_util, ToInt64) {
+    EXPECT_EQ(24LL, vl::ToInt64("24"));
+    EXPECT_EQ(-24LL, vl::ToInt64("-24"));
+    EXPECT_EQ(2147483647LL, vl::ToInt64("2147483647"));
+    EXPECT_EQ(-2147483648LL, vl::ToInt64("-2147483648"));
+    EXPECT_EQ(2147483650LL, vl::ToInt64("2147483650"));
+    EXPECT_EQ(-2147483650LL, vl::ToInt64("-2147483650"));
+    EXPECT_EQ(4294967295LL, vl::ToInt64("0xFFFFFFFF"));
+    EXPECT_EQ(-4294967295LL, vl::ToInt64("-0xFFFFFFFF"));
+    EXPECT_EQ(4294967296LL, vl::ToInt64("0x100000000"));
+    EXPECT_EQ(-4294967296LL, vl::ToInt64("-0x100000000"));
+    EXPECT_EQ(15LL, vl::ToInt64("0xF"));
+    EXPECT_EQ(-15LL, vl::ToInt64("-0xF"));
+    EXPECT_EQ(15LL, vl::ToInt64("0XF"));
+    EXPECT_EQ(-15LL, vl::ToInt64("-0XF"));
+}
+
 TEST(test_layer_settings_util, is_framesets) {
     EXPECT_EQ(true, vl::IsFrameSets("0"));
     EXPECT_EQ(true, vl::IsFrameSets("0-2"));
