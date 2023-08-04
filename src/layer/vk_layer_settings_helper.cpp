@@ -8,6 +8,19 @@
 // - Christophe Riccio <christophe@lunarg.com>
 #include "vulkan/layer/vk_layer_settings.hpp"
 
+static std::string Merge(const std::vector<std::string> &strings) {
+    std::string result;
+
+    for (std::size_t i = 0, n = strings.size(); i < n; ++i) {
+        if (!result.empty()) {
+            result += ",";
+        }
+        result += strings[i];
+    }
+
+    return result;
+}
+
 void vlGetLayerSettingValue(VlLayerSettingSet layerSettingSet, const char *pSettingName, bool &settingValue) {
     uint32_t value_count = 1;
     VkBool32 value;
@@ -112,10 +125,9 @@ void vlGetLayerSettingValues(VlLayerSettingSet layerSettingSet, const char *pSet
 }
 
 void vlGetLayerSettingValue(VlLayerSettingSet layerSettingSet, const char *pSettingName, std::string &settingValue) {
-    uint32_t value_count = 1;
-    const char *value;
-    vlGetLayerSettingValues(layerSettingSet, pSettingName, VK_LAYER_SETTING_TYPE_STRING_EXT, &value_count, &value);
-    settingValue = value;
+    std::vector<std::string> values;
+    vlGetLayerSettingValues(layerSettingSet, pSettingName, values);
+    settingValue = Merge(values);
 }
 
 void vlGetLayerSettingValues(VlLayerSettingSet layerSettingSet, const char *pSettingName, std::vector<std::string> &settingValues) {
