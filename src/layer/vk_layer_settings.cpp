@@ -502,7 +502,7 @@ VkResult vlGetLayerSettingValues(VlLayerSettingSet layerSettingSet, const char *
                             break;
                         case VK_LAYER_SETTING_TYPE_INT64_EXT:
                             for (std::size_t i = 0, n = settings_cache.size(); i < n; ++i) {
-                                settings_cache[i] = vl::Format("%d", api_setting->asInt64[i]);
+                                settings_cache[i] = vl::Format("%lld", api_setting->asInt64[i]);
                             }
                             break;
                         case VK_LAYER_SETTING_TYPE_UINT32_EXT:
@@ -512,7 +512,7 @@ VkResult vlGetLayerSettingValues(VlLayerSettingSet layerSettingSet, const char *
                             break;
                         case VK_LAYER_SETTING_TYPE_UINT64_EXT:
                             for (std::size_t i = 0, n = settings_cache.size(); i < n; ++i) {
-                                settings_cache[i] = vl::Format("%u", api_setting->asUint64[i]);
+                                settings_cache[i] = vl::Format("%llu", api_setting->asUint64[i]);
                             }
                             break;
                         case VK_LAYER_SETTING_TYPE_FLOAT_EXT:
