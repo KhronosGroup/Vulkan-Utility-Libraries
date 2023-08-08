@@ -20,7 +20,7 @@ namespace vl {
         const void *next);
 
     std::vector<std::string> Split(
-        const std::string &value, char delimiter);
+        const std::string &pValues, char delimiter);
 
     enum TrimMode {
         TRIM_NONE,
@@ -62,9 +62,9 @@ namespace vl {
 
     bool IsFrameSets(const std::string &s);
 
-    VkFrameset ToFrameSet(const std::string &s);
+    VkFramesetEXT ToFrameSet(const std::string &s);
 
-    std::vector<VkFrameset> ToFrameSets(const std::string &s);
+    std::vector<VkFramesetEXT> ToFrameSets(const std::string &s);
 
     bool IsInteger(const std::string &s);
 

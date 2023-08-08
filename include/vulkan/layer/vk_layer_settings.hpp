@@ -62,10 +62,10 @@ void vlGetLayerSettingValues(VlLayerSettingSet layerSettingSet,
     const char *pSettingName, std::vector<std::string> &settingValues);
 
 void vlGetLayerSettingValue(VlLayerSettingSet layerSettingSet,
-    const char *pSettingName, VkFrameset &settingValue);
+    const char *pSettingName, VkFramesetEXT &settingValue);
 
-void vlGetLayerSettingValues(VlLayerSettingSet layerSettingSet,
-    const char *pSettingName, std::vector<VkFrameset> &settingValues);
+void vlGetLayerSettingValues(VlLayerSettingSet layerSettingSet, const char *pSettingName,
+                             std::vector<VkFramesetEXT> &settingValues);
 
 // Required by vk_safe_struct
 typedef std::pair<uint32_t, uint32_t> VlCustomSTypeInfo;

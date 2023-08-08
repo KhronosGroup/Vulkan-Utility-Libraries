@@ -37,37 +37,19 @@ extern "C" {
 //    Mark Lobodzinski
 //
 // Description
-//    This extension provides the VkLayerSettingsEXT struct that can be included in the pNext chain of the
-//    VkInstanceCreateInfo structure passed as the pCreateInfo parameter of vkCreateInstance
-//        The structure contains an array of VkLayerSettingValueEXT structures that define layer specific settings
-//    The extension also provides the vkEnumerateInstanceLayerSettingsEXT and vkEnumerateInstanceLayerSettingOptionEXT
-//    commands, useful for enumerating all layer settings and their possible values, respectively.
+// This extension provides a mechanism for configuring programmatically through
+// the Vulkan API the behavior of layers.
+// 
+// This extension provides the [VkLayerSettingsCreateInfoEXT] struct that can be
+// included in the [pNext] chain of the [VkInstanceCreateInfo]
+// structure passed as the [pCreateInfo] parameter of [vkCreateInstance].
+// 
+// The structure contains an array of [VkLayerSettingEXT] structure
+// values that configure specific features of layers.
 //
 // Note
-//    The VK_EXT_layer_settings extension subsumes all the functionality provided in the [VK_EXT_validation_flags] extension
+//    The [VK_EXT_layer_settings] extension subsumes all the functionality provided in the [VK_EXT_validation_flags] extension
 //    and the [VK_EXT_validation_features] extension.
-//
-// New Commands
-//    vkEnumerateInstanceLayerSettingsEXT
-//    vkEnumerateInstanceLayerSettingOptionEXT
-//
-// New Structures
-//    array_int32
-//    array_int64
-//    array_float
-//    array_bool
-//    array_char
-//    VkLayerSettingValueEXT
-//    VkLayerSettingDescriptionEXT
-//    VkLayerSettingOptionEXT
-//    Extending VkInstanceCreateInfo :
-//        VkLayerSettingsEXT
-//
-// New Unions
-//    VkLayerSettingValueDataEXT
-//
-// New Enums
-//    VkLayerSettingValueTypeEXT
 
 #define VK_EXT_layer_settings 1
 #define VK_EXT_LAYER_SETTINGS_SPEC_VERSION 1
@@ -82,40 +64,29 @@ extern "C" {
 #define VK_STRUCTURE_TYPE_LAYER_SETTINGS_EXT ((VkStructureType)(VK_STRUCTURE_TYPE_MAX_ENUM - 43))
 
 typedef enum VkLayerSettingTypeEXT {
-    VK_LAYER_SETTING_TYPE_BOOL_EXT = 0,
+    VK_LAYER_SETTING_TYPE_BOOL32_EXT = 0,
     VK_LAYER_SETTING_TYPE_INT32_EXT,
     VK_LAYER_SETTING_TYPE_INT64_EXT,
     VK_LAYER_SETTING_TYPE_UINT32_EXT,
     VK_LAYER_SETTING_TYPE_UINT64_EXT,
-    VK_LAYER_SETTING_TYPE_FLOAT_EXT,
-    VK_LAYER_SETTING_TYPE_DOUBLE_EXT,
-    VK_LAYER_SETTING_TYPE_FRAMESET_EXT,
-    VK_LAYER_SETTING_TYPE_STRING_EXT
+    VK_LAYER_SETTING_TYPE_FLOAT32_EXT,
+    VK_LAYER_SETTING_TYPE_FLOAT64_EXT,
+    VK_LAYER_SETTING_TYPE_STRING_EXT,
+    VK_LAYER_SETTING_TYPE_FRAMESET_EXT
 } VkLayerSettingTypeEXT;
 
-typedef struct VkFrameset {
+typedef struct VkFramesetEXT {
     uint32_t first;
     uint32_t count;
     uint32_t step;
-} VkFrameset;
+} VkFramesetEXT;
 
 typedef struct VkLayerSettingEXT {
     const char *pLayerName;
     const char *pSettingName;
     VkLayerSettingTypeEXT type;
     uint32_t count;
-    union {
-        const void *value;
-        const VkBool32 *asBool32;
-        const int32_t *asInt32;
-        const int64_t *asInt64;
-        const uint32_t *asUint32;
-        const uint64_t *asUint64;
-        const float *asFloat;
-        const double *asDouble;
-        const VkFrameset *asFrameset;
-        const char **asString;
-    };
+    const void *pValues;
 } VkLayerSettingEXT;
 
 typedef struct VkLayerSettingsCreateInfoEXT {
