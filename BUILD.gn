@@ -1,0 +1,36 @@
+# Copyright 2023-2023 The ANGLE Project Authors.
+# Copyright 2023-2023 LunarG, Inc.
+#
+# SPDX-License-Identifier: Apache-2.0
+
+source_set("vulkan_utility_libraries") {
+  include_dirs = [
+    "include",
+  ]
+  sources = [
+    "src/layer/layer_settings_manager.cpp",
+    "src/layer/layer_settings_manager.hpp",
+    "src/layer/layer_settings_util.cpp",
+    "src/layer/layer_settings_util.hpp",
+    "src/layer/vk_layer_settings.cpp",
+    "src/layer/vk_layer_settings_helper.cpp",
+    "include/vulkan/layer/vk_layer_settings_ext.h",
+    "include/vulkan/layer/vk_layer_settings.h",
+    "include/vulkan/layer/vk_layer_settings.hpp",
+  ]
+  public_configs = [ ":vulkan_headers_config" ]
+  public_deps = [ "$vulkan_headers_dir:vulkan_headers" ]
+}
+
+if (is_fuchsia) {
+  library_type = "loadable_module"
+} else {
+  library_type = "shared_library"
+}
+
+target(library_type, "vulkan_layer_settings") {
+    defines = []
+    ldflags = []
+    deps = [ ":vulkan_utility_libraries" ]
+}
+
