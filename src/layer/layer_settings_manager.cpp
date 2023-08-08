@@ -148,11 +148,11 @@ std::string LayerSettings::FindSettingsFile() {
         LSTATUS err = RegOpenKeyEx(hives[hive_index], "Software\\Khronos\\Vulkan\\Settings", 0, KEY_READ, &key);
         if (err == ERROR_SUCCESS) {
             char name[2048];
-            DWORD i = 0, name_size, type, value, value_size;
+            DWORD i = 0, name_size, type, pValues, value_size;
             while (ERROR_SUCCESS == RegEnumValue(key, i++, name, &(name_size = sizeof(name)), nullptr, &type,
-                                                 reinterpret_cast<LPBYTE>(&value), &(value_size = sizeof(value)))) {
+                                                 reinterpret_cast<LPBYTE>(&pValues), &(value_size = sizeof(pValues)))) {
                 // Check if the registry entry is a dword with a value of zero
-                if (type != REG_DWORD || value != 0) {
+                if (type != REG_DWORD || pValues != 0) {
                     continue;
                 }
 
@@ -315,16 +315,16 @@ std::string LayerSettings::GetFileSetting(const char *pSettingName) {
     }
 }
 
-void LayerSettings::SetFileSetting(const char *pSettingName, const std::string &value) {
+void LayerSettings::SetFileSetting(const char *pSettingName, const std::string &pValues) {
     assert(pSettingName != nullptr);
 
-    this->setting_file_values.insert({pSettingName, value});
+    this->setting_file_values.insert({pSettingName, pValues});
 }
 
-const LayerSetting *LayerSettings::GetAPISetting(const char *pSettingName) { 
+const VkLayerSettingEXT *LayerSettings::GetAPISetting(const char *pSettingName) { 
     assert(pSettingName != nullptr);
 
-    return reinterpret_cast<const LayerSetting *>(this->FindLayerSettingValue(pSettingName));
+    return reinterpret_cast<const VkLayerSettingEXT *>(this->FindLayerSettingValue(pSettingName));
 }
 
 }  // namespace vl

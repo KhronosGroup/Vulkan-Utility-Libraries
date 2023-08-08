@@ -72,24 +72,24 @@ TEST(test_layer_settings_util, FindDelimiter) {
 }
 
 TEST(test_layer_settings_util, Split_1Value) {
-    std::string value("VALUE_A");
-    std::vector<std::string> reault = vl::Split(value, ',');
+    std::string pValues("VALUE_A");
+    std::vector<std::string> reault = vl::Split(pValues, ',');
 
     EXPECT_EQ(1, reault.size());
     EXPECT_STREQ("VALUE_A", reault[0].c_str());
 }
 
 TEST(test_layer_settings_util, Split_1Value_ExtraComma) {
-    std::string value("VALUE_A,");
-    std::vector<std::string> reault = vl::Split(value, ',');
+    std::string pValues("VALUE_A,");
+    std::vector<std::string> reault = vl::Split(pValues, ',');
 
     EXPECT_EQ(1, reault.size());
     EXPECT_STREQ("VALUE_A", reault[0].c_str());
 }
 
 TEST(test_layer_settings_util, Split_2Values) {
-    std::string value("VALUE_A,VALUE_B");
-    std::vector<std::string> reault = vl::Split(value, ',');
+    std::string pValues("VALUE_A,VALUE_B");
+    std::vector<std::string> reault = vl::Split(pValues, ',');
 
     EXPECT_EQ(2, reault.size());
     EXPECT_STREQ("VALUE_A", reault[0].c_str());
@@ -97,8 +97,8 @@ TEST(test_layer_settings_util, Split_2Values) {
 }
 
 TEST(test_layer_settings_util, Split_2Values_ExtraComma) {
-    std::string value("VALUE_A,VALUE_B,");
-    std::vector<std::string> reault = vl::Split(value, ',');
+    std::string pValues("VALUE_A,VALUE_B,");
+    std::vector<std::string> reault = vl::Split(pValues, ',');
 
     EXPECT_EQ(2, reault.size());
     EXPECT_STREQ("VALUE_A", reault[0].c_str());
@@ -106,59 +106,59 @@ TEST(test_layer_settings_util, Split_2Values_ExtraComma) {
 }
 
 TEST(test_layer_settings_util, Split_2Values_WrongSeparator) {
-    std::string value("VALUE_A,VALUE_B");
-    std::vector<std::string> reault = vl::Split(value, ';');
+    std::string pValues("VALUE_A,VALUE_B");
+    std::vector<std::string> reault = vl::Split(pValues, ';');
 
     EXPECT_EQ(1, reault.size());
     EXPECT_STREQ("VALUE_A,VALUE_B", reault[0].c_str());
 }
 
 TEST(test_layer_settings_util, Split_0Value) {
-    std::string value("");
-    std::vector<std::string> result = vl::Split(value, ',');
+    std::string pValues("");
+    std::vector<std::string> result = vl::Split(pValues, ',');
 
     EXPECT_EQ(0, result.size());
 }
 
 TEST(test_layer_settings_util, TrimWhitespace_NoWhitespace) {
-    std::string value("VALUE_A-VALUE_B");
-    std::string result = vl::TrimWhitespace(value);
+    std::string pValues("VALUE_A-VALUE_B");
+    std::string result = vl::TrimWhitespace(pValues);
 
     EXPECT_STREQ("VALUE_A-VALUE_B", result.c_str());
 }
 
 TEST(test_layer_settings_util, TrimWhitespace_space) {
     {
-        const std::string value("VALUE_A ");
-        const std::string result = vl::TrimWhitespace(value);
+        const std::string pValues("VALUE_A ");
+        const std::string result = vl::TrimWhitespace(pValues);
 
         EXPECT_STREQ("VALUE_A", result.c_str());
     }
 
     {
-        const std::string value(" VALUE_A");
-        const std::string result = vl::TrimWhitespace(value);
+        const std::string pValues(" VALUE_A");
+        const std::string result = vl::TrimWhitespace(pValues);
 
         EXPECT_STREQ("VALUE_A", result.c_str());
     }
 
     {
-        const std::string value(" VALUE_A ");
-        const std::string result = vl::TrimWhitespace(value);
+        const std::string pValues(" VALUE_A ");
+        const std::string result = vl::TrimWhitespace(pValues);
 
         EXPECT_STREQ("VALUE_A", result.c_str());
     }
 
     {
-        const std::string value("VALUE A");
-        const std::string result = vl::TrimWhitespace(value);
+        const std::string pValues("VALUE A");
+        const std::string result = vl::TrimWhitespace(pValues);
 
         EXPECT_STREQ("VALUE A", result.c_str());
     }
 
     {
-        const std::string value(" VALUE A ");
-        const std::string result = vl::TrimWhitespace(value);
+        const std::string pValues(" VALUE A ");
+        const std::string result = vl::TrimWhitespace(pValues);
 
         EXPECT_STREQ("VALUE A", result.c_str());
     }
@@ -166,36 +166,36 @@ TEST(test_layer_settings_util, TrimWhitespace_space) {
 
 TEST(test_layer_settings_util, TrimWhitespace_Whitespace) {
     {
-        const std::string value("VALUE_A\n");
-        const std::string result = vl::TrimWhitespace(value);
+        const std::string pValues("VALUE_A\n");
+        const std::string result = vl::TrimWhitespace(pValues);
 
         EXPECT_STREQ("VALUE_A", result.c_str());
     }
 
     {
-        const std::string value("\f\tVALUE_A");
-        const std::string result = vl::TrimWhitespace(value);
+        const std::string pValues("\f\tVALUE_A");
+        const std::string result = vl::TrimWhitespace(pValues);
 
         EXPECT_STREQ("VALUE_A", result.c_str());
     }
 
     {
-        const std::string value("\t\vVALUE_A\n\r");
-        const std::string result = vl::TrimWhitespace(value);
+        const std::string pValues("\t\vVALUE_A\n\r");
+        const std::string result = vl::TrimWhitespace(pValues);
 
         EXPECT_STREQ("VALUE_A", result.c_str());
     }
 
     {
-        const std::string value("VALUE\tA\f");
-        const std::string result = vl::TrimWhitespace(value);
+        const std::string pValues("VALUE\tA\f");
+        const std::string result = vl::TrimWhitespace(pValues);
 
         EXPECT_STREQ("VALUE\tA", result.c_str());
     }
 
     {
-        const std::string value("\f\tVALUE\tA\t\f");
-        const std::string result = vl::TrimWhitespace(value);
+        const std::string pValues("\f\tVALUE\tA\t\f");
+        const std::string result = vl::TrimWhitespace(pValues);
 
         EXPECT_STREQ("VALUE\tA", result.c_str());
     }
@@ -203,29 +203,29 @@ TEST(test_layer_settings_util, TrimWhitespace_Whitespace) {
 
 TEST(test_layer_settings_util, TrimPrefix) {
     {
-        const std::string value("VK_LAYER_LUNARG_test");
-        const std::string result = vl::TrimPrefix(value);
+        const std::string pValues("VK_LAYER_LUNARG_test");
+        const std::string result = vl::TrimPrefix(pValues);
 
         EXPECT_STREQ("LUNARG_test", result.c_str());
     }
 
     {
-        const std::string value("VK_LAYER_LUNARG_test_pouet");
-        const std::string result = vl::TrimPrefix(value);
+        const std::string pValues("VK_LAYER_LUNARG_test_pouet");
+        const std::string result = vl::TrimPrefix(pValues);
 
         EXPECT_STREQ("LUNARG_test_pouet", result.c_str());
     }
 
     {
-        const std::string value("VK_LAYER_LUNARG_test_POUET");
-        const std::string result = vl::TrimPrefix(value);
+        const std::string pValues("VK_LAYER_LUNARG_test_POUET");
+        const std::string result = vl::TrimPrefix(pValues);
 
         EXPECT_STREQ("LUNARG_test_POUET", result.c_str());
     }
 
     {
-        const std::string value("VK_LAYER_lunarg_test_POUET");
-        const std::string result = vl::TrimPrefix(value);
+        const std::string pValues("VK_LAYER_lunarg_test_POUET");
+        const std::string result = vl::TrimPrefix(pValues);
 
         EXPECT_STREQ("lunarg_test_POUET", result.c_str());
     }
@@ -233,29 +233,29 @@ TEST(test_layer_settings_util, TrimPrefix) {
 
 TEST(test_layer_settings_util, TrimVendor) {
     {
-        const std::string value("VK_LAYER_LUNARG_test");
-        const std::string result = vl::TrimVendor(value);
+        const std::string pValues("VK_LAYER_LUNARG_test");
+        const std::string result = vl::TrimVendor(pValues);
 
         EXPECT_STREQ("test", result.c_str());
     }
 
     {
-        const std::string value("VK_LAYER_LUNARG_test_pouet");
-        const std::string result = vl::TrimVendor(value);
+        const std::string pValues("VK_LAYER_LUNARG_test_pouet");
+        const std::string result = vl::TrimVendor(pValues);
 
         EXPECT_STREQ("test_pouet", result.c_str());
     }
 
     {
-        const std::string value("VK_LAYER_LUNARG_test_POUET");
-        const std::string result = vl::TrimVendor(value);
+        const std::string pValues("VK_LAYER_LUNARG_test_POUET");
+        const std::string result = vl::TrimVendor(pValues);
 
         EXPECT_STREQ("test_POUET", result.c_str());
     }
 
     {
-        const std::string value("VK_LAYER_lunarg_test_POUET");
-        const std::string result = vl::TrimVendor(value);
+        const std::string pValues("VK_LAYER_lunarg_test_POUET");
+        const std::string result = vl::TrimVendor(pValues);
 
         EXPECT_STREQ("test_POUET", result.c_str());
     }
@@ -397,7 +397,7 @@ TEST(test_layer_settings_util, is_framesets) {
 
 TEST(test_layer_settings_util, to_framesets) {
     {
-        std::vector<VkFrameset> framesets = vl::ToFrameSets("0");
+        std::vector<VkFramesetEXT> framesets = vl::ToFrameSets("0");
         EXPECT_EQ(1, framesets.size());
 
         EXPECT_EQ(0, framesets[0].first);
@@ -406,7 +406,7 @@ TEST(test_layer_settings_util, to_framesets) {
     }
 
     {
-        std::vector<VkFrameset> framesets = vl::ToFrameSets("76");
+        std::vector<VkFramesetEXT> framesets = vl::ToFrameSets("76");
         EXPECT_EQ(1, framesets.size());
 
         EXPECT_EQ(76, framesets[0].first);
@@ -415,7 +415,7 @@ TEST(test_layer_settings_util, to_framesets) {
     }
 
     {
-        std::vector<VkFrameset> framesets = vl::ToFrameSets("0-2");
+        std::vector<VkFramesetEXT> framesets = vl::ToFrameSets("0-2");
         EXPECT_EQ(1, framesets.size());
 
         EXPECT_EQ(0, framesets[0].first);
@@ -424,7 +424,7 @@ TEST(test_layer_settings_util, to_framesets) {
     }
 
     {
-        std::vector<VkFrameset> framesets = vl::ToFrameSets("0-2,6,7");
+        std::vector<VkFramesetEXT> framesets = vl::ToFrameSets("0-2,6,7");
         EXPECT_EQ(3, framesets.size());
 
         EXPECT_EQ(0, framesets[0].first);
@@ -441,7 +441,7 @@ TEST(test_layer_settings_util, to_framesets) {
     }
 
     {
-        std::vector<VkFrameset> framesets = vl::ToFrameSets("0-2,6-7");
+        std::vector<VkFramesetEXT> framesets = vl::ToFrameSets("0-2,6-7");
         EXPECT_EQ(2, framesets.size());
 
         EXPECT_EQ(0, framesets[0].first);
@@ -454,7 +454,7 @@ TEST(test_layer_settings_util, to_framesets) {
     }
 
     {
-        std::vector<VkFrameset> framesets = vl::ToFrameSets("1-2,60,70");
+        std::vector<VkFramesetEXT> framesets = vl::ToFrameSets("1-2,60,70");
         EXPECT_EQ(3, framesets.size());
 
         EXPECT_EQ(1, framesets[0].first);
@@ -471,7 +471,7 @@ TEST(test_layer_settings_util, to_framesets) {
     }
 
     {
-        std::vector<VkFrameset> framesets = vl::ToFrameSets("10-20,60,70");
+        std::vector<VkFramesetEXT> framesets = vl::ToFrameSets("10-20,60,70");
         EXPECT_EQ(3, framesets.size());
 
         EXPECT_EQ(10, framesets[0].first);
@@ -488,7 +488,7 @@ TEST(test_layer_settings_util, to_framesets) {
     }
 
     {
-        std::vector<VkFrameset> framesets = vl::ToFrameSets("1-8-2");
+        std::vector<VkFramesetEXT> framesets = vl::ToFrameSets("1-8-2");
         EXPECT_EQ(1, framesets.size());
 
         EXPECT_EQ(1, framesets[0].first);
@@ -497,7 +497,7 @@ TEST(test_layer_settings_util, to_framesets) {
     }
 
     {
-        std::vector<VkFrameset> framesets = vl::ToFrameSets("1-8-2,0");
+        std::vector<VkFramesetEXT> framesets = vl::ToFrameSets("1-8-2,0");
         EXPECT_EQ(2, framesets.size());
 
         EXPECT_EQ(1, framesets[0].first);
@@ -510,7 +510,7 @@ TEST(test_layer_settings_util, to_framesets) {
     }
 
     {
-        std::vector<VkFrameset> framesets = vl::ToFrameSets("1-8-2,10-20-5");
+        std::vector<VkFramesetEXT> framesets = vl::ToFrameSets("1-8-2,10-20-5");
         EXPECT_EQ(2, framesets.size());
 
         EXPECT_EQ(1, framesets[0].first);
@@ -523,7 +523,7 @@ TEST(test_layer_settings_util, to_framesets) {
     }
 
     {
-        std::vector<VkFrameset> framesets = vl::ToFrameSets("1-8,10-20-5");
+        std::vector<VkFramesetEXT> framesets = vl::ToFrameSets("1-8,10-20-5");
         EXPECT_EQ(2, framesets.size());
 
         EXPECT_EQ(1, framesets[0].first);
@@ -536,7 +536,7 @@ TEST(test_layer_settings_util, to_framesets) {
     }
 
     {
-        std::vector<VkFrameset> framesets = vl::ToFrameSets("1-8-2,10-20-1");
+        std::vector<VkFramesetEXT> framesets = vl::ToFrameSets("1-8-2,10-20-1");
         EXPECT_EQ(2, framesets.size());
 
         EXPECT_EQ(1, framesets[0].first);
@@ -549,7 +549,7 @@ TEST(test_layer_settings_util, to_framesets) {
     }
 
     {
-        std::vector<VkFrameset> framesets = vl::ToFrameSets("1,2,3,4");
+        std::vector<VkFramesetEXT> framesets = vl::ToFrameSets("1,2,3,4");
         EXPECT_EQ(4, framesets.size());
 
         EXPECT_EQ(1, framesets[0].first);

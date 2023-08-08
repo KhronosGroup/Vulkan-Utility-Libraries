@@ -87,7 +87,7 @@ VkResult vlGetLayerSettingValues(VlLayerSettingSet layerSettingSet, const char *
     const std::string &file_setting_list = layer_setting_set->GetFileSetting(pSettingName);
 
     // Third: search from VK_EXT_layer_settings usage
-    const vl::LayerSetting *api_setting = layer_setting_set->GetAPISetting(pSettingName);
+    const VkLayerSettingEXT *api_setting = layer_setting_set->GetAPISetting(pSettingName);
 
     // Environment variables overrides the values set by vk_layer_settings
     const std::string setting_list = env_setting_list.empty() ? file_setting_list : env_setting_list;
@@ -107,7 +107,7 @@ VkResult vlGetLayerSettingValues(VlLayerSettingSet layerSettingSet, const char *
             layer_setting_set->Log(pSettingName, message.c_str());
             return VK_ERROR_UNKNOWN;
         }
-        case VK_LAYER_SETTING_TYPE_BOOL_EXT: {
+        case VK_LAYER_SETTING_TYPE_BOOL32_EXT: {
             std::vector<VkBool32> values;
             VkResult result = VK_SUCCESS;
 
@@ -141,7 +141,8 @@ VkResult vlGetLayerSettingValues(VlLayerSettingSet layerSettingSet, const char *
                         result = VK_INCOMPLETE;
                     }
                     const std::uint32_t size = std::min(*pValueCount, api_setting->count);
-                    values.assign(api_setting->asBool32, api_setting->asBool32 + size);
+                    const VkBool32 *data = static_cast<const VkBool32 *>(api_setting->pValues);
+                    values.assign(data, data + size);
                 } else {
                     *pValueCount = api_setting->count;
                 }
@@ -185,7 +186,8 @@ VkResult vlGetLayerSettingValues(VlLayerSettingSet layerSettingSet, const char *
                         result = VK_INCOMPLETE;
                     }
                     const std::uint32_t size = std::min(*pValueCount, api_setting->count);
-                    values.assign(api_setting->asInt32, api_setting->asInt32 + size);
+                    const int32_t *data = static_cast<const int32_t *>(api_setting->pValues);
+                    values.assign(data, data + size);
                 } else {
                     *pValueCount = api_setting->count;
                 }
@@ -229,7 +231,8 @@ VkResult vlGetLayerSettingValues(VlLayerSettingSet layerSettingSet, const char *
                         result = VK_INCOMPLETE;
                     }
                     const std::uint32_t size = std::min(*pValueCount, api_setting->count);
-                    values.assign(api_setting->asInt64, api_setting->asInt64 + size);
+                    const int64_t *data = static_cast<const int64_t *>(api_setting->pValues);
+                    values.assign(data, data + size);
                 } else {
                     *pValueCount = api_setting->count;
                 }
@@ -273,7 +276,8 @@ VkResult vlGetLayerSettingValues(VlLayerSettingSet layerSettingSet, const char *
                         result = VK_INCOMPLETE;
                     }
                     const uint32_t size = std::min(*pValueCount, api_setting->count);
-                    values.assign(api_setting->asUint32, api_setting->asUint32 + size);
+                    const uint32_t *data = static_cast<const uint32_t *>(api_setting->pValues);
+                    values.assign(data, data + size);
                 } else {
                     *pValueCount = api_setting->count;
                 }
@@ -317,7 +321,8 @@ VkResult vlGetLayerSettingValues(VlLayerSettingSet layerSettingSet, const char *
                         result = VK_INCOMPLETE;
                     }
                     const std::uint32_t size = std::min(*pValueCount, api_setting->count);
-                    values.assign(api_setting->asUint64, api_setting->asUint64 + size);
+                    const uint64_t *data = static_cast<const uint64_t *>(api_setting->pValues);
+                    values.assign(data, data + size);
                 } else {
                     *pValueCount = api_setting->count;
                 }
@@ -329,7 +334,7 @@ VkResult vlGetLayerSettingValues(VlLayerSettingSet layerSettingSet, const char *
 
             return result;
         }
-        case VK_LAYER_SETTING_TYPE_FLOAT_EXT: {
+        case VK_LAYER_SETTING_TYPE_FLOAT32_EXT: {
             std::vector<float> values;
             VkResult result = VK_SUCCESS;
 
@@ -361,7 +366,8 @@ VkResult vlGetLayerSettingValues(VlLayerSettingSet layerSettingSet, const char *
                         result = VK_INCOMPLETE;
                     }
                     const std::uint32_t size = std::min(*pValueCount, api_setting->count);
-                    values.assign(api_setting->asFloat, api_setting->asFloat + size);
+                    const float *data = static_cast<const float *>(api_setting->pValues);
+                    values.assign(data, data + size);
                 } else {
                     *pValueCount = api_setting->count;
                 }
@@ -373,7 +379,7 @@ VkResult vlGetLayerSettingValues(VlLayerSettingSet layerSettingSet, const char *
 
             return result;
         }
-        case VK_LAYER_SETTING_TYPE_DOUBLE_EXT: {
+        case VK_LAYER_SETTING_TYPE_FLOAT64_EXT: {
             std::vector<double> values;
             VkResult result = VK_SUCCESS;
 
@@ -405,7 +411,8 @@ VkResult vlGetLayerSettingValues(VlLayerSettingSet layerSettingSet, const char *
                         result = VK_INCOMPLETE;
                     }
                     const std::uint32_t size = std::min(*pValueCount, api_setting->count);
-                    values.assign(api_setting->asDouble, api_setting->asDouble + size);
+                    const double *data = static_cast<const double *>(api_setting->pValues);
+                    values.assign(data, data + size);
                 } else {
                     *pValueCount = api_setting->count;
                 }
@@ -418,7 +425,7 @@ VkResult vlGetLayerSettingValues(VlLayerSettingSet layerSettingSet, const char *
             return result;
         }
         case VK_LAYER_SETTING_TYPE_FRAMESET_EXT: {
-            std::vector<VkFrameset> values;
+            std::vector<VkFramesetEXT> values;
             VkResult result = VK_SUCCESS;
 
             if (!settings.empty()) {  // From env variable or setting file
@@ -449,14 +456,15 @@ VkResult vlGetLayerSettingValues(VlLayerSettingSet layerSettingSet, const char *
                         result = VK_INCOMPLETE;
                     }
                     const std::uint32_t size = std::min(*pValueCount, api_setting->count);
-                    values.assign(api_setting->asFrameset, api_setting->asFrameset + size);
+                    const VkFramesetEXT *data = static_cast<const VkFramesetEXT *>(api_setting->pValues);
+                    values.assign(data, data + size);
                 } else {
                     *pValueCount = api_setting->count;
                 }
             }
 
             if (copy_values) {
-                std::copy(values.begin(), values.end(), reinterpret_cast<VkFrameset *>(pValues));
+                std::copy(values.begin(), values.end(), reinterpret_cast<VkFramesetEXT *>(pValues));
             }
 
             return result;
@@ -487,50 +495,49 @@ VkResult vlGetLayerSettingValues(VlLayerSettingSet layerSettingSet, const char *
                     switch (api_setting->type) {
                         case VK_LAYER_SETTING_TYPE_STRING_EXT:
                             for (std::size_t i = 0, n = settings_cache.size(); i < n; ++i) {
-                                settings_cache[i] = api_setting->asString[i];
+                                settings_cache[i] = reinterpret_cast<const char * const *>(api_setting->pValues)[i];
                             }
                             break;
-                        case VK_LAYER_SETTING_TYPE_BOOL_EXT:
+                        case VK_LAYER_SETTING_TYPE_BOOL32_EXT:
                             for (std::size_t i = 0, n = settings_cache.size(); i < n; ++i) {
-                                settings_cache[i] = api_setting->asBool32[i] == VK_TRUE ? "true" : "false";
+                                settings_cache[i] =
+                                    static_cast<const VkBool32 *>(api_setting->pValues)[i] == VK_TRUE ? "true" : "false";
                             }
                             break;
                         case VK_LAYER_SETTING_TYPE_INT32_EXT:
                             for (std::size_t i = 0, n = settings_cache.size(); i < n; ++i) {
-                                settings_cache[i] = vl::Format("%d", api_setting->asInt32[i]);
+                                settings_cache[i] = vl::Format("%d", static_cast<const int32_t *>(api_setting->pValues)[i]);
                             }
                             break;
                         case VK_LAYER_SETTING_TYPE_INT64_EXT:
                             for (std::size_t i = 0, n = settings_cache.size(); i < n; ++i) {
-                                settings_cache[i] = vl::Format("%lld", api_setting->asInt64[i]);
+                                settings_cache[i] = vl::Format("%lld", static_cast<const int64_t *>(api_setting->pValues)[i]);
                             }
                             break;
                         case VK_LAYER_SETTING_TYPE_UINT32_EXT:
                             for (std::size_t i = 0, n = settings_cache.size(); i < n; ++i) {
-                                settings_cache[i] = vl::Format("%u", api_setting->asUint32[i]);
+                                settings_cache[i] = vl::Format("%u", static_cast<const uint32_t *>(api_setting->pValues)[i]);
                             }
                             break;
                         case VK_LAYER_SETTING_TYPE_UINT64_EXT:
                             for (std::size_t i = 0, n = settings_cache.size(); i < n; ++i) {
-                                settings_cache[i] = vl::Format("%llu", api_setting->asUint64[i]);
+                                settings_cache[i] = vl::Format("%llu", static_cast<const uint64_t *>(api_setting->pValues)[i]);
                             }
                             break;
-                        case VK_LAYER_SETTING_TYPE_FLOAT_EXT:
+                        case VK_LAYER_SETTING_TYPE_FLOAT32_EXT:
                             for (std::size_t i = 0, n = settings_cache.size(); i < n; ++i) {
-                                settings_cache[i] = vl::Format("%f", api_setting->asFloat[i]);
+                                settings_cache[i] = vl::Format("%f", static_cast<const float *>(api_setting->pValues)[i]);
                             }
                             break;
-                        case VK_LAYER_SETTING_TYPE_DOUBLE_EXT:
+                        case VK_LAYER_SETTING_TYPE_FLOAT64_EXT:
                             for (std::size_t i = 0, n = settings_cache.size(); i < n; ++i) {
-                                settings_cache[i] = vl::Format("%f", api_setting->asDouble[i]);
+                                settings_cache[i] = vl::Format("%f", static_cast<const double *>(api_setting->pValues)[i]);
                             }
                             break;
                         case VK_LAYER_SETTING_TYPE_FRAMESET_EXT:
                             for (std::size_t i = 0, n = settings_cache.size(); i < n; ++i) {
-                                settings_cache[i] = vl::Format("%d-%d-%d",
-                                    api_setting->asFrameset[i].first,
-                                    api_setting->asFrameset[i].count,
-                                    api_setting->asFrameset[i].step);
+                                const VkFramesetEXT* asFramesets = static_cast<const VkFramesetEXT*>(api_setting->pValues);
+                                settings_cache[i] = vl::Format("%d-%d-%d", asFramesets[i].first, asFramesets[i].count, asFramesets[i].step);
                             }
                             break;
                         default:

@@ -15,7 +15,7 @@
 TEST(test_layer_setting_cpp, vlGetLayerSettingValue_Bool) {
     const VkBool32 value_data{VK_TRUE};
 
-    const VkLayerSettingEXT setting{"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_BOOL_EXT, 1, {&value_data}};
+    const VkLayerSettingEXT setting{"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_BOOL32_EXT, 1, &value_data};
 
     const VkLayerSettingsCreateInfoEXT layer_settings_create_info{VK_STRUCTURE_TYPE_LAYER_SETTINGS_EXT, nullptr, 1, &setting};
 
@@ -24,10 +24,10 @@ TEST(test_layer_setting_cpp, vlGetLayerSettingValue_Bool) {
 
     EXPECT_TRUE(vlHasLayerSetting(layerSettingSet, "my_setting"));
 
-    bool value = true;
-    vlGetLayerSettingValue(layerSettingSet, "my_setting", value);
+    bool pValues = true;
+    vlGetLayerSettingValue(layerSettingSet, "my_setting", pValues);
 
-    EXPECT_EQ(true, value);
+    EXPECT_EQ(true, pValues);
 
     vlDestroyLayerSettingSet(layerSettingSet, nullptr);
 }
@@ -37,7 +37,7 @@ TEST(test_layer_setting_cpp, vlGetLayerSettingValues_Bool) {
     const uint32_t value_count = static_cast<uint32_t>(std::size(values_data));
 
     const VkLayerSettingEXT settings[] = {
-        {"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_BOOL_EXT, value_count, {values_data}}
+        {"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_BOOL32_EXT, value_count, values_data}
     };
     const uint32_t settings_size = static_cast<uint32_t>(std::size(settings));
 
@@ -61,7 +61,7 @@ TEST(test_layer_setting_cpp, vlGetLayerSettingValues_Bool) {
 TEST(test_layer_setting_cpp, vlGetLayerSettingValue_Int32) {
     const std::int32_t value_data{76};
 
-    const VkLayerSettingEXT setting{"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_INT32_EXT, 1, {&value_data}};
+    const VkLayerSettingEXT setting{"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_INT32_EXT, 1, &value_data};
 
     const VkLayerSettingsCreateInfoEXT layer_settings_create_info{VK_STRUCTURE_TYPE_LAYER_SETTINGS_EXT, nullptr, 1, &setting};
 
@@ -70,10 +70,10 @@ TEST(test_layer_setting_cpp, vlGetLayerSettingValue_Int32) {
 
     EXPECT_TRUE(vlHasLayerSetting(layerSettingSet, "my_setting"));
 
-    std::int32_t value;
-    vlGetLayerSettingValue(layerSettingSet, "my_setting", value);
+    std::int32_t pValues;
+    vlGetLayerSettingValue(layerSettingSet, "my_setting", pValues);
 
-    EXPECT_EQ(76, value);
+    EXPECT_EQ(76, pValues);
 
     vlDestroyLayerSettingSet(layerSettingSet, nullptr);
 }
@@ -83,7 +83,7 @@ TEST(test_layer_setting_cpp, vlGetLayerSettingValues_Int32) {
     const uint32_t value_count = static_cast<uint32_t>(std::size(values_data));
 
     const VkLayerSettingEXT settings[] = {
-        {"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_INT32_EXT, value_count, {values_data}}
+        {"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_INT32_EXT, value_count, values_data}
     };
     const uint32_t settings_size = static_cast<uint32_t>(std::size(settings));
 
@@ -107,7 +107,7 @@ TEST(test_layer_setting_cpp, vlGetLayerSettingValues_Int32) {
 TEST(test_layer_setting_cpp, vlGetLayerSettingValue_Uint32) {
     const std::uint32_t value_data{76};
 
-    const VkLayerSettingEXT setting{"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_UINT32_EXT, 1, {&value_data}};
+    const VkLayerSettingEXT setting{"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_UINT32_EXT, 1, &value_data};
 
     const VkLayerSettingsCreateInfoEXT layer_settings_create_info{VK_STRUCTURE_TYPE_LAYER_SETTINGS_EXT, nullptr, 1, &setting};
 
@@ -116,10 +116,10 @@ TEST(test_layer_setting_cpp, vlGetLayerSettingValue_Uint32) {
 
     EXPECT_TRUE(vlHasLayerSetting(layerSettingSet, "my_setting"));
 
-    std::uint32_t value;
-    vlGetLayerSettingValue(layerSettingSet, "my_setting", value);
+    std::uint32_t pValues;
+    vlGetLayerSettingValue(layerSettingSet, "my_setting", pValues);
 
-    EXPECT_EQ(76, value);
+    EXPECT_EQ(76, pValues);
 
     vlDestroyLayerSettingSet(layerSettingSet, nullptr);
 }
@@ -129,7 +129,7 @@ TEST(test_layer_setting_cpp, vlGetLayerSettingValues_Uint32) {
     const uint32_t value_count = static_cast<uint32_t>(std::size(values_data));
 
     const VkLayerSettingEXT settings[] = {
-        {"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_UINT32_EXT, value_count, {values_data}}
+        {"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_UINT32_EXT, value_count, values_data}
     };
     const uint32_t settings_size = static_cast<uint32_t>(std::size(settings));
 
@@ -153,7 +153,7 @@ TEST(test_layer_setting_cpp, vlGetLayerSettingValues_Uint32) {
 TEST(test_layer_setting_cpp, vlGetLayerSettingValue_Int64) {
     const std::int64_t value_data{76};
 
-    const VkLayerSettingEXT setting{"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_INT64_EXT, 1, {&value_data}};
+    const VkLayerSettingEXT setting{"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_INT64_EXT, 1, &value_data};
 
     const VkLayerSettingsCreateInfoEXT layer_settings_create_info{VK_STRUCTURE_TYPE_LAYER_SETTINGS_EXT, nullptr, 1, &setting};
 
@@ -162,10 +162,10 @@ TEST(test_layer_setting_cpp, vlGetLayerSettingValue_Int64) {
 
     EXPECT_TRUE(vlHasLayerSetting(layerSettingSet, "my_setting"));
 
-    std::int64_t value;
-    vlGetLayerSettingValue(layerSettingSet, "my_setting", value);
+    std::int64_t pValues;
+    vlGetLayerSettingValue(layerSettingSet, "my_setting", pValues);
 
-    EXPECT_EQ(76, value);
+    EXPECT_EQ(76, pValues);
 
     vlDestroyLayerSettingSet(layerSettingSet, nullptr);
 }
@@ -175,7 +175,7 @@ TEST(test_layer_setting_cpp, vlGetLayerSettingValues_Int64) {
     const uint32_t value_count = static_cast<uint32_t>(std::size(values_data));
 
     const VkLayerSettingEXT settings[] = {
-        {"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_INT64_EXT, value_count, {values_data}}
+        {"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_INT64_EXT, value_count, values_data}
     };
     const uint32_t settings_size = static_cast<uint32_t>(std::size(settings));
 
@@ -199,7 +199,7 @@ TEST(test_layer_setting_cpp, vlGetLayerSettingValues_Int64) {
 TEST(test_layer_setting_cpp, vlGetLayerSettingValue_Uint64) {
     const std::uint64_t value_data{76};
 
-    const VkLayerSettingEXT setting{"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_UINT64_EXT, 1, {&value_data}};
+    const VkLayerSettingEXT setting{"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_UINT64_EXT, 1, &value_data};
 
     const VkLayerSettingsCreateInfoEXT layer_settings_create_info{VK_STRUCTURE_TYPE_LAYER_SETTINGS_EXT, nullptr, 1, &setting};
 
@@ -208,10 +208,10 @@ TEST(test_layer_setting_cpp, vlGetLayerSettingValue_Uint64) {
 
     EXPECT_TRUE(vlHasLayerSetting(layerSettingSet, "my_setting"));
 
-    std::uint64_t value;
-    vlGetLayerSettingValue(layerSettingSet, "my_setting", value);
+    std::uint64_t pValues;
+    vlGetLayerSettingValue(layerSettingSet, "my_setting", pValues);
 
-    EXPECT_EQ(76, value);
+    EXPECT_EQ(76, pValues);
 
     vlDestroyLayerSettingSet(layerSettingSet, nullptr);
 }
@@ -221,7 +221,7 @@ TEST(test_layer_setting_cpp, vlGetLayerSettingValues_Uint64) {
     const uint32_t value_count = static_cast<uint32_t>(std::size(values_data));
 
     const VkLayerSettingEXT settings[] = {
-        {"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_UINT64_EXT, value_count, {values_data}}
+        {"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_UINT64_EXT, value_count, values_data}
     };
     const uint32_t settings_size = static_cast<uint32_t>(std::size(settings));
 
@@ -245,7 +245,7 @@ TEST(test_layer_setting_cpp, vlGetLayerSettingValues_Uint64) {
 TEST(test_layer_setting_cpp, vlGetLayerSettingValue_Float) {
     const float value_data{-82.5f};
 
-    const VkLayerSettingEXT setting{"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_FLOAT_EXT, 1, {&value_data}};
+    const VkLayerSettingEXT setting{"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_FLOAT32_EXT, 1, &value_data};
 
     const VkLayerSettingsCreateInfoEXT layer_settings_create_info{VK_STRUCTURE_TYPE_LAYER_SETTINGS_EXT, nullptr, 1, &setting};
 
@@ -254,10 +254,10 @@ TEST(test_layer_setting_cpp, vlGetLayerSettingValue_Float) {
 
     EXPECT_TRUE(vlHasLayerSetting(layerSettingSet, "my_setting"));
 
-    float value;
-    vlGetLayerSettingValue(layerSettingSet, "my_setting", value);
+    float pValues;
+    vlGetLayerSettingValue(layerSettingSet, "my_setting", pValues);
 
-    EXPECT_TRUE(std::abs(value - -82.5f) <= 0.0001f);
+    EXPECT_TRUE(std::abs(pValues - -82.5f) <= 0.0001f);
 
     vlDestroyLayerSettingSet(layerSettingSet, nullptr);
 }
@@ -267,7 +267,7 @@ TEST(test_layer_setting_cpp, vlGetLayerSettingValues_Float) {
     const uint32_t value_count = static_cast<uint32_t>(std::size(values_data));
 
     const VkLayerSettingEXT settings[] = {
-        {"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_FLOAT_EXT, value_count, {values_data}}
+        {"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_FLOAT32_EXT, value_count, values_data}
     };
     const uint32_t settings_size = static_cast<uint32_t>(std::size(settings));
 
@@ -291,7 +291,7 @@ TEST(test_layer_setting_cpp, vlGetLayerSettingValues_Float) {
 TEST(test_layer_setting_cpp, vlGetLayerSettingValue_Double) {
     const double value_data{-82.5};
 
-    const VkLayerSettingEXT setting{"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_DOUBLE_EXT, 1, {&value_data}};
+    const VkLayerSettingEXT setting{"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_FLOAT64_EXT, 1, &value_data};
 
     const VkLayerSettingsCreateInfoEXT layer_settings_create_info{VK_STRUCTURE_TYPE_LAYER_SETTINGS_EXT, nullptr, 1, &setting};
 
@@ -300,10 +300,10 @@ TEST(test_layer_setting_cpp, vlGetLayerSettingValue_Double) {
 
     EXPECT_TRUE(vlHasLayerSetting(layerSettingSet, "my_setting"));
 
-    double value;
-    vlGetLayerSettingValue(layerSettingSet, "my_setting", value);
+    double pValues;
+    vlGetLayerSettingValue(layerSettingSet, "my_setting", pValues);
 
-    EXPECT_TRUE(std::abs(value - -82.5) <= 0.0001);
+    EXPECT_TRUE(std::abs(pValues - -82.5) <= 0.0001);
 
     vlDestroyLayerSettingSet(layerSettingSet, nullptr);
 }
@@ -313,7 +313,7 @@ TEST(test_layer_setting_cpp, vlGetLayerSettingValues_Double) {
     const uint32_t value_count = static_cast<uint32_t>(std::size(values_data));
 
     const VkLayerSettingEXT settings[] = {
-        {"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_DOUBLE_EXT, value_count, {values_data}}
+        {"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_FLOAT64_EXT, value_count, values_data}
     };
     const uint32_t settings_size = static_cast<uint32_t>(std::size(settings));
 
@@ -337,16 +337,16 @@ TEST(test_layer_setting_cpp, vlGetLayerSettingValues_Double) {
 TEST(test_layer_setting_cpp, vlGetLayerSettingValue_String) {
     const char* value_data[] = {"VALUE_A"};
 
-    const VkLayerSettingEXT setting{"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_STRING_EXT, 1, {value_data}};
+    const VkLayerSettingEXT setting{"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_STRING_EXT, 1, value_data};
 
     const VkLayerSettingsCreateInfoEXT layer_settings_create_info{VK_STRUCTURE_TYPE_LAYER_SETTINGS_EXT, nullptr, 1, &setting};
 
     VlLayerSettingSet layerSettingSet = VK_NULL_HANDLE;
     vlCreateLayerSettingSet("VK_LAYER_LUNARG_test", &layer_settings_create_info, nullptr, nullptr, &layerSettingSet);
 
-    std::string value;
-    vlGetLayerSettingValue(layerSettingSet, "my_setting", value);
-    EXPECT_STREQ("VALUE_A", value.c_str());
+    std::string pValues;
+    vlGetLayerSettingValue(layerSettingSet, "my_setting", pValues);
+    EXPECT_STREQ("VALUE_A", pValues.c_str());
 
     vlDestroyLayerSettingSet(layerSettingSet, nullptr);
 }
@@ -356,7 +356,7 @@ TEST(test_layer_setting_cpp, vlGetLayerSettingValue_Strings) {
     const uint32_t value_count = static_cast<uint32_t>(std::size(values_data));
 
     const VkLayerSettingEXT settings[] = {
-        {"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_STRING_EXT, value_count, {values_data}}
+        {"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_STRING_EXT, value_count, values_data}
     };
     const uint32_t settings_size = static_cast<uint32_t>(std::size(settings));
 
@@ -365,9 +365,9 @@ TEST(test_layer_setting_cpp, vlGetLayerSettingValue_Strings) {
     VlLayerSettingSet layerSettingSet = VK_NULL_HANDLE;
     vlCreateLayerSettingSet("VK_LAYER_LUNARG_test", &layer_settings_create_info, nullptr, nullptr, &layerSettingSet);
 
-    std::string value;
-    vlGetLayerSettingValue(layerSettingSet, "my_setting", value);
-    EXPECT_STREQ("VALUE_A,VALUE_B", value.c_str());
+    std::string pValues;
+    vlGetLayerSettingValue(layerSettingSet, "my_setting", pValues);
+    EXPECT_STREQ("VALUE_A,VALUE_B", pValues.c_str());
 
     vlDestroyLayerSettingSet(layerSettingSet, nullptr);
 }
@@ -377,7 +377,7 @@ TEST(test_layer_setting_cpp, vlGetLayerSettingValues_String) {
     const uint32_t value_count = static_cast<uint32_t>(std::size(values_data));
 
     const VkLayerSettingEXT settings[] = {
-        {"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_STRING_EXT, value_count, {values_data}}
+        {"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_STRING_EXT, value_count, values_data}
     };
     const uint32_t settings_size = static_cast<uint32_t>(std::size(settings));
 
@@ -398,9 +398,9 @@ TEST(test_layer_setting_cpp, vlGetLayerSettingValues_String) {
 }
 
 TEST(test_layer_setting_cpp, vlGetLayerSettingValue_Frameset) {
-    const VkFrameset value_data{76, 100, 10};
+    const VkFramesetEXT value_data{76, 100, 10};
 
-    const VkLayerSettingEXT setting{"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_FRAMESET_EXT, 1, {&value_data}};
+    const VkLayerSettingEXT setting{"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_FRAMESET_EXT, 1, &value_data};
 
     const VkLayerSettingsCreateInfoEXT layer_settings_create_info{VK_STRUCTURE_TYPE_LAYER_SETTINGS_EXT, nullptr, 1, &setting};
 
@@ -409,24 +409,24 @@ TEST(test_layer_setting_cpp, vlGetLayerSettingValue_Frameset) {
 
     EXPECT_TRUE(vlHasLayerSetting(layerSettingSet, "my_setting"));
 
-    VkFrameset value;
-    vlGetLayerSettingValue(layerSettingSet, "my_setting", value);
+    VkFramesetEXT pValues;
+    vlGetLayerSettingValue(layerSettingSet, "my_setting", pValues);
 
-    EXPECT_EQ(76, value.first);
-    EXPECT_EQ(100, value.count);
-    EXPECT_EQ(10, value.step);
+    EXPECT_EQ(76, pValues.first);
+    EXPECT_EQ(100, pValues.count);
+    EXPECT_EQ(10, pValues.step);
 
     vlDestroyLayerSettingSet(layerSettingSet, nullptr);
 }
 
 TEST(test_layer_setting_cpp, vlGetLayerSettingValues_Frameset) {
-    const VkFrameset values_data[] = {
+    const VkFramesetEXT values_data[] = {
         {76, 100, 10}, {1, 100, 1}
     };
     const uint32_t value_count = static_cast<uint32_t>(std::size(values_data));
 
     const VkLayerSettingEXT settings[] = {
-        {"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_FRAMESET_EXT, value_count, {values_data}}
+        {"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_FRAMESET_EXT, value_count, values_data}
     };
     const uint32_t settings_size = static_cast<uint32_t>(std::size(settings));
 
@@ -437,7 +437,7 @@ TEST(test_layer_setting_cpp, vlGetLayerSettingValues_Frameset) {
 
     EXPECT_TRUE(vlHasLayerSetting(layerSettingSet, "my_setting"));
 
-    std::vector<VkFrameset> values;
+    std::vector<VkFramesetEXT> values;
     vlGetLayerSettingValues(layerSettingSet, "my_setting", values);
 
     EXPECT_EQ(76, values[0].first);
@@ -456,7 +456,7 @@ TEST(test_layer_setting_cpp, vlGetLayerSettingValues_VlCustomSTypeInfo) {
     const uint32_t value_count = static_cast<uint32_t>(std::size(values_data));
 
     const VkLayerSettingEXT settings[] = {
-        {"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_STRING_EXT, value_count, {values_data}}
+        {"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_STRING_EXT, value_count, values_data}
     };
     const uint32_t settings_size = static_cast<uint32_t>(std::size(settings));
 

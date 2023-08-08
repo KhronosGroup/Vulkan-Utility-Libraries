@@ -16,10 +16,10 @@
 
 namespace vl {
 
-std::vector<std::string> Split(const std::string &value, char delimiter) {
+std::vector<std::string> Split(const std::string &pValues, char delimiter) {
     std::vector<std::string> result;
 
-    std::string parse = value;
+    std::string parse = pValues;
 
     std::size_t start = 0;
     std::size_t end = parse.find(delimiter);
@@ -198,10 +198,10 @@ int64_t ToInt64(const std::string &token) {
     return int_id;
 }
 
-VkFrameset ToFrameSet(const std::string &s) {
+VkFramesetEXT ToFrameSet(const std::string &s) {
     assert(IsFrameSets(s));
 
-    VkFrameset frameset{0, 1, 1};
+    VkFramesetEXT frameset{0, 1, 1};
 
     const std::vector<std::string> &frameset_split = vl::Split(s, '-');
     if (frameset_split.size() >= 1) {
@@ -217,10 +217,10 @@ VkFrameset ToFrameSet(const std::string &s) {
     return frameset;
 }
 
-std::vector<VkFrameset> ToFrameSets(const std::string &s) {
+std::vector<VkFramesetEXT> ToFrameSets(const std::string &s) {
     std::vector<std::string> tokens = Split(s, FindDelimiter(s));
 
-    std::vector<VkFrameset> results;
+    std::vector<VkFramesetEXT> results;
     results.resize(tokens.size());
     for (std::size_t i = 0, n = tokens.size(); i < n; ++i) {
         results[i] = ToFrameSet(tokens[i]);
