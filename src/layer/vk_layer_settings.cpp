@@ -558,8 +558,6 @@ VkResult vlGetLayerSettingValues(VlLayerSettingSet layerSettingSet, const char *
             return result;
         }
     }
-
-    return VK_ERROR_UNKNOWN;
 }
 
 const VkLayerSettingsCreateInfoEXT *vlFindLayerSettingsCreateInfo(const VkInstanceCreateInfo *pCreateInfo) {
