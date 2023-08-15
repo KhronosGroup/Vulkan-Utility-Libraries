@@ -64,7 +64,7 @@ typedef struct VkLayerSettingPropertiesEXT {
     VkLayerSettingTypeEXT type;
 } VkLayerSettingPropertiesEXT;
 
-VkResult vkEnumerateInstanceLayerSettingsEXT(const char *pLayerName, 
+VKAPI_ATTR VkResult VKAPI_CALL vkEnumerateInstanceLayerSettingsEXT(const char *pLayerName, 
     uint32_t *pPropertyCount, VkLayerSettingPropertiesEXT *pProperties);
 
 #ifdef __cplusplus
