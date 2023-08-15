@@ -104,8 +104,8 @@ static void AddWorkaroundLayerNames(std::vector<std::string> &layer_names) {
 namespace vl {
 
 LayerSettings::LayerSettings(const char *pLayerName, const VkLayerSettingsCreateInfoEXT *pCreateInfo,
-                             const VkAllocationCallbacks *pAllocator, VL_LAYER_SETTING_LOG_CALLBACK callback)
-    : layer_name(pLayerName), create_info(pCreateInfo), callback(callback) {
+                             const VkAllocationCallbacks *pAllocator, VlLayerSettingLogCallback pCallback)
+    : layer_name(pLayerName), create_info(pCreateInfo), pCallback(pCallback) {
     (void)pAllocator;
     assert(pLayerName != nullptr);
 
@@ -243,10 +243,10 @@ void LayerSettings::Log(const char *pSettingName, const char * pMessage) {
     this->last_log_setting = pSettingName;
     this->last_log_message = pMessage;
 
-    if (this->callback == nullptr) {
+    if (this->pCallback == nullptr) {
         fprintf(stderr, "LAYER SETTING (%s) error: %s\n", this->last_log_setting.c_str(), this->last_log_message.c_str());
     } else {
-        this->callback(this->last_log_setting.c_str(), this->last_log_message.c_str());
+        this->pCallback(this->last_log_setting.c_str(), this->last_log_message.c_str());
     }
 }
 

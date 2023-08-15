@@ -17,6 +17,13 @@
 #include <cctype>
 #include <cstring>
 #include <cstdint>
+#include <unordered_map>
+
+std::unordered_map<std::string, std::pair<uint32_t, VkLayerSettingPropertiesEXT *> > layer_settings_properties;
+
+void vlRegistryLayerSettingsProperties(const char *pLayerName, uint32_t propertyCount, VkLayerSettingPropertiesEXT *pProperties) {
+    layer_settings_properties.insert(std::pair(pLayerName, std::pair(propertyCount, pProperties)));
+}
 
 // This is used only for unit tests in test_layer_setting_file
 void test_helper_SetLayerSetting(VlLayerSettingSet layerSettingSet, const char *pSettingName, const char *pValue) {
@@ -30,7 +37,7 @@ void test_helper_SetLayerSetting(VlLayerSettingSet layerSettingSet, const char *
 }
 
 VkResult vlCreateLayerSettingSet(const char *pLayerName, const VkLayerSettingsCreateInfoEXT *pCreateInfo,
-    const VkAllocationCallbacks *pAllocator, VL_LAYER_SETTING_LOG_CALLBACK pCallback,
+                                 const VkAllocationCallbacks *pAllocator, VlLayerSettingLogCallback pCallback,
     VlLayerSettingSet *pLayerSettingSet) {
     (void)pAllocator;
 

@@ -9,7 +9,34 @@
 #include <gtest/gtest.h>
 
 #include "vulkan/layer/vk_layer_settings.h"
-#include <vector>
+
+TEST(test_layer_setting_api, vkEnumerateInstanceLayerSettingsEXT) {
+
+    VkLayerSettingPropertiesEXT properties[] = { 
+        {VK_STRUCTURE_TYPE_LAYER_SETTING_PROPERTIES_EXT, nullptr, "settingA", VK_LAYER_SETTING_TYPE_BOOL32_EXT},
+        {VK_STRUCTURE_TYPE_LAYER_SETTING_PROPERTIES_EXT, nullptr, "settingB", VK_LAYER_SETTING_TYPE_UINT32_EXT}
+    };
+
+    vlRegistryLayerSettingsProperties("VK_LAYER_LUNARG_test", static_cast<uint32_t>(std::size(properties)), &properties[0]);
+
+    uint32_t result_count = 0;
+    vkEnumerateInstanceLayerSettingsEXT("VK_LAYER_LUNARG_test", &result_count, nullptr);
+
+    EXPECT_EQ(static_cast<uint32_t>(std::size(properties)), result_count);
+
+    std::vector<VkLayerSettingPropertiesEXT> results(static_cast<std::size_t>(result_count));
+    vkEnumerateInstanceLayerSettingsEXT("VK_LAYER_LUNARG_test", &result_count, &results[0]);
+
+    EXPECT_EQ(properties[0].sType, results[0].sType);
+    EXPECT_EQ(properties[0].pNext, results[0].pNext);
+    EXPECT_STREQ(properties[0].key, results[0].key);
+    EXPECT_EQ(properties[0].type, results[0].type);
+
+    EXPECT_EQ(properties[1].sType, results[1].sType);
+    EXPECT_EQ(properties[1].pNext, results[1].pNext);
+    EXPECT_STREQ(properties[1].key, results[1].key);
+    EXPECT_EQ(properties[1].type, results[1].type);
+}
 
 TEST(test_layer_setting_api, vlHasLayerSetting_NotFound) {
     VlLayerSettingSet layerSettingSet = VK_NULL_HANDLE;
