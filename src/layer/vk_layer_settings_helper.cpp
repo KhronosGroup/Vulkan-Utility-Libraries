@@ -6,6 +6,7 @@
 //
 // Author(s):
 // - Christophe Riccio <christophe@lunarg.com>
+
 #include "vulkan/layer/vk_layer_settings.hpp"
 
 static std::string Merge(const std::vector<std::string> &strings) {

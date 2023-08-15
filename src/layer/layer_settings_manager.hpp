@@ -17,8 +17,8 @@
 namespace vl {
     class LayerSettings {
       public:
-        LayerSettings(const char *pLayerName, const VkLayerSettingsCreateInfoEXT *pCreateInfo,
-                      const VkAllocationCallbacks *pAllocator, VL_LAYER_SETTING_LOG_CALLBACK callback);
+        LayerSettings(const char *pLayerName, uint32_t settingCount, VkLayerSettingPropertiesEXT *pSettings,
+                      const VkAllocationCallbacks *pAllocator);
         ~LayerSettings();
 
 	    bool HasEnvSetting(const char *pSettingName);
@@ -40,7 +40,12 @@ namespace vl {
         std::vector<std::string> &GetSettingCache(const std::string &pSettingName);
 
       private:
+        LayerSettings(const LayerSettings &) = delete;
+        LayerSettings& operator=(const LayerSettings &) = delete;
+
         const VkLayerSettingEXT *FindLayerSettingValue(const char *pSettingName);
+
+        std::vector<VkLayerSettingPropertiesEXT> settings;
 
         std::map<std::string, std::string> setting_file_values;
         std::map<std::string, std::vector<std::string>> string_setting_cache;
@@ -52,8 +57,6 @@ namespace vl {
         void ParseSettingsFile(const char *filename);
 
         std::string layer_name;
-        const VkLayerSettingsCreateInfoEXT *create_info{nullptr};
-        VL_LAYER_SETTING_LOG_CALLBACK callback{nullptr};
     };
 }// namespace vl
 

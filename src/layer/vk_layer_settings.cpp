@@ -6,6 +6,7 @@
 //
 // Author(s):
 // - Christophe Riccio <christophe@lunarg.com>
+
 #include "vulkan/layer/vk_layer_settings.h"
 #include "layer_settings_util.hpp"
 #include "layer_settings_manager.hpp"
@@ -17,38 +18,34 @@
 #include <cctype>
 #include <cstring>
 #include <cstdint>
+#include <unordered_map>
+
+static std::unordered_map<VkInstance, vl::LayerSettings> layer_setting_sets;
 
 // This is used only for unit tests in test_layer_setting_file
-void test_helper_SetLayerSetting(VlLayerSettingSet layerSettingSet, const char *pSettingName, const char *pValue) {
-    assert(layerSettingSet != VK_NULL_HANDLE);
+void test_helper_SetLayerSetting(VkInstance instance, const char *pSettingName, const char *pValue) {
+    assert(instance != VK_NULL_HANDLE);
     assert(pSettingName != nullptr);
     assert(pValue != nullptr);
 
-    vl::LayerSettings *layer_setting_set = (vl::LayerSettings *)layerSettingSet;
+    vl::LayerSettings& layer_setting_set = ::layer_setting_sets[instance];
 
-    layer_setting_set->SetFileSetting(pSettingName, pValue);
+    layer_setting_set.SetFileSetting(pSettingName, pValue);
 }
 
-VkResult vlCreateLayerSettingSet(const char *pLayerName, const VkLayerSettingsCreateInfoEXT *pCreateInfo,
-    const VkAllocationCallbacks *pAllocator, VL_LAYER_SETTING_LOG_CALLBACK pCallback,
-    VlLayerSettingSet *pLayerSettingSet) {
-    (void)pAllocator;
+VkResult vlRegisterLayerSettings(VkInstance instance, const char *pLayerName, uint32_t settingCount,
+                                 VkLayerSettingPropertiesEXT *pSettings, const VkAllocationCallbacks *pAllocator) {
+    vl::LayerSettings layer_settings(pLayerName, settingCount, pSettings, pAllocator);
 
-    vl::LayerSettings* layer_setting_set = new vl::LayerSettings(pLayerName, pCreateInfo, pAllocator, pCallback);
-    *pLayerSettingSet = (VlLayerSettingSet)layer_setting_set;
+    ::layer_setting_sets
+
+
+    ::layer_setting_sets.insert(std::pair(instance, layer_settings));
 
     return VK_SUCCESS;
 }
 
-void vlDestroyLayerSettingSet(VlLayerSettingSet layerSettingSet, const VkAllocationCallbacks *pAllocator) {
-    (void)pAllocator;
-
-    vl::LayerSettings *layer_setting_set = (vl::LayerSettings*)layerSettingSet;
-    delete layer_setting_set;
-}
-
-VkBool32 vlHasLayerSetting(VlLayerSettingSet layerSettingSet, const char *pSettingName) {
-    assert(layerSettingSet != VK_NULL_HANDLE);
+VkBool32 vlHasLayerSetting(VkInstance instance, const char *pLayerName, const char *pSettingName) {
     assert(pSettingName);
     assert(!std::string(pSettingName).empty());
 
@@ -61,15 +58,15 @@ VkBool32 vlHasLayerSetting(VlLayerSettingSet layerSettingSet, const char *pSetti
     return (has_env_setting || has_file_setting || has_api_setting) ? VK_TRUE : VK_FALSE;
 }
 
-VkResult vlGetLayerSettingValues(VlLayerSettingSet layerSettingSet, const char *pSettingName, VkLayerSettingTypeEXT type,
+VkResult vlGetLayerSettingValues(VkInstance instance, const char *pLayerName, const char *pSettingName, VkLayerSettingTypeEXT type,
                                  uint32_t *pValueCount, void *pValues) {
     assert(pValueCount != nullptr);
 
-    if (layerSettingSet == VK_NULL_HANDLE) {
+    if (instance == VK_NULL_HANDLE) {
         return VK_ERROR_INITIALIZATION_FAILED;
     }
 
-    if (!vlHasLayerSetting(layerSettingSet, pSettingName)) {
+    if (!vlHasLayerSetting(instance, pLayerName, pSettingName)) {
         *pValueCount = 0;
         return VK_SUCCESS;
     }

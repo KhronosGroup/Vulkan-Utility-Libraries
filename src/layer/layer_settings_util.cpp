@@ -6,6 +6,7 @@
 //
 // Author(s):
 // - Christophe Riccio <christophe@lunarg.com>
+
 #include "layer_settings_util.hpp"
 
 #include <sstream>

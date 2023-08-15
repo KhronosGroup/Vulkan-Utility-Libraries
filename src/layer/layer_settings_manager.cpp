@@ -103,11 +103,17 @@ static void AddWorkaroundLayerNames(std::vector<std::string> &layer_names) {
 
 namespace vl {
 
-LayerSettings::LayerSettings(const char *pLayerName, const VkLayerSettingsCreateInfoEXT *pCreateInfo,
-                             const VkAllocationCallbacks *pAllocator, VL_LAYER_SETTING_LOG_CALLBACK callback)
+LayerSettings::LayerSettings(
+    const char *pLayerName,
+    uint32_t settingCount, VkLayerSettingPropertiesEXT *pSettings,
+    const VkLayerSettingsCreateInfoEXT *pCreateInfo,
+    const VkAllocationCallbacks *pAllocator, VL_LAYER_SETTING_LOG_CALLBACK callback)
     : layer_name(pLayerName), create_info(pCreateInfo), callback(callback) {
     (void)pAllocator;
     assert(pLayerName != nullptr);
+
+    this->settings.resize(settingCount);
+    memcpy(&this->settings[0], pSettings, sizeof(VkLayerSettingPropertiesEXT) * settingCount);
 
     std::string settings_file = this->FindSettingsFile();
     this->ParseSettingsFile(settings_file.c_str());
