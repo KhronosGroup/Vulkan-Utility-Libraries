@@ -17,12 +17,15 @@ extern "C" {
 
 VK_DEFINE_HANDLE(VlLayerSettingSet)
 
-typedef void *(*VL_LAYER_SETTING_LOG_CALLBACK)(const char *pSettingName, const char *pMessage);
+typedef void (VKAPI_PTR *VlLayerSettingLogCallback)(const char *pSettingName, const char *pMessage);
+
+void vlRegistryLayerSettingsProperties(const char *pLayerName,
+    uint32_t propertyCount, VkLayerSettingPropertiesEXT *pProperties);
 
 // Create a layer setting set. If 'pCallback' is set to NULL, the messages are outputed to stderr.
 VkResult vlCreateLayerSettingSet(const char *pLayerName, const VkLayerSettingsCreateInfoEXT *pCreateInfo,
-                             const VkAllocationCallbacks *pAllocator,
-                           VL_LAYER_SETTING_LOG_CALLBACK pCallback, VlLayerSettingSet *pLayerSettingSet);
+                             const VkAllocationCallbacks *pAllocator, VlLayerSettingLogCallback pCallback,
+                                 VlLayerSettingSet *pLayerSettingSet);
 
 void vlDestroyLayerSettingSet(VlLayerSettingSet layerSettingSet, const VkAllocationCallbacks *pAllocator);
 

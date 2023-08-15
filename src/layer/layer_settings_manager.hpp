@@ -18,7 +18,7 @@ namespace vl {
     class LayerSettings {
       public:
         LayerSettings(const char *pLayerName, const VkLayerSettingsCreateInfoEXT *pCreateInfo,
-                      const VkAllocationCallbacks *pAllocator, VL_LAYER_SETTING_LOG_CALLBACK callback);
+                      const VkAllocationCallbacks *pAllocator, VlLayerSettingLogCallback pCallback);
         ~LayerSettings();
 
 	    bool HasEnvSetting(const char *pSettingName);
@@ -53,7 +53,7 @@ namespace vl {
 
         std::string layer_name;
         const VkLayerSettingsCreateInfoEXT *create_info{nullptr};
-        VL_LAYER_SETTING_LOG_CALLBACK callback{nullptr};
+        VlLayerSettingLogCallback pCallback{nullptr};
     };
 }// namespace vl
 
