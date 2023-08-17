@@ -19,8 +19,10 @@ VK_DEFINE_HANDLE(VlLayerSettingSet)
 
 typedef void (VKAPI_PTR *VlLayerSettingLogCallback)(const char *pSettingName, const char *pMessage);
 
+#ifdef ENABLE_REGISTER_LAYER_SETTINGS
 void vlRegistryLayerSettingsProperties(const char *pLayerName,
     uint32_t propertyCount, VkLayerSettingPropertiesEXT *pProperties);
+#endif  // ENABLE_REGISTER_LAYER_SETTINGS
 
 // Create a layer setting set. If 'pCallback' is set to NULL, the messages are outputed to stderr.
 VkResult vlCreateLayerSettingSet(const char *pLayerName, const VkLayerSettingsCreateInfoEXT *pCreateInfo,

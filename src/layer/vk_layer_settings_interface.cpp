@@ -13,6 +13,7 @@
 #include <string>
 #include <unordered_map>
 
+#ifdef ENABLE_REGISTER_LAYER_SETTINGS
 #if defined(__GNUC__) && __GNUC__ >= 4
 #define LAYER_EXPORT __attribute__((visibility("default")))
 #else
@@ -40,3 +41,4 @@ LAYER_EXPORT VKAPI_ATTR VkResult VKAPI_CALL vkEnumerateInstanceLayerSettingsEXT(
 }
 
 }  // extern "C"
+#endif  // ENABLE_REGISTER_LAYER_SETTINGS

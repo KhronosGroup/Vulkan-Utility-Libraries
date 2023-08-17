@@ -19,11 +19,13 @@
 #include <cstdint>
 #include <unordered_map>
 
+#ifdef ENABLE_REGISTER_LAYER_SETTINGS
 std::unordered_map<std::string, std::pair<uint32_t, VkLayerSettingPropertiesEXT *> > layer_settings_properties;
 
 void vlRegistryLayerSettingsProperties(const char *pLayerName, uint32_t propertyCount, VkLayerSettingPropertiesEXT *pProperties) {
     layer_settings_properties.insert(std::pair(pLayerName, std::pair(propertyCount, pProperties)));
 }
+#endif//ENABLE_REGISTER_LAYER_SETTINGS
 
 // This is used only for unit tests in test_layer_setting_file
 void test_helper_SetLayerSetting(VlLayerSettingSet layerSettingSet, const char *pSettingName, const char *pValue) {
