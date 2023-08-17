@@ -10,6 +10,7 @@
 
 #include "vulkan/layer/vk_layer_settings.h"
 
+#ifdef ENABLE_REGISTER_LAYER_SETTINGS
 TEST(test_layer_setting_api, vkEnumerateInstanceLayerSettingsEXT) {
 
     VkLayerSettingPropertiesEXT properties[] = { 
@@ -37,6 +38,7 @@ TEST(test_layer_setting_api, vkEnumerateInstanceLayerSettingsEXT) {
     EXPECT_STREQ(properties[1].key, results[1].key);
     EXPECT_EQ(properties[1].type, results[1].type);
 }
+#endif  // ENABLE_REGISTER_LAYER_SETTINGS
 
 TEST(test_layer_setting_api, vlHasLayerSetting_NotFound) {
     VlLayerSettingSet layerSettingSet = VK_NULL_HANDLE;
