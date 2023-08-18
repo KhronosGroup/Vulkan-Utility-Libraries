@@ -9,10 +9,13 @@ project(TEST_ADD_SUBDIRECTORY LANGUAGES C)
 
 add_library(add_subdirectory_example STATIC)
 
-# Test c99 support as well as find_package support
+# Test c99 support
 target_compile_features(add_subdirectory_example PRIVATE c_std_99)
 
-target_sources(add_subdirectory_example PRIVATE client.c)
+target_sources(add_subdirectory_example PRIVATE
+    client.c
+    vk_enum_string_helper.c
+)
 
 # NOTE: Because VulkanHeaders is a PUBLIC dependency it needs to be found prior to VulkanUtilityLibraries
 add_subdirectory(${GITHUB_VULKAN_HEADER_SOURCE_DIR} ${PROJECT_BINARY_DIR}/headers)
