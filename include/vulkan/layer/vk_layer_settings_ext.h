@@ -22,7 +22,6 @@ extern "C" {
 // NOTE: VK_STRUCTURE_TYPE_MAX_ENUM - 1 is used by the intel driver.
 // NOTE: VK_STRUCTURE_TYPE_MAX_ENUM - 42 is used by the validation layers
 #define VK_STRUCTURE_TYPE_LAYER_SETTINGS_EXT ((VkStructureType)(VK_STRUCTURE_TYPE_MAX_ENUM - 43))
-#define VK_STRUCTURE_TYPE_LAYER_SETTING_PROPERTIES_EXT ((VkStructureType)(VK_STRUCTURE_TYPE_MAX_ENUM - 44))
 
 typedef enum VkLayerSettingTypeEXT {
     VK_LAYER_SETTING_TYPE_BOOL32_EXT = 0,
@@ -56,16 +55,6 @@ typedef struct VkLayerSettingsCreateInfoEXT {
     uint32_t settingCount;
     const VkLayerSettingEXT *pSettings;
 } VkLayerSettingsCreateInfoEXT;
-
-typedef struct VkLayerSettingPropertiesEXT {
-    VkStructureType sType;
-    const void *pNext;
-    char key[VK_MAX_DESCRIPTION_SIZE];
-    VkLayerSettingTypeEXT type;
-} VkLayerSettingPropertiesEXT;
-
-VKAPI_ATTR VkResult VKAPI_CALL vkEnumerateInstanceLayerSettingsEXT(const char *pLayerName, 
-    uint32_t *pPropertyCount, VkLayerSettingPropertiesEXT *pProperties);
 
 #ifdef __cplusplus
 }
