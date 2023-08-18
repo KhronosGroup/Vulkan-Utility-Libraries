@@ -74,3 +74,12 @@ TEST(vk_enum_string_helper, string_VkFormat) {
         EXPECT_STREQ(magic_str.data(), str);
     }
 }
+
+// string_VkPipelineStageFlagBits2 can't use a switch statement due to C not treating const-qualified variables as constant
+// expressions. As a result test the codegen for this function explicitly.
+TEST(vk_enum_string_helper, string_VkFormatFeatureFlagBits2) {
+    EXPECT_STREQ(string_VkFormatFeatureFlagBits2(VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_BIT), "VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_BIT");
+    EXPECT_STREQ(string_VkFormatFeatureFlagBits2(VK_FORMAT_FEATURE_2_STORAGE_IMAGE_BIT), "VK_FORMAT_FEATURE_2_STORAGE_IMAGE_BIT");
+    EXPECT_STREQ(string_VkFormatFeatureFlagBits2(VK_FORMAT_FEATURE_2_VERTEX_BUFFER_BIT), "VK_FORMAT_FEATURE_2_VERTEX_BUFFER_BIT");
+    EXPECT_STREQ(string_VkFormatFeatureFlagBits2(3), "Unhandled VkFormatFeatureFlagBits2");
+}
