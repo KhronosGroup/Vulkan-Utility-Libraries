@@ -19,7 +19,7 @@ TEST(test_layer_setting_cast, vlGetLayerSettingValues_Bool) {
         {"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_BOOL32_EXT, static_cast<uint32_t>(input_values.size()), &input_values[0]}};
 
     VkLayerSettingsCreateInfoEXT layer_settings_create_info{
-        VK_STRUCTURE_TYPE_LAYER_SETTINGS_EXT, nullptr, static_cast<uint32_t>(settings.size()), &settings[0]};
+        VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT, nullptr, static_cast<uint32_t>(settings.size()), &settings[0]};
 
     VlLayerSettingSet layerSettingSet = VK_NULL_HANDLE;
     vlCreateLayerSettingSet("VK_LAYER_LUNARG_test", &layer_settings_create_info, nullptr, nullptr, &layerSettingSet);
@@ -55,7 +55,7 @@ TEST(test_layer_setting_cast, vlGetLayerSettingValues_Int32) {
         VkLayerSettingEXT{"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_INT32_EXT, static_cast<uint32_t>(input_values.size()), &input_values[0]}};
 
     VkLayerSettingsCreateInfoEXT layer_settings_create_info{
-        VK_STRUCTURE_TYPE_LAYER_SETTINGS_EXT, nullptr, static_cast<uint32_t>(settings.size()), &settings[0]};
+        VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT, nullptr, static_cast<uint32_t>(settings.size()), &settings[0]};
 
     VlLayerSettingSet layerSettingSet = VK_NULL_HANDLE;
     vlCreateLayerSettingSet("VK_LAYER_LUNARG_test", &layer_settings_create_info, nullptr, nullptr, &layerSettingSet);
@@ -91,7 +91,7 @@ TEST(test_layer_setting_cast, vlGetLayerSettingValues_Int64) {
         {"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_INT64_EXT, static_cast<uint32_t>(input_values.size()), &input_values[0]}};
 
     VkLayerSettingsCreateInfoEXT layer_settings_create_info{
-        VK_STRUCTURE_TYPE_LAYER_SETTINGS_EXT, nullptr, static_cast<uint32_t>(settings.size()), &settings[0]};
+        VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT, nullptr, static_cast<uint32_t>(settings.size()), &settings[0]};
 
     VlLayerSettingSet layerSettingSet = VK_NULL_HANDLE;
     vlCreateLayerSettingSet("VK_LAYER_LUNARG_test", &layer_settings_create_info, nullptr, nullptr, &layerSettingSet);
@@ -128,7 +128,7 @@ TEST(test_layer_setting_cast, vlGetLayerSettingValues_Uint32) {
     };
 
     VkLayerSettingsCreateInfoEXT layer_settings_create_info{
-        VK_STRUCTURE_TYPE_LAYER_SETTINGS_EXT, nullptr, static_cast<uint32_t>(settings.size()), &settings[0]};
+        VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT, nullptr, static_cast<uint32_t>(settings.size()), &settings[0]};
 
     VlLayerSettingSet layerSettingSet = VK_NULL_HANDLE;
     vlCreateLayerSettingSet("VK_LAYER_LUNARG_test", &layer_settings_create_info, nullptr, nullptr, &layerSettingSet);
@@ -165,7 +165,7 @@ TEST(test_layer_setting_cast, vlGetLayerSettingValues_Uint64) {
     };
 
     VkLayerSettingsCreateInfoEXT layer_settings_create_info{
-        VK_STRUCTURE_TYPE_LAYER_SETTINGS_EXT, nullptr, static_cast<uint32_t>(settings.size()), &settings[0]};
+        VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT, nullptr, static_cast<uint32_t>(settings.size()), &settings[0]};
 
     VlLayerSettingSet layerSettingSet = VK_NULL_HANDLE;
     vlCreateLayerSettingSet("VK_LAYER_LUNARG_test", &layer_settings_create_info, nullptr, nullptr, &layerSettingSet);
@@ -202,7 +202,7 @@ TEST(test_layer_setting_cast, vlGetLayerSettingValues_Float) {
     };
 
     VkLayerSettingsCreateInfoEXT layer_settings_create_info{
-        VK_STRUCTURE_TYPE_LAYER_SETTINGS_EXT, nullptr, static_cast<uint32_t>(settings.size()), &settings[0]};
+        VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT, nullptr, static_cast<uint32_t>(settings.size()), &settings[0]};
 
     VlLayerSettingSet layerSettingSet = VK_NULL_HANDLE;
     vlCreateLayerSettingSet("VK_LAYER_LUNARG_test", &layer_settings_create_info, nullptr, nullptr, &layerSettingSet);
@@ -239,7 +239,7 @@ TEST(test_layer_setting_cast, vlGetLayerSettingValues_Double) {
     };
 
     VkLayerSettingsCreateInfoEXT layer_settings_create_info{
-        VK_STRUCTURE_TYPE_LAYER_SETTINGS_EXT, nullptr, static_cast<uint32_t>(settings.size()), &settings[0]};
+        VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT, nullptr, static_cast<uint32_t>(settings.size()), &settings[0]};
 
     VlLayerSettingSet layerSettingSet = VK_NULL_HANDLE;
     vlCreateLayerSettingSet("VK_LAYER_LUNARG_test", &layer_settings_create_info, nullptr, nullptr, &layerSettingSet);
@@ -278,7 +278,7 @@ TEST(test_layer_setting_cast, vlGetLayerSettingValues_Frameset) {
     };
 
     VkLayerSettingsCreateInfoEXT layer_settings_create_info{
-        VK_STRUCTURE_TYPE_LAYER_SETTINGS_EXT, nullptr, static_cast<uint32_t>(settings.size()), &settings[0]};
+        VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT, nullptr, static_cast<uint32_t>(settings.size()), &settings[0]};
 
     VlLayerSettingSet layerSettingSet = VK_NULL_HANDLE;
     vlCreateLayerSettingSet("VK_LAYER_LUNARG_test", &layer_settings_create_info, nullptr, nullptr, &layerSettingSet);
@@ -318,7 +318,7 @@ TEST(test_layer_setting_cast, vlGetLayerSettingValues_String) {
     };
 
     VkLayerSettingsCreateInfoEXT layer_settings_create_info{
-        VK_STRUCTURE_TYPE_LAYER_SETTINGS_EXT, nullptr, static_cast<uint32_t>(settings.size()), &settings[0]};
+        VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT, nullptr, static_cast<uint32_t>(settings.size()), &settings[0]};
 
     VlLayerSettingSet layerSettingSet = VK_NULL_HANDLE;
     vlCreateLayerSettingSet("VK_LAYER_LUNARG_test", &layer_settings_create_info, nullptr, nullptr, &layerSettingSet);

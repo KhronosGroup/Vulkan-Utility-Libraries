@@ -565,7 +565,7 @@ const VkLayerSettingsCreateInfoEXT *vlFindLayerSettingsCreateInfo(const VkInstan
     const VkBaseOutStructure *current = reinterpret_cast<const VkBaseOutStructure *>(pCreateInfo);
     const VkLayerSettingsCreateInfoEXT *found = nullptr;
     while (current) {
-        if (VK_STRUCTURE_TYPE_LAYER_SETTINGS_EXT == current->sType) {
+        if (VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT == current->sType) {
             found = reinterpret_cast<const VkLayerSettingsCreateInfoEXT *>(current);
             current = nullptr;
         } else {
