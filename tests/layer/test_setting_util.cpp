@@ -16,7 +16,7 @@ TEST(test_layer_settings_util, FindSettingsInChain_found_first) {
     debugReportCallbackCreateInfo.sType = VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT;
 
     VkLayerSettingsCreateInfoEXT layerSettingsCreateInfo{};
-    layerSettingsCreateInfo.sType = VK_STRUCTURE_TYPE_LAYER_SETTINGS_EXT;
+    layerSettingsCreateInfo.sType = VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT;
     layerSettingsCreateInfo.pNext = &debugReportCallbackCreateInfo;
 
     VkInstanceCreateInfo instanceCreateInfo{};
@@ -28,7 +28,7 @@ TEST(test_layer_settings_util, FindSettingsInChain_found_first) {
 
 TEST(test_layer_settings_util, FindSettingsInChain_found_last) {
     VkLayerSettingsCreateInfoEXT layerSettingsCreateInfo{};
-    layerSettingsCreateInfo.sType = VK_STRUCTURE_TYPE_LAYER_SETTINGS_EXT;
+    layerSettingsCreateInfo.sType = VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT;
 
     VkDebugReportCallbackCreateInfoEXT debugReportCallbackCreateInfo{};
     debugReportCallbackCreateInfo.sType = VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT;
