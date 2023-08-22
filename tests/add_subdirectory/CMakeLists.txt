@@ -15,6 +15,7 @@ target_compile_features(add_subdirectory_example PRIVATE c_std_99)
 target_sources(add_subdirectory_example PRIVATE
     client.c
     vk_enum_string_helper.c
+    vul_dispatch_table.c
 )
 
 # NOTE: Because VulkanHeaders is a PUBLIC dependency it needs to be found prior to VulkanUtilityLibraries
@@ -26,4 +27,8 @@ if (NOT TARGET Vulkan::LayerSettings)
     message(FATAL_ERROR "Vulkan::LayerSettings target not defined!")
 endif()
 
-target_link_libraries(add_subdirectory_example PRIVATE Vulkan::LayerSettings)
+if (NOT TARGET Vulkan::UtilityHeaders)
+    message(FATAL_ERROR "Vulkan::UtilityHeaders target not defined!")
+endif()
+
+target_link_libraries(add_subdirectory_example PRIVATE Vulkan::LayerSettings Vulkan::UtilityHeaders)

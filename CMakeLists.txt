@@ -38,6 +38,9 @@ if(${CMAKE_CXX_COMPILER_ID} MATCHES "(GNU|Clang)")
     )
 endif()
 
+add_library(VulkanUtilityHeaders INTERFACE)
+add_library(Vulkan::UtilityHeaders ALIAS VulkanUtilityHeaders)
+
 add_subdirectory(src)
 add_subdirectory(include)
 
@@ -49,9 +52,11 @@ if (VUL_IS_TOP_LEVEL)
     endif()
 
     include(GNUInstallDirs)
-    
+
     install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/include/vulkan" DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+
     set_target_properties(VulkanLayerSettings PROPERTIES EXPORT_NAME "LayerSettings")
-    install(TARGETS VulkanLayerSettings EXPORT VulkanUtilityLibrariesConfig INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+    set_target_properties(VulkanUtilityHeaders PROPERTIES EXPORT_NAME "UtilityHeaders")
+    install(TARGETS VulkanLayerSettings VulkanUtilityHeaders EXPORT VulkanUtilityLibrariesConfig INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
     install(EXPORT VulkanUtilityLibrariesConfig DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/VulkanUtilityLibraries NAMESPACE Vulkan::)
 endif()
