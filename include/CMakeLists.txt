@@ -10,3 +10,14 @@ target_sources(VulkanLayerSettings PRIVATE
 	vulkan/layer/vk_layer_settings.hpp
 	vulkan/layer/vk_layer_settings_ext.h
 )
+
+target_sources(VulkanUtilityHeaders PRIVATE
+    vulkan/utility/vul_dispatch_table.h
+    vulkan/vk_enum_string_helper.h
+)
+
+# NOTE: Because Vulkan::Headers header files are exposed in the public facing interface
+# we must expose this library as public to users.
+target_link_Libraries(VulkanUtilityHeaders INTERFACE Vulkan::Headers)
+
+target_include_directories(VulkanUtilityHeaders INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>)
