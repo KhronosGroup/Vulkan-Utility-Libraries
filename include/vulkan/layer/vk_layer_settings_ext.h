@@ -21,7 +21,7 @@ extern "C" {
 //
 // NOTE: VK_STRUCTURE_TYPE_MAX_ENUM - 1 is used by the intel driver.
 // NOTE: VK_STRUCTURE_TYPE_MAX_ENUM - 42 is used by the validation layers
-#define VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT ((VkStructureType)(VK_STRUCTURE_TYPE_MAX_ENUM - 43))
+#define VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT ((VkStructureType)(VK_STRUCTURE_TYPE_MAX_ENUM - 44))
 
 typedef enum VkLayerSettingTypeEXT {
     VK_LAYER_SETTING_TYPE_BOOL32_EXT = 0,
