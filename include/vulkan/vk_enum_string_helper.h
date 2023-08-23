@@ -5,7 +5,7 @@
 // Copyright 2023 LunarG, Inc.
 //
 // SPDX-License-Identifier: Apache-2.0
-// NOLINTBEGIN
+
 #pragma once
 #ifdef __cplusplus
 #include <string>
@@ -9120,4 +9120,4 @@ static inline std::string string_VkAccelerationStructureCreateFlagsKHR(VkAcceler
     return ret;
 }
 #endif // __cplusplus
-// NOLINTEND
+

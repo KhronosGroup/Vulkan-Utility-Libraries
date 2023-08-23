@@ -23,8 +23,6 @@ class EnumStringHelperOutputGenerator(BaseGenerator):
 //
 // SPDX-License-Identifier: Apache-2.0
 ''')
-        out.append('// NOLINTBEGIN') # Wrap for clang-tidy to ignore
-
         out.append('''
 #pragma once
 #ifdef __cplusplus
@@ -107,6 +105,4 @@ static inline std::string string_{bitmask.flagName}({bitmask.flagName} input_val
 }}\n''')
             out.extend([f'#endif //{bitmask.protect}\n'] if bitmask.protect else [])
             out.append('#endif // __cplusplus\n')
-
-        out.append('// NOLINTEND') # Wrap for clang-tidy to ignore
         self.write("".join(out))
