@@ -11,10 +11,13 @@ target_sources(VulkanLayerSettings PRIVATE
 	vulkan/layer/vk_layer_settings_ext.h
 )
 
-target_sources(VulkanUtilityHeaders PRIVATE
-    vulkan/utility/vul_dispatch_table.h
-    vulkan/vk_enum_string_helper.h
-)
+# https://cmake.org/cmake/help/latest/release/3.19.html#other
+if (CMAKE_VERSION VERSION_GREATER_EQUAL "3.19")
+	target_sources(VulkanUtilityHeaders PRIVATE
+		vulkan/utility/vul_dispatch_table.h
+		vulkan/vk_enum_string_helper.h
+	)
+endif()
 
 # NOTE: Because Vulkan::Headers header files are exposed in the public facing interface
 # we must expose this library as public to users.
