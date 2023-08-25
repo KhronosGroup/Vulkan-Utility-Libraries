@@ -22,7 +22,7 @@ class DispatchTableOutputGenerator(BaseGenerator):
 // Copyright 2023 LunarG, Inc.
 //
 // SPDX-License-Identifier: Apache-2.0
-\n''')
+''')
 
         out.append('''
 #pragma once
@@ -31,7 +31,7 @@ class DispatchTableOutputGenerator(BaseGenerator):
 
 #include <string.h>
 
-typedef PFN_vkVoidFunction (VKAPI_PTR *PFN_GetPhysicalDeviceProcAddr)(VkInstance instance, const char* pName);
+typedef PFN_vkVoidFunction(VKAPI_PTR *PFN_GetPhysicalDeviceProcAddr)(VkInstance instance, const char *pName);
 ''')
         out.append('''
 // Instance function pointer dispatch table
@@ -42,7 +42,7 @@ typedef struct VulInstanceDispatchTable_ {
         for command in [x for x in self.vk.commands.values() if x.instance]:
             out.extend([f'#ifdef {command.protect}\n'] if command.protect else [])
             out.append(f'    PFN_{command.name} {command.name[2:]};\n')
-            out.extend([f'#endif //{command.protect}\n'] if command.protect else [])
+            out.extend([f'#endif  // {command.protect}\n'] if command.protect else [])
         out.append('} VulInstanceDispatchTable;\n')
 
         out.append('''
@@ -52,7 +52,7 @@ typedef struct VulDeviceDispatchTable_ {
         for command in [x for x in self.vk.commands.values() if x.device]:
             out.extend([f'#ifdef {command.protect}\n'] if command.protect else [])
             out.append(f'    PFN_{command.name} {command.name[2:]};\n')
-            out.extend([f'#endif //{command.protect}\n'] if command.protect else [])
+            out.extend([f'#endif  // {command.protect}\n'] if command.protect else [])
         out.append('} VulDeviceDispatchTable;\n')
 
         out.append('''
@@ -64,8 +64,8 @@ static inline void vulInitDeviceDispatchTable(VkDevice device, VulDeviceDispatch
 
         for command in [x for x in self.vk.commands.values() if x.device and x.name != 'vkGetDeviceProcAddr']:
             out.extend([f'#ifdef {command.protect}\n'] if command.protect else [])
-            out.append(f'    table->{command.name[2:]} = (PFN_{command.name}) gdpa(device, "{command.name}");\n')
-            out.extend([f'#endif // {command.protect}\n'] if command.protect else [])
+            out.append(f'    table->{command.name[2:]} = (PFN_{command.name})gdpa(device, "{command.name}");\n')
+            out.extend([f'#endif  // {command.protect}\n'] if command.protect else [])
         out.append('}\n')
 
         out.append('''
@@ -73,7 +73,7 @@ static inline void vulInitInstanceDispatchTable(VkInstance instance, VulInstance
     memset(table, 0, sizeof(*table));
     // Instance function pointers
     table->GetInstanceProcAddr = gipa;
-    table->GetPhysicalDeviceProcAddr = (PFN_GetPhysicalDeviceProcAddr) gipa(instance, "vk_layerGetPhysicalDeviceProcAddr");
+    table->GetPhysicalDeviceProcAddr = (PFN_GetPhysicalDeviceProcAddr)gipa(instance, "vk_layerGetPhysicalDeviceProcAddr");
 ''')
 
         for command in [x for x in self.vk.commands.values() if x.instance and x.name not in [
@@ -86,8 +86,8 @@ static inline void vulInitInstanceDispatchTable(VkInstance instance, VulInstance
                 'vkGetInstanceProcAddr',
         ]]:
             out.extend([f'#ifdef {command.protect}\n'] if command.protect else [])
-            out.append(f'    table->{command.name[2:]} = (PFN_{command.name}) gipa(instance, "{command.name}");\n')
-            out.extend([f'#endif // {command.protect}\n'] if command.protect else [])
-        out.append('}\n')
+            out.append(f'    table->{command.name[2:]} = (PFN_{command.name})gipa(instance, "{command.name}");\n')
+            out.extend([f'#endif  // {command.protect}\n'] if command.protect else [])
+        out.append('}')
 
         self.write("".join(out))
