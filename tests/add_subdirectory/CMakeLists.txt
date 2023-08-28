@@ -53,6 +53,8 @@ target_sources(add_subdirectory_example PRIVATE
     vk_dispatch_table.c
     vk_enum_string_helper.c
     vk_layer_settings.c
+    vk_format_utils.c
+    vk_format_utils_2.c # Need two translation units to test if header file behaves correctly.
 )
 
 target_link_libraries(add_subdirectory_example PRIVATE
