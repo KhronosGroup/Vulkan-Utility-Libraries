@@ -6,3 +6,4 @@
 add_subdirectory(layer)
 add_subdirectory(generated)
 add_subdirectory(vk_dispatch_table)
+add_subdirectory(format_utils)

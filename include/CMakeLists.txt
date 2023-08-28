@@ -23,6 +23,7 @@ if (CMAKE_VERSION VERSION_GREATER_EQUAL "3.19")
 	target_sources(VulkanUtilityHeaders PRIVATE
 		vulkan/utility/vk_dispatch_table.h
 		vulkan/vk_enum_string_helper.h
+		vulkan/utility/vk_format_utils.h
 	)
 endif()
 
@@ -31,3 +32,4 @@ endif()
 target_link_Libraries(VulkanUtilityHeaders INTERFACE Vulkan::Headers)
 
 target_include_directories(VulkanUtilityHeaders INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>)
+
