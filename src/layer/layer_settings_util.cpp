@@ -198,10 +198,10 @@ int64_t ToInt64(const std::string &token) {
     return int_id;
 }
 
-VkFramesetEXT ToFrameSet(const std::string &s) {
+VlFrameset ToFrameSet(const std::string &s) {
     assert(IsFrameSets(s));
 
-    VkFramesetEXT frameset{0, 1, 1};
+    VlFrameset frameset{0, 1, 1};
 
     const std::vector<std::string> &frameset_split = vl::Split(s, '-');
     if (frameset_split.size() >= 1) {
@@ -217,10 +217,10 @@ VkFramesetEXT ToFrameSet(const std::string &s) {
     return frameset;
 }
 
-std::vector<VkFramesetEXT> ToFrameSets(const std::string &s) {
+std::vector<VlFrameset> ToFrameSets(const std::string &s) {
     std::vector<std::string> tokens = Split(s, FindDelimiter(s));
 
-    std::vector<VkFramesetEXT> results;
+    std::vector<VlFrameset> results;
     results.resize(tokens.size());
     for (std::size_t i = 0, n = tokens.size(); i < n; ++i) {
         results[i] = ToFrameSet(tokens[i]);
@@ -247,7 +247,7 @@ bool IsFloat(const std::string &s) {
     return std::regex_search(s, FRAME_REGEX);
 }
 
-std::string Format(const char *message, ...) {
+std::string FormatString(const char *message, ...) {
     std::size_t const STRING_BUFFER(4096);
 
     assert(message != nullptr);

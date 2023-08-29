@@ -31,15 +31,8 @@ typedef enum VkLayerSettingTypeEXT {
     VK_LAYER_SETTING_TYPE_UINT64_EXT,
     VK_LAYER_SETTING_TYPE_FLOAT32_EXT,
     VK_LAYER_SETTING_TYPE_FLOAT64_EXT,
-    VK_LAYER_SETTING_TYPE_STRING_EXT,
-    VK_LAYER_SETTING_TYPE_FRAMESET_EXT
+    VK_LAYER_SETTING_TYPE_STRING_EXT
 } VkLayerSettingTypeEXT;
-
-typedef struct VkFramesetEXT {
-    uint32_t first;
-    uint32_t count;
-    uint32_t step;
-} VkFramesetEXT;
 
 typedef struct VkLayerSettingEXT {
     const char *pLayerName;

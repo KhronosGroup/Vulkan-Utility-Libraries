@@ -397,7 +397,7 @@ TEST(test_layer_settings_util, is_framesets) {
 
 TEST(test_layer_settings_util, to_framesets) {
     {
-        std::vector<VkFramesetEXT> framesets = vl::ToFrameSets("0");
+        std::vector<VlFrameset> framesets = vl::ToFrameSets("0");
         EXPECT_EQ(1, framesets.size());
 
         EXPECT_EQ(0, framesets[0].first);
@@ -406,7 +406,7 @@ TEST(test_layer_settings_util, to_framesets) {
     }
 
     {
-        std::vector<VkFramesetEXT> framesets = vl::ToFrameSets("76");
+        std::vector<VlFrameset> framesets = vl::ToFrameSets("76");
         EXPECT_EQ(1, framesets.size());
 
         EXPECT_EQ(76, framesets[0].first);
@@ -415,7 +415,7 @@ TEST(test_layer_settings_util, to_framesets) {
     }
 
     {
-        std::vector<VkFramesetEXT> framesets = vl::ToFrameSets("0-2");
+        std::vector<VlFrameset> framesets = vl::ToFrameSets("0-2");
         EXPECT_EQ(1, framesets.size());
 
         EXPECT_EQ(0, framesets[0].first);
@@ -424,7 +424,7 @@ TEST(test_layer_settings_util, to_framesets) {
     }
 
     {
-        std::vector<VkFramesetEXT> framesets = vl::ToFrameSets("0-2,6,7");
+        std::vector<VlFrameset> framesets = vl::ToFrameSets("0-2,6,7");
         EXPECT_EQ(3, framesets.size());
 
         EXPECT_EQ(0, framesets[0].first);
@@ -441,7 +441,7 @@ TEST(test_layer_settings_util, to_framesets) {
     }
 
     {
-        std::vector<VkFramesetEXT> framesets = vl::ToFrameSets("0-2,6-7");
+        std::vector<VlFrameset> framesets = vl::ToFrameSets("0-2,6-7");
         EXPECT_EQ(2, framesets.size());
 
         EXPECT_EQ(0, framesets[0].first);
@@ -454,7 +454,7 @@ TEST(test_layer_settings_util, to_framesets) {
     }
 
     {
-        std::vector<VkFramesetEXT> framesets = vl::ToFrameSets("1-2,60,70");
+        std::vector<VlFrameset> framesets = vl::ToFrameSets("1-2,60,70");
         EXPECT_EQ(3, framesets.size());
 
         EXPECT_EQ(1, framesets[0].first);
@@ -471,7 +471,7 @@ TEST(test_layer_settings_util, to_framesets) {
     }
 
     {
-        std::vector<VkFramesetEXT> framesets = vl::ToFrameSets("10-20,60,70");
+        std::vector<VlFrameset> framesets = vl::ToFrameSets("10-20,60,70");
         EXPECT_EQ(3, framesets.size());
 
         EXPECT_EQ(10, framesets[0].first);
@@ -488,7 +488,7 @@ TEST(test_layer_settings_util, to_framesets) {
     }
 
     {
-        std::vector<VkFramesetEXT> framesets = vl::ToFrameSets("1-8-2");
+        std::vector<VlFrameset> framesets = vl::ToFrameSets("1-8-2");
         EXPECT_EQ(1, framesets.size());
 
         EXPECT_EQ(1, framesets[0].first);
@@ -497,7 +497,7 @@ TEST(test_layer_settings_util, to_framesets) {
     }
 
     {
-        std::vector<VkFramesetEXT> framesets = vl::ToFrameSets("1-8-2,0");
+        std::vector<VlFrameset> framesets = vl::ToFrameSets("1-8-2,0");
         EXPECT_EQ(2, framesets.size());
 
         EXPECT_EQ(1, framesets[0].first);
@@ -510,7 +510,7 @@ TEST(test_layer_settings_util, to_framesets) {
     }
 
     {
-        std::vector<VkFramesetEXT> framesets = vl::ToFrameSets("1-8-2,10-20-5");
+        std::vector<VlFrameset> framesets = vl::ToFrameSets("1-8-2,10-20-5");
         EXPECT_EQ(2, framesets.size());
 
         EXPECT_EQ(1, framesets[0].first);
@@ -523,7 +523,7 @@ TEST(test_layer_settings_util, to_framesets) {
     }
 
     {
-        std::vector<VkFramesetEXT> framesets = vl::ToFrameSets("1-8,10-20-5");
+        std::vector<VlFrameset> framesets = vl::ToFrameSets("1-8,10-20-5");
         EXPECT_EQ(2, framesets.size());
 
         EXPECT_EQ(1, framesets[0].first);
@@ -536,7 +536,7 @@ TEST(test_layer_settings_util, to_framesets) {
     }
 
     {
-        std::vector<VkFramesetEXT> framesets = vl::ToFrameSets("1-8-2,10-20-1");
+        std::vector<VlFrameset> framesets = vl::ToFrameSets("1-8-2,10-20-1");
         EXPECT_EQ(2, framesets.size());
 
         EXPECT_EQ(1, framesets[0].first);
@@ -549,7 +549,7 @@ TEST(test_layer_settings_util, to_framesets) {
     }
 
     {
-        std::vector<VkFramesetEXT> framesets = vl::ToFrameSets("1,2,3,4");
+        std::vector<VlFrameset> framesets = vl::ToFrameSets("1,2,3,4");
         EXPECT_EQ(4, framesets.size());
 
         EXPECT_EQ(1, framesets[0].first);

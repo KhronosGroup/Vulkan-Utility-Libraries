@@ -24,16 +24,16 @@ static std::string Merge(const std::vector<std::string> &strings) {
 void vlGetLayerSettingValue(VlLayerSettingSet layerSettingSet, const char *pSettingName, bool &settingValue) {
     uint32_t value_count = 1;
     VkBool32 pValues;
-    vlGetLayerSettingValues(layerSettingSet, pSettingName, VK_LAYER_SETTING_TYPE_BOOL32_EXT, &value_count, &pValues);
+    vlGetLayerSettingValues(layerSettingSet, pSettingName, VL_LAYER_SETTING_TYPE_BOOL32, &value_count, &pValues);
     settingValue = pValues == VK_TRUE;
 }
 
 void vlGetLayerSettingValues(VlLayerSettingSet layerSettingSet, const char *pSettingName, std::vector<bool> &settingValues) {
     uint32_t value_count = 0;
-    vlGetLayerSettingValues(layerSettingSet, pSettingName, VK_LAYER_SETTING_TYPE_BOOL32_EXT, &value_count, nullptr);
+    vlGetLayerSettingValues(layerSettingSet, pSettingName, VL_LAYER_SETTING_TYPE_BOOL32, &value_count, nullptr);
     if (value_count > 0) {
         std::vector<VkBool32> values(value_count);
-        vlGetLayerSettingValues(layerSettingSet, pSettingName, VK_LAYER_SETTING_TYPE_BOOL32_EXT, &value_count, &values[0]);
+        vlGetLayerSettingValues(layerSettingSet, pSettingName, VL_LAYER_SETTING_TYPE_BOOL32, &value_count, &values[0]);
         for (std::size_t i = 0, n = values.size(); i < n; ++i) {
             settingValues.push_back(values[i] == VK_TRUE);
         }
@@ -42,85 +42,85 @@ void vlGetLayerSettingValues(VlLayerSettingSet layerSettingSet, const char *pSet
 
 void vlGetLayerSettingValue(VlLayerSettingSet layerSettingSet, const char *pSettingName, int32_t &settingValue) {
     uint32_t value_count = 1;
-    vlGetLayerSettingValues(layerSettingSet, pSettingName, VK_LAYER_SETTING_TYPE_INT32_EXT, &value_count, &settingValue);
+    vlGetLayerSettingValues(layerSettingSet, pSettingName, VL_LAYER_SETTING_TYPE_INT32, &value_count, &settingValue);
 }
 
 void vlGetLayerSettingValues(VlLayerSettingSet layerSettingSet, const char *pSettingName, std::vector<int32_t> &settingValues) {
     uint32_t value_count = 1;
-    vlGetLayerSettingValues(layerSettingSet, pSettingName, VK_LAYER_SETTING_TYPE_INT32_EXT, &value_count, nullptr);
+    vlGetLayerSettingValues(layerSettingSet, pSettingName, VL_LAYER_SETTING_TYPE_INT32, &value_count, nullptr);
     if (value_count > 0) {
         settingValues.resize(static_cast<std::size_t>(value_count));
-        vlGetLayerSettingValues(layerSettingSet, pSettingName, VK_LAYER_SETTING_TYPE_INT32_EXT, &value_count, &settingValues[0]);
+        vlGetLayerSettingValues(layerSettingSet, pSettingName, VL_LAYER_SETTING_TYPE_INT32, &value_count, &settingValues[0]);
     }
 }
 
 void vlGetLayerSettingValue(VlLayerSettingSet layerSettingSet, const char *pSettingName, int64_t &settingValue) {
     uint32_t value_count = 1;
-    vlGetLayerSettingValues(layerSettingSet, pSettingName, VK_LAYER_SETTING_TYPE_INT64_EXT, &value_count, &settingValue);
+    vlGetLayerSettingValues(layerSettingSet, pSettingName, VL_LAYER_SETTING_TYPE_INT64, &value_count, &settingValue);
 }
 
 void vlGetLayerSettingValues(VlLayerSettingSet layerSettingSet, const char *pSettingName, std::vector<int64_t> &settingValues) {
     uint32_t value_count = 1;
-    vlGetLayerSettingValues(layerSettingSet, pSettingName, VK_LAYER_SETTING_TYPE_INT64_EXT, &value_count, nullptr);
+    vlGetLayerSettingValues(layerSettingSet, pSettingName, VL_LAYER_SETTING_TYPE_INT64, &value_count, nullptr);
     if (value_count > 0) {
         settingValues.resize(static_cast<std::size_t>(value_count));
-        vlGetLayerSettingValues(layerSettingSet, pSettingName, VK_LAYER_SETTING_TYPE_INT64_EXT, &value_count, &settingValues[0]);
+        vlGetLayerSettingValues(layerSettingSet, pSettingName, VL_LAYER_SETTING_TYPE_INT64, &value_count, &settingValues[0]);
     }
 }
 
 void vlGetLayerSettingValue(VlLayerSettingSet layerSettingSet, const char *pSettingName, uint32_t &settingValue) {
     uint32_t value_count = 1;
-    vlGetLayerSettingValues(layerSettingSet, pSettingName, VK_LAYER_SETTING_TYPE_UINT32_EXT, &value_count, &settingValue);
+    vlGetLayerSettingValues(layerSettingSet, pSettingName, VL_LAYER_SETTING_TYPE_UINT32, &value_count, &settingValue);
 }
 
 void vlGetLayerSettingValues(VlLayerSettingSet layerSettingSet, const char *pSettingName, std::vector<uint32_t> &settingValues) {
     uint32_t value_count = 1;
-    vlGetLayerSettingValues(layerSettingSet, pSettingName, VK_LAYER_SETTING_TYPE_UINT32_EXT, &value_count, nullptr);
+    vlGetLayerSettingValues(layerSettingSet, pSettingName, VL_LAYER_SETTING_TYPE_UINT32, &value_count, nullptr);
     if (value_count > 0) {
         settingValues.resize(static_cast<std::size_t>(value_count));
-        vlGetLayerSettingValues(layerSettingSet, pSettingName, VK_LAYER_SETTING_TYPE_UINT32_EXT, &value_count, &settingValues[0]);
+        vlGetLayerSettingValues(layerSettingSet, pSettingName, VL_LAYER_SETTING_TYPE_UINT32, &value_count, &settingValues[0]);
     }
 }
 
 void vlGetLayerSettingValue(VlLayerSettingSet layerSettingSet, const char *pSettingName, uint64_t &settingValue) {
     uint32_t value_count = 1;
-    vlGetLayerSettingValues(layerSettingSet, pSettingName, VK_LAYER_SETTING_TYPE_UINT64_EXT, &value_count, &settingValue);
+    vlGetLayerSettingValues(layerSettingSet, pSettingName, VL_LAYER_SETTING_TYPE_UINT64, &value_count, &settingValue);
 }
 
 void vlGetLayerSettingValues(VlLayerSettingSet layerSettingSet, const char *pSettingName, std::vector<uint64_t> &settingValues) {
     uint32_t value_count = 1;
-    vlGetLayerSettingValues(layerSettingSet, pSettingName, VK_LAYER_SETTING_TYPE_UINT64_EXT, &value_count, nullptr);
+    vlGetLayerSettingValues(layerSettingSet, pSettingName, VL_LAYER_SETTING_TYPE_UINT64, &value_count, nullptr);
     if (value_count > 0) {
         settingValues.resize(static_cast<std::size_t>(value_count));
-        vlGetLayerSettingValues(layerSettingSet, pSettingName, VK_LAYER_SETTING_TYPE_UINT64_EXT, &value_count, &settingValues[0]);
+        vlGetLayerSettingValues(layerSettingSet, pSettingName, VL_LAYER_SETTING_TYPE_UINT64, &value_count, &settingValues[0]);
     }
 }
 
 void vlGetLayerSettingValue(VlLayerSettingSet layerSettingSet, const char *pSettingName, float &settingValue) {
     uint32_t value_count = 1;
-    vlGetLayerSettingValues(layerSettingSet, pSettingName, VK_LAYER_SETTING_TYPE_FLOAT32_EXT, &value_count, &settingValue);
+    vlGetLayerSettingValues(layerSettingSet, pSettingName, VL_LAYER_SETTING_TYPE_FLOAT32, &value_count, &settingValue);
 }
 
 void vlGetLayerSettingValues(VlLayerSettingSet layerSettingSet, const char *pSettingName, std::vector<float> &settingValues) {
     uint32_t value_count = 1;
-    vlGetLayerSettingValues(layerSettingSet, pSettingName, VK_LAYER_SETTING_TYPE_FLOAT32_EXT, &value_count, nullptr);
+    vlGetLayerSettingValues(layerSettingSet, pSettingName, VL_LAYER_SETTING_TYPE_FLOAT32, &value_count, nullptr);
     if (value_count > 0) {
         settingValues.resize(static_cast<std::size_t>(value_count));
-        vlGetLayerSettingValues(layerSettingSet, pSettingName, VK_LAYER_SETTING_TYPE_FLOAT32_EXT, &value_count, &settingValues[0]);
+        vlGetLayerSettingValues(layerSettingSet, pSettingName, VL_LAYER_SETTING_TYPE_FLOAT32, &value_count, &settingValues[0]);
     }
 }
 
 void vlGetLayerSettingValue(VlLayerSettingSet layerSettingSet, const char *pSettingName, double &settingValue) {
     uint32_t value_count = 1;
-    vlGetLayerSettingValues(layerSettingSet, pSettingName, VK_LAYER_SETTING_TYPE_FLOAT64_EXT, &value_count, &settingValue);
+    vlGetLayerSettingValues(layerSettingSet, pSettingName, VL_LAYER_SETTING_TYPE_FLOAT64, &value_count, &settingValue);
 }
 
 void vlGetLayerSettingValues(VlLayerSettingSet layerSettingSet, const char *pSettingName, std::vector<double> &settingValues) {
     uint32_t value_count = 1;
-    vlGetLayerSettingValues(layerSettingSet, pSettingName, VK_LAYER_SETTING_TYPE_FLOAT64_EXT, &value_count, nullptr);
+    vlGetLayerSettingValues(layerSettingSet, pSettingName, VL_LAYER_SETTING_TYPE_FLOAT64, &value_count, nullptr);
     if (value_count > 0) {
         settingValues.resize(static_cast<std::size_t>(value_count));
-        vlGetLayerSettingValues(layerSettingSet, pSettingName, VK_LAYER_SETTING_TYPE_FLOAT64_EXT, &value_count, &settingValues[0]);
+        vlGetLayerSettingValues(layerSettingSet, pSettingName, VL_LAYER_SETTING_TYPE_FLOAT64, &value_count, &settingValues[0]);
     }
 }
 
@@ -132,25 +132,25 @@ void vlGetLayerSettingValue(VlLayerSettingSet layerSettingSet, const char *pSett
 
 void vlGetLayerSettingValues(VlLayerSettingSet layerSettingSet, const char *pSettingName, std::vector<std::string> &settingValues) {
     uint32_t value_count = 0;
-    vlGetLayerSettingValues(layerSettingSet, pSettingName, VK_LAYER_SETTING_TYPE_STRING_EXT, &value_count, nullptr);
+    vlGetLayerSettingValues(layerSettingSet, pSettingName, VL_LAYER_SETTING_TYPE_STRING, &value_count, nullptr);
     if (value_count > 0) {
         std::vector<const char *> values(value_count);
-        vlGetLayerSettingValues(layerSettingSet, pSettingName, VK_LAYER_SETTING_TYPE_STRING_EXT, &value_count, &values[0]);
+        vlGetLayerSettingValues(layerSettingSet, pSettingName, VL_LAYER_SETTING_TYPE_STRING, &value_count, &values[0]);
         settingValues.assign(values.begin(), values.end());
     }
 }
 
-void vlGetLayerSettingValue(VlLayerSettingSet layerSettingSet, const char* pSettingName, VkFramesetEXT& settingValue) {
-    uint32_t value_count = 1;
-    vlGetLayerSettingValues(layerSettingSet, pSettingName, VK_LAYER_SETTING_TYPE_FRAMESET_EXT, &value_count, &settingValue);
+void vlGetLayerSettingValue(VlLayerSettingSet layerSettingSet, const char* pSettingName, VlFrameset& settingValue) {
+    uint32_t value_count = sizeof(VlFrameset) / sizeof(VlFrameset::count);
+    vlGetLayerSettingValues(layerSettingSet, pSettingName, VL_LAYER_SETTING_TYPE_UINT32, &value_count, &settingValue);
 }
 
-void vlGetLayerSettingValues(VlLayerSettingSet layerSettingSet, const char *pSettingName, std::vector<VkFramesetEXT> &settingValues) {
+void vlGetLayerSettingValues(VlLayerSettingSet layerSettingSet, const char *pSettingName, std::vector<VlFrameset> &settingValues) {
     uint32_t value_count = 0;
-    vlGetLayerSettingValues(layerSettingSet, pSettingName, VK_LAYER_SETTING_TYPE_FRAMESET_EXT, &value_count, nullptr);
+    vlGetLayerSettingValues(layerSettingSet, pSettingName, VL_LAYER_SETTING_TYPE_UINT32, &value_count, nullptr);
     if (value_count > 0) {
-        settingValues.resize(static_cast<std::size_t>(value_count));
-        vlGetLayerSettingValues(layerSettingSet, pSettingName, VK_LAYER_SETTING_TYPE_FRAMESET_EXT, &value_count, &settingValues[0]);
+        settingValues.resize(static_cast<std::size_t>(value_count) / (sizeof(VlFrameset) / sizeof(VlFrameset::count)));
+        vlGetLayerSettingValues(layerSettingSet, pSettingName, VL_LAYER_SETTING_TYPE_UINT32, &value_count, &settingValues[0]);
     }
 }
 
@@ -186,10 +186,10 @@ static void SetCustomStypeInfo(std::vector<const char *> raw_id_list, std::vecto
 
 void vlGetLayerSettingValues(VlLayerSettingSet layerSettingSet, const char *pSettingName, std::vector<VlCustomSTypeInfo> &settingValues) {
     uint32_t value_count = 0;
-    vlGetLayerSettingValues(layerSettingSet, pSettingName, VK_LAYER_SETTING_TYPE_STRING_EXT, &value_count, nullptr);
+    vlGetLayerSettingValues(layerSettingSet, pSettingName, VL_LAYER_SETTING_TYPE_STRING, &value_count, nullptr);
     if (value_count > 0) {
         std::vector<const char *> values(value_count);
-        vlGetLayerSettingValues(layerSettingSet, pSettingName, VK_LAYER_SETTING_TYPE_STRING_EXT, &value_count, &values[0]);
+        vlGetLayerSettingValues(layerSettingSet, pSettingName, VL_LAYER_SETTING_TYPE_STRING, &value_count, &values[0]);
         SetCustomStypeInfo(values, settingValues);
     }
 }

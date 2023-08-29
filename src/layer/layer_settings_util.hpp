@@ -62,14 +62,14 @@ namespace vl {
 
     bool IsFrameSets(const std::string &s);
 
-    VkFramesetEXT ToFrameSet(const std::string &s);
+    VlFrameset ToFrameSet(const std::string &s);
 
-    std::vector<VkFramesetEXT> ToFrameSets(const std::string &s);
+    std::vector<VlFrameset> ToFrameSets(const std::string &s);
 
     bool IsInteger(const std::string &s);
 
     bool IsFloat(const std::string &s);
 
-    std::string Format(const char *message, ...);
+    std::string FormatString(const char *message, ...);
 } // namespace vl
 

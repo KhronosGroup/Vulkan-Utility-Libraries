@@ -415,9 +415,9 @@ TEST(test_layer_setting_cpp, vlGetLayerSettingValues_String) {
 }
 
 TEST(test_layer_setting_cpp, vlGetLayerSettingValue_Frameset) {
-    const VkFramesetEXT value_data{76, 100, 10};
+    const VlFrameset value_data{76, 100, 10};
 
-    const VkLayerSettingEXT setting{"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_FRAMESET_EXT, 1, &value_data};
+    const VkLayerSettingEXT setting{"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_UINT32_EXT, 3, &value_data};
 
     const VkLayerSettingsCreateInfoEXT layer_settings_create_info{
         VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT, nullptr, 1, &setting};
@@ -427,7 +427,7 @@ TEST(test_layer_setting_cpp, vlGetLayerSettingValue_Frameset) {
 
     EXPECT_TRUE(vlHasLayerSetting(layerSettingSet, "my_setting"));
 
-    VkFramesetEXT pValues;
+    VlFrameset pValues;
     vlGetLayerSettingValue(layerSettingSet, "my_setting", pValues);
 
     EXPECT_EQ(76, pValues.first);
@@ -438,13 +438,13 @@ TEST(test_layer_setting_cpp, vlGetLayerSettingValue_Frameset) {
 }
 
 TEST(test_layer_setting_cpp, vlGetLayerSettingValues_Frameset) {
-    const VkFramesetEXT values_data[] = {
+    const VlFrameset values_data[] = {
         {76, 100, 10}, {1, 100, 1}
     };
-    const uint32_t value_count = static_cast<uint32_t>(std::size(values_data));
+    const uint32_t value_count = static_cast<uint32_t>(std::size(values_data) * (sizeof(VlFrameset) / sizeof(VlFrameset::count)));
 
     const VkLayerSettingEXT settings[] = {
-        {"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_FRAMESET_EXT, value_count, values_data}
+        {"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_UINT32_EXT, value_count, values_data}
     };
     const uint32_t settings_size = static_cast<uint32_t>(std::size(settings));
 
@@ -456,7 +456,7 @@ TEST(test_layer_setting_cpp, vlGetLayerSettingValues_Frameset) {
 
     EXPECT_TRUE(vlHasLayerSetting(layerSettingSet, "my_setting"));
 
-    std::vector<VkFramesetEXT> values;
+    std::vector<VlFrameset> values;
     vlGetLayerSettingValues(layerSettingSet, "my_setting", values);
 
     EXPECT_EQ(76, values[0].first);
