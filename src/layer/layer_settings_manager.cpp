@@ -109,13 +109,13 @@ LayerSettings::LayerSettings(const char *pLayerName, const VkLayerSettingsCreate
     (void)pAllocator;
     assert(pLayerName != nullptr);
 
-    std::string settings_file = this->FindSettingsFile();
-    this->ParseSettingsFile(settings_file.c_str());
+    std::filesystem::path settings_file = this->FindSettingsFile();
+    this->ParseSettingsFile(settings_file);
 }
 
 LayerSettings::~LayerSettings() {}
 
-void LayerSettings::ParseSettingsFile(const char *filename) {
+void LayerSettings::ParseSettingsFile(const std::filesystem::path &filename) {
     // Extract option = value pairs from a file
     std::ifstream file(filename);
     if (file.good()) {
@@ -134,7 +134,7 @@ void LayerSettings::ParseSettingsFile(const char *filename) {
     }
 }
 
-std::string LayerSettings::FindSettingsFile() {
+std::filesystem::path LayerSettings::FindSettingsFile() {
     struct stat info;
 
 #if defined(WIN32)
@@ -145,9 +145,9 @@ std::string LayerSettings::FindSettingsFile() {
     const size_t hives_to_check_count = IsHighIntegrity() ? 1 : hives.size();  // Admin checks only the default hive
 
     for (size_t hive_index = 0; hive_index < hives_to_check_count; ++hive_index) {
-        LSTATUS err = RegOpenKeyEx(hives[hive_index], "Software\\Khronos\\Vulkan\\Settings", 0, KEY_READ, &key);
+        LSTATUS err = RegOpenKeyEx(hives[hive_index], TEXT("Software\\Khronos\\Vulkan\\Settings"), 0, KEY_READ, &key);
         if (err == ERROR_SUCCESS) {
-            char name[2048];
+            TCHAR name[2048];
             DWORD i = 0, name_size, type, pValues, value_size;
             while (ERROR_SUCCESS == RegEnumValue(key, i++, name, &(name_size = sizeof(name)), nullptr, &type,
                                                  reinterpret_cast<LPBYTE>(&pValues), &(value_size = sizeof(pValues)))) {
@@ -157,7 +157,8 @@ std::string LayerSettings::FindSettingsFile() {
                 }
 
                 // Check if this actually points to a file
-                if ((stat(name, &info) != 0) || !(info.st_mode & S_IFREG)) {
+                DWORD fileAttrib = GetFileAttributes(name);
+                if ((fileAttrib == INVALID_FILE_ATTRIBUTES) || (fileAttrib & FILE_ATTRIBUTE_DIRECTORY)) {
                     continue;
                 }
 
