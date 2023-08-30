@@ -13,6 +13,7 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <filesystem>
 
 namespace vl {
     class LayerSettings {
@@ -48,8 +49,8 @@ namespace vl {
         std::string last_log_setting;
         std::string last_log_message;
 
-        std::string FindSettingsFile();
-        void ParseSettingsFile(const char *filename);
+        std::filesystem::path FindSettingsFile();
+        void ParseSettingsFile(const std::filesystem::path &filename);
 
         std::string layer_name;
         const VkLayerSettingsCreateInfoEXT *create_info{nullptr};
