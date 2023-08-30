@@ -9,6 +9,7 @@ config("vulkan_utility_libraries_config") {
 }
 
 static_library("vulkan_layer_settings") {
+  public_deps = [ "$vulkan_headers_dir:vulkan_headers" ]
   public_configs = [ ":vulkan_utility_libraries_config" ]
   sources = [
     "include/vulkan/layer/vk_layer_settings.h",
