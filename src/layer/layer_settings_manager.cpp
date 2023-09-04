@@ -50,21 +50,23 @@ static std::string GetAndroidProperty(const char *name) {
 }
 #endif
 
-static bool IsEnvironment(const char *variable) {
-#if defined(__ANDROID__)
-    return !GetAndroidProperty(variable).empty();
-#else
-    return std::getenv(variable) != NULL;
-#endif
-}
-
 static std::string GetEnvironment(const char *variable) {
 #if defined(__ANDROID__)
-    return GetAndroidProperty(variable);
+    std::string result = GetAndroidProperty(variable);
+    // Workaround for screenshot layer backward compatibility
+    if (result.empty() && std::string(variable) == "debug.vulkan.screenshot.frames") {
+        result = GetAndroidProperty("debug.vulkan.screenshot");
+    }
+    return result;
 #else
     const char *output = std::getenv(variable);
     return output == NULL ? "" : output;
 #endif
+}
+
+static bool IsEnvironment(const char *variable) {
+    const std::string& result = GetEnvironment(variable);
+    return !result.empty();
 }
 
 #if defined(WIN32)
