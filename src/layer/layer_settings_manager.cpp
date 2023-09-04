@@ -263,9 +263,17 @@ std::vector<std::string> &LayerSettings::GetSettingCache(const std::string &sett
 bool LayerSettings::HasEnvSetting(const char *pSettingName) {
     assert(pSettingName != nullptr);
 
-    for (int i = TRIM_FIRST, n = TRIM_LAST; i < n; ++i) {
-        if (IsEnvironment(GetEnvSettingName(this->layer_name.c_str(), pSettingName, static_cast<TrimMode>(i)).c_str())) {
-            return true;
+    std::vector<std::string> layer_names;
+    layer_names.push_back(this->layer_name);
+    ::AddWorkaroundLayerNames(layer_names);
+
+    for (std::size_t layer_index = 0, layer_count = layer_names.size(); layer_index < layer_count; ++layer_index) {
+        const char *layer_name = layer_names[layer_index].c_str();
+        for (int i = TRIM_FIRST, n = TRIM_LAST; i <= n; ++i) {
+            const std::string &env_name = GetEnvSettingName(layer_name, pSettingName, static_cast<TrimMode>(i));
+            if (IsEnvironment(env_name.c_str())) {
+                return true;
+            }
         }
     }
 
@@ -294,8 +302,10 @@ std::string LayerSettings::GetEnvSetting(const char *pSettingName) {
     ::AddWorkaroundLayerNames(layer_names);
 
     for (std::size_t layer_index = 0, layer_count = layer_names.size(); layer_index < layer_count; ++layer_index) {
-        for (int i = TRIM_FIRST, n = TRIM_LAST; i < n; ++i) {
-            result = GetEnvironment(GetEnvSettingName(layer_names[layer_index].c_str(), pSettingName, static_cast<TrimMode>(i)).c_str());
+        const char* layer_name = layer_names[layer_index].c_str();
+        for (int i = TRIM_FIRST, n = TRIM_LAST; i <= n; ++i) {
+            const std::string &env_name = GetEnvSettingName(layer_name, pSettingName, static_cast<TrimMode>(i));
+            result = GetEnvironment(env_name.c_str());
             if (!result.empty()) {
                 break;
             }
