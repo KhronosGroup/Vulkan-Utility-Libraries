@@ -1865,6 +1865,8 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_EXTERNAL_FORMAT_QNX";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_MEMORY_SCREEN_BUFFER_FEATURES_QNX:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_MEMORY_SCREEN_BUFFER_FEATURES_QNX";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_POOL_OVERALLOCATION_FEATURES_NV:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_POOL_OVERALLOCATION_FEATURES_NV";
         default:
             return "Unhandled VkStructureType";
     }
@@ -3577,6 +3579,8 @@ static inline const char* string_VkQueryResultStatusKHR(VkQueryResultStatusKHR i
             return "VK_QUERY_RESULT_STATUS_NOT_READY_KHR";
         case VK_QUERY_RESULT_STATUS_COMPLETE_KHR:
             return "VK_QUERY_RESULT_STATUS_COMPLETE_KHR";
+        case VK_QUERY_RESULT_STATUS_INSUFFICIENT_BITSTREAM_BUFFER_RANGE_KHR:
+            return "VK_QUERY_RESULT_STATUS_INSUFFICIENT_BITSTREAM_BUFFER_RANGE_KHR";
         default:
             return "Unhandled VkQueryResultStatusKHR";
     }
@@ -5986,6 +5990,10 @@ static inline const char* string_VkDescriptorPoolCreateFlagBits(VkDescriptorPool
             return "VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT";
         case VK_DESCRIPTOR_POOL_CREATE_HOST_ONLY_BIT_EXT:
             return "VK_DESCRIPTOR_POOL_CREATE_HOST_ONLY_BIT_EXT";
+        case VK_DESCRIPTOR_POOL_CREATE_ALLOW_OVERALLOCATION_SETS_BIT_NV:
+            return "VK_DESCRIPTOR_POOL_CREATE_ALLOW_OVERALLOCATION_SETS_BIT_NV";
+        case VK_DESCRIPTOR_POOL_CREATE_ALLOW_OVERALLOCATION_POOLS_BIT_NV:
+            return "VK_DESCRIPTOR_POOL_CREATE_ALLOW_OVERALLOCATION_POOLS_BIT_NV";
         default:
             return "Unhandled VkDescriptorPoolCreateFlagBits";
     }
@@ -7582,6 +7590,8 @@ static inline const char* string_VkVideoEncodeCapabilityFlagBitsKHR(VkVideoEncod
     switch (input_value) {
         case VK_VIDEO_ENCODE_CAPABILITY_PRECEDING_EXTERNALLY_ENCODED_BYTES_BIT_KHR:
             return "VK_VIDEO_ENCODE_CAPABILITY_PRECEDING_EXTERNALLY_ENCODED_BYTES_BIT_KHR";
+        case VK_VIDEO_ENCODE_CAPABILITY_INSUFFICIENT_BITSTREAM_BUFFER_RANGE_DETECTION_BIT_KHR:
+            return "VK_VIDEO_ENCODE_CAPABILITY_INSUFFICIENT_BITSTREAM_BUFFER_RANGE_DETECTION_BIT_KHR";
         default:
             return "Unhandled VkVideoEncodeCapabilityFlagBitsKHR";
     }
@@ -7952,6 +7962,10 @@ static inline const char* string_VkVideoEncodeH264StdFlagBitsEXT(VkVideoEncodeH2
             return "VK_VIDEO_ENCODE_H264_STD_DEBLOCKING_FILTER_ENABLED_BIT_EXT";
         case VK_VIDEO_ENCODE_H264_STD_DEBLOCKING_FILTER_PARTIAL_BIT_EXT:
             return "VK_VIDEO_ENCODE_H264_STD_DEBLOCKING_FILTER_PARTIAL_BIT_EXT";
+        case VK_VIDEO_ENCODE_H264_STD_SLICE_QP_DELTA_BIT_EXT:
+            return "VK_VIDEO_ENCODE_H264_STD_SLICE_QP_DELTA_BIT_EXT";
+        case VK_VIDEO_ENCODE_H264_STD_DIFFERENT_SLICE_QP_DELTA_BIT_EXT:
+            return "VK_VIDEO_ENCODE_H264_STD_DIFFERENT_SLICE_QP_DELTA_BIT_EXT";
         default:
             return "Unhandled VkVideoEncodeH264StdFlagBitsEXT";
     }
@@ -8095,6 +8109,10 @@ static inline const char* string_VkVideoEncodeH265StdFlagBitsEXT(VkVideoEncodeH2
             return "VK_VIDEO_ENCODE_H265_STD_DEPENDENT_SLICE_SEGMENTS_ENABLED_FLAG_SET_BIT_EXT";
         case VK_VIDEO_ENCODE_H265_STD_DEPENDENT_SLICE_SEGMENT_FLAG_SET_BIT_EXT:
             return "VK_VIDEO_ENCODE_H265_STD_DEPENDENT_SLICE_SEGMENT_FLAG_SET_BIT_EXT";
+        case VK_VIDEO_ENCODE_H265_STD_SLICE_QP_DELTA_BIT_EXT:
+            return "VK_VIDEO_ENCODE_H265_STD_SLICE_QP_DELTA_BIT_EXT";
+        case VK_VIDEO_ENCODE_H265_STD_DIFFERENT_SLICE_QP_DELTA_BIT_EXT:
+            return "VK_VIDEO_ENCODE_H265_STD_DIFFERENT_SLICE_QP_DELTA_BIT_EXT";
         default:
             return "Unhandled VkVideoEncodeH265StdFlagBitsEXT";
     }
