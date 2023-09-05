@@ -1,0 +1,18 @@
+# Copyright 2023 The Khronos Group Inc.
+# Copyright 2023 Valve Corporation
+# Copyright 2023 LunarG, Inc.
+#
+# SPDX-License-Identifier: Apache-2.0
+Checks: "-*,\
+google*,\
+readability-identifier-naming,\
+-google-readability-todo,\
+-google-readability-avoid-underscore-in-googletest-name,\
+-google-runtime-references,\
+"
+WarningsAsErrors: "*"
+HeaderFilterRegex: ".*"
+CheckOptions:
+  - { key: readability-identifier-naming.VariableCase,  value: lower_case }
+  - { key: readability-identifier-naming.GlobalConstantCase,  value: CamelCase }
+  - { key: readability-identifier-naming.GlobalConstantPrefix,  value: k }

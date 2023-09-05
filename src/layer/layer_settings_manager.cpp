@@ -79,7 +79,7 @@ static inline bool IsHighIntegrity() {
         DWORD buffer_size;
         if (GetTokenInformation(process_token, TokenIntegrityLevel, mandatory_label_buffer, sizeof(mandatory_label_buffer),
                                 &buffer_size) != 0) {
-            const TOKEN_MANDATORY_LABEL *mandatory_label = (const TOKEN_MANDATORY_LABEL *)mandatory_label_buffer;
+            const TOKEN_MANDATORY_LABEL *mandatory_label = reinterpret_cast<const TOKEN_MANDATORY_LABEL *>(mandatory_label_buffer);
             const DWORD sub_authority_count = *GetSidSubAuthorityCount(mandatory_label->Label.Sid);
             const DWORD integrity_level = *GetSidSubAuthority(mandatory_label->Label.Sid, sub_authority_count - 1);
 
@@ -150,17 +150,17 @@ std::filesystem::path LayerSettings::FindSettingsFile() {
         LSTATUS err = RegOpenKeyEx(hives[hive_index], TEXT("Software\\Khronos\\Vulkan\\Settings"), 0, KEY_READ, &key);
         if (err == ERROR_SUCCESS) {
             TCHAR name[2048];
-            DWORD i = 0, name_size, type, pValues, value_size;
+            DWORD i = 0, name_size, type, p_values, value_size;
             while (ERROR_SUCCESS == RegEnumValue(key, i++, name, &(name_size = sizeof(name)), nullptr, &type,
-                                                 reinterpret_cast<LPBYTE>(&pValues), &(value_size = sizeof(pValues)))) {
+                                                 reinterpret_cast<LPBYTE>(&p_values), &(value_size = sizeof(p_values)))) {
                 // Check if the registry entry is a dword with a value of zero
-                if (type != REG_DWORD || pValues != 0) {
+                if (type != REG_DWORD || p_values != 0) {
                     continue;
                 }
 
                 // Check if this actually points to a file
-                DWORD fileAttrib = GetFileAttributes(name);
-                if ((fileAttrib == INVALID_FILE_ATTRIBUTES) || (fileAttrib & FILE_ATTRIBUTE_DIRECTORY)) {
+                DWORD file_attrib = GetFileAttributes(name);
+                if ((file_attrib == INVALID_FILE_ATTRIBUTES) || (file_attrib & FILE_ATTRIBUTE_DIRECTORY)) {
                     continue;
                 }
 

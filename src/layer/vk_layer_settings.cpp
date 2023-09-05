@@ -25,7 +25,7 @@ void test_helper_SetLayerSetting(VlLayerSettingSet layerSettingSet, const char *
     assert(pSettingName != nullptr);
     assert(pValue != nullptr);
 
-    vl::LayerSettings *layer_setting_set = (vl::LayerSettings *)layerSettingSet;
+    vl::LayerSettings *layer_setting_set = reinterpret_cast<vl::LayerSettings *>(layerSettingSet);
 
     layer_setting_set->SetFileSetting(pSettingName, pValue);
 }
@@ -36,7 +36,7 @@ VkResult vlCreateLayerSettingSet(const char *pLayerName, const VkLayerSettingsCr
     (void)pAllocator;
 
     vl::LayerSettings* layer_setting_set = new vl::LayerSettings(pLayerName, pCreateInfo, pAllocator, pCallback);
-    *pLayerSettingSet = (VlLayerSettingSet)layer_setting_set;
+    *pLayerSettingSet = reinterpret_cast<VlLayerSettingSet>(layer_setting_set);
 
     return VK_SUCCESS;
 }
@@ -44,7 +44,7 @@ VkResult vlCreateLayerSettingSet(const char *pLayerName, const VkLayerSettingsCr
 void vlDestroyLayerSettingSet(VlLayerSettingSet layerSettingSet, const VkAllocationCallbacks *pAllocator) {
     (void)pAllocator;
 
-    vl::LayerSettings *layer_setting_set = (vl::LayerSettings*)layerSettingSet;
+    vl::LayerSettings *layer_setting_set = reinterpret_cast<vl::LayerSettings *>(layerSettingSet);
     delete layer_setting_set;
 }
 
@@ -53,7 +53,7 @@ VkBool32 vlHasLayerSetting(VlLayerSettingSet layerSettingSet, const char *pSetti
     assert(pSettingName);
     assert(!std::string(pSettingName).empty());
 
-    vl::LayerSettings *layer_setting_set = (vl::LayerSettings *)layerSettingSet;
+    vl::LayerSettings *layer_setting_set = reinterpret_cast<vl::LayerSettings *>(layerSettingSet);
 
     const bool has_env_setting = layer_setting_set->HasEnvSetting(pSettingName);
     const bool has_file_setting = layer_setting_set->HasFileSetting(pSettingName);
@@ -79,7 +79,7 @@ VkResult vlGetLayerSettingValues(VlLayerSettingSet layerSettingSet, const char *
         return VK_ERROR_UNKNOWN;
     }
 
-    vl::LayerSettings *layer_setting_set = (vl::LayerSettings *)layerSettingSet;
+    vl::LayerSettings *layer_setting_set = reinterpret_cast<vl::LayerSettings *>(layerSettingSet);
 
     // First: search in the environment variables
     const std::string &env_setting_list = layer_setting_set->GetEnvSetting(pSettingName);
@@ -589,9 +589,9 @@ VkResult vlGetLayerSettingValues(VlLayerSettingSet layerSettingSet, const char *
                             break;
                         case VK_LAYER_SETTING_TYPE_UINT32_EXT:
                             for (std::size_t i = 0, n = settings_cache.size(); i < n; ++i) {
-                                const VlFrameset *asFramesets = static_cast<const VlFrameset *>(api_setting->pValues);
-                                settings_cache[i] = vl::FormatString("%d-%d-%d",
-                                    asFramesets[i].first, asFramesets[i].count, asFramesets[i].step);
+                                const VlFrameset *as_framesets = static_cast<const VlFrameset *>(api_setting->pValues);
+                                settings_cache[i] = vl::FormatString("%d-%d-%d", as_framesets[i].first, as_framesets[i].count,
+                                                                     as_framesets[i].step);
                             }
                             break;
                         default:

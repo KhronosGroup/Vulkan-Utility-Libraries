@@ -41,10 +41,10 @@ std::string GetFileSettingName(const char *pLayerName, const char *pSettingName)
     assert(pLayerName != nullptr);
     assert(pSettingName != nullptr);
 
-    std::stringstream settingName;
-    settingName << vl::ToLower(TrimPrefix(pLayerName)) << "." << pSettingName;
+    std::stringstream setting_name;
+    setting_name << vl::ToLower(TrimPrefix(pLayerName)) << "." << pSettingName;
 
-    return settingName.str();
+    return setting_name.str();
 }
 
 std::string GetEnvSettingName(const char *layer_key, const char *setting_key, TrimMode trim_mode) {
@@ -145,7 +145,7 @@ std::string TrimVendor(const std::string &layer_key) {
 std::string ToLower(const std::string &s) {
     std::string result = s;
     for (auto &c : result) {
-        c = (char)std::tolower(c);
+        c = static_cast<char>(std::tolower(c));
     }
     return result;
 }
@@ -153,7 +153,7 @@ std::string ToLower(const std::string &s) {
 std::string ToUpper(const std::string &s) {
     std::string result = s;
     for (auto &c : result) {
-        c = (char)std::toupper(c);
+        c = static_cast<char>(std::toupper(c));
     }
     return result;
 }
@@ -230,34 +230,34 @@ std::vector<VlFrameset> ToFrameSets(const std::string &s) {
 }
 
 bool IsFrameSets(const std::string &s) {
-    static const std::regex FRAME_REGEX("^([0-9]+([-][0-9]+){0,2})(,([0-9]+([-][0-9]+){0,2}))*$");
+    static const std::regex frame_regex("^([0-9]+([-][0-9]+){0,2})(,([0-9]+([-][0-9]+){0,2}))*$");
 
-    return std::regex_search(s, FRAME_REGEX);
+    return std::regex_search(s, frame_regex);
 }
 
 bool IsInteger(const std::string &s) {
-    static const std::regex FRAME_REGEX("^-?([0-9]*|0x[0-9|a-z|A-Z]*)$");
+    static const std::regex frame_regex("^-?([0-9]*|0x[0-9|a-z|A-Z]*)$");
 
-    return std::regex_search(s, FRAME_REGEX);
+    return std::regex_search(s, frame_regex);
 }
 
 bool IsFloat(const std::string &s) {
-    static const std::regex FRAME_REGEX("^-?[0-9]*([.][0-9]*f?)?$");
+    static const std::regex frame_regex("^-?[0-9]*([.][0-9]*f?)?$");
 
-    return std::regex_search(s, FRAME_REGEX);
+    return std::regex_search(s, frame_regex);
 }
 
 std::string FormatString(const char *message, ...) {
-    std::size_t const STRING_BUFFER(4096);
+    std::size_t const string_buffer(4096);
 
     assert(message != nullptr);
-    assert(strlen(message) >= 1 && strlen(message) < STRING_BUFFER);
+    assert(strlen(message) >= 1 && strlen(message) < string_buffer);
 
-    char buffer[STRING_BUFFER];
+    char buffer[string_buffer];
     va_list list;
 
     va_start(list, message);
-    vsnprintf(buffer, STRING_BUFFER, message, list);
+    vsnprintf(buffer, string_buffer, message, list);
     va_end(list);
 
     return buffer;

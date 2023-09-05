@@ -31,6 +31,15 @@ if (VUL_WERROR)
     endif()
 endif()
 
+option(VVL_CLANG_TIDY "Use clang-tidy")
+if (VUL_CLANG_TIDY)
+    find_program(CLANG_TIDY NAMES clang-tidy)
+    if(NOT CLANG_TIDY)
+        message(FATAL_ERROR "clang-tidy not found!")
+    endif()
+    set(CMAKE_CXX_CLANG_TIDY "${CLANG_TIDY}")
+endif()
+
 if(${CMAKE_CXX_COMPILER_ID} MATCHES "(GNU|Clang)")
     add_compile_options(
         -Wall

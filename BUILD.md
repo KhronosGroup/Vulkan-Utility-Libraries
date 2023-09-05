@@ -42,8 +42,6 @@ cd build/
 ctest -C Debug --parallel 8 --output-on-failure
 ```
 
-## CMake
-
 ### Warnings as errors off by default!
 
 By default `VUL_WERROR` is `OFF`
@@ -55,3 +53,9 @@ System package managers, and language package managers have to build on multiple
 By defaulting to `ON` we cause issues for package managers since there is no standard way to disable warnings until CMake 3.24
 
 Add `-D VUL_WERROR=ON` to your workflow. Or use the `dev` preset shown below which will also enabling warnings as errors.
+
+### clang-tidy
+
+By default clang-tidy checking is disabled by default.
+
+To enable it set `VUL_CLANG_TIDY` to `ON`. clang-tidy is required to pass CI.

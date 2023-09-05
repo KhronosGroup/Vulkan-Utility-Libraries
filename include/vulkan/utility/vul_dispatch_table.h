@@ -12,6 +12,8 @@
 
 #include <string.h>
 
+// NOLINTBEGIN(google-readability-casting)
+
 typedef PFN_vkVoidFunction(VKAPI_PTR *PFN_GetPhysicalDeviceProcAddr)(VkInstance instance, const char *pName);
 
 // Instance function pointer dispatch table
@@ -1573,3 +1575,4 @@ static inline void vulInitInstanceDispatchTable(VkInstance instance, VulInstance
 #endif  // VK_USE_PLATFORM_SCREEN_QNX
     table->GetPhysicalDeviceOpticalFlowImageFormatsNV = (PFN_vkGetPhysicalDeviceOpticalFlowImageFormatsNV)gipa(instance, "vkGetPhysicalDeviceOpticalFlowImageFormatsNV");
 }
+// NOLINTEND(google-readability-casting)

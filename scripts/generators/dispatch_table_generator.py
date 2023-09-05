@@ -31,6 +31,8 @@ class DispatchTableOutputGenerator(BaseGenerator):
 
 #include <string.h>
 
+// NOLINTBEGIN(google-readability-casting)
+
 typedef PFN_vkVoidFunction(VKAPI_PTR *PFN_GetPhysicalDeviceProcAddr)(VkInstance instance, const char *pName);
 ''')
         out.append('''
@@ -88,6 +90,8 @@ static inline void vulInitInstanceDispatchTable(VkInstance instance, VulInstance
             out.extend([f'#ifdef {command.protect}\n'] if command.protect else [])
             out.append(f'    table->{command.name[2:]} = (PFN_{command.name})gipa(instance, "{command.name}");\n')
             out.extend([f'#endif  // {command.protect}\n'] if command.protect else [])
-        out.append('}')
+        out.append('}\n')
+
+        out.append("// NOLINTEND(google-readability-casting)")
 
         self.write("".join(out))

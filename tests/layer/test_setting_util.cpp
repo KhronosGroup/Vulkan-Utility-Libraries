@@ -12,56 +12,56 @@
 #include <vulkan/vulkan.h>
 
 TEST(test_layer_settings_util, FindSettingsInChain_found_first) {
-    VkDebugReportCallbackCreateInfoEXT debugReportCallbackCreateInfo{};
-    debugReportCallbackCreateInfo.sType = VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT;
+    VkDebugReportCallbackCreateInfoEXT debug_report_callback_create_info{};
+    debug_report_callback_create_info.sType = VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT;
 
-    VkLayerSettingsCreateInfoEXT layerSettingsCreateInfo{};
-    layerSettingsCreateInfo.sType = VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT;
-    layerSettingsCreateInfo.pNext = &debugReportCallbackCreateInfo;
+    VkLayerSettingsCreateInfoEXT layer_settings_create_info{};
+    layer_settings_create_info.sType = VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT;
+    layer_settings_create_info.pNext = &debug_report_callback_create_info;
 
-    VkInstanceCreateInfo instanceCreateInfo{};
-    instanceCreateInfo.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
-    instanceCreateInfo.pNext = &layerSettingsCreateInfo;
+    VkInstanceCreateInfo instance_create_info{};
+    instance_create_info.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
+    instance_create_info.pNext = &layer_settings_create_info;
 
-    EXPECT_EQ(&layerSettingsCreateInfo, vlFindLayerSettingsCreateInfo(&instanceCreateInfo));
+    EXPECT_EQ(&layer_settings_create_info, vlFindLayerSettingsCreateInfo(&instance_create_info));
 }
 
 TEST(test_layer_settings_util, FindSettingsInChain_found_last) {
-    VkLayerSettingsCreateInfoEXT layerSettingsCreateInfo{};
-    layerSettingsCreateInfo.sType = VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT;
+    VkLayerSettingsCreateInfoEXT layer_settings_create_info{};
+    layer_settings_create_info.sType = VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT;
 
-    VkDebugReportCallbackCreateInfoEXT debugReportCallbackCreateInfo{};
-    debugReportCallbackCreateInfo.sType = VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT;
-    debugReportCallbackCreateInfo.pNext = &layerSettingsCreateInfo;
+    VkDebugReportCallbackCreateInfoEXT debug_report_callback_create_info{};
+    debug_report_callback_create_info.sType = VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT;
+    debug_report_callback_create_info.pNext = &layer_settings_create_info;
 
-    VkInstanceCreateInfo instanceCreateInfo{};
-    instanceCreateInfo.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
-    instanceCreateInfo.pNext = &debugReportCallbackCreateInfo;
+    VkInstanceCreateInfo instance_create_info{};
+    instance_create_info.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
+    instance_create_info.pNext = &debug_report_callback_create_info;
 
-    EXPECT_EQ(&layerSettingsCreateInfo, vlFindLayerSettingsCreateInfo(&instanceCreateInfo));
+    EXPECT_EQ(&layer_settings_create_info, vlFindLayerSettingsCreateInfo(&instance_create_info));
 }
 
 TEST(test_layer_settings_util, FindSettingsInChain_found_not) {
-    VkDebugReportCallbackCreateInfoEXT debugReportCallbackCreateInfo{};
-    debugReportCallbackCreateInfo.sType = VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT;
+    VkDebugReportCallbackCreateInfoEXT debug_report_callback_create_info{};
+    debug_report_callback_create_info.sType = VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT;
 
-    VkInstanceCreateInfo instanceCreateInfo{};
-    instanceCreateInfo.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
-    instanceCreateInfo.pNext = &debugReportCallbackCreateInfo;
+    VkInstanceCreateInfo instance_create_info{};
+    instance_create_info.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
+    instance_create_info.pNext = &debug_report_callback_create_info;
 
-    EXPECT_EQ(nullptr, vlFindLayerSettingsCreateInfo(&instanceCreateInfo));
+    EXPECT_EQ(nullptr, vlFindLayerSettingsCreateInfo(&instance_create_info));
 }
 
 TEST(test_layer_settings_util, FindDelimiter) {
-    char A = vl::FindDelimiter("VALUE_A,VALUE_B");
-    EXPECT_EQ(',', A);
+    char a = vl::FindDelimiter("VALUE_A,VALUE_B");
+    EXPECT_EQ(',', a);
 
 #ifdef WIN32
     char B = vl::FindDelimiter("VALUE_A;VALUE_B");
     EXPECT_EQ(';', B);
 #else
-    char C = vl::FindDelimiter("VALUE_A:VALUE_B");
-    EXPECT_EQ(':', C);
+    char c = vl::FindDelimiter("VALUE_A:VALUE_B");
+    EXPECT_EQ(':', c);
 #endif
 
     EXPECT_EQ(',', vl::FindDelimiter("VALUE_A"));
@@ -72,24 +72,24 @@ TEST(test_layer_settings_util, FindDelimiter) {
 }
 
 TEST(test_layer_settings_util, Split_1Value) {
-    std::string pValues("VALUE_A");
-    std::vector<std::string> reault = vl::Split(pValues, ',');
+    std::string p_values("VALUE_A");
+    std::vector<std::string> reault = vl::Split(p_values, ',');
 
     EXPECT_EQ(1, reault.size());
     EXPECT_STREQ("VALUE_A", reault[0].c_str());
 }
 
 TEST(test_layer_settings_util, Split_1Value_ExtraComma) {
-    std::string pValues("VALUE_A,");
-    std::vector<std::string> reault = vl::Split(pValues, ',');
+    std::string p_values("VALUE_A,");
+    std::vector<std::string> reault = vl::Split(p_values, ',');
 
     EXPECT_EQ(1, reault.size());
     EXPECT_STREQ("VALUE_A", reault[0].c_str());
 }
 
 TEST(test_layer_settings_util, Split_2Values) {
-    std::string pValues("VALUE_A,VALUE_B");
-    std::vector<std::string> reault = vl::Split(pValues, ',');
+    std::string p_values("VALUE_A,VALUE_B");
+    std::vector<std::string> reault = vl::Split(p_values, ',');
 
     EXPECT_EQ(2, reault.size());
     EXPECT_STREQ("VALUE_A", reault[0].c_str());
@@ -97,8 +97,8 @@ TEST(test_layer_settings_util, Split_2Values) {
 }
 
 TEST(test_layer_settings_util, Split_2Values_ExtraComma) {
-    std::string pValues("VALUE_A,VALUE_B,");
-    std::vector<std::string> reault = vl::Split(pValues, ',');
+    std::string p_values("VALUE_A,VALUE_B,");
+    std::vector<std::string> reault = vl::Split(p_values, ',');
 
     EXPECT_EQ(2, reault.size());
     EXPECT_STREQ("VALUE_A", reault[0].c_str());
@@ -106,59 +106,59 @@ TEST(test_layer_settings_util, Split_2Values_ExtraComma) {
 }
 
 TEST(test_layer_settings_util, Split_2Values_WrongSeparator) {
-    std::string pValues("VALUE_A,VALUE_B");
-    std::vector<std::string> reault = vl::Split(pValues, ';');
+    std::string p_values("VALUE_A,VALUE_B");
+    std::vector<std::string> reault = vl::Split(p_values, ';');
 
     EXPECT_EQ(1, reault.size());
     EXPECT_STREQ("VALUE_A,VALUE_B", reault[0].c_str());
 }
 
 TEST(test_layer_settings_util, Split_0Value) {
-    std::string pValues("");
-    std::vector<std::string> result = vl::Split(pValues, ',');
+    std::string p_values("");
+    std::vector<std::string> result = vl::Split(p_values, ',');
 
     EXPECT_EQ(0, result.size());
 }
 
 TEST(test_layer_settings_util, TrimWhitespace_NoWhitespace) {
-    std::string pValues("VALUE_A-VALUE_B");
-    std::string result = vl::TrimWhitespace(pValues);
+    std::string p_values("VALUE_A-VALUE_B");
+    std::string result = vl::TrimWhitespace(p_values);
 
     EXPECT_STREQ("VALUE_A-VALUE_B", result.c_str());
 }
 
 TEST(test_layer_settings_util, TrimWhitespace_space) {
     {
-        const std::string pValues("VALUE_A ");
-        const std::string result = vl::TrimWhitespace(pValues);
+        const std::string p_values("VALUE_A ");
+        const std::string result = vl::TrimWhitespace(p_values);
 
         EXPECT_STREQ("VALUE_A", result.c_str());
     }
 
     {
-        const std::string pValues(" VALUE_A");
-        const std::string result = vl::TrimWhitespace(pValues);
+        const std::string p_values(" VALUE_A");
+        const std::string result = vl::TrimWhitespace(p_values);
 
         EXPECT_STREQ("VALUE_A", result.c_str());
     }
 
     {
-        const std::string pValues(" VALUE_A ");
-        const std::string result = vl::TrimWhitespace(pValues);
+        const std::string p_values(" VALUE_A ");
+        const std::string result = vl::TrimWhitespace(p_values);
 
         EXPECT_STREQ("VALUE_A", result.c_str());
     }
 
     {
-        const std::string pValues("VALUE A");
-        const std::string result = vl::TrimWhitespace(pValues);
+        const std::string p_values("VALUE A");
+        const std::string result = vl::TrimWhitespace(p_values);
 
         EXPECT_STREQ("VALUE A", result.c_str());
     }
 
     {
-        const std::string pValues(" VALUE A ");
-        const std::string result = vl::TrimWhitespace(pValues);
+        const std::string p_values(" VALUE A ");
+        const std::string result = vl::TrimWhitespace(p_values);
 
         EXPECT_STREQ("VALUE A", result.c_str());
     }
@@ -166,36 +166,36 @@ TEST(test_layer_settings_util, TrimWhitespace_space) {
 
 TEST(test_layer_settings_util, TrimWhitespace_Whitespace) {
     {
-        const std::string pValues("VALUE_A\n");
-        const std::string result = vl::TrimWhitespace(pValues);
+        const std::string p_values("VALUE_A\n");
+        const std::string result = vl::TrimWhitespace(p_values);
 
         EXPECT_STREQ("VALUE_A", result.c_str());
     }
 
     {
-        const std::string pValues("\f\tVALUE_A");
-        const std::string result = vl::TrimWhitespace(pValues);
+        const std::string p_values("\f\tVALUE_A");
+        const std::string result = vl::TrimWhitespace(p_values);
 
         EXPECT_STREQ("VALUE_A", result.c_str());
     }
 
     {
-        const std::string pValues("\t\vVALUE_A\n\r");
-        const std::string result = vl::TrimWhitespace(pValues);
+        const std::string p_values("\t\vVALUE_A\n\r");
+        const std::string result = vl::TrimWhitespace(p_values);
 
         EXPECT_STREQ("VALUE_A", result.c_str());
     }
 
     {
-        const std::string pValues("VALUE\tA\f");
-        const std::string result = vl::TrimWhitespace(pValues);
+        const std::string p_values("VALUE\tA\f");
+        const std::string result = vl::TrimWhitespace(p_values);
 
         EXPECT_STREQ("VALUE\tA", result.c_str());
     }
 
     {
-        const std::string pValues("\f\tVALUE\tA\t\f");
-        const std::string result = vl::TrimWhitespace(pValues);
+        const std::string p_values("\f\tVALUE\tA\t\f");
+        const std::string result = vl::TrimWhitespace(p_values);
 
         EXPECT_STREQ("VALUE\tA", result.c_str());
     }
@@ -203,29 +203,29 @@ TEST(test_layer_settings_util, TrimWhitespace_Whitespace) {
 
 TEST(test_layer_settings_util, TrimPrefix) {
     {
-        const std::string pValues("VK_LAYER_LUNARG_test");
-        const std::string result = vl::TrimPrefix(pValues);
+        const std::string p_values("VK_LAYER_LUNARG_test");
+        const std::string result = vl::TrimPrefix(p_values);
 
         EXPECT_STREQ("LUNARG_test", result.c_str());
     }
 
     {
-        const std::string pValues("VK_LAYER_LUNARG_test_pouet");
-        const std::string result = vl::TrimPrefix(pValues);
+        const std::string p_values("VK_LAYER_LUNARG_test_pouet");
+        const std::string result = vl::TrimPrefix(p_values);
 
         EXPECT_STREQ("LUNARG_test_pouet", result.c_str());
     }
 
     {
-        const std::string pValues("VK_LAYER_LUNARG_test_POUET");
-        const std::string result = vl::TrimPrefix(pValues);
+        const std::string p_values("VK_LAYER_LUNARG_test_POUET");
+        const std::string result = vl::TrimPrefix(p_values);
 
         EXPECT_STREQ("LUNARG_test_POUET", result.c_str());
     }
 
     {
-        const std::string pValues("VK_LAYER_lunarg_test_POUET");
-        const std::string result = vl::TrimPrefix(pValues);
+        const std::string p_values("VK_LAYER_lunarg_test_POUET");
+        const std::string result = vl::TrimPrefix(p_values);
 
         EXPECT_STREQ("lunarg_test_POUET", result.c_str());
     }
@@ -233,29 +233,29 @@ TEST(test_layer_settings_util, TrimPrefix) {
 
 TEST(test_layer_settings_util, TrimVendor) {
     {
-        const std::string pValues("VK_LAYER_LUNARG_test");
-        const std::string result = vl::TrimVendor(pValues);
+        const std::string p_values("VK_LAYER_LUNARG_test");
+        const std::string result = vl::TrimVendor(p_values);
 
         EXPECT_STREQ("test", result.c_str());
     }
 
     {
-        const std::string pValues("VK_LAYER_LUNARG_test_pouet");
-        const std::string result = vl::TrimVendor(pValues);
+        const std::string p_values("VK_LAYER_LUNARG_test_pouet");
+        const std::string result = vl::TrimVendor(p_values);
 
         EXPECT_STREQ("test_pouet", result.c_str());
     }
 
     {
-        const std::string pValues("VK_LAYER_LUNARG_test_POUET");
-        const std::string result = vl::TrimVendor(pValues);
+        const std::string p_values("VK_LAYER_LUNARG_test_POUET");
+        const std::string result = vl::TrimVendor(p_values);
 
         EXPECT_STREQ("test_POUET", result.c_str());
     }
 
     {
-        const std::string pValues("VK_LAYER_lunarg_test_POUET");
-        const std::string result = vl::TrimVendor(pValues);
+        const std::string p_values("VK_LAYER_lunarg_test_POUET");
+        const std::string result = vl::TrimVendor(p_values);
 
         EXPECT_STREQ("test_POUET", result.c_str());
     }

@@ -13,6 +13,23 @@ on:
             - main
 
 jobs:
+  clang_tidy:
+    runs-on:  ${{matrix.os}}
+    strategy:
+      matrix:
+        os: [ ubuntu-22.04, windows-2022 ]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.8'
+      - uses: ilammy/msvc-dev-cmd@v1
+      - uses: lukka/get-cmake@latest
+      - name: Configure
+        run: cmake -S. -B build -D VUL_CLANG_TIDY=ON -D VUL_WERROR=ON -D BUILD_TESTS=ON -D CMAKE_BUILD_TYPE=Release -D UPDATE_DEPS=ON -G "Ninja"
+      - name: Build
+        run: cmake --build build --verbose
+
   build_and_test:
     runs-on: ${{matrix.os}}
     strategy:

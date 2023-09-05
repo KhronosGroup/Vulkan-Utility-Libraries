@@ -23,9 +23,9 @@ static std::string Merge(const std::vector<std::string> &strings) {
 
 void vlGetLayerSettingValue(VlLayerSettingSet layerSettingSet, const char *pSettingName, bool &settingValue) {
     uint32_t value_count = 1;
-    VkBool32 pValues;
-    vlGetLayerSettingValues(layerSettingSet, pSettingName, VL_LAYER_SETTING_TYPE_BOOL32, &value_count, &pValues);
-    settingValue = pValues == VK_TRUE;
+    VkBool32 p_values;
+    vlGetLayerSettingValues(layerSettingSet, pSettingName, VL_LAYER_SETTING_TYPE_BOOL32, &value_count, &p_values);
+    settingValue = p_values == VK_TRUE;
 }
 
 void vlGetLayerSettingValues(VlLayerSettingSet layerSettingSet, const char *pSettingName, std::vector<bool> &settingValues) {
