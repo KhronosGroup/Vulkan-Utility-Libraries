@@ -125,6 +125,8 @@ VkResult vlGetLayerSettingValues(VlLayerSettingSet layerSettingSet, const char *
                             values[i] = (std::atoi(setting_value.c_str()) != 0) ? VK_TRUE : VK_FALSE;
                         } else if (setting_value == "true" || setting_value == "false") {
                             values[i] = (setting_value == "true") ? VK_TRUE : VK_FALSE;
+                        } else if (setting_value == "on" || setting_value == "off") {
+                            values[i] = (setting_value == "on") ? VK_TRUE : VK_FALSE;
                         } else {
                             const std::string &message =
                                 vl::FormatString("The data provided (%s) is not a boolean value.", setting_value.c_str());
