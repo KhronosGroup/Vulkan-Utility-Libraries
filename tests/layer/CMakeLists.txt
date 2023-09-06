@@ -12,6 +12,8 @@ include(GoogleTest)
 # test_layer_setting_util
 add_executable(test_layer_settings_util)
 
+lunarg_target_compiler_configurations(test_layer_settings_util VUL_WERROR)
+
 target_include_directories(test_layer_settings_util PRIVATE
     ${CMAKE_SOURCE_DIR}/src/layer
 )
@@ -31,6 +33,8 @@ gtest_discover_tests(test_layer_settings_util)
 
 # test_layer_setting_api
 add_executable(test_layer_settings_api)
+
+lunarg_target_compiler_configurations(test_layer_settings_api VUL_WERROR)
 
 target_include_directories(test_layer_settings_api PRIVATE
     ${CMAKE_SOURCE_DIR}/src/layer
@@ -52,6 +56,8 @@ gtest_discover_tests(test_layer_settings_api)
 # test_layer_setting_cpp
 add_executable(test_layer_settings_cpp)
 
+lunarg_target_compiler_configurations(test_layer_settings_cpp VUL_WERROR)
+
 target_include_directories(test_layer_settings_cpp PRIVATE
     ${CMAKE_SOURCE_DIR}/src/layer
 )
@@ -71,6 +77,8 @@ gtest_discover_tests(test_layer_settings_cpp)
 
 # test_layer_setting_env
 add_executable(test_layer_settings_env)
+
+lunarg_target_compiler_configurations(test_layer_settings_env VUL_WERROR)
 
 target_include_directories(test_layer_settings_env PRIVATE
     ${CMAKE_SOURCE_DIR}/src/layer
@@ -92,6 +100,8 @@ gtest_discover_tests(test_layer_settings_env)
 # test_layer_setting_file
 add_executable(test_layer_setting_file)
 
+lunarg_target_compiler_configurations(test_layer_setting_file VUL_WERROR)
+
 target_include_directories(test_layer_setting_file PRIVATE
     ${CMAKE_SOURCE_DIR}/src/layer
 )
@@ -111,6 +121,8 @@ gtest_discover_tests(test_layer_setting_file)
 
 # test_layer_setting_cast
 add_executable(test_layer_setting_cast)
+
+lunarg_target_compiler_configurations(test_layer_setting_cast VUL_WERROR)
 
 target_include_directories(test_layer_setting_cast PRIVATE
     ${CMAKE_SOURCE_DIR}/src/layer

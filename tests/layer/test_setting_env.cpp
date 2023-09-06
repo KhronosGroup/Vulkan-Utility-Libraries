@@ -6,14 +6,23 @@
 //
 // Author(s):
 // - Christophe Riccio <christophe@lunarg.com>
+
 #include <gtest/gtest.h>
 
 #include "vulkan/layer/vk_layer_settings.h"
 #include <vector>
 #include <cstdlib>
 
+static void SetEnv(const char* value) {
+#ifdef _WIN32
+    _putenv(value);
+#else
+    putenv(const_cast<char *>(value));
+#endif
+}
+
 TEST(test_layer_setting_env, EnvVar_TrimNone) {
-    putenv(const_cast<char *>("VK_LUNARG_TEST_MY_SETTING_A=true,false"));
+    SetEnv("VK_LUNARG_TEST_MY_SETTING_A=true,false");
 
     VlLayerSettingSet layerSettingSet = VK_NULL_HANDLE;
     vlCreateLayerSettingSet("VK_LAYER_LUNARG_test", nullptr, nullptr, nullptr, &layerSettingSet);
@@ -38,7 +47,7 @@ TEST(test_layer_setting_env, EnvVar_TrimNone) {
 }
 
 TEST(test_layer_setting_env, EnvVar_TrimVendor) {
-    putenv(const_cast<char *>("VK_TEST_MY_SETTING_B=true,false"));
+    SetEnv("VK_TEST_MY_SETTING_B=true,false");
 
     VlLayerSettingSet layerSettingSet = VK_NULL_HANDLE;
     vlCreateLayerSettingSet("VK_LAYER_LUNARG_test", nullptr, nullptr, nullptr, &layerSettingSet);
@@ -63,7 +72,7 @@ TEST(test_layer_setting_env, EnvVar_TrimVendor) {
 }
 
 TEST(test_layer_setting_env, EnvVar_TrimNamespace) {
-    putenv(const_cast<char *>("VK_MY_SETTING_C=true,false"));
+    SetEnv("VK_MY_SETTING_C=true,false");
 
     VlLayerSettingSet layerSettingSet = VK_NULL_HANDLE;
     vlCreateLayerSettingSet("VK_LAYER_LUNARG_test", nullptr, nullptr, nullptr, &layerSettingSet);
@@ -88,7 +97,7 @@ TEST(test_layer_setting_env, EnvVar_TrimNamespace) {
 }
 
 TEST(test_layer_setting_env, vlGetLayerSettingValues_Bool) {
-    putenv(const_cast<char *>("VK_LUNARG_TEST_MY_SETTING=true,false"));
+    SetEnv("VK_LUNARG_TEST_MY_SETTING=true,false");
 
     VlLayerSettingSet layerSettingSet = VK_NULL_HANDLE;
     vlCreateLayerSettingSet("VK_LAYER_LUNARG_test", nullptr, nullptr, nullptr, &layerSettingSet);
@@ -123,7 +132,7 @@ TEST(test_layer_setting_env, vlGetLayerSettingValues_Bool) {
 }
 
 TEST(test_layer_setting_env, vlGetLayerSettingValues_Int32) {
-    putenv(const_cast<char *>("VK_LUNARG_TEST_MY_SETTING=76,-82"));
+    SetEnv("VK_LUNARG_TEST_MY_SETTING=76,-82");
 
     VlLayerSettingSet layerSettingSet = VK_NULL_HANDLE;
     vlCreateLayerSettingSet("VK_LAYER_LUNARG_test", nullptr, nullptr, nullptr, &layerSettingSet);
@@ -158,7 +167,7 @@ TEST(test_layer_setting_env, vlGetLayerSettingValues_Int32) {
 }
 
 TEST(test_layer_setting_env, vlGetLayerSettingValues_Int64) {
-    putenv(const_cast<char *>("VK_LUNARG_TEST_MY_SETTING=76,-82"));
+    SetEnv("VK_LUNARG_TEST_MY_SETTING=76,-82");
 
     VlLayerSettingSet layerSettingSet = VK_NULL_HANDLE;
     vlCreateLayerSettingSet("VK_LAYER_LUNARG_test", nullptr, nullptr, nullptr, &layerSettingSet);
@@ -193,7 +202,7 @@ TEST(test_layer_setting_env, vlGetLayerSettingValues_Int64) {
 }
 
 TEST(test_layer_setting_env, vlGetLayerSettingValues_Uint32) {
-    putenv(const_cast<char *>("VK_LUNARG_TEST_MY_SETTING=76,82"));
+    SetEnv("VK_LUNARG_TEST_MY_SETTING=76,82");
 
     VlLayerSettingSet layerSettingSet = VK_NULL_HANDLE;
     vlCreateLayerSettingSet("VK_LAYER_LUNARG_test", nullptr, nullptr, nullptr, &layerSettingSet);
@@ -228,7 +237,7 @@ TEST(test_layer_setting_env, vlGetLayerSettingValues_Uint32) {
 }
 
 TEST(test_layer_setting_env, vlGetLayerSettingValues_Uint64) {
-    putenv(const_cast<char *>("VK_LUNARG_TEST_MY_SETTING=76,82"));
+    SetEnv("VK_LUNARG_TEST_MY_SETTING=76,82");
 
     VlLayerSettingSet layerSettingSet = VK_NULL_HANDLE;
     vlCreateLayerSettingSet("VK_LAYER_LUNARG_test", nullptr, nullptr, nullptr, &layerSettingSet);
@@ -263,7 +272,7 @@ TEST(test_layer_setting_env, vlGetLayerSettingValues_Uint64) {
 }
 
 TEST(test_layer_setting_env, vlGetLayerSettingValues_Float) {
-    putenv(const_cast<char *>("VK_LUNARG_TEST_MY_SETTING=76.1f,-82.5f"));
+    SetEnv("VK_LUNARG_TEST_MY_SETTING=76.1f,-82.5f");
 
     VlLayerSettingSet layerSettingSet = VK_NULL_HANDLE;
     vlCreateLayerSettingSet("VK_LAYER_LUNARG_test", nullptr, nullptr, nullptr, &layerSettingSet);
@@ -297,7 +306,7 @@ TEST(test_layer_setting_env, vlGetLayerSettingValues_Float) {
 }
 
 TEST(test_layer_setting_env, vlGetLayerSettingValues_Double) {
-    putenv(const_cast<char *>("VK_LUNARG_TEST_MY_SETTING=76.1,-82.5"));
+    SetEnv("VK_LUNARG_TEST_MY_SETTING=76.1,-82.5");
 
     VlLayerSettingSet layerSettingSet = VK_NULL_HANDLE;
     vlCreateLayerSettingSet("VK_LAYER_LUNARG_test", nullptr, nullptr, nullptr, &layerSettingSet);
@@ -331,7 +340,7 @@ TEST(test_layer_setting_env, vlGetLayerSettingValues_Double) {
 }
 
 TEST(test_layer_setting_env, vlGetLayerSettingValues_Frameset) {
-    putenv(const_cast<char *>("VK_LUNARG_TEST_MY_SETTING=76-100-10,1-100-1"));
+    SetEnv("VK_LUNARG_TEST_MY_SETTING=76-100-10,1-100-1");
 
     VlLayerSettingSet layerSettingSet = VK_NULL_HANDLE;
     vlCreateLayerSettingSet("VK_LAYER_LUNARG_test", nullptr, nullptr, nullptr, &layerSettingSet);
@@ -371,7 +380,7 @@ TEST(test_layer_setting_env, vlGetLayerSettingValues_Frameset) {
 }
 
 TEST(test_layer_setting_env, vlGetLayerSettingValues_String) {
-    putenv(const_cast<char *>("VK_LUNARG_TEST_MY_SETTING=VALUE_A,VALUE_B"));
+    SetEnv("VK_LUNARG_TEST_MY_SETTING=VALUE_A,VALUE_B");
 
     VlLayerSettingSet layerSettingSet = VK_NULL_HANDLE;
     vlCreateLayerSettingSet("VK_LAYER_LUNARG_test", nullptr, nullptr, nullptr, &layerSettingSet);
