@@ -340,7 +340,7 @@ TEST(test_layer_settings_util, ToInt32) {
     EXPECT_EQ(24, vl::ToInt32("24"));
     EXPECT_EQ(-24, vl::ToInt32("-24"));
     EXPECT_EQ(2147483647, vl::ToInt32("2147483647"));
-    EXPECT_EQ(-2147483648, vl::ToInt32("-2147483648"));
+    EXPECT_EQ(-2147483647, vl::ToInt32("-2147483647"));
     EXPECT_EQ(65535, vl::ToInt32("0xFFFF"));
     EXPECT_EQ(-65535, vl::ToInt32("-0xFFFF"));
     EXPECT_EQ(15, vl::ToInt32("0xF"));

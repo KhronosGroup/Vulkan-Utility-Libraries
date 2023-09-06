@@ -351,7 +351,7 @@ VkResult vlGetLayerSettingValues(VlLayerSettingSet layerSettingSet, const char *
                     for (std::size_t i = 0, n = values.size(); i < n; ++i) {
                         const std::string &setting_value = vl::ToLower(settings[i]);
                         if (vl::IsFloat(setting_value)) {
-                            values[i] = std::atof(setting_value.c_str());
+                            values[i] = static_cast<float>(std::atof(setting_value.c_str()));
                         } else {
                             const std::string &message =
                                 vl::FormatString("The data provided (%s) is not a floating-point value.", setting_value.c_str());

@@ -24,22 +24,6 @@ add_subdirectory(scripts)
 find_package(VulkanHeaders CONFIG QUIET)
 
 option(VUL_WERROR "Treat compiler warnings as errors")
-if (VUL_WERROR)
-    add_compile_options("$<IF:$<CXX_COMPILER_ID:MSVC>,/WX,-Werror>")
-    if (MSVC)
-        add_link_options(/WX)
-    endif()
-endif()
-
-if(${CMAKE_CXX_COMPILER_ID} MATCHES "(GNU|Clang)")
-    add_compile_options(
-        -Wall
-        -Wextra
-    )
-endif()
-
-add_library(VulkanUtilityHeaders INTERFACE)
-add_library(Vulkan::UtilityHeaders ALIAS VulkanUtilityHeaders)
 
 add_subdirectory(src)
 add_subdirectory(include)

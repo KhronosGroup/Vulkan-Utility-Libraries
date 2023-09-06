@@ -11,6 +11,13 @@ target_sources(VulkanLayerSettings PRIVATE
 	vulkan/layer/vk_layer_settings_ext.h
 )
 
+set(CMAKE_FOLDER "${CMAKE_FOLDER}/VulkanUtilityHeaders")
+
+add_library(VulkanUtilityHeaders INTERFACE)
+add_library(Vulkan::UtilityHeaders ALIAS VulkanUtilityHeaders)
+
+lunarg_target_compiler_configurations(VulkanUtilityHeaders VUL_WERROR)
+
 # https://cmake.org/cmake/help/latest/release/3.19.html#other
 if (CMAKE_VERSION VERSION_GREATER_EQUAL "3.19")
 	target_sources(VulkanUtilityHeaders PRIVATE
