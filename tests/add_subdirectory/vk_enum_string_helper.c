@@ -6,7 +6,7 @@
 #include <vulkan/vk_enum_string_helper.h>
 
 // Ensure vk_enum_string_helper.h can be compiled with a C compiler
-const char* foobar() { return string_VkResult(VK_SUCCESS); }
+const char* string_VkResult_compiles() { return string_VkResult(VK_SUCCESS); }
 
 // Ensure string_VkPipelineStageFlagBits2 is callable by C users
 const char* vk_format_feature_2_sampled_image_bit() {

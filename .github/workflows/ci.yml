@@ -44,7 +44,7 @@ jobs:
           cmake --build tests/find_package/build --config ${{matrix.config}} --verbose
       - name: Test add_subdirectory support
         run: |
-          cmake -S tests/add_subdirectory -B tests/add_subdirectory/build -D CMAKE_BUILD_TYPE=${{matrix.config}} -D GITHUB_VULKAN_HEADER_SOURCE_DIR=${{ github.workspace }}/external/${{matrix.config}}/Vulkan-Headers/
+          cmake -S tests/add_subdirectory -B tests/add_subdirectory/build -D CMAKE_BUILD_TYPE=${{matrix.config}} -D VULKAN_HEADER_SOURCE_DIR=${{ github.workspace }}/external/${{matrix.config}}/Vulkan-Headers/
           cmake --build tests/add_subdirectory/build --config ${{matrix.config}} --verbose
 
   android:

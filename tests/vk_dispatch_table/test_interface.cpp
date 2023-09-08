@@ -7,7 +7,7 @@
 
 #include <gtest/gtest.h>
 
-#include <vulkan/utility/vul_dispatch_table.h>
+#include <vulkan/utility/vk_dispatch_table.h>
 
 // Only exists so that local_vkGetDeviceProcAddr can return a 'real' function pointer
 inline void empty_func() {}
@@ -27,7 +27,7 @@ inline PFN_vkVoidFunction local_vkGetDeviceProcAddr(VkDevice device, const char 
     return reinterpret_cast<PFN_vkVoidFunction>(&empty_func);
 }
 
-TEST(test_vul_dispatch_table, cpp_interface) {
+TEST(test_vk_dispatch_table, cpp_interface) {
     VulDeviceDispatchTable device_dispatch_table{};
     VulInstanceDispatchTable instance_dispatch_table{};
 

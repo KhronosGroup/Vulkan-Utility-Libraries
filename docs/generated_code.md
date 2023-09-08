@@ -27,7 +27,7 @@ If only dealing with a single file,  run `scripts/generate_source.py` with `--ta
 
 ```bash
 # Example - only generates chassis.h
-scripts/generate_source.py external/Vulkan-Headers/registry/ --target vul_dispatch_table.h
+scripts/generate_source.py external/Vulkan-Headers/registry/ --target vk_dispatch_table.h
 ```
 
 When making change to the `scripts/` folder, make sure to run `generate_source.py`

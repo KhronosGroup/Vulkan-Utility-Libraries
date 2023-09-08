@@ -3,21 +3,21 @@
 // Copyright 2023 LunarG, Inc.
 //
 // SPDX-License-Identifier: Apache-2.0
-#include <vulkan/utility/vul_dispatch_table.h>
+#include <vulkan/utility/vk_dispatch_table.h>
 
-PFN_vkVoidFunction local_vkGetInstanceProcAddr(VkInstance instance, const char *pName) {
+PFN_vkVoidFunction VKAPI_PTR local_vkGetInstanceProcAddr(VkInstance instance, const char *pName) {
     (void)instance;
     (void)pName;
     return NULL;
 }
 
-PFN_vkVoidFunction local_vkGetDeviceProcAddr(VkDevice device, const char *pName) {
+PFN_vkVoidFunction VKAPI_PTR local_vkGetDeviceProcAddr(VkDevice device, const char *pName) {
     (void)device;
     (void)pName;
     return NULL;
 }
 
-void foobar() {
+void vk_dispatch_table() {
     VulDeviceDispatchTable device_dispatch_table;
     VulInstanceDispatchTable instance_dispatch_table;
 
