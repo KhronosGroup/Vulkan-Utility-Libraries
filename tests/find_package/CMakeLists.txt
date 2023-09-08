@@ -13,9 +13,9 @@ add_library(find_package_example STATIC)
 target_compile_features(find_package_example PRIVATE c_std_99)
 
 target_sources(find_package_example PRIVATE
-    ${CMAKE_CURRENT_LIST_DIR}/../add_subdirectory/client.c
+    ${CMAKE_CURRENT_LIST_DIR}/../add_subdirectory/vk_layer_settings.c
     ${CMAKE_CURRENT_LIST_DIR}/../add_subdirectory/vk_enum_string_helper.c
-    ${CMAKE_CURRENT_LIST_DIR}/../add_subdirectory/vul_dispatch_table.c
+    ${CMAKE_CURRENT_LIST_DIR}/../add_subdirectory/vk_dispatch_table.c
 )
 
 # NOTE: Because VulkanHeaders is a PUBLIC dependency it needs to be found prior to VulkanUtilityLibraries

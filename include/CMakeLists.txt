@@ -21,7 +21,7 @@ lunarg_target_compiler_configurations(VulkanUtilityHeaders VUL_WERROR)
 # https://cmake.org/cmake/help/latest/release/3.19.html#other
 if (CMAKE_VERSION VERSION_GREATER_EQUAL "3.19")
 	target_sources(VulkanUtilityHeaders PRIVATE
-		vulkan/utility/vul_dispatch_table.h
+		vulkan/utility/vk_dispatch_table.h
 		vulkan/vk_enum_string_helper.h
 	)
 endif()

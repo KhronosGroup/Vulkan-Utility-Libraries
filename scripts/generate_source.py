@@ -27,7 +27,7 @@ def RunGenerators(api: str, registry: str, targetFilter: str) -> None:
 
     # Build up a list of all generators and custom options
     generators = {
-        'vul_dispatch_table.h' : {
+        'vk_dispatch_table.h' : {
            'generator' : DispatchTableOutputGenerator,
            'directory' : 'include/vulkan/utility',
         },

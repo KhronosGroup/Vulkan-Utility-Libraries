@@ -5,7 +5,7 @@
 // SPDX-License-Identifier: Apache-2.0
 #include <vulkan/layer/vk_layer_settings.h>
 
-VkBool32 foobar() {
+VkBool32 vk_layer_settings() {
     VlLayerSettingSet layerSettingSet = VK_NULL_HANDLE;
     vlCreateLayerSettingSet("VK_LAYER_LUNARG_test", NULL, NULL, NULL, &layerSettingSet);
 
