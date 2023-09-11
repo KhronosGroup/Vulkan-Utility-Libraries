@@ -104,13 +104,15 @@ endif()
 
 # Configure compiler build options common to all targets
 function(lunarg_target_compiler_configurations TARGET_NAME WERROR_OPTION)
-    if (${WERROR_OPTION})
-        if (MSVC)
-            target_compile_options(${TARGET_NAME} INTERFACE /WX)
-            target_link_options(${TARGET_NAME} INTERFACE /WX)
-        else()
-            target_compile_options(${TARGET_NAME} INTERFACE -Werror)
-        endif()
+    if (NOT ${WERROR_OPTION})
+        return()
+    endif()
+
+    if (MSVC)
+        target_compile_options(${TARGET_NAME} INTERFACE /WX)
+        target_link_options(${TARGET_NAME} INTERFACE /WX)
+    else()
+        target_compile_options(${TARGET_NAME} INTERFACE -Werror)
     endif()
 
     if(${CMAKE_CXX_COMPILER_ID} MATCHES "(GNU|Clang)")
