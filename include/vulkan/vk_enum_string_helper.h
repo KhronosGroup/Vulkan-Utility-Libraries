@@ -1609,6 +1609,10 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_PIPELINE_PROPERTIES_IDENTIFIER_EXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_PROPERTIES_FEATURES_EXT:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_PROPERTIES_FEATURES_EXT";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAME_BOUNDARY_FEATURES_EXT:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAME_BOUNDARY_FEATURES_EXT";
+        case VK_STRUCTURE_TYPE_FRAME_BOUNDARY_EXT:
+            return "VK_STRUCTURE_TYPE_FRAME_BOUNDARY_EXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_FEATURES_EXT:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_FEATURES_EXT";
         case VK_STRUCTURE_TYPE_SUBPASS_RESOLVE_PERFORMANCE_QUERY_EXT:
@@ -1865,6 +1869,8 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_EXTERNAL_FORMAT_QNX";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_MEMORY_SCREEN_BUFFER_FEATURES_QNX:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_MEMORY_SCREEN_BUFFER_FEATURES_QNX";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_DRIVER_PROPERTIES_MSFT:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_DRIVER_PROPERTIES_MSFT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_POOL_OVERALLOCATION_FEATURES_NV:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_POOL_OVERALLOCATION_FEATURES_NV";
         default:
@@ -4633,6 +4639,16 @@ static inline const char* string_VkCubicFilterWeightsQCOM(VkCubicFilterWeightsQC
             return "VK_CUBIC_FILTER_WEIGHTS_MITCHELL_NETRAVALI_QCOM";
         default:
             return "Unhandled VkCubicFilterWeightsQCOM";
+    }
+}
+static inline const char* string_VkLayeredDriverUnderlyingApiMSFT(VkLayeredDriverUnderlyingApiMSFT input_value) {
+    switch (input_value) {
+        case VK_LAYERED_DRIVER_UNDERLYING_API_NONE_MSFT:
+            return "VK_LAYERED_DRIVER_UNDERLYING_API_NONE_MSFT";
+        case VK_LAYERED_DRIVER_UNDERLYING_API_D3D12_MSFT:
+            return "VK_LAYERED_DRIVER_UNDERLYING_API_D3D12_MSFT";
+        default:
+            return "Unhandled VkLayeredDriverUnderlyingApiMSFT";
     }
 }
 static inline const char* string_VkBuildAccelerationStructureModeKHR(VkBuildAccelerationStructureModeKHR input_value) {
@@ -8914,6 +8930,31 @@ static inline std::string string_VkImageConstraintsInfoFlagsFUCHSIA(VkImageConst
     return ret;
 }
 #endif //VK_USE_PLATFORM_FUCHSIA
+#endif // __cplusplus
+static inline const char* string_VkFrameBoundaryFlagBitsEXT(VkFrameBoundaryFlagBitsEXT input_value) {
+    switch (input_value) {
+        case VK_FRAME_BOUNDARY_FRAME_END_BIT_EXT:
+            return "VK_FRAME_BOUNDARY_FRAME_END_BIT_EXT";
+        default:
+            return "Unhandled VkFrameBoundaryFlagBitsEXT";
+    }
+}
+
+#ifdef __cplusplus
+static inline std::string string_VkFrameBoundaryFlagsEXT(VkFrameBoundaryFlagsEXT input_value) {
+    std::string ret;
+    int index = 0;
+    while(input_value) {
+        if (input_value & 1) {
+            if( !ret.empty()) ret.append("|");
+            ret.append(string_VkFrameBoundaryFlagBitsEXT(static_cast<VkFrameBoundaryFlagBitsEXT>(1U << index)));
+        }
+        ++index;
+        input_value >>= 1;
+    }
+    if (ret.empty()) ret.append("VkFrameBoundaryFlagsEXT(0)");
+    return ret;
+}
 #endif // __cplusplus
 static inline const char* string_VkBuildMicromapFlagBitsEXT(VkBuildMicromapFlagBitsEXT input_value) {
     switch (input_value) {
