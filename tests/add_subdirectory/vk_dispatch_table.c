@@ -18,14 +18,14 @@ PFN_vkVoidFunction VKAPI_PTR local_vkGetDeviceProcAddr(VkDevice device, const ch
 }
 
 void vk_dispatch_table() {
-    VulDeviceDispatchTable device_dispatch_table;
-    VulInstanceDispatchTable instance_dispatch_table;
+    VkuDeviceDispatchTable device_dispatch_table;
+    VkuInstanceDispatchTable instance_dispatch_table;
 
     VkInstance instance = VK_NULL_HANDLE;
 
-    vulInitInstanceDispatchTable(instance, &instance_dispatch_table, local_vkGetInstanceProcAddr);
+    vkuInitInstanceDispatchTable(instance, &instance_dispatch_table, local_vkGetInstanceProcAddr);
 
     VkDevice device = VK_NULL_HANDLE;
 
-    vulInitDeviceDispatchTable(device, &device_dispatch_table, local_vkGetDeviceProcAddr);
+    vkuInitDeviceDispatchTable(device, &device_dispatch_table, local_vkGetDeviceProcAddr);
 }

@@ -35,7 +35,7 @@ typedef PFN_vkVoidFunction(VKAPI_PTR *PFN_GetPhysicalDeviceProcAddr)(VkInstance 
 ''')
         out.append('''
 // Instance function pointer dispatch table
-typedef struct VulInstanceDispatchTable_ {
+typedef struct VkuInstanceDispatchTable_ {
     PFN_GetPhysicalDeviceProcAddr GetPhysicalDeviceProcAddr;
 
 ''')
@@ -43,20 +43,20 @@ typedef struct VulInstanceDispatchTable_ {
             out.extend([f'#ifdef {command.protect}\n'] if command.protect else [])
             out.append(f'    PFN_{command.name} {command.name[2:]};\n')
             out.extend([f'#endif  // {command.protect}\n'] if command.protect else [])
-        out.append('} VulInstanceDispatchTable;\n')
+        out.append('} VkuInstanceDispatchTable;\n')
 
         out.append('''
 // Device function pointer dispatch table
-typedef struct VulDeviceDispatchTable_ {
+typedef struct VkuDeviceDispatchTable_ {
 ''')
         for command in [x for x in self.vk.commands.values() if x.device]:
             out.extend([f'#ifdef {command.protect}\n'] if command.protect else [])
             out.append(f'    PFN_{command.name} {command.name[2:]};\n')
             out.extend([f'#endif  // {command.protect}\n'] if command.protect else [])
-        out.append('} VulDeviceDispatchTable;\n')
+        out.append('} VkuDeviceDispatchTable;\n')
 
         out.append('''
-static inline void vulInitDeviceDispatchTable(VkDevice device, VulDeviceDispatchTable *table, PFN_vkGetDeviceProcAddr gdpa) {
+static inline void vkuInitDeviceDispatchTable(VkDevice device, VkuDeviceDispatchTable *table, PFN_vkGetDeviceProcAddr gdpa) {
     memset(table, 0, sizeof(*table));
     // Device function pointers
     table->GetDeviceProcAddr = gdpa;
@@ -69,7 +69,7 @@ static inline void vulInitDeviceDispatchTable(VkDevice device, VulDeviceDispatch
         out.append('}\n')
 
         out.append('''
-static inline void vulInitInstanceDispatchTable(VkInstance instance, VulInstanceDispatchTable *table, PFN_vkGetInstanceProcAddr gipa) {
+static inline void vkuInitInstanceDispatchTable(VkInstance instance, VkuInstanceDispatchTable *table, PFN_vkGetInstanceProcAddr gipa) {
     memset(table, 0, sizeof(*table));
     // Instance function pointers
     table->GetInstanceProcAddr = gipa;

@@ -15,7 +15,7 @@
 typedef PFN_vkVoidFunction(VKAPI_PTR *PFN_GetPhysicalDeviceProcAddr)(VkInstance instance, const char *pName);
 
 // Instance function pointer dispatch table
-typedef struct VulInstanceDispatchTable_ {
+typedef struct VkuInstanceDispatchTable_ {
     PFN_GetPhysicalDeviceProcAddr GetPhysicalDeviceProcAddr;
 
     PFN_vkCreateInstance CreateInstance;
@@ -176,10 +176,10 @@ typedef struct VulInstanceDispatchTable_ {
     PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX GetPhysicalDeviceScreenPresentationSupportQNX;
 #endif  // VK_USE_PLATFORM_SCREEN_QNX
     PFN_vkGetPhysicalDeviceOpticalFlowImageFormatsNV GetPhysicalDeviceOpticalFlowImageFormatsNV;
-} VulInstanceDispatchTable;
+} VkuInstanceDispatchTable;
 
 // Device function pointer dispatch table
-typedef struct VulDeviceDispatchTable_ {
+typedef struct VkuDeviceDispatchTable_ {
     PFN_vkGetDeviceProcAddr GetDeviceProcAddr;
     PFN_vkDestroyDevice DestroyDevice;
     PFN_vkGetDeviceQueue GetDeviceQueue;
@@ -794,9 +794,9 @@ typedef struct VulDeviceDispatchTable_ {
     PFN_vkCmdDrawMeshTasksEXT CmdDrawMeshTasksEXT;
     PFN_vkCmdDrawMeshTasksIndirectEXT CmdDrawMeshTasksIndirectEXT;
     PFN_vkCmdDrawMeshTasksIndirectCountEXT CmdDrawMeshTasksIndirectCountEXT;
-} VulDeviceDispatchTable;
+} VkuDeviceDispatchTable;
 
-static inline void vulInitDeviceDispatchTable(VkDevice device, VulDeviceDispatchTable *table, PFN_vkGetDeviceProcAddr gdpa) {
+static inline void vkuInitDeviceDispatchTable(VkDevice device, VkuDeviceDispatchTable *table, PFN_vkGetDeviceProcAddr gdpa) {
     memset(table, 0, sizeof(*table));
     // Device function pointers
     table->GetDeviceProcAddr = gdpa;
@@ -1415,7 +1415,7 @@ static inline void vulInitDeviceDispatchTable(VkDevice device, VulDeviceDispatch
     table->CmdDrawMeshTasksIndirectCountEXT = (PFN_vkCmdDrawMeshTasksIndirectCountEXT)gdpa(device, "vkCmdDrawMeshTasksIndirectCountEXT");
 }
 
-static inline void vulInitInstanceDispatchTable(VkInstance instance, VulInstanceDispatchTable *table, PFN_vkGetInstanceProcAddr gipa) {
+static inline void vkuInitInstanceDispatchTable(VkInstance instance, VkuInstanceDispatchTable *table, PFN_vkGetInstanceProcAddr gipa) {
     memset(table, 0, sizeof(*table));
     // Instance function pointers
     table->GetInstanceProcAddr = gipa;

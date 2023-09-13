@@ -28,18 +28,18 @@ inline PFN_vkVoidFunction local_vkGetDeviceProcAddr(VkDevice device, const char 
 }
 
 TEST(test_vk_dispatch_table, cpp_interface) {
-    VulDeviceDispatchTable device_dispatch_table{};
-    VulInstanceDispatchTable instance_dispatch_table{};
+    VkuDeviceDispatchTable device_dispatch_table{};
+    VkuInstanceDispatchTable instance_dispatch_table{};
 
     VkInstance instance{};
 
-    vulInitInstanceDispatchTable(instance, &instance_dispatch_table, local_vkGetInstanceProcAddr);
+    vkuInitInstanceDispatchTable(instance, &instance_dispatch_table, local_vkGetInstanceProcAddr);
 
     ASSERT_EQ(instance_dispatch_table.GetInstanceProcAddr, local_vkGetInstanceProcAddr);
 
     VkDevice device{};
 
-    vulInitDeviceDispatchTable(device, &device_dispatch_table, local_vkGetDeviceProcAddr);
+    vkuInitDeviceDispatchTable(device, &device_dispatch_table, local_vkGetDeviceProcAddr);
 
     ASSERT_EQ(device_dispatch_table.GetDeviceProcAddr, local_vkGetDeviceProcAddr);
 }
