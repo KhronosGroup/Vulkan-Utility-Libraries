@@ -25,6 +25,7 @@ def RunGenerators(api: str, registry: str, targetFilter: str) -> None:
     from generators.dispatch_table_generator import DispatchTableOutputGenerator
     from generators.enum_string_helper_generator import EnumStringHelperOutputGenerator
     from generators.format_utils_generator import FormatUtilsOutputGenerator
+    from generators.struct_helper_generator import StructHelperOutputGenerator
 
     # Build up a list of all generators and custom options
     generators = {
@@ -38,6 +39,10 @@ def RunGenerators(api: str, registry: str, targetFilter: str) -> None:
         },
         'vk_format_utils.h' : {
             'generator' : FormatUtilsOutputGenerator,
+            'directory' : 'include/vulkan/utility',
+        },
+        'vk_struct_helper.hpp' : {
+            'generator' : StructHelperOutputGenerator,
             'directory' : 'include/vulkan/utility',
         },
     }
