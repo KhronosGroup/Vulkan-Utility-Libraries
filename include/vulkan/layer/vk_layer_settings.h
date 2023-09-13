@@ -60,7 +60,12 @@ VkBool32 vlHasLayerSetting(VlLayerSettingSet layerSettingSet, const char *pSetti
 VkResult vlGetLayerSettingValues(VlLayerSettingSet layerSettingSet, const char *pSettingName, VlLayerSettingType type,
                                  uint32_t *pValueCount, void *pValues);
 
+// Find the VkLayerSettingsCreateInfoEXT in the VkInstanceCreateInfo pNext chain, return NULL if not present
 const VkLayerSettingsCreateInfoEXT *vlFindLayerSettingsCreateInfo(const VkInstanceCreateInfo *pCreateInfo);
+
+// Return the list of Unknown setting in VkLayerSettingsCreateInfoEXT
+VkResult vlGetUnknownSettings(const VkLayerSettingsCreateInfoEXT *pCreateInfo, uint32_t settingsCount, const char **pSettings,
+                              uint32_t *pUnknownSettingCount, const char **pUnknownSettings);
 
 #ifdef __cplusplus
 }
