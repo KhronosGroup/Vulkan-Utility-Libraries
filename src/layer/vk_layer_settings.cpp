@@ -667,3 +667,17 @@ VkResult vlGetUnknownSettings(const VkLayerSettingsCreateInfoEXT* pCreateInfo, u
 
     return VK_SUCCESS;
 }
+
+VkResult vlGetUnknownSettings(const VkLayerSettingsCreateInfoEXT* pCreateInfo, uint32_t settingsCount, const char** pSettings,
+    std::vector<const char*>& unknownSettings) {
+    uint32_t unknown_setting_count = 0;
+    VkResult result = vlGetUnknownSettings(pCreateInfo, settingsCount, pSettings, &unknown_setting_count, nullptr);
+
+    if (unknown_setting_count > 0) {
+        unknownSettings.resize(unknown_setting_count);
+
+        result = vlGetUnknownSettings(pCreateInfo, settingsCount, pSettings, &unknown_setting_count, &unknownSettings[0]);
+    }
+
+    return result;
+}

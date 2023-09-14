@@ -645,33 +645,31 @@ TEST(test_layer_settings_util, vlGetUnknownSettings) {
     setting_frameset_value.count = sizeof(VlFrameset) / sizeof(VlFrameset::count);
     settings.push_back(setting_frameset_value);
 
-    VkLayerSettingsCreateInfoEXT layer_settings_create_info;
-    layer_settings_create_info.sType = VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT;
-    layer_settings_create_info.pNext = nullptr;
-    layer_settings_create_info.settingCount = static_cast<uint32_t>(settings.size());
-    layer_settings_create_info.pSettings = &settings[0];
+    VkLayerSettingsCreateInfoEXT create_info;
+    create_info.sType = VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT;
+    create_info.pNext = nullptr;
+    create_info.settingCount = static_cast<uint32_t>(settings.size());
+    create_info.pSettings = &settings[0];
 
     const char* setting_names[] = {
         "int32_value", "int64_value", "uint32_value", "uint64_value", "float_value", "double_value"
     };
+    const std::uint32_t setting_name_count = static_cast<std::uint32_t>(std::size(setting_names));
 
-    uint32_t unknownSettingsCount = 0;
-    vlGetUnknownSettings(&layer_settings_create_info, static_cast<std::uint32_t>(std::size(setting_names)), setting_names,
-                         &unknownSettingsCount, nullptr);
-    EXPECT_EQ(2, unknownSettingsCount);
+    uint32_t unknown_settings_count = 0;
+    vlGetUnknownSettings(&create_info, setting_name_count, setting_names, &unknown_settings_count, nullptr);
+    EXPECT_EQ(2, unknown_settings_count);
 
-    std::vector<const char*> unknownSettings(unknownSettingsCount);
+    std::vector<const char*> unknown_settings(unknown_settings_count);
 
-    unknownSettingsCount = 1;
-    vlGetUnknownSettings(&layer_settings_create_info, static_cast<std::uint32_t>(std::size(setting_names)), setting_names,
-                         &unknownSettingsCount, &unknownSettings[0]);
-    EXPECT_EQ(1, unknownSettingsCount);
-    EXPECT_STREQ("bool_value", unknownSettings[0]);
+    unknown_settings_count = 1;
+    vlGetUnknownSettings(&create_info, setting_name_count, setting_names, &unknown_settings_count, &unknown_settings[0]);
+    EXPECT_EQ(1, unknown_settings_count);
+    EXPECT_STREQ("bool_value", unknown_settings[0]);
 
-    unknownSettingsCount = 2;
-    vlGetUnknownSettings(&layer_settings_create_info, static_cast<std::uint32_t>(std::size(setting_names)), setting_names,
-                         &unknownSettingsCount, &unknownSettings[0]);
+    unknown_settings_count = 2;
+    vlGetUnknownSettings(&create_info, setting_name_count, setting_names, &unknown_settings_count, &unknown_settings[0]);
 
-    EXPECT_STREQ("bool_value", unknownSettings[0]);
-    EXPECT_STREQ("frameset_value", unknownSettings[1]);
+    EXPECT_STREQ("bool_value", unknown_settings[0]);
+    EXPECT_STREQ("frameset_value", unknown_settings[1]);
 }
