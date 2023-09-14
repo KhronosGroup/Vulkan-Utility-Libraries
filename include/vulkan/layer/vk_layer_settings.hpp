@@ -73,3 +73,7 @@ typedef std::pair<uint32_t, uint32_t> VlCustomSTypeInfo;
 void vlGetLayerSettingValues(VlLayerSettingSet layerSettingSet,
     const char *pSettingName,
     std::vector<VlCustomSTypeInfo> &settingValues);
+
+// Return the list of Unknown setting in VkLayerSettingsCreateInfoEXT
+VkResult vlGetUnknownSettings(const VkLayerSettingsCreateInfoEXT *pCreateInfo, uint32_t settingsCount, const char **pSettings,
+                              std::vector<const char *>& unknownSettings);
