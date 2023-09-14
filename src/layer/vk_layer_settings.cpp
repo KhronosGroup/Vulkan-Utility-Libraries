@@ -643,14 +643,16 @@ VkResult vlGetUnknownSettings(const VkLayerSettingsCreateInfoEXT* pCreateInfo, u
     assert(pUnknownSettingCount != nullptr);
 
     uint32_t current_unknown_setting_count = 0;
-    for (uint32_t info_index = 0, info_count = pCreateInfo->settingCount; info_index < info_count; ++info_index) {
-        const char* current_setting_name = pCreateInfo->pSettings[info_index].pSettingName;
-        if (!vlHasSetting(settingsCount, pSettings, current_setting_name)) {
-            if (pUnknownSettings != nullptr && current_unknown_setting_count < *pUnknownSettingCount) {
-                pUnknownSettings[current_unknown_setting_count] = current_setting_name;
-            }
+    if (pCreateInfo != nullptr) {
+        for (uint32_t info_index = 0, info_count = pCreateInfo->settingCount; info_index < info_count; ++info_index) {
+            const char *current_setting_name = pCreateInfo->pSettings[info_index].pSettingName;
+            if (!vlHasSetting(settingsCount, pSettings, current_setting_name)) {
+                if (pUnknownSettings != nullptr && current_unknown_setting_count < *pUnknownSettingCount) {
+                    pUnknownSettings[current_unknown_setting_count] = current_setting_name;
+                }
 
-            ++current_unknown_setting_count;
+                ++current_unknown_setting_count;
+            }
         }
     }
 
