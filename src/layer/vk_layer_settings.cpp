@@ -658,7 +658,6 @@ VkResult vlGetUnknownSettings(const VkLayerSettingsCreateInfoEXT* pCreateInfo, u
 
     if (pUnknownSettings == nullptr) {
         *pUnknownSettingCount = current_unknown_setting_count;
-        return VK_SUCCESS;
     } else if (current_unknown_setting_count > *pUnknownSettingCount) {
         return VK_INCOMPLETE;
     }
