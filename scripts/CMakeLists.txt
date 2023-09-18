@@ -118,12 +118,14 @@ function(lunarg_target_compiler_configurations TARGET_NAME WERROR_OPTION)
     if(${CMAKE_CXX_COMPILER_ID} MATCHES "(GNU|Clang)")
         target_compile_options(${TARGET_NAME} INTERFACE
             -Wpedantic
+            -Wunreachable-code
             -Wall
             -Wextra
             -Wpointer-arith
         )
         if(${CMAKE_CXX_COMPILER_ID} MATCHES "Clang")
             target_compile_options(${TARGET_NAME} INTERFACE
+                -Wunreachable-code-return
                 -Wconversion
                 -Wimplicit-fallthrough
                 -Wstring-conversion
