@@ -19,7 +19,7 @@ namespace vl {
     class LayerSettings {
       public:
         LayerSettings(const char *pLayerName, const VkLayerSettingsCreateInfoEXT *pCreateInfo,
-                      const VkAllocationCallbacks *pAllocator, VlLayerSettingLogCallback pCallback);
+                      const VkAllocationCallbacks *pAllocator, VkuLayerSettingLogCallback pCallback);
         ~LayerSettings();
 
         void SetPrefix(const char *pPrefix) { this->prefix = pPrefix; }
@@ -57,7 +57,7 @@ namespace vl {
         std::string prefix;
         std::string layer_name;
         const VkLayerSettingsCreateInfoEXT *create_info{nullptr};
-        VlLayerSettingLogCallback pCallback{nullptr};
+        VkuLayerSettingLogCallback pCallback{nullptr};
     };
 }// namespace vl
 

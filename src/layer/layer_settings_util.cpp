@@ -209,10 +209,10 @@ int64_t ToInt64(const std::string &token) {
     return int_id;
 }
 
-VlFrameset ToFrameSet(const std::string &s) {
+VkuFrameset ToFrameSet(const std::string &s) {
     assert(IsFrameSets(s));
 
-    VlFrameset frameset{0, 1, 1};
+    VkuFrameset frameset{0, 1, 1};
 
     const std::vector<std::string> &frameset_split = vl::Split(s, '-');
     if (frameset_split.size() >= 1) {
@@ -228,10 +228,10 @@ VlFrameset ToFrameSet(const std::string &s) {
     return frameset;
 }
 
-std::vector<VlFrameset> ToFrameSets(const std::string &s) {
+std::vector<VkuFrameset> ToFrameSets(const std::string &s) {
     std::vector<std::string> tokens = Split(s, FindDelimiter(s));
 
-    std::vector<VlFrameset> results;
+    std::vector<VkuFrameset> results;
     results.resize(tokens.size());
     for (std::size_t i = 0, n = tokens.size(); i < n; ++i) {
         results[i] = ToFrameSet(tokens[i]);

@@ -23,7 +23,7 @@ TEST(test_layer_settings_util, FindSettingsInChain_found_first) {
     instanceCreateInfo.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
     instanceCreateInfo.pNext = &layerSettingsCreateInfo;
 
-    EXPECT_EQ(&layerSettingsCreateInfo, vlFindLayerSettingsCreateInfo(&instanceCreateInfo));
+    EXPECT_EQ(&layerSettingsCreateInfo, vkuFindLayerSettingsCreateInfo(&instanceCreateInfo));
 }
 
 TEST(test_layer_settings_util, FindSettingsInChain_found_last) {
@@ -38,7 +38,7 @@ TEST(test_layer_settings_util, FindSettingsInChain_found_last) {
     instanceCreateInfo.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
     instanceCreateInfo.pNext = &debugReportCallbackCreateInfo;
 
-    EXPECT_EQ(&layerSettingsCreateInfo, vlFindLayerSettingsCreateInfo(&instanceCreateInfo));
+    EXPECT_EQ(&layerSettingsCreateInfo, vkuFindLayerSettingsCreateInfo(&instanceCreateInfo));
 }
 
 TEST(test_layer_settings_util, FindSettingsInChain_found_not) {
@@ -49,7 +49,7 @@ TEST(test_layer_settings_util, FindSettingsInChain_found_not) {
     instanceCreateInfo.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
     instanceCreateInfo.pNext = &debugReportCallbackCreateInfo;
 
-    EXPECT_EQ(nullptr, vlFindLayerSettingsCreateInfo(&instanceCreateInfo));
+    EXPECT_EQ(nullptr, vkuFindLayerSettingsCreateInfo(&instanceCreateInfo));
 }
 
 TEST(test_layer_settings_util, FindDelimiter) {
@@ -405,7 +405,7 @@ TEST(test_layer_settings_util, is_framesets) {
 
 TEST(test_layer_settings_util, to_framesets) {
     {
-        std::vector<VlFrameset> framesets = vl::ToFrameSets("0");
+        std::vector<VkuFrameset> framesets = vl::ToFrameSets("0");
         EXPECT_EQ(1, framesets.size());
 
         EXPECT_EQ(0, framesets[0].first);
@@ -414,7 +414,7 @@ TEST(test_layer_settings_util, to_framesets) {
     }
 
     {
-        std::vector<VlFrameset> framesets = vl::ToFrameSets("76");
+        std::vector<VkuFrameset> framesets = vl::ToFrameSets("76");
         EXPECT_EQ(1, framesets.size());
 
         EXPECT_EQ(76, framesets[0].first);
@@ -423,7 +423,7 @@ TEST(test_layer_settings_util, to_framesets) {
     }
 
     {
-        std::vector<VlFrameset> framesets = vl::ToFrameSets("0-2");
+        std::vector<VkuFrameset> framesets = vl::ToFrameSets("0-2");
         EXPECT_EQ(1, framesets.size());
 
         EXPECT_EQ(0, framesets[0].first);
@@ -432,7 +432,7 @@ TEST(test_layer_settings_util, to_framesets) {
     }
 
     {
-        std::vector<VlFrameset> framesets = vl::ToFrameSets("0-2,6,7");
+        std::vector<VkuFrameset> framesets = vl::ToFrameSets("0-2,6,7");
         EXPECT_EQ(3, framesets.size());
 
         EXPECT_EQ(0, framesets[0].first);
@@ -449,7 +449,7 @@ TEST(test_layer_settings_util, to_framesets) {
     }
 
     {
-        std::vector<VlFrameset> framesets = vl::ToFrameSets("0-2,6-7");
+        std::vector<VkuFrameset> framesets = vl::ToFrameSets("0-2,6-7");
         EXPECT_EQ(2, framesets.size());
 
         EXPECT_EQ(0, framesets[0].first);
@@ -462,7 +462,7 @@ TEST(test_layer_settings_util, to_framesets) {
     }
 
     {
-        std::vector<VlFrameset> framesets = vl::ToFrameSets("1-2,60,70");
+        std::vector<VkuFrameset> framesets = vl::ToFrameSets("1-2,60,70");
         EXPECT_EQ(3, framesets.size());
 
         EXPECT_EQ(1, framesets[0].first);
@@ -479,7 +479,7 @@ TEST(test_layer_settings_util, to_framesets) {
     }
 
     {
-        std::vector<VlFrameset> framesets = vl::ToFrameSets("10-20,60,70");
+        std::vector<VkuFrameset> framesets = vl::ToFrameSets("10-20,60,70");
         EXPECT_EQ(3, framesets.size());
 
         EXPECT_EQ(10, framesets[0].first);
@@ -496,7 +496,7 @@ TEST(test_layer_settings_util, to_framesets) {
     }
 
     {
-        std::vector<VlFrameset> framesets = vl::ToFrameSets("1-8-2");
+        std::vector<VkuFrameset> framesets = vl::ToFrameSets("1-8-2");
         EXPECT_EQ(1, framesets.size());
 
         EXPECT_EQ(1, framesets[0].first);
@@ -505,7 +505,7 @@ TEST(test_layer_settings_util, to_framesets) {
     }
 
     {
-        std::vector<VlFrameset> framesets = vl::ToFrameSets("1-8-2,0");
+        std::vector<VkuFrameset> framesets = vl::ToFrameSets("1-8-2,0");
         EXPECT_EQ(2, framesets.size());
 
         EXPECT_EQ(1, framesets[0].first);
@@ -518,7 +518,7 @@ TEST(test_layer_settings_util, to_framesets) {
     }
 
     {
-        std::vector<VlFrameset> framesets = vl::ToFrameSets("1-8-2,10-20-5");
+        std::vector<VkuFrameset> framesets = vl::ToFrameSets("1-8-2,10-20-5");
         EXPECT_EQ(2, framesets.size());
 
         EXPECT_EQ(1, framesets[0].first);
@@ -531,7 +531,7 @@ TEST(test_layer_settings_util, to_framesets) {
     }
 
     {
-        std::vector<VlFrameset> framesets = vl::ToFrameSets("1-8,10-20-5");
+        std::vector<VkuFrameset> framesets = vl::ToFrameSets("1-8,10-20-5");
         EXPECT_EQ(2, framesets.size());
 
         EXPECT_EQ(1, framesets[0].first);
@@ -544,7 +544,7 @@ TEST(test_layer_settings_util, to_framesets) {
     }
 
     {
-        std::vector<VlFrameset> framesets = vl::ToFrameSets("1-8-2,10-20-1");
+        std::vector<VkuFrameset> framesets = vl::ToFrameSets("1-8-2,10-20-1");
         EXPECT_EQ(2, framesets.size());
 
         EXPECT_EQ(1, framesets[0].first);
@@ -557,7 +557,7 @@ TEST(test_layer_settings_util, to_framesets) {
     }
 
     {
-        std::vector<VlFrameset> framesets = vl::ToFrameSets("1,2,3,4");
+        std::vector<VkuFrameset> framesets = vl::ToFrameSets("1,2,3,4");
         EXPECT_EQ(4, framesets.size());
 
         EXPECT_EQ(1, framesets[0].first);
@@ -578,7 +578,7 @@ TEST(test_layer_settings_util, to_framesets) {
     }
 }
 
-TEST(test_layer_settings_util, vlGetUnknownSettings) {
+TEST(test_layer_settings_util, vkuGetUnknownSettings) {
     std::vector<VkLayerSettingEXT> settings;
 
     VkBool32 value_bool = VK_TRUE;
@@ -644,13 +644,13 @@ TEST(test_layer_settings_util, vlGetUnknownSettings) {
     setting_double_value.count = 1;
     settings.push_back(setting_double_value);
 
-    VlFrameset value_frameset{76, 100, 10};
+    VkuFrameset value_frameset{76, 100, 10};
     VkLayerSettingEXT setting_frameset_value{};
     setting_frameset_value.pLayerName = "VK_LAYER_LUNARG_test";
     setting_frameset_value.pSettingName = "frameset_value";
     setting_frameset_value.type = VK_LAYER_SETTING_TYPE_UINT32_EXT;
     setting_frameset_value.pValues = &value_frameset;
-    setting_frameset_value.count = sizeof(VlFrameset) / sizeof(VlFrameset::count);
+    setting_frameset_value.count = sizeof(VkuFrameset) / sizeof(VkuFrameset::count);
     settings.push_back(setting_frameset_value);
 
     VkLayerSettingsCreateInfoEXT create_info;
@@ -665,18 +665,18 @@ TEST(test_layer_settings_util, vlGetUnknownSettings) {
     const std::uint32_t setting_name_count = static_cast<std::uint32_t>(std::size(setting_names));
 
     uint32_t unknown_settings_count = 0;
-    vlGetUnknownSettings(&create_info, setting_name_count, setting_names, &unknown_settings_count, nullptr);
+    vkuGetUnknownSettings(&create_info, setting_name_count, setting_names, &unknown_settings_count, nullptr);
     EXPECT_EQ(2, unknown_settings_count);
 
     std::vector<const char*> unknown_settings(unknown_settings_count);
 
     unknown_settings_count = 1;
-    vlGetUnknownSettings(&create_info, setting_name_count, setting_names, &unknown_settings_count, &unknown_settings[0]);
+    vkuGetUnknownSettings(&create_info, setting_name_count, setting_names, &unknown_settings_count, &unknown_settings[0]);
     EXPECT_EQ(1, unknown_settings_count);
     EXPECT_STREQ("bool_value", unknown_settings[0]);
 
     unknown_settings_count = 2;
-    vlGetUnknownSettings(&create_info, setting_name_count, setting_names, &unknown_settings_count, &unknown_settings[0]);
+    vkuGetUnknownSettings(&create_info, setting_name_count, setting_names, &unknown_settings_count, &unknown_settings[0]);
 
     EXPECT_STREQ("bool_value", unknown_settings[0]);
     EXPECT_STREQ("frameset_value", unknown_settings[1]);
