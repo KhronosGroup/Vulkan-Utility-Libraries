@@ -101,7 +101,7 @@ static void AddWorkaroundLayerNames(std::vector<std::string> &layer_names) {
 namespace vl {
 
 LayerSettings::LayerSettings(const char *pLayerName, const VkLayerSettingsCreateInfoEXT *pCreateInfo,
-                             const VkAllocationCallbacks *pAllocator, VlLayerSettingLogCallback pCallback)
+                             const VkAllocationCallbacks *pAllocator, VkuLayerSettingLogCallback pCallback)
     : layer_name(pLayerName)
     , create_info(pCreateInfo)
     , pCallback(pCallback) {
