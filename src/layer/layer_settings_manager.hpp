@@ -22,6 +22,8 @@ namespace vl {
                       const VkAllocationCallbacks *pAllocator, VlLayerSettingLogCallback pCallback);
         ~LayerSettings();
 
+        void SetPrefix(const char *pPrefix) { this->prefix = pPrefix; }
+
 	    bool HasEnvSetting(const char *pSettingName);
 
         bool HasFileSetting(const char *pSettingName);
@@ -52,6 +54,7 @@ namespace vl {
         std::filesystem::path FindSettingsFile();
         void ParseSettingsFile(const std::filesystem::path &filename);
 
+        std::string prefix;
         std::string layer_name;
         const VkLayerSettingsCreateInfoEXT *create_info{nullptr};
         VlLayerSettingLogCallback pCallback{nullptr};

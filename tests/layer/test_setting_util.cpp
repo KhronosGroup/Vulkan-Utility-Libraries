@@ -263,7 +263,7 @@ TEST(test_layer_settings_util, TrimVendor) {
 
 TEST(test_layer_settings_util, GetEnvSettingName_TrimNone) {
     {
-        const std::string result = vl::GetEnvSettingName("VK_LAYER_LUNARG_test", "log_mode", vl::TRIM_NONE);
+        const std::string result = vl::GetEnvSettingName("VK_LAYER_LUNARG_test", nullptr, "log_mode", vl::TRIM_NONE);
 
         EXPECT_STREQ("VK_LUNARG_TEST_LOG_MODE", result.c_str());
     }
@@ -271,7 +271,7 @@ TEST(test_layer_settings_util, GetEnvSettingName_TrimNone) {
 
 TEST(test_layer_settings_util, GetEnvSettingName_TrimVendor) {
     {
-        const std::string result = vl::GetEnvSettingName("VK_LAYER_LUNARG_test", "log_mode", vl::TRIM_VENDOR);
+        const std::string result = vl::GetEnvSettingName("VK_LAYER_LUNARG_test", nullptr, "log_mode", vl::TRIM_VENDOR);
 
         EXPECT_STREQ("VK_TEST_LOG_MODE", result.c_str());
     }
@@ -279,9 +279,17 @@ TEST(test_layer_settings_util, GetEnvSettingName_TrimVendor) {
 
 TEST(test_layer_settings_util, GetEnvSettingName_TrimNamespace) {
     {
-        const std::string result = vl::GetEnvSettingName("VK_LAYER_LUNARG_test", "log_mode", vl::TRIM_NAMESPACE);
+        const std::string result = vl::GetEnvSettingName("VK_LAYER_LUNARG_test", nullptr, "log_mode", vl::TRIM_NAMESPACE);
 
         EXPECT_STREQ("VK_LOG_MODE", result.c_str());
+    }
+}
+
+TEST(test_layer_settings_util, GetEnvSettingName_TrimAddPrefix) {
+    {
+        const std::string result = vl::GetEnvSettingName("VK_LAYER_LUNARG_test", "LAYER", "log_mode", vl::TRIM_NAMESPACE);
+
+        EXPECT_STREQ("VK_LAYER_LOG_MODE", result.c_str());
     }
 }
 

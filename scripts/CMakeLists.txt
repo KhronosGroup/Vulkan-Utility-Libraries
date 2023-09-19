@@ -119,6 +119,7 @@ function(lunarg_target_compiler_configurations TARGET_NAME WERROR_OPTION)
         target_compile_options(${TARGET_NAME} INTERFACE
             -Wpedantic
             -Wunreachable-code
+            -Wunused-function
             -Wall
             -Wextra
             -Wpointer-arith
