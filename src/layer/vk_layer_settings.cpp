@@ -48,6 +48,12 @@ void vlDestroyLayerSettingSet(VlLayerSettingSet layerSettingSet, const VkAllocat
     delete layer_setting_set;
 }
 
+void vlSetLayerSettingCompatibilityNamespace(VlLayerSettingSet layerSettingSet, const char *prefixName) {
+    vl::LayerSettings *layer_setting_set = (vl::LayerSettings *)layerSettingSet;
+
+    layer_setting_set->SetPrefix(prefixName);
+}
+
 VkBool32 vlHasLayerSetting(VlLayerSettingSet layerSettingSet, const char *pSettingName) {
     assert(layerSettingSet != VK_NULL_HANDLE);
     assert(pSettingName);

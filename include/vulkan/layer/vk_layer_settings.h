@@ -53,6 +53,9 @@ VkResult vlCreateLayerSettingSet(const char *pLayerName, const VkLayerSettingsCr
 
 void vlDestroyLayerSettingSet(VlLayerSettingSet layerSettingSet, const VkAllocationCallbacks *pAllocator);
 
+// Set a compatibility namespace to find layer settings using environment variables
+void vlSetLayerSettingCompatibilityNamespace(VlLayerSettingSet layerSettingSet, const char *name);
+
 // Check whether a setting was set either programmatically, from vk_layer_settings.txt or an environment variable
 VkBool32 vlHasLayerSetting(VlLayerSettingSet layerSettingSet, const char *pSettingName);
 

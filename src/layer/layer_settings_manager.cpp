@@ -64,11 +64,6 @@ static std::string GetEnvironment(const char *variable) {
 #endif
 }
 
-static bool IsEnvironment(const char *variable) {
-    const std::string& result = GetEnvironment(variable);
-    return !result.empty();
-}
-
 #if defined(WIN32)
 // Check for admin rights
 static inline bool IsHighIntegrity() {
@@ -107,7 +102,9 @@ namespace vl {
 
 LayerSettings::LayerSettings(const char *pLayerName, const VkLayerSettingsCreateInfoEXT *pCreateInfo,
                              const VkAllocationCallbacks *pAllocator, VlLayerSettingLogCallback pCallback)
-    : layer_name(pLayerName), create_info(pCreateInfo), pCallback(pCallback) {
+    : layer_name(pLayerName)
+    , create_info(pCreateInfo)
+    , pCallback(pCallback) {
     (void)pAllocator;
     assert(pLayerName != nullptr);
 
@@ -265,21 +262,7 @@ std::vector<std::string> &LayerSettings::GetSettingCache(const std::string &sett
 bool LayerSettings::HasEnvSetting(const char *pSettingName) {
     assert(pSettingName != nullptr);
 
-    std::vector<std::string> layer_names;
-    layer_names.push_back(this->layer_name);
-    ::AddWorkaroundLayerNames(layer_names);
-
-    for (std::size_t layer_index = 0, layer_count = layer_names.size(); layer_index < layer_count; ++layer_index) {
-        const char *cur_layer_name = layer_names[layer_index].c_str();
-        for (int i = TRIM_FIRST, n = TRIM_LAST; i <= n; ++i) {
-            const std::string &env_name = GetEnvSettingName(cur_layer_name, pSettingName, static_cast<TrimMode>(i));
-            if (IsEnvironment(env_name.c_str())) {
-                return true;
-            }
-        }
-    }
-
-    return false;
+    return !GetEnvSetting(pSettingName).empty();
 }
 
 bool LayerSettings::HasFileSetting(const char *pSettingName) { 
@@ -297,24 +280,31 @@ bool LayerSettings::HasAPISetting(const char *pSettingName) {
 }
 
 std::string LayerSettings::GetEnvSetting(const char *pSettingName) {
-    std::string result;
-
     std::vector<std::string> layer_names;
     layer_names.push_back(this->layer_name);
     ::AddWorkaroundLayerNames(layer_names);
 
     for (std::size_t layer_index = 0, layer_count = layer_names.size(); layer_index < layer_count; ++layer_index) {
         const char* cur_layer_name = layer_names[layer_index].c_str();
-        for (int i = TRIM_FIRST, n = TRIM_LAST; i <= n; ++i) {
-            const std::string &env_name = GetEnvSettingName(cur_layer_name, pSettingName, static_cast<TrimMode>(i));
-            result = GetEnvironment(env_name.c_str());
+
+        if (!this->prefix.empty()) {
+            const std::string &env_name = GetEnvSettingName(cur_layer_name, this->prefix.c_str(), pSettingName, TRIM_NAMESPACE);
+            std::string result = GetEnvironment(env_name.c_str());
             if (!result.empty()) {
-                break;
+                return result;
+            }
+        }
+
+        for (int trim_index = TRIM_FIRST; trim_index <= TRIM_LAST; ++trim_index) {
+            const std::string &env_name = GetEnvSettingName(cur_layer_name, this->prefix.c_str(), pSettingName, static_cast<TrimMode>(trim_index));
+            std::string result = GetEnvironment(env_name.c_str());
+            if (!result.empty()) {
+                return result;
             }
         }
     }
 
-    return result;
+    return std::string();
 }
 
 std::string LayerSettings::GetFileSetting(const char *pSettingName) {

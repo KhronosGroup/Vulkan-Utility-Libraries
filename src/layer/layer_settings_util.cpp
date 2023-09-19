@@ -47,38 +47,49 @@ std::string GetFileSettingName(const char *pLayerName, const char *pSettingName)
     return settingName.str();
 }
 
-std::string GetEnvSettingName(const char *layer_key, const char *setting_key, TrimMode trim_mode) {
+static const char *GetDefaultPrefix() {
+#ifdef __ANDROID__
+    return "vulkan.";
+#else
+    return "";
+#endif
+}
+
+std::string GetEnvSettingName(const char *layer_key, const char *requested_prefix, const char *setting_key, TrimMode trim_mode) {
     std::stringstream result;
+    const std::string prefix = (requested_prefix == nullptr || trim_mode != TRIM_NAMESPACE) ? GetDefaultPrefix() : requested_prefix;
 
 #if defined(__ANDROID__)
+    const std::string full_prefix = std::string("debug.") + prefix + ".";
     switch (trim_mode) {
         default:
         case TRIM_NONE: {
-            result << "debug.vulkan." << GetFileSettingName(layer_key, setting_key);
+            result << full_prefix << GetFileSettingName(layer_key, setting_key);
             break;
         }
         case TRIM_VENDOR: {
-            result << "debug.vulkan." << GetFileSettingName(TrimVendor(layer_key).c_str(), setting_key);
+            result << full_prefix << GetFileSettingName(TrimVendor(layer_key).c_str(), setting_key);
             break;
         }
         case TRIM_NAMESPACE: {
-            result << "debug.vulkan." << setting_key;
+            result << full_prefix << setting_key;
             break;
         }
     }
 #else
+    const std::string full_prefix = std::string("VK_") + (prefix.empty() ? "" : prefix + "_");
     switch (trim_mode) {
         default:
         case TRIM_NONE: {
-            result << "VK_" << vl::ToUpper(TrimPrefix(layer_key)) << "_" << vl::ToUpper(setting_key);
+            result << full_prefix << vl::ToUpper(TrimPrefix(layer_key)) << "_" << vl::ToUpper(setting_key);
             break;
         }
         case TRIM_VENDOR: {
-            result << "VK_" << vl::ToUpper(TrimVendor(layer_key)) << "_" << vl::ToUpper(setting_key);
+            result << full_prefix << vl::ToUpper(TrimVendor(layer_key)) << "_" << vl::ToUpper(setting_key);
             break;
         }
         case TRIM_NAMESPACE: {
-            result << "VK_" << vl::ToUpper(setting_key);
+            result << full_prefix << vl::ToUpper(setting_key);
             break;
         }
     }

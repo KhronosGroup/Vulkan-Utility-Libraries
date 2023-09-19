@@ -31,7 +31,7 @@ namespace vl {
         TRIM_LAST = TRIM_NAMESPACE,
     };
 
-    std::string GetEnvSettingName(const char *layer_key, const char *setting_key, TrimMode trim_mode);
+    std::string GetEnvSettingName(const char *layer_key, const char* prefix, const char *setting_key, TrimMode trim_mode);
 
     std::string GetFileSettingName(const char *layer_key, const char *setting_key);
 
