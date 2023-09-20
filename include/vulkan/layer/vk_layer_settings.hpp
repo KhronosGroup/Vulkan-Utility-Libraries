@@ -57,6 +57,7 @@ typedef std::pair<uint32_t, uint32_t> VkuCustomSTypeInfo;
 void vkuGetLayerSettingValues(VkuLayerSettingSet layerSettingSet, const char *pSettingName,
                               std::vector<VkuCustomSTypeInfo> &settingValues);
 
-// Return the list of Unknown setting in VkLayerSettingsCreateInfoEXT
-VkResult vkuGetUnknownSettings(const VkLayerSettingsCreateInfoEXT *pCreateInfo, uint32_t settingsCount, const char **pSettings,
+// Return the list of Unknown setting in all VkLayerSettingsCreateInfoEXT
+VkResult vkuGetUnknownSettings(const VkLayerSettingsCreateInfoEXT *pFirstCreateInfo, uint32_t settingsCount, const char **pSettings,
                                std::vector<const char *> &unknownSettings);
+

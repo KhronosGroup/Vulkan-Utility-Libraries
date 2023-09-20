@@ -193,3 +193,17 @@ void vkuGetLayerSettingValues(VkuLayerSettingSet layerSettingSet, const char *pS
         SetCustomStypeInfo(values, settingValues);
     }
 }
+
+VkResult vkuGetUnknownSettings(const VkLayerSettingsCreateInfoEXT *pFirstCreateInfo, uint32_t settingsCount, const char **pSettings,
+                              std::vector<const char *> &unknownSettings) {
+    uint32_t unknown_setting_count = 0;
+    VkResult result = vkuGetUnknownSettings(pFirstCreateInfo, settingsCount, pSettings, &unknown_setting_count, nullptr);
+
+    if (unknown_setting_count > 0) {
+        unknownSettings.resize(unknown_setting_count);
+
+        result = vkuGetUnknownSettings(pFirstCreateInfo, settingsCount, pSettings, &unknown_setting_count, &unknownSettings[0]);
+    }
+
+    return result;
+}
