@@ -18,7 +18,7 @@
 namespace vl {
     class LayerSettings {
       public:
-        LayerSettings(const char *pLayerName, const VkLayerSettingsCreateInfoEXT *pCreateInfo,
+        LayerSettings(const char *pLayerName, const VkLayerSettingsCreateInfoEXT *pFirstCreateInfo,
                       const VkAllocationCallbacks *pAllocator, VkuLayerSettingLogCallback pCallback);
         ~LayerSettings();
 
@@ -56,7 +56,8 @@ namespace vl {
 
         std::string prefix;
         std::string layer_name;
-        const VkLayerSettingsCreateInfoEXT *create_info{nullptr};
+
+        const VkLayerSettingsCreateInfoEXT *first_create_info{nullptr};
         VkuLayerSettingLogCallback pCallback{nullptr};
     };
 }// namespace vl

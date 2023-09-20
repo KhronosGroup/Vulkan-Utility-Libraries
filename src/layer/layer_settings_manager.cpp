@@ -100,10 +100,10 @@ static void AddWorkaroundLayerNames(std::vector<std::string> &layer_names) {
 
 namespace vl {
 
-LayerSettings::LayerSettings(const char *pLayerName, const VkLayerSettingsCreateInfoEXT *pCreateInfo,
+LayerSettings::LayerSettings(const char *pLayerName, const VkLayerSettingsCreateInfoEXT *pFirstCreateInfo,
                              const VkAllocationCallbacks *pAllocator, VkuLayerSettingLogCallback pCallback)
     : layer_name(pLayerName)
-    , create_info(pCreateInfo)
+    , first_create_info(pFirstCreateInfo)
     , pCallback(pCallback) {
     (void)pAllocator;
     assert(pLayerName != nullptr);
@@ -217,23 +217,29 @@ std::filesystem::path LayerSettings::FindSettingsFile() {
 }
 
 const VkLayerSettingEXT *LayerSettings::FindLayerSettingValue(const char *pSettingName) {
-    if (this->create_info == nullptr) {
+    if (this->first_create_info == nullptr) {
         return nullptr;
     }
 
     const std::string setting_name(pSettingName);
 
-    for (std::size_t i = 0, n = this->create_info->settingCount; i < n; ++i) {
-        const VkLayerSettingEXT *setting = &this->create_info->pSettings[i];
-        if (setting->pLayerName != this->layer_name) {
-            continue;
+    const VkLayerSettingsCreateInfoEXT *current_create_info = this->first_create_info;
+
+    while (current_create_info != nullptr) {
+        for (std::size_t i = 0, n = current_create_info->settingCount; i < n; ++i) {
+            const VkLayerSettingEXT *setting = &current_create_info->pSettings[i];
+            if (setting->pLayerName != this->layer_name) {
+                continue;
+            }
+
+            if (setting->pSettingName != setting_name) {
+                continue;
+            }
+
+            return setting;
         }
 
-        if (setting->pSettingName != setting_name) {
-            continue;
-        }
-
-        return setting;
+        current_create_info = vkuNextLayerSettingsCreateInfo(current_create_info);
     }
 
     return nullptr;

@@ -47,7 +47,7 @@ typedef struct VkuFrameset {
 typedef void(VKAPI_PTR *VkuLayerSettingLogCallback)(const char *pSettingName, const char *pMessage);
 
 // Create a layer setting set. If 'pCallback' is set to NULL, the messages are outputed to stderr.
-VkResult vkuCreateLayerSettingSet(const char *pLayerName, const VkLayerSettingsCreateInfoEXT *pCreateInfo,
+VkResult vkuCreateLayerSettingSet(const char *pLayerName, const VkLayerSettingsCreateInfoEXT *pFirstCreateInfo,
                                   const VkAllocationCallbacks *pAllocator, VkuLayerSettingLogCallback pCallback,
                                   VkuLayerSettingSet *pLayerSettingSet);
 
@@ -66,8 +66,11 @@ VkResult vkuGetLayerSettingValues(VkuLayerSettingSet layerSettingSet, const char
 // Find the VkLayerSettingsCreateInfoEXT in the VkInstanceCreateInfo pNext chain, return NULL if not present
 const VkLayerSettingsCreateInfoEXT *vkuFindLayerSettingsCreateInfo(const VkInstanceCreateInfo *pCreateInfo);
 
+// Find the VkLayerSettingsCreateInfoEXT in the VkLayerSettingsCreateInfoEXT pNext chain, return NULL if not present
+const VkLayerSettingsCreateInfoEXT *vkuNextLayerSettingsCreateInfo(const VkLayerSettingsCreateInfoEXT *pCreateInfo);
+
 // Return the list of Unknown setting in VkLayerSettingsCreateInfoEXT
-VkResult vkuGetUnknownSettings(const VkLayerSettingsCreateInfoEXT *pCreateInfo, uint32_t settingsCount, const char **pSettings,
+VkResult vkuGetUnknownSettings(const VkLayerSettingsCreateInfoEXT *pFirstCreateInfo, uint32_t settingsCount, const char **pSettings,
                                uint32_t *pUnknownSettingCount, const char **pUnknownSettings);
 
 #ifdef __cplusplus

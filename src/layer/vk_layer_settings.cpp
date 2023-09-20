@@ -30,12 +30,12 @@ void test_helper_SetLayerSetting(VkuLayerSettingSet layerSettingSet, const char 
     layer_setting_set->SetFileSetting(pSettingName, pValue);
 }
 
-VkResult vkuCreateLayerSettingSet(const char *pLayerName, const VkLayerSettingsCreateInfoEXT *pCreateInfo,
+VkResult vkuCreateLayerSettingSet(const char *pLayerName, const VkLayerSettingsCreateInfoEXT *pFirstCreateInfo,
                                  const VkAllocationCallbacks *pAllocator, VkuLayerSettingLogCallback pCallback,
     VkuLayerSettingSet *pLayerSettingSet) {
     (void)pAllocator;
 
-    vl::LayerSettings* layer_setting_set = new vl::LayerSettings(pLayerName, pCreateInfo, pAllocator, pCallback);
+    vl::LayerSettings *layer_setting_set = new vl::LayerSettings(pLayerName, pFirstCreateInfo, pAllocator, pCallback);
     *pLayerSettingSet = (VkuLayerSettingSet)layer_setting_set;
 
     return VK_SUCCESS;
@@ -634,7 +634,21 @@ const VkLayerSettingsCreateInfoEXT *vkuFindLayerSettingsCreateInfo(const VkInsta
     return found;
 }
 
-static bool vlHasSetting(uint32_t settingsCount, const char **pSettings, const char* searchedSettings) {
+const VkLayerSettingsCreateInfoEXT *vkuNextLayerSettingsCreateInfo(const VkLayerSettingsCreateInfoEXT *pCreateInfo) {
+    const VkBaseOutStructure *current = reinterpret_cast<const VkBaseOutStructure *>(pCreateInfo->pNext);
+    const VkLayerSettingsCreateInfoEXT *found = nullptr;
+    while (current) {
+        if (VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT == current->sType) {
+            found = reinterpret_cast<const VkLayerSettingsCreateInfoEXT *>(current);
+            current = nullptr;
+        } else {
+            current = current->pNext;
+        }
+    }
+    return found;
+}
+
+static bool vkuHasSetting(uint32_t settingsCount, const char **pSettings, const char* searchedSettings) {
     for (uint32_t setting_index = 0; setting_index < settingsCount; ++setting_index) {
         if (std::strcmp(pSettings[setting_index], searchedSettings) == 0) {
             return true;
@@ -648,11 +662,13 @@ VkResult vkuGetUnknownSettings(const VkLayerSettingsCreateInfoEXT* pCreateInfo, 
     uint32_t* pUnknownSettingCount, const char** pUnknownSettings) {
     assert(pUnknownSettingCount != nullptr);
 
+    const VkLayerSettingsCreateInfoEXT *current_create_info = pCreateInfo;
+
     uint32_t current_unknown_setting_count = 0;
-    if (pCreateInfo != nullptr) {
-        for (uint32_t info_index = 0, info_count = pCreateInfo->settingCount; info_index < info_count; ++info_index) {
-            const char *current_setting_name = pCreateInfo->pSettings[info_index].pSettingName;
-            if (!vlHasSetting(settingsCount, pSettings, current_setting_name)) {
+    while (current_create_info != nullptr) {
+        for (uint32_t info_index = 0, info_count = current_create_info->settingCount; info_index < info_count; ++info_index) {
+            const char *current_setting_name = current_create_info->pSettings[info_index].pSettingName;
+            if (!vkuHasSetting(settingsCount, pSettings, current_setting_name)) {
                 if (pUnknownSettings != nullptr && current_unknown_setting_count < *pUnknownSettingCount) {
                     pUnknownSettings[current_unknown_setting_count] = current_setting_name;
                 }
@@ -660,6 +676,8 @@ VkResult vkuGetUnknownSettings(const VkLayerSettingsCreateInfoEXT* pCreateInfo, 
                 ++current_unknown_setting_count;
             }
         }
+
+        current_create_info = vkuNextLayerSettingsCreateInfo(current_create_info);
     }
 
     if (pUnknownSettings == nullptr) {
@@ -672,16 +690,3 @@ VkResult vkuGetUnknownSettings(const VkLayerSettingsCreateInfoEXT* pCreateInfo, 
     return VK_SUCCESS;
 }
 
-VkResult vkuGetUnknownSettings(const VkLayerSettingsCreateInfoEXT* pCreateInfo, uint32_t settingsCount, const char** pSettings,
-    std::vector<const char*>& unknownSettings) {
-    uint32_t unknown_setting_count = 0;
-    VkResult result = vkuGetUnknownSettings(pCreateInfo, settingsCount, pSettings, &unknown_setting_count, nullptr);
-
-    if (unknown_setting_count > 0) {
-        unknownSettings.resize(unknown_setting_count);
-
-        result = vkuGetUnknownSettings(pCreateInfo, settingsCount, pSettings, &unknown_setting_count, &unknownSettings[0]);
-    }
-
-    return result;
-}
