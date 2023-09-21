@@ -58,9 +58,19 @@ static std::string GetEnvironment(const char *variable) {
         result = GetAndroidProperty("debug.vulkan.screenshot");
     }
     return result;
+#elif defined(_WIN32)
+    auto size = GetEnvironmentVariableA(variable, NULL, 0);
+    if (size == 0) {
+        return "";
+    }
+    char *buffer = new char[size];
+    GetEnvironmentVariableA(variable, buffer, size);
+    std::string output = buffer;
+    delete[] buffer;
+    return output;
 #else
     const char *output = std::getenv(variable);
-    return output == NULL ? "" : output;
+    return output == nullptr ? "" : output;
 #endif
 }
 

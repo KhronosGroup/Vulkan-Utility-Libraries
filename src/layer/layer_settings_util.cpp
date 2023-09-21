@@ -202,9 +202,9 @@ int32_t ToInt32(const std::string &token) {
 int64_t ToInt64(const std::string &token) {
     int64_t int_id = 0;
     if (token.find("0x") == 0 || token.find("0X") == 0 || token.find("-0x") == 0 || token.find("-0X") == 0) {  // Handle hex format
-        int_id = static_cast<uint64_t>(std::strtoll(token.c_str(), nullptr, 16));
+        int_id = static_cast<int64_t>(std::strtoll(token.c_str(), nullptr, 16));
     } else {
-        int_id = static_cast<uint64_t>(std::strtoll(token.c_str(), nullptr, 10));  // Decimal format
+        int_id = static_cast<int64_t>(std::strtoll(token.c_str(), nullptr, 10));  // Decimal format
     }
     return int_id;
 }
