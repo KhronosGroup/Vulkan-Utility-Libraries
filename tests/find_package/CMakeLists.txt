@@ -32,4 +32,28 @@ if (NOT TARGET Vulkan::UtilityHeaders)
     message(FATAL_ERROR "Vulkan::UtilityHeaders target not defined!")
 endif()
 
-target_link_libraries(find_package_example PRIVATE Vulkan::LayerSettings Vulkan::UtilityHeaders)
+target_link_libraries(find_package_example PRIVATE
+    Vulkan::LayerSettings
+    Vulkan::UtilityHeaders
+)
+
+# NOTE: Because Vulkan::Headers header files are exposed in the public facing interface
+# we must expose this library to users.
+get_target_property(property Vulkan::LayerSettings INTERFACE_LINK_LIBRARIES)
+if (NOT property MATCHES "Vulkan::Headers")
+    message(FATAL_ERROR "Vulkan::Headers not linked properly!")
+endif()
+get_target_property(property Vulkan::UtilityHeaders INTERFACE_LINK_LIBRARIES)
+if (NOT property MATCHES "Vulkan::Headers")
+    message(FATAL_ERROR "Vulkan::Headers not linked properly!")
+endif()
+
+# Prevent regression of https://github.com/KhronosGroup/Vulkan-Utility-Libraries/issues/103
+get_target_property(property Vulkan::LayerSettings INTERFACE_COMPILE_OPTIONS)
+if (NOT property STREQUAL "property-NOTFOUND")
+    message(FATAL_ERROR "Vulkan::LayerSettings shouldn't export compile options! ${property}")
+endif()
+get_target_property(property Vulkan::UtilityHeaders INTERFACE_COMPILE_OPTIONS)
+if (NOT property STREQUAL "property-NOTFOUND")
+    message(FATAL_ERROR "Vulkan::UtilityHeaders shouldn't export compile options! ${property}")
+endif()

@@ -23,8 +23,6 @@ add_subdirectory(scripts)
 
 find_package(VulkanHeaders CONFIG QUIET)
 
-option(VUL_WERROR "Treat compiler warnings as errors")
-
 add_subdirectory(src)
 add_subdirectory(include)
 
@@ -41,6 +39,15 @@ if (VUL_IS_TOP_LEVEL)
 
     set_target_properties(VulkanLayerSettings PROPERTIES EXPORT_NAME "LayerSettings")
     set_target_properties(VulkanUtilityHeaders PROPERTIES EXPORT_NAME "UtilityHeaders")
-    install(TARGETS VulkanLayerSettings VulkanUtilityHeaders EXPORT VulkanUtilityLibrariesConfig INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
-    install(EXPORT VulkanUtilityLibrariesConfig DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/VulkanUtilityLibraries NAMESPACE Vulkan::)
+    set_target_properties(VulkanCompilerConfiguration PROPERTIES EXPORT_NAME "CompilerConfiguration")
+    install(
+        TARGETS VulkanLayerSettings VulkanUtilityHeaders VulkanCompilerConfiguration
+        EXPORT VulkanUtilityLibrariesConfig
+        INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+    )
+    install(
+        EXPORT VulkanUtilityLibrariesConfig
+        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/VulkanUtilityLibraries
+        NAMESPACE Vulkan::
+    )
 endif()
