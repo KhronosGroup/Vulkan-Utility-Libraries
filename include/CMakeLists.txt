@@ -16,8 +16,6 @@ set(CMAKE_FOLDER "${CMAKE_FOLDER}/VulkanUtilityHeaders")
 add_library(VulkanUtilityHeaders INTERFACE)
 add_library(Vulkan::UtilityHeaders ALIAS VulkanUtilityHeaders)
 
-lunarg_target_compiler_configurations(VulkanUtilityHeaders VUL_WERROR)
-
 # https://cmake.org/cmake/help/latest/release/3.19.html#other
 if (CMAKE_VERSION VERSION_GREATER_EQUAL "3.19")
 	target_sources(VulkanUtilityHeaders PRIVATE
@@ -28,8 +26,6 @@ if (CMAKE_VERSION VERSION_GREATER_EQUAL "3.19")
 	)
 endif()
 
-# NOTE: Because Vulkan::Headers header files are exposed in the public facing interface
-# we must expose this library as public to users.
 target_link_Libraries(VulkanUtilityHeaders INTERFACE Vulkan::Headers)
 
 target_include_directories(VulkanUtilityHeaders INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>)

@@ -11,12 +11,11 @@ include(GoogleTest)
 
 add_executable(test_vk_dispatch_table test_interface.cpp)
 
-lunarg_target_compiler_configurations(test_vk_dispatch_table VUL_WERROR)
-
 target_link_libraries(test_vk_dispatch_table PRIVATE
     GTest::gtest
     GTest::gtest_main
     Vulkan::UtilityHeaders
+    Vulkan::CompilerConfiguration
 )
 
 target_include_directories(test_vk_dispatch_table PRIVATE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>)
