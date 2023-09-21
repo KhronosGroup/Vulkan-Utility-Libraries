@@ -19,6 +19,7 @@ static_library("vulkan_layer_settings") {
     "include/vulkan/utility/vk_format_utils.h",
     "include/vulkan/utility/vk_struct_helper.hpp",
     "include/vulkan/vk_enum_string_helper.h",
+    "scripts/gn/stub.cpp",
     "src/layer/layer_settings_manager.cpp",
     "src/layer/layer_settings_manager.hpp",
     "src/layer/layer_settings_util.cpp",
