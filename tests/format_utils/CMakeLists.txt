@@ -22,4 +22,4 @@ if(${CMAKE_C_COMPILER_ID} MATCHES "(GNU|Clang)")
     add_compile_options(-Wpedantic -Wall -Wextra -Werror)
 endif()
 
-gtest_discover_tests(test_format_utils)
+gtest_discover_tests(test_format_utils DISCOVERY_TIMEOUT 100)
