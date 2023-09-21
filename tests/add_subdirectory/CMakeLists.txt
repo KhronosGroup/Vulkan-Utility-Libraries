@@ -35,6 +35,24 @@ foreach(header IN LISTS public_headers)
     endif()
 endforeach()
 
+# Ensure gn stub file contains all public headers.
+# Otherwise we can break the GN build by accident.
+get_filename_component(gn_stub_file "${CMAKE_CURRENT_SOURCE_DIR}/../../scripts/gn/stub.cpp" ABSOLUTE)
+if (NOT EXISTS ${gn_stub_file})
+    message(FATAL_ERROR "Couldn't find gn stub file!")
+endif()
+
+file(READ ${gn_stub_file} gn_stub_contents)
+
+foreach(header IN LISTS public_headers)
+    get_filename_component(header ${header} "NAME")
+    if (gn_stub_contents MATCHES "${header}>")
+        message(DEBUG "Stub contains ${header}")
+    else()
+        message(FATAL_ERROR "Update ${gn_stub_file} with ${header}!")
+    endif()
+endforeach()
+
 # The intent is ensuring we don't accidentally change the names of these
 # targets. Since it would break downstream users.
 if (NOT TARGET Vulkan::LayerSettings)
