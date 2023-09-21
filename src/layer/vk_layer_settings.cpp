@@ -11,6 +11,7 @@
 #include "layer_settings_manager.hpp"
 
 #include <memory>
+#include <charconv>
 #include <cstdlib>
 #include <cassert>
 #include <cstring>
@@ -222,7 +223,16 @@ VkResult vkuGetLayerSettingValues(VkuLayerSettingSet layerSettingSet, const char
                     for (std::size_t i = 0, n = values.size(); i < n; ++i) {
                         const std::string &setting_value = vl::ToLower(settings[i]);
                         if (vl::IsInteger(setting_value)) {
-                            values[i] = std::atoll(setting_value.c_str());
+                            int64_t setting{};
+
+                            if (std::from_chars(setting_value.data(), setting_value.data() + setting_value.size(), setting).ec ==
+                                std::errc()) {
+                                values[i] = setting;
+                            } else {
+                                const std::string &message =
+                                    vl::FormatString("The data provided (%s) is not an INT64 value.", setting_value.c_str());
+                                layer_setting_set->Log(pSettingName, message.c_str());
+                            }
                         } else {
                             const std::string &message =
                                 vl::FormatString("The data provided (%s) is not an integer value.", setting_value.c_str());
@@ -267,7 +277,16 @@ VkResult vkuGetLayerSettingValues(VkuLayerSettingSet layerSettingSet, const char
                     for (std::size_t i = 0, n = values.size(); i < n; ++i) {
                         const std::string &setting_value = vl::ToLower(settings[i]);
                         if (vl::IsInteger(setting_value)) {
-                            values[i] = std::atoi(setting_value.c_str());
+                            uint32_t setting{};
+
+                            if (std::from_chars(setting_value.data(), setting_value.data() + setting_value.size(), setting).ec ==
+                                std::errc()) {
+                                values[i] = setting;
+                            } else {
+                                const std::string &message =
+                                    vl::FormatString("The data provided (%s) is not a UINT32 value.", setting_value.c_str());
+                                layer_setting_set->Log(pSettingName, message.c_str());
+                            }
                         } else {
                             const std::string &message =
                                 vl::FormatString("The data provided (%s) is not an integer value.", setting_value.c_str());
@@ -312,7 +331,16 @@ VkResult vkuGetLayerSettingValues(VkuLayerSettingSet layerSettingSet, const char
                     for (std::size_t i = 0, n = values.size(); i < n; ++i) {
                         const std::string &setting_value = vl::ToLower(settings[i]);
                         if (vl::IsInteger(setting_value)) {
-                            values[i] = std::atoll(setting_value.c_str());
+                            uint64_t setting{};
+
+                            if (std::from_chars(setting_value.data(), setting_value.data() + setting_value.size(), setting).ec ==
+                                std::errc()) {
+                                values[i] = setting;
+                            } else {
+                                const std::string &message =
+                                    vl::FormatString("The data provided (%s) is not a UINT64 value.", setting_value.c_str());
+                                layer_setting_set->Log(pSettingName, message.c_str());
+                            }
                         } else {
                             const std::string &message =
                                 vl::FormatString("The data provided (%s) is not an integer value.", setting_value.c_str());
