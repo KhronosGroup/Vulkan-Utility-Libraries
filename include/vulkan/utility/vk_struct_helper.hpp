@@ -1852,7 +1852,7 @@ class InitStructHelper {
     void* p_next = nullptr;
   public:
     InitStructHelper() = default;
-    InitStructHelper(void *p_next) : p_next(p_next) {};
+    InitStructHelper(void *p_next) : p_next(p_next) {}
 
     template <typename T>
     operator T() {
