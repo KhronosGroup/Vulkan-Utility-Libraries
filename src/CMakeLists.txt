@@ -14,6 +14,7 @@ if(${CMAKE_CXX_COMPILER_ID} MATCHES "(GNU|Clang)")
         -Wall
         -Wextra
         -Wpointer-arith
+        -Wextra-semi
     )
     if(${CMAKE_CXX_COMPILER_ID} MATCHES "Clang")
         target_compile_options(VulkanCompilerConfiguration INTERFACE
