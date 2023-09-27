@@ -37,13 +37,13 @@ elseif(MSVC)
     if (MSVC_IDE)
         target_compile_options(VulkanCompilerConfiguration INTERFACE /MP)
     endif()
-
-    # Minimize what Windows.h leaks
-    target_compile_definitions(VulkanCompilerConfiguration INTERFACE NOMINMAX WIN32_LEAN_AND_MEAN)
 endif()
 
 target_compile_definitions(VulkanCompilerConfiguration INTERFACE VK_ENABLE_BETA_EXTENSIONS)
 if(WIN32)
+    # Minimize what Windows.h leaks
+    target_compile_definitions(VulkanCompilerConfiguration INTERFACE NOMINMAX WIN32_LEAN_AND_MEAN)
+
     target_compile_definitions(VulkanCompilerConfiguration INTERFACE VK_USE_PLATFORM_WIN32_KHR)
 elseif(ANDROID)
     target_compile_definitions(VulkanCompilerConfiguration INTERFACE VK_USE_PLATFORM_ANDROID_KHR)
