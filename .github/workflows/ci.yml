@@ -90,3 +90,16 @@ jobs:
         run: sudo apt-get -qq update && sudo apt-get install -y libwayland-dev xorg-dev
       - name: Test chromium build
         run: python scripts/gn/gn.py
+
+  generate_source:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Generate source
+        run: |
+          scripts/update_deps.py --dir external --no-build
+          scripts/generate_source.py external/Vulkan-Headers/registry/
+      - run: git diff --exit-code
