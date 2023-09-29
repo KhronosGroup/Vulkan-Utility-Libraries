@@ -227,7 +227,7 @@ inline bool vkuFormatIsPacked(VkFormat format);
 inline bool vkuFormatRequiresYcbcrConversion(VkFormat format);
 
 // Returns whether a VkFormat is XChromaSubsampled
-// This corresponds to formats with _422 in their name
+// This corresponds to formats with _422 or 420 in their name
 inline bool vkuFormatIsXChromaSubsampled(VkFormat format);
 
 // Returns whether a VkFormat is YChromaSubsampled
