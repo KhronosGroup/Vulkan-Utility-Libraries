@@ -1675,6 +1675,15 @@ template <> inline VkStructureType GetSType<VkOpticalFlowExecuteInfoNV>() { retu
 template <> inline VkStructureType GetSType<VkPhysicalDeviceLegacyDitheringFeaturesEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LEGACY_DITHERING_FEATURES_EXT; }
 
 template <> inline VkStructureType GetSType<VkPhysicalDevicePipelineProtectedAccessFeaturesEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_PROTECTED_ACCESS_FEATURES_EXT; }
+#ifdef VK_USE_PLATFORM_ANDROID_KHR
+template <> inline VkStructureType GetSType<VkPhysicalDeviceExternalFormatResolveFeaturesANDROID>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_FORMAT_RESOLVE_FEATURES_ANDROID; }
+#endif // VK_USE_PLATFORM_ANDROID_KHR
+#ifdef VK_USE_PLATFORM_ANDROID_KHR
+template <> inline VkStructureType GetSType<VkPhysicalDeviceExternalFormatResolvePropertiesANDROID>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_FORMAT_RESOLVE_PROPERTIES_ANDROID; }
+#endif // VK_USE_PLATFORM_ANDROID_KHR
+#ifdef VK_USE_PLATFORM_ANDROID_KHR
+template <> inline VkStructureType GetSType<VkAndroidHardwareBufferFormatResolvePropertiesANDROID>() { return VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_FORMAT_RESOLVE_PROPERTIES_ANDROID; }
+#endif // VK_USE_PLATFORM_ANDROID_KHR
 
 template <> inline VkStructureType GetSType<VkPhysicalDeviceShaderObjectFeaturesEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_OBJECT_FEATURES_EXT; }
 
@@ -1703,6 +1712,24 @@ template <> inline VkStructureType GetSType<VkPhysicalDeviceShaderCoreBuiltinsPr
 template <> inline VkStructureType GetSType<VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_LIBRARY_GROUP_HANDLES_FEATURES_EXT; }
 
 template <> inline VkStructureType GetSType<VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DYNAMIC_RENDERING_UNUSED_ATTACHMENTS_FEATURES_EXT; }
+
+template <> inline VkStructureType GetSType<VkLatencySleepModeInfoNV>() { return VK_STRUCTURE_TYPE_LATENCY_SLEEP_MODE_INFO_NV; }
+
+template <> inline VkStructureType GetSType<VkLatencySleepInfoNV>() { return VK_STRUCTURE_TYPE_LATENCY_SLEEP_INFO_NV; }
+
+template <> inline VkStructureType GetSType<VkSetLatencyMarkerInfoNV>() { return VK_STRUCTURE_TYPE_SET_LATENCY_MARKER_INFO_NV; }
+
+template <> inline VkStructureType GetSType<VkLatencyTimingsFrameReportNV>() { return VK_STRUCTURE_TYPE_LATENCY_TIMINGS_FRAME_REPORT_NV; }
+
+template <> inline VkStructureType GetSType<VkGetLatencyMarkerInfoNV>() { return VK_STRUCTURE_TYPE_GET_LATENCY_MARKER_INFO_NV; }
+
+template <> inline VkStructureType GetSType<VkLatencySubmissionPresentIdNV>() { return VK_STRUCTURE_TYPE_LATENCY_SUBMISSION_PRESENT_ID_NV; }
+
+template <> inline VkStructureType GetSType<VkSwapchainLatencyCreateInfoNV>() { return VK_STRUCTURE_TYPE_SWAPCHAIN_LATENCY_CREATE_INFO_NV; }
+
+template <> inline VkStructureType GetSType<VkOutOfBandQueueTypeInfoNV>() { return VK_STRUCTURE_TYPE_OUT_OF_BAND_QUEUE_TYPE_INFO_NV; }
+
+template <> inline VkStructureType GetSType<VkLatencySurfaceCapabilitiesNV>() { return VK_STRUCTURE_TYPE_LATENCY_SURFACE_CAPABILITIES_NV; }
 
 template <> inline VkStructureType GetSType<VkPhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PER_VIEW_RENDER_AREAS_FEATURES_QCOM; }
 
