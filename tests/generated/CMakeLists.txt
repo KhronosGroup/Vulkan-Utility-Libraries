@@ -5,11 +5,6 @@
 # SPDX-License-Identifier: Apache-2.0
 set(CMAKE_FOLDER "${CMAKE_FOLDER}/generated_code/tests")
 
-find_package(magic_enum REQUIRED CONFIG)
-find_package(GTest REQUIRED CONFIG)
-
-include(GoogleTest)
-
 # Test vk_enum_string_helper.h
 add_executable(vk_enum_string_helper vk_enum_string_helper.cpp)
 
@@ -23,4 +18,3 @@ target_link_libraries(vk_enum_string_helper PRIVATE
 )
 
 gtest_discover_tests(vk_enum_string_helper)
-

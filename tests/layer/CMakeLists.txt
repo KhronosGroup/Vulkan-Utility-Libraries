@@ -5,10 +5,6 @@
 # SPDX-License-Identifier: Apache-2.0
 set(CMAKE_FOLDER "${CMAKE_FOLDER}/VulkanLayerSettings/tests")
 
-find_package(GTest REQUIRED CONFIG)
-
-include(GoogleTest)
-
 # test_layer_setting_util
 add_executable(test_layer_settings_util)
 

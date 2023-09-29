@@ -4,11 +4,6 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-find_package(GTest REQUIRED CONFIG)
-find_package(magic_enum REQUIRED CONFIG)
-
-include(GoogleTest)
-
 add_executable(test_format_utils test_formats.cpp)
 
 target_link_libraries(test_format_utils PRIVATE
