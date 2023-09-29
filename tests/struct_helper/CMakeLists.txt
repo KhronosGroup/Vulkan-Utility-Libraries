@@ -4,10 +4,6 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-find_package(GTest REQUIRED CONFIG)
-
-include(GoogleTest)
-
 add_executable(test_struct_helper struct_helper.cpp)
 
 target_link_libraries(test_struct_helper PRIVATE
