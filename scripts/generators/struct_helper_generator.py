@@ -49,9 +49,8 @@ VkStructureType GetSType() {
 }\n''')
 
         for struct in [x for x in self.vk.structs.values() if x.sType]:
-            out.extend([f'#ifdef {struct.protect}'] if struct.protect else [])
-            out.append(f'''
-template <> inline VkStructureType GetSType<{struct.name}>() {{ return {struct.sType}; }}\n''')
+            out.extend([f'#ifdef {struct.protect}\n'] if struct.protect else [])
+            out.append(f'template <> inline VkStructureType GetSType<{struct.name}>() {{ return {struct.sType}; }}\n')
             out.extend([f'#endif // {struct.protect}\n'] if struct.protect else [])
 
         out.append('''
@@ -122,6 +121,17 @@ class InitStructHelper {
     }
 };
 
+template<typename T> VkObjectType GetObjectType() {
+    static_assert(sizeof(T) == 0, "GetObjectType() is being used with an unsupported Type! Is the code-gen up to date?");
+    return VK_OBJECT_TYPE_UNKNOWN;
+}
+
+''')
+        for handle in self.vk.handles.values():
+            out.extend([f'#ifdef {handle.protect}\n'] if handle.protect else [])
+            out.append(f'template<> VkObjectType GetObjectType<{handle.name}>() {{ return {handle.type}; }}\n')
+            out.extend([f'#endif // {handle.protect}\n'] if handle.protect else [])
+        out.append('''
 } // namespace vku
 \n''')
 
