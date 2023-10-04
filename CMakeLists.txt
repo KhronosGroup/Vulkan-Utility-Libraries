@@ -19,6 +19,10 @@ set(CMAKE_CXX_VISIBILITY_PRESET "hidden")
 set(CMAKE_C_VISIBILITY_PRESET "hidden")
 set(CMAKE_VISIBILITY_INLINES_HIDDEN "YES")
 
+# This variable enables downstream users to customize the target API
+# variant (e.g. Vulkan SC)
+set(API_TYPE "vulkan")
+
 add_subdirectory(scripts)
 
 find_package(VulkanHeaders CONFIG QUIET)
@@ -35,7 +39,7 @@ if (VUL_IS_TOP_LEVEL)
 
     include(GNUInstallDirs)
 
-    install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/include/vulkan" DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+    install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/include/${API_TYPE}/" DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/vulkan")
 
     set_target_properties(VulkanLayerSettings PROPERTIES EXPORT_NAME "LayerSettings")
     set_target_properties(VulkanUtilityHeaders PROPERTIES EXPORT_NAME "UtilityHeaders")
