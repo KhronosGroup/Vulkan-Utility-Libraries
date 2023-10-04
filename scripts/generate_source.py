@@ -27,23 +27,32 @@ def RunGenerators(api: str, registry: str, targetFilter: str) -> None:
     from generators.format_utils_generator import FormatUtilsOutputGenerator
     from generators.struct_helper_generator import StructHelperOutputGenerator
 
+    # These set fields that are needed by both OutputGenerator and BaseGenerator,
+    # but are uniform and don't need to be set at a per-generated file level
+    from generators.base_generator import (SetTargetApiName, SetMergedApiNames)
+    SetTargetApiName(api)
+
     # Build up a list of all generators and custom options
     generators = {
         'vk_dispatch_table.h' : {
            'generator' : DispatchTableOutputGenerator,
-           'directory' : 'include/vulkan/utility',
+           'genCombined': True,
+           'directory' : f'include/{api}/utility',
         },
         'vk_enum_string_helper.h' : {
             'generator' : EnumStringHelperOutputGenerator,
-            'directory' : 'include/vulkan',
+            'genCombined': True,
+            'directory' : f'include/{api}',
         },
         'vk_format_utils.h' : {
             'generator' : FormatUtilsOutputGenerator,
-            'directory' : 'include/vulkan/utility',
+            'genCombined': True,
+            'directory' : f'include/{api}/utility',
         },
         'vk_struct_helper.hpp' : {
             'generator' : StructHelperOutputGenerator,
-            'directory' : 'include/vulkan/utility',
+            'genCombined': True,
+            'directory' : f'include/{api}/utility',
         },
     }
 
@@ -61,11 +70,21 @@ def RunGenerators(api: str, registry: str, targetFilter: str) -> None:
         generator = generators[target]['generator']
         gen = generator()
 
+        # This code and the 'genCombined' generator metadata is used by downstream
+        # users to generate code with all Vulkan APIs merged into the target API variant
+        # (e.g. Vulkan SC) when needed. The constructed apiList is also used to filter
+        # out non-applicable extensions later below.
+        apiList = [api]
+        if api != 'vulkan' and generators[target]['genCombined']:
+            SetMergedApiNames('vulkan')
+            apiList.append('vulkan')
+        else:
+            SetMergedApiNames(None)
+
         outDirectory = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', generators[target]['directory']))
         options = BaseGeneratorOptions(
             customFileName  = target,
-            customDirectory = outDirectory,
-            customApiName   = 'vulkan')
+            customDirectory = outDirectory)
 
         # Create the registry object with the specified generator and generator
         # options. The options are set before XML loading as they may affect it.
