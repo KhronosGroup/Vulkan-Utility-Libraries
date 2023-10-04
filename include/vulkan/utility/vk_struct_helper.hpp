@@ -1175,56 +1175,56 @@ template<typename T> VkObjectType GetObjectType() {
     return VK_OBJECT_TYPE_UNKNOWN;
 }
 
-template<> VkObjectType GetObjectType<VkBuffer>() { return VK_OBJECT_TYPE_BUFFER; }
-template<> VkObjectType GetObjectType<VkImage>() { return VK_OBJECT_TYPE_IMAGE; }
-template<> VkObjectType GetObjectType<VkInstance>() { return VK_OBJECT_TYPE_INSTANCE; }
-template<> VkObjectType GetObjectType<VkPhysicalDevice>() { return VK_OBJECT_TYPE_PHYSICAL_DEVICE; }
-template<> VkObjectType GetObjectType<VkDevice>() { return VK_OBJECT_TYPE_DEVICE; }
-template<> VkObjectType GetObjectType<VkQueue>() { return VK_OBJECT_TYPE_QUEUE; }
-template<> VkObjectType GetObjectType<VkSemaphore>() { return VK_OBJECT_TYPE_SEMAPHORE; }
-template<> VkObjectType GetObjectType<VkCommandBuffer>() { return VK_OBJECT_TYPE_COMMAND_BUFFER; }
-template<> VkObjectType GetObjectType<VkFence>() { return VK_OBJECT_TYPE_FENCE; }
-template<> VkObjectType GetObjectType<VkDeviceMemory>() { return VK_OBJECT_TYPE_DEVICE_MEMORY; }
-template<> VkObjectType GetObjectType<VkEvent>() { return VK_OBJECT_TYPE_EVENT; }
-template<> VkObjectType GetObjectType<VkQueryPool>() { return VK_OBJECT_TYPE_QUERY_POOL; }
-template<> VkObjectType GetObjectType<VkBufferView>() { return VK_OBJECT_TYPE_BUFFER_VIEW; }
-template<> VkObjectType GetObjectType<VkImageView>() { return VK_OBJECT_TYPE_IMAGE_VIEW; }
-template<> VkObjectType GetObjectType<VkShaderModule>() { return VK_OBJECT_TYPE_SHADER_MODULE; }
-template<> VkObjectType GetObjectType<VkPipelineCache>() { return VK_OBJECT_TYPE_PIPELINE_CACHE; }
-template<> VkObjectType GetObjectType<VkPipelineLayout>() { return VK_OBJECT_TYPE_PIPELINE_LAYOUT; }
-template<> VkObjectType GetObjectType<VkPipeline>() { return VK_OBJECT_TYPE_PIPELINE; }
-template<> VkObjectType GetObjectType<VkRenderPass>() { return VK_OBJECT_TYPE_RENDER_PASS; }
-template<> VkObjectType GetObjectType<VkDescriptorSetLayout>() { return VK_OBJECT_TYPE_DESCRIPTOR_SET_LAYOUT; }
-template<> VkObjectType GetObjectType<VkSampler>() { return VK_OBJECT_TYPE_SAMPLER; }
-template<> VkObjectType GetObjectType<VkDescriptorSet>() { return VK_OBJECT_TYPE_DESCRIPTOR_SET; }
-template<> VkObjectType GetObjectType<VkDescriptorPool>() { return VK_OBJECT_TYPE_DESCRIPTOR_POOL; }
-template<> VkObjectType GetObjectType<VkFramebuffer>() { return VK_OBJECT_TYPE_FRAMEBUFFER; }
-template<> VkObjectType GetObjectType<VkCommandPool>() { return VK_OBJECT_TYPE_COMMAND_POOL; }
-template<> VkObjectType GetObjectType<VkSamplerYcbcrConversion>() { return VK_OBJECT_TYPE_SAMPLER_YCBCR_CONVERSION; }
-template<> VkObjectType GetObjectType<VkDescriptorUpdateTemplate>() { return VK_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE; }
-template<> VkObjectType GetObjectType<VkPrivateDataSlot>() { return VK_OBJECT_TYPE_PRIVATE_DATA_SLOT; }
-template<> VkObjectType GetObjectType<VkSurfaceKHR>() { return VK_OBJECT_TYPE_SURFACE_KHR; }
-template<> VkObjectType GetObjectType<VkSwapchainKHR>() { return VK_OBJECT_TYPE_SWAPCHAIN_KHR; }
-template<> VkObjectType GetObjectType<VkDisplayKHR>() { return VK_OBJECT_TYPE_DISPLAY_KHR; }
-template<> VkObjectType GetObjectType<VkDisplayModeKHR>() { return VK_OBJECT_TYPE_DISPLAY_MODE_KHR; }
-template<> VkObjectType GetObjectType<VkVideoSessionKHR>() { return VK_OBJECT_TYPE_VIDEO_SESSION_KHR; }
-template<> VkObjectType GetObjectType<VkVideoSessionParametersKHR>() { return VK_OBJECT_TYPE_VIDEO_SESSION_PARAMETERS_KHR; }
-template<> VkObjectType GetObjectType<VkDeferredOperationKHR>() { return VK_OBJECT_TYPE_DEFERRED_OPERATION_KHR; }
-template<> VkObjectType GetObjectType<VkDebugReportCallbackEXT>() { return VK_OBJECT_TYPE_DEBUG_REPORT_CALLBACK_EXT; }
-template<> VkObjectType GetObjectType<VkCuModuleNVX>() { return VK_OBJECT_TYPE_CU_MODULE_NVX; }
-template<> VkObjectType GetObjectType<VkCuFunctionNVX>() { return VK_OBJECT_TYPE_CU_FUNCTION_NVX; }
-template<> VkObjectType GetObjectType<VkDebugUtilsMessengerEXT>() { return VK_OBJECT_TYPE_DEBUG_UTILS_MESSENGER_EXT; }
-template<> VkObjectType GetObjectType<VkValidationCacheEXT>() { return VK_OBJECT_TYPE_VALIDATION_CACHE_EXT; }
-template<> VkObjectType GetObjectType<VkAccelerationStructureNV>() { return VK_OBJECT_TYPE_ACCELERATION_STRUCTURE_NV; }
-template<> VkObjectType GetObjectType<VkPerformanceConfigurationINTEL>() { return VK_OBJECT_TYPE_PERFORMANCE_CONFIGURATION_INTEL; }
-template<> VkObjectType GetObjectType<VkIndirectCommandsLayoutNV>() { return VK_OBJECT_TYPE_INDIRECT_COMMANDS_LAYOUT_NV; }
-template<> VkObjectType GetObjectType<VkAccelerationStructureKHR>() { return VK_OBJECT_TYPE_ACCELERATION_STRUCTURE_KHR; }
+template<> inline VkObjectType GetObjectType<VkBuffer>() { return VK_OBJECT_TYPE_BUFFER; }
+template<> inline VkObjectType GetObjectType<VkImage>() { return VK_OBJECT_TYPE_IMAGE; }
+template<> inline VkObjectType GetObjectType<VkInstance>() { return VK_OBJECT_TYPE_INSTANCE; }
+template<> inline VkObjectType GetObjectType<VkPhysicalDevice>() { return VK_OBJECT_TYPE_PHYSICAL_DEVICE; }
+template<> inline VkObjectType GetObjectType<VkDevice>() { return VK_OBJECT_TYPE_DEVICE; }
+template<> inline VkObjectType GetObjectType<VkQueue>() { return VK_OBJECT_TYPE_QUEUE; }
+template<> inline VkObjectType GetObjectType<VkSemaphore>() { return VK_OBJECT_TYPE_SEMAPHORE; }
+template<> inline VkObjectType GetObjectType<VkCommandBuffer>() { return VK_OBJECT_TYPE_COMMAND_BUFFER; }
+template<> inline VkObjectType GetObjectType<VkFence>() { return VK_OBJECT_TYPE_FENCE; }
+template<> inline VkObjectType GetObjectType<VkDeviceMemory>() { return VK_OBJECT_TYPE_DEVICE_MEMORY; }
+template<> inline VkObjectType GetObjectType<VkEvent>() { return VK_OBJECT_TYPE_EVENT; }
+template<> inline VkObjectType GetObjectType<VkQueryPool>() { return VK_OBJECT_TYPE_QUERY_POOL; }
+template<> inline VkObjectType GetObjectType<VkBufferView>() { return VK_OBJECT_TYPE_BUFFER_VIEW; }
+template<> inline VkObjectType GetObjectType<VkImageView>() { return VK_OBJECT_TYPE_IMAGE_VIEW; }
+template<> inline VkObjectType GetObjectType<VkShaderModule>() { return VK_OBJECT_TYPE_SHADER_MODULE; }
+template<> inline VkObjectType GetObjectType<VkPipelineCache>() { return VK_OBJECT_TYPE_PIPELINE_CACHE; }
+template<> inline VkObjectType GetObjectType<VkPipelineLayout>() { return VK_OBJECT_TYPE_PIPELINE_LAYOUT; }
+template<> inline VkObjectType GetObjectType<VkPipeline>() { return VK_OBJECT_TYPE_PIPELINE; }
+template<> inline VkObjectType GetObjectType<VkRenderPass>() { return VK_OBJECT_TYPE_RENDER_PASS; }
+template<> inline VkObjectType GetObjectType<VkDescriptorSetLayout>() { return VK_OBJECT_TYPE_DESCRIPTOR_SET_LAYOUT; }
+template<> inline VkObjectType GetObjectType<VkSampler>() { return VK_OBJECT_TYPE_SAMPLER; }
+template<> inline VkObjectType GetObjectType<VkDescriptorSet>() { return VK_OBJECT_TYPE_DESCRIPTOR_SET; }
+template<> inline VkObjectType GetObjectType<VkDescriptorPool>() { return VK_OBJECT_TYPE_DESCRIPTOR_POOL; }
+template<> inline VkObjectType GetObjectType<VkFramebuffer>() { return VK_OBJECT_TYPE_FRAMEBUFFER; }
+template<> inline VkObjectType GetObjectType<VkCommandPool>() { return VK_OBJECT_TYPE_COMMAND_POOL; }
+template<> inline VkObjectType GetObjectType<VkSamplerYcbcrConversion>() { return VK_OBJECT_TYPE_SAMPLER_YCBCR_CONVERSION; }
+template<> inline VkObjectType GetObjectType<VkDescriptorUpdateTemplate>() { return VK_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE; }
+template<> inline VkObjectType GetObjectType<VkPrivateDataSlot>() { return VK_OBJECT_TYPE_PRIVATE_DATA_SLOT; }
+template<> inline VkObjectType GetObjectType<VkSurfaceKHR>() { return VK_OBJECT_TYPE_SURFACE_KHR; }
+template<> inline VkObjectType GetObjectType<VkSwapchainKHR>() { return VK_OBJECT_TYPE_SWAPCHAIN_KHR; }
+template<> inline VkObjectType GetObjectType<VkDisplayKHR>() { return VK_OBJECT_TYPE_DISPLAY_KHR; }
+template<> inline VkObjectType GetObjectType<VkDisplayModeKHR>() { return VK_OBJECT_TYPE_DISPLAY_MODE_KHR; }
+template<> inline VkObjectType GetObjectType<VkVideoSessionKHR>() { return VK_OBJECT_TYPE_VIDEO_SESSION_KHR; }
+template<> inline VkObjectType GetObjectType<VkVideoSessionParametersKHR>() { return VK_OBJECT_TYPE_VIDEO_SESSION_PARAMETERS_KHR; }
+template<> inline VkObjectType GetObjectType<VkDeferredOperationKHR>() { return VK_OBJECT_TYPE_DEFERRED_OPERATION_KHR; }
+template<> inline VkObjectType GetObjectType<VkDebugReportCallbackEXT>() { return VK_OBJECT_TYPE_DEBUG_REPORT_CALLBACK_EXT; }
+template<> inline VkObjectType GetObjectType<VkCuModuleNVX>() { return VK_OBJECT_TYPE_CU_MODULE_NVX; }
+template<> inline VkObjectType GetObjectType<VkCuFunctionNVX>() { return VK_OBJECT_TYPE_CU_FUNCTION_NVX; }
+template<> inline VkObjectType GetObjectType<VkDebugUtilsMessengerEXT>() { return VK_OBJECT_TYPE_DEBUG_UTILS_MESSENGER_EXT; }
+template<> inline VkObjectType GetObjectType<VkValidationCacheEXT>() { return VK_OBJECT_TYPE_VALIDATION_CACHE_EXT; }
+template<> inline VkObjectType GetObjectType<VkAccelerationStructureNV>() { return VK_OBJECT_TYPE_ACCELERATION_STRUCTURE_NV; }
+template<> inline VkObjectType GetObjectType<VkPerformanceConfigurationINTEL>() { return VK_OBJECT_TYPE_PERFORMANCE_CONFIGURATION_INTEL; }
+template<> inline VkObjectType GetObjectType<VkIndirectCommandsLayoutNV>() { return VK_OBJECT_TYPE_INDIRECT_COMMANDS_LAYOUT_NV; }
+template<> inline VkObjectType GetObjectType<VkAccelerationStructureKHR>() { return VK_OBJECT_TYPE_ACCELERATION_STRUCTURE_KHR; }
 #ifdef VK_USE_PLATFORM_FUCHSIA
-template<> VkObjectType GetObjectType<VkBufferCollectionFUCHSIA>() { return VK_OBJECT_TYPE_BUFFER_COLLECTION_FUCHSIA; }
+template<> inline VkObjectType GetObjectType<VkBufferCollectionFUCHSIA>() { return VK_OBJECT_TYPE_BUFFER_COLLECTION_FUCHSIA; }
 #endif // VK_USE_PLATFORM_FUCHSIA
-template<> VkObjectType GetObjectType<VkMicromapEXT>() { return VK_OBJECT_TYPE_MICROMAP_EXT; }
-template<> VkObjectType GetObjectType<VkOpticalFlowSessionNV>() { return VK_OBJECT_TYPE_OPTICAL_FLOW_SESSION_NV; }
-template<> VkObjectType GetObjectType<VkShaderEXT>() { return VK_OBJECT_TYPE_SHADER_EXT; }
+template<> inline VkObjectType GetObjectType<VkMicromapEXT>() { return VK_OBJECT_TYPE_MICROMAP_EXT; }
+template<> inline VkObjectType GetObjectType<VkOpticalFlowSessionNV>() { return VK_OBJECT_TYPE_OPTICAL_FLOW_SESSION_NV; }
+template<> inline VkObjectType GetObjectType<VkShaderEXT>() { return VK_OBJECT_TYPE_SHADER_EXT; }
 
 } // namespace vku
 

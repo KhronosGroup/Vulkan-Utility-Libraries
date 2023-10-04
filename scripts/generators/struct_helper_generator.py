@@ -129,7 +129,7 @@ template<typename T> VkObjectType GetObjectType() {
 ''')
         for handle in self.vk.handles.values():
             out.extend([f'#ifdef {handle.protect}\n'] if handle.protect else [])
-            out.append(f'template<> VkObjectType GetObjectType<{handle.name}>() {{ return {handle.type}; }}\n')
+            out.append(f'template<> inline VkObjectType GetObjectType<{handle.name}>() {{ return {handle.type}; }}\n')
             out.extend([f'#endif // {handle.protect}\n'] if handle.protect else [])
         out.append('''
 } // namespace vku
