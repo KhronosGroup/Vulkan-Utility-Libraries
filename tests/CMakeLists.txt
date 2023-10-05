@@ -37,4 +37,8 @@ target_link_libraries(vul_tests PRIVATE
     Vulkan::CompilerConfiguration
 )
 
+if (CMAKE_CROSSCOMPILING)
+    return()
+endif()
+
 gtest_discover_tests(vul_tests DISCOVERY_TIMEOUT 100)
