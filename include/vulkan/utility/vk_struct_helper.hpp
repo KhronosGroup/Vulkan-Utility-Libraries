@@ -1175,6 +1175,7 @@ template<typename T> VkObjectType GetObjectType() {
     return VK_OBJECT_TYPE_UNKNOWN;
 }
 
+#if VK_USE_64_BIT_PTR_DEFINES == 1
 template<> inline VkObjectType GetObjectType<VkBuffer>() { return VK_OBJECT_TYPE_BUFFER; }
 template<> inline VkObjectType GetObjectType<VkImage>() { return VK_OBJECT_TYPE_IMAGE; }
 template<> inline VkObjectType GetObjectType<VkInstance>() { return VK_OBJECT_TYPE_INSTANCE; }
@@ -1226,6 +1227,7 @@ template<> inline VkObjectType GetObjectType<VkMicromapEXT>() { return VK_OBJECT
 template<> inline VkObjectType GetObjectType<VkOpticalFlowSessionNV>() { return VK_OBJECT_TYPE_OPTICAL_FLOW_SESSION_NV; }
 template<> inline VkObjectType GetObjectType<VkShaderEXT>() { return VK_OBJECT_TYPE_SHADER_EXT; }
 
+#endif // VK_USE_64_BIT_PTR_DEFINES == 1
 } // namespace vku
 
 // NOLINTEND

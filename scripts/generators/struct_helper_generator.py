@@ -126,12 +126,14 @@ template<typename T> VkObjectType GetObjectType() {
     return VK_OBJECT_TYPE_UNKNOWN;
 }
 
+#if VK_USE_64_BIT_PTR_DEFINES == 1
 ''')
         for handle in self.vk.handles.values():
             out.extend([f'#ifdef {handle.protect}\n'] if handle.protect else [])
             out.append(f'template<> inline VkObjectType GetObjectType<{handle.name}>() {{ return {handle.type}; }}\n')
             out.extend([f'#endif // {handle.protect}\n'] if handle.protect else [])
         out.append('''
+#endif // VK_USE_64_BIT_PTR_DEFINES == 1
 } // namespace vku
 \n''')
 
