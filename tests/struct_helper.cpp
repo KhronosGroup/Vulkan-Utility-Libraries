@@ -90,6 +90,8 @@ TEST(struct_helper, struct_defaults_correct) {
     ASSERT_EQ(s.t4.sType, VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO);
 }
 
+#if VK_USE_64_BIT_PTR_DEFINES == 1
+
 TEST(struct_helper, get_object_type) {
     ASSERT_EQ(vku::GetObjectType<VkInstance>(), VK_OBJECT_TYPE_INSTANCE);
     ASSERT_EQ(vku::GetObjectType<VkPerformanceConfigurationINTEL>(), VK_OBJECT_TYPE_PERFORMANCE_CONFIGURATION_INTEL);
@@ -97,3 +99,5 @@ TEST(struct_helper, get_object_type) {
     ASSERT_EQ(vku::GetObjectType<VkAccelerationStructureKHR>(), VK_OBJECT_TYPE_ACCELERATION_STRUCTURE_KHR);
     ASSERT_EQ(vku::GetObjectType<VkAccelerationStructureNV>(), VK_OBJECT_TYPE_ACCELERATION_STRUCTURE_NV);
 }
+
+#endif  // VK_USE_64_BIT_PTR_DEFINES == 1
