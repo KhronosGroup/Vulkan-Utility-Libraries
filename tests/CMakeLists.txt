@@ -18,6 +18,7 @@ target_include_directories(vul_tests PRIVATE
 target_sources(vul_tests PRIVATE
     struct_helper.cpp
     test_formats.cpp
+    test_function_loader.cpp
     test_interface.cpp
     test_setting_api.cpp
     test_setting_cast.cpp

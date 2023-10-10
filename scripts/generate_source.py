@@ -26,6 +26,7 @@ def RunGenerators(api: str, registry: str, targetFilter: str) -> None:
     from generators.enum_string_helper_generator import EnumStringHelperOutputGenerator
     from generators.format_utils_generator import FormatUtilsOutputGenerator
     from generators.struct_helper_generator import StructHelperOutputGenerator
+    from generators.function_loader_generator import FunctionLoaderOutputGenerator
 
     # These set fields that are needed by both OutputGenerator and BaseGenerator,
     # but are uniform and don't need to be set at a per-generated file level
@@ -53,6 +54,11 @@ def RunGenerators(api: str, registry: str, targetFilter: str) -> None:
             'generator' : StructHelperOutputGenerator,
             'genCombined': True,
             'directory' : f'include/{api}/utility',
+        },
+        'vk_function_loader.hpp' : {
+            'generator' : FunctionLoaderOutputGenerator,
+            'genCombined': True,
+            'directory' : f'include/{api}/utility/experimental',
         },
     }
 

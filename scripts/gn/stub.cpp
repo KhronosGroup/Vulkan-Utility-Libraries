@@ -12,4 +12,5 @@
 #include <vulkan/utility/vk_dispatch_table.h>
 #include <vulkan/utility/vk_format_utils.h>
 #include <vulkan/utility/vk_struct_helper.hpp>
+#include <vulkan/utility/experimental/vk_function_loader.hpp>
 #include <vulkan/vk_enum_string_helper.h>

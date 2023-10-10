@@ -23,10 +23,11 @@ if (CMAKE_VERSION VERSION_GREATER_EQUAL "3.19")
 		vulkan/vk_enum_string_helper.h
 		vulkan/utility/vk_format_utils.h
 		vulkan/utility/vk_struct_helper.hpp
+		vulkan/utility/experimental/vk_function_loader.hpp
 	)
 endif()
 
-target_link_Libraries(VulkanUtilityHeaders INTERFACE Vulkan::Headers)
+target_link_Libraries(VulkanUtilityHeaders INTERFACE Vulkan::Headers ${CMAKE_DL_LIBS})
 
 target_include_directories(VulkanUtilityHeaders INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>)
 
