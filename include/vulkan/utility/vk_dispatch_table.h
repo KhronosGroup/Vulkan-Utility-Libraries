@@ -10,12 +10,12 @@
 
 #include <vulkan/vulkan.h>
 
-#include <string.h>
-
+// Used by Vulkan Layers in the Loader-Layer interface
 typedef PFN_vkVoidFunction(VKAPI_PTR *PFN_GetPhysicalDeviceProcAddr)(VkInstance instance, const char *pName);
 
 // Instance function pointer dispatch table
 typedef struct VkuInstanceDispatchTable_ {
+    // Used by Vulkan Layers in the Loader-Layer interface
     PFN_GetPhysicalDeviceProcAddr GetPhysicalDeviceProcAddr;
 
     PFN_vkCreateInstance CreateInstance;
