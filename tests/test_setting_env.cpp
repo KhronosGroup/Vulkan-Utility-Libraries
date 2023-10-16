@@ -439,4 +439,6 @@ TEST(test_layer_setting_env, vkuGetLayerSettingValues_String) {
     EXPECT_EQ(2, value_count);
 
     vkuDestroyLayerSettingSet(layerSettingSet, nullptr);
+
+    SetEnv("VK_LUNARG_TEST_MY_SETTING=");
 }
