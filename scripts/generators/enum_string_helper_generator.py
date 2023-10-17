@@ -8,6 +8,7 @@
 
 import os
 from generators.base_generator import BaseGenerator
+from generators.generator_utils import PlatformGuardHelper
 
 class EnumStringHelperOutputGenerator(BaseGenerator):
     def __init__(self):
@@ -30,23 +31,25 @@ class EnumStringHelperOutputGenerator(BaseGenerator):
 #endif
 #include <vulkan/vulkan.h>
 ''')
+        guard_helper = PlatformGuardHelper()
 
         # If there are no fields (empty enum) ignore
         for enum in [x for x in self.vk.enums.values() if len(x.fields) > 0]:
             groupType = enum.name if enum.bitWidth == 32 else 'uint64_t'
-            out.extend([f'#ifdef {enum.protect}\n'] if enum.protect else [])
+            out.extend(guard_helper.addGuard(enum.protect))
             out.append(f'static inline const char* string_{enum.name}({groupType} input_value) {{\n')
             out.append('    switch (input_value) {\n')
+            enum_field_guard_helper = PlatformGuardHelper()
             for field in enum.fields:
-                out.extend([f'#ifdef {field.protect}\n'] if field.protect else [])
+                out.extend(enum_field_guard_helper.addGuard(field.protect))
                 out.append(f'        case {field.name}:\n')
                 out.append(f'            return "{field.name}";\n')
-                out.extend([f'#endif //{field.protect}\n'] if field.protect else [])
+            out.extend(enum_field_guard_helper.addGuard(None))
             out.append('        default:\n')
             out.append(f'            return "Unhandled {enum.name}";\n')
             out.append('    }\n')
             out.append('}\n')
-            out.extend([f'#endif //{enum.protect}\n'] if enum.protect else [])
+        out.extend(guard_helper.addGuard(None))
         out.append('\n')
 
         # For bitmask, first create a string for FlagBits, then a Flags version that calls into it
@@ -59,27 +62,27 @@ class EnumStringHelperOutputGenerator(BaseGenerator):
             if groupType == 'uint64_t':
                 use_switch_statement = False
 
-            out.extend([f'#ifdef {bitmask.protect}\n'] if bitmask.protect else [])
+            out.extend(guard_helper.addGuard(bitmask.protect))
             out.append(f'static inline const char* string_{bitmask.name}({groupType} input_value) {{\n')
 
+            bitmask_field_guard_helper = PlatformGuardHelper()
             if use_switch_statement:
                 out.append('    switch (input_value) {\n')
                 for flag in [x for x in bitmask.flags if not x.multiBit]:
-                    out.extend([f'#ifdef {flag.protect}\n'] if flag.protect else [])
+                    out.extend(bitmask_field_guard_helper.addGuard(flag.protect))
                     out.append(f'        case {flag.name}:\n')
                     out.append(f'            return "{flag.name}";\n')
-                    out.extend([f'#endif //{flag.protect}\n'] if flag.protect else [])
+                out.extend(bitmask_field_guard_helper.addGuard(None))
                 out.append('        default:\n')
                 out.append(f'            return "Unhandled {bitmask.name}";\n')
                 out.append('    }\n')
             else:
                 # We need to use if statements
                 for flag in [x for x in bitmask.flags if not x.multiBit]:
-                    out.extend([f'#ifdef {flag.protect}\n'] if flag.protect else [])
+                    out.extend(bitmask_field_guard_helper.addGuard(flag.protect))
                     out.append(f'    if (input_value == {flag.name}) return "{flag.name}";\n')
-                    out.extend([f'#endif //{flag.protect}\n'] if flag.protect else [])
+                out.extend(bitmask_field_guard_helper.addGuard(None))
                 out.append(f'    return "Unhandled {bitmask.name}";\n')
-            
             out.append('}\n')
 
             mulitBitChecks = ''
@@ -103,6 +106,6 @@ static inline std::string string_{bitmask.flagName}({bitmask.flagName} input_val
     if (ret.empty()) ret.append("{bitmask.flagName}(0)");
     return ret;
 }}\n''')
-            out.extend([f'#endif //{bitmask.protect}\n'] if bitmask.protect else [])
             out.append('#endif // __cplusplus\n')
+        out.extend(guard_helper.addGuard(None))
         self.write("".join(out))

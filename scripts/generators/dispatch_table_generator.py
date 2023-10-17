@@ -8,6 +8,7 @@
 
 import os
 from generators.base_generator import BaseGenerator
+from generators.generator_utils import PlatformGuardHelper
 
 class DispatchTableOutputGenerator(BaseGenerator):
     def __init__(self):
@@ -39,10 +40,11 @@ typedef struct VkuInstanceDispatchTable_ {
     PFN_GetPhysicalDeviceProcAddr GetPhysicalDeviceProcAddr;
 
 ''')
+        guard_helper = PlatformGuardHelper()
         for command in [x for x in self.vk.commands.values() if x.instance]:
-            out.extend([f'#ifdef {command.protect}\n'] if command.protect else [])
+            out.extend(guard_helper.addGuard(command.protect))
             out.append(f'    PFN_{command.name} {command.name[2:]};\n')
-            out.extend([f'#endif  // {command.protect}\n'] if command.protect else [])
+        out.extend(guard_helper.addGuard(None))
         out.append('} VkuInstanceDispatchTable;\n')
 
         out.append('''
@@ -50,9 +52,9 @@ typedef struct VkuInstanceDispatchTable_ {
 typedef struct VkuDeviceDispatchTable_ {
 ''')
         for command in [x for x in self.vk.commands.values() if x.device]:
-            out.extend([f'#ifdef {command.protect}\n'] if command.protect else [])
+            out.extend(guard_helper.addGuard(command.protect))
             out.append(f'    PFN_{command.name} {command.name[2:]};\n')
-            out.extend([f'#endif  // {command.protect}\n'] if command.protect else [])
+        out.extend(guard_helper.addGuard(None))
         out.append('} VkuDeviceDispatchTable;\n')
 
         out.append('''
@@ -63,9 +65,9 @@ static inline void vkuInitDeviceDispatchTable(VkDevice device, VkuDeviceDispatch
 ''')
 
         for command in [x for x in self.vk.commands.values() if x.device and x.name != 'vkGetDeviceProcAddr']:
-            out.extend([f'#ifdef {command.protect}\n'] if command.protect else [])
+            out.extend(guard_helper.addGuard(command.protect))
             out.append(f'    table->{command.name[2:]} = (PFN_{command.name})gdpa(device, "{command.name}");\n')
-            out.extend([f'#endif  // {command.protect}\n'] if command.protect else [])
+        out.extend(guard_helper.addGuard(None))
         out.append('}\n')
 
         out.append('''
@@ -85,9 +87,9 @@ static inline void vkuInitInstanceDispatchTable(VkInstance instance, VkuInstance
                 'vkEnumerateInstanceVersion',
                 'vkGetInstanceProcAddr',
         ]]:
-            out.extend([f'#ifdef {command.protect}\n'] if command.protect else [])
+            out.extend(guard_helper.addGuard(command.protect))
             out.append(f'    table->{command.name[2:]} = (PFN_{command.name})gipa(instance, "{command.name}");\n')
-            out.extend([f'#endif  // {command.protect}\n'] if command.protect else [])
+        out.extend(guard_helper.addGuard(None))
         out.append('}')
 
         self.write("".join(out))

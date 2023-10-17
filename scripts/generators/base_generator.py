@@ -70,7 +70,6 @@ def SetMergedApiNames(names: str) -> None:
     global mergedApiNames
     mergedApiNames = names
 
-
 # This class is a container for any source code, data, or other behavior that is necessary to
 # customize the generator script for a specific target API variant (e.g. Vulkan SC). As such,
 # all of these API-specific interfaces and their use in the generator script are part of the

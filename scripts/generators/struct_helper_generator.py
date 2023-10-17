@@ -20,6 +20,7 @@
 
 import os
 from generators.base_generator import BaseGenerator
+from generators.generator_utils import PlatformGuardHelper
 
 class StructHelperOutputGenerator(BaseGenerator):
     def __init__(self):
@@ -47,12 +48,12 @@ VkStructureType GetSType() {
     static_assert(sizeof(T) == 0, "GetSType() is being used with an unsupported Type! Is the code-gen up to date?");
     return VK_STRUCTURE_TYPE_APPLICATION_INFO;
 }\n''')
+        guard_helper = PlatformGuardHelper()
 
         for struct in [x for x in self.vk.structs.values() if x.sType]:
-            out.extend([f'#ifdef {struct.protect}\n'] if struct.protect else [])
+            out.extend(guard_helper.addGuard(struct.protect))
             out.append(f'template <> inline VkStructureType GetSType<{struct.name}>() {{ return {struct.sType}; }}\n')
-            out.extend([f'#endif // {struct.protect}\n'] if struct.protect else [])
-
+        out.extend(guard_helper.addGuard(None))
         out.append('''
 // Find an entry of the given type in the const pNext chain
 // returns nullptr if the entry is not found
@@ -129,9 +130,9 @@ template<typename T> VkObjectType GetObjectType() {
 #if VK_USE_64_BIT_PTR_DEFINES == 1
 ''')
         for handle in self.vk.handles.values():
-            out.extend([f'#ifdef {handle.protect}\n'] if handle.protect else [])
+            out.extend(guard_helper.addGuard(handle.protect))
             out.append(f'template<> inline VkObjectType GetObjectType<{handle.name}>() {{ return {handle.type}; }}\n')
-            out.extend([f'#endif // {handle.protect}\n'] if handle.protect else [])
+        out.extend(guard_helper.addGuard(None))
         out.append('''
 #endif // VK_USE_64_BIT_PTR_DEFINES == 1
 } // namespace vku
