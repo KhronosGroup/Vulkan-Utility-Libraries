@@ -1345,6 +1345,16 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DIAGNOSTICS_CONFIG_FEATURES_NV";
         case VK_STRUCTURE_TYPE_DEVICE_DIAGNOSTICS_CONFIG_CREATE_INFO_NV:
             return "VK_STRUCTURE_TYPE_DEVICE_DIAGNOSTICS_CONFIG_CREATE_INFO_NV";
+        case VK_STRUCTURE_TYPE_CUDA_MODULE_CREATE_INFO_NV:
+            return "VK_STRUCTURE_TYPE_CUDA_MODULE_CREATE_INFO_NV";
+        case VK_STRUCTURE_TYPE_CUDA_FUNCTION_CREATE_INFO_NV:
+            return "VK_STRUCTURE_TYPE_CUDA_FUNCTION_CREATE_INFO_NV";
+        case VK_STRUCTURE_TYPE_CUDA_LAUNCH_INFO_NV:
+            return "VK_STRUCTURE_TYPE_CUDA_LAUNCH_INFO_NV";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUDA_KERNEL_LAUNCH_FEATURES_NV:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUDA_KERNEL_LAUNCH_FEATURES_NV";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUDA_KERNEL_LAUNCH_PROPERTIES_NV:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUDA_KERNEL_LAUNCH_PROPERTIES_NV";
         case VK_STRUCTURE_TYPE_QUERY_LOW_LATENCY_SUPPORT_NV:
             return "VK_STRUCTURE_TYPE_QUERY_LOW_LATENCY_SUPPORT_NV";
         case VK_STRUCTURE_TYPE_EXPORT_METAL_OBJECT_CREATE_INFO_EXT:
@@ -1601,6 +1611,12 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PAGEABLE_DEVICE_LOCAL_MEMORY_FEATURES_EXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_PROPERTIES_ARM:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_PROPERTIES_ARM";
+        case VK_STRUCTURE_TYPE_DEVICE_QUEUE_SHADER_CORE_CONTROL_CREATE_INFO_ARM:
+            return "VK_STRUCTURE_TYPE_DEVICE_QUEUE_SHADER_CORE_CONTROL_CREATE_INFO_ARM";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_FEATURES_ARM:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_FEATURES_ARM";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_PROPERTIES_ARM:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_PROPERTIES_ARM";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_SLICED_VIEW_OF_3D_FEATURES_EXT:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_SLICED_VIEW_OF_3D_FEATURES_EXT";
         case VK_STRUCTURE_TYPE_IMAGE_VIEW_SLICED_CREATE_INFO_EXT:
@@ -1985,6 +2001,10 @@ static inline const char* string_VkObjectType(VkObjectType input_value) {
             return "VK_OBJECT_TYPE_DEFERRED_OPERATION_KHR";
         case VK_OBJECT_TYPE_INDIRECT_COMMANDS_LAYOUT_NV:
             return "VK_OBJECT_TYPE_INDIRECT_COMMANDS_LAYOUT_NV";
+        case VK_OBJECT_TYPE_CUDA_MODULE_NV:
+            return "VK_OBJECT_TYPE_CUDA_MODULE_NV";
+        case VK_OBJECT_TYPE_CUDA_FUNCTION_NV:
+            return "VK_OBJECT_TYPE_CUDA_FUNCTION_NV";
         case VK_OBJECT_TYPE_BUFFER_COLLECTION_FUCHSIA:
             return "VK_OBJECT_TYPE_BUFFER_COLLECTION_FUCHSIA";
         case VK_OBJECT_TYPE_MICROMAP_EXT:
@@ -3775,6 +3795,10 @@ static inline const char* string_VkDebugReportObjectTypeEXT(VkDebugReportObjectT
             return "VK_DEBUG_REPORT_OBJECT_TYPE_ACCELERATION_STRUCTURE_KHR_EXT";
         case VK_DEBUG_REPORT_OBJECT_TYPE_ACCELERATION_STRUCTURE_NV_EXT:
             return "VK_DEBUG_REPORT_OBJECT_TYPE_ACCELERATION_STRUCTURE_NV_EXT";
+        case VK_DEBUG_REPORT_OBJECT_TYPE_CUDA_MODULE_NV:
+            return "VK_DEBUG_REPORT_OBJECT_TYPE_CUDA_MODULE_NV";
+        case VK_DEBUG_REPORT_OBJECT_TYPE_CUDA_FUNCTION_NV:
+            return "VK_DEBUG_REPORT_OBJECT_TYPE_CUDA_FUNCTION_NV";
         case VK_DEBUG_REPORT_OBJECT_TYPE_BUFFER_COLLECTION_FUCHSIA_EXT:
             return "VK_DEBUG_REPORT_OBJECT_TYPE_BUFFER_COLLECTION_FUCHSIA_EXT";
         default:
@@ -8955,6 +8979,31 @@ static inline std::string string_VkMicromapCreateFlagsEXT(VkMicromapCreateFlagsE
         input_value >>= 1;
     }
     if (ret.empty()) ret.append("VkMicromapCreateFlagsEXT(0)");
+    return ret;
+}
+#endif // __cplusplus
+static inline const char* string_VkPhysicalDeviceSchedulingControlsFlagBitsARM(VkPhysicalDeviceSchedulingControlsFlagBitsARM input_value) {
+    switch (input_value) {
+        case VK_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_SHADER_CORE_COUNT_ARM:
+            return "VK_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_SHADER_CORE_COUNT_ARM";
+        default:
+            return "Unhandled VkPhysicalDeviceSchedulingControlsFlagBitsARM";
+    }
+}
+
+#ifdef __cplusplus
+static inline std::string string_VkPhysicalDeviceSchedulingControlsFlagsARM(VkPhysicalDeviceSchedulingControlsFlagsARM input_value) {
+    std::string ret;
+    int index = 0;
+    while(input_value) {
+        if (input_value & 1) {
+            if( !ret.empty()) ret.append("|");
+            ret.append(string_VkPhysicalDeviceSchedulingControlsFlagBitsARM(static_cast<VkPhysicalDeviceSchedulingControlsFlagBitsARM>(1U << index)));
+        }
+        ++index;
+        input_value >>= 1;
+    }
+    if (ret.empty()) ret.append("VkPhysicalDeviceSchedulingControlsFlagsARM(0)");
     return ret;
 }
 #endif // __cplusplus

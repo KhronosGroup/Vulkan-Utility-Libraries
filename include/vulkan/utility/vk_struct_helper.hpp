@@ -667,6 +667,11 @@ template <> inline VkStructureType GetSType<VkSurfaceCapabilitiesPresentBarrierN
 template <> inline VkStructureType GetSType<VkSwapchainPresentBarrierCreateInfoNV>() { return VK_STRUCTURE_TYPE_SWAPCHAIN_PRESENT_BARRIER_CREATE_INFO_NV; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceDiagnosticsConfigFeaturesNV>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DIAGNOSTICS_CONFIG_FEATURES_NV; }
 template <> inline VkStructureType GetSType<VkDeviceDiagnosticsConfigCreateInfoNV>() { return VK_STRUCTURE_TYPE_DEVICE_DIAGNOSTICS_CONFIG_CREATE_INFO_NV; }
+template <> inline VkStructureType GetSType<VkCudaModuleCreateInfoNV>() { return VK_STRUCTURE_TYPE_CUDA_MODULE_CREATE_INFO_NV; }
+template <> inline VkStructureType GetSType<VkCudaFunctionCreateInfoNV>() { return VK_STRUCTURE_TYPE_CUDA_FUNCTION_CREATE_INFO_NV; }
+template <> inline VkStructureType GetSType<VkCudaLaunchInfoNV>() { return VK_STRUCTURE_TYPE_CUDA_LAUNCH_INFO_NV; }
+template <> inline VkStructureType GetSType<VkPhysicalDeviceCudaKernelLaunchFeaturesNV>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUDA_KERNEL_LAUNCH_FEATURES_NV; }
+template <> inline VkStructureType GetSType<VkPhysicalDeviceCudaKernelLaunchPropertiesNV>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUDA_KERNEL_LAUNCH_PROPERTIES_NV; }
 template <> inline VkStructureType GetSType<VkQueryLowLatencySupportNV>() { return VK_STRUCTURE_TYPE_QUERY_LOW_LATENCY_SUPPORT_NV; }
 #ifdef VK_USE_PLATFORM_METAL_EXT
 template <> inline VkStructureType GetSType<VkExportMetalObjectCreateInfoEXT>() { return VK_STRUCTURE_TYPE_EXPORT_METAL_OBJECT_CREATE_INFO_EXT; }
@@ -798,6 +803,9 @@ template <> inline VkStructureType GetSType<VkPhysicalDeviceBorderColorSwizzleFe
 template <> inline VkStructureType GetSType<VkSamplerBorderColorComponentMappingCreateInfoEXT>() { return VK_STRUCTURE_TYPE_SAMPLER_BORDER_COLOR_COMPONENT_MAPPING_CREATE_INFO_EXT; }
 template <> inline VkStructureType GetSType<VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PAGEABLE_DEVICE_LOCAL_MEMORY_FEATURES_EXT; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceShaderCorePropertiesARM>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_PROPERTIES_ARM; }
+template <> inline VkStructureType GetSType<VkDeviceQueueShaderCoreControlCreateInfoARM>() { return VK_STRUCTURE_TYPE_DEVICE_QUEUE_SHADER_CORE_CONTROL_CREATE_INFO_ARM; }
+template <> inline VkStructureType GetSType<VkPhysicalDeviceSchedulingControlsFeaturesARM>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_FEATURES_ARM; }
+template <> inline VkStructureType GetSType<VkPhysicalDeviceSchedulingControlsPropertiesARM>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_PROPERTIES_ARM; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_SLICED_VIEW_OF_3D_FEATURES_EXT; }
 template <> inline VkStructureType GetSType<VkImageViewSlicedCreateInfoEXT>() { return VK_STRUCTURE_TYPE_IMAGE_VIEW_SLICED_CREATE_INFO_EXT; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_SET_HOST_MAPPING_FEATURES_VALVE; }
@@ -1035,6 +1043,8 @@ template<> inline VkObjectType GetObjectType<VkValidationCacheEXT>() { return VK
 template<> inline VkObjectType GetObjectType<VkAccelerationStructureNV>() { return VK_OBJECT_TYPE_ACCELERATION_STRUCTURE_NV; }
 template<> inline VkObjectType GetObjectType<VkPerformanceConfigurationINTEL>() { return VK_OBJECT_TYPE_PERFORMANCE_CONFIGURATION_INTEL; }
 template<> inline VkObjectType GetObjectType<VkIndirectCommandsLayoutNV>() { return VK_OBJECT_TYPE_INDIRECT_COMMANDS_LAYOUT_NV; }
+template<> inline VkObjectType GetObjectType<VkCudaModuleNV>() { return VK_OBJECT_TYPE_CUDA_MODULE_NV; }
+template<> inline VkObjectType GetObjectType<VkCudaFunctionNV>() { return VK_OBJECT_TYPE_CUDA_FUNCTION_NV; }
 template<> inline VkObjectType GetObjectType<VkAccelerationStructureKHR>() { return VK_OBJECT_TYPE_ACCELERATION_STRUCTURE_KHR; }
 #ifdef VK_USE_PLATFORM_FUCHSIA
 template<> inline VkObjectType GetObjectType<VkBufferCollectionFUCHSIA>() { return VK_OBJECT_TYPE_BUFFER_COLLECTION_FUCHSIA; }

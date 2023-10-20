@@ -597,6 +597,12 @@ typedef struct VkuDeviceDispatchTable_ {
     PFN_vkDestroyPrivateDataSlotEXT DestroyPrivateDataSlotEXT;
     PFN_vkSetPrivateDataEXT SetPrivateDataEXT;
     PFN_vkGetPrivateDataEXT GetPrivateDataEXT;
+    PFN_vkCreateCudaModuleNV CreateCudaModuleNV;
+    PFN_vkGetCudaModuleCacheNV GetCudaModuleCacheNV;
+    PFN_vkCreateCudaFunctionNV CreateCudaFunctionNV;
+    PFN_vkDestroyCudaModuleNV DestroyCudaModuleNV;
+    PFN_vkDestroyCudaFunctionNV DestroyCudaFunctionNV;
+    PFN_vkCmdCudaLaunchKernelNV CmdCudaLaunchKernelNV;
 #ifdef VK_USE_PLATFORM_METAL_EXT
     PFN_vkExportMetalObjectsEXT ExportMetalObjectsEXT;
 #endif  // VK_USE_PLATFORM_METAL_EXT
@@ -1179,6 +1185,12 @@ static inline void vkuInitDeviceDispatchTable(VkDevice device, VkuDeviceDispatch
     table->DestroyPrivateDataSlotEXT = (PFN_vkDestroyPrivateDataSlotEXT)gdpa(device, "vkDestroyPrivateDataSlotEXT");
     table->SetPrivateDataEXT = (PFN_vkSetPrivateDataEXT)gdpa(device, "vkSetPrivateDataEXT");
     table->GetPrivateDataEXT = (PFN_vkGetPrivateDataEXT)gdpa(device, "vkGetPrivateDataEXT");
+    table->CreateCudaModuleNV = (PFN_vkCreateCudaModuleNV)gdpa(device, "vkCreateCudaModuleNV");
+    table->GetCudaModuleCacheNV = (PFN_vkGetCudaModuleCacheNV)gdpa(device, "vkGetCudaModuleCacheNV");
+    table->CreateCudaFunctionNV = (PFN_vkCreateCudaFunctionNV)gdpa(device, "vkCreateCudaFunctionNV");
+    table->DestroyCudaModuleNV = (PFN_vkDestroyCudaModuleNV)gdpa(device, "vkDestroyCudaModuleNV");
+    table->DestroyCudaFunctionNV = (PFN_vkDestroyCudaFunctionNV)gdpa(device, "vkDestroyCudaFunctionNV");
+    table->CmdCudaLaunchKernelNV = (PFN_vkCmdCudaLaunchKernelNV)gdpa(device, "vkCmdCudaLaunchKernelNV");
 #ifdef VK_USE_PLATFORM_METAL_EXT
     table->ExportMetalObjectsEXT = (PFN_vkExportMetalObjectsEXT)gdpa(device, "vkExportMetalObjectsEXT");
 #endif  // VK_USE_PLATFORM_METAL_EXT
