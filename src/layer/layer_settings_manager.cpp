@@ -118,13 +118,13 @@ LayerSettings::LayerSettings(const char *pLayerName, const VkLayerSettingsCreate
     (void)pAllocator;
     assert(pLayerName != nullptr);
 
-    std::filesystem::path settings_file = this->FindSettingsFile();
+    std::string settings_file = this->FindSettingsFile();
     this->ParseSettingsFile(settings_file);
 }
 
 LayerSettings::~LayerSettings() {}
 
-void LayerSettings::ParseSettingsFile(const std::filesystem::path &filename) {
+void LayerSettings::ParseSettingsFile(const std::string &filename) {
     // Extract option = value pairs from a file
     std::ifstream file(filename);
     if (file.good()) {
@@ -143,7 +143,7 @@ void LayerSettings::ParseSettingsFile(const std::filesystem::path &filename) {
     }
 }
 
-std::filesystem::path LayerSettings::FindSettingsFile() {
+std::string LayerSettings::FindSettingsFile() {
     struct stat info;
 
 #if defined(WIN32)
