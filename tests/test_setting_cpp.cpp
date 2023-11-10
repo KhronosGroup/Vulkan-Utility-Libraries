@@ -17,8 +17,8 @@ TEST(test_layer_setting_cpp, vkuGetLayerSettingValue_Bool) {
 
     const VkLayerSettingEXT setting{"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_BOOL32_EXT, 1, &value_data};
 
-    const VkLayerSettingsCreateInfoEXT layer_settings_create_info{
-        VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT, nullptr, 1, &setting};
+    const VkLayerSettingsCreateInfoEXT layer_settings_create_info{VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT, nullptr, 1,
+                                                                  &setting};
 
     VkuLayerSettingSet layerSettingSet = VK_NULL_HANDLE;
     vkuCreateLayerSettingSet("VK_LAYER_LUNARG_test", &layer_settings_create_info, nullptr, nullptr, &layerSettingSet);
@@ -38,12 +38,11 @@ TEST(test_layer_setting_cpp, vkuGetLayerSettingValues_Bool) {
     const uint32_t value_count = static_cast<uint32_t>(std::size(values_data));
 
     const VkLayerSettingEXT settings[] = {
-        {"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_BOOL32_EXT, value_count, values_data}
-    };
+        {"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_BOOL32_EXT, value_count, values_data}};
     const uint32_t settings_size = static_cast<uint32_t>(std::size(settings));
 
-    const VkLayerSettingsCreateInfoEXT layer_settings_create_info{
-        VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT, nullptr, settings_size, settings};
+    const VkLayerSettingsCreateInfoEXT layer_settings_create_info{VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT, nullptr,
+                                                                  settings_size, settings};
 
     VkuLayerSettingSet layerSettingSet = VK_NULL_HANDLE;
     vkuCreateLayerSettingSet("VK_LAYER_LUNARG_test", &layer_settings_create_info, nullptr, nullptr, &layerSettingSet);
@@ -65,8 +64,8 @@ TEST(test_layer_setting_cpp, vkuGetLayerSettingValue_Int32) {
 
     const VkLayerSettingEXT setting{"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_INT32_EXT, 1, &value_data};
 
-    const VkLayerSettingsCreateInfoEXT layer_settings_create_info{
-        VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT, nullptr, 1, &setting};
+    const VkLayerSettingsCreateInfoEXT layer_settings_create_info{VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT, nullptr, 1,
+                                                                  &setting};
 
     VkuLayerSettingSet layerSettingSet = VK_NULL_HANDLE;
     vkuCreateLayerSettingSet("VK_LAYER_LUNARG_test", &layer_settings_create_info, nullptr, nullptr, &layerSettingSet);
@@ -86,12 +85,11 @@ TEST(test_layer_setting_cpp, vkuGetLayerSettingValues_Int32) {
     const uint32_t value_count = static_cast<uint32_t>(std::size(values_data));
 
     const VkLayerSettingEXT settings[] = {
-        {"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_INT32_EXT, value_count, values_data}
-    };
+        {"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_INT32_EXT, value_count, values_data}};
     const uint32_t settings_size = static_cast<uint32_t>(std::size(settings));
 
-    const VkLayerSettingsCreateInfoEXT layer_settings_create_info{
-        VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT, nullptr, settings_size, settings};
+    const VkLayerSettingsCreateInfoEXT layer_settings_create_info{VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT, nullptr,
+                                                                  settings_size, settings};
 
     VkuLayerSettingSet layerSettingSet = VK_NULL_HANDLE;
     vkuCreateLayerSettingSet("VK_LAYER_LUNARG_test", &layer_settings_create_info, nullptr, nullptr, &layerSettingSet);
@@ -113,8 +111,8 @@ TEST(test_layer_setting_cpp, vkuGetLayerSettingValue_Uint32) {
 
     const VkLayerSettingEXT setting{"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_UINT32_EXT, 1, &value_data};
 
-    const VkLayerSettingsCreateInfoEXT layer_settings_create_info{
-        VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT, nullptr, 1, &setting};
+    const VkLayerSettingsCreateInfoEXT layer_settings_create_info{VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT, nullptr, 1,
+                                                                  &setting};
 
     VkuLayerSettingSet layerSettingSet = VK_NULL_HANDLE;
     vkuCreateLayerSettingSet("VK_LAYER_LUNARG_test", &layer_settings_create_info, nullptr, nullptr, &layerSettingSet);
@@ -134,12 +132,11 @@ TEST(test_layer_setting_cpp, vkuGetLayerSettingValues_Uint32) {
     const uint32_t value_count = static_cast<uint32_t>(std::size(values_data));
 
     const VkLayerSettingEXT settings[] = {
-        {"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_UINT32_EXT, value_count, values_data}
-    };
+        {"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_UINT32_EXT, value_count, values_data}};
     const uint32_t settings_size = static_cast<uint32_t>(std::size(settings));
 
-    const VkLayerSettingsCreateInfoEXT layer_settings_create_info{
-        VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT, nullptr, settings_size, settings};
+    const VkLayerSettingsCreateInfoEXT layer_settings_create_info{VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT, nullptr,
+                                                                  settings_size, settings};
 
     VkuLayerSettingSet layerSettingSet = VK_NULL_HANDLE;
     vkuCreateLayerSettingSet("VK_LAYER_LUNARG_test", &layer_settings_create_info, nullptr, nullptr, &layerSettingSet);
@@ -161,8 +158,8 @@ TEST(test_layer_setting_cpp, vkuGetLayerSettingValue_Int64) {
 
     const VkLayerSettingEXT setting{"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_INT64_EXT, 1, &value_data};
 
-    const VkLayerSettingsCreateInfoEXT layer_settings_create_info{
-        VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT, nullptr, 1, &setting};
+    const VkLayerSettingsCreateInfoEXT layer_settings_create_info{VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT, nullptr, 1,
+                                                                  &setting};
 
     VkuLayerSettingSet layerSettingSet = VK_NULL_HANDLE;
     vkuCreateLayerSettingSet("VK_LAYER_LUNARG_test", &layer_settings_create_info, nullptr, nullptr, &layerSettingSet);
@@ -182,12 +179,11 @@ TEST(test_layer_setting_cpp, vkuGetLayerSettingValues_Int64) {
     const uint32_t value_count = static_cast<uint32_t>(std::size(values_data));
 
     const VkLayerSettingEXT settings[] = {
-        {"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_INT64_EXT, value_count, values_data}
-    };
+        {"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_INT64_EXT, value_count, values_data}};
     const uint32_t settings_size = static_cast<uint32_t>(std::size(settings));
 
-    const VkLayerSettingsCreateInfoEXT layer_settings_create_info{
-        VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT, nullptr, settings_size, &settings[0]};
+    const VkLayerSettingsCreateInfoEXT layer_settings_create_info{VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT, nullptr,
+                                                                  settings_size, &settings[0]};
 
     VkuLayerSettingSet layerSettingSet = VK_NULL_HANDLE;
     vkuCreateLayerSettingSet("VK_LAYER_LUNARG_test", &layer_settings_create_info, nullptr, nullptr, &layerSettingSet);
@@ -209,8 +205,8 @@ TEST(test_layer_setting_cpp, vkuGetLayerSettingValue_Uint64) {
 
     const VkLayerSettingEXT setting{"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_UINT64_EXT, 1, &value_data};
 
-    const VkLayerSettingsCreateInfoEXT layer_settings_create_info{
-        VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT, nullptr, 1, &setting};
+    const VkLayerSettingsCreateInfoEXT layer_settings_create_info{VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT, nullptr, 1,
+                                                                  &setting};
 
     VkuLayerSettingSet layerSettingSet = VK_NULL_HANDLE;
     vkuCreateLayerSettingSet("VK_LAYER_LUNARG_test", &layer_settings_create_info, nullptr, nullptr, &layerSettingSet);
@@ -230,12 +226,11 @@ TEST(test_layer_setting_cpp, vkuGetLayerSettingValues_Uint64) {
     const uint32_t value_count = static_cast<uint32_t>(std::size(values_data));
 
     const VkLayerSettingEXT settings[] = {
-        {"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_UINT64_EXT, value_count, values_data}
-    };
+        {"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_UINT64_EXT, value_count, values_data}};
     const uint32_t settings_size = static_cast<uint32_t>(std::size(settings));
 
-    const VkLayerSettingsCreateInfoEXT layer_settings_create_info{
-        VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT, nullptr, settings_size, settings};
+    const VkLayerSettingsCreateInfoEXT layer_settings_create_info{VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT, nullptr,
+                                                                  settings_size, settings};
 
     VkuLayerSettingSet layerSettingSet = VK_NULL_HANDLE;
     vkuCreateLayerSettingSet("VK_LAYER_LUNARG_test", &layer_settings_create_info, nullptr, nullptr, &layerSettingSet);
@@ -257,8 +252,8 @@ TEST(test_layer_setting_cpp, vkuGetLayerSettingValue_Float) {
 
     const VkLayerSettingEXT setting{"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_FLOAT32_EXT, 1, &value_data};
 
-    const VkLayerSettingsCreateInfoEXT layer_settings_create_info{
-        VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT, nullptr, 1, &setting};
+    const VkLayerSettingsCreateInfoEXT layer_settings_create_info{VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT, nullptr, 1,
+                                                                  &setting};
 
     VkuLayerSettingSet layerSettingSet = VK_NULL_HANDLE;
     vkuCreateLayerSettingSet("VK_LAYER_LUNARG_test", &layer_settings_create_info, nullptr, nullptr, &layerSettingSet);
@@ -278,12 +273,11 @@ TEST(test_layer_setting_cpp, vkuGetLayerSettingValues_Float) {
     const uint32_t value_count = static_cast<uint32_t>(std::size(values_data));
 
     const VkLayerSettingEXT settings[] = {
-        {"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_FLOAT32_EXT, value_count, values_data}
-    };
+        {"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_FLOAT32_EXT, value_count, values_data}};
     const uint32_t settings_size = static_cast<uint32_t>(std::size(settings));
 
-    const VkLayerSettingsCreateInfoEXT layer_settings_create_info{
-        VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT, nullptr, settings_size, settings};
+    const VkLayerSettingsCreateInfoEXT layer_settings_create_info{VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT, nullptr,
+                                                                  settings_size, settings};
 
     VkuLayerSettingSet layerSettingSet = VK_NULL_HANDLE;
     vkuCreateLayerSettingSet("VK_LAYER_LUNARG_test", &layer_settings_create_info, nullptr, nullptr, &layerSettingSet);
@@ -305,8 +299,8 @@ TEST(test_layer_setting_cpp, vkuGetLayerSettingValue_Double) {
 
     const VkLayerSettingEXT setting{"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_FLOAT64_EXT, 1, &value_data};
 
-    const VkLayerSettingsCreateInfoEXT layer_settings_create_info{
-        VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT, nullptr, 1, &setting};
+    const VkLayerSettingsCreateInfoEXT layer_settings_create_info{VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT, nullptr, 1,
+                                                                  &setting};
 
     VkuLayerSettingSet layerSettingSet = VK_NULL_HANDLE;
     vkuCreateLayerSettingSet("VK_LAYER_LUNARG_test", &layer_settings_create_info, nullptr, nullptr, &layerSettingSet);
@@ -326,12 +320,11 @@ TEST(test_layer_setting_cpp, vkuGetLayerSettingValues_Double) {
     const uint32_t value_count = static_cast<uint32_t>(std::size(values_data));
 
     const VkLayerSettingEXT settings[] = {
-        {"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_FLOAT64_EXT, value_count, values_data}
-    };
+        {"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_FLOAT64_EXT, value_count, values_data}};
     const uint32_t settings_size = static_cast<uint32_t>(std::size(settings));
 
-    const VkLayerSettingsCreateInfoEXT layer_settings_create_info{
-        VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT, nullptr, settings_size, settings};
+    const VkLayerSettingsCreateInfoEXT layer_settings_create_info{VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT, nullptr,
+                                                                  settings_size, settings};
 
     VkuLayerSettingSet layerSettingSet = VK_NULL_HANDLE;
     vkuCreateLayerSettingSet("VK_LAYER_LUNARG_test", &layer_settings_create_info, nullptr, nullptr, &layerSettingSet);
@@ -353,8 +346,8 @@ TEST(test_layer_setting_cpp, vkuGetLayerSettingValue_String) {
 
     const VkLayerSettingEXT setting{"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_STRING_EXT, 1, value_data};
 
-    const VkLayerSettingsCreateInfoEXT layer_settings_create_info{
-        VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT, nullptr, 1, &setting};
+    const VkLayerSettingsCreateInfoEXT layer_settings_create_info{VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT, nullptr, 1,
+                                                                  &setting};
 
     VkuLayerSettingSet layerSettingSet = VK_NULL_HANDLE;
     vkuCreateLayerSettingSet("VK_LAYER_LUNARG_test", &layer_settings_create_info, nullptr, nullptr, &layerSettingSet);
@@ -371,12 +364,11 @@ TEST(test_layer_setting_cpp, vkuGetLayerSettingValue_Strings) {
     const uint32_t value_count = static_cast<uint32_t>(std::size(values_data));
 
     const VkLayerSettingEXT settings[] = {
-        {"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_STRING_EXT, value_count, values_data}
-    };
+        {"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_STRING_EXT, value_count, values_data}};
     const uint32_t settings_size = static_cast<uint32_t>(std::size(settings));
 
-    const VkLayerSettingsCreateInfoEXT layer_settings_create_info{
-        VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT, nullptr, settings_size, settings};
+    const VkLayerSettingsCreateInfoEXT layer_settings_create_info{VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT, nullptr,
+                                                                  settings_size, settings};
 
     VkuLayerSettingSet layerSettingSet = VK_NULL_HANDLE;
     vkuCreateLayerSettingSet("VK_LAYER_LUNARG_test", &layer_settings_create_info, nullptr, nullptr, &layerSettingSet);
@@ -393,12 +385,11 @@ TEST(test_layer_setting_cpp, vkuGetLayerSettingValues_String) {
     const uint32_t value_count = static_cast<uint32_t>(std::size(values_data));
 
     const VkLayerSettingEXT settings[] = {
-        {"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_STRING_EXT, value_count, values_data}
-    };
+        {"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_STRING_EXT, value_count, values_data}};
     const uint32_t settings_size = static_cast<uint32_t>(std::size(settings));
 
-    const VkLayerSettingsCreateInfoEXT layer_settings_create_info{
-        VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT, nullptr, settings_size, settings};
+    const VkLayerSettingsCreateInfoEXT layer_settings_create_info{VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT, nullptr,
+                                                                  settings_size, settings};
 
     VkuLayerSettingSet layerSettingSet = VK_NULL_HANDLE;
     vkuCreateLayerSettingSet("VK_LAYER_LUNARG_test", &layer_settings_create_info, nullptr, nullptr, &layerSettingSet);
@@ -419,8 +410,8 @@ TEST(test_layer_setting_cpp, vkuGetLayerSettingValue_Frameset) {
 
     const VkLayerSettingEXT setting{"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_UINT32_EXT, 3, &value_data};
 
-    const VkLayerSettingsCreateInfoEXT layer_settings_create_info{
-        VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT, nullptr, 1, &setting};
+    const VkLayerSettingsCreateInfoEXT layer_settings_create_info{VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT, nullptr, 1,
+                                                                  &setting};
 
     VkuLayerSettingSet layerSettingSet = VK_NULL_HANDLE;
     vkuCreateLayerSettingSet("VK_LAYER_LUNARG_test", &layer_settings_create_info, nullptr, nullptr, &layerSettingSet);
@@ -438,18 +429,15 @@ TEST(test_layer_setting_cpp, vkuGetLayerSettingValue_Frameset) {
 }
 
 TEST(test_layer_setting_cpp, vkuGetLayerSettingValues_Frameset) {
-    const VkuFrameset values_data[] = {
-        {76, 100, 10}, {1, 100, 1}
-    };
+    const VkuFrameset values_data[] = {{76, 100, 10}, {1, 100, 1}};
     const uint32_t value_count = static_cast<uint32_t>(std::size(values_data) * (sizeof(VkuFrameset) / sizeof(VkuFrameset::count)));
 
     const VkLayerSettingEXT settings[] = {
-        {"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_UINT32_EXT, value_count, values_data}
-    };
+        {"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_UINT32_EXT, value_count, values_data}};
     const uint32_t settings_size = static_cast<uint32_t>(std::size(settings));
 
-    const VkLayerSettingsCreateInfoEXT layer_settings_create_info{
-        VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT, nullptr, settings_size, settings};
+    const VkLayerSettingsCreateInfoEXT layer_settings_create_info{VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT, nullptr,
+                                                                  settings_size, settings};
 
     VkuLayerSettingSet layerSettingSet = VK_NULL_HANDLE;
     vkuCreateLayerSettingSet("VK_LAYER_LUNARG_test", &layer_settings_create_info, nullptr, nullptr, &layerSettingSet);
@@ -475,12 +463,11 @@ TEST(test_layer_setting_cpp, vkuGetLayerSettingValues_VkuCustomSTypeInfo) {
     const uint32_t value_count = static_cast<uint32_t>(std::size(values_data));
 
     const VkLayerSettingEXT settings[] = {
-        {"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_STRING_EXT, value_count, values_data}
-    };
+        {"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_STRING_EXT, value_count, values_data}};
     const uint32_t settings_size = static_cast<uint32_t>(std::size(settings));
 
-    const VkLayerSettingsCreateInfoEXT layer_settings_create_info{
-        VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT, nullptr, settings_size, &settings[0]};
+    const VkLayerSettingsCreateInfoEXT layer_settings_create_info{VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT, nullptr,
+                                                                  settings_size, &settings[0]};
 
     VkuLayerSettingSet layerSettingSet = VK_NULL_HANDLE;
     vkuCreateLayerSettingSet("VK_LAYER_LUNARG_test", &layer_settings_create_info, nullptr, nullptr, &layerSettingSet);

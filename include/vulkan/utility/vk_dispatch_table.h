@@ -12,6 +12,8 @@
 
 #include <string.h>
 
+// clang-format off
+
 typedef PFN_vkVoidFunction(VKAPI_PTR *PFN_GetPhysicalDeviceProcAddr)(VkInstance instance, const char *pName);
 
 // Instance function pointer dispatch table
@@ -1479,3 +1481,4 @@ static inline void vkuInitInstanceDispatchTable(VkInstance instance, VkuInstance
 #endif  // VK_USE_PLATFORM_SCREEN_QNX
     table->GetPhysicalDeviceOpticalFlowImageFormatsNV = (PFN_vkGetPhysicalDeviceOpticalFlowImageFormatsNV)gipa(instance, "vkGetPhysicalDeviceOpticalFlowImageFormatsNV");
 }
+// clang-format on
