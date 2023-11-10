@@ -7,6 +7,9 @@
 // SPDX-License-Identifier: Apache-2.0
 
 #pragma once
+
+// clang-format off
+
 #ifdef __cplusplus
 #include <string>
 #endif
@@ -9222,4 +9225,4 @@ static inline std::string string_VkAccelerationStructureCreateFlagsKHR(VkAcceler
     return ret;
 }
 #endif // __cplusplus
-
+// clang-format on

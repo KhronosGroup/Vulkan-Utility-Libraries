@@ -578,7 +578,6 @@ TEST(test_layer_settings_util, to_framesets) {
     }
 }
 
-
 TEST(test_layer_settings_util, vkuGetUnknownSettings_SingleCreateInfo) {
     std::vector<VkLayerSettingEXT> settings;
 
@@ -660,9 +659,7 @@ TEST(test_layer_settings_util, vkuGetUnknownSettings_SingleCreateInfo) {
     create_info.settingCount = static_cast<uint32_t>(settings.size());
     create_info.pSettings = &settings[0];
 
-    const char* setting_names[] = {
-        "int32_value", "int64_value", "uint32_value", "uint64_value", "float_value", "double_value"
-    };
+    const char* setting_names[] = {"int32_value", "int64_value", "uint32_value", "uint64_value", "float_value", "double_value"};
     const std::uint32_t setting_name_count = static_cast<std::uint32_t>(std::size(setting_names));
 
     uint32_t unknown_settings_count = 0;

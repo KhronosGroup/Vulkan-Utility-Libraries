@@ -11,7 +11,7 @@
 
 #ifdef __cplusplus
 extern "C" {
-#endif 
+#endif
 
 #include <vulkan/vk_layer.h>
 

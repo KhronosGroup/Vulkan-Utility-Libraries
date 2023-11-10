@@ -9,6 +9,8 @@
 #pragma once
 #include <vulkan/vulkan.h>
 
+// clang-format off
+
 namespace vku {
 
 template <typename T>
@@ -1057,4 +1059,4 @@ template<> inline VkObjectType GetObjectType<VkShaderEXT>() { return VK_OBJECT_T
 #endif // VK_USE_64_BIT_PTR_DEFINES == 1
 } // namespace vku
 
-// NOLINTEND
+// NOLINTEND// clang-format on

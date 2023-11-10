@@ -11,7 +11,7 @@
 
 #ifdef __cplusplus
 extern "C" {
-#endif 
+#endif
 
 #include "vk_layer_settings_ext.h"
 
