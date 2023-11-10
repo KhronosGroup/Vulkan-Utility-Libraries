@@ -479,6 +479,7 @@ template <> inline VkStructureType GetSType<VkPipelineRasterizationConservativeS
 template <> inline VkStructureType GetSType<VkPhysicalDeviceDepthClipEnableFeaturesEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_CLIP_ENABLE_FEATURES_EXT; }
 template <> inline VkStructureType GetSType<VkPipelineRasterizationDepthClipStateCreateInfoEXT>() { return VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_DEPTH_CLIP_STATE_CREATE_INFO_EXT; }
 template <> inline VkStructureType GetSType<VkHdrMetadataEXT>() { return VK_STRUCTURE_TYPE_HDR_METADATA_EXT; }
+template <> inline VkStructureType GetSType<VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RELAXED_LINE_RASTERIZATION_FEATURES_IMG; }
 #ifdef VK_USE_PLATFORM_IOS_MVK
 template <> inline VkStructureType GetSType<VkIOSSurfaceCreateInfoMVK>() { return VK_STRUCTURE_TYPE_IOS_SURFACE_CREATE_INFO_MVK; }
 #endif  // VK_USE_PLATFORM_IOS_MVK
