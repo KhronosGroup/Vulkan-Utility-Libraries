@@ -51,32 +51,9 @@ elseif(APPLE)
     target_compile_definitions(VulkanCompilerConfiguration INTERFACE VK_USE_PLATFORM_METAL_EXT)
     if (IOS)
         target_compile_definitions(VulkanCompilerConfiguration INTERFACE VK_USE_PLATFORM_IOS_MVK)
-    else()
+    elseif(CMAKE_SYSTEM_NAME STREQUAL "Darwin")
         target_compile_definitions(VulkanCompilerConfiguration INTERFACE VK_USE_PLATFORM_MACOS_MVK)
     endif()
-else()
-    message(DEBUG "Figure out how to gracefully handle Linux|BSD WSI...")
-    
-    #option(BUILD_WSI_XCB_SUPPORT "Build XCB WSI support" ON)
-    #option(BUILD_WSI_XLIB_SUPPORT "Build Xlib WSI support" ON)
-    #option(BUILD_WSI_WAYLAND_SUPPORT "Build Wayland WSI support" ON)
-
-    #find_package(PkgConfig REQUIRED QUIET) # Use PkgConfig to find Linux system libraries
-
-    #if(BUILD_WSI_XCB_SUPPORT)
-    #    pkg_check_modules(XCB REQUIRED QUIET IMPORTED_TARGET xcb)
-    #    target_compile_definitions(VulkanCompilerConfiguration INTERFACE VK_USE_PLATFORM_XCB_KHR)
-    #endif()
-
-    #if(BUILD_WSI_XLIB_SUPPORT)
-    #    pkg_check_modules(X11 REQUIRED QUIET IMPORTED_TARGET x11)
-    #    target_compile_definitions(VulkanCompilerConfiguration INTERFACE VK_USE_PLATFORM_XLIB_KHR VK_USE_PLATFORM_XLIB_XRANDR_EXT)
-    #endif()
-
-    #if(BUILD_WSI_WAYLAND_SUPPORT)
-    #    pkg_check_modules(WAYlAND_CLIENT QUIET REQUIRED IMPORTED_TARGET wayland-client)
-    #    target_compile_definitions(VulkanCompilerConfiguration INTERFACE VK_USE_PLATFORM_WAYLAND_KHR)
-    #endif()
 endif()
 
 option(VUL_WERROR "Treat compiler warnings as errors")
@@ -86,7 +63,6 @@ if (VUL_WERROR)
         target_link_options(VulkanCompilerConfiguration INTERFACE /WX)
     else()
         target_compile_options(VulkanCompilerConfiguration INTERFACE -Werror)
-        # TODO: Figure out linker warnings as errors for non-WIN32
     endif()
 endif()
 

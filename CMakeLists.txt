@@ -47,9 +47,8 @@ if (VUL_IS_TOP_LEVEL)
 
     set_target_properties(VulkanLayerSettings PROPERTIES EXPORT_NAME "LayerSettings")
     set_target_properties(VulkanUtilityHeaders PROPERTIES EXPORT_NAME "UtilityHeaders")
-    set_target_properties(VulkanCompilerConfiguration PROPERTIES EXPORT_NAME "CompilerConfiguration")
     install(
-        TARGETS VulkanLayerSettings VulkanUtilityHeaders VulkanCompilerConfiguration
+        TARGETS VulkanLayerSettings VulkanUtilityHeaders
         EXPORT VulkanUtilityLibrariesConfig
         INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
     )
