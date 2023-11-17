@@ -49,7 +49,7 @@ std::string GetFileSettingName(const char *pLayerName, const char *pSettingName)
 
 static const char *GetDefaultPrefix() {
 #ifdef __ANDROID__
-    return "vulkan.";
+    return "vulkan";
 #else
     return "";
 #endif
