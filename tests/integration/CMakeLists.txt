@@ -19,9 +19,6 @@ target_sources(foobar PRIVATE
     vk_format_utils_2.c # Need two translation units to test if header file behaves correctly.
 )
 
-# NOTE: Because VulkanHeaders is a PUBLIC dependency it needs to be found prior to VulkanUtilityLibraries
-find_package(VulkanHeaders REQUIRED CONFIG)
-
 if (FIND_PACKAGE_TESTING)
     find_package(VulkanUtilityLibraries REQUIRED CONFIG)
 else()
