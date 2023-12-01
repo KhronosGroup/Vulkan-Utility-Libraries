@@ -587,7 +587,7 @@ TEST(test_layer_settings_util, vkuGetUnknownSettings_SingleCreateInfo) {
     setting_bool_value.pSettingName = "bool_value";
     setting_bool_value.type = VK_LAYER_SETTING_TYPE_BOOL32_EXT;
     setting_bool_value.pValues = &value_bool;
-    setting_bool_value.count = 1;
+    setting_bool_value.valueCount = 1;
     settings.push_back(setting_bool_value);
 
     std::int32_t value_int32 = 76;
@@ -596,7 +596,7 @@ TEST(test_layer_settings_util, vkuGetUnknownSettings_SingleCreateInfo) {
     setting_int32_value.pSettingName = "int32_value";
     setting_int32_value.type = VK_LAYER_SETTING_TYPE_INT32_EXT;
     setting_int32_value.pValues = &value_int32;
-    setting_int32_value.count = 1;
+    setting_int32_value.valueCount = 1;
     settings.push_back(setting_int32_value);
 
     std::int64_t value_int64 = static_cast<int64_t>(1) << static_cast<int64_t>(40);
@@ -605,7 +605,7 @@ TEST(test_layer_settings_util, vkuGetUnknownSettings_SingleCreateInfo) {
     setting_int64_value.pSettingName = "int64_value";
     setting_int64_value.type = VK_LAYER_SETTING_TYPE_INT64_EXT;
     setting_int64_value.pValues = &value_int64;
-    setting_int64_value.count = 1;
+    setting_int64_value.valueCount = 1;
     settings.push_back(setting_int64_value);
 
     std::uint32_t value_uint32 = 76u;
@@ -614,7 +614,7 @@ TEST(test_layer_settings_util, vkuGetUnknownSettings_SingleCreateInfo) {
     setting_uint32_value.pSettingName = "uint32_value";
     setting_uint32_value.type = VK_LAYER_SETTING_TYPE_UINT32_EXT;
     setting_uint32_value.pValues = &value_uint32;
-    setting_uint32_value.count = 1;
+    setting_uint32_value.valueCount = 1;
     settings.push_back(setting_uint32_value);
 
     std::uint64_t value_uint64 = static_cast<uint64_t>(1) << static_cast<uint64_t>(40);
@@ -623,7 +623,7 @@ TEST(test_layer_settings_util, vkuGetUnknownSettings_SingleCreateInfo) {
     setting_uint64_value.pSettingName = "uint64_value";
     setting_uint64_value.type = VK_LAYER_SETTING_TYPE_UINT64_EXT;
     setting_uint64_value.pValues = &value_uint64;
-    setting_uint64_value.count = 1;
+    setting_uint64_value.valueCount = 1;
     settings.push_back(setting_uint64_value);
 
     float value_float = 76.1f;
@@ -632,7 +632,7 @@ TEST(test_layer_settings_util, vkuGetUnknownSettings_SingleCreateInfo) {
     setting_float_value.pSettingName = "float_value";
     setting_float_value.type = VK_LAYER_SETTING_TYPE_FLOAT32_EXT;
     setting_float_value.pValues = &value_float;
-    setting_float_value.count = 1;
+    setting_float_value.valueCount = 1;
     settings.push_back(setting_float_value);
 
     double value_double = 76.1;
@@ -641,7 +641,7 @@ TEST(test_layer_settings_util, vkuGetUnknownSettings_SingleCreateInfo) {
     setting_double_value.pSettingName = "double_value";
     setting_double_value.type = VK_LAYER_SETTING_TYPE_FLOAT64_EXT;
     setting_double_value.pValues = &value_double;
-    setting_double_value.count = 1;
+    setting_double_value.valueCount = 1;
     settings.push_back(setting_double_value);
 
     VkuFrameset value_frameset{76, 100, 10};
@@ -650,7 +650,7 @@ TEST(test_layer_settings_util, vkuGetUnknownSettings_SingleCreateInfo) {
     setting_frameset_value.pSettingName = "frameset_value";
     setting_frameset_value.type = VK_LAYER_SETTING_TYPE_UINT32_EXT;
     setting_frameset_value.pValues = &value_frameset;
-    setting_frameset_value.count = sizeof(VkuFrameset) / sizeof(VkuFrameset::count);
+    setting_frameset_value.valueCount = sizeof(VkuFrameset) / sizeof(VkuFrameset::count);
     settings.push_back(setting_frameset_value);
 
     VkLayerSettingsCreateInfoEXT create_info;
@@ -689,7 +689,7 @@ TEST(test_layer_settings_util, vlGetUnknownSettings_MultipleCreateInfo) {
     setting_bool_value.pSettingName = "bool_value";
     setting_bool_value.type = VK_LAYER_SETTING_TYPE_BOOL32_EXT;
     setting_bool_value.pValues = &value_bool;
-    setting_bool_value.count = 1;
+    setting_bool_value.valueCount = 1;
     settingsA.push_back(setting_bool_value);
 
     std::int32_t value_int32 = 76;
@@ -698,7 +698,7 @@ TEST(test_layer_settings_util, vlGetUnknownSettings_MultipleCreateInfo) {
     setting_int32_value.pSettingName = "int32_value";
     setting_int32_value.type = VK_LAYER_SETTING_TYPE_INT32_EXT;
     setting_int32_value.pValues = &value_int32;
-    setting_int32_value.count = 1;
+    setting_int32_value.valueCount = 1;
     settingsA.push_back(setting_int32_value);
 
     std::int64_t value_int64 = static_cast<int64_t>(1) << static_cast<int64_t>(40);
@@ -707,7 +707,7 @@ TEST(test_layer_settings_util, vlGetUnknownSettings_MultipleCreateInfo) {
     setting_int64_value.pSettingName = "int64_value";
     setting_int64_value.type = VK_LAYER_SETTING_TYPE_INT64_EXT;
     setting_int64_value.pValues = &value_int64;
-    setting_int64_value.count = 1;
+    setting_int64_value.valueCount = 1;
     settingsA.push_back(setting_int64_value);
 
     std::uint32_t value_uint32 = 76u;
@@ -716,7 +716,7 @@ TEST(test_layer_settings_util, vlGetUnknownSettings_MultipleCreateInfo) {
     setting_uint32_value.pSettingName = "uint32_value";
     setting_uint32_value.type = VK_LAYER_SETTING_TYPE_UINT32_EXT;
     setting_uint32_value.pValues = &value_uint32;
-    setting_uint32_value.count = 1;
+    setting_uint32_value.valueCount = 1;
     settingsA.push_back(setting_uint32_value);
 
     std::uint64_t value_uint64 = static_cast<uint64_t>(1) << static_cast<uint64_t>(40);
@@ -725,7 +725,7 @@ TEST(test_layer_settings_util, vlGetUnknownSettings_MultipleCreateInfo) {
     setting_uint64_value.pSettingName = "uint64_value";
     setting_uint64_value.type = VK_LAYER_SETTING_TYPE_UINT64_EXT;
     setting_uint64_value.pValues = &value_uint64;
-    setting_uint64_value.count = 1;
+    setting_uint64_value.valueCount = 1;
     settingsA.push_back(setting_uint64_value);
 
     VkLayerSettingsCreateInfoEXT create_infoA;
@@ -742,7 +742,7 @@ TEST(test_layer_settings_util, vlGetUnknownSettings_MultipleCreateInfo) {
     setting_float_value.pSettingName = "float_value";
     setting_float_value.type = VK_LAYER_SETTING_TYPE_FLOAT32_EXT;
     setting_float_value.pValues = &value_float;
-    setting_float_value.count = 1;
+    setting_float_value.valueCount = 1;
     settingsB.push_back(setting_float_value);
 
     double value_double = 76.1;
@@ -751,7 +751,7 @@ TEST(test_layer_settings_util, vlGetUnknownSettings_MultipleCreateInfo) {
     setting_double_value.pSettingName = "double_value";
     setting_double_value.type = VK_LAYER_SETTING_TYPE_FLOAT64_EXT;
     setting_double_value.pValues = &value_double;
-    setting_double_value.count = 1;
+    setting_double_value.valueCount = 1;
     settingsB.push_back(setting_double_value);
 
     VkuFrameset value_frameset{76, 100, 10};
@@ -760,7 +760,7 @@ TEST(test_layer_settings_util, vlGetUnknownSettings_MultipleCreateInfo) {
     setting_frameset_value.pSettingName = "frameset_value";
     setting_frameset_value.type = VK_LAYER_SETTING_TYPE_UINT32_EXT;
     setting_frameset_value.pValues = &value_frameset;
-    setting_frameset_value.count = sizeof(VkuFrameset) / sizeof(VkuFrameset::count);
+    setting_frameset_value.valueCount = sizeof(VkuFrameset) / sizeof(VkuFrameset::count);
     settingsB.push_back(setting_frameset_value);
 
     VkLayerSettingsCreateInfoEXT create_infoB;
