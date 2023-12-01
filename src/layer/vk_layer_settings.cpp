@@ -147,14 +147,14 @@ VkResult vkuGetLayerSettingValues(VkuLayerSettingSet layerSettingSet, const char
                 if (static_cast<VkuLayerSettingType>(api_setting->type) != type) {
                     result = VK_ERROR_FORMAT_NOT_SUPPORTED;
                 } else if (copy_values) {
-                    if (*pValueCount < api_setting->count) {
+                    if (*pValueCount < api_setting->valueCount) {
                         result = VK_INCOMPLETE;
                     }
-                    const std::uint32_t size = std::min(*pValueCount, api_setting->count);
+                    const std::uint32_t size = std::min(*pValueCount, api_setting->valueCount);
                     const VkBool32 *data = static_cast<const VkBool32 *>(api_setting->pValues);
                     values.assign(data, data + size);
                 } else {
-                    *pValueCount = api_setting->count;
+                    *pValueCount = api_setting->valueCount;
                 }
             }
 
@@ -192,14 +192,14 @@ VkResult vkuGetLayerSettingValues(VkuLayerSettingSet layerSettingSet, const char
                 if (static_cast<VkuLayerSettingType>(api_setting->type) != type) {
                     result = VK_ERROR_FORMAT_NOT_SUPPORTED;
                 } else if (copy_values) {
-                    if (*pValueCount < api_setting->count) {
+                    if (*pValueCount < api_setting->valueCount) {
                         result = VK_INCOMPLETE;
                     }
-                    const std::uint32_t size = std::min(*pValueCount, api_setting->count);
+                    const std::uint32_t size = std::min(*pValueCount, api_setting->valueCount);
                     const int32_t *data = static_cast<const int32_t *>(api_setting->pValues);
                     values.assign(data, data + size);
                 } else {
-                    *pValueCount = api_setting->count;
+                    *pValueCount = api_setting->valueCount;
                 }
             }
 
@@ -246,14 +246,14 @@ VkResult vkuGetLayerSettingValues(VkuLayerSettingSet layerSettingSet, const char
                 if (static_cast<VkuLayerSettingType>(api_setting->type) != type) {
                     result = VK_ERROR_FORMAT_NOT_SUPPORTED;
                 } else if (copy_values) {
-                    if (*pValueCount < api_setting->count) {
+                    if (*pValueCount < api_setting->valueCount) {
                         result = VK_INCOMPLETE;
                     }
-                    const std::uint32_t size = std::min(*pValueCount, api_setting->count);
+                    const std::uint32_t size = std::min(*pValueCount, api_setting->valueCount);
                     const int64_t *data = static_cast<const int64_t *>(api_setting->pValues);
                     values.assign(data, data + size);
                 } else {
-                    *pValueCount = api_setting->count;
+                    *pValueCount = api_setting->valueCount;
                 }
             }
 
@@ -300,14 +300,14 @@ VkResult vkuGetLayerSettingValues(VkuLayerSettingSet layerSettingSet, const char
                 if (static_cast<VkuLayerSettingType>(api_setting->type) != type) {
                     result = VK_ERROR_FORMAT_NOT_SUPPORTED;
                 } else if (copy_values) {
-                    if (*pValueCount < api_setting->count) {
+                    if (*pValueCount < api_setting->valueCount) {
                         result = VK_INCOMPLETE;
                     }
-                    const uint32_t size = std::min(*pValueCount, api_setting->count);
+                    const uint32_t size = std::min(*pValueCount, api_setting->valueCount);
                     const uint32_t *data = static_cast<const uint32_t *>(api_setting->pValues);
                     values.assign(data, data + size);
                 } else {
-                    *pValueCount = api_setting->count;
+                    *pValueCount = api_setting->valueCount;
                 }
             }
 
@@ -354,14 +354,14 @@ VkResult vkuGetLayerSettingValues(VkuLayerSettingSet layerSettingSet, const char
                 if (static_cast<VkuLayerSettingType>(api_setting->type) != type) {
                     result = VK_ERROR_FORMAT_NOT_SUPPORTED;
                 } else if (copy_values) {
-                    if (*pValueCount < api_setting->count) {
+                    if (*pValueCount < api_setting->valueCount) {
                         result = VK_INCOMPLETE;
                     }
-                    const std::uint32_t size = std::min(*pValueCount, api_setting->count);
+                    const std::uint32_t size = std::min(*pValueCount, api_setting->valueCount);
                     const uint64_t *data = static_cast<const uint64_t *>(api_setting->pValues);
                     values.assign(data, data + size);
                 } else {
-                    *pValueCount = api_setting->count;
+                    *pValueCount = api_setting->valueCount;
                 }
             }
 
@@ -399,14 +399,14 @@ VkResult vkuGetLayerSettingValues(VkuLayerSettingSet layerSettingSet, const char
                 if (static_cast<VkuLayerSettingType>(api_setting->type) != type) {
                     result = VK_ERROR_FORMAT_NOT_SUPPORTED;
                 } else if (copy_values) {
-                    if (*pValueCount < api_setting->count) {
+                    if (*pValueCount < api_setting->valueCount) {
                         result = VK_INCOMPLETE;
                     }
-                    const std::uint32_t size = std::min(*pValueCount, api_setting->count);
+                    const std::uint32_t size = std::min(*pValueCount, api_setting->valueCount);
                     const float *data = static_cast<const float *>(api_setting->pValues);
                     values.assign(data, data + size);
                 } else {
-                    *pValueCount = api_setting->count;
+                    *pValueCount = api_setting->valueCount;
                 }
             }
 
@@ -444,14 +444,14 @@ VkResult vkuGetLayerSettingValues(VkuLayerSettingSet layerSettingSet, const char
                 if (static_cast<VkuLayerSettingType>(api_setting->type) != type) {
                     result = VK_ERROR_FORMAT_NOT_SUPPORTED;
                 } else if (copy_values) {
-                    if (*pValueCount < api_setting->count) {
+                    if (*pValueCount < api_setting->valueCount) {
                         result = VK_INCOMPLETE;
                     }
-                    const std::uint32_t size = std::min(*pValueCount, api_setting->count);
+                    const std::uint32_t size = std::min(*pValueCount, api_setting->valueCount);
                     const double *data = static_cast<const double *>(api_setting->pValues);
                     values.assign(data, data + size);
                 } else {
-                    *pValueCount = api_setting->count;
+                    *pValueCount = api_setting->valueCount;
                 }
             }
 
@@ -487,7 +487,7 @@ VkResult vkuGetLayerSettingValues(VkuLayerSettingSet layerSettingSet, const char
                 }
             } else if (api_setting != nullptr) {  // From Vulkan Layer Setting API
                 const uint32_t frameset_count =
-                    static_cast<uint32_t>(api_setting->count / (sizeof(VkuFrameset) / sizeof(VkuFrameset::count)));
+                    static_cast<uint32_t>(api_setting->valueCount / (sizeof(VkuFrameset) / sizeof(VkuFrameset::count)));
                 if (api_setting->type != VK_LAYER_SETTING_TYPE_UINT32_EXT) {
                     result = VK_ERROR_FORMAT_NOT_SUPPORTED;
                 } else if (copy_values) {
@@ -525,10 +525,10 @@ VkResult vkuGetLayerSettingValues(VkuLayerSettingSet layerSettingSet, const char
                 }
             } else if (api_setting != nullptr) {  // From Vulkan Layer Setting API
                 if (copy_values) {
-                    if (*pValueCount < api_setting->count) {
+                    if (*pValueCount < api_setting->valueCount) {
                         result = VK_INCOMPLETE;
                     }
-                    const std::uint32_t size = std::min(*pValueCount, api_setting->count);
+                    const std::uint32_t size = std::min(*pValueCount, api_setting->valueCount);
                     settings_cache.resize(size);
 
                     switch (api_setting->type) {
@@ -579,7 +579,7 @@ VkResult vkuGetLayerSettingValues(VkuLayerSettingSet layerSettingSet, const char
                             break;
                     }
                 } else {
-                    *pValueCount = api_setting->count;
+                    *pValueCount = api_setting->valueCount;
                 }
             }
 
@@ -608,7 +608,7 @@ VkResult vkuGetLayerSettingValues(VkuLayerSettingSet layerSettingSet, const char
                 }
             } else if (api_setting != nullptr) {  // From Vulkan Layer Setting API
                 const std::uint32_t frameset_count =
-                    static_cast<uint32_t>(api_setting->count / (sizeof(VkuFrameset) / sizeof(VkuFrameset::count)));
+                    static_cast<uint32_t>(api_setting->valueCount / (sizeof(VkuFrameset) / sizeof(VkuFrameset::count)));
 
                 if (copy_values) {
                     if (*pValueCount < frameset_count) {
