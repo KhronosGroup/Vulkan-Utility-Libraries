@@ -34,6 +34,19 @@ jobs:
       - run: ctest -C ${{matrix.config}} --output-on-failure
         working-directory: build/
 
+  windows-arm64:
+    runs-on: windows-latest
+    env:
+      CMAKE_GENERATOR: Ninja
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ilammy/msvc-dev-cmd@v1
+        with:
+          arch: amd64_arm64
+      - run: cmake -S. -B build -D VUL_WERROR=ON -D CMAKE_BUILD_TYPE=Debug -D UPDATE_DEPS=ON
+      - run: cmake --build build
+      - run: cmake --install build --prefix build/install
+ 
   android:
     runs-on: ubuntu-22.04
     strategy:
