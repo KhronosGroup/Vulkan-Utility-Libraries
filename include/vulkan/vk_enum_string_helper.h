@@ -1052,8 +1052,6 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CLOCK_FEATURES_KHR";
         case VK_STRUCTURE_TYPE_PIPELINE_COMPILER_CONTROL_CREATE_INFO_AMD:
             return "VK_STRUCTURE_TYPE_PIPELINE_COMPILER_CONTROL_CREATE_INFO_AMD";
-        case VK_STRUCTURE_TYPE_CALIBRATED_TIMESTAMP_INFO_EXT:
-            return "VK_STRUCTURE_TYPE_CALIBRATED_TIMESTAMP_INFO_EXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_PROPERTIES_AMD:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_PROPERTIES_AMD";
         case VK_STRUCTURE_TYPE_VIDEO_DECODE_H265_CAPABILITIES_KHR:
@@ -1078,10 +1076,6 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_DEVICE_MEMORY_OVERALLOCATION_CREATE_INFO_AMD";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_PROPERTIES_EXT:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_PROPERTIES_EXT";
-        case VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_DIVISOR_STATE_CREATE_INFO_EXT:
-            return "VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_DIVISOR_STATE_CREATE_INFO_EXT";
-        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_FEATURES_EXT:
-            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_FEATURES_EXT";
         case VK_STRUCTURE_TYPE_PRESENT_FRAME_TOKEN_GGP:
             return "VK_STRUCTURE_TYPE_PRESENT_FRAME_TOKEN_GGP";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMPUTE_SHADER_DERIVATIVES_FEATURES_NV:
@@ -1838,6 +1832,12 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUBIC_CLAMP_FEATURES_QCOM";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ATTACHMENT_FEEDBACK_LOOP_DYNAMIC_STATE_FEATURES_EXT:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ATTACHMENT_FEEDBACK_LOOP_DYNAMIC_STATE_FEATURES_EXT";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_PROPERTIES_KHR:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_PROPERTIES_KHR";
+        case VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_DIVISOR_STATE_CREATE_INFO_KHR:
+            return "VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_DIVISOR_STATE_CREATE_INFO_KHR";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_FEATURES_KHR:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_FEATURES_KHR";
         case VK_STRUCTURE_TYPE_SCREEN_BUFFER_PROPERTIES_QNX:
             return "VK_STRUCTURE_TYPE_SCREEN_BUFFER_PROPERTIES_QNX";
         case VK_STRUCTURE_TYPE_SCREEN_BUFFER_FORMAT_PROPERTIES_QNX:
@@ -1850,6 +1850,8 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_MEMORY_SCREEN_BUFFER_FEATURES_QNX";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_DRIVER_PROPERTIES_MSFT:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_DRIVER_PROPERTIES_MSFT";
+        case VK_STRUCTURE_TYPE_CALIBRATED_TIMESTAMP_INFO_KHR:
+            return "VK_STRUCTURE_TYPE_CALIBRATED_TIMESTAMP_INFO_KHR";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_POOL_OVERALLOCATION_FEATURES_NV:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_POOL_OVERALLOCATION_FEATURES_NV";
         default:
@@ -3736,6 +3738,20 @@ static inline const char* string_VkScopeKHR(VkScopeKHR input_value) {
             return "Unhandled VkScopeKHR";
     }
 }
+static inline const char* string_VkTimeDomainKHR(VkTimeDomainKHR input_value) {
+    switch (input_value) {
+        case VK_TIME_DOMAIN_DEVICE_KHR:
+            return "VK_TIME_DOMAIN_DEVICE_KHR";
+        case VK_TIME_DOMAIN_CLOCK_MONOTONIC_KHR:
+            return "VK_TIME_DOMAIN_CLOCK_MONOTONIC_KHR";
+        case VK_TIME_DOMAIN_CLOCK_MONOTONIC_RAW_KHR:
+            return "VK_TIME_DOMAIN_CLOCK_MONOTONIC_RAW_KHR";
+        case VK_TIME_DOMAIN_QUERY_PERFORMANCE_COUNTER_KHR:
+            return "VK_TIME_DOMAIN_QUERY_PERFORMANCE_COUNTER_KHR";
+        default:
+            return "Unhandled VkTimeDomainKHR";
+    }
+}
 static inline const char* string_VkDebugReportObjectTypeEXT(VkDebugReportObjectTypeEXT input_value) {
     switch (input_value) {
         case VK_DEBUG_REPORT_OBJECT_TYPE_UNKNOWN_EXT:
@@ -4094,20 +4110,6 @@ static inline const char* string_VkAccelerationStructureMemoryRequirementsTypeNV
             return "VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_UPDATE_SCRATCH_NV";
         default:
             return "Unhandled VkAccelerationStructureMemoryRequirementsTypeNV";
-    }
-}
-static inline const char* string_VkTimeDomainEXT(VkTimeDomainEXT input_value) {
-    switch (input_value) {
-        case VK_TIME_DOMAIN_DEVICE_EXT:
-            return "VK_TIME_DOMAIN_DEVICE_EXT";
-        case VK_TIME_DOMAIN_CLOCK_MONOTONIC_EXT:
-            return "VK_TIME_DOMAIN_CLOCK_MONOTONIC_EXT";
-        case VK_TIME_DOMAIN_CLOCK_MONOTONIC_RAW_EXT:
-            return "VK_TIME_DOMAIN_CLOCK_MONOTONIC_RAW_EXT";
-        case VK_TIME_DOMAIN_QUERY_PERFORMANCE_COUNTER_EXT:
-            return "VK_TIME_DOMAIN_QUERY_PERFORMANCE_COUNTER_EXT";
-        default:
-            return "Unhandled VkTimeDomainEXT";
     }
 }
 static inline const char* string_VkMemoryOverallocationBehaviorAMD(VkMemoryOverallocationBehaviorAMD input_value) {
@@ -9023,13 +9025,9 @@ static inline std::string string_VkMicromapCreateFlagsEXT(VkMicromapCreateFlagsE
     return ret;
 }
 #endif // __cplusplus
-static inline const char* string_VkPhysicalDeviceSchedulingControlsFlagBitsARM(VkPhysicalDeviceSchedulingControlsFlagBitsARM input_value) {
-    switch (input_value) {
-        case VK_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_SHADER_CORE_COUNT_ARM:
-            return "VK_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_SHADER_CORE_COUNT_ARM";
-        default:
-            return "Unhandled VkPhysicalDeviceSchedulingControlsFlagBitsARM";
-    }
+static inline const char* string_VkPhysicalDeviceSchedulingControlsFlagBitsARM(uint64_t input_value) {
+    if (input_value == VK_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_SHADER_CORE_COUNT_ARM) return "VK_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_SHADER_CORE_COUNT_ARM";
+    return "Unhandled VkPhysicalDeviceSchedulingControlsFlagBitsARM";
 }
 
 #ifdef __cplusplus
@@ -9039,7 +9037,7 @@ static inline std::string string_VkPhysicalDeviceSchedulingControlsFlagsARM(VkPh
     while(input_value) {
         if (input_value & 1) {
             if( !ret.empty()) ret.append("|");
-            ret.append(string_VkPhysicalDeviceSchedulingControlsFlagBitsARM(static_cast<VkPhysicalDeviceSchedulingControlsFlagBitsARM>(1U << index)));
+            ret.append(string_VkPhysicalDeviceSchedulingControlsFlagBitsARM(static_cast<uint64_t>(1ULL << index)));
         }
         ++index;
         input_value >>= 1;

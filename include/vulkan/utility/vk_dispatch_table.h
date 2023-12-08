@@ -107,6 +107,7 @@ typedef struct VkuInstanceDispatchTable_ {
     PFN_vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR GetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR;
 #endif  // VK_ENABLE_BETA_EXTENSIONS
     PFN_vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR GetPhysicalDeviceCooperativeMatrixPropertiesKHR;
+    PFN_vkGetPhysicalDeviceCalibrateableTimeDomainsKHR GetPhysicalDeviceCalibrateableTimeDomainsKHR;
     PFN_vkCreateDebugReportCallbackEXT CreateDebugReportCallbackEXT;
     PFN_vkDestroyDebugReportCallbackEXT DestroyDebugReportCallbackEXT;
     PFN_vkDebugReportMessageEXT DebugReportMessageEXT;
@@ -462,6 +463,7 @@ typedef struct VkuDeviceDispatchTable_ {
     PFN_vkGetRenderingAreaGranularityKHR GetRenderingAreaGranularityKHR;
     PFN_vkGetDeviceImageSubresourceLayoutKHR GetDeviceImageSubresourceLayoutKHR;
     PFN_vkGetImageSubresourceLayout2KHR GetImageSubresourceLayout2KHR;
+    PFN_vkGetCalibratedTimestampsKHR GetCalibratedTimestampsKHR;
     PFN_vkDebugMarkerSetObjectTagEXT DebugMarkerSetObjectTagEXT;
     PFN_vkDebugMarkerSetObjectNameEXT DebugMarkerSetObjectNameEXT;
     PFN_vkCmdDebugMarkerBeginEXT CmdDebugMarkerBeginEXT;
@@ -1050,6 +1052,7 @@ static inline void vkuInitDeviceDispatchTable(VkDevice device, VkuDeviceDispatch
     table->GetRenderingAreaGranularityKHR = (PFN_vkGetRenderingAreaGranularityKHR)gdpa(device, "vkGetRenderingAreaGranularityKHR");
     table->GetDeviceImageSubresourceLayoutKHR = (PFN_vkGetDeviceImageSubresourceLayoutKHR)gdpa(device, "vkGetDeviceImageSubresourceLayoutKHR");
     table->GetImageSubresourceLayout2KHR = (PFN_vkGetImageSubresourceLayout2KHR)gdpa(device, "vkGetImageSubresourceLayout2KHR");
+    table->GetCalibratedTimestampsKHR = (PFN_vkGetCalibratedTimestampsKHR)gdpa(device, "vkGetCalibratedTimestampsKHR");
     table->DebugMarkerSetObjectTagEXT = (PFN_vkDebugMarkerSetObjectTagEXT)gdpa(device, "vkDebugMarkerSetObjectTagEXT");
     table->DebugMarkerSetObjectNameEXT = (PFN_vkDebugMarkerSetObjectNameEXT)gdpa(device, "vkDebugMarkerSetObjectNameEXT");
     table->CmdDebugMarkerBeginEXT = (PFN_vkCmdDebugMarkerBeginEXT)gdpa(device, "vkCmdDebugMarkerBeginEXT");
@@ -1425,6 +1428,7 @@ static inline void vkuInitInstanceDispatchTable(VkInstance instance, VkuInstance
     table->GetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR = (PFN_vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR)gipa(instance, "vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR");
 #endif  // VK_ENABLE_BETA_EXTENSIONS
     table->GetPhysicalDeviceCooperativeMatrixPropertiesKHR = (PFN_vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR)gipa(instance, "vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR");
+    table->GetPhysicalDeviceCalibrateableTimeDomainsKHR = (PFN_vkGetPhysicalDeviceCalibrateableTimeDomainsKHR)gipa(instance, "vkGetPhysicalDeviceCalibrateableTimeDomainsKHR");
     table->CreateDebugReportCallbackEXT = (PFN_vkCreateDebugReportCallbackEXT)gipa(instance, "vkCreateDebugReportCallbackEXT");
     table->DestroyDebugReportCallbackEXT = (PFN_vkDestroyDebugReportCallbackEXT)gipa(instance, "vkDestroyDebugReportCallbackEXT");
     table->DebugReportMessageEXT = (PFN_vkDebugReportMessageEXT)gipa(instance, "vkDebugReportMessageEXT");

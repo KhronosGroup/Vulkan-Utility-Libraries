@@ -395,6 +395,10 @@ template <> inline VkStructureType GetSType<VkPhysicalDeviceRayTracingPositionFe
 template <> inline VkStructureType GetSType<VkCooperativeMatrixPropertiesKHR>() { return VK_STRUCTURE_TYPE_COOPERATIVE_MATRIX_PROPERTIES_KHR; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceCooperativeMatrixFeaturesKHR>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_FEATURES_KHR; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceCooperativeMatrixPropertiesKHR>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_PROPERTIES_KHR; }
+template <> inline VkStructureType GetSType<VkPhysicalDeviceVertexAttributeDivisorPropertiesKHR>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_PROPERTIES_KHR; }
+template <> inline VkStructureType GetSType<VkPipelineVertexInputDivisorStateCreateInfoKHR>() { return VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_DIVISOR_STATE_CREATE_INFO_KHR; }
+template <> inline VkStructureType GetSType<VkPhysicalDeviceVertexAttributeDivisorFeaturesKHR>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_FEATURES_KHR; }
+template <> inline VkStructureType GetSType<VkCalibratedTimestampInfoKHR>() { return VK_STRUCTURE_TYPE_CALIBRATED_TIMESTAMP_INFO_KHR; }
 template <> inline VkStructureType GetSType<VkDebugReportCallbackCreateInfoEXT>() { return VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT; }
 template <> inline VkStructureType GetSType<VkPipelineRasterizationStateRasterizationOrderAMD>() { return VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_RASTERIZATION_ORDER_AMD; }
 template <> inline VkStructureType GetSType<VkDebugMarkerObjectNameInfoEXT>() { return VK_STRUCTURE_TYPE_DEBUG_MARKER_OBJECT_NAME_INFO_EXT; }
@@ -552,12 +556,9 @@ template <> inline VkStructureType GetSType<VkImportMemoryHostPointerInfoEXT>() 
 template <> inline VkStructureType GetSType<VkMemoryHostPointerPropertiesEXT>() { return VK_STRUCTURE_TYPE_MEMORY_HOST_POINTER_PROPERTIES_EXT; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceExternalMemoryHostPropertiesEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_MEMORY_HOST_PROPERTIES_EXT; }
 template <> inline VkStructureType GetSType<VkPipelineCompilerControlCreateInfoAMD>() { return VK_STRUCTURE_TYPE_PIPELINE_COMPILER_CONTROL_CREATE_INFO_AMD; }
-template <> inline VkStructureType GetSType<VkCalibratedTimestampInfoEXT>() { return VK_STRUCTURE_TYPE_CALIBRATED_TIMESTAMP_INFO_EXT; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceShaderCorePropertiesAMD>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_PROPERTIES_AMD; }
 template <> inline VkStructureType GetSType<VkDeviceMemoryOverallocationCreateInfoAMD>() { return VK_STRUCTURE_TYPE_DEVICE_MEMORY_OVERALLOCATION_CREATE_INFO_AMD; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_PROPERTIES_EXT; }
-template <> inline VkStructureType GetSType<VkPipelineVertexInputDivisorStateCreateInfoEXT>() { return VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_DIVISOR_STATE_CREATE_INFO_EXT; }
-template <> inline VkStructureType GetSType<VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_FEATURES_EXT; }
 #ifdef VK_USE_PLATFORM_GGP
 template <> inline VkStructureType GetSType<VkPresentFrameTokenGGP>() { return VK_STRUCTURE_TYPE_PRESENT_FRAME_TOKEN_GGP; }
 #endif  // VK_USE_PLATFORM_GGP
