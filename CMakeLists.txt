@@ -63,11 +63,11 @@ if (VUL_IS_TOP_LEVEL)
     # Create VulkanUtilityLibrariesConfig.cmake
     set(VUL_EXPORT_TARGETS ${CMAKE_INSTALL_LIBDIR}/cmake/VulkanUtilityLibraries/VulkanUtilityLibraries-targets.cmake)
     file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/VulkanUtilityLibrariesConfig.cmake.in" [=[
-        @PACKAGE_INIT@
-
         include(CMakeFindDependencyMacro)
         # NOTE: Because VulkanHeaders is a PUBLIC dependency it needs to be found prior to VulkanUtilityLibraries
         find_dependency(VulkanHeaders REQUIRED)
+
+        @PACKAGE_INIT@
 
         include(@PACKAGE_VUL_EXPORT_TARGETS@)
     ]=])
