@@ -108,8 +108,8 @@ static inline const char* string_VkResult(VkResult input_value) {
             return "VK_ERROR_INVALID_VIDEO_STD_PARAMETERS_KHR";
         case VK_ERROR_COMPRESSION_EXHAUSTED_EXT:
             return "VK_ERROR_COMPRESSION_EXHAUSTED_EXT";
-        case VK_ERROR_INCOMPATIBLE_SHADER_BINARY_EXT:
-            return "VK_ERROR_INCOMPATIBLE_SHADER_BINARY_EXT";
+        case VK_INCOMPATIBLE_SHADER_BINARY_EXT:
+            return "VK_INCOMPATIBLE_SHADER_BINARY_EXT";
         default:
             return "Unhandled VkResult";
     }
@@ -1232,6 +1232,12 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_MEMORY_MAP_INFO_KHR";
         case VK_STRUCTURE_TYPE_MEMORY_UNMAP_INFO_KHR:
             return "VK_STRUCTURE_TYPE_MEMORY_UNMAP_INFO_KHR";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAP_MEMORY_PLACED_FEATURES_EXT:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAP_MEMORY_PLACED_FEATURES_EXT";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAP_MEMORY_PLACED_PROPERTIES_EXT:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAP_MEMORY_PLACED_PROPERTIES_EXT";
+        case VK_STRUCTURE_TYPE_MEMORY_MAP_PLACED_INFO_EXT:
+            return "VK_STRUCTURE_TYPE_MEMORY_MAP_PLACED_INFO_EXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ATOMIC_FLOAT_2_FEATURES_EXT:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ATOMIC_FLOAT_2_FEATURES_EXT";
         case VK_STRUCTURE_TYPE_SURFACE_PRESENT_MODE_EXT:
@@ -1898,6 +1904,8 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_BIND_DESCRIPTOR_BUFFER_EMBEDDED_SAMPLERS_INFO_EXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_POOL_OVERALLOCATION_FEATURES_NV:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_POOL_OVERALLOCATION_FEATURES_NV";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ATOMIC_FLOAT16_VECTOR_FEATURES_NV:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ATOMIC_FLOAT16_VECTOR_FEATURES_NV";
         default:
             return "Unhandled VkStructureType";
     }
@@ -5379,6 +5387,31 @@ static inline std::string string_VkPipelineStageFlags(VkPipelineStageFlags input
     return ret;
 }
 #endif // __cplusplus
+static inline const char* string_VkMemoryMapFlagBits(VkMemoryMapFlagBits input_value) {
+    switch (input_value) {
+        case VK_MEMORY_MAP_PLACED_BIT_EXT:
+            return "VK_MEMORY_MAP_PLACED_BIT_EXT";
+        default:
+            return "Unhandled VkMemoryMapFlagBits";
+    }
+}
+
+#ifdef __cplusplus
+static inline std::string string_VkMemoryMapFlags(VkMemoryMapFlags input_value) {
+    std::string ret;
+    int index = 0;
+    while(input_value) {
+        if (input_value & 1) {
+            if( !ret.empty()) ret.append("|");
+            ret.append(string_VkMemoryMapFlagBits(static_cast<VkMemoryMapFlagBits>(1U << index)));
+        }
+        ++index;
+        input_value >>= 1;
+    }
+    if (ret.empty()) ret.append("VkMemoryMapFlags(0)");
+    return ret;
+}
+#endif // __cplusplus
 static inline const char* string_VkSparseMemoryBindFlagBits(VkSparseMemoryBindFlagBits input_value) {
     switch (input_value) {
         case VK_SPARSE_MEMORY_BIND_METADATA_BIT:
@@ -8009,6 +8042,31 @@ static inline std::string string_VkPerformanceCounterDescriptionFlagsKHR(VkPerfo
         input_value >>= 1;
     }
     if (ret.empty()) ret.append("VkPerformanceCounterDescriptionFlagsKHR(0)");
+    return ret;
+}
+#endif // __cplusplus
+static inline const char* string_VkMemoryUnmapFlagBitsKHR(VkMemoryUnmapFlagBitsKHR input_value) {
+    switch (input_value) {
+        case VK_MEMORY_UNMAP_RESERVE_BIT_EXT:
+            return "VK_MEMORY_UNMAP_RESERVE_BIT_EXT";
+        default:
+            return "Unhandled VkMemoryUnmapFlagBitsKHR";
+    }
+}
+
+#ifdef __cplusplus
+static inline std::string string_VkMemoryUnmapFlagsKHR(VkMemoryUnmapFlagsKHR input_value) {
+    std::string ret;
+    int index = 0;
+    while(input_value) {
+        if (input_value & 1) {
+            if( !ret.empty()) ret.append("|");
+            ret.append(string_VkMemoryUnmapFlagBitsKHR(static_cast<VkMemoryUnmapFlagBitsKHR>(1U << index)));
+        }
+        ++index;
+        input_value >>= 1;
+    }
+    if (ret.empty()) ret.append("VkMemoryUnmapFlagsKHR(0)");
     return ret;
 }
 #endif // __cplusplus
