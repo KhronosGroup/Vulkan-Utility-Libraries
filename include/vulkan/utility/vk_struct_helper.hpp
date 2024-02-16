@@ -652,6 +652,9 @@ template <> inline VkStructureType GetSType<VkCopyImageToImageInfoEXT>() { retur
 template <> inline VkStructureType GetSType<VkHostImageLayoutTransitionInfoEXT>() { return VK_STRUCTURE_TYPE_HOST_IMAGE_LAYOUT_TRANSITION_INFO_EXT; }
 template <> inline VkStructureType GetSType<VkSubresourceHostMemcpySizeEXT>() { return VK_STRUCTURE_TYPE_SUBRESOURCE_HOST_MEMCPY_SIZE_EXT; }
 template <> inline VkStructureType GetSType<VkHostImageCopyDevicePerformanceQueryEXT>() { return VK_STRUCTURE_TYPE_HOST_IMAGE_COPY_DEVICE_PERFORMANCE_QUERY_EXT; }
+template <> inline VkStructureType GetSType<VkPhysicalDeviceMapMemoryPlacedFeaturesEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAP_MEMORY_PLACED_FEATURES_EXT; }
+template <> inline VkStructureType GetSType<VkPhysicalDeviceMapMemoryPlacedPropertiesEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAP_MEMORY_PLACED_PROPERTIES_EXT; }
+template <> inline VkStructureType GetSType<VkMemoryMapPlacedInfoEXT>() { return VK_STRUCTURE_TYPE_MEMORY_MAP_PLACED_INFO_EXT; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ATOMIC_FLOAT_2_FEATURES_EXT; }
 template <> inline VkStructureType GetSType<VkSurfacePresentModeEXT>() { return VK_STRUCTURE_TYPE_SURFACE_PRESENT_MODE_EXT; }
 template <> inline VkStructureType GetSType<VkSurfacePresentScalingCapabilitiesEXT>() { return VK_STRUCTURE_TYPE_SURFACE_PRESENT_SCALING_CAPABILITIES_EXT; }
@@ -935,6 +938,7 @@ template <> inline VkStructureType GetSType<VkPhysicalDeviceExternalMemoryScreen
 #endif  // VK_USE_PLATFORM_SCREEN_QNX
 template <> inline VkStructureType GetSType<VkPhysicalDeviceLayeredDriverPropertiesMSFT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_DRIVER_PROPERTIES_MSFT; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_POOL_OVERALLOCATION_FEATURES_NV; }
+template <> inline VkStructureType GetSType<VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ATOMIC_FLOAT16_VECTOR_FEATURES_NV; }
 template <> inline VkStructureType GetSType<VkAccelerationStructureGeometryTrianglesDataKHR>() { return VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_TRIANGLES_DATA_KHR; }
 template <> inline VkStructureType GetSType<VkAccelerationStructureGeometryAabbsDataKHR>() { return VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_AABBS_DATA_KHR; }
 template <> inline VkStructureType GetSType<VkAccelerationStructureGeometryInstancesDataKHR>() { return VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_INSTANCES_DATA_KHR; }
