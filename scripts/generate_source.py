@@ -8,9 +8,15 @@
 import argparse
 import os
 import sys
+import shutil
+import common_ci
 from xml.etree import ElementTree
 
 def RunGenerators(api: str, registry: str, targetFilter: str) -> None:
+
+    has_clang_format = shutil.which('clang-format') is not None
+    if not has_clang_format:
+        print("WARNING: Unable to find clang-format!")
 
     # These live in the Vulkan-Docs repo, but are pulled in via the
     # Vulkan-Headers/registry folder
@@ -26,6 +32,7 @@ def RunGenerators(api: str, registry: str, targetFilter: str) -> None:
     from generators.enum_string_helper_generator import EnumStringHelperOutputGenerator
     from generators.format_utils_generator import FormatUtilsOutputGenerator
     from generators.struct_helper_generator import StructHelperOutputGenerator
+    from generators.safe_struct_generator import SafeStructOutputGenerator
 
     # These set fields that are needed by both OutputGenerator and BaseGenerator,
     # but are uniform and don't need to be set at a per-generated file level
@@ -53,6 +60,37 @@ def RunGenerators(api: str, registry: str, targetFilter: str) -> None:
             'generator' : StructHelperOutputGenerator,
             'genCombined': True,
             'directory' : f'include/{api}/utility',
+        },
+        'vk_safe_struct.hpp' : {
+            'generator' : SafeStructOutputGenerator,
+            'genCombined': True,
+            'directory' : f'include/{api}/utility',
+        },
+        'vk_safe_struct_utils.cpp' : {
+            'generator' : SafeStructOutputGenerator,
+            'genCombined': True,
+            'directory' : f'src/{api}',
+        },
+        'vk_safe_struct_core.cpp' : {
+            'generator' : SafeStructOutputGenerator,
+            'genCombined': True,
+            'regenerate' : True,
+            'directory' : f'src/{api}',
+        },
+        'vk_safe_struct_khr.cpp' : {
+            'generator' : SafeStructOutputGenerator,
+            'genCombined': True,
+            'directory' : f'src/{api}',
+        },
+        'vk_safe_struct_ext.cpp' : {
+            'generator' : SafeStructOutputGenerator,
+            'genCombined': True,
+            'directory' : f'src/{api}',
+        },
+        'vk_safe_struct_vendor.cpp' : {
+            'generator' : SafeStructOutputGenerator,
+            'genCombined': True,
+            'directory' : f'src/{api}',
         },
     }
 
@@ -102,6 +140,9 @@ def RunGenerators(api: str, registry: str, targetFilter: str) -> None:
         # Finally, use the output generator to create the requested target
         reg.apiGen()
 
+        # Run clang-format on the file
+        if has_clang_format:
+            common_ci.RunShellCmd(f'clang-format -i {os.path.join(outDirectory, target)}')
 
 def main(argv):
     parser = argparse.ArgumentParser(description='Generate source code for this repository')

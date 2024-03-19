@@ -16,6 +16,7 @@ target_include_directories(vul_tests PRIVATE
 )
 
 target_sources(vul_tests PRIVATE
+    safe_struct.cpp
     struct_helper.cpp
     test_formats.cpp
     test_interface.cpp
@@ -35,6 +36,7 @@ target_link_libraries(vul_tests PRIVATE
     Vulkan::UtilityHeaders
     Vulkan::LayerSettings
     Vulkan::CompilerConfiguration
+    Vulkan::SafeStruct
 )
 
 # Test add_subdirectory suppport
