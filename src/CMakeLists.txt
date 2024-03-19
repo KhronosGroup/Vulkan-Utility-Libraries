@@ -91,3 +91,4 @@ if (VUL_WERROR)
 endif()
 
 add_subdirectory(layer)
+add_subdirectory(vulkan)
