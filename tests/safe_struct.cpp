@@ -155,3 +155,84 @@ TEST(safe_struct, custom_safe_pnext_copy) {
         ASSERT_EQ(*safe_pri->pColorAttachmentFormats, format);
     }
 }
+
+TEST(safe_struct, extension_add_remove) {
+    std::array<const char *, 6> extensions = {
+        "VK_KHR_maintenance1", "VK_KHR_maintenance2", "VK_KHR_maintenance3",
+        "VK_KHR_maintenance4", "VK_KHR_maintenance5", "VK_KHR_maintenance6",
+    };
+    VkDeviceCreateInfo ci = vku::InitStructHelper();
+    ci.ppEnabledExtensionNames = extensions.data();
+    ci.enabledExtensionCount = static_cast<uint32_t>(extensions.size());
+
+    vku::safe::DeviceCreateInfo safe_ci(&ci);
+    ASSERT_EQ(3, vku::safe::FindExtension(safe_ci, "VK_KHR_maintenance4"));
+    ASSERT_EQ(safe_ci.enabledExtensionCount, vku::safe::FindExtension(safe_ci, "VK_KHR_maintenance0"));
+
+    ASSERT_EQ(false, vku::safe::RemoveExtension(safe_ci, "VK_KHR_maintenance0"));
+    ASSERT_EQ(true, vku::safe::AddExtension(safe_ci, "VK_KHR_maintenance0"));
+
+    ASSERT_EQ(true, vku::safe::RemoveExtension(safe_ci, "VK_KHR_maintenance0"));
+    for (const auto &ext : extensions) {
+        ASSERT_EQ(true, vku::safe::RemoveExtension(safe_ci, ext));
+    }
+    ASSERT_EQ(false, vku::safe::RemoveExtension(safe_ci, "VK_KHR_maintenance0"));
+
+    ASSERT_EQ(0, safe_ci.enabledExtensionCount);
+    ASSERT_EQ(nullptr, safe_ci.ppEnabledExtensionNames);
+
+    for (const auto &ext : extensions) {
+        ASSERT_EQ(true, vku::safe::AddExtension(safe_ci, ext));
+    }
+    ASSERT_EQ(extensions.size(), safe_ci.enabledExtensionCount);
+}
+
+TEST(safe_struct, pnext_add_remove) {
+    VkPhysicalDeviceRayTracingPipelineFeaturesKHR rtp = vku::InitStructHelper();
+    VkPhysicalDeviceRayQueryFeaturesKHR rtq = vku::InitStructHelper(&rtp);
+    VkPhysicalDeviceMeshShaderFeaturesEXT mesh = vku::InitStructHelper(&rtq);
+    VkPhysicalDeviceFeatures2 features = vku::InitStructHelper(&mesh);
+
+    vku::safe::PhysicalDeviceFeatures2 sf(&features);
+
+    // unlink the structs so they can be added one at a time.
+    rtp.pNext = nullptr;
+    rtq.pNext = nullptr;
+    mesh.pNext = nullptr;
+
+    ASSERT_EQ(true, vku::safe::RemoveFromPnext(sf, rtq.sType));
+    ASSERT_EQ(nullptr, vku::FindStructInPNextChain<VkPhysicalDeviceRayQueryFeaturesKHR>(sf.pNext));
+    ASSERT_EQ(false, vku::safe::RemoveFromPnext(sf, rtq.sType));
+
+    ASSERT_EQ(true, vku::safe::RemoveFromPnext(sf, rtp.sType));
+    ASSERT_EQ(nullptr, vku::FindStructInPNextChain<VkPhysicalDeviceRayTracingPipelineFeaturesKHR>(sf.pNext));
+
+    ASSERT_EQ(true, vku::safe::RemoveFromPnext(sf, mesh.sType));
+    ASSERT_EQ(nullptr, vku::FindStructInPNextChain<VkPhysicalDeviceMeshShaderFeaturesEXT>(sf.pNext));
+
+    ASSERT_EQ(nullptr, sf.pNext);
+    ASSERT_EQ(true, vku::safe::AddToPnext(sf, mesh));
+    ASSERT_EQ(false, vku::safe::AddToPnext(sf, mesh));
+    ASSERT_NE(nullptr, vku::FindStructInPNextChain<VkPhysicalDeviceMeshShaderFeaturesEXT>(sf.pNext));
+
+    ASSERT_EQ(true, vku::safe::AddToPnext(sf, rtq));
+    ASSERT_EQ(false, vku::safe::AddToPnext(sf, rtq));
+    ASSERT_NE(nullptr, vku::FindStructInPNextChain<VkPhysicalDeviceRayQueryFeaturesKHR>(sf.pNext));
+
+    ASSERT_EQ(true, vku::safe::AddToPnext(sf, rtp));
+    ASSERT_EQ(false, vku::safe::AddToPnext(sf, rtp));
+    ASSERT_NE(nullptr, vku::FindStructInPNextChain<VkPhysicalDeviceRayTracingPipelineFeaturesKHR>(sf.pNext));
+
+    ASSERT_EQ(true, vku::safe::RemoveFromPnext(sf, mesh.sType));
+    ASSERT_EQ(true, vku::safe::RemoveFromPnext(sf, rtp.sType));
+    ASSERT_EQ(true, vku::safe::RemoveFromPnext(sf, rtq.sType));
+
+    // relink the structs so they can be added all at once
+    rtq.pNext = &rtp;
+    mesh.pNext = &rtq;
+
+    ASSERT_EQ(true, vku::safe::AddToPnext(sf, mesh));
+    ASSERT_NE(nullptr, vku::FindStructInPNextChain<VkPhysicalDeviceRayTracingPipelineFeaturesKHR>(sf.pNext));
+    ASSERT_NE(nullptr, vku::FindStructInPNextChain<VkPhysicalDeviceMeshShaderFeaturesEXT>(sf.pNext));
+    ASSERT_NE(nullptr, vku::FindStructInPNextChain<VkPhysicalDeviceRayQueryFeaturesKHR>(sf.pNext));
+}

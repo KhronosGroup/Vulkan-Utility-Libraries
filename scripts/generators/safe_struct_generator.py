@@ -171,26 +171,12 @@ class SafeStructOutputGenerator(BaseGenerator):
         out.append('''
             #pragma once
             #include <vulkan/vulkan.h>
-            #include <cstdlib>
             #include <algorithm>
-            #include <functional>
+
+            #include <vulkan/utility/vk_safe_struct_utils.h>
 
             namespace vku {
             namespace safe {
-
-            // Mapping of unknown stype codes to structure lengths. This should be set up by the application
-            // before vkCreateInstance() and not modified afterwards.
-            extern std::vector<std::pair<uint32_t, uint32_t>> custom_stype_info;
-
-            // State that elements in a pNext chain may need to be aware of
-            struct PNextCopyState {
-                // Custom initialization function. Returns true if the structure passed to init was initialized, false otherwise
-                std::function<bool(VkBaseOutStructure* /* safe_sruct */, const VkBaseOutStructure* /* in_struct */)> init;
-            };
-
-            void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state = {});
-            void FreePnextChain(const void *pNext);
-            char *SafeStringCopy(const char *in_string);
             \n''')
 
         guard_helper = PlatformGuardHelper()
