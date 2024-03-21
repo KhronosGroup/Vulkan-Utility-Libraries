@@ -1,6 +1,6 @@
-# Copyright 2023 The Khronos Group Inc.
-# Copyright 2023 Valve Corporation
-# Copyright 2023 LunarG, Inc.
+# Copyright 2023-2024 The Khronos Group Inc.
+# Copyright 2023-2024 Valve Corporation
+# Copyright 2023-2024 LunarG, Inc.
 #
 # SPDX-License-Identifier: Apache-2.0
 
@@ -17,6 +17,8 @@ target_include_directories(vul_tests PRIVATE
 
 target_sources(vul_tests PRIVATE
     safe_struct.cpp
+    small_containers.cpp
+    sparse_range_map.cpp
     struct_helper.cpp
     test_formats.cpp
     test_interface.cpp
