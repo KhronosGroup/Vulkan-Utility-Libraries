@@ -11,7 +11,9 @@
 #include <vulkan/utility/vk_dispatch_table.h>
 #include <vulkan/utility/vk_concurrent_unordered_map.hpp>
 #include <vulkan/utility/vk_format_utils.h>
-#include <vulkan/utility/vk_struct_helper.hpp>
 #include <vulkan/utility/vk_safe_struct.hpp>
 #include <vulkan/utility/vk_safe_struct_utils.hpp>
+#include <vulkan/utility/vk_small_containers.hpp>
+#include <vulkan/utility/vk_sparse_range_map.hpp>
+#include <vulkan/utility/vk_struct_helper.hpp>
 #include <vulkan/vk_enum_string_helper.h>

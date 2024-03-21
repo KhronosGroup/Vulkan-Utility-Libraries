@@ -1,6 +1,6 @@
-# Copyright 2023 The Khronos Group Inc.
-# Copyright 2023 Valve Corporation
-# Copyright 2023 LunarG, Inc.
+# Copyright 2023-2024 The Khronos Group Inc.
+# Copyright 2023-2024 Valve Corporation
+# Copyright 2023-2024 LunarG, Inc.
 #
 # SPDX-License-Identifier: Apache-2.0
 target_include_directories(VulkanLayerSettings PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>)
@@ -29,6 +29,8 @@ if (CMAKE_VERSION VERSION_GREATER_EQUAL "3.19")
         vulkan/utility/vk_concurrent_unordered_map.hpp
         vulkan/utility/vk_dispatch_table.h
         vulkan/utility/vk_format_utils.h
+        vulkan/utility/vk_small_containers.hpp
+        vulkan/utility/vk_sparse_range_map.hpp
         vulkan/utility/vk_struct_helper.hpp
     )
 endif()
