@@ -77,15 +77,14 @@ class SafeStructOutputGenerator(BaseGenerator):
             # vku::safe::AccelerationStructureGeometryKHR needs to know if we're doing a host or device build
             'VkAccelerationStructureGeometryKHR' :
                 ', const bool is_host, const VkAccelerationStructureBuildRangeInfoKHR *build_range_info',
-            # vku::safe::DescriptorDataEXT needs to know what field of union is intialized
-            'VkDescriptorDataEXT' :
-                ', const VkDescriptorType type',
         }
 
     # Determine if a structure needs a safe_struct helper function
     # That is, it has an sType or one of its members is a pointer
     def needSafeStruct(self, struct: Struct) -> bool:
         if struct.name in self.no_autogen:
+            return False
+        if struct.name in self.union_of_pointers:
             return False
         if 'VkBase' in struct.name:
             return False #  Ingore structs like VkBaseOutStructure
@@ -188,9 +187,6 @@ class SafeStructOutputGenerator(BaseGenerator):
                     out.append(f'    {member.type}* {member.name}{initialize};\n')
                 else:
                     out.append(f'{member.cDeclaration}{initialize};\n')
-
-            if (struct.name == 'VkDescriptorDataEXT'):
-                out.append('char type_at_end[sizeof(VkDescriptorDataEXT)+sizeof(VkDescriptorGetInfoEXT::type)];')
 
             constructParam = self.custom_construct_params.get(struct.name, '')
             out.append(f'''
