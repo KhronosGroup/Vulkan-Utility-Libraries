@@ -94,12 +94,13 @@ def RunGenerators(api: str, registry: str, targetFilter: str) -> None:
         },
     }
 
-    if (targetFilter and targetFilter not in generators.keys()):
-        print(f'ERROR: No generator options for unknown target: {targetFilter}', file=sys.stderr)
-        sys.exit(1)
+    unknownTargets = [x for x in (targetFilter if targetFilter else []) if x not in generators.keys()]
+    if unknownTargets:
+        print(f'ERROR: No generator options for unknown target(s): {", ".join(unknownTargets)}', file=sys.stderr)
+        return 1
 
     # Filter if --target is passed in
-    targets = [x for x in generators.keys() if not targetFilter or x == targetFilter]
+    targets = [x for x in generators.keys() if not targetFilter or x in targetFilter]
 
     for index, target in enumerate(targets, start=1):
         print(f'[{index}|{len(targets)}] Generating {target}')
@@ -152,7 +153,7 @@ def main(argv):
                         help='Specify API name to generate')
     parser.add_argument('registry', metavar='REGISTRY_PATH', help='path to the Vulkan-Headers registry directory')
     group = parser.add_mutually_exclusive_group()
-    group.add_argument('--target', help='only generate file name passed in')
+    group.add_argument('--target', nargs='+', help='only generate file name passed in')
     args = parser.parse_args(argv)
 
     registry = os.path.abspath(os.path.join(args.registry,  'vk.xml'))
