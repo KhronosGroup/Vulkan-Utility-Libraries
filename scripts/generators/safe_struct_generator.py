@@ -53,6 +53,9 @@ class SafeStructOutputGenerator(BaseGenerator):
         # since we cannot make a copy.
         self.abstract_types = [
             'AHardwareBuffer',
+            '_screen_context',
+            '_screen_window',
+            '_screen_buffer'
         ]
 
         # These 'data' union are decided by the 'type' in the same parent struct

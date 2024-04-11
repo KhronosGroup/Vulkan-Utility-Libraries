@@ -10040,13 +10040,8 @@ safe_VkScreenSurfaceCreateInfoQNX::safe_VkScreenSurfaceCreateInfoQNX(const VkScr
     if (copy_pnext) {
         pNext = SafePnextCopy(in_struct->pNext, copy_state);
     }
-    if (in_struct->context) {
-        context = new _screen_context(*in_struct->context);
-    }
-
-    if (in_struct->window) {
-        window = new _screen_window(*in_struct->window);
-    }
+    context = in_struct->context;
+    window = in_struct->window;
 }
 
 safe_VkScreenSurfaceCreateInfoQNX::safe_VkScreenSurfaceCreateInfoQNX()
@@ -10055,84 +10050,44 @@ safe_VkScreenSurfaceCreateInfoQNX::safe_VkScreenSurfaceCreateInfoQNX()
 safe_VkScreenSurfaceCreateInfoQNX::safe_VkScreenSurfaceCreateInfoQNX(const safe_VkScreenSurfaceCreateInfoQNX& copy_src) {
     sType = copy_src.sType;
     flags = copy_src.flags;
-    context = nullptr;
-    window = nullptr;
     pNext = SafePnextCopy(copy_src.pNext);
-
-    if (copy_src.context) {
-        context = new _screen_context(*copy_src.context);
-    }
-
-    if (copy_src.window) {
-        window = new _screen_window(*copy_src.window);
-    }
+    context = copy_src.context;
+    window = copy_src.window;
 }
 
 safe_VkScreenSurfaceCreateInfoQNX& safe_VkScreenSurfaceCreateInfoQNX::operator=(const safe_VkScreenSurfaceCreateInfoQNX& copy_src) {
     if (&copy_src == this) return *this;
 
-    if (context) delete context;
-    if (window) delete window;
     FreePnextChain(pNext);
 
     sType = copy_src.sType;
     flags = copy_src.flags;
-    context = nullptr;
-    window = nullptr;
     pNext = SafePnextCopy(copy_src.pNext);
-
-    if (copy_src.context) {
-        context = new _screen_context(*copy_src.context);
-    }
-
-    if (copy_src.window) {
-        window = new _screen_window(*copy_src.window);
-    }
+    context = copy_src.context;
+    window = copy_src.window;
 
     return *this;
 }
 
-safe_VkScreenSurfaceCreateInfoQNX::~safe_VkScreenSurfaceCreateInfoQNX() {
-    if (context) delete context;
-    if (window) delete window;
-    FreePnextChain(pNext);
-}
+safe_VkScreenSurfaceCreateInfoQNX::~safe_VkScreenSurfaceCreateInfoQNX() { FreePnextChain(pNext); }
 
 void safe_VkScreenSurfaceCreateInfoQNX::initialize(const VkScreenSurfaceCreateInfoQNX* in_struct,
                                                    [[maybe_unused]] PNextCopyState* copy_state) {
-    if (context) delete context;
-    if (window) delete window;
     FreePnextChain(pNext);
     sType = in_struct->sType;
     flags = in_struct->flags;
-    context = nullptr;
-    window = nullptr;
     pNext = SafePnextCopy(in_struct->pNext, copy_state);
-
-    if (in_struct->context) {
-        context = new _screen_context(*in_struct->context);
-    }
-
-    if (in_struct->window) {
-        window = new _screen_window(*in_struct->window);
-    }
+    context = in_struct->context;
+    window = in_struct->window;
 }
 
 void safe_VkScreenSurfaceCreateInfoQNX::initialize(const safe_VkScreenSurfaceCreateInfoQNX* copy_src,
                                                    [[maybe_unused]] PNextCopyState* copy_state) {
     sType = copy_src->sType;
     flags = copy_src->flags;
-    context = nullptr;
-    window = nullptr;
     pNext = SafePnextCopy(copy_src->pNext);
-
-    if (copy_src->context) {
-        context = new _screen_context(*copy_src->context);
-    }
-
-    if (copy_src->window) {
-        window = new _screen_window(*copy_src->window);
-    }
+    context = copy_src->context;
+    window = copy_src->window;
 }
 #endif  // VK_USE_PLATFORM_SCREEN_QNX
 #ifdef VK_ENABLE_BETA_EXTENSIONS
@@ -14774,9 +14729,7 @@ safe_VkImportScreenBufferInfoQNX::safe_VkImportScreenBufferInfoQNX(const VkImpor
     if (copy_pnext) {
         pNext = SafePnextCopy(in_struct->pNext, copy_state);
     }
-    if (in_struct->buffer) {
-        buffer = new _screen_buffer(*in_struct->buffer);
-    }
+    buffer = in_struct->buffer;
 }
 
 safe_VkImportScreenBufferInfoQNX::safe_VkImportScreenBufferInfoQNX()
@@ -14784,58 +14737,37 @@ safe_VkImportScreenBufferInfoQNX::safe_VkImportScreenBufferInfoQNX()
 
 safe_VkImportScreenBufferInfoQNX::safe_VkImportScreenBufferInfoQNX(const safe_VkImportScreenBufferInfoQNX& copy_src) {
     sType = copy_src.sType;
-    buffer = nullptr;
     pNext = SafePnextCopy(copy_src.pNext);
-
-    if (copy_src.buffer) {
-        buffer = new _screen_buffer(*copy_src.buffer);
-    }
+    buffer = copy_src.buffer;
 }
 
 safe_VkImportScreenBufferInfoQNX& safe_VkImportScreenBufferInfoQNX::operator=(const safe_VkImportScreenBufferInfoQNX& copy_src) {
     if (&copy_src == this) return *this;
 
-    if (buffer) delete buffer;
     FreePnextChain(pNext);
 
     sType = copy_src.sType;
-    buffer = nullptr;
     pNext = SafePnextCopy(copy_src.pNext);
-
-    if (copy_src.buffer) {
-        buffer = new _screen_buffer(*copy_src.buffer);
-    }
+    buffer = copy_src.buffer;
 
     return *this;
 }
 
-safe_VkImportScreenBufferInfoQNX::~safe_VkImportScreenBufferInfoQNX() {
-    if (buffer) delete buffer;
-    FreePnextChain(pNext);
-}
+safe_VkImportScreenBufferInfoQNX::~safe_VkImportScreenBufferInfoQNX() { FreePnextChain(pNext); }
 
 void safe_VkImportScreenBufferInfoQNX::initialize(const VkImportScreenBufferInfoQNX* in_struct,
                                                   [[maybe_unused]] PNextCopyState* copy_state) {
-    if (buffer) delete buffer;
     FreePnextChain(pNext);
     sType = in_struct->sType;
-    buffer = nullptr;
     pNext = SafePnextCopy(in_struct->pNext, copy_state);
-
-    if (in_struct->buffer) {
-        buffer = new _screen_buffer(*in_struct->buffer);
-    }
+    buffer = in_struct->buffer;
 }
 
 void safe_VkImportScreenBufferInfoQNX::initialize(const safe_VkImportScreenBufferInfoQNX* copy_src,
                                                   [[maybe_unused]] PNextCopyState* copy_state) {
     sType = copy_src->sType;
-    buffer = nullptr;
     pNext = SafePnextCopy(copy_src->pNext);
-
-    if (copy_src->buffer) {
-        buffer = new _screen_buffer(*copy_src->buffer);
-    }
+    buffer = copy_src->buffer;
 }
 
 safe_VkExternalFormatQNX::safe_VkExternalFormatQNX(const VkExternalFormatQNX* in_struct,
