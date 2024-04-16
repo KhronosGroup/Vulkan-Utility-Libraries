@@ -2634,8 +2634,8 @@ static inline const char* string_VkFormat(VkFormat input_value) {
             return "VK_FORMAT_PVRTC2_2BPP_SRGB_BLOCK_IMG";
         case VK_FORMAT_PVRTC2_4BPP_SRGB_BLOCK_IMG:
             return "VK_FORMAT_PVRTC2_4BPP_SRGB_BLOCK_IMG";
-        case VK_FORMAT_R16G16_S10_5_NV:
-            return "VK_FORMAT_R16G16_S10_5_NV";
+        case VK_FORMAT_R16G16_SFIXED5_NV:
+            return "VK_FORMAT_R16G16_SFIXED5_NV";
         case VK_FORMAT_A1B5G5R5_UNORM_PACK16_KHR:
             return "VK_FORMAT_A1B5G5R5_UNORM_PACK16_KHR";
         case VK_FORMAT_A8_UNORM_KHR:
