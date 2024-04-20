@@ -9179,19 +9179,19 @@ void safe_VkDescriptorBufferBindingPushDescriptorBufferHandleEXT::initialize(
 
 safe_VkDescriptorGetInfoEXT::safe_VkDescriptorGetInfoEXT(const VkDescriptorGetInfoEXT* in_struct,
                                                          [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
-    : sType(in_struct->sType), type(in_struct->type), data(in_struct->data) {
+    : sType(in_struct->sType), type(in_struct->type), data(&in_struct->data, in_struct->type) {
     if (copy_pnext) {
         pNext = SafePnextCopy(in_struct->pNext, copy_state);
     }
 }
 
 safe_VkDescriptorGetInfoEXT::safe_VkDescriptorGetInfoEXT()
-    : sType(VK_STRUCTURE_TYPE_DESCRIPTOR_GET_INFO_EXT), pNext(nullptr), type(), data() {}
+    : sType(VK_STRUCTURE_TYPE_DESCRIPTOR_GET_INFO_EXT), pNext(nullptr), type() {}
 
 safe_VkDescriptorGetInfoEXT::safe_VkDescriptorGetInfoEXT(const safe_VkDescriptorGetInfoEXT& copy_src) {
     sType = copy_src.sType;
     type = copy_src.type;
-    data = copy_src.data;
+    data.initialize(&copy_src.data);
     pNext = SafePnextCopy(copy_src.pNext);
 }
 
@@ -9202,7 +9202,7 @@ safe_VkDescriptorGetInfoEXT& safe_VkDescriptorGetInfoEXT::operator=(const safe_V
 
     sType = copy_src.sType;
     type = copy_src.type;
-    data = copy_src.data;
+    data.initialize(&copy_src.data);
     pNext = SafePnextCopy(copy_src.pNext);
 
     return *this;
@@ -9214,7 +9214,7 @@ void safe_VkDescriptorGetInfoEXT::initialize(const VkDescriptorGetInfoEXT* in_st
     FreePnextChain(pNext);
     sType = in_struct->sType;
     type = in_struct->type;
-    data = in_struct->data;
+    data.initialize(&in_struct->data, in_struct->type);
     pNext = SafePnextCopy(in_struct->pNext, copy_state);
 }
 
@@ -9222,7 +9222,7 @@ void safe_VkDescriptorGetInfoEXT::initialize(const safe_VkDescriptorGetInfoEXT* 
                                              [[maybe_unused]] PNextCopyState* copy_state) {
     sType = copy_src->sType;
     type = copy_src->type;
-    data = copy_src->data;
+    data.initialize(&copy_src->data);
     pNext = SafePnextCopy(copy_src->pNext);
 }
 
