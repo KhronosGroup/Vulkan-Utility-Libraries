@@ -303,6 +303,490 @@ void safe_VkRayTracingPipelineCreateInfoCommon::initialize(const VkRayTracingPip
     safe_VkRayTracingPipelineCreateInfoKHR::initialize(pCreateInfo);
 }
 
+safe_VkDescriptorDataEXT::safe_VkDescriptorDataEXT(const VkDescriptorDataEXT* in_struct, const VkDescriptorType type,
+                                                   [[maybe_unused]] PNextCopyState* copy_state) {
+    VkDescriptorType* pType = (VkDescriptorType*)&type_at_end[sizeof(VkDescriptorDataEXT)];
+
+    switch (type) {
+        case VK_DESCRIPTOR_TYPE_MAX_ENUM:
+            break;
+        case VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC:
+            break;
+        case VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC:
+            break;
+        case VK_DESCRIPTOR_TYPE_SAMPLER:
+            pSampler = new VkSampler(*in_struct->pSampler);
+            break;
+        case VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER:
+            pCombinedImageSampler = new VkDescriptorImageInfo(*in_struct->pCombinedImageSampler);
+            break;
+        case VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE:
+            pSampledImage = in_struct->pSampledImage ? new VkDescriptorImageInfo(*in_struct->pSampledImage) : nullptr;
+            break;
+        case VK_DESCRIPTOR_TYPE_STORAGE_IMAGE:
+            pStorageImage = in_struct->pStorageImage ? new VkDescriptorImageInfo(*in_struct->pStorageImage) : nullptr;
+            break;
+        case VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT:
+            pInputAttachmentImage = new VkDescriptorImageInfo(*in_struct->pInputAttachmentImage);
+            break;
+        case VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER:
+            pUniformTexelBuffer =
+                in_struct->pUniformTexelBuffer ? new safe_VkDescriptorAddressInfoEXT(in_struct->pUniformTexelBuffer) : nullptr;
+            break;
+        case VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER:
+            pStorageTexelBuffer =
+                in_struct->pStorageTexelBuffer ? new safe_VkDescriptorAddressInfoEXT(in_struct->pStorageTexelBuffer) : nullptr;
+            break;
+        case VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER:
+            pUniformBuffer = in_struct->pUniformBuffer ? new safe_VkDescriptorAddressInfoEXT(in_struct->pUniformBuffer) : nullptr;
+            break;
+        case VK_DESCRIPTOR_TYPE_STORAGE_BUFFER:
+            pStorageBuffer = in_struct->pStorageBuffer ? new safe_VkDescriptorAddressInfoEXT(in_struct->pStorageBuffer) : nullptr;
+            break;
+        case VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR:
+            accelerationStructure = in_struct->accelerationStructure;
+            break;
+        case VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV:
+            accelerationStructure = in_struct->accelerationStructure;
+            break;
+        default:
+            break;
+    }
+
+    *pType = type;
+}
+
+safe_VkDescriptorDataEXT::safe_VkDescriptorDataEXT() : type_at_end{0} {
+    VkDescriptorType* pType = (VkDescriptorType*)&type_at_end[sizeof(VkDescriptorDataEXT)];
+    *pType = VK_DESCRIPTOR_TYPE_MAX_ENUM;
+}
+
+safe_VkDescriptorDataEXT::safe_VkDescriptorDataEXT(const safe_VkDescriptorDataEXT& copy_src) {
+    pSampler = nullptr;
+    pCombinedImageSampler = nullptr;
+    pInputAttachmentImage = nullptr;
+    pSampledImage = nullptr;
+    pStorageImage = nullptr;
+    pUniformTexelBuffer = nullptr;
+    pStorageTexelBuffer = nullptr;
+    pUniformBuffer = nullptr;
+    pStorageBuffer = nullptr;
+    accelerationStructure = copy_src.accelerationStructure;
+
+    VkDescriptorType* pType = (VkDescriptorType*)&type_at_end[sizeof(VkDescriptorDataEXT)];
+    VkDescriptorType type = *(VkDescriptorType*)&copy_src.type_at_end[sizeof(VkDescriptorDataEXT)];
+
+    switch (type) {
+        case VK_DESCRIPTOR_TYPE_MAX_ENUM:
+            break;
+        case VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC:
+            break;
+        case VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC:
+            break;
+        case VK_DESCRIPTOR_TYPE_SAMPLER:
+            pSampler = new VkSampler(*copy_src.pSampler);
+            break;
+        case VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER:
+            pCombinedImageSampler = new VkDescriptorImageInfo(*copy_src.pCombinedImageSampler);
+            break;
+        case VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE:
+            pSampledImage = new VkDescriptorImageInfo(*copy_src.pSampledImage);
+            break;
+        case VK_DESCRIPTOR_TYPE_STORAGE_IMAGE:
+            pStorageImage = new VkDescriptorImageInfo(*copy_src.pStorageImage);
+            break;
+        case VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT:
+            pInputAttachmentImage = new VkDescriptorImageInfo(*copy_src.pInputAttachmentImage);
+            break;
+        case VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER:
+            pUniformTexelBuffer = new safe_VkDescriptorAddressInfoEXT(*copy_src.pUniformTexelBuffer);
+            break;
+        case VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER:
+            pStorageTexelBuffer = new safe_VkDescriptorAddressInfoEXT(*copy_src.pStorageTexelBuffer);
+            break;
+        case VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER:
+            pUniformBuffer = new safe_VkDescriptorAddressInfoEXT(*copy_src.pUniformBuffer);
+            break;
+        case VK_DESCRIPTOR_TYPE_STORAGE_BUFFER:
+            pStorageBuffer = new safe_VkDescriptorAddressInfoEXT(*copy_src.pStorageBuffer);
+            break;
+        case VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR:
+            accelerationStructure = copy_src.accelerationStructure;
+            break;
+        case VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV:
+            accelerationStructure = copy_src.accelerationStructure;
+            break;
+        default:
+            break;
+    }
+
+    *pType = type;
+}
+
+safe_VkDescriptorDataEXT& safe_VkDescriptorDataEXT::operator=(const safe_VkDescriptorDataEXT& copy_src) {
+    if (&copy_src == this) return *this;
+
+    VkDescriptorType& thisType = *(VkDescriptorType*)&type_at_end[sizeof(VkDescriptorDataEXT)];
+
+    switch (thisType) {
+        case VK_DESCRIPTOR_TYPE_MAX_ENUM:
+            break;
+        case VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC:
+            break;
+        case VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC:
+            break;
+        case VK_DESCRIPTOR_TYPE_SAMPLER:
+            delete pSampler;
+            pSampler = nullptr;
+            break;
+        case VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER:
+            delete pCombinedImageSampler;
+            pCombinedImageSampler = nullptr;
+            break;
+        case VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE:
+            delete pSampledImage;
+            pSampledImage = nullptr;
+            break;
+        case VK_DESCRIPTOR_TYPE_STORAGE_IMAGE:
+            delete pStorageImage;
+            pStorageImage = nullptr;
+            break;
+        case VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT:
+            delete pInputAttachmentImage;
+            pInputAttachmentImage = nullptr;
+            break;
+        case VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER:
+            delete pUniformTexelBuffer;
+            pUniformTexelBuffer = nullptr;
+            break;
+        case VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER:
+            delete pStorageTexelBuffer;
+            pStorageTexelBuffer = nullptr;
+            break;
+        case VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER:
+            delete pUniformBuffer;
+            pUniformBuffer = nullptr;
+            break;
+        case VK_DESCRIPTOR_TYPE_STORAGE_BUFFER:
+            delete pStorageBuffer;
+            pStorageBuffer = nullptr;
+            break;
+        case VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR:
+            accelerationStructure = 0ull;
+            break;
+        case VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV:
+            accelerationStructure = 0ull;
+            break;
+        default:
+            break;
+    }
+
+    thisType = VK_DESCRIPTOR_TYPE_MAX_ENUM;
+
+    pSampler = nullptr;
+    pCombinedImageSampler = nullptr;
+    pInputAttachmentImage = nullptr;
+    pSampledImage = nullptr;
+    pStorageImage = nullptr;
+    pUniformTexelBuffer = nullptr;
+    pStorageTexelBuffer = nullptr;
+    pUniformBuffer = nullptr;
+    pStorageBuffer = nullptr;
+    accelerationStructure = copy_src.accelerationStructure;
+
+    VkDescriptorType* pType = (VkDescriptorType*)&type_at_end[sizeof(VkDescriptorDataEXT)];
+    VkDescriptorType type = *(VkDescriptorType*)&copy_src.type_at_end[sizeof(VkDescriptorDataEXT)];
+
+    switch (type) {
+        case VK_DESCRIPTOR_TYPE_MAX_ENUM:
+            break;
+        case VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC:
+            break;
+        case VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC:
+            break;
+        case VK_DESCRIPTOR_TYPE_SAMPLER:
+            pSampler = new VkSampler(*copy_src.pSampler);
+            break;
+        case VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER:
+            pCombinedImageSampler = new VkDescriptorImageInfo(*copy_src.pCombinedImageSampler);
+            break;
+        case VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE:
+            pSampledImage = new VkDescriptorImageInfo(*copy_src.pSampledImage);
+            break;
+        case VK_DESCRIPTOR_TYPE_STORAGE_IMAGE:
+            pStorageImage = new VkDescriptorImageInfo(*copy_src.pStorageImage);
+            break;
+        case VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT:
+            pInputAttachmentImage = new VkDescriptorImageInfo(*copy_src.pInputAttachmentImage);
+            break;
+        case VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER:
+            pUniformTexelBuffer = new safe_VkDescriptorAddressInfoEXT(*copy_src.pUniformTexelBuffer);
+            break;
+        case VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER:
+            pStorageTexelBuffer = new safe_VkDescriptorAddressInfoEXT(*copy_src.pStorageTexelBuffer);
+            break;
+        case VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER:
+            pUniformBuffer = new safe_VkDescriptorAddressInfoEXT(*copy_src.pUniformBuffer);
+            break;
+        case VK_DESCRIPTOR_TYPE_STORAGE_BUFFER:
+            pStorageBuffer = new safe_VkDescriptorAddressInfoEXT(*copy_src.pStorageBuffer);
+            break;
+        case VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR:
+            accelerationStructure = copy_src.accelerationStructure;
+            break;
+        case VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV:
+            accelerationStructure = copy_src.accelerationStructure;
+            break;
+        default:
+            break;
+    }
+
+    *pType = type;
+
+    return *this;
+}
+
+safe_VkDescriptorDataEXT::~safe_VkDescriptorDataEXT() {
+    VkDescriptorType& thisType = *(VkDescriptorType*)&type_at_end[sizeof(VkDescriptorDataEXT)];
+
+    switch (thisType) {
+        case VK_DESCRIPTOR_TYPE_MAX_ENUM:
+            break;
+        case VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC:
+            break;
+        case VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC:
+            break;
+        case VK_DESCRIPTOR_TYPE_SAMPLER:
+            delete pSampler;
+            pSampler = nullptr;
+            break;
+        case VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER:
+            delete pCombinedImageSampler;
+            pCombinedImageSampler = nullptr;
+            break;
+        case VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE:
+            delete pSampledImage;
+            pSampledImage = nullptr;
+            break;
+        case VK_DESCRIPTOR_TYPE_STORAGE_IMAGE:
+            delete pStorageImage;
+            pStorageImage = nullptr;
+            break;
+        case VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT:
+            delete pInputAttachmentImage;
+            pInputAttachmentImage = nullptr;
+            break;
+        case VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER:
+            delete pUniformTexelBuffer;
+            pUniformTexelBuffer = nullptr;
+            break;
+        case VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER:
+            delete pStorageTexelBuffer;
+            pStorageTexelBuffer = nullptr;
+            break;
+        case VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER:
+            delete pUniformBuffer;
+            pUniformBuffer = nullptr;
+            break;
+        case VK_DESCRIPTOR_TYPE_STORAGE_BUFFER:
+            delete pStorageBuffer;
+            pStorageBuffer = nullptr;
+            break;
+        case VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR:
+            accelerationStructure = 0ull;
+            break;
+        case VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV:
+            accelerationStructure = 0ull;
+            break;
+        default:
+            break;
+    }
+
+    thisType = VK_DESCRIPTOR_TYPE_MAX_ENUM;
+}
+
+void safe_VkDescriptorDataEXT::initialize(const VkDescriptorDataEXT* in_struct, const VkDescriptorType type,
+                                          [[maybe_unused]] PNextCopyState* copy_state) {
+    VkDescriptorType& thisType = *(VkDescriptorType*)&type_at_end[sizeof(VkDescriptorDataEXT)];
+
+    switch (thisType) {
+        case VK_DESCRIPTOR_TYPE_MAX_ENUM:
+            break;
+        case VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC:
+            break;
+        case VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC:
+            break;
+        case VK_DESCRIPTOR_TYPE_SAMPLER:
+            delete pSampler;
+            pSampler = nullptr;
+            break;
+        case VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER:
+            delete pCombinedImageSampler;
+            pCombinedImageSampler = nullptr;
+            break;
+        case VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE:
+            delete pSampledImage;
+            pSampledImage = nullptr;
+            break;
+        case VK_DESCRIPTOR_TYPE_STORAGE_IMAGE:
+            delete pStorageImage;
+            pStorageImage = nullptr;
+            break;
+        case VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT:
+            delete pInputAttachmentImage;
+            pInputAttachmentImage = nullptr;
+            break;
+        case VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER:
+            delete pUniformTexelBuffer;
+            pUniformTexelBuffer = nullptr;
+            break;
+        case VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER:
+            delete pStorageTexelBuffer;
+            pStorageTexelBuffer = nullptr;
+            break;
+        case VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER:
+            delete pUniformBuffer;
+            pUniformBuffer = nullptr;
+            break;
+        case VK_DESCRIPTOR_TYPE_STORAGE_BUFFER:
+            delete pStorageBuffer;
+            pStorageBuffer = nullptr;
+            break;
+        case VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR:
+            accelerationStructure = 0ull;
+            break;
+        case VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV:
+            accelerationStructure = 0ull;
+            break;
+        default:
+            break;
+    }
+
+    thisType = VK_DESCRIPTOR_TYPE_MAX_ENUM;
+    pSampler = nullptr;
+    pCombinedImageSampler = nullptr;
+    pInputAttachmentImage = nullptr;
+    pSampledImage = nullptr;
+    pStorageImage = nullptr;
+    pUniformTexelBuffer = nullptr;
+    pStorageTexelBuffer = nullptr;
+    pUniformBuffer = nullptr;
+    pStorageBuffer = nullptr;
+    accelerationStructure = in_struct->accelerationStructure;
+
+    VkDescriptorType* pType = (VkDescriptorType*)&type_at_end[sizeof(VkDescriptorDataEXT)];
+
+    switch (type) {
+        case VK_DESCRIPTOR_TYPE_MAX_ENUM:
+            break;
+        case VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC:
+            break;
+        case VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC:
+            break;
+        case VK_DESCRIPTOR_TYPE_SAMPLER:
+            pSampler = new VkSampler(*in_struct->pSampler);
+            break;
+        case VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER:
+            pCombinedImageSampler = new VkDescriptorImageInfo(*in_struct->pCombinedImageSampler);
+            break;
+        case VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE:
+            pSampledImage = in_struct->pSampledImage ? new VkDescriptorImageInfo(*in_struct->pSampledImage) : nullptr;
+            break;
+        case VK_DESCRIPTOR_TYPE_STORAGE_IMAGE:
+            pStorageImage = in_struct->pStorageImage ? new VkDescriptorImageInfo(*in_struct->pStorageImage) : nullptr;
+            break;
+        case VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT:
+            pInputAttachmentImage = new VkDescriptorImageInfo(*in_struct->pInputAttachmentImage);
+            break;
+        case VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER:
+            pUniformTexelBuffer =
+                in_struct->pUniformTexelBuffer ? new safe_VkDescriptorAddressInfoEXT(in_struct->pUniformTexelBuffer) : nullptr;
+            break;
+        case VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER:
+            pStorageTexelBuffer =
+                in_struct->pStorageTexelBuffer ? new safe_VkDescriptorAddressInfoEXT(in_struct->pStorageTexelBuffer) : nullptr;
+            break;
+        case VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER:
+            pUniformBuffer = in_struct->pUniformBuffer ? new safe_VkDescriptorAddressInfoEXT(in_struct->pUniformBuffer) : nullptr;
+            break;
+        case VK_DESCRIPTOR_TYPE_STORAGE_BUFFER:
+            pStorageBuffer = in_struct->pStorageBuffer ? new safe_VkDescriptorAddressInfoEXT(in_struct->pStorageBuffer) : nullptr;
+            break;
+        case VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR:
+            accelerationStructure = in_struct->accelerationStructure;
+            break;
+        case VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV:
+            accelerationStructure = in_struct->accelerationStructure;
+            break;
+        default:
+            break;
+    }
+
+    *pType = type;
+}
+
+void safe_VkDescriptorDataEXT::initialize(const safe_VkDescriptorDataEXT* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    pSampler = nullptr;
+    pCombinedImageSampler = nullptr;
+    pInputAttachmentImage = nullptr;
+    pSampledImage = nullptr;
+    pStorageImage = nullptr;
+    pUniformTexelBuffer = nullptr;
+    pStorageTexelBuffer = nullptr;
+    pUniformBuffer = nullptr;
+    pStorageBuffer = nullptr;
+    accelerationStructure = copy_src->accelerationStructure;
+
+    VkDescriptorType* pType = (VkDescriptorType*)&type_at_end[sizeof(VkDescriptorDataEXT)];
+    VkDescriptorType type = *(VkDescriptorType*)&copy_src->type_at_end[sizeof(VkDescriptorDataEXT)];
+
+    switch (type) {
+        case VK_DESCRIPTOR_TYPE_MAX_ENUM:
+            break;
+        case VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC:
+            break;
+        case VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC:
+            break;
+        case VK_DESCRIPTOR_TYPE_SAMPLER:
+            pSampler = new VkSampler(*copy_src->pSampler);
+            break;
+        case VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER:
+            pCombinedImageSampler = new VkDescriptorImageInfo(*copy_src->pCombinedImageSampler);
+            break;
+        case VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE:
+            pSampledImage = new VkDescriptorImageInfo(*copy_src->pSampledImage);
+            break;
+        case VK_DESCRIPTOR_TYPE_STORAGE_IMAGE:
+            pStorageImage = new VkDescriptorImageInfo(*copy_src->pStorageImage);
+            break;
+        case VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT:
+            pInputAttachmentImage = new VkDescriptorImageInfo(*copy_src->pInputAttachmentImage);
+            break;
+        case VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER:
+            pUniformTexelBuffer = new safe_VkDescriptorAddressInfoEXT(*copy_src->pUniformTexelBuffer);
+            break;
+        case VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER:
+            pStorageTexelBuffer = new safe_VkDescriptorAddressInfoEXT(*copy_src->pStorageTexelBuffer);
+            break;
+        case VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER:
+            pUniformBuffer = new safe_VkDescriptorAddressInfoEXT(*copy_src->pUniformBuffer);
+            break;
+        case VK_DESCRIPTOR_TYPE_STORAGE_BUFFER:
+            pStorageBuffer = new safe_VkDescriptorAddressInfoEXT(*copy_src->pStorageBuffer);
+            break;
+        case VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR:
+            accelerationStructure = copy_src->accelerationStructure;
+            break;
+        case VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV:
+            accelerationStructure = copy_src->accelerationStructure;
+            break;
+        default:
+            break;
+    }
+
+    *pType = type;
+}
+
 safe_VkGraphicsPipelineCreateInfo::safe_VkGraphicsPipelineCreateInfo(const VkGraphicsPipelineCreateInfo* in_struct,
                                                                      const bool uses_color_attachment,
                                                                      const bool uses_depthstencil_attachment,
