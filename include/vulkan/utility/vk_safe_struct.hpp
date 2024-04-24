@@ -13494,33 +13494,11 @@ struct safe_VkDescriptorBufferBindingPushDescriptorBufferHandleEXT {
         return reinterpret_cast<VkDescriptorBufferBindingPushDescriptorBufferHandleEXT const*>(this);
     }
 };
-union safe_VkDescriptorDataEXT {
-    const VkSampler* pSampler{};
-    const VkDescriptorImageInfo* pCombinedImageSampler;
-    const VkDescriptorImageInfo* pInputAttachmentImage;
-    const VkDescriptorImageInfo* pSampledImage;
-    const VkDescriptorImageInfo* pStorageImage;
-    safe_VkDescriptorAddressInfoEXT* pUniformTexelBuffer;
-    safe_VkDescriptorAddressInfoEXT* pStorageTexelBuffer;
-    safe_VkDescriptorAddressInfoEXT* pUniformBuffer;
-    safe_VkDescriptorAddressInfoEXT* pStorageBuffer;
-    VkDeviceAddress accelerationStructure;
-    char type_at_end[sizeof(VkDescriptorDataEXT) + sizeof(VkDescriptorGetInfoEXT::type)];
-    safe_VkDescriptorDataEXT(const VkDescriptorDataEXT* in_struct, const VkDescriptorType type, PNextCopyState* copy_state = {});
-    safe_VkDescriptorDataEXT(const safe_VkDescriptorDataEXT& copy_src);
-    safe_VkDescriptorDataEXT& operator=(const safe_VkDescriptorDataEXT& copy_src);
-    safe_VkDescriptorDataEXT();
-    ~safe_VkDescriptorDataEXT();
-    void initialize(const VkDescriptorDataEXT* in_struct, const VkDescriptorType type, PNextCopyState* copy_state = {});
-    void initialize(const safe_VkDescriptorDataEXT* copy_src, PNextCopyState* copy_state = {});
-    VkDescriptorDataEXT* ptr() { return reinterpret_cast<VkDescriptorDataEXT*>(this); }
-    VkDescriptorDataEXT const* ptr() const { return reinterpret_cast<VkDescriptorDataEXT const*>(this); }
-};
 struct safe_VkDescriptorGetInfoEXT {
     VkStructureType sType;
     const void* pNext{};
     VkDescriptorType type;
-    safe_VkDescriptorDataEXT data;
+    VkDescriptorDataEXT data;
 
     safe_VkDescriptorGetInfoEXT(const VkDescriptorGetInfoEXT* in_struct, PNextCopyState* copy_state = {}, bool copy_pnext = true);
     safe_VkDescriptorGetInfoEXT(const safe_VkDescriptorGetInfoEXT& copy_src);
