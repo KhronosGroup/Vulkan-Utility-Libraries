@@ -1696,6 +1696,12 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_SPARSE_ADDRESS_SPACE_PROPERTIES_NV:
                 safe_pNext = new safe_VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV(reinterpret_cast<const VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV *>(pNext), copy_state, false);
                 break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LEGACY_VERTEX_ATTRIBUTES_FEATURES_EXT:
+                safe_pNext = new safe_VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT(reinterpret_cast<const VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LEGACY_VERTEX_ATTRIBUTES_PROPERTIES_EXT:
+                safe_pNext = new safe_VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT(reinterpret_cast<const VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT *>(pNext), copy_state, false);
+                break;
             case VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT:
                 safe_pNext = new safe_VkLayerSettingsCreateInfoEXT(reinterpret_cast<const VkLayerSettingsCreateInfoEXT *>(pNext), copy_state, false);
                 break;
@@ -3491,6 +3497,12 @@ void FreePnextChain(const void *pNext) {
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_SPARSE_ADDRESS_SPACE_PROPERTIES_NV:
             delete reinterpret_cast<const safe_VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LEGACY_VERTEX_ATTRIBUTES_FEATURES_EXT:
+            delete reinterpret_cast<const safe_VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LEGACY_VERTEX_ATTRIBUTES_PROPERTIES_EXT:
+            delete reinterpret_cast<const safe_VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT *>(header);
             break;
         case VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT:
             delete reinterpret_cast<const safe_VkLayerSettingsCreateInfoEXT *>(header);

@@ -14788,6 +14788,110 @@ void safe_VkShaderCreateInfoEXT::initialize(const safe_VkShaderCreateInfoEXT* co
     if (copy_src->pSpecializationInfo) pSpecializationInfo = new safe_VkSpecializationInfo(*copy_src->pSpecializationInfo);
 }
 
+safe_VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT::safe_VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT(
+    const VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
+    bool copy_pnext)
+    : sType(in_struct->sType), legacyVertexAttributes(in_struct->legacyVertexAttributes) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT::safe_VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LEGACY_VERTEX_ATTRIBUTES_FEATURES_EXT), pNext(nullptr), legacyVertexAttributes() {}
+
+safe_VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT::safe_VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT(
+    const safe_VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT& copy_src) {
+    sType = copy_src.sType;
+    legacyVertexAttributes = copy_src.legacyVertexAttributes;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT& safe_VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT::operator=(
+    const safe_VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    legacyVertexAttributes = copy_src.legacyVertexAttributes;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT::~safe_VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT::initialize(
+    const VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    legacyVertexAttributes = in_struct->legacyVertexAttributes;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT::initialize(
+    const safe_VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    legacyVertexAttributes = copy_src->legacyVertexAttributes;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT::safe_VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT(
+    const VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
+    bool copy_pnext)
+    : sType(in_struct->sType), nativeUnalignedPerformance(in_struct->nativeUnalignedPerformance) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT::safe_VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LEGACY_VERTEX_ATTRIBUTES_PROPERTIES_EXT),
+      pNext(nullptr),
+      nativeUnalignedPerformance() {}
+
+safe_VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT::safe_VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT(
+    const safe_VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT& copy_src) {
+    sType = copy_src.sType;
+    nativeUnalignedPerformance = copy_src.nativeUnalignedPerformance;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT& safe_VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT::operator=(
+    const safe_VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    nativeUnalignedPerformance = copy_src.nativeUnalignedPerformance;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT::~safe_VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT::initialize(
+    const VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    nativeUnalignedPerformance = in_struct->nativeUnalignedPerformance;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT::initialize(
+    const safe_VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    nativeUnalignedPerformance = copy_src->nativeUnalignedPerformance;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
 safe_VkLayerSettingEXT::safe_VkLayerSettingEXT(const VkLayerSettingEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state)
     : type(in_struct->type), valueCount(in_struct->valueCount), pValues(in_struct->pValues) {
     pLayerName = SafeStringCopy(in_struct->pLayerName);

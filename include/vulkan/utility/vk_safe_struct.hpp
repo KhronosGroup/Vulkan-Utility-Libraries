@@ -17118,6 +17118,49 @@ struct safe_VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV {
         return reinterpret_cast<VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV const*>(this);
     }
 };
+struct safe_VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT {
+    VkStructureType sType;
+    void* pNext{};
+    VkBool32 legacyVertexAttributes;
+
+    safe_VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT(const VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT* in_struct,
+                                                           PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT(const safe_VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT& copy_src);
+    safe_VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT& operator=(
+        const safe_VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT& copy_src);
+    safe_VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT();
+    ~safe_VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT();
+    void initialize(const VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT* copy_src, PNextCopyState* copy_state = {});
+    VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT* ptr() {
+        return reinterpret_cast<VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT*>(this);
+    }
+    VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT const* ptr() const {
+        return reinterpret_cast<VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT const*>(this);
+    }
+};
+struct safe_VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT {
+    VkStructureType sType;
+    void* pNext{};
+    VkBool32 nativeUnalignedPerformance;
+
+    safe_VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT(const VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT* in_struct,
+                                                             PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT(
+        const safe_VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT& copy_src);
+    safe_VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT& operator=(
+        const safe_VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT& copy_src);
+    safe_VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT();
+    ~safe_VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT();
+    void initialize(const VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT* copy_src, PNextCopyState* copy_state = {});
+    VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT* ptr() {
+        return reinterpret_cast<VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT*>(this);
+    }
+    VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT const* ptr() const {
+        return reinterpret_cast<VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT const*>(this);
+    }
+};
 struct safe_VkLayerSettingEXT {
     const char* pLayerName{};
     const char* pSettingName{};
