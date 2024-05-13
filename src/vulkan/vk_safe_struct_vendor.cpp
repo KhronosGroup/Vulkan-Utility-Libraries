@@ -15118,6 +15118,158 @@ void safe_VkPhysicalDeviceRayTracingValidationFeaturesNV::initialize(
     pNext = SafePnextCopy(copy_src->pNext);
 }
 
+safe_VkPhysicalDeviceImageAlignmentControlFeaturesMESA::safe_VkPhysicalDeviceImageAlignmentControlFeaturesMESA(
+    const VkPhysicalDeviceImageAlignmentControlFeaturesMESA* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
+    bool copy_pnext)
+    : sType(in_struct->sType), imageAlignmentControl(in_struct->imageAlignmentControl) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceImageAlignmentControlFeaturesMESA::safe_VkPhysicalDeviceImageAlignmentControlFeaturesMESA()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_ALIGNMENT_CONTROL_FEATURES_MESA), pNext(nullptr), imageAlignmentControl() {}
+
+safe_VkPhysicalDeviceImageAlignmentControlFeaturesMESA::safe_VkPhysicalDeviceImageAlignmentControlFeaturesMESA(
+    const safe_VkPhysicalDeviceImageAlignmentControlFeaturesMESA& copy_src) {
+    sType = copy_src.sType;
+    imageAlignmentControl = copy_src.imageAlignmentControl;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceImageAlignmentControlFeaturesMESA& safe_VkPhysicalDeviceImageAlignmentControlFeaturesMESA::operator=(
+    const safe_VkPhysicalDeviceImageAlignmentControlFeaturesMESA& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    imageAlignmentControl = copy_src.imageAlignmentControl;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceImageAlignmentControlFeaturesMESA::~safe_VkPhysicalDeviceImageAlignmentControlFeaturesMESA() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkPhysicalDeviceImageAlignmentControlFeaturesMESA::initialize(
+    const VkPhysicalDeviceImageAlignmentControlFeaturesMESA* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    imageAlignmentControl = in_struct->imageAlignmentControl;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceImageAlignmentControlFeaturesMESA::initialize(
+    const safe_VkPhysicalDeviceImageAlignmentControlFeaturesMESA* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    imageAlignmentControl = copy_src->imageAlignmentControl;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkPhysicalDeviceImageAlignmentControlPropertiesMESA::safe_VkPhysicalDeviceImageAlignmentControlPropertiesMESA(
+    const VkPhysicalDeviceImageAlignmentControlPropertiesMESA* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
+    bool copy_pnext)
+    : sType(in_struct->sType), supportedImageAlignmentMask(in_struct->supportedImageAlignmentMask) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceImageAlignmentControlPropertiesMESA::safe_VkPhysicalDeviceImageAlignmentControlPropertiesMESA()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_ALIGNMENT_CONTROL_PROPERTIES_MESA),
+      pNext(nullptr),
+      supportedImageAlignmentMask() {}
+
+safe_VkPhysicalDeviceImageAlignmentControlPropertiesMESA::safe_VkPhysicalDeviceImageAlignmentControlPropertiesMESA(
+    const safe_VkPhysicalDeviceImageAlignmentControlPropertiesMESA& copy_src) {
+    sType = copy_src.sType;
+    supportedImageAlignmentMask = copy_src.supportedImageAlignmentMask;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceImageAlignmentControlPropertiesMESA& safe_VkPhysicalDeviceImageAlignmentControlPropertiesMESA::operator=(
+    const safe_VkPhysicalDeviceImageAlignmentControlPropertiesMESA& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    supportedImageAlignmentMask = copy_src.supportedImageAlignmentMask;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceImageAlignmentControlPropertiesMESA::~safe_VkPhysicalDeviceImageAlignmentControlPropertiesMESA() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkPhysicalDeviceImageAlignmentControlPropertiesMESA::initialize(
+    const VkPhysicalDeviceImageAlignmentControlPropertiesMESA* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    supportedImageAlignmentMask = in_struct->supportedImageAlignmentMask;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceImageAlignmentControlPropertiesMESA::initialize(
+    const safe_VkPhysicalDeviceImageAlignmentControlPropertiesMESA* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    supportedImageAlignmentMask = copy_src->supportedImageAlignmentMask;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkImageAlignmentControlCreateInfoMESA::safe_VkImageAlignmentControlCreateInfoMESA(
+    const VkImageAlignmentControlCreateInfoMESA* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), maximumRequestedAlignment(in_struct->maximumRequestedAlignment) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkImageAlignmentControlCreateInfoMESA::safe_VkImageAlignmentControlCreateInfoMESA()
+    : sType(VK_STRUCTURE_TYPE_IMAGE_ALIGNMENT_CONTROL_CREATE_INFO_MESA), pNext(nullptr), maximumRequestedAlignment() {}
+
+safe_VkImageAlignmentControlCreateInfoMESA::safe_VkImageAlignmentControlCreateInfoMESA(
+    const safe_VkImageAlignmentControlCreateInfoMESA& copy_src) {
+    sType = copy_src.sType;
+    maximumRequestedAlignment = copy_src.maximumRequestedAlignment;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkImageAlignmentControlCreateInfoMESA& safe_VkImageAlignmentControlCreateInfoMESA::operator=(
+    const safe_VkImageAlignmentControlCreateInfoMESA& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    maximumRequestedAlignment = copy_src.maximumRequestedAlignment;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkImageAlignmentControlCreateInfoMESA::~safe_VkImageAlignmentControlCreateInfoMESA() { FreePnextChain(pNext); }
+
+void safe_VkImageAlignmentControlCreateInfoMESA::initialize(const VkImageAlignmentControlCreateInfoMESA* in_struct,
+                                                            [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    maximumRequestedAlignment = in_struct->maximumRequestedAlignment;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkImageAlignmentControlCreateInfoMESA::initialize(const safe_VkImageAlignmentControlCreateInfoMESA* copy_src,
+                                                            [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    maximumRequestedAlignment = copy_src->maximumRequestedAlignment;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
 }  // namespace vku
 
 // NOLINTEND
