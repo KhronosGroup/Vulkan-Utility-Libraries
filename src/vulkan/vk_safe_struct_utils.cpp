@@ -1794,6 +1794,15 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_VALIDATION_FEATURES_NV:
                 safe_pNext = new safe_VkPhysicalDeviceRayTracingValidationFeaturesNV(reinterpret_cast<const VkPhysicalDeviceRayTracingValidationFeaturesNV *>(pNext), copy_state, false);
                 break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_ALIGNMENT_CONTROL_FEATURES_MESA:
+                safe_pNext = new safe_VkPhysicalDeviceImageAlignmentControlFeaturesMESA(reinterpret_cast<const VkPhysicalDeviceImageAlignmentControlFeaturesMESA *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_ALIGNMENT_CONTROL_PROPERTIES_MESA:
+                safe_pNext = new safe_VkPhysicalDeviceImageAlignmentControlPropertiesMESA(reinterpret_cast<const VkPhysicalDeviceImageAlignmentControlPropertiesMESA *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_IMAGE_ALIGNMENT_CONTROL_CREATE_INFO_MESA:
+                safe_pNext = new safe_VkImageAlignmentControlCreateInfoMESA(reinterpret_cast<const VkImageAlignmentControlCreateInfoMESA *>(pNext), copy_state, false);
+                break;
             case VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_ACCELERATION_STRUCTURE_KHR:
                 safe_pNext = new safe_VkWriteDescriptorSetAccelerationStructureKHR(reinterpret_cast<const VkWriteDescriptorSetAccelerationStructureKHR *>(pNext), copy_state, false);
                 break;
@@ -3595,6 +3604,15 @@ void FreePnextChain(const void *pNext) {
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_VALIDATION_FEATURES_NV:
             delete reinterpret_cast<const safe_VkPhysicalDeviceRayTracingValidationFeaturesNV *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_ALIGNMENT_CONTROL_FEATURES_MESA:
+            delete reinterpret_cast<const safe_VkPhysicalDeviceImageAlignmentControlFeaturesMESA *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_ALIGNMENT_CONTROL_PROPERTIES_MESA:
+            delete reinterpret_cast<const safe_VkPhysicalDeviceImageAlignmentControlPropertiesMESA *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_IMAGE_ALIGNMENT_CONTROL_CREATE_INFO_MESA:
+            delete reinterpret_cast<const safe_VkImageAlignmentControlCreateInfoMESA *>(header);
             break;
         case VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_ACCELERATION_STRUCTURE_KHR:
             delete reinterpret_cast<const safe_VkWriteDescriptorSetAccelerationStructureKHR *>(header);

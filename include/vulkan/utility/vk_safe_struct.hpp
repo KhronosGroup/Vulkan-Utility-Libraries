@@ -17915,6 +17915,67 @@ struct safe_VkPhysicalDeviceRayTracingValidationFeaturesNV {
         return reinterpret_cast<VkPhysicalDeviceRayTracingValidationFeaturesNV const*>(this);
     }
 };
+struct safe_VkPhysicalDeviceImageAlignmentControlFeaturesMESA {
+    VkStructureType sType;
+    void* pNext{};
+    VkBool32 imageAlignmentControl;
+
+    safe_VkPhysicalDeviceImageAlignmentControlFeaturesMESA(const VkPhysicalDeviceImageAlignmentControlFeaturesMESA* in_struct,
+                                                           PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkPhysicalDeviceImageAlignmentControlFeaturesMESA(const safe_VkPhysicalDeviceImageAlignmentControlFeaturesMESA& copy_src);
+    safe_VkPhysicalDeviceImageAlignmentControlFeaturesMESA& operator=(
+        const safe_VkPhysicalDeviceImageAlignmentControlFeaturesMESA& copy_src);
+    safe_VkPhysicalDeviceImageAlignmentControlFeaturesMESA();
+    ~safe_VkPhysicalDeviceImageAlignmentControlFeaturesMESA();
+    void initialize(const VkPhysicalDeviceImageAlignmentControlFeaturesMESA* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceImageAlignmentControlFeaturesMESA* copy_src, PNextCopyState* copy_state = {});
+    VkPhysicalDeviceImageAlignmentControlFeaturesMESA* ptr() {
+        return reinterpret_cast<VkPhysicalDeviceImageAlignmentControlFeaturesMESA*>(this);
+    }
+    VkPhysicalDeviceImageAlignmentControlFeaturesMESA const* ptr() const {
+        return reinterpret_cast<VkPhysicalDeviceImageAlignmentControlFeaturesMESA const*>(this);
+    }
+};
+struct safe_VkPhysicalDeviceImageAlignmentControlPropertiesMESA {
+    VkStructureType sType;
+    void* pNext{};
+    uint32_t supportedImageAlignmentMask;
+
+    safe_VkPhysicalDeviceImageAlignmentControlPropertiesMESA(const VkPhysicalDeviceImageAlignmentControlPropertiesMESA* in_struct,
+                                                             PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkPhysicalDeviceImageAlignmentControlPropertiesMESA(
+        const safe_VkPhysicalDeviceImageAlignmentControlPropertiesMESA& copy_src);
+    safe_VkPhysicalDeviceImageAlignmentControlPropertiesMESA& operator=(
+        const safe_VkPhysicalDeviceImageAlignmentControlPropertiesMESA& copy_src);
+    safe_VkPhysicalDeviceImageAlignmentControlPropertiesMESA();
+    ~safe_VkPhysicalDeviceImageAlignmentControlPropertiesMESA();
+    void initialize(const VkPhysicalDeviceImageAlignmentControlPropertiesMESA* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceImageAlignmentControlPropertiesMESA* copy_src, PNextCopyState* copy_state = {});
+    VkPhysicalDeviceImageAlignmentControlPropertiesMESA* ptr() {
+        return reinterpret_cast<VkPhysicalDeviceImageAlignmentControlPropertiesMESA*>(this);
+    }
+    VkPhysicalDeviceImageAlignmentControlPropertiesMESA const* ptr() const {
+        return reinterpret_cast<VkPhysicalDeviceImageAlignmentControlPropertiesMESA const*>(this);
+    }
+};
+struct safe_VkImageAlignmentControlCreateInfoMESA {
+    VkStructureType sType;
+    const void* pNext{};
+    uint32_t maximumRequestedAlignment;
+
+    safe_VkImageAlignmentControlCreateInfoMESA(const VkImageAlignmentControlCreateInfoMESA* in_struct,
+                                               PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkImageAlignmentControlCreateInfoMESA(const safe_VkImageAlignmentControlCreateInfoMESA& copy_src);
+    safe_VkImageAlignmentControlCreateInfoMESA& operator=(const safe_VkImageAlignmentControlCreateInfoMESA& copy_src);
+    safe_VkImageAlignmentControlCreateInfoMESA();
+    ~safe_VkImageAlignmentControlCreateInfoMESA();
+    void initialize(const VkImageAlignmentControlCreateInfoMESA* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkImageAlignmentControlCreateInfoMESA* copy_src, PNextCopyState* copy_state = {});
+    VkImageAlignmentControlCreateInfoMESA* ptr() { return reinterpret_cast<VkImageAlignmentControlCreateInfoMESA*>(this); }
+    VkImageAlignmentControlCreateInfoMESA const* ptr() const {
+        return reinterpret_cast<VkImageAlignmentControlCreateInfoMESA const*>(this);
+    }
+};
 struct safe_VkAccelerationStructureGeometryTrianglesDataKHR {
     VkStructureType sType;
     const void* pNext{};
