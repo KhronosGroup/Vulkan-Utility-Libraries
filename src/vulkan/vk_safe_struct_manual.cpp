@@ -345,13 +345,11 @@ safe_VkGraphicsPipelineCreateInfo::safe_VkGraphicsPipelineCreateInfo(const VkGra
     else
         pInputAssemblyState = nullptr;
     bool has_tessellation_stage = false;
-    bool has_fragment_stage = false;
     if (stageCount && pStages) {
         for (uint32_t i = 0; i < stageCount; ++i) {
             if (pStages[i].stage == VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT ||
                 pStages[i].stage == VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT)
                 has_tessellation_stage = true;
-            if (pStages[i].stage == VK_SHADER_STAGE_FRAGMENT_BIT) has_fragment_stage = true;
         }
     }
     if (in_struct->pTessellationState && has_tessellation_stage)
@@ -383,8 +381,7 @@ safe_VkGraphicsPipelineCreateInfo::safe_VkGraphicsPipelineCreateInfo(const VkGra
         pRasterizationState = new safe_VkPipelineRasterizationStateCreateInfo(in_struct->pRasterizationState);
     else
         pRasterizationState = nullptr;
-    if (in_struct->pMultisampleState &&
-        ((has_rasterization && (renderPass != VK_NULL_HANDLE || has_fragment_stage)) || is_graphics_library))
+    if (in_struct->pMultisampleState && (has_rasterization || is_graphics_library))
         pMultisampleState = new safe_VkPipelineMultisampleStateCreateInfo(in_struct->pMultisampleState);
     else
         pMultisampleState = nullptr;  // original pMultisampleState pointer ignored
@@ -666,13 +663,11 @@ void safe_VkGraphicsPipelineCreateInfo::initialize(const VkGraphicsPipelineCreat
     else
         pInputAssemblyState = nullptr;
     bool has_tessellation_stage = false;
-    bool has_fragment_stage = false;
     if (stageCount && pStages) {
         for (uint32_t i = 0; i < stageCount; ++i) {
             if (pStages[i].stage == VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT ||
                 pStages[i].stage == VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT)
                 has_tessellation_stage = true;
-            if (pStages[i].stage == VK_SHADER_STAGE_FRAGMENT_BIT) has_fragment_stage = true;
         }
     }
     if (in_struct->pTessellationState && has_tessellation_stage)
@@ -704,8 +699,7 @@ void safe_VkGraphicsPipelineCreateInfo::initialize(const VkGraphicsPipelineCreat
         pRasterizationState = new safe_VkPipelineRasterizationStateCreateInfo(in_struct->pRasterizationState);
     else
         pRasterizationState = nullptr;
-    if (in_struct->pMultisampleState &&
-        ((has_rasterization && (renderPass != VK_NULL_HANDLE || has_fragment_stage)) || is_graphics_library))
+    if (in_struct->pMultisampleState && (has_rasterization || is_graphics_library))
         pMultisampleState = new safe_VkPipelineMultisampleStateCreateInfo(in_struct->pMultisampleState);
     else
         pMultisampleState = nullptr;  // original pMultisampleState pointer ignored
