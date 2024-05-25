@@ -362,8 +362,9 @@ safe_VkGraphicsPipelineCreateInfo::safe_VkGraphicsPipelineCreateInfo(const VkGra
             if (in_struct->pDynamicState->pDynamicStates[i] == VK_DYNAMIC_STATE_RASTERIZER_DISCARD_ENABLE_EXT)
                 is_dynamic_has_rasterization = true;
     }
+    // No pRasterizationState is same as dynamic, we assume rasterizerDiscardEnable is false
     const bool has_rasterization = is_dynamic_has_rasterization ||
-                                   (in_struct->pRasterizationState && !in_struct->pRasterizationState->rasterizerDiscardEnable);
+                                   (!in_struct->pRasterizationState || !in_struct->pRasterizationState->rasterizerDiscardEnable);
     if (in_struct->pViewportState && (has_rasterization || is_graphics_library)) {
         bool is_dynamic_viewports = false;
         bool is_dynamic_scissors = false;
@@ -474,8 +475,9 @@ safe_VkGraphicsPipelineCreateInfo::safe_VkGraphicsPipelineCreateInfo(const safe_
             if (copy_src.pDynamicState->pDynamicStates[i] == VK_DYNAMIC_STATE_RASTERIZER_DISCARD_ENABLE_EXT)
                 is_dynamic_has_rasterization = true;
     }
+    // No pRasterizationState is same as dynamic, we assume rasterizerDiscardEnable is false
     const bool has_rasterization =
-        is_dynamic_has_rasterization || (copy_src.pRasterizationState && !copy_src.pRasterizationState->rasterizerDiscardEnable);
+        is_dynamic_has_rasterization || (!copy_src.pRasterizationState || !copy_src.pRasterizationState->rasterizerDiscardEnable);
     if (copy_src.pViewportState && (has_rasterization || is_graphics_library)) {
         pViewportState = new safe_VkPipelineViewportStateCreateInfo(*copy_src.pViewportState);
     } else
@@ -568,8 +570,9 @@ safe_VkGraphicsPipelineCreateInfo& safe_VkGraphicsPipelineCreateInfo::operator=(
             if (copy_src.pDynamicState->pDynamicStates[i] == VK_DYNAMIC_STATE_RASTERIZER_DISCARD_ENABLE_EXT)
                 is_dynamic_has_rasterization = true;
     }
+    // No pRasterizationState is same as dynamic, we assume rasterizerDiscardEnable is false
     const bool has_rasterization =
-        is_dynamic_has_rasterization || (copy_src.pRasterizationState && !copy_src.pRasterizationState->rasterizerDiscardEnable);
+        is_dynamic_has_rasterization || (!copy_src.pRasterizationState || !copy_src.pRasterizationState->rasterizerDiscardEnable);
     if (copy_src.pViewportState && (has_rasterization || is_graphics_library)) {
         pViewportState = new safe_VkPipelineViewportStateCreateInfo(*copy_src.pViewportState);
     } else
@@ -680,8 +683,9 @@ void safe_VkGraphicsPipelineCreateInfo::initialize(const VkGraphicsPipelineCreat
             if (in_struct->pDynamicState->pDynamicStates[i] == VK_DYNAMIC_STATE_RASTERIZER_DISCARD_ENABLE_EXT)
                 is_dynamic_has_rasterization = true;
     }
+    // No pRasterizationState is same as dynamic, we assume rasterizerDiscardEnable is false
     const bool has_rasterization = is_dynamic_has_rasterization ||
-                                   (in_struct->pRasterizationState && !in_struct->pRasterizationState->rasterizerDiscardEnable);
+                                   (!in_struct->pRasterizationState || !in_struct->pRasterizationState->rasterizerDiscardEnable);
     if (in_struct->pViewportState && (has_rasterization || is_graphics_library)) {
         bool is_dynamic_viewports = false;
         bool is_dynamic_scissors = false;
@@ -772,8 +776,9 @@ void safe_VkGraphicsPipelineCreateInfo::initialize(const safe_VkGraphicsPipeline
             if (copy_src->pDynamicState->pDynamicStates[i] == VK_DYNAMIC_STATE_RASTERIZER_DISCARD_ENABLE_EXT)
                 is_dynamic_has_rasterization = true;
     }
+    // No pRasterizationState is same as dynamic, we assume rasterizerDiscardEnable is false
     const bool has_rasterization =
-        is_dynamic_has_rasterization || (copy_src->pRasterizationState && !copy_src->pRasterizationState->rasterizerDiscardEnable);
+        is_dynamic_has_rasterization || (!copy_src->pRasterizationState || !copy_src->pRasterizationState->rasterizerDiscardEnable);
     if (copy_src->pViewportState && (has_rasterization || is_graphics_library)) {
         pViewportState = new safe_VkPipelineViewportStateCreateInfo(*copy_src->pViewportState);
     } else
