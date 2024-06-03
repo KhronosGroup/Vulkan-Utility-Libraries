@@ -17894,6 +17894,29 @@ struct safe_VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV {
         return reinterpret_cast<VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV const*>(this);
     }
 };
+struct safe_VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT {
+    VkStructureType sType;
+    void* pNext{};
+    VkBool32 shaderReplicatedComposites;
+
+    safe_VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT(
+        const VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT* in_struct, PNextCopyState* copy_state = {},
+        bool copy_pnext = true);
+    safe_VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT(
+        const safe_VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT& copy_src);
+    safe_VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT& operator=(
+        const safe_VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT& copy_src);
+    safe_VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT();
+    ~safe_VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT();
+    void initialize(const VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT* copy_src, PNextCopyState* copy_state = {});
+    VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT* ptr() {
+        return reinterpret_cast<VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT*>(this);
+    }
+    VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT const* ptr() const {
+        return reinterpret_cast<VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT const*>(this);
+    }
+};
 struct safe_VkPhysicalDeviceRayTracingValidationFeaturesNV {
     VkStructureType sType;
     void* pNext{};

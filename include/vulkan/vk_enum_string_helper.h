@@ -1912,6 +1912,8 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAW_ACCESS_CHAINS_FEATURES_NV";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ATOMIC_FLOAT16_VECTOR_FEATURES_NV:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ATOMIC_FLOAT16_VECTOR_FEATURES_NV";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_REPLICATED_COMPOSITES_FEATURES_EXT:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_REPLICATED_COMPOSITES_FEATURES_EXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_VALIDATION_FEATURES_NV:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_VALIDATION_FEATURES_NV";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_ALIGNMENT_CONTROL_FEATURES_MESA:
@@ -2106,6 +2108,8 @@ static inline const char* string_VkObjectType(VkObjectType input_value) {
 }
 static inline const char* string_VkVendorId(VkVendorId input_value) {
     switch (input_value) {
+        case VK_VENDOR_ID_KHRONOS:
+            return "VK_VENDOR_ID_KHRONOS";
         case VK_VENDOR_ID_VIV:
             return "VK_VENDOR_ID_VIV";
         case VK_VENDOR_ID_VSI:
@@ -3530,6 +3534,8 @@ static inline const char* string_VkDriverId(VkDriverId input_value) {
             return "VK_DRIVER_ID_IMAGINATION_OPEN_SOURCE_MESA";
         case VK_DRIVER_ID_MESA_AGXV:
             return "VK_DRIVER_ID_MESA_AGXV";
+        case VK_DRIVER_ID_RESERVED_27:
+            return "VK_DRIVER_ID_RESERVED_27";
         default:
             return "Unhandled VkDriverId";
     }
