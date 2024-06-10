@@ -330,20 +330,23 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
 }
 
 void FreePnextChain(const void *pNext) {
-    if (!pNext) return;
+    // The pNext parameter is const for convenience, since it is called by code
+    // for many structures where the pNext field is const.
+    void *current = const_cast<void*>(pNext);
+    while (current) {
+        auto header = reinterpret_cast<VkBaseOutStructure *>(current);
+        void *next = header->pNext;
+        // prevent destructors from recursing behind our backs.
+        header->pNext = nullptr;
 
-    auto header = reinterpret_cast<const VkBaseOutStructure *>(pNext);
-
-    switch (header->sType) {
-        // Special-case Loader Instance Struct passed to/from layer in pNext chain
+        switch (header->sType) {
+            // Special-case Loader Instance Struct passed to/from layer in pNext chain
         case VK_STRUCTURE_TYPE_LOADER_INSTANCE_CREATE_INFO:
-            FreePnextChain(header->pNext);
-            delete reinterpret_cast<const VkLayerInstanceCreateInfo *>(pNext);
+            delete reinterpret_cast<VkLayerInstanceCreateInfo *>(current);
             break;
         // Special-case Loader Device Struct passed to/from layer in pNext chain
         case VK_STRUCTURE_TYPE_LOADER_DEVICE_CREATE_INFO:
-            FreePnextChain(header->pNext);
-            delete reinterpret_cast<const VkLayerDeviceCreateInfo *>(pNext);
+            delete reinterpret_cast<VkLayerDeviceCreateInfo *>(current);
             break;
 ''')
 
@@ -351,7 +354,7 @@ void FreePnextChain(const void *pNext) {
             safe_name = self.convertName(struct.name)
             out.extend(guard_helper.add_guard(struct.protect))
             out.append(f'        case {struct.sType}:\n')
-            out.append(f'            delete reinterpret_cast<const {safe_name} *>(header);\n')
+            out.append(f'            delete reinterpret_cast<{safe_name} *>(header);\n')
             out.append('            break;\n')
         out.extend(guard_helper.add_guard(None))
 
@@ -360,18 +363,13 @@ void FreePnextChain(const void *pNext) {
             // If sType is in custom list, free custom struct memory and clean up
             for (auto item : custom_stype_info) {
                 if (item.first == static_cast<uint32_t>(header->sType)) {
-                    if (header->pNext) {
-                        FreePnextChain(header->pNext);
-                    }
-                    free(const_cast<void *>(pNext));
-                    pNext = nullptr;
+                    free(current);
                     break;
                 }
             }
-            if (pNext) {
-                FreePnextChain(header->pNext);
-            }
             break;
+        }
+        current = next;
     }
 }''')
         out.append('// clang-format on\n')
