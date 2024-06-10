@@ -82,6 +82,8 @@ class SafeStructOutputGenerator(BaseGenerator):
                 ', const bool is_host, const VkAccelerationStructureBuildRangeInfoKHR *build_range_info',
         }
 
+        self.feature_structs = []
+
     # Determine if a structure needs a safe_struct helper function
     # That is, it has an sType or one of its members is a pointer
     def needSafeStruct(self, struct: Struct) -> bool:
@@ -91,6 +93,8 @@ class SafeStructOutputGenerator(BaseGenerator):
             return False
         if 'VkBase' in struct.name:
             return False #  Ingore structs like VkBaseOutStructure
+        if struct.name in self.feature_structs:
+            return False
         if struct.sType is not None:
             return True
         for member in struct.members:
@@ -120,6 +124,12 @@ class SafeStructOutputGenerator(BaseGenerator):
         return False
 
     def generate(self):
+        # Features are only ever used at device creation time and don't hold any handles so there is no reason to have safe structs for them.
+        # Also since it is common to chain many features, we can end up having a stack overflow.
+        # (see https://github.com/KhronosGroup/Vulkan-ValidationLayers/issues/8110)
+        extended_structs = [x for x in self.vk.structs.values() if x.extends]
+        self.feature_structs = [x.name for x in extended_structs if x.extends == ["VkPhysicalDeviceFeatures2", "VkDeviceCreateInfo"]]
+
         self.write(f'''// *** THIS FILE IS GENERATED - DO NOT EDIT ***
             // See {os.path.basename(__file__)} for modifications
 
@@ -294,7 +304,7 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
             }
 ''')
         guard_helper = PlatformGuardHelper()
-        for struct in [x for x in self.vk.structs.values() if x.extends]:
+        for struct in [x for x in self.vk.structs.values() if (x.extends and x.name not in self.feature_structs)]:
             safe_name = self.convertName(struct.name)
             out.extend(guard_helper.add_guard(struct.protect))
             out.append(f'            case {struct.sType}:\n')
@@ -347,7 +357,7 @@ void FreePnextChain(const void *pNext) {
             break;
 ''')
 
-        for struct in [x for x in self.vk.structs.values() if x.extends]:
+        for struct in [x for x in self.vk.structs.values() if (x.extends and x.name not in self.feature_structs)]:
             safe_name = self.convertName(struct.name)
             out.extend(guard_helper.add_guard(struct.protect))
             out.append(f'        case {struct.sType}:\n')
