@@ -8497,6 +8497,30 @@ struct safe_VkBindDescriptorBufferEmbeddedSamplersInfoEXT {
         return reinterpret_cast<VkBindDescriptorBufferEmbeddedSamplersInfoEXT const*>(this);
     }
 };
+struct safe_VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR {
+    VkStructureType sType;
+    void* pNext{};
+    VkBool32 shaderRelaxedExtendedInstruction;
+
+    safe_VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR(
+        const VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR* in_struct, PNextCopyState* copy_state = {},
+        bool copy_pnext = true);
+    safe_VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR(
+        const safe_VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR& copy_src);
+    safe_VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR& operator=(
+        const safe_VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR& copy_src);
+    safe_VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR();
+    ~safe_VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR();
+    void initialize(const VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR* copy_src,
+                    PNextCopyState* copy_state = {});
+    VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR* ptr() {
+        return reinterpret_cast<VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR*>(this);
+    }
+    VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR const* ptr() const {
+        return reinterpret_cast<VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR const*>(this);
+    }
+};
 struct safe_VkDebugReportCallbackCreateInfoEXT {
     VkStructureType sType;
     const void* pNext{};

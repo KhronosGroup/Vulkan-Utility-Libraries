@@ -14084,6 +14084,61 @@ void safe_VkPushDescriptorSetWithTemplateInfoKHR::initialize(const safe_VkPushDe
     pNext = SafePnextCopy(copy_src->pNext);
 }
 
+safe_VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR::safe_VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR(
+    const VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
+    bool copy_pnext)
+    : sType(in_struct->sType), shaderRelaxedExtendedInstruction(in_struct->shaderRelaxedExtendedInstruction) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR::safe_VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_RELAXED_EXTENDED_INSTRUCTION_FEATURES_KHR),
+      pNext(nullptr),
+      shaderRelaxedExtendedInstruction() {}
+
+safe_VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR::safe_VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR(
+    const safe_VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR& copy_src) {
+    sType = copy_src.sType;
+    shaderRelaxedExtendedInstruction = copy_src.shaderRelaxedExtendedInstruction;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR&
+safe_VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR::operator=(
+    const safe_VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    shaderRelaxedExtendedInstruction = copy_src.shaderRelaxedExtendedInstruction;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR::
+    ~safe_VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR::initialize(
+    const VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    shaderRelaxedExtendedInstruction = in_struct->shaderRelaxedExtendedInstruction;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR::initialize(
+    const safe_VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    shaderRelaxedExtendedInstruction = copy_src->shaderRelaxedExtendedInstruction;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
 safe_VkDeviceOrHostAddressConstKHR::safe_VkDeviceOrHostAddressConstKHR(const VkDeviceOrHostAddressConstKHR* in_struct,
                                                                        PNextCopyState*) {
     initialize(in_struct);
