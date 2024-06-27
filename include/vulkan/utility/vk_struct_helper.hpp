@@ -1038,13 +1038,12 @@ class InitStructHelper {
         return InitStruct<T>(p_next);
     }
 };
-
+#if VK_USE_64_BIT_PTR_DEFINES == 1
 template<typename T> VkObjectType GetObjectType() {
     static_assert(sizeof(T) == 0, "GetObjectType() is being used with an unsupported Type! Is the code-gen up to date?");
     return VK_OBJECT_TYPE_UNKNOWN;
 }
 
-#if VK_USE_64_BIT_PTR_DEFINES == 1
 template<> inline VkObjectType GetObjectType<VkBuffer>() { return VK_OBJECT_TYPE_BUFFER; }
 template<> inline VkObjectType GetObjectType<VkImage>() { return VK_OBJECT_TYPE_IMAGE; }
 template<> inline VkObjectType GetObjectType<VkInstance>() { return VK_OBJECT_TYPE_INSTANCE; }
@@ -1098,7 +1097,12 @@ template<> inline VkObjectType GetObjectType<VkMicromapEXT>() { return VK_OBJECT
 template<> inline VkObjectType GetObjectType<VkOpticalFlowSessionNV>() { return VK_OBJECT_TYPE_OPTICAL_FLOW_SESSION_NV; }
 template<> inline VkObjectType GetObjectType<VkShaderEXT>() { return VK_OBJECT_TYPE_SHADER_EXT; }
 
-#endif // VK_USE_64_BIT_PTR_DEFINES == 1
+# else // 32 bit
+template<typename T> VkObjectType GetObjectType() {
+    static_assert(sizeof(T) == 0, "GetObjectType() does not support 32 bit builds! This is a limitation of the vulkan.h headers");
+    return VK_OBJECT_TYPE_UNKNOWN;
+}
+# endif // VK_USE_64_BIT_PTR_DEFINES == 1
 } // namespace vku
 
 // NOLINTEND// clang-format on
