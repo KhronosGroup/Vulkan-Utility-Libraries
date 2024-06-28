@@ -8521,6 +8521,112 @@ struct safe_VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR {
         return reinterpret_cast<VkPhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR const*>(this);
     }
 };
+struct safe_VkPhysicalDeviceMaintenance7FeaturesKHR {
+    VkStructureType sType;
+    void* pNext{};
+    VkBool32 maintenance7;
+
+    safe_VkPhysicalDeviceMaintenance7FeaturesKHR(const VkPhysicalDeviceMaintenance7FeaturesKHR* in_struct,
+                                                 PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkPhysicalDeviceMaintenance7FeaturesKHR(const safe_VkPhysicalDeviceMaintenance7FeaturesKHR& copy_src);
+    safe_VkPhysicalDeviceMaintenance7FeaturesKHR& operator=(const safe_VkPhysicalDeviceMaintenance7FeaturesKHR& copy_src);
+    safe_VkPhysicalDeviceMaintenance7FeaturesKHR();
+    ~safe_VkPhysicalDeviceMaintenance7FeaturesKHR();
+    void initialize(const VkPhysicalDeviceMaintenance7FeaturesKHR* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceMaintenance7FeaturesKHR* copy_src, PNextCopyState* copy_state = {});
+    VkPhysicalDeviceMaintenance7FeaturesKHR* ptr() { return reinterpret_cast<VkPhysicalDeviceMaintenance7FeaturesKHR*>(this); }
+    VkPhysicalDeviceMaintenance7FeaturesKHR const* ptr() const {
+        return reinterpret_cast<VkPhysicalDeviceMaintenance7FeaturesKHR const*>(this);
+    }
+};
+struct safe_VkPhysicalDeviceMaintenance7PropertiesKHR {
+    VkStructureType sType;
+    void* pNext{};
+    VkBool32 robustFragmentShadingRateAttachmentAccess;
+    VkBool32 separateDepthStencilAttachmentAccess;
+    uint32_t maxDescriptorSetTotalUniformBuffersDynamic;
+    uint32_t maxDescriptorSetTotalStorageBuffersDynamic;
+    uint32_t maxDescriptorSetTotalBuffersDynamic;
+    uint32_t maxDescriptorSetUpdateAfterBindTotalUniformBuffersDynamic;
+    uint32_t maxDescriptorSetUpdateAfterBindTotalStorageBuffersDynamic;
+    uint32_t maxDescriptorSetUpdateAfterBindTotalBuffersDynamic;
+
+    safe_VkPhysicalDeviceMaintenance7PropertiesKHR(const VkPhysicalDeviceMaintenance7PropertiesKHR* in_struct,
+                                                   PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkPhysicalDeviceMaintenance7PropertiesKHR(const safe_VkPhysicalDeviceMaintenance7PropertiesKHR& copy_src);
+    safe_VkPhysicalDeviceMaintenance7PropertiesKHR& operator=(const safe_VkPhysicalDeviceMaintenance7PropertiesKHR& copy_src);
+    safe_VkPhysicalDeviceMaintenance7PropertiesKHR();
+    ~safe_VkPhysicalDeviceMaintenance7PropertiesKHR();
+    void initialize(const VkPhysicalDeviceMaintenance7PropertiesKHR* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceMaintenance7PropertiesKHR* copy_src, PNextCopyState* copy_state = {});
+    VkPhysicalDeviceMaintenance7PropertiesKHR* ptr() { return reinterpret_cast<VkPhysicalDeviceMaintenance7PropertiesKHR*>(this); }
+    VkPhysicalDeviceMaintenance7PropertiesKHR const* ptr() const {
+        return reinterpret_cast<VkPhysicalDeviceMaintenance7PropertiesKHR const*>(this);
+    }
+};
+struct safe_VkPhysicalDeviceLayeredApiPropertiesKHR {
+    VkStructureType sType;
+    void* pNext{};
+    uint32_t vendorID;
+    uint32_t deviceID;
+    VkPhysicalDeviceLayeredApiKHR layeredAPI;
+    char deviceName[VK_MAX_PHYSICAL_DEVICE_NAME_SIZE];
+
+    safe_VkPhysicalDeviceLayeredApiPropertiesKHR(const VkPhysicalDeviceLayeredApiPropertiesKHR* in_struct,
+                                                 PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkPhysicalDeviceLayeredApiPropertiesKHR(const safe_VkPhysicalDeviceLayeredApiPropertiesKHR& copy_src);
+    safe_VkPhysicalDeviceLayeredApiPropertiesKHR& operator=(const safe_VkPhysicalDeviceLayeredApiPropertiesKHR& copy_src);
+    safe_VkPhysicalDeviceLayeredApiPropertiesKHR();
+    ~safe_VkPhysicalDeviceLayeredApiPropertiesKHR();
+    void initialize(const VkPhysicalDeviceLayeredApiPropertiesKHR* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceLayeredApiPropertiesKHR* copy_src, PNextCopyState* copy_state = {});
+    VkPhysicalDeviceLayeredApiPropertiesKHR* ptr() { return reinterpret_cast<VkPhysicalDeviceLayeredApiPropertiesKHR*>(this); }
+    VkPhysicalDeviceLayeredApiPropertiesKHR const* ptr() const {
+        return reinterpret_cast<VkPhysicalDeviceLayeredApiPropertiesKHR const*>(this);
+    }
+};
+struct safe_VkPhysicalDeviceLayeredApiPropertiesListKHR {
+    VkStructureType sType;
+    void* pNext{};
+    uint32_t layeredApiCount;
+    safe_VkPhysicalDeviceLayeredApiPropertiesKHR* pLayeredApis{};
+
+    safe_VkPhysicalDeviceLayeredApiPropertiesListKHR(const VkPhysicalDeviceLayeredApiPropertiesListKHR* in_struct,
+                                                     PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkPhysicalDeviceLayeredApiPropertiesListKHR(const safe_VkPhysicalDeviceLayeredApiPropertiesListKHR& copy_src);
+    safe_VkPhysicalDeviceLayeredApiPropertiesListKHR& operator=(const safe_VkPhysicalDeviceLayeredApiPropertiesListKHR& copy_src);
+    safe_VkPhysicalDeviceLayeredApiPropertiesListKHR();
+    ~safe_VkPhysicalDeviceLayeredApiPropertiesListKHR();
+    void initialize(const VkPhysicalDeviceLayeredApiPropertiesListKHR* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceLayeredApiPropertiesListKHR* copy_src, PNextCopyState* copy_state = {});
+    VkPhysicalDeviceLayeredApiPropertiesListKHR* ptr() {
+        return reinterpret_cast<VkPhysicalDeviceLayeredApiPropertiesListKHR*>(this);
+    }
+    VkPhysicalDeviceLayeredApiPropertiesListKHR const* ptr() const {
+        return reinterpret_cast<VkPhysicalDeviceLayeredApiPropertiesListKHR const*>(this);
+    }
+};
+struct safe_VkPhysicalDeviceLayeredApiVulkanPropertiesKHR {
+    VkStructureType sType;
+    void* pNext{};
+    safe_VkPhysicalDeviceProperties2 properties;
+
+    safe_VkPhysicalDeviceLayeredApiVulkanPropertiesKHR(const VkPhysicalDeviceLayeredApiVulkanPropertiesKHR* in_struct,
+                                                       PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkPhysicalDeviceLayeredApiVulkanPropertiesKHR(const safe_VkPhysicalDeviceLayeredApiVulkanPropertiesKHR& copy_src);
+    safe_VkPhysicalDeviceLayeredApiVulkanPropertiesKHR& operator=(
+        const safe_VkPhysicalDeviceLayeredApiVulkanPropertiesKHR& copy_src);
+    safe_VkPhysicalDeviceLayeredApiVulkanPropertiesKHR();
+    ~safe_VkPhysicalDeviceLayeredApiVulkanPropertiesKHR();
+    void initialize(const VkPhysicalDeviceLayeredApiVulkanPropertiesKHR* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceLayeredApiVulkanPropertiesKHR* copy_src, PNextCopyState* copy_state = {});
+    VkPhysicalDeviceLayeredApiVulkanPropertiesKHR* ptr() {
+        return reinterpret_cast<VkPhysicalDeviceLayeredApiVulkanPropertiesKHR*>(this);
+    }
+    VkPhysicalDeviceLayeredApiVulkanPropertiesKHR const* ptr() const {
+        return reinterpret_cast<VkPhysicalDeviceLayeredApiVulkanPropertiesKHR const*>(this);
+    }
+};
 struct safe_VkDebugReportCallbackCreateInfoEXT {
     VkStructureType sType;
     const void* pNext{};
