@@ -22,6 +22,10 @@
 
 namespace vku {
 
+// Mapping of unknown stype codes to structure lengths. This should be set up by the application
+// before vkCreateInstance() and not modified afterwards.
+std::vector<std::pair<uint32_t, uint32_t>>& GetCustomStypeInfo();
+
 struct safe_VkBufferMemoryBarrier {
     VkStructureType sType;
     const void* pNext{};
