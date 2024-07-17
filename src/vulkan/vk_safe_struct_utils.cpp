@@ -20,8 +20,6 @@
 #include <vector>
 #include <cstring>
 
-extern std::vector<std::pair<uint32_t, uint32_t>> custom_stype_info;
-
 namespace vku {
 char *SafeStringCopy(const char *in_string) {
     if (nullptr == in_string) return nullptr;
@@ -1848,7 +1846,7 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
 
             default: // Encountered an unknown sType -- skip (do not copy) this entry in the chain
                 // If sType is in custom list, construct blind copy
-                for (auto item : custom_stype_info) {
+                for (auto item : GetCustomStypeInfo()) {
                     if (item.first == static_cast<uint32_t>(header->sType)) {
                         safe_pNext = malloc(item.second);
                         memcpy(safe_pNext, header, item.second);
@@ -3680,7 +3678,7 @@ void FreePnextChain(const void *pNext) {
 
         default: // Encountered an unknown sType
             // If sType is in custom list, free custom struct memory and clean up
-            for (auto item : custom_stype_info) {
+            for (auto item : GetCustomStypeInfo()   ) {
                 if (item.first == static_cast<uint32_t>(header->sType)) {
                     free(current);
                     break;
