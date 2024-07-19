@@ -1748,6 +1748,12 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_PIPELINE_CREATE_FLAGS_2_CREATE_INFO_KHR";
         case VK_STRUCTURE_TYPE_BUFFER_USAGE_FLAGS_2_CREATE_INFO_KHR:
             return "VK_STRUCTURE_TYPE_BUFFER_USAGE_FLAGS_2_CREATE_INFO_KHR";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ANTI_LAG_FEATURES_AMD:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ANTI_LAG_FEATURES_AMD";
+        case VK_STRUCTURE_TYPE_ANTI_LAG_DATA_AMD:
+            return "VK_STRUCTURE_TYPE_ANTI_LAG_DATA_AMD";
+        case VK_STRUCTURE_TYPE_ANTI_LAG_PRESENTATION_INFO_AMD:
+            return "VK_STRUCTURE_TYPE_ANTI_LAG_PRESENTATION_INFO_AMD";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_POSITION_FETCH_FEATURES_KHR:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_POSITION_FETCH_FEATURES_KHR";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_OBJECT_FEATURES_EXT:
@@ -4680,6 +4686,28 @@ static inline const char* string_VkOpticalFlowSessionBindingPointNV(VkOpticalFlo
             return "VK_OPTICAL_FLOW_SESSION_BINDING_POINT_GLOBAL_FLOW_NV";
         default:
             return "Unhandled VkOpticalFlowSessionBindingPointNV";
+    }
+}
+static inline const char* string_VkAntiLagModeAMD(VkAntiLagModeAMD input_value) {
+    switch (input_value) {
+        case VK_ANTI_LAG_MODE_DRIVER_CONTROL_AMD:
+            return "VK_ANTI_LAG_MODE_DRIVER_CONTROL_AMD";
+        case VK_ANTI_LAG_MODE_ON_AMD:
+            return "VK_ANTI_LAG_MODE_ON_AMD";
+        case VK_ANTI_LAG_MODE_OFF_AMD:
+            return "VK_ANTI_LAG_MODE_OFF_AMD";
+        default:
+            return "Unhandled VkAntiLagModeAMD";
+    }
+}
+static inline const char* string_VkAntiLagStageAMD(VkAntiLagStageAMD input_value) {
+    switch (input_value) {
+        case VK_ANTI_LAG_STAGE_INPUT_AMD:
+            return "VK_ANTI_LAG_STAGE_INPUT_AMD";
+        case VK_ANTI_LAG_STAGE_PRESENT_AMD:
+            return "VK_ANTI_LAG_STAGE_PRESENT_AMD";
+        default:
+            return "Unhandled VkAntiLagStageAMD";
     }
 }
 static inline const char* string_VkShaderCodeTypeEXT(VkShaderCodeTypeEXT input_value) {

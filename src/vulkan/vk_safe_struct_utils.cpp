@@ -1679,6 +1679,9 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
                 safe_pNext = new safe_VkAndroidHardwareBufferFormatResolvePropertiesANDROID(reinterpret_cast<const VkAndroidHardwareBufferFormatResolvePropertiesANDROID *>(pNext), copy_state, false);
                 break;
 #endif  // VK_USE_PLATFORM_ANDROID_KHR
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ANTI_LAG_FEATURES_AMD:
+                safe_pNext = new safe_VkPhysicalDeviceAntiLagFeaturesAMD(reinterpret_cast<const VkPhysicalDeviceAntiLagFeaturesAMD *>(pNext), copy_state, false);
+                break;
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_OBJECT_FEATURES_EXT:
                 safe_pNext = new safe_VkPhysicalDeviceShaderObjectFeaturesEXT(reinterpret_cast<const VkPhysicalDeviceShaderObjectFeaturesEXT *>(pNext), copy_state, false);
                 break;
@@ -3511,6 +3514,9 @@ void FreePnextChain(const void *pNext) {
             delete reinterpret_cast<safe_VkAndroidHardwareBufferFormatResolvePropertiesANDROID *>(header);
             break;
 #endif  // VK_USE_PLATFORM_ANDROID_KHR
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ANTI_LAG_FEATURES_AMD:
+            delete reinterpret_cast<safe_VkPhysicalDeviceAntiLagFeaturesAMD *>(header);
+            break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_OBJECT_FEATURES_EXT:
             delete reinterpret_cast<safe_VkPhysicalDeviceShaderObjectFeaturesEXT *>(header);
             break;

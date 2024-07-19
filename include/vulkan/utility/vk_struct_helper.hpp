@@ -896,6 +896,9 @@ template <> inline VkStructureType GetSType<VkPhysicalDeviceExternalFormatResolv
 template <> inline VkStructureType GetSType<VkPhysicalDeviceExternalFormatResolvePropertiesANDROID>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_FORMAT_RESOLVE_PROPERTIES_ANDROID; }
 template <> inline VkStructureType GetSType<VkAndroidHardwareBufferFormatResolvePropertiesANDROID>() { return VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_FORMAT_RESOLVE_PROPERTIES_ANDROID; }
 #endif  // VK_USE_PLATFORM_ANDROID_KHR
+template <> inline VkStructureType GetSType<VkPhysicalDeviceAntiLagFeaturesAMD>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ANTI_LAG_FEATURES_AMD; }
+template <> inline VkStructureType GetSType<VkAntiLagPresentationInfoAMD>() { return VK_STRUCTURE_TYPE_ANTI_LAG_PRESENTATION_INFO_AMD; }
+template <> inline VkStructureType GetSType<VkAntiLagDataAMD>() { return VK_STRUCTURE_TYPE_ANTI_LAG_DATA_AMD; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceShaderObjectFeaturesEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_OBJECT_FEATURES_EXT; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceShaderObjectPropertiesEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_OBJECT_PROPERTIES_EXT; }
 template <> inline VkStructureType GetSType<VkShaderCreateInfoEXT>() { return VK_STRUCTURE_TYPE_SHADER_CREATE_INFO_EXT; }

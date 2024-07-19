@@ -17001,6 +17001,58 @@ struct safe_VkAndroidHardwareBufferFormatResolvePropertiesANDROID {
     }
 };
 #endif  // VK_USE_PLATFORM_ANDROID_KHR
+struct safe_VkPhysicalDeviceAntiLagFeaturesAMD {
+    VkStructureType sType;
+    void* pNext{};
+    VkBool32 antiLag;
+
+    safe_VkPhysicalDeviceAntiLagFeaturesAMD(const VkPhysicalDeviceAntiLagFeaturesAMD* in_struct, PNextCopyState* copy_state = {},
+                                            bool copy_pnext = true);
+    safe_VkPhysicalDeviceAntiLagFeaturesAMD(const safe_VkPhysicalDeviceAntiLagFeaturesAMD& copy_src);
+    safe_VkPhysicalDeviceAntiLagFeaturesAMD& operator=(const safe_VkPhysicalDeviceAntiLagFeaturesAMD& copy_src);
+    safe_VkPhysicalDeviceAntiLagFeaturesAMD();
+    ~safe_VkPhysicalDeviceAntiLagFeaturesAMD();
+    void initialize(const VkPhysicalDeviceAntiLagFeaturesAMD* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceAntiLagFeaturesAMD* copy_src, PNextCopyState* copy_state = {});
+    VkPhysicalDeviceAntiLagFeaturesAMD* ptr() { return reinterpret_cast<VkPhysicalDeviceAntiLagFeaturesAMD*>(this); }
+    VkPhysicalDeviceAntiLagFeaturesAMD const* ptr() const {
+        return reinterpret_cast<VkPhysicalDeviceAntiLagFeaturesAMD const*>(this);
+    }
+};
+struct safe_VkAntiLagPresentationInfoAMD {
+    VkStructureType sType;
+    void* pNext{};
+    VkAntiLagStageAMD stage;
+    uint64_t frameIndex;
+
+    safe_VkAntiLagPresentationInfoAMD(const VkAntiLagPresentationInfoAMD* in_struct, PNextCopyState* copy_state = {},
+                                      bool copy_pnext = true);
+    safe_VkAntiLagPresentationInfoAMD(const safe_VkAntiLagPresentationInfoAMD& copy_src);
+    safe_VkAntiLagPresentationInfoAMD& operator=(const safe_VkAntiLagPresentationInfoAMD& copy_src);
+    safe_VkAntiLagPresentationInfoAMD();
+    ~safe_VkAntiLagPresentationInfoAMD();
+    void initialize(const VkAntiLagPresentationInfoAMD* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkAntiLagPresentationInfoAMD* copy_src, PNextCopyState* copy_state = {});
+    VkAntiLagPresentationInfoAMD* ptr() { return reinterpret_cast<VkAntiLagPresentationInfoAMD*>(this); }
+    VkAntiLagPresentationInfoAMD const* ptr() const { return reinterpret_cast<VkAntiLagPresentationInfoAMD const*>(this); }
+};
+struct safe_VkAntiLagDataAMD {
+    VkStructureType sType;
+    const void* pNext{};
+    VkAntiLagModeAMD mode;
+    uint32_t maxFPS;
+    safe_VkAntiLagPresentationInfoAMD* pPresentationInfo{};
+
+    safe_VkAntiLagDataAMD(const VkAntiLagDataAMD* in_struct, PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkAntiLagDataAMD(const safe_VkAntiLagDataAMD& copy_src);
+    safe_VkAntiLagDataAMD& operator=(const safe_VkAntiLagDataAMD& copy_src);
+    safe_VkAntiLagDataAMD();
+    ~safe_VkAntiLagDataAMD();
+    void initialize(const VkAntiLagDataAMD* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkAntiLagDataAMD* copy_src, PNextCopyState* copy_state = {});
+    VkAntiLagDataAMD* ptr() { return reinterpret_cast<VkAntiLagDataAMD*>(this); }
+    VkAntiLagDataAMD const* ptr() const { return reinterpret_cast<VkAntiLagDataAMD const*>(this); }
+};
 struct safe_VkPhysicalDeviceShaderObjectFeaturesEXT {
     VkStructureType sType;
     void* pNext{};
