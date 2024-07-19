@@ -12735,6 +12735,166 @@ void safe_VkAndroidHardwareBufferFormatResolvePropertiesANDROID::initialize(
 }
 #endif  // VK_USE_PLATFORM_ANDROID_KHR
 
+safe_VkPhysicalDeviceAntiLagFeaturesAMD::safe_VkPhysicalDeviceAntiLagFeaturesAMD(
+    const VkPhysicalDeviceAntiLagFeaturesAMD* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), antiLag(in_struct->antiLag) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceAntiLagFeaturesAMD::safe_VkPhysicalDeviceAntiLagFeaturesAMD()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ANTI_LAG_FEATURES_AMD), pNext(nullptr), antiLag() {}
+
+safe_VkPhysicalDeviceAntiLagFeaturesAMD::safe_VkPhysicalDeviceAntiLagFeaturesAMD(
+    const safe_VkPhysicalDeviceAntiLagFeaturesAMD& copy_src) {
+    sType = copy_src.sType;
+    antiLag = copy_src.antiLag;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceAntiLagFeaturesAMD& safe_VkPhysicalDeviceAntiLagFeaturesAMD::operator=(
+    const safe_VkPhysicalDeviceAntiLagFeaturesAMD& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    antiLag = copy_src.antiLag;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceAntiLagFeaturesAMD::~safe_VkPhysicalDeviceAntiLagFeaturesAMD() { FreePnextChain(pNext); }
+
+void safe_VkPhysicalDeviceAntiLagFeaturesAMD::initialize(const VkPhysicalDeviceAntiLagFeaturesAMD* in_struct,
+                                                         [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    antiLag = in_struct->antiLag;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceAntiLagFeaturesAMD::initialize(const safe_VkPhysicalDeviceAntiLagFeaturesAMD* copy_src,
+                                                         [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    antiLag = copy_src->antiLag;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkAntiLagPresentationInfoAMD::safe_VkAntiLagPresentationInfoAMD(const VkAntiLagPresentationInfoAMD* in_struct,
+                                                                     [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), stage(in_struct->stage), frameIndex(in_struct->frameIndex) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkAntiLagPresentationInfoAMD::safe_VkAntiLagPresentationInfoAMD()
+    : sType(VK_STRUCTURE_TYPE_ANTI_LAG_PRESENTATION_INFO_AMD), pNext(nullptr), stage(), frameIndex() {}
+
+safe_VkAntiLagPresentationInfoAMD::safe_VkAntiLagPresentationInfoAMD(const safe_VkAntiLagPresentationInfoAMD& copy_src) {
+    sType = copy_src.sType;
+    stage = copy_src.stage;
+    frameIndex = copy_src.frameIndex;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkAntiLagPresentationInfoAMD& safe_VkAntiLagPresentationInfoAMD::operator=(const safe_VkAntiLagPresentationInfoAMD& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    stage = copy_src.stage;
+    frameIndex = copy_src.frameIndex;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkAntiLagPresentationInfoAMD::~safe_VkAntiLagPresentationInfoAMD() { FreePnextChain(pNext); }
+
+void safe_VkAntiLagPresentationInfoAMD::initialize(const VkAntiLagPresentationInfoAMD* in_struct,
+                                                   [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    stage = in_struct->stage;
+    frameIndex = in_struct->frameIndex;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkAntiLagPresentationInfoAMD::initialize(const safe_VkAntiLagPresentationInfoAMD* copy_src,
+                                                   [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    stage = copy_src->stage;
+    frameIndex = copy_src->frameIndex;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkAntiLagDataAMD::safe_VkAntiLagDataAMD(const VkAntiLagDataAMD* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
+                                             bool copy_pnext)
+    : sType(in_struct->sType), mode(in_struct->mode), maxFPS(in_struct->maxFPS), pPresentationInfo(nullptr) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+    if (in_struct->pPresentationInfo) pPresentationInfo = new safe_VkAntiLagPresentationInfoAMD(in_struct->pPresentationInfo);
+}
+
+safe_VkAntiLagDataAMD::safe_VkAntiLagDataAMD()
+    : sType(VK_STRUCTURE_TYPE_ANTI_LAG_DATA_AMD), pNext(nullptr), mode(), maxFPS(), pPresentationInfo(nullptr) {}
+
+safe_VkAntiLagDataAMD::safe_VkAntiLagDataAMD(const safe_VkAntiLagDataAMD& copy_src) {
+    sType = copy_src.sType;
+    mode = copy_src.mode;
+    maxFPS = copy_src.maxFPS;
+    pPresentationInfo = nullptr;
+    pNext = SafePnextCopy(copy_src.pNext);
+    if (copy_src.pPresentationInfo) pPresentationInfo = new safe_VkAntiLagPresentationInfoAMD(*copy_src.pPresentationInfo);
+}
+
+safe_VkAntiLagDataAMD& safe_VkAntiLagDataAMD::operator=(const safe_VkAntiLagDataAMD& copy_src) {
+    if (&copy_src == this) return *this;
+
+    if (pPresentationInfo) delete pPresentationInfo;
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    mode = copy_src.mode;
+    maxFPS = copy_src.maxFPS;
+    pPresentationInfo = nullptr;
+    pNext = SafePnextCopy(copy_src.pNext);
+    if (copy_src.pPresentationInfo) pPresentationInfo = new safe_VkAntiLagPresentationInfoAMD(*copy_src.pPresentationInfo);
+
+    return *this;
+}
+
+safe_VkAntiLagDataAMD::~safe_VkAntiLagDataAMD() {
+    if (pPresentationInfo) delete pPresentationInfo;
+    FreePnextChain(pNext);
+}
+
+void safe_VkAntiLagDataAMD::initialize(const VkAntiLagDataAMD* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    if (pPresentationInfo) delete pPresentationInfo;
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    mode = in_struct->mode;
+    maxFPS = in_struct->maxFPS;
+    pPresentationInfo = nullptr;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    if (in_struct->pPresentationInfo) pPresentationInfo = new safe_VkAntiLagPresentationInfoAMD(in_struct->pPresentationInfo);
+}
+
+void safe_VkAntiLagDataAMD::initialize(const safe_VkAntiLagDataAMD* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    mode = copy_src->mode;
+    maxFPS = copy_src->maxFPS;
+    pPresentationInfo = nullptr;
+    pNext = SafePnextCopy(copy_src->pNext);
+    if (copy_src->pPresentationInfo) pPresentationInfo = new safe_VkAntiLagPresentationInfoAMD(*copy_src->pPresentationInfo);
+}
+
 safe_VkPhysicalDeviceTilePropertiesFeaturesQCOM::safe_VkPhysicalDeviceTilePropertiesFeaturesQCOM(
     const VkPhysicalDeviceTilePropertiesFeaturesQCOM* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
     : sType(in_struct->sType), tileProperties(in_struct->tileProperties) {
