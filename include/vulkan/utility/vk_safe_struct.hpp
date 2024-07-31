@@ -13590,7 +13590,7 @@ struct safe_VkDescriptorAddressInfoEXT {
 };
 struct safe_VkDescriptorBufferBindingInfoEXT {
     VkStructureType sType;
-    void* pNext{};
+    const void* pNext{};
     VkDeviceAddress address;
     VkBufferUsageFlags usage;
 
@@ -13607,7 +13607,7 @@ struct safe_VkDescriptorBufferBindingInfoEXT {
 };
 struct safe_VkDescriptorBufferBindingPushDescriptorBufferHandleEXT {
     VkStructureType sType;
-    void* pNext{};
+    const void* pNext{};
     VkBuffer buffer;
 
     safe_VkDescriptorBufferBindingPushDescriptorBufferHandleEXT(
