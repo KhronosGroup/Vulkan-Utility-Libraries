@@ -1804,6 +1804,9 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAW_ACCESS_CHAINS_FEATURES_NV:
                 safe_pNext = new safe_VkPhysicalDeviceRawAccessChainsFeaturesNV(reinterpret_cast<const VkPhysicalDeviceRawAccessChainsFeaturesNV *>(pNext), copy_state, false);
                 break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMMAND_BUFFER_INHERITANCE_FEATURES_NV:
+                safe_pNext = new safe_VkPhysicalDeviceCommandBufferInheritanceFeaturesNV(reinterpret_cast<const VkPhysicalDeviceCommandBufferInheritanceFeaturesNV *>(pNext), copy_state, false);
+                break;
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ATOMIC_FLOAT16_VECTOR_FEATURES_NV:
                 safe_pNext = new safe_VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV(reinterpret_cast<const VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV *>(pNext), copy_state, false);
                 break;
@@ -3638,6 +3641,9 @@ void FreePnextChain(const void *pNext) {
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAW_ACCESS_CHAINS_FEATURES_NV:
             delete reinterpret_cast<safe_VkPhysicalDeviceRawAccessChainsFeaturesNV *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMMAND_BUFFER_INHERITANCE_FEATURES_NV:
+            delete reinterpret_cast<safe_VkPhysicalDeviceCommandBufferInheritanceFeaturesNV *>(header);
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ATOMIC_FLOAT16_VECTOR_FEATURES_NV:
             delete reinterpret_cast<safe_VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV *>(header);
