@@ -18058,6 +18058,28 @@ struct safe_VkPhysicalDeviceRawAccessChainsFeaturesNV {
         return reinterpret_cast<VkPhysicalDeviceRawAccessChainsFeaturesNV const*>(this);
     }
 };
+struct safe_VkPhysicalDeviceCommandBufferInheritanceFeaturesNV {
+    VkStructureType sType;
+    void* pNext{};
+    VkBool32 commandBufferInheritance;
+
+    safe_VkPhysicalDeviceCommandBufferInheritanceFeaturesNV(const VkPhysicalDeviceCommandBufferInheritanceFeaturesNV* in_struct,
+                                                            PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkPhysicalDeviceCommandBufferInheritanceFeaturesNV(
+        const safe_VkPhysicalDeviceCommandBufferInheritanceFeaturesNV& copy_src);
+    safe_VkPhysicalDeviceCommandBufferInheritanceFeaturesNV& operator=(
+        const safe_VkPhysicalDeviceCommandBufferInheritanceFeaturesNV& copy_src);
+    safe_VkPhysicalDeviceCommandBufferInheritanceFeaturesNV();
+    ~safe_VkPhysicalDeviceCommandBufferInheritanceFeaturesNV();
+    void initialize(const VkPhysicalDeviceCommandBufferInheritanceFeaturesNV* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceCommandBufferInheritanceFeaturesNV* copy_src, PNextCopyState* copy_state = {});
+    VkPhysicalDeviceCommandBufferInheritanceFeaturesNV* ptr() {
+        return reinterpret_cast<VkPhysicalDeviceCommandBufferInheritanceFeaturesNV*>(this);
+    }
+    VkPhysicalDeviceCommandBufferInheritanceFeaturesNV const* ptr() const {
+        return reinterpret_cast<VkPhysicalDeviceCommandBufferInheritanceFeaturesNV const*>(this);
+    }
+};
 struct safe_VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV {
     VkStructureType sType;
     void* pNext{};

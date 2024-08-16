@@ -15175,6 +15175,57 @@ void safe_VkPhysicalDeviceRawAccessChainsFeaturesNV::initialize(const safe_VkPhy
     pNext = SafePnextCopy(copy_src->pNext);
 }
 
+safe_VkPhysicalDeviceCommandBufferInheritanceFeaturesNV::safe_VkPhysicalDeviceCommandBufferInheritanceFeaturesNV(
+    const VkPhysicalDeviceCommandBufferInheritanceFeaturesNV* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
+    bool copy_pnext)
+    : sType(in_struct->sType), commandBufferInheritance(in_struct->commandBufferInheritance) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceCommandBufferInheritanceFeaturesNV::safe_VkPhysicalDeviceCommandBufferInheritanceFeaturesNV()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMMAND_BUFFER_INHERITANCE_FEATURES_NV), pNext(nullptr), commandBufferInheritance() {}
+
+safe_VkPhysicalDeviceCommandBufferInheritanceFeaturesNV::safe_VkPhysicalDeviceCommandBufferInheritanceFeaturesNV(
+    const safe_VkPhysicalDeviceCommandBufferInheritanceFeaturesNV& copy_src) {
+    sType = copy_src.sType;
+    commandBufferInheritance = copy_src.commandBufferInheritance;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceCommandBufferInheritanceFeaturesNV& safe_VkPhysicalDeviceCommandBufferInheritanceFeaturesNV::operator=(
+    const safe_VkPhysicalDeviceCommandBufferInheritanceFeaturesNV& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    commandBufferInheritance = copy_src.commandBufferInheritance;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceCommandBufferInheritanceFeaturesNV::~safe_VkPhysicalDeviceCommandBufferInheritanceFeaturesNV() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkPhysicalDeviceCommandBufferInheritanceFeaturesNV::initialize(
+    const VkPhysicalDeviceCommandBufferInheritanceFeaturesNV* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    commandBufferInheritance = in_struct->commandBufferInheritance;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceCommandBufferInheritanceFeaturesNV::initialize(
+    const safe_VkPhysicalDeviceCommandBufferInheritanceFeaturesNV* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    commandBufferInheritance = copy_src->commandBufferInheritance;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
 safe_VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV::safe_VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV(
     const VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
     bool copy_pnext)
