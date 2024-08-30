@@ -8185,6 +8185,52 @@ struct safe_VkPhysicalDeviceCooperativeMatrixPropertiesKHR {
         return reinterpret_cast<VkPhysicalDeviceCooperativeMatrixPropertiesKHR const*>(this);
     }
 };
+struct safe_VkPhysicalDeviceComputeShaderDerivativesFeaturesKHR {
+    VkStructureType sType;
+    void* pNext{};
+    VkBool32 computeDerivativeGroupQuads;
+    VkBool32 computeDerivativeGroupLinear;
+
+    safe_VkPhysicalDeviceComputeShaderDerivativesFeaturesKHR(const VkPhysicalDeviceComputeShaderDerivativesFeaturesKHR* in_struct,
+                                                             PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkPhysicalDeviceComputeShaderDerivativesFeaturesKHR(
+        const safe_VkPhysicalDeviceComputeShaderDerivativesFeaturesKHR& copy_src);
+    safe_VkPhysicalDeviceComputeShaderDerivativesFeaturesKHR& operator=(
+        const safe_VkPhysicalDeviceComputeShaderDerivativesFeaturesKHR& copy_src);
+    safe_VkPhysicalDeviceComputeShaderDerivativesFeaturesKHR();
+    ~safe_VkPhysicalDeviceComputeShaderDerivativesFeaturesKHR();
+    void initialize(const VkPhysicalDeviceComputeShaderDerivativesFeaturesKHR* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceComputeShaderDerivativesFeaturesKHR* copy_src, PNextCopyState* copy_state = {});
+    VkPhysicalDeviceComputeShaderDerivativesFeaturesKHR* ptr() {
+        return reinterpret_cast<VkPhysicalDeviceComputeShaderDerivativesFeaturesKHR*>(this);
+    }
+    VkPhysicalDeviceComputeShaderDerivativesFeaturesKHR const* ptr() const {
+        return reinterpret_cast<VkPhysicalDeviceComputeShaderDerivativesFeaturesKHR const*>(this);
+    }
+};
+struct safe_VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR {
+    VkStructureType sType;
+    void* pNext{};
+    VkBool32 meshAndTaskShaderDerivatives;
+
+    safe_VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR(
+        const VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR* in_struct, PNextCopyState* copy_state = {},
+        bool copy_pnext = true);
+    safe_VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR(
+        const safe_VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR& copy_src);
+    safe_VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR& operator=(
+        const safe_VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR& copy_src);
+    safe_VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR();
+    ~safe_VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR();
+    void initialize(const VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR* copy_src, PNextCopyState* copy_state = {});
+    VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR* ptr() {
+        return reinterpret_cast<VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR*>(this);
+    }
+    VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR const* ptr() const {
+        return reinterpret_cast<VkPhysicalDeviceComputeShaderDerivativesPropertiesKHR const*>(this);
+    }
+};
 struct safe_VkVideoDecodeAV1ProfileInfoKHR {
     VkStructureType sType;
     const void* pNext{};
@@ -11259,29 +11305,6 @@ struct safe_VkPresentFrameTokenGGP {
     VkPresentFrameTokenGGP const* ptr() const { return reinterpret_cast<VkPresentFrameTokenGGP const*>(this); }
 };
 #endif  // VK_USE_PLATFORM_GGP
-struct safe_VkPhysicalDeviceComputeShaderDerivativesFeaturesNV {
-    VkStructureType sType;
-    void* pNext{};
-    VkBool32 computeDerivativeGroupQuads;
-    VkBool32 computeDerivativeGroupLinear;
-
-    safe_VkPhysicalDeviceComputeShaderDerivativesFeaturesNV(const VkPhysicalDeviceComputeShaderDerivativesFeaturesNV* in_struct,
-                                                            PNextCopyState* copy_state = {}, bool copy_pnext = true);
-    safe_VkPhysicalDeviceComputeShaderDerivativesFeaturesNV(
-        const safe_VkPhysicalDeviceComputeShaderDerivativesFeaturesNV& copy_src);
-    safe_VkPhysicalDeviceComputeShaderDerivativesFeaturesNV& operator=(
-        const safe_VkPhysicalDeviceComputeShaderDerivativesFeaturesNV& copy_src);
-    safe_VkPhysicalDeviceComputeShaderDerivativesFeaturesNV();
-    ~safe_VkPhysicalDeviceComputeShaderDerivativesFeaturesNV();
-    void initialize(const VkPhysicalDeviceComputeShaderDerivativesFeaturesNV* in_struct, PNextCopyState* copy_state = {});
-    void initialize(const safe_VkPhysicalDeviceComputeShaderDerivativesFeaturesNV* copy_src, PNextCopyState* copy_state = {});
-    VkPhysicalDeviceComputeShaderDerivativesFeaturesNV* ptr() {
-        return reinterpret_cast<VkPhysicalDeviceComputeShaderDerivativesFeaturesNV*>(this);
-    }
-    VkPhysicalDeviceComputeShaderDerivativesFeaturesNV const* ptr() const {
-        return reinterpret_cast<VkPhysicalDeviceComputeShaderDerivativesFeaturesNV const*>(this);
-    }
-};
 struct safe_VkPhysicalDeviceMeshShaderFeaturesNV {
     VkStructureType sType;
     void* pNext{};
