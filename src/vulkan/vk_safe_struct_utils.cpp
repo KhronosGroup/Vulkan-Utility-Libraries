@@ -60,6 +60,12 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
             case VK_STRUCTURE_TYPE_SHADER_MODULE_CREATE_INFO:
                 safe_pNext = new safe_VkShaderModuleCreateInfo(reinterpret_cast<const VkShaderModuleCreateInfo *>(pNext), copy_state, false);
                 break;
+            case VK_STRUCTURE_TYPE_COMPUTE_PIPELINE_CREATE_INFO:
+                safe_pNext = new safe_VkComputePipelineCreateInfo(reinterpret_cast<const VkComputePipelineCreateInfo *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_CREATE_INFO:
+                safe_pNext = new safe_VkGraphicsPipelineCreateInfo(reinterpret_cast<const VkGraphicsPipelineCreateInfo *>(pNext), copy_state, false);
+                break;
             case VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO:
                 safe_pNext = new safe_VkPipelineLayoutCreateInfo(reinterpret_cast<const VkPipelineLayoutCreateInfo *>(pNext), copy_state, false);
                 break;
@@ -936,6 +942,9 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
                 break;
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ENQUEUE_PROPERTIES_AMDX:
                 safe_pNext = new safe_VkPhysicalDeviceShaderEnqueuePropertiesAMDX(reinterpret_cast<const VkPhysicalDeviceShaderEnqueuePropertiesAMDX *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_EXECUTION_GRAPH_PIPELINE_CREATE_INFO_AMDX:
+                safe_pNext = new safe_VkExecutionGraphPipelineCreateInfoAMDX(reinterpret_cast<const VkExecutionGraphPipelineCreateInfoAMDX *>(pNext), copy_state, false);
                 break;
             case VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_NODE_CREATE_INFO_AMDX:
                 safe_pNext = new safe_VkPipelineShaderStageNodeCreateInfoAMDX(reinterpret_cast<const VkPipelineShaderStageNodeCreateInfoAMDX *>(pNext), copy_state, false);
@@ -1849,6 +1858,9 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ACCELERATION_STRUCTURE_PROPERTIES_KHR:
                 safe_pNext = new safe_VkPhysicalDeviceAccelerationStructurePropertiesKHR(reinterpret_cast<const VkPhysicalDeviceAccelerationStructurePropertiesKHR *>(pNext), copy_state, false);
                 break;
+            case VK_STRUCTURE_TYPE_RAY_TRACING_PIPELINE_CREATE_INFO_KHR:
+                safe_pNext = new safe_VkRayTracingPipelineCreateInfoKHR(reinterpret_cast<const VkRayTracingPipelineCreateInfoKHR *>(pNext), copy_state, false);
+                break;
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_PIPELINE_FEATURES_KHR:
                 safe_pNext = new safe_VkPhysicalDeviceRayTracingPipelineFeaturesKHR(reinterpret_cast<const VkPhysicalDeviceRayTracingPipelineFeaturesKHR *>(pNext), copy_state, false);
                 break;
@@ -1912,6 +1924,12 @@ void FreePnextChain(const void *pNext) {
             break;
         case VK_STRUCTURE_TYPE_SHADER_MODULE_CREATE_INFO:
             delete reinterpret_cast<safe_VkShaderModuleCreateInfo *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_COMPUTE_PIPELINE_CREATE_INFO:
+            delete reinterpret_cast<safe_VkComputePipelineCreateInfo *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_CREATE_INFO:
+            delete reinterpret_cast<safe_VkGraphicsPipelineCreateInfo *>(header);
             break;
         case VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO:
             delete reinterpret_cast<safe_VkPipelineLayoutCreateInfo *>(header);
@@ -2789,6 +2807,9 @@ void FreePnextChain(const void *pNext) {
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ENQUEUE_PROPERTIES_AMDX:
             delete reinterpret_cast<safe_VkPhysicalDeviceShaderEnqueuePropertiesAMDX *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_EXECUTION_GRAPH_PIPELINE_CREATE_INFO_AMDX:
+            delete reinterpret_cast<safe_VkExecutionGraphPipelineCreateInfoAMDX *>(header);
             break;
         case VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_NODE_CREATE_INFO_AMDX:
             delete reinterpret_cast<safe_VkPipelineShaderStageNodeCreateInfoAMDX *>(header);
@@ -3701,6 +3722,9 @@ void FreePnextChain(const void *pNext) {
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ACCELERATION_STRUCTURE_PROPERTIES_KHR:
             delete reinterpret_cast<safe_VkPhysicalDeviceAccelerationStructurePropertiesKHR *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_RAY_TRACING_PIPELINE_CREATE_INFO_KHR:
+            delete reinterpret_cast<safe_VkRayTracingPipelineCreateInfoKHR *>(header);
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_PIPELINE_FEATURES_KHR:
             delete reinterpret_cast<safe_VkPhysicalDeviceRayTracingPipelineFeaturesKHR *>(header);
