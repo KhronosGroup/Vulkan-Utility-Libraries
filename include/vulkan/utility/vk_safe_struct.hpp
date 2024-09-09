@@ -10301,13 +10301,41 @@ struct safe_VkSampleLocationsInfoEXT {
     VkSampleLocationsInfoEXT* ptr() { return reinterpret_cast<VkSampleLocationsInfoEXT*>(this); }
     VkSampleLocationsInfoEXT const* ptr() const { return reinterpret_cast<VkSampleLocationsInfoEXT const*>(this); }
 };
+struct safe_VkAttachmentSampleLocationsEXT {
+    uint32_t attachmentIndex;
+    safe_VkSampleLocationsInfoEXT sampleLocationsInfo;
+
+    safe_VkAttachmentSampleLocationsEXT(const VkAttachmentSampleLocationsEXT* in_struct, PNextCopyState* copy_state = {});
+    safe_VkAttachmentSampleLocationsEXT(const safe_VkAttachmentSampleLocationsEXT& copy_src);
+    safe_VkAttachmentSampleLocationsEXT& operator=(const safe_VkAttachmentSampleLocationsEXT& copy_src);
+    safe_VkAttachmentSampleLocationsEXT();
+    ~safe_VkAttachmentSampleLocationsEXT();
+    void initialize(const VkAttachmentSampleLocationsEXT* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkAttachmentSampleLocationsEXT* copy_src, PNextCopyState* copy_state = {});
+    VkAttachmentSampleLocationsEXT* ptr() { return reinterpret_cast<VkAttachmentSampleLocationsEXT*>(this); }
+    VkAttachmentSampleLocationsEXT const* ptr() const { return reinterpret_cast<VkAttachmentSampleLocationsEXT const*>(this); }
+};
+struct safe_VkSubpassSampleLocationsEXT {
+    uint32_t subpassIndex;
+    safe_VkSampleLocationsInfoEXT sampleLocationsInfo;
+
+    safe_VkSubpassSampleLocationsEXT(const VkSubpassSampleLocationsEXT* in_struct, PNextCopyState* copy_state = {});
+    safe_VkSubpassSampleLocationsEXT(const safe_VkSubpassSampleLocationsEXT& copy_src);
+    safe_VkSubpassSampleLocationsEXT& operator=(const safe_VkSubpassSampleLocationsEXT& copy_src);
+    safe_VkSubpassSampleLocationsEXT();
+    ~safe_VkSubpassSampleLocationsEXT();
+    void initialize(const VkSubpassSampleLocationsEXT* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkSubpassSampleLocationsEXT* copy_src, PNextCopyState* copy_state = {});
+    VkSubpassSampleLocationsEXT* ptr() { return reinterpret_cast<VkSubpassSampleLocationsEXT*>(this); }
+    VkSubpassSampleLocationsEXT const* ptr() const { return reinterpret_cast<VkSubpassSampleLocationsEXT const*>(this); }
+};
 struct safe_VkRenderPassSampleLocationsBeginInfoEXT {
     VkStructureType sType;
     const void* pNext{};
     uint32_t attachmentInitialSampleLocationsCount;
-    const VkAttachmentSampleLocationsEXT* pAttachmentInitialSampleLocations{};
+    safe_VkAttachmentSampleLocationsEXT* pAttachmentInitialSampleLocations{};
     uint32_t postSubpassSampleLocationsCount;
-    const VkSubpassSampleLocationsEXT* pPostSubpassSampleLocations{};
+    safe_VkSubpassSampleLocationsEXT* pPostSubpassSampleLocations{};
 
     safe_VkRenderPassSampleLocationsBeginInfoEXT(const VkRenderPassSampleLocationsBeginInfoEXT* in_struct,
                                                  PNextCopyState* copy_state = {}, bool copy_pnext = true);
