@@ -18404,6 +18404,304 @@ struct safe_VkPhysicalDeviceRayTracingValidationFeaturesNV {
         return reinterpret_cast<VkPhysicalDeviceRayTracingValidationFeaturesNV const*>(this);
     }
 };
+struct safe_VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT {
+    VkStructureType sType;
+    void* pNext{};
+    VkBool32 deviceGeneratedCommands;
+    VkBool32 dynamicGeneratedPipelineLayout;
+
+    safe_VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT(const VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT* in_struct,
+                                                            PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT(
+        const safe_VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT& copy_src);
+    safe_VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT& operator=(
+        const safe_VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT& copy_src);
+    safe_VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT();
+    ~safe_VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT();
+    void initialize(const VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT* copy_src, PNextCopyState* copy_state = {});
+    VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT* ptr() {
+        return reinterpret_cast<VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT*>(this);
+    }
+    VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT const* ptr() const {
+        return reinterpret_cast<VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT const*>(this);
+    }
+};
+struct safe_VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT {
+    VkStructureType sType;
+    void* pNext{};
+    uint32_t maxIndirectPipelineCount;
+    uint32_t maxIndirectShaderObjectCount;
+    uint32_t maxIndirectSequenceCount;
+    uint32_t maxIndirectCommandsTokenCount;
+    uint32_t maxIndirectCommandsTokenOffset;
+    uint32_t maxIndirectCommandsIndirectStride;
+    VkIndirectCommandsInputModeFlagsEXT supportedIndirectCommandsInputModes;
+    VkShaderStageFlags supportedIndirectCommandsShaderStages;
+    VkShaderStageFlags supportedIndirectCommandsShaderStagesPipelineBinding;
+    VkShaderStageFlags supportedIndirectCommandsShaderStagesShaderBinding;
+    VkBool32 deviceGeneratedCommandsTransformFeedback;
+    VkBool32 deviceGeneratedCommandsMultiDrawIndirectCount;
+
+    safe_VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT(const VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT* in_struct,
+                                                              PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT(
+        const safe_VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT& copy_src);
+    safe_VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT& operator=(
+        const safe_VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT& copy_src);
+    safe_VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT();
+    ~safe_VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT();
+    void initialize(const VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT* copy_src, PNextCopyState* copy_state = {});
+    VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT* ptr() {
+        return reinterpret_cast<VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT*>(this);
+    }
+    VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT const* ptr() const {
+        return reinterpret_cast<VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT const*>(this);
+    }
+};
+struct safe_VkGeneratedCommandsMemoryRequirementsInfoEXT {
+    VkStructureType sType;
+    void* pNext{};
+    VkIndirectExecutionSetEXT indirectExecutionSet;
+    VkIndirectCommandsLayoutEXT indirectCommandsLayout;
+    uint32_t maxSequenceCount;
+    uint32_t maxDrawCount;
+
+    safe_VkGeneratedCommandsMemoryRequirementsInfoEXT(const VkGeneratedCommandsMemoryRequirementsInfoEXT* in_struct,
+                                                      PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkGeneratedCommandsMemoryRequirementsInfoEXT(const safe_VkGeneratedCommandsMemoryRequirementsInfoEXT& copy_src);
+    safe_VkGeneratedCommandsMemoryRequirementsInfoEXT& operator=(const safe_VkGeneratedCommandsMemoryRequirementsInfoEXT& copy_src);
+    safe_VkGeneratedCommandsMemoryRequirementsInfoEXT();
+    ~safe_VkGeneratedCommandsMemoryRequirementsInfoEXT();
+    void initialize(const VkGeneratedCommandsMemoryRequirementsInfoEXT* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkGeneratedCommandsMemoryRequirementsInfoEXT* copy_src, PNextCopyState* copy_state = {});
+    VkGeneratedCommandsMemoryRequirementsInfoEXT* ptr() {
+        return reinterpret_cast<VkGeneratedCommandsMemoryRequirementsInfoEXT*>(this);
+    }
+    VkGeneratedCommandsMemoryRequirementsInfoEXT const* ptr() const {
+        return reinterpret_cast<VkGeneratedCommandsMemoryRequirementsInfoEXT const*>(this);
+    }
+};
+struct safe_VkIndirectExecutionSetPipelineInfoEXT {
+    VkStructureType sType;
+    const void* pNext{};
+    VkPipeline initialPipeline;
+    uint32_t maxPipelineCount;
+
+    safe_VkIndirectExecutionSetPipelineInfoEXT(const VkIndirectExecutionSetPipelineInfoEXT* in_struct,
+                                               PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkIndirectExecutionSetPipelineInfoEXT(const safe_VkIndirectExecutionSetPipelineInfoEXT& copy_src);
+    safe_VkIndirectExecutionSetPipelineInfoEXT& operator=(const safe_VkIndirectExecutionSetPipelineInfoEXT& copy_src);
+    safe_VkIndirectExecutionSetPipelineInfoEXT();
+    ~safe_VkIndirectExecutionSetPipelineInfoEXT();
+    void initialize(const VkIndirectExecutionSetPipelineInfoEXT* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkIndirectExecutionSetPipelineInfoEXT* copy_src, PNextCopyState* copy_state = {});
+    VkIndirectExecutionSetPipelineInfoEXT* ptr() { return reinterpret_cast<VkIndirectExecutionSetPipelineInfoEXT*>(this); }
+    VkIndirectExecutionSetPipelineInfoEXT const* ptr() const {
+        return reinterpret_cast<VkIndirectExecutionSetPipelineInfoEXT const*>(this);
+    }
+};
+struct safe_VkIndirectExecutionSetShaderLayoutInfoEXT {
+    VkStructureType sType;
+    const void* pNext{};
+    uint32_t setLayoutCount;
+    VkDescriptorSetLayout* pSetLayouts{};
+
+    safe_VkIndirectExecutionSetShaderLayoutInfoEXT(const VkIndirectExecutionSetShaderLayoutInfoEXT* in_struct,
+                                                   PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkIndirectExecutionSetShaderLayoutInfoEXT(const safe_VkIndirectExecutionSetShaderLayoutInfoEXT& copy_src);
+    safe_VkIndirectExecutionSetShaderLayoutInfoEXT& operator=(const safe_VkIndirectExecutionSetShaderLayoutInfoEXT& copy_src);
+    safe_VkIndirectExecutionSetShaderLayoutInfoEXT();
+    ~safe_VkIndirectExecutionSetShaderLayoutInfoEXT();
+    void initialize(const VkIndirectExecutionSetShaderLayoutInfoEXT* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkIndirectExecutionSetShaderLayoutInfoEXT* copy_src, PNextCopyState* copy_state = {});
+    VkIndirectExecutionSetShaderLayoutInfoEXT* ptr() { return reinterpret_cast<VkIndirectExecutionSetShaderLayoutInfoEXT*>(this); }
+    VkIndirectExecutionSetShaderLayoutInfoEXT const* ptr() const {
+        return reinterpret_cast<VkIndirectExecutionSetShaderLayoutInfoEXT const*>(this);
+    }
+};
+struct safe_VkIndirectExecutionSetShaderInfoEXT {
+    VkStructureType sType;
+    const void* pNext{};
+    uint32_t shaderCount;
+    VkShaderEXT* pInitialShaders{};
+    safe_VkIndirectExecutionSetShaderLayoutInfoEXT* pSetLayoutInfos{};
+    uint32_t maxShaderCount;
+    uint32_t pushConstantRangeCount;
+    const VkPushConstantRange* pPushConstantRanges{};
+
+    safe_VkIndirectExecutionSetShaderInfoEXT(const VkIndirectExecutionSetShaderInfoEXT* in_struct, PNextCopyState* copy_state = {},
+                                             bool copy_pnext = true);
+    safe_VkIndirectExecutionSetShaderInfoEXT(const safe_VkIndirectExecutionSetShaderInfoEXT& copy_src);
+    safe_VkIndirectExecutionSetShaderInfoEXT& operator=(const safe_VkIndirectExecutionSetShaderInfoEXT& copy_src);
+    safe_VkIndirectExecutionSetShaderInfoEXT();
+    ~safe_VkIndirectExecutionSetShaderInfoEXT();
+    void initialize(const VkIndirectExecutionSetShaderInfoEXT* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkIndirectExecutionSetShaderInfoEXT* copy_src, PNextCopyState* copy_state = {});
+    VkIndirectExecutionSetShaderInfoEXT* ptr() { return reinterpret_cast<VkIndirectExecutionSetShaderInfoEXT*>(this); }
+    VkIndirectExecutionSetShaderInfoEXT const* ptr() const {
+        return reinterpret_cast<VkIndirectExecutionSetShaderInfoEXT const*>(this);
+    }
+};
+struct safe_VkIndirectExecutionSetCreateInfoEXT {
+    VkStructureType sType;
+    const void* pNext{};
+    VkIndirectExecutionSetInfoTypeEXT type;
+    VkIndirectExecutionSetInfoEXT info;
+
+    safe_VkIndirectExecutionSetCreateInfoEXT(const VkIndirectExecutionSetCreateInfoEXT* in_struct, PNextCopyState* copy_state = {},
+                                             bool copy_pnext = true);
+    safe_VkIndirectExecutionSetCreateInfoEXT(const safe_VkIndirectExecutionSetCreateInfoEXT& copy_src);
+    safe_VkIndirectExecutionSetCreateInfoEXT& operator=(const safe_VkIndirectExecutionSetCreateInfoEXT& copy_src);
+    safe_VkIndirectExecutionSetCreateInfoEXT();
+    ~safe_VkIndirectExecutionSetCreateInfoEXT();
+    void initialize(const VkIndirectExecutionSetCreateInfoEXT* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkIndirectExecutionSetCreateInfoEXT* copy_src, PNextCopyState* copy_state = {});
+    VkIndirectExecutionSetCreateInfoEXT* ptr() { return reinterpret_cast<VkIndirectExecutionSetCreateInfoEXT*>(this); }
+    VkIndirectExecutionSetCreateInfoEXT const* ptr() const {
+        return reinterpret_cast<VkIndirectExecutionSetCreateInfoEXT const*>(this);
+    }
+};
+struct safe_VkGeneratedCommandsInfoEXT {
+    VkStructureType sType;
+    const void* pNext{};
+    VkShaderStageFlags shaderStages;
+    VkIndirectExecutionSetEXT indirectExecutionSet;
+    VkIndirectCommandsLayoutEXT indirectCommandsLayout;
+    VkDeviceAddress indirectAddress;
+    VkDeviceSize indirectAddressSize;
+    VkDeviceAddress preprocessAddress;
+    VkDeviceSize preprocessSize;
+    uint32_t maxSequenceCount;
+    VkDeviceAddress sequenceCountAddress;
+    uint32_t maxDrawCount;
+
+    safe_VkGeneratedCommandsInfoEXT(const VkGeneratedCommandsInfoEXT* in_struct, PNextCopyState* copy_state = {},
+                                    bool copy_pnext = true);
+    safe_VkGeneratedCommandsInfoEXT(const safe_VkGeneratedCommandsInfoEXT& copy_src);
+    safe_VkGeneratedCommandsInfoEXT& operator=(const safe_VkGeneratedCommandsInfoEXT& copy_src);
+    safe_VkGeneratedCommandsInfoEXT();
+    ~safe_VkGeneratedCommandsInfoEXT();
+    void initialize(const VkGeneratedCommandsInfoEXT* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkGeneratedCommandsInfoEXT* copy_src, PNextCopyState* copy_state = {});
+    VkGeneratedCommandsInfoEXT* ptr() { return reinterpret_cast<VkGeneratedCommandsInfoEXT*>(this); }
+    VkGeneratedCommandsInfoEXT const* ptr() const { return reinterpret_cast<VkGeneratedCommandsInfoEXT const*>(this); }
+};
+struct safe_VkWriteIndirectExecutionSetPipelineEXT {
+    VkStructureType sType;
+    const void* pNext{};
+    uint32_t index;
+    VkPipeline pipeline;
+
+    safe_VkWriteIndirectExecutionSetPipelineEXT(const VkWriteIndirectExecutionSetPipelineEXT* in_struct,
+                                                PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkWriteIndirectExecutionSetPipelineEXT(const safe_VkWriteIndirectExecutionSetPipelineEXT& copy_src);
+    safe_VkWriteIndirectExecutionSetPipelineEXT& operator=(const safe_VkWriteIndirectExecutionSetPipelineEXT& copy_src);
+    safe_VkWriteIndirectExecutionSetPipelineEXT();
+    ~safe_VkWriteIndirectExecutionSetPipelineEXT();
+    void initialize(const VkWriteIndirectExecutionSetPipelineEXT* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkWriteIndirectExecutionSetPipelineEXT* copy_src, PNextCopyState* copy_state = {});
+    VkWriteIndirectExecutionSetPipelineEXT* ptr() { return reinterpret_cast<VkWriteIndirectExecutionSetPipelineEXT*>(this); }
+    VkWriteIndirectExecutionSetPipelineEXT const* ptr() const {
+        return reinterpret_cast<VkWriteIndirectExecutionSetPipelineEXT const*>(this);
+    }
+};
+struct safe_VkIndirectCommandsLayoutTokenEXT {
+    VkStructureType sType;
+    const void* pNext{};
+    VkIndirectCommandsTokenTypeEXT type;
+    VkIndirectCommandsTokenDataEXT data;
+    uint32_t offset;
+
+    safe_VkIndirectCommandsLayoutTokenEXT(const VkIndirectCommandsLayoutTokenEXT* in_struct, PNextCopyState* copy_state = {},
+                                          bool copy_pnext = true);
+    safe_VkIndirectCommandsLayoutTokenEXT(const safe_VkIndirectCommandsLayoutTokenEXT& copy_src);
+    safe_VkIndirectCommandsLayoutTokenEXT& operator=(const safe_VkIndirectCommandsLayoutTokenEXT& copy_src);
+    safe_VkIndirectCommandsLayoutTokenEXT();
+    ~safe_VkIndirectCommandsLayoutTokenEXT();
+    void initialize(const VkIndirectCommandsLayoutTokenEXT* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkIndirectCommandsLayoutTokenEXT* copy_src, PNextCopyState* copy_state = {});
+    VkIndirectCommandsLayoutTokenEXT* ptr() { return reinterpret_cast<VkIndirectCommandsLayoutTokenEXT*>(this); }
+    VkIndirectCommandsLayoutTokenEXT const* ptr() const { return reinterpret_cast<VkIndirectCommandsLayoutTokenEXT const*>(this); }
+};
+struct safe_VkIndirectCommandsLayoutCreateInfoEXT {
+    VkStructureType sType;
+    const void* pNext{};
+    VkIndirectCommandsLayoutUsageFlagsEXT flags;
+    VkShaderStageFlags shaderStages;
+    uint32_t indirectStride;
+    VkPipelineLayout pipelineLayout;
+    uint32_t tokenCount;
+    safe_VkIndirectCommandsLayoutTokenEXT* pTokens{};
+
+    safe_VkIndirectCommandsLayoutCreateInfoEXT(const VkIndirectCommandsLayoutCreateInfoEXT* in_struct,
+                                               PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkIndirectCommandsLayoutCreateInfoEXT(const safe_VkIndirectCommandsLayoutCreateInfoEXT& copy_src);
+    safe_VkIndirectCommandsLayoutCreateInfoEXT& operator=(const safe_VkIndirectCommandsLayoutCreateInfoEXT& copy_src);
+    safe_VkIndirectCommandsLayoutCreateInfoEXT();
+    ~safe_VkIndirectCommandsLayoutCreateInfoEXT();
+    void initialize(const VkIndirectCommandsLayoutCreateInfoEXT* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkIndirectCommandsLayoutCreateInfoEXT* copy_src, PNextCopyState* copy_state = {});
+    VkIndirectCommandsLayoutCreateInfoEXT* ptr() { return reinterpret_cast<VkIndirectCommandsLayoutCreateInfoEXT*>(this); }
+    VkIndirectCommandsLayoutCreateInfoEXT const* ptr() const {
+        return reinterpret_cast<VkIndirectCommandsLayoutCreateInfoEXT const*>(this);
+    }
+};
+struct safe_VkGeneratedCommandsPipelineInfoEXT {
+    VkStructureType sType;
+    void* pNext{};
+    VkPipeline pipeline;
+
+    safe_VkGeneratedCommandsPipelineInfoEXT(const VkGeneratedCommandsPipelineInfoEXT* in_struct, PNextCopyState* copy_state = {},
+                                            bool copy_pnext = true);
+    safe_VkGeneratedCommandsPipelineInfoEXT(const safe_VkGeneratedCommandsPipelineInfoEXT& copy_src);
+    safe_VkGeneratedCommandsPipelineInfoEXT& operator=(const safe_VkGeneratedCommandsPipelineInfoEXT& copy_src);
+    safe_VkGeneratedCommandsPipelineInfoEXT();
+    ~safe_VkGeneratedCommandsPipelineInfoEXT();
+    void initialize(const VkGeneratedCommandsPipelineInfoEXT* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkGeneratedCommandsPipelineInfoEXT* copy_src, PNextCopyState* copy_state = {});
+    VkGeneratedCommandsPipelineInfoEXT* ptr() { return reinterpret_cast<VkGeneratedCommandsPipelineInfoEXT*>(this); }
+    VkGeneratedCommandsPipelineInfoEXT const* ptr() const {
+        return reinterpret_cast<VkGeneratedCommandsPipelineInfoEXT const*>(this);
+    }
+};
+struct safe_VkGeneratedCommandsShaderInfoEXT {
+    VkStructureType sType;
+    void* pNext{};
+    uint32_t shaderCount;
+    VkShaderEXT* pShaders{};
+
+    safe_VkGeneratedCommandsShaderInfoEXT(const VkGeneratedCommandsShaderInfoEXT* in_struct, PNextCopyState* copy_state = {},
+                                          bool copy_pnext = true);
+    safe_VkGeneratedCommandsShaderInfoEXT(const safe_VkGeneratedCommandsShaderInfoEXT& copy_src);
+    safe_VkGeneratedCommandsShaderInfoEXT& operator=(const safe_VkGeneratedCommandsShaderInfoEXT& copy_src);
+    safe_VkGeneratedCommandsShaderInfoEXT();
+    ~safe_VkGeneratedCommandsShaderInfoEXT();
+    void initialize(const VkGeneratedCommandsShaderInfoEXT* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkGeneratedCommandsShaderInfoEXT* copy_src, PNextCopyState* copy_state = {});
+    VkGeneratedCommandsShaderInfoEXT* ptr() { return reinterpret_cast<VkGeneratedCommandsShaderInfoEXT*>(this); }
+    VkGeneratedCommandsShaderInfoEXT const* ptr() const { return reinterpret_cast<VkGeneratedCommandsShaderInfoEXT const*>(this); }
+};
+struct safe_VkWriteIndirectExecutionSetShaderEXT {
+    VkStructureType sType;
+    const void* pNext{};
+    uint32_t index;
+    VkShaderEXT shader;
+
+    safe_VkWriteIndirectExecutionSetShaderEXT(const VkWriteIndirectExecutionSetShaderEXT* in_struct,
+                                              PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkWriteIndirectExecutionSetShaderEXT(const safe_VkWriteIndirectExecutionSetShaderEXT& copy_src);
+    safe_VkWriteIndirectExecutionSetShaderEXT& operator=(const safe_VkWriteIndirectExecutionSetShaderEXT& copy_src);
+    safe_VkWriteIndirectExecutionSetShaderEXT();
+    ~safe_VkWriteIndirectExecutionSetShaderEXT();
+    void initialize(const VkWriteIndirectExecutionSetShaderEXT* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkWriteIndirectExecutionSetShaderEXT* copy_src, PNextCopyState* copy_state = {});
+    VkWriteIndirectExecutionSetShaderEXT* ptr() { return reinterpret_cast<VkWriteIndirectExecutionSetShaderEXT*>(this); }
+    VkWriteIndirectExecutionSetShaderEXT const* ptr() const {
+        return reinterpret_cast<VkWriteIndirectExecutionSetShaderEXT const*>(this);
+    }
+};
 struct safe_VkPhysicalDeviceImageAlignmentControlFeaturesMESA {
     VkStructureType sType;
     void* pNext{};
@@ -18463,6 +18761,48 @@ struct safe_VkImageAlignmentControlCreateInfoMESA {
     VkImageAlignmentControlCreateInfoMESA* ptr() { return reinterpret_cast<VkImageAlignmentControlCreateInfoMESA*>(this); }
     VkImageAlignmentControlCreateInfoMESA const* ptr() const {
         return reinterpret_cast<VkImageAlignmentControlCreateInfoMESA const*>(this);
+    }
+};
+struct safe_VkPhysicalDeviceDepthClampControlFeaturesEXT {
+    VkStructureType sType;
+    void* pNext{};
+    VkBool32 depthClampControl;
+
+    safe_VkPhysicalDeviceDepthClampControlFeaturesEXT(const VkPhysicalDeviceDepthClampControlFeaturesEXT* in_struct,
+                                                      PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkPhysicalDeviceDepthClampControlFeaturesEXT(const safe_VkPhysicalDeviceDepthClampControlFeaturesEXT& copy_src);
+    safe_VkPhysicalDeviceDepthClampControlFeaturesEXT& operator=(const safe_VkPhysicalDeviceDepthClampControlFeaturesEXT& copy_src);
+    safe_VkPhysicalDeviceDepthClampControlFeaturesEXT();
+    ~safe_VkPhysicalDeviceDepthClampControlFeaturesEXT();
+    void initialize(const VkPhysicalDeviceDepthClampControlFeaturesEXT* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceDepthClampControlFeaturesEXT* copy_src, PNextCopyState* copy_state = {});
+    VkPhysicalDeviceDepthClampControlFeaturesEXT* ptr() {
+        return reinterpret_cast<VkPhysicalDeviceDepthClampControlFeaturesEXT*>(this);
+    }
+    VkPhysicalDeviceDepthClampControlFeaturesEXT const* ptr() const {
+        return reinterpret_cast<VkPhysicalDeviceDepthClampControlFeaturesEXT const*>(this);
+    }
+};
+struct safe_VkPipelineViewportDepthClampControlCreateInfoEXT {
+    VkStructureType sType;
+    const void* pNext{};
+    VkDepthClampModeEXT depthClampMode;
+    const VkDepthClampRangeEXT* pDepthClampRange{};
+
+    safe_VkPipelineViewportDepthClampControlCreateInfoEXT(const VkPipelineViewportDepthClampControlCreateInfoEXT* in_struct,
+                                                          PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkPipelineViewportDepthClampControlCreateInfoEXT(const safe_VkPipelineViewportDepthClampControlCreateInfoEXT& copy_src);
+    safe_VkPipelineViewportDepthClampControlCreateInfoEXT& operator=(
+        const safe_VkPipelineViewportDepthClampControlCreateInfoEXT& copy_src);
+    safe_VkPipelineViewportDepthClampControlCreateInfoEXT();
+    ~safe_VkPipelineViewportDepthClampControlCreateInfoEXT();
+    void initialize(const VkPipelineViewportDepthClampControlCreateInfoEXT* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPipelineViewportDepthClampControlCreateInfoEXT* copy_src, PNextCopyState* copy_state = {});
+    VkPipelineViewportDepthClampControlCreateInfoEXT* ptr() {
+        return reinterpret_cast<VkPipelineViewportDepthClampControlCreateInfoEXT*>(this);
+    }
+    VkPipelineViewportDepthClampControlCreateInfoEXT const* ptr() const {
+        return reinterpret_cast<VkPipelineViewportDepthClampControlCreateInfoEXT const*>(this);
     }
 };
 struct safe_VkAccelerationStructureGeometryTrianglesDataKHR {

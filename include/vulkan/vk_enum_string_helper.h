@@ -1962,12 +1962,44 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_REPLICATED_COMPOSITES_FEATURES_EXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_VALIDATION_FEATURES_NV:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_VALIDATION_FEATURES_NV";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEVICE_GENERATED_COMMANDS_FEATURES_EXT:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEVICE_GENERATED_COMMANDS_FEATURES_EXT";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEVICE_GENERATED_COMMANDS_PROPERTIES_EXT:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEVICE_GENERATED_COMMANDS_PROPERTIES_EXT";
+        case VK_STRUCTURE_TYPE_GENERATED_COMMANDS_MEMORY_REQUIREMENTS_INFO_EXT:
+            return "VK_STRUCTURE_TYPE_GENERATED_COMMANDS_MEMORY_REQUIREMENTS_INFO_EXT";
+        case VK_STRUCTURE_TYPE_INDIRECT_EXECUTION_SET_CREATE_INFO_EXT:
+            return "VK_STRUCTURE_TYPE_INDIRECT_EXECUTION_SET_CREATE_INFO_EXT";
+        case VK_STRUCTURE_TYPE_GENERATED_COMMANDS_INFO_EXT:
+            return "VK_STRUCTURE_TYPE_GENERATED_COMMANDS_INFO_EXT";
+        case VK_STRUCTURE_TYPE_INDIRECT_COMMANDS_LAYOUT_CREATE_INFO_EXT:
+            return "VK_STRUCTURE_TYPE_INDIRECT_COMMANDS_LAYOUT_CREATE_INFO_EXT";
+        case VK_STRUCTURE_TYPE_INDIRECT_COMMANDS_LAYOUT_TOKEN_EXT:
+            return "VK_STRUCTURE_TYPE_INDIRECT_COMMANDS_LAYOUT_TOKEN_EXT";
+        case VK_STRUCTURE_TYPE_WRITE_INDIRECT_EXECUTION_SET_PIPELINE_EXT:
+            return "VK_STRUCTURE_TYPE_WRITE_INDIRECT_EXECUTION_SET_PIPELINE_EXT";
+        case VK_STRUCTURE_TYPE_WRITE_INDIRECT_EXECUTION_SET_SHADER_EXT:
+            return "VK_STRUCTURE_TYPE_WRITE_INDIRECT_EXECUTION_SET_SHADER_EXT";
+        case VK_STRUCTURE_TYPE_INDIRECT_EXECUTION_SET_PIPELINE_INFO_EXT:
+            return "VK_STRUCTURE_TYPE_INDIRECT_EXECUTION_SET_PIPELINE_INFO_EXT";
+        case VK_STRUCTURE_TYPE_INDIRECT_EXECUTION_SET_SHADER_INFO_EXT:
+            return "VK_STRUCTURE_TYPE_INDIRECT_EXECUTION_SET_SHADER_INFO_EXT";
+        case VK_STRUCTURE_TYPE_INDIRECT_EXECUTION_SET_SHADER_LAYOUT_INFO_EXT:
+            return "VK_STRUCTURE_TYPE_INDIRECT_EXECUTION_SET_SHADER_LAYOUT_INFO_EXT";
+        case VK_STRUCTURE_TYPE_GENERATED_COMMANDS_PIPELINE_INFO_EXT:
+            return "VK_STRUCTURE_TYPE_GENERATED_COMMANDS_PIPELINE_INFO_EXT";
+        case VK_STRUCTURE_TYPE_GENERATED_COMMANDS_SHADER_INFO_EXT:
+            return "VK_STRUCTURE_TYPE_GENERATED_COMMANDS_SHADER_INFO_EXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_ALIGNMENT_CONTROL_FEATURES_MESA:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_ALIGNMENT_CONTROL_FEATURES_MESA";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_ALIGNMENT_CONTROL_PROPERTIES_MESA:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_ALIGNMENT_CONTROL_PROPERTIES_MESA";
         case VK_STRUCTURE_TYPE_IMAGE_ALIGNMENT_CONTROL_CREATE_INFO_MESA:
             return "VK_STRUCTURE_TYPE_IMAGE_ALIGNMENT_CONTROL_CREATE_INFO_MESA";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_CLAMP_CONTROL_FEATURES_EXT:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_CLAMP_CONTROL_FEATURES_EXT";
+        case VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_DEPTH_CLAMP_CONTROL_CREATE_INFO_EXT:
+            return "VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_DEPTH_CLAMP_CONTROL_CREATE_INFO_EXT";
         default:
             return "Unhandled VkStructureType";
     }
@@ -2150,6 +2182,10 @@ static inline const char* string_VkObjectType(VkObjectType input_value) {
             return "VK_OBJECT_TYPE_SHADER_EXT";
         case VK_OBJECT_TYPE_PIPELINE_BINARY_KHR:
             return "VK_OBJECT_TYPE_PIPELINE_BINARY_KHR";
+        case VK_OBJECT_TYPE_INDIRECT_COMMANDS_LAYOUT_EXT:
+            return "VK_OBJECT_TYPE_INDIRECT_COMMANDS_LAYOUT_EXT";
+        case VK_OBJECT_TYPE_INDIRECT_EXECUTION_SET_EXT:
+            return "VK_OBJECT_TYPE_INDIRECT_EXECUTION_SET_EXT";
         default:
             return "Unhandled VkObjectType";
     }
@@ -3156,6 +3192,8 @@ static inline const char* string_VkDynamicState(VkDynamicState input_value) {
             return "VK_DYNAMIC_STATE_ATTACHMENT_FEEDBACK_LOOP_ENABLE_EXT";
         case VK_DYNAMIC_STATE_LINE_STIPPLE_KHR:
             return "VK_DYNAMIC_STATE_LINE_STIPPLE_KHR";
+        case VK_DYNAMIC_STATE_DEPTH_CLAMP_RANGE_EXT:
+            return "VK_DYNAMIC_STATE_DEPTH_CLAMP_RANGE_EXT";
         default:
             return "Unhandled VkDynamicState";
     }
@@ -4750,6 +4788,16 @@ static inline const char* string_VkShaderCodeTypeEXT(VkShaderCodeTypeEXT input_v
             return "Unhandled VkShaderCodeTypeEXT";
     }
 }
+static inline const char* string_VkDepthClampModeEXT(VkDepthClampModeEXT input_value) {
+    switch (input_value) {
+        case VK_DEPTH_CLAMP_MODE_VIEWPORT_RANGE_EXT:
+            return "VK_DEPTH_CLAMP_MODE_VIEWPORT_RANGE_EXT";
+        case VK_DEPTH_CLAMP_MODE_USER_DEFINED_RANGE_EXT:
+            return "VK_DEPTH_CLAMP_MODE_USER_DEFINED_RANGE_EXT";
+        default:
+            return "Unhandled VkDepthClampModeEXT";
+    }
+}
 static inline const char* string_VkRayTracingInvocationReorderModeNV(VkRayTracingInvocationReorderModeNV input_value) {
     switch (input_value) {
         case VK_RAY_TRACING_INVOCATION_REORDER_MODE_NONE_NV:
@@ -4854,6 +4902,52 @@ static inline const char* string_VkLayeredDriverUnderlyingApiMSFT(VkLayeredDrive
             return "VK_LAYERED_DRIVER_UNDERLYING_API_D3D12_MSFT";
         default:
             return "Unhandled VkLayeredDriverUnderlyingApiMSFT";
+    }
+}
+static inline const char* string_VkIndirectExecutionSetInfoTypeEXT(VkIndirectExecutionSetInfoTypeEXT input_value) {
+    switch (input_value) {
+        case VK_INDIRECT_EXECUTION_SET_INFO_TYPE_PIPELINES_EXT:
+            return "VK_INDIRECT_EXECUTION_SET_INFO_TYPE_PIPELINES_EXT";
+        case VK_INDIRECT_EXECUTION_SET_INFO_TYPE_SHADER_OBJECTS_EXT:
+            return "VK_INDIRECT_EXECUTION_SET_INFO_TYPE_SHADER_OBJECTS_EXT";
+        default:
+            return "Unhandled VkIndirectExecutionSetInfoTypeEXT";
+    }
+}
+static inline const char* string_VkIndirectCommandsTokenTypeEXT(VkIndirectCommandsTokenTypeEXT input_value) {
+    switch (input_value) {
+        case VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT:
+            return "VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT";
+        case VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_EXT:
+            return "VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_EXT";
+        case VK_INDIRECT_COMMANDS_TOKEN_TYPE_SEQUENCE_INDEX_EXT:
+            return "VK_INDIRECT_COMMANDS_TOKEN_TYPE_SEQUENCE_INDEX_EXT";
+        case VK_INDIRECT_COMMANDS_TOKEN_TYPE_INDEX_BUFFER_EXT:
+            return "VK_INDIRECT_COMMANDS_TOKEN_TYPE_INDEX_BUFFER_EXT";
+        case VK_INDIRECT_COMMANDS_TOKEN_TYPE_VERTEX_BUFFER_EXT:
+            return "VK_INDIRECT_COMMANDS_TOKEN_TYPE_VERTEX_BUFFER_EXT";
+        case VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_INDEXED_EXT:
+            return "VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_INDEXED_EXT";
+        case VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_EXT:
+            return "VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_EXT";
+        case VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_INDEXED_COUNT_EXT:
+            return "VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_INDEXED_COUNT_EXT";
+        case VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_COUNT_EXT:
+            return "VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_COUNT_EXT";
+        case VK_INDIRECT_COMMANDS_TOKEN_TYPE_DISPATCH_EXT:
+            return "VK_INDIRECT_COMMANDS_TOKEN_TYPE_DISPATCH_EXT";
+        case VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_NV_EXT:
+            return "VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_NV_EXT";
+        case VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_COUNT_NV_EXT:
+            return "VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_COUNT_NV_EXT";
+        case VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_EXT:
+            return "VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_EXT";
+        case VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_COUNT_EXT:
+            return "VK_INDIRECT_COMMANDS_TOKEN_TYPE_DRAW_MESH_TASKS_COUNT_EXT";
+        case VK_INDIRECT_COMMANDS_TOKEN_TYPE_TRACE_RAYS2_EXT:
+            return "VK_INDIRECT_COMMANDS_TOKEN_TYPE_TRACE_RAYS2_EXT";
+        default:
+            return "Unhandled VkIndirectCommandsTokenTypeEXT";
     }
 }
 static inline const char* string_VkBuildAccelerationStructureModeKHR(VkBuildAccelerationStructureModeKHR input_value) {
@@ -8361,6 +8455,7 @@ static inline const char* string_VkPipelineCreateFlagBits2KHR(uint64_t input_val
     if (input_value == VK_PIPELINE_CREATE_2_RAY_TRACING_DISPLACEMENT_MICROMAP_BIT_NV) return "VK_PIPELINE_CREATE_2_RAY_TRACING_DISPLACEMENT_MICROMAP_BIT_NV";
     if (input_value == VK_PIPELINE_CREATE_2_DESCRIPTOR_BUFFER_BIT_EXT) return "VK_PIPELINE_CREATE_2_DESCRIPTOR_BUFFER_BIT_EXT";
     if (input_value == VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR) return "VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR";
+    if (input_value == VK_PIPELINE_CREATE_2_INDIRECT_BINDABLE_BIT_EXT) return "VK_PIPELINE_CREATE_2_INDIRECT_BINDABLE_BIT_EXT";
     return "Unhandled VkPipelineCreateFlagBits2KHR";
 }
 
@@ -8407,6 +8502,7 @@ static inline const char* string_VkBufferUsageFlagBits2KHR(uint64_t input_value)
     if (input_value == VK_BUFFER_USAGE_2_PUSH_DESCRIPTORS_DESCRIPTOR_BUFFER_BIT_EXT) return "VK_BUFFER_USAGE_2_PUSH_DESCRIPTORS_DESCRIPTOR_BUFFER_BIT_EXT";
     if (input_value == VK_BUFFER_USAGE_2_MICROMAP_BUILD_INPUT_READ_ONLY_BIT_EXT) return "VK_BUFFER_USAGE_2_MICROMAP_BUILD_INPUT_READ_ONLY_BIT_EXT";
     if (input_value == VK_BUFFER_USAGE_2_MICROMAP_STORAGE_BIT_EXT) return "VK_BUFFER_USAGE_2_MICROMAP_STORAGE_BIT_EXT";
+    if (input_value == VK_BUFFER_USAGE_2_PREPROCESS_BUFFER_BIT_EXT) return "VK_BUFFER_USAGE_2_PREPROCESS_BUFFER_BIT_EXT";
     return "Unhandled VkBufferUsageFlagBits2KHR";
 }
 
@@ -9403,6 +9499,8 @@ static inline const char* string_VkShaderCreateFlagBitsEXT(VkShaderCreateFlagBit
             return "VK_SHADER_CREATE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_EXT";
         case VK_SHADER_CREATE_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT:
             return "VK_SHADER_CREATE_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT";
+        case VK_SHADER_CREATE_INDIRECT_BINDABLE_BIT_EXT:
+            return "VK_SHADER_CREATE_INDIRECT_BINDABLE_BIT_EXT";
         default:
             return "Unhandled VkShaderCreateFlagBitsEXT";
     }
@@ -9421,6 +9519,60 @@ static inline std::string string_VkShaderCreateFlagsEXT(VkShaderCreateFlagsEXT i
         input_value >>= 1;
     }
     if (ret.empty()) ret.append("VkShaderCreateFlagsEXT(0)");
+    return ret;
+}
+#endif // __cplusplus
+static inline const char* string_VkIndirectCommandsInputModeFlagBitsEXT(VkIndirectCommandsInputModeFlagBitsEXT input_value) {
+    switch (input_value) {
+        case VK_INDIRECT_COMMANDS_INPUT_MODE_VULKAN_INDEX_BUFFER_EXT:
+            return "VK_INDIRECT_COMMANDS_INPUT_MODE_VULKAN_INDEX_BUFFER_EXT";
+        case VK_INDIRECT_COMMANDS_INPUT_MODE_DXGI_INDEX_BUFFER_EXT:
+            return "VK_INDIRECT_COMMANDS_INPUT_MODE_DXGI_INDEX_BUFFER_EXT";
+        default:
+            return "Unhandled VkIndirectCommandsInputModeFlagBitsEXT";
+    }
+}
+
+#ifdef __cplusplus
+static inline std::string string_VkIndirectCommandsInputModeFlagsEXT(VkIndirectCommandsInputModeFlagsEXT input_value) {
+    std::string ret;
+    int index = 0;
+    while(input_value) {
+        if (input_value & 1) {
+            if( !ret.empty()) ret.append("|");
+            ret.append(string_VkIndirectCommandsInputModeFlagBitsEXT(static_cast<VkIndirectCommandsInputModeFlagBitsEXT>(1U << index)));
+        }
+        ++index;
+        input_value >>= 1;
+    }
+    if (ret.empty()) ret.append("VkIndirectCommandsInputModeFlagsEXT(0)");
+    return ret;
+}
+#endif // __cplusplus
+static inline const char* string_VkIndirectCommandsLayoutUsageFlagBitsEXT(VkIndirectCommandsLayoutUsageFlagBitsEXT input_value) {
+    switch (input_value) {
+        case VK_INDIRECT_COMMANDS_LAYOUT_USAGE_EXPLICIT_PREPROCESS_BIT_EXT:
+            return "VK_INDIRECT_COMMANDS_LAYOUT_USAGE_EXPLICIT_PREPROCESS_BIT_EXT";
+        case VK_INDIRECT_COMMANDS_LAYOUT_USAGE_UNORDERED_SEQUENCES_BIT_EXT:
+            return "VK_INDIRECT_COMMANDS_LAYOUT_USAGE_UNORDERED_SEQUENCES_BIT_EXT";
+        default:
+            return "Unhandled VkIndirectCommandsLayoutUsageFlagBitsEXT";
+    }
+}
+
+#ifdef __cplusplus
+static inline std::string string_VkIndirectCommandsLayoutUsageFlagsEXT(VkIndirectCommandsLayoutUsageFlagsEXT input_value) {
+    std::string ret;
+    int index = 0;
+    while(input_value) {
+        if (input_value & 1) {
+            if( !ret.empty()) ret.append("|");
+            ret.append(string_VkIndirectCommandsLayoutUsageFlagBitsEXT(static_cast<VkIndirectCommandsLayoutUsageFlagBitsEXT>(1U << index)));
+        }
+        ++index;
+        input_value >>= 1;
+    }
+    if (ret.empty()) ret.append("VkIndirectCommandsLayoutUsageFlagsEXT(0)");
     return ret;
 }
 #endif // __cplusplus
