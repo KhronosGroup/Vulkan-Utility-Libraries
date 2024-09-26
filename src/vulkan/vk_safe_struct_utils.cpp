@@ -1840,6 +1840,18 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_VALIDATION_FEATURES_NV:
                 safe_pNext = new safe_VkPhysicalDeviceRayTracingValidationFeaturesNV(reinterpret_cast<const VkPhysicalDeviceRayTracingValidationFeaturesNV *>(pNext), copy_state, false);
                 break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEVICE_GENERATED_COMMANDS_FEATURES_EXT:
+                safe_pNext = new safe_VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT(reinterpret_cast<const VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEVICE_GENERATED_COMMANDS_PROPERTIES_EXT:
+                safe_pNext = new safe_VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT(reinterpret_cast<const VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_GENERATED_COMMANDS_PIPELINE_INFO_EXT:
+                safe_pNext = new safe_VkGeneratedCommandsPipelineInfoEXT(reinterpret_cast<const VkGeneratedCommandsPipelineInfoEXT *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_GENERATED_COMMANDS_SHADER_INFO_EXT:
+                safe_pNext = new safe_VkGeneratedCommandsShaderInfoEXT(reinterpret_cast<const VkGeneratedCommandsShaderInfoEXT *>(pNext), copy_state, false);
+                break;
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_ALIGNMENT_CONTROL_FEATURES_MESA:
                 safe_pNext = new safe_VkPhysicalDeviceImageAlignmentControlFeaturesMESA(reinterpret_cast<const VkPhysicalDeviceImageAlignmentControlFeaturesMESA *>(pNext), copy_state, false);
                 break;
@@ -1848,6 +1860,12 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
                 break;
             case VK_STRUCTURE_TYPE_IMAGE_ALIGNMENT_CONTROL_CREATE_INFO_MESA:
                 safe_pNext = new safe_VkImageAlignmentControlCreateInfoMESA(reinterpret_cast<const VkImageAlignmentControlCreateInfoMESA *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_CLAMP_CONTROL_FEATURES_EXT:
+                safe_pNext = new safe_VkPhysicalDeviceDepthClampControlFeaturesEXT(reinterpret_cast<const VkPhysicalDeviceDepthClampControlFeaturesEXT *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_DEPTH_CLAMP_CONTROL_CREATE_INFO_EXT:
+                safe_pNext = new safe_VkPipelineViewportDepthClampControlCreateInfoEXT(reinterpret_cast<const VkPipelineViewportDepthClampControlCreateInfoEXT *>(pNext), copy_state, false);
                 break;
             case VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_ACCELERATION_STRUCTURE_KHR:
                 safe_pNext = new safe_VkWriteDescriptorSetAccelerationStructureKHR(reinterpret_cast<const VkWriteDescriptorSetAccelerationStructureKHR *>(pNext), copy_state, false);
@@ -3705,6 +3723,18 @@ void FreePnextChain(const void *pNext) {
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_VALIDATION_FEATURES_NV:
             delete reinterpret_cast<safe_VkPhysicalDeviceRayTracingValidationFeaturesNV *>(header);
             break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEVICE_GENERATED_COMMANDS_FEATURES_EXT:
+            delete reinterpret_cast<safe_VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEVICE_GENERATED_COMMANDS_PROPERTIES_EXT:
+            delete reinterpret_cast<safe_VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_GENERATED_COMMANDS_PIPELINE_INFO_EXT:
+            delete reinterpret_cast<safe_VkGeneratedCommandsPipelineInfoEXT *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_GENERATED_COMMANDS_SHADER_INFO_EXT:
+            delete reinterpret_cast<safe_VkGeneratedCommandsShaderInfoEXT *>(header);
+            break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_ALIGNMENT_CONTROL_FEATURES_MESA:
             delete reinterpret_cast<safe_VkPhysicalDeviceImageAlignmentControlFeaturesMESA *>(header);
             break;
@@ -3713,6 +3743,12 @@ void FreePnextChain(const void *pNext) {
             break;
         case VK_STRUCTURE_TYPE_IMAGE_ALIGNMENT_CONTROL_CREATE_INFO_MESA:
             delete reinterpret_cast<safe_VkImageAlignmentControlCreateInfoMESA *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_CLAMP_CONTROL_FEATURES_EXT:
+            delete reinterpret_cast<safe_VkPhysicalDeviceDepthClampControlFeaturesEXT *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_DEPTH_CLAMP_CONTROL_CREATE_INFO_EXT:
+            delete reinterpret_cast<safe_VkPipelineViewportDepthClampControlCreateInfoEXT *>(header);
             break;
         case VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_ACCELERATION_STRUCTURE_KHR:
             delete reinterpret_cast<safe_VkWriteDescriptorSetAccelerationStructureKHR *>(header);
