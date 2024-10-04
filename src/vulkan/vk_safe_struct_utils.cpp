@@ -1436,6 +1436,9 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRIMITIVE_TOPOLOGY_LIST_RESTART_FEATURES_EXT:
                 safe_pNext = new safe_VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT(reinterpret_cast<const VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT *>(pNext), copy_state, false);
                 break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_MODE_FIFO_LATEST_READY_FEATURES_EXT:
+                safe_pNext = new safe_VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT(reinterpret_cast<const VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT *>(pNext), copy_state, false);
+                break;
 #ifdef VK_USE_PLATFORM_FUCHSIA
             case VK_STRUCTURE_TYPE_IMPORT_MEMORY_ZIRCON_HANDLE_INFO_FUCHSIA:
                 safe_pNext = new safe_VkImportMemoryZirconHandleInfoFUCHSIA(reinterpret_cast<const VkImportMemoryZirconHandleInfoFUCHSIA *>(pNext), copy_state, false);
@@ -3318,6 +3321,9 @@ void FreePnextChain(const void *pNext) {
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRIMITIVE_TOPOLOGY_LIST_RESTART_FEATURES_EXT:
             delete reinterpret_cast<safe_VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_MODE_FIFO_LATEST_READY_FEATURES_EXT:
+            delete reinterpret_cast<safe_VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT *>(header);
             break;
 #ifdef VK_USE_PLATFORM_FUCHSIA
         case VK_STRUCTURE_TYPE_IMPORT_MEMORY_ZIRCON_HANDLE_INFO_FUCHSIA:

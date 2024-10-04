@@ -11455,6 +11455,59 @@ void safe_VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT::initialize(
     pNext = SafePnextCopy(copy_src->pNext);
 }
 
+safe_VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT::safe_VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT(
+    const VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
+    bool copy_pnext)
+    : sType(in_struct->sType), presentModeFifoLatestReady(in_struct->presentModeFifoLatestReady) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT::safe_VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_MODE_FIFO_LATEST_READY_FEATURES_EXT),
+      pNext(nullptr),
+      presentModeFifoLatestReady() {}
+
+safe_VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT::safe_VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT(
+    const safe_VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT& copy_src) {
+    sType = copy_src.sType;
+    presentModeFifoLatestReady = copy_src.presentModeFifoLatestReady;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT& safe_VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT::operator=(
+    const safe_VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    presentModeFifoLatestReady = copy_src.presentModeFifoLatestReady;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT::~safe_VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT::initialize(
+    const VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    presentModeFifoLatestReady = in_struct->presentModeFifoLatestReady;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT::initialize(
+    const safe_VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    presentModeFifoLatestReady = copy_src->presentModeFifoLatestReady;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
 safe_VkPipelinePropertiesIdentifierEXT::safe_VkPipelinePropertiesIdentifierEXT(const VkPipelinePropertiesIdentifierEXT* in_struct,
                                                                                [[maybe_unused]] PNextCopyState* copy_state,
                                                                                bool copy_pnext)
