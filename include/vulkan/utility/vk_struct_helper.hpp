@@ -782,6 +782,7 @@ template <> inline VkStructureType GetSType<VkDeviceAddressBindingCallbackDataEX
 template <> inline VkStructureType GetSType<VkPhysicalDeviceDepthClipControlFeaturesEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_CLIP_CONTROL_FEATURES_EXT; }
 template <> inline VkStructureType GetSType<VkPipelineViewportDepthClipControlCreateInfoEXT>() { return VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_DEPTH_CLIP_CONTROL_CREATE_INFO_EXT; }
 template <> inline VkStructureType GetSType<VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRIMITIVE_TOPOLOGY_LIST_RESTART_FEATURES_EXT; }
+template <> inline VkStructureType GetSType<VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_MODE_FIFO_LATEST_READY_FEATURES_EXT; }
 #ifdef VK_USE_PLATFORM_FUCHSIA
 template <> inline VkStructureType GetSType<VkImportMemoryZirconHandleInfoFUCHSIA>() { return VK_STRUCTURE_TYPE_IMPORT_MEMORY_ZIRCON_HANDLE_INFO_FUCHSIA; }
 template <> inline VkStructureType GetSType<VkMemoryZirconHandlePropertiesFUCHSIA>() { return VK_STRUCTURE_TYPE_MEMORY_ZIRCON_HANDLE_PROPERTIES_FUCHSIA; }

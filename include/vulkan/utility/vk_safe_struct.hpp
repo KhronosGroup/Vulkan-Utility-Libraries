@@ -14797,6 +14797,29 @@ struct safe_VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT {
         return reinterpret_cast<VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT const*>(this);
     }
 };
+struct safe_VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT {
+    VkStructureType sType;
+    void* pNext{};
+    VkBool32 presentModeFifoLatestReady;
+
+    safe_VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT(
+        const VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT* in_struct, PNextCopyState* copy_state = {},
+        bool copy_pnext = true);
+    safe_VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT(
+        const safe_VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT& copy_src);
+    safe_VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT& operator=(
+        const safe_VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT& copy_src);
+    safe_VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT();
+    ~safe_VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT();
+    void initialize(const VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT* copy_src, PNextCopyState* copy_state = {});
+    VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT* ptr() {
+        return reinterpret_cast<VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT*>(this);
+    }
+    VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT const* ptr() const {
+        return reinterpret_cast<VkPhysicalDevicePresentModeFifoLatestReadyFeaturesEXT const*>(this);
+    }
+};
 #ifdef VK_USE_PLATFORM_FUCHSIA
 struct safe_VkImportMemoryZirconHandleInfoFUCHSIA {
     VkStructureType sType;
