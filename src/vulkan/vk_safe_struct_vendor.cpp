@@ -2320,19 +2320,20 @@ void safe_VkAndroidHardwareBufferFormatProperties2ANDROID::initialize(
 
 safe_VkPhysicalDeviceShaderEnqueueFeaturesAMDX::safe_VkPhysicalDeviceShaderEnqueueFeaturesAMDX(
     const VkPhysicalDeviceShaderEnqueueFeaturesAMDX* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
-    : sType(in_struct->sType), shaderEnqueue(in_struct->shaderEnqueue) {
+    : sType(in_struct->sType), shaderEnqueue(in_struct->shaderEnqueue), shaderMeshEnqueue(in_struct->shaderMeshEnqueue) {
     if (copy_pnext) {
         pNext = SafePnextCopy(in_struct->pNext, copy_state);
     }
 }
 
 safe_VkPhysicalDeviceShaderEnqueueFeaturesAMDX::safe_VkPhysicalDeviceShaderEnqueueFeaturesAMDX()
-    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ENQUEUE_FEATURES_AMDX), pNext(nullptr), shaderEnqueue() {}
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ENQUEUE_FEATURES_AMDX), pNext(nullptr), shaderEnqueue(), shaderMeshEnqueue() {}
 
 safe_VkPhysicalDeviceShaderEnqueueFeaturesAMDX::safe_VkPhysicalDeviceShaderEnqueueFeaturesAMDX(
     const safe_VkPhysicalDeviceShaderEnqueueFeaturesAMDX& copy_src) {
     sType = copy_src.sType;
     shaderEnqueue = copy_src.shaderEnqueue;
+    shaderMeshEnqueue = copy_src.shaderMeshEnqueue;
     pNext = SafePnextCopy(copy_src.pNext);
 }
 
@@ -2344,6 +2345,7 @@ safe_VkPhysicalDeviceShaderEnqueueFeaturesAMDX& safe_VkPhysicalDeviceShaderEnque
 
     sType = copy_src.sType;
     shaderEnqueue = copy_src.shaderEnqueue;
+    shaderMeshEnqueue = copy_src.shaderMeshEnqueue;
     pNext = SafePnextCopy(copy_src.pNext);
 
     return *this;
@@ -2356,6 +2358,7 @@ void safe_VkPhysicalDeviceShaderEnqueueFeaturesAMDX::initialize(const VkPhysical
     FreePnextChain(pNext);
     sType = in_struct->sType;
     shaderEnqueue = in_struct->shaderEnqueue;
+    shaderMeshEnqueue = in_struct->shaderMeshEnqueue;
     pNext = SafePnextCopy(in_struct->pNext, copy_state);
 }
 
@@ -2363,6 +2366,7 @@ void safe_VkPhysicalDeviceShaderEnqueueFeaturesAMDX::initialize(const safe_VkPhy
                                                                 [[maybe_unused]] PNextCopyState* copy_state) {
     sType = copy_src->sType;
     shaderEnqueue = copy_src->shaderEnqueue;
+    shaderMeshEnqueue = copy_src->shaderMeshEnqueue;
     pNext = SafePnextCopy(copy_src->pNext);
 }
 
@@ -2373,9 +2377,13 @@ safe_VkPhysicalDeviceShaderEnqueuePropertiesAMDX::safe_VkPhysicalDeviceShaderEnq
       maxExecutionGraphShaderOutputNodes(in_struct->maxExecutionGraphShaderOutputNodes),
       maxExecutionGraphShaderPayloadSize(in_struct->maxExecutionGraphShaderPayloadSize),
       maxExecutionGraphShaderPayloadCount(in_struct->maxExecutionGraphShaderPayloadCount),
-      executionGraphDispatchAddressAlignment(in_struct->executionGraphDispatchAddressAlignment) {
+      executionGraphDispatchAddressAlignment(in_struct->executionGraphDispatchAddressAlignment),
+      maxExecutionGraphWorkgroups(in_struct->maxExecutionGraphWorkgroups) {
     if (copy_pnext) {
         pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+    for (uint32_t i = 0; i < 3; ++i) {
+        maxExecutionGraphWorkgroupCount[i] = in_struct->maxExecutionGraphWorkgroupCount[i];
     }
 }
 
@@ -2386,7 +2394,8 @@ safe_VkPhysicalDeviceShaderEnqueuePropertiesAMDX::safe_VkPhysicalDeviceShaderEnq
       maxExecutionGraphShaderOutputNodes(),
       maxExecutionGraphShaderPayloadSize(),
       maxExecutionGraphShaderPayloadCount(),
-      executionGraphDispatchAddressAlignment() {}
+      executionGraphDispatchAddressAlignment(),
+      maxExecutionGraphWorkgroups() {}
 
 safe_VkPhysicalDeviceShaderEnqueuePropertiesAMDX::safe_VkPhysicalDeviceShaderEnqueuePropertiesAMDX(
     const safe_VkPhysicalDeviceShaderEnqueuePropertiesAMDX& copy_src) {
@@ -2396,7 +2405,12 @@ safe_VkPhysicalDeviceShaderEnqueuePropertiesAMDX::safe_VkPhysicalDeviceShaderEnq
     maxExecutionGraphShaderPayloadSize = copy_src.maxExecutionGraphShaderPayloadSize;
     maxExecutionGraphShaderPayloadCount = copy_src.maxExecutionGraphShaderPayloadCount;
     executionGraphDispatchAddressAlignment = copy_src.executionGraphDispatchAddressAlignment;
+    maxExecutionGraphWorkgroups = copy_src.maxExecutionGraphWorkgroups;
     pNext = SafePnextCopy(copy_src.pNext);
+
+    for (uint32_t i = 0; i < 3; ++i) {
+        maxExecutionGraphWorkgroupCount[i] = copy_src.maxExecutionGraphWorkgroupCount[i];
+    }
 }
 
 safe_VkPhysicalDeviceShaderEnqueuePropertiesAMDX& safe_VkPhysicalDeviceShaderEnqueuePropertiesAMDX::operator=(
@@ -2411,7 +2425,12 @@ safe_VkPhysicalDeviceShaderEnqueuePropertiesAMDX& safe_VkPhysicalDeviceShaderEnq
     maxExecutionGraphShaderPayloadSize = copy_src.maxExecutionGraphShaderPayloadSize;
     maxExecutionGraphShaderPayloadCount = copy_src.maxExecutionGraphShaderPayloadCount;
     executionGraphDispatchAddressAlignment = copy_src.executionGraphDispatchAddressAlignment;
+    maxExecutionGraphWorkgroups = copy_src.maxExecutionGraphWorkgroups;
     pNext = SafePnextCopy(copy_src.pNext);
+
+    for (uint32_t i = 0; i < 3; ++i) {
+        maxExecutionGraphWorkgroupCount[i] = copy_src.maxExecutionGraphWorkgroupCount[i];
+    }
 
     return *this;
 }
@@ -2427,7 +2446,12 @@ void safe_VkPhysicalDeviceShaderEnqueuePropertiesAMDX::initialize(const VkPhysic
     maxExecutionGraphShaderPayloadSize = in_struct->maxExecutionGraphShaderPayloadSize;
     maxExecutionGraphShaderPayloadCount = in_struct->maxExecutionGraphShaderPayloadCount;
     executionGraphDispatchAddressAlignment = in_struct->executionGraphDispatchAddressAlignment;
+    maxExecutionGraphWorkgroups = in_struct->maxExecutionGraphWorkgroups;
     pNext = SafePnextCopy(in_struct->pNext, copy_state);
+
+    for (uint32_t i = 0; i < 3; ++i) {
+        maxExecutionGraphWorkgroupCount[i] = in_struct->maxExecutionGraphWorkgroupCount[i];
+    }
 }
 
 void safe_VkPhysicalDeviceShaderEnqueuePropertiesAMDX::initialize(const safe_VkPhysicalDeviceShaderEnqueuePropertiesAMDX* copy_src,
@@ -2438,24 +2462,38 @@ void safe_VkPhysicalDeviceShaderEnqueuePropertiesAMDX::initialize(const safe_VkP
     maxExecutionGraphShaderPayloadSize = copy_src->maxExecutionGraphShaderPayloadSize;
     maxExecutionGraphShaderPayloadCount = copy_src->maxExecutionGraphShaderPayloadCount;
     executionGraphDispatchAddressAlignment = copy_src->executionGraphDispatchAddressAlignment;
+    maxExecutionGraphWorkgroups = copy_src->maxExecutionGraphWorkgroups;
     pNext = SafePnextCopy(copy_src->pNext);
+
+    for (uint32_t i = 0; i < 3; ++i) {
+        maxExecutionGraphWorkgroupCount[i] = copy_src->maxExecutionGraphWorkgroupCount[i];
+    }
 }
 
 safe_VkExecutionGraphPipelineScratchSizeAMDX::safe_VkExecutionGraphPipelineScratchSizeAMDX(
     const VkExecutionGraphPipelineScratchSizeAMDX* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
-    : sType(in_struct->sType), size(in_struct->size) {
+    : sType(in_struct->sType),
+      minSize(in_struct->minSize),
+      maxSize(in_struct->maxSize),
+      sizeGranularity(in_struct->sizeGranularity) {
     if (copy_pnext) {
         pNext = SafePnextCopy(in_struct->pNext, copy_state);
     }
 }
 
 safe_VkExecutionGraphPipelineScratchSizeAMDX::safe_VkExecutionGraphPipelineScratchSizeAMDX()
-    : sType(VK_STRUCTURE_TYPE_EXECUTION_GRAPH_PIPELINE_SCRATCH_SIZE_AMDX), pNext(nullptr), size() {}
+    : sType(VK_STRUCTURE_TYPE_EXECUTION_GRAPH_PIPELINE_SCRATCH_SIZE_AMDX),
+      pNext(nullptr),
+      minSize(),
+      maxSize(),
+      sizeGranularity() {}
 
 safe_VkExecutionGraphPipelineScratchSizeAMDX::safe_VkExecutionGraphPipelineScratchSizeAMDX(
     const safe_VkExecutionGraphPipelineScratchSizeAMDX& copy_src) {
     sType = copy_src.sType;
-    size = copy_src.size;
+    minSize = copy_src.minSize;
+    maxSize = copy_src.maxSize;
+    sizeGranularity = copy_src.sizeGranularity;
     pNext = SafePnextCopy(copy_src.pNext);
 }
 
@@ -2466,7 +2504,9 @@ safe_VkExecutionGraphPipelineScratchSizeAMDX& safe_VkExecutionGraphPipelineScrat
     FreePnextChain(pNext);
 
     sType = copy_src.sType;
-    size = copy_src.size;
+    minSize = copy_src.minSize;
+    maxSize = copy_src.maxSize;
+    sizeGranularity = copy_src.sizeGranularity;
     pNext = SafePnextCopy(copy_src.pNext);
 
     return *this;
@@ -2478,14 +2518,18 @@ void safe_VkExecutionGraphPipelineScratchSizeAMDX::initialize(const VkExecutionG
                                                               [[maybe_unused]] PNextCopyState* copy_state) {
     FreePnextChain(pNext);
     sType = in_struct->sType;
-    size = in_struct->size;
+    minSize = in_struct->minSize;
+    maxSize = in_struct->maxSize;
+    sizeGranularity = in_struct->sizeGranularity;
     pNext = SafePnextCopy(in_struct->pNext, copy_state);
 }
 
 void safe_VkExecutionGraphPipelineScratchSizeAMDX::initialize(const safe_VkExecutionGraphPipelineScratchSizeAMDX* copy_src,
                                                               [[maybe_unused]] PNextCopyState* copy_state) {
     sType = copy_src->sType;
-    size = copy_src->size;
+    minSize = copy_src->minSize;
+    maxSize = copy_src->maxSize;
+    sizeGranularity = copy_src->sizeGranularity;
     pNext = SafePnextCopy(copy_src->pNext);
 }
 

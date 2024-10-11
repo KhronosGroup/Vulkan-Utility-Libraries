@@ -10168,6 +10168,7 @@ struct safe_VkPhysicalDeviceShaderEnqueueFeaturesAMDX {
     VkStructureType sType;
     void* pNext{};
     VkBool32 shaderEnqueue;
+    VkBool32 shaderMeshEnqueue;
 
     safe_VkPhysicalDeviceShaderEnqueueFeaturesAMDX(const VkPhysicalDeviceShaderEnqueueFeaturesAMDX* in_struct,
                                                    PNextCopyState* copy_state = {}, bool copy_pnext = true);
@@ -10190,6 +10191,8 @@ struct safe_VkPhysicalDeviceShaderEnqueuePropertiesAMDX {
     uint32_t maxExecutionGraphShaderPayloadSize;
     uint32_t maxExecutionGraphShaderPayloadCount;
     uint32_t executionGraphDispatchAddressAlignment;
+    uint32_t maxExecutionGraphWorkgroupCount[3];
+    uint32_t maxExecutionGraphWorkgroups;
 
     safe_VkPhysicalDeviceShaderEnqueuePropertiesAMDX(const VkPhysicalDeviceShaderEnqueuePropertiesAMDX* in_struct,
                                                      PNextCopyState* copy_state = {}, bool copy_pnext = true);
@@ -10209,7 +10212,9 @@ struct safe_VkPhysicalDeviceShaderEnqueuePropertiesAMDX {
 struct safe_VkExecutionGraphPipelineScratchSizeAMDX {
     VkStructureType sType;
     void* pNext{};
-    VkDeviceSize size;
+    VkDeviceSize minSize;
+    VkDeviceSize maxSize;
+    VkDeviceSize sizeGranularity;
 
     safe_VkExecutionGraphPipelineScratchSizeAMDX(const VkExecutionGraphPipelineScratchSizeAMDX* in_struct,
                                                  PNextCopyState* copy_state = {}, bool copy_pnext = true);
@@ -18485,7 +18490,7 @@ struct safe_VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT {
 };
 struct safe_VkGeneratedCommandsMemoryRequirementsInfoEXT {
     VkStructureType sType;
-    void* pNext{};
+    const void* pNext{};
     VkIndirectExecutionSetEXT indirectExecutionSet;
     VkIndirectCommandsLayoutEXT indirectCommandsLayout;
     uint32_t maxSequenceCount;
