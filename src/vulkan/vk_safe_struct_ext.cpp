@@ -21,60 +21,6 @@
 
 namespace vku {
 
-safe_VkRenderingFragmentDensityMapAttachmentInfoEXT::safe_VkRenderingFragmentDensityMapAttachmentInfoEXT(
-    const VkRenderingFragmentDensityMapAttachmentInfoEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
-    : sType(in_struct->sType), imageView(in_struct->imageView), imageLayout(in_struct->imageLayout) {
-    if (copy_pnext) {
-        pNext = SafePnextCopy(in_struct->pNext, copy_state);
-    }
-}
-
-safe_VkRenderingFragmentDensityMapAttachmentInfoEXT::safe_VkRenderingFragmentDensityMapAttachmentInfoEXT()
-    : sType(VK_STRUCTURE_TYPE_RENDERING_FRAGMENT_DENSITY_MAP_ATTACHMENT_INFO_EXT), pNext(nullptr), imageView(), imageLayout() {}
-
-safe_VkRenderingFragmentDensityMapAttachmentInfoEXT::safe_VkRenderingFragmentDensityMapAttachmentInfoEXT(
-    const safe_VkRenderingFragmentDensityMapAttachmentInfoEXT& copy_src) {
-    sType = copy_src.sType;
-    imageView = copy_src.imageView;
-    imageLayout = copy_src.imageLayout;
-    pNext = SafePnextCopy(copy_src.pNext);
-}
-
-safe_VkRenderingFragmentDensityMapAttachmentInfoEXT& safe_VkRenderingFragmentDensityMapAttachmentInfoEXT::operator=(
-    const safe_VkRenderingFragmentDensityMapAttachmentInfoEXT& copy_src) {
-    if (&copy_src == this) return *this;
-
-    FreePnextChain(pNext);
-
-    sType = copy_src.sType;
-    imageView = copy_src.imageView;
-    imageLayout = copy_src.imageLayout;
-    pNext = SafePnextCopy(copy_src.pNext);
-
-    return *this;
-}
-
-safe_VkRenderingFragmentDensityMapAttachmentInfoEXT::~safe_VkRenderingFragmentDensityMapAttachmentInfoEXT() {
-    FreePnextChain(pNext);
-}
-
-void safe_VkRenderingFragmentDensityMapAttachmentInfoEXT::initialize(
-    const VkRenderingFragmentDensityMapAttachmentInfoEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
-    FreePnextChain(pNext);
-    sType = in_struct->sType;
-    imageView = in_struct->imageView;
-    imageLayout = in_struct->imageLayout;
-    pNext = SafePnextCopy(in_struct->pNext, copy_state);
-}
-
-void safe_VkRenderingFragmentDensityMapAttachmentInfoEXT::initialize(
-    const safe_VkRenderingFragmentDensityMapAttachmentInfoEXT* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
-    sType = copy_src->sType;
-    imageView = copy_src->imageView;
-    imageLayout = copy_src->imageLayout;
-    pNext = SafePnextCopy(copy_src->pNext);
-}
-
 safe_VkSetDescriptorBufferOffsetsInfoEXT::safe_VkSetDescriptorBufferOffsetsInfoEXT(
     const VkSetDescriptorBufferOffsetsInfoEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
     : sType(in_struct->sType),
@@ -4469,6 +4415,60 @@ void safe_VkRenderPassFragmentDensityMapCreateInfoEXT::initialize(const safe_VkR
                                                                   [[maybe_unused]] PNextCopyState* copy_state) {
     sType = copy_src->sType;
     fragmentDensityMapAttachment = copy_src->fragmentDensityMapAttachment;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkRenderingFragmentDensityMapAttachmentInfoEXT::safe_VkRenderingFragmentDensityMapAttachmentInfoEXT(
+    const VkRenderingFragmentDensityMapAttachmentInfoEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), imageView(in_struct->imageView), imageLayout(in_struct->imageLayout) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkRenderingFragmentDensityMapAttachmentInfoEXT::safe_VkRenderingFragmentDensityMapAttachmentInfoEXT()
+    : sType(VK_STRUCTURE_TYPE_RENDERING_FRAGMENT_DENSITY_MAP_ATTACHMENT_INFO_EXT), pNext(nullptr), imageView(), imageLayout() {}
+
+safe_VkRenderingFragmentDensityMapAttachmentInfoEXT::safe_VkRenderingFragmentDensityMapAttachmentInfoEXT(
+    const safe_VkRenderingFragmentDensityMapAttachmentInfoEXT& copy_src) {
+    sType = copy_src.sType;
+    imageView = copy_src.imageView;
+    imageLayout = copy_src.imageLayout;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkRenderingFragmentDensityMapAttachmentInfoEXT& safe_VkRenderingFragmentDensityMapAttachmentInfoEXT::operator=(
+    const safe_VkRenderingFragmentDensityMapAttachmentInfoEXT& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    imageView = copy_src.imageView;
+    imageLayout = copy_src.imageLayout;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkRenderingFragmentDensityMapAttachmentInfoEXT::~safe_VkRenderingFragmentDensityMapAttachmentInfoEXT() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkRenderingFragmentDensityMapAttachmentInfoEXT::initialize(
+    const VkRenderingFragmentDensityMapAttachmentInfoEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    imageView = in_struct->imageView;
+    imageLayout = in_struct->imageLayout;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkRenderingFragmentDensityMapAttachmentInfoEXT::initialize(
+    const safe_VkRenderingFragmentDensityMapAttachmentInfoEXT* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    imageView = copy_src->imageView;
+    imageLayout = copy_src->imageLayout;
     pNext = SafePnextCopy(copy_src->pNext);
 }
 

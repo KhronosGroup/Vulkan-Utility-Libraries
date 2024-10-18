@@ -21,256 +21,6 @@
 
 namespace vku {
 
-safe_VkAttachmentSampleCountInfoAMD::safe_VkAttachmentSampleCountInfoAMD(const VkAttachmentSampleCountInfoAMD* in_struct,
-                                                                         [[maybe_unused]] PNextCopyState* copy_state,
-                                                                         bool copy_pnext)
-    : sType(in_struct->sType),
-      colorAttachmentCount(in_struct->colorAttachmentCount),
-      pColorAttachmentSamples(nullptr),
-      depthStencilAttachmentSamples(in_struct->depthStencilAttachmentSamples) {
-    if (copy_pnext) {
-        pNext = SafePnextCopy(in_struct->pNext, copy_state);
-    }
-    if (in_struct->pColorAttachmentSamples) {
-        pColorAttachmentSamples = new VkSampleCountFlagBits[in_struct->colorAttachmentCount];
-        memcpy((void*)pColorAttachmentSamples, (void*)in_struct->pColorAttachmentSamples,
-               sizeof(VkSampleCountFlagBits) * in_struct->colorAttachmentCount);
-    }
-}
-
-safe_VkAttachmentSampleCountInfoAMD::safe_VkAttachmentSampleCountInfoAMD()
-    : sType(VK_STRUCTURE_TYPE_ATTACHMENT_SAMPLE_COUNT_INFO_AMD),
-      pNext(nullptr),
-      colorAttachmentCount(),
-      pColorAttachmentSamples(nullptr),
-      depthStencilAttachmentSamples() {}
-
-safe_VkAttachmentSampleCountInfoAMD::safe_VkAttachmentSampleCountInfoAMD(const safe_VkAttachmentSampleCountInfoAMD& copy_src) {
-    sType = copy_src.sType;
-    colorAttachmentCount = copy_src.colorAttachmentCount;
-    pColorAttachmentSamples = nullptr;
-    depthStencilAttachmentSamples = copy_src.depthStencilAttachmentSamples;
-    pNext = SafePnextCopy(copy_src.pNext);
-
-    if (copy_src.pColorAttachmentSamples) {
-        pColorAttachmentSamples = new VkSampleCountFlagBits[copy_src.colorAttachmentCount];
-        memcpy((void*)pColorAttachmentSamples, (void*)copy_src.pColorAttachmentSamples,
-               sizeof(VkSampleCountFlagBits) * copy_src.colorAttachmentCount);
-    }
-}
-
-safe_VkAttachmentSampleCountInfoAMD& safe_VkAttachmentSampleCountInfoAMD::operator=(
-    const safe_VkAttachmentSampleCountInfoAMD& copy_src) {
-    if (&copy_src == this) return *this;
-
-    if (pColorAttachmentSamples) delete[] pColorAttachmentSamples;
-    FreePnextChain(pNext);
-
-    sType = copy_src.sType;
-    colorAttachmentCount = copy_src.colorAttachmentCount;
-    pColorAttachmentSamples = nullptr;
-    depthStencilAttachmentSamples = copy_src.depthStencilAttachmentSamples;
-    pNext = SafePnextCopy(copy_src.pNext);
-
-    if (copy_src.pColorAttachmentSamples) {
-        pColorAttachmentSamples = new VkSampleCountFlagBits[copy_src.colorAttachmentCount];
-        memcpy((void*)pColorAttachmentSamples, (void*)copy_src.pColorAttachmentSamples,
-               sizeof(VkSampleCountFlagBits) * copy_src.colorAttachmentCount);
-    }
-
-    return *this;
-}
-
-safe_VkAttachmentSampleCountInfoAMD::~safe_VkAttachmentSampleCountInfoAMD() {
-    if (pColorAttachmentSamples) delete[] pColorAttachmentSamples;
-    FreePnextChain(pNext);
-}
-
-void safe_VkAttachmentSampleCountInfoAMD::initialize(const VkAttachmentSampleCountInfoAMD* in_struct,
-                                                     [[maybe_unused]] PNextCopyState* copy_state) {
-    if (pColorAttachmentSamples) delete[] pColorAttachmentSamples;
-    FreePnextChain(pNext);
-    sType = in_struct->sType;
-    colorAttachmentCount = in_struct->colorAttachmentCount;
-    pColorAttachmentSamples = nullptr;
-    depthStencilAttachmentSamples = in_struct->depthStencilAttachmentSamples;
-    pNext = SafePnextCopy(in_struct->pNext, copy_state);
-
-    if (in_struct->pColorAttachmentSamples) {
-        pColorAttachmentSamples = new VkSampleCountFlagBits[in_struct->colorAttachmentCount];
-        memcpy((void*)pColorAttachmentSamples, (void*)in_struct->pColorAttachmentSamples,
-               sizeof(VkSampleCountFlagBits) * in_struct->colorAttachmentCount);
-    }
-}
-
-void safe_VkAttachmentSampleCountInfoAMD::initialize(const safe_VkAttachmentSampleCountInfoAMD* copy_src,
-                                                     [[maybe_unused]] PNextCopyState* copy_state) {
-    sType = copy_src->sType;
-    colorAttachmentCount = copy_src->colorAttachmentCount;
-    pColorAttachmentSamples = nullptr;
-    depthStencilAttachmentSamples = copy_src->depthStencilAttachmentSamples;
-    pNext = SafePnextCopy(copy_src->pNext);
-
-    if (copy_src->pColorAttachmentSamples) {
-        pColorAttachmentSamples = new VkSampleCountFlagBits[copy_src->colorAttachmentCount];
-        memcpy((void*)pColorAttachmentSamples, (void*)copy_src->pColorAttachmentSamples,
-               sizeof(VkSampleCountFlagBits) * copy_src->colorAttachmentCount);
-    }
-}
-
-safe_VkMultiviewPerViewAttributesInfoNVX::safe_VkMultiviewPerViewAttributesInfoNVX(
-    const VkMultiviewPerViewAttributesInfoNVX* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
-    : sType(in_struct->sType),
-      perViewAttributes(in_struct->perViewAttributes),
-      perViewAttributesPositionXOnly(in_struct->perViewAttributesPositionXOnly) {
-    if (copy_pnext) {
-        pNext = SafePnextCopy(in_struct->pNext, copy_state);
-    }
-}
-
-safe_VkMultiviewPerViewAttributesInfoNVX::safe_VkMultiviewPerViewAttributesInfoNVX()
-    : sType(VK_STRUCTURE_TYPE_MULTIVIEW_PER_VIEW_ATTRIBUTES_INFO_NVX),
-      pNext(nullptr),
-      perViewAttributes(),
-      perViewAttributesPositionXOnly() {}
-
-safe_VkMultiviewPerViewAttributesInfoNVX::safe_VkMultiviewPerViewAttributesInfoNVX(
-    const safe_VkMultiviewPerViewAttributesInfoNVX& copy_src) {
-    sType = copy_src.sType;
-    perViewAttributes = copy_src.perViewAttributes;
-    perViewAttributesPositionXOnly = copy_src.perViewAttributesPositionXOnly;
-    pNext = SafePnextCopy(copy_src.pNext);
-}
-
-safe_VkMultiviewPerViewAttributesInfoNVX& safe_VkMultiviewPerViewAttributesInfoNVX::operator=(
-    const safe_VkMultiviewPerViewAttributesInfoNVX& copy_src) {
-    if (&copy_src == this) return *this;
-
-    FreePnextChain(pNext);
-
-    sType = copy_src.sType;
-    perViewAttributes = copy_src.perViewAttributes;
-    perViewAttributesPositionXOnly = copy_src.perViewAttributesPositionXOnly;
-    pNext = SafePnextCopy(copy_src.pNext);
-
-    return *this;
-}
-
-safe_VkMultiviewPerViewAttributesInfoNVX::~safe_VkMultiviewPerViewAttributesInfoNVX() { FreePnextChain(pNext); }
-
-void safe_VkMultiviewPerViewAttributesInfoNVX::initialize(const VkMultiviewPerViewAttributesInfoNVX* in_struct,
-                                                          [[maybe_unused]] PNextCopyState* copy_state) {
-    FreePnextChain(pNext);
-    sType = in_struct->sType;
-    perViewAttributes = in_struct->perViewAttributes;
-    perViewAttributesPositionXOnly = in_struct->perViewAttributesPositionXOnly;
-    pNext = SafePnextCopy(in_struct->pNext, copy_state);
-}
-
-void safe_VkMultiviewPerViewAttributesInfoNVX::initialize(const safe_VkMultiviewPerViewAttributesInfoNVX* copy_src,
-                                                          [[maybe_unused]] PNextCopyState* copy_state) {
-    sType = copy_src->sType;
-    perViewAttributes = copy_src->perViewAttributes;
-    perViewAttributesPositionXOnly = copy_src->perViewAttributesPositionXOnly;
-    pNext = SafePnextCopy(copy_src->pNext);
-}
-
-safe_VkQueueFamilyCheckpointProperties2NV::safe_VkQueueFamilyCheckpointProperties2NV(
-    const VkQueueFamilyCheckpointProperties2NV* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
-    : sType(in_struct->sType), checkpointExecutionStageMask(in_struct->checkpointExecutionStageMask) {
-    if (copy_pnext) {
-        pNext = SafePnextCopy(in_struct->pNext, copy_state);
-    }
-}
-
-safe_VkQueueFamilyCheckpointProperties2NV::safe_VkQueueFamilyCheckpointProperties2NV()
-    : sType(VK_STRUCTURE_TYPE_QUEUE_FAMILY_CHECKPOINT_PROPERTIES_2_NV), pNext(nullptr), checkpointExecutionStageMask() {}
-
-safe_VkQueueFamilyCheckpointProperties2NV::safe_VkQueueFamilyCheckpointProperties2NV(
-    const safe_VkQueueFamilyCheckpointProperties2NV& copy_src) {
-    sType = copy_src.sType;
-    checkpointExecutionStageMask = copy_src.checkpointExecutionStageMask;
-    pNext = SafePnextCopy(copy_src.pNext);
-}
-
-safe_VkQueueFamilyCheckpointProperties2NV& safe_VkQueueFamilyCheckpointProperties2NV::operator=(
-    const safe_VkQueueFamilyCheckpointProperties2NV& copy_src) {
-    if (&copy_src == this) return *this;
-
-    FreePnextChain(pNext);
-
-    sType = copy_src.sType;
-    checkpointExecutionStageMask = copy_src.checkpointExecutionStageMask;
-    pNext = SafePnextCopy(copy_src.pNext);
-
-    return *this;
-}
-
-safe_VkQueueFamilyCheckpointProperties2NV::~safe_VkQueueFamilyCheckpointProperties2NV() { FreePnextChain(pNext); }
-
-void safe_VkQueueFamilyCheckpointProperties2NV::initialize(const VkQueueFamilyCheckpointProperties2NV* in_struct,
-                                                           [[maybe_unused]] PNextCopyState* copy_state) {
-    FreePnextChain(pNext);
-    sType = in_struct->sType;
-    checkpointExecutionStageMask = in_struct->checkpointExecutionStageMask;
-    pNext = SafePnextCopy(in_struct->pNext, copy_state);
-}
-
-void safe_VkQueueFamilyCheckpointProperties2NV::initialize(const safe_VkQueueFamilyCheckpointProperties2NV* copy_src,
-                                                           [[maybe_unused]] PNextCopyState* copy_state) {
-    sType = copy_src->sType;
-    checkpointExecutionStageMask = copy_src->checkpointExecutionStageMask;
-    pNext = SafePnextCopy(copy_src->pNext);
-}
-
-safe_VkCheckpointData2NV::safe_VkCheckpointData2NV(const VkCheckpointData2NV* in_struct,
-                                                   [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
-    : sType(in_struct->sType), stage(in_struct->stage), pCheckpointMarker(in_struct->pCheckpointMarker) {
-    if (copy_pnext) {
-        pNext = SafePnextCopy(in_struct->pNext, copy_state);
-    }
-}
-
-safe_VkCheckpointData2NV::safe_VkCheckpointData2NV()
-    : sType(VK_STRUCTURE_TYPE_CHECKPOINT_DATA_2_NV), pNext(nullptr), stage(), pCheckpointMarker(nullptr) {}
-
-safe_VkCheckpointData2NV::safe_VkCheckpointData2NV(const safe_VkCheckpointData2NV& copy_src) {
-    sType = copy_src.sType;
-    stage = copy_src.stage;
-    pCheckpointMarker = copy_src.pCheckpointMarker;
-    pNext = SafePnextCopy(copy_src.pNext);
-}
-
-safe_VkCheckpointData2NV& safe_VkCheckpointData2NV::operator=(const safe_VkCheckpointData2NV& copy_src) {
-    if (&copy_src == this) return *this;
-
-    FreePnextChain(pNext);
-
-    sType = copy_src.sType;
-    stage = copy_src.stage;
-    pCheckpointMarker = copy_src.pCheckpointMarker;
-    pNext = SafePnextCopy(copy_src.pNext);
-
-    return *this;
-}
-
-safe_VkCheckpointData2NV::~safe_VkCheckpointData2NV() { FreePnextChain(pNext); }
-
-void safe_VkCheckpointData2NV::initialize(const VkCheckpointData2NV* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
-    FreePnextChain(pNext);
-    sType = in_struct->sType;
-    stage = in_struct->stage;
-    pCheckpointMarker = in_struct->pCheckpointMarker;
-    pNext = SafePnextCopy(in_struct->pNext, copy_state);
-}
-
-void safe_VkCheckpointData2NV::initialize(const safe_VkCheckpointData2NV* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
-    sType = copy_src->sType;
-    stage = copy_src->stage;
-    pCheckpointMarker = copy_src->pCheckpointMarker;
-    pNext = SafePnextCopy(copy_src->pNext);
-}
-
 safe_VkPipelineRasterizationStateRasterizationOrderAMD::safe_VkPipelineRasterizationStateRasterizationOrderAMD(
     const VkPipelineRasterizationStateRasterizationOrderAMD* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
     bool copy_pnext)
@@ -1738,6 +1488,63 @@ void safe_VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX::initialize(
     pNext = SafePnextCopy(copy_src->pNext);
 }
 
+safe_VkMultiviewPerViewAttributesInfoNVX::safe_VkMultiviewPerViewAttributesInfoNVX(
+    const VkMultiviewPerViewAttributesInfoNVX* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType),
+      perViewAttributes(in_struct->perViewAttributes),
+      perViewAttributesPositionXOnly(in_struct->perViewAttributesPositionXOnly) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkMultiviewPerViewAttributesInfoNVX::safe_VkMultiviewPerViewAttributesInfoNVX()
+    : sType(VK_STRUCTURE_TYPE_MULTIVIEW_PER_VIEW_ATTRIBUTES_INFO_NVX),
+      pNext(nullptr),
+      perViewAttributes(),
+      perViewAttributesPositionXOnly() {}
+
+safe_VkMultiviewPerViewAttributesInfoNVX::safe_VkMultiviewPerViewAttributesInfoNVX(
+    const safe_VkMultiviewPerViewAttributesInfoNVX& copy_src) {
+    sType = copy_src.sType;
+    perViewAttributes = copy_src.perViewAttributes;
+    perViewAttributesPositionXOnly = copy_src.perViewAttributesPositionXOnly;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkMultiviewPerViewAttributesInfoNVX& safe_VkMultiviewPerViewAttributesInfoNVX::operator=(
+    const safe_VkMultiviewPerViewAttributesInfoNVX& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    perViewAttributes = copy_src.perViewAttributes;
+    perViewAttributesPositionXOnly = copy_src.perViewAttributesPositionXOnly;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkMultiviewPerViewAttributesInfoNVX::~safe_VkMultiviewPerViewAttributesInfoNVX() { FreePnextChain(pNext); }
+
+void safe_VkMultiviewPerViewAttributesInfoNVX::initialize(const VkMultiviewPerViewAttributesInfoNVX* in_struct,
+                                                          [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    perViewAttributes = in_struct->perViewAttributes;
+    perViewAttributesPositionXOnly = in_struct->perViewAttributesPositionXOnly;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkMultiviewPerViewAttributesInfoNVX::initialize(const safe_VkMultiviewPerViewAttributesInfoNVX* copy_src,
+                                                          [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    perViewAttributes = copy_src->perViewAttributes;
+    perViewAttributesPositionXOnly = copy_src->perViewAttributesPositionXOnly;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
 safe_VkPipelineViewportSwizzleStateCreateInfoNV::safe_VkPipelineViewportSwizzleStateCreateInfoNV(
     const VkPipelineViewportSwizzleStateCreateInfoNV* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
     : sType(in_struct->sType), flags(in_struct->flags), viewportCount(in_struct->viewportCount), pViewportSwizzles(nullptr) {
@@ -2757,6 +2564,103 @@ void safe_VkPipelineShaderStageNodeCreateInfoAMDX::initialize(const safe_VkPipel
     pName = SafeStringCopy(copy_src->pName);
 }
 #endif  // VK_ENABLE_BETA_EXTENSIONS
+
+safe_VkAttachmentSampleCountInfoAMD::safe_VkAttachmentSampleCountInfoAMD(const VkAttachmentSampleCountInfoAMD* in_struct,
+                                                                         [[maybe_unused]] PNextCopyState* copy_state,
+                                                                         bool copy_pnext)
+    : sType(in_struct->sType),
+      colorAttachmentCount(in_struct->colorAttachmentCount),
+      pColorAttachmentSamples(nullptr),
+      depthStencilAttachmentSamples(in_struct->depthStencilAttachmentSamples) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+    if (in_struct->pColorAttachmentSamples) {
+        pColorAttachmentSamples = new VkSampleCountFlagBits[in_struct->colorAttachmentCount];
+        memcpy((void*)pColorAttachmentSamples, (void*)in_struct->pColorAttachmentSamples,
+               sizeof(VkSampleCountFlagBits) * in_struct->colorAttachmentCount);
+    }
+}
+
+safe_VkAttachmentSampleCountInfoAMD::safe_VkAttachmentSampleCountInfoAMD()
+    : sType(VK_STRUCTURE_TYPE_ATTACHMENT_SAMPLE_COUNT_INFO_AMD),
+      pNext(nullptr),
+      colorAttachmentCount(),
+      pColorAttachmentSamples(nullptr),
+      depthStencilAttachmentSamples() {}
+
+safe_VkAttachmentSampleCountInfoAMD::safe_VkAttachmentSampleCountInfoAMD(const safe_VkAttachmentSampleCountInfoAMD& copy_src) {
+    sType = copy_src.sType;
+    colorAttachmentCount = copy_src.colorAttachmentCount;
+    pColorAttachmentSamples = nullptr;
+    depthStencilAttachmentSamples = copy_src.depthStencilAttachmentSamples;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    if (copy_src.pColorAttachmentSamples) {
+        pColorAttachmentSamples = new VkSampleCountFlagBits[copy_src.colorAttachmentCount];
+        memcpy((void*)pColorAttachmentSamples, (void*)copy_src.pColorAttachmentSamples,
+               sizeof(VkSampleCountFlagBits) * copy_src.colorAttachmentCount);
+    }
+}
+
+safe_VkAttachmentSampleCountInfoAMD& safe_VkAttachmentSampleCountInfoAMD::operator=(
+    const safe_VkAttachmentSampleCountInfoAMD& copy_src) {
+    if (&copy_src == this) return *this;
+
+    if (pColorAttachmentSamples) delete[] pColorAttachmentSamples;
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    colorAttachmentCount = copy_src.colorAttachmentCount;
+    pColorAttachmentSamples = nullptr;
+    depthStencilAttachmentSamples = copy_src.depthStencilAttachmentSamples;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    if (copy_src.pColorAttachmentSamples) {
+        pColorAttachmentSamples = new VkSampleCountFlagBits[copy_src.colorAttachmentCount];
+        memcpy((void*)pColorAttachmentSamples, (void*)copy_src.pColorAttachmentSamples,
+               sizeof(VkSampleCountFlagBits) * copy_src.colorAttachmentCount);
+    }
+
+    return *this;
+}
+
+safe_VkAttachmentSampleCountInfoAMD::~safe_VkAttachmentSampleCountInfoAMD() {
+    if (pColorAttachmentSamples) delete[] pColorAttachmentSamples;
+    FreePnextChain(pNext);
+}
+
+void safe_VkAttachmentSampleCountInfoAMD::initialize(const VkAttachmentSampleCountInfoAMD* in_struct,
+                                                     [[maybe_unused]] PNextCopyState* copy_state) {
+    if (pColorAttachmentSamples) delete[] pColorAttachmentSamples;
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    colorAttachmentCount = in_struct->colorAttachmentCount;
+    pColorAttachmentSamples = nullptr;
+    depthStencilAttachmentSamples = in_struct->depthStencilAttachmentSamples;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+
+    if (in_struct->pColorAttachmentSamples) {
+        pColorAttachmentSamples = new VkSampleCountFlagBits[in_struct->colorAttachmentCount];
+        memcpy((void*)pColorAttachmentSamples, (void*)in_struct->pColorAttachmentSamples,
+               sizeof(VkSampleCountFlagBits) * in_struct->colorAttachmentCount);
+    }
+}
+
+void safe_VkAttachmentSampleCountInfoAMD::initialize(const safe_VkAttachmentSampleCountInfoAMD* copy_src,
+                                                     [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    colorAttachmentCount = copy_src->colorAttachmentCount;
+    pColorAttachmentSamples = nullptr;
+    depthStencilAttachmentSamples = copy_src->depthStencilAttachmentSamples;
+    pNext = SafePnextCopy(copy_src->pNext);
+
+    if (copy_src->pColorAttachmentSamples) {
+        pColorAttachmentSamples = new VkSampleCountFlagBits[copy_src->colorAttachmentCount];
+        memcpy((void*)pColorAttachmentSamples, (void*)copy_src->pColorAttachmentSamples,
+               sizeof(VkSampleCountFlagBits) * copy_src->colorAttachmentCount);
+    }
+}
 
 safe_VkPipelineCoverageToColorStateCreateInfoNV::safe_VkPipelineCoverageToColorStateCreateInfoNV(
     const VkPipelineCoverageToColorStateCreateInfoNV* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
@@ -5322,6 +5226,102 @@ void safe_VkCheckpointDataNV::initialize(const VkCheckpointDataNV* in_struct, [[
 }
 
 void safe_VkCheckpointDataNV::initialize(const safe_VkCheckpointDataNV* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    stage = copy_src->stage;
+    pCheckpointMarker = copy_src->pCheckpointMarker;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkQueueFamilyCheckpointProperties2NV::safe_VkQueueFamilyCheckpointProperties2NV(
+    const VkQueueFamilyCheckpointProperties2NV* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), checkpointExecutionStageMask(in_struct->checkpointExecutionStageMask) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkQueueFamilyCheckpointProperties2NV::safe_VkQueueFamilyCheckpointProperties2NV()
+    : sType(VK_STRUCTURE_TYPE_QUEUE_FAMILY_CHECKPOINT_PROPERTIES_2_NV), pNext(nullptr), checkpointExecutionStageMask() {}
+
+safe_VkQueueFamilyCheckpointProperties2NV::safe_VkQueueFamilyCheckpointProperties2NV(
+    const safe_VkQueueFamilyCheckpointProperties2NV& copy_src) {
+    sType = copy_src.sType;
+    checkpointExecutionStageMask = copy_src.checkpointExecutionStageMask;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkQueueFamilyCheckpointProperties2NV& safe_VkQueueFamilyCheckpointProperties2NV::operator=(
+    const safe_VkQueueFamilyCheckpointProperties2NV& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    checkpointExecutionStageMask = copy_src.checkpointExecutionStageMask;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkQueueFamilyCheckpointProperties2NV::~safe_VkQueueFamilyCheckpointProperties2NV() { FreePnextChain(pNext); }
+
+void safe_VkQueueFamilyCheckpointProperties2NV::initialize(const VkQueueFamilyCheckpointProperties2NV* in_struct,
+                                                           [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    checkpointExecutionStageMask = in_struct->checkpointExecutionStageMask;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkQueueFamilyCheckpointProperties2NV::initialize(const safe_VkQueueFamilyCheckpointProperties2NV* copy_src,
+                                                           [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    checkpointExecutionStageMask = copy_src->checkpointExecutionStageMask;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkCheckpointData2NV::safe_VkCheckpointData2NV(const VkCheckpointData2NV* in_struct,
+                                                   [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), stage(in_struct->stage), pCheckpointMarker(in_struct->pCheckpointMarker) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkCheckpointData2NV::safe_VkCheckpointData2NV()
+    : sType(VK_STRUCTURE_TYPE_CHECKPOINT_DATA_2_NV), pNext(nullptr), stage(), pCheckpointMarker(nullptr) {}
+
+safe_VkCheckpointData2NV::safe_VkCheckpointData2NV(const safe_VkCheckpointData2NV& copy_src) {
+    sType = copy_src.sType;
+    stage = copy_src.stage;
+    pCheckpointMarker = copy_src.pCheckpointMarker;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkCheckpointData2NV& safe_VkCheckpointData2NV::operator=(const safe_VkCheckpointData2NV& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    stage = copy_src.stage;
+    pCheckpointMarker = copy_src.pCheckpointMarker;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkCheckpointData2NV::~safe_VkCheckpointData2NV() { FreePnextChain(pNext); }
+
+void safe_VkCheckpointData2NV::initialize(const VkCheckpointData2NV* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    stage = in_struct->stage;
+    pCheckpointMarker = in_struct->pCheckpointMarker;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkCheckpointData2NV::initialize(const safe_VkCheckpointData2NV* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
     sType = copy_src->sType;
     stage = copy_src->stage;
     pCheckpointMarker = copy_src->pCheckpointMarker;
