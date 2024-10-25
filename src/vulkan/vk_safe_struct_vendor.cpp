@@ -15465,6 +15465,266 @@ void safe_VkImageAlignmentControlCreateInfoMESA::initialize(const safe_VkImageAl
     pNext = SafePnextCopy(copy_src->pNext);
 }
 
+safe_VkCooperativeMatrixFlexibleDimensionsPropertiesNV::safe_VkCooperativeMatrixFlexibleDimensionsPropertiesNV(
+    const VkCooperativeMatrixFlexibleDimensionsPropertiesNV* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
+    bool copy_pnext)
+    : sType(in_struct->sType),
+      MGranularity(in_struct->MGranularity),
+      NGranularity(in_struct->NGranularity),
+      KGranularity(in_struct->KGranularity),
+      AType(in_struct->AType),
+      BType(in_struct->BType),
+      CType(in_struct->CType),
+      ResultType(in_struct->ResultType),
+      saturatingAccumulation(in_struct->saturatingAccumulation),
+      scope(in_struct->scope),
+      workgroupInvocations(in_struct->workgroupInvocations) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkCooperativeMatrixFlexibleDimensionsPropertiesNV::safe_VkCooperativeMatrixFlexibleDimensionsPropertiesNV()
+    : sType(VK_STRUCTURE_TYPE_COOPERATIVE_MATRIX_FLEXIBLE_DIMENSIONS_PROPERTIES_NV),
+      pNext(nullptr),
+      MGranularity(),
+      NGranularity(),
+      KGranularity(),
+      AType(),
+      BType(),
+      CType(),
+      ResultType(),
+      saturatingAccumulation(),
+      scope(),
+      workgroupInvocations() {}
+
+safe_VkCooperativeMatrixFlexibleDimensionsPropertiesNV::safe_VkCooperativeMatrixFlexibleDimensionsPropertiesNV(
+    const safe_VkCooperativeMatrixFlexibleDimensionsPropertiesNV& copy_src) {
+    sType = copy_src.sType;
+    MGranularity = copy_src.MGranularity;
+    NGranularity = copy_src.NGranularity;
+    KGranularity = copy_src.KGranularity;
+    AType = copy_src.AType;
+    BType = copy_src.BType;
+    CType = copy_src.CType;
+    ResultType = copy_src.ResultType;
+    saturatingAccumulation = copy_src.saturatingAccumulation;
+    scope = copy_src.scope;
+    workgroupInvocations = copy_src.workgroupInvocations;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkCooperativeMatrixFlexibleDimensionsPropertiesNV& safe_VkCooperativeMatrixFlexibleDimensionsPropertiesNV::operator=(
+    const safe_VkCooperativeMatrixFlexibleDimensionsPropertiesNV& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    MGranularity = copy_src.MGranularity;
+    NGranularity = copy_src.NGranularity;
+    KGranularity = copy_src.KGranularity;
+    AType = copy_src.AType;
+    BType = copy_src.BType;
+    CType = copy_src.CType;
+    ResultType = copy_src.ResultType;
+    saturatingAccumulation = copy_src.saturatingAccumulation;
+    scope = copy_src.scope;
+    workgroupInvocations = copy_src.workgroupInvocations;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkCooperativeMatrixFlexibleDimensionsPropertiesNV::~safe_VkCooperativeMatrixFlexibleDimensionsPropertiesNV() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkCooperativeMatrixFlexibleDimensionsPropertiesNV::initialize(
+    const VkCooperativeMatrixFlexibleDimensionsPropertiesNV* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    MGranularity = in_struct->MGranularity;
+    NGranularity = in_struct->NGranularity;
+    KGranularity = in_struct->KGranularity;
+    AType = in_struct->AType;
+    BType = in_struct->BType;
+    CType = in_struct->CType;
+    ResultType = in_struct->ResultType;
+    saturatingAccumulation = in_struct->saturatingAccumulation;
+    scope = in_struct->scope;
+    workgroupInvocations = in_struct->workgroupInvocations;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkCooperativeMatrixFlexibleDimensionsPropertiesNV::initialize(
+    const safe_VkCooperativeMatrixFlexibleDimensionsPropertiesNV* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    MGranularity = copy_src->MGranularity;
+    NGranularity = copy_src->NGranularity;
+    KGranularity = copy_src->KGranularity;
+    AType = copy_src->AType;
+    BType = copy_src->BType;
+    CType = copy_src->CType;
+    ResultType = copy_src->ResultType;
+    saturatingAccumulation = copy_src->saturatingAccumulation;
+    scope = copy_src->scope;
+    workgroupInvocations = copy_src->workgroupInvocations;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkPhysicalDeviceCooperativeMatrix2FeaturesNV::safe_VkPhysicalDeviceCooperativeMatrix2FeaturesNV(
+    const VkPhysicalDeviceCooperativeMatrix2FeaturesNV* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType),
+      cooperativeMatrixWorkgroupScope(in_struct->cooperativeMatrixWorkgroupScope),
+      cooperativeMatrixFlexibleDimensions(in_struct->cooperativeMatrixFlexibleDimensions),
+      cooperativeMatrixReductions(in_struct->cooperativeMatrixReductions),
+      cooperativeMatrixConversions(in_struct->cooperativeMatrixConversions),
+      cooperativeMatrixPerElementOperations(in_struct->cooperativeMatrixPerElementOperations),
+      cooperativeMatrixTensorAddressing(in_struct->cooperativeMatrixTensorAddressing),
+      cooperativeMatrixBlockLoads(in_struct->cooperativeMatrixBlockLoads) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceCooperativeMatrix2FeaturesNV::safe_VkPhysicalDeviceCooperativeMatrix2FeaturesNV()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_2_FEATURES_NV),
+      pNext(nullptr),
+      cooperativeMatrixWorkgroupScope(),
+      cooperativeMatrixFlexibleDimensions(),
+      cooperativeMatrixReductions(),
+      cooperativeMatrixConversions(),
+      cooperativeMatrixPerElementOperations(),
+      cooperativeMatrixTensorAddressing(),
+      cooperativeMatrixBlockLoads() {}
+
+safe_VkPhysicalDeviceCooperativeMatrix2FeaturesNV::safe_VkPhysicalDeviceCooperativeMatrix2FeaturesNV(
+    const safe_VkPhysicalDeviceCooperativeMatrix2FeaturesNV& copy_src) {
+    sType = copy_src.sType;
+    cooperativeMatrixWorkgroupScope = copy_src.cooperativeMatrixWorkgroupScope;
+    cooperativeMatrixFlexibleDimensions = copy_src.cooperativeMatrixFlexibleDimensions;
+    cooperativeMatrixReductions = copy_src.cooperativeMatrixReductions;
+    cooperativeMatrixConversions = copy_src.cooperativeMatrixConversions;
+    cooperativeMatrixPerElementOperations = copy_src.cooperativeMatrixPerElementOperations;
+    cooperativeMatrixTensorAddressing = copy_src.cooperativeMatrixTensorAddressing;
+    cooperativeMatrixBlockLoads = copy_src.cooperativeMatrixBlockLoads;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceCooperativeMatrix2FeaturesNV& safe_VkPhysicalDeviceCooperativeMatrix2FeaturesNV::operator=(
+    const safe_VkPhysicalDeviceCooperativeMatrix2FeaturesNV& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    cooperativeMatrixWorkgroupScope = copy_src.cooperativeMatrixWorkgroupScope;
+    cooperativeMatrixFlexibleDimensions = copy_src.cooperativeMatrixFlexibleDimensions;
+    cooperativeMatrixReductions = copy_src.cooperativeMatrixReductions;
+    cooperativeMatrixConversions = copy_src.cooperativeMatrixConversions;
+    cooperativeMatrixPerElementOperations = copy_src.cooperativeMatrixPerElementOperations;
+    cooperativeMatrixTensorAddressing = copy_src.cooperativeMatrixTensorAddressing;
+    cooperativeMatrixBlockLoads = copy_src.cooperativeMatrixBlockLoads;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceCooperativeMatrix2FeaturesNV::~safe_VkPhysicalDeviceCooperativeMatrix2FeaturesNV() { FreePnextChain(pNext); }
+
+void safe_VkPhysicalDeviceCooperativeMatrix2FeaturesNV::initialize(const VkPhysicalDeviceCooperativeMatrix2FeaturesNV* in_struct,
+                                                                   [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    cooperativeMatrixWorkgroupScope = in_struct->cooperativeMatrixWorkgroupScope;
+    cooperativeMatrixFlexibleDimensions = in_struct->cooperativeMatrixFlexibleDimensions;
+    cooperativeMatrixReductions = in_struct->cooperativeMatrixReductions;
+    cooperativeMatrixConversions = in_struct->cooperativeMatrixConversions;
+    cooperativeMatrixPerElementOperations = in_struct->cooperativeMatrixPerElementOperations;
+    cooperativeMatrixTensorAddressing = in_struct->cooperativeMatrixTensorAddressing;
+    cooperativeMatrixBlockLoads = in_struct->cooperativeMatrixBlockLoads;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceCooperativeMatrix2FeaturesNV::initialize(
+    const safe_VkPhysicalDeviceCooperativeMatrix2FeaturesNV* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    cooperativeMatrixWorkgroupScope = copy_src->cooperativeMatrixWorkgroupScope;
+    cooperativeMatrixFlexibleDimensions = copy_src->cooperativeMatrixFlexibleDimensions;
+    cooperativeMatrixReductions = copy_src->cooperativeMatrixReductions;
+    cooperativeMatrixConversions = copy_src->cooperativeMatrixConversions;
+    cooperativeMatrixPerElementOperations = copy_src->cooperativeMatrixPerElementOperations;
+    cooperativeMatrixTensorAddressing = copy_src->cooperativeMatrixTensorAddressing;
+    cooperativeMatrixBlockLoads = copy_src->cooperativeMatrixBlockLoads;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkPhysicalDeviceCooperativeMatrix2PropertiesNV::safe_VkPhysicalDeviceCooperativeMatrix2PropertiesNV(
+    const VkPhysicalDeviceCooperativeMatrix2PropertiesNV* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType),
+      cooperativeMatrixWorkgroupScopeMaxWorkgroupSize(in_struct->cooperativeMatrixWorkgroupScopeMaxWorkgroupSize),
+      cooperativeMatrixFlexibleDimensionsMaxDimension(in_struct->cooperativeMatrixFlexibleDimensionsMaxDimension),
+      cooperativeMatrixWorkgroupScopeReservedSharedMemory(in_struct->cooperativeMatrixWorkgroupScopeReservedSharedMemory) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceCooperativeMatrix2PropertiesNV::safe_VkPhysicalDeviceCooperativeMatrix2PropertiesNV()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_2_PROPERTIES_NV),
+      pNext(nullptr),
+      cooperativeMatrixWorkgroupScopeMaxWorkgroupSize(),
+      cooperativeMatrixFlexibleDimensionsMaxDimension(),
+      cooperativeMatrixWorkgroupScopeReservedSharedMemory() {}
+
+safe_VkPhysicalDeviceCooperativeMatrix2PropertiesNV::safe_VkPhysicalDeviceCooperativeMatrix2PropertiesNV(
+    const safe_VkPhysicalDeviceCooperativeMatrix2PropertiesNV& copy_src) {
+    sType = copy_src.sType;
+    cooperativeMatrixWorkgroupScopeMaxWorkgroupSize = copy_src.cooperativeMatrixWorkgroupScopeMaxWorkgroupSize;
+    cooperativeMatrixFlexibleDimensionsMaxDimension = copy_src.cooperativeMatrixFlexibleDimensionsMaxDimension;
+    cooperativeMatrixWorkgroupScopeReservedSharedMemory = copy_src.cooperativeMatrixWorkgroupScopeReservedSharedMemory;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceCooperativeMatrix2PropertiesNV& safe_VkPhysicalDeviceCooperativeMatrix2PropertiesNV::operator=(
+    const safe_VkPhysicalDeviceCooperativeMatrix2PropertiesNV& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    cooperativeMatrixWorkgroupScopeMaxWorkgroupSize = copy_src.cooperativeMatrixWorkgroupScopeMaxWorkgroupSize;
+    cooperativeMatrixFlexibleDimensionsMaxDimension = copy_src.cooperativeMatrixFlexibleDimensionsMaxDimension;
+    cooperativeMatrixWorkgroupScopeReservedSharedMemory = copy_src.cooperativeMatrixWorkgroupScopeReservedSharedMemory;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceCooperativeMatrix2PropertiesNV::~safe_VkPhysicalDeviceCooperativeMatrix2PropertiesNV() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkPhysicalDeviceCooperativeMatrix2PropertiesNV::initialize(
+    const VkPhysicalDeviceCooperativeMatrix2PropertiesNV* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    cooperativeMatrixWorkgroupScopeMaxWorkgroupSize = in_struct->cooperativeMatrixWorkgroupScopeMaxWorkgroupSize;
+    cooperativeMatrixFlexibleDimensionsMaxDimension = in_struct->cooperativeMatrixFlexibleDimensionsMaxDimension;
+    cooperativeMatrixWorkgroupScopeReservedSharedMemory = in_struct->cooperativeMatrixWorkgroupScopeReservedSharedMemory;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceCooperativeMatrix2PropertiesNV::initialize(
+    const safe_VkPhysicalDeviceCooperativeMatrix2PropertiesNV* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    cooperativeMatrixWorkgroupScopeMaxWorkgroupSize = copy_src->cooperativeMatrixWorkgroupScopeMaxWorkgroupSize;
+    cooperativeMatrixFlexibleDimensionsMaxDimension = copy_src->cooperativeMatrixFlexibleDimensionsMaxDimension;
+    cooperativeMatrixWorkgroupScopeReservedSharedMemory = copy_src->cooperativeMatrixWorkgroupScopeReservedSharedMemory;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
 }  // namespace vku
 
 // NOLINTEND

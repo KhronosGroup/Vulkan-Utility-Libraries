@@ -161,6 +161,7 @@ typedef struct VkuInstanceDispatchTable_ {
     PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX GetPhysicalDeviceScreenPresentationSupportQNX;
 #endif  // VK_USE_PLATFORM_SCREEN_QNX
     PFN_vkGetPhysicalDeviceOpticalFlowImageFormatsNV GetPhysicalDeviceOpticalFlowImageFormatsNV;
+    PFN_vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV GetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV;
 } VkuInstanceDispatchTable;
 
 // Device function pointer dispatch table
@@ -1526,5 +1527,6 @@ static inline void vkuInitInstanceDispatchTable(VkInstance instance, VkuInstance
     table->GetPhysicalDeviceScreenPresentationSupportQNX = (PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX)gipa(instance, "vkGetPhysicalDeviceScreenPresentationSupportQNX");
 #endif  // VK_USE_PLATFORM_SCREEN_QNX
     table->GetPhysicalDeviceOpticalFlowImageFormatsNV = (PFN_vkGetPhysicalDeviceOpticalFlowImageFormatsNV)gipa(instance, "vkGetPhysicalDeviceOpticalFlowImageFormatsNV");
+    table->GetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV = (PFN_vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV)gipa(instance, "vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV");
 }
 // clang-format on

@@ -1870,6 +1870,12 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
             case VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_DEPTH_CLAMP_CONTROL_CREATE_INFO_EXT:
                 safe_pNext = new safe_VkPipelineViewportDepthClampControlCreateInfoEXT(reinterpret_cast<const VkPipelineViewportDepthClampControlCreateInfoEXT *>(pNext), copy_state, false);
                 break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_2_FEATURES_NV:
+                safe_pNext = new safe_VkPhysicalDeviceCooperativeMatrix2FeaturesNV(reinterpret_cast<const VkPhysicalDeviceCooperativeMatrix2FeaturesNV *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_2_PROPERTIES_NV:
+                safe_pNext = new safe_VkPhysicalDeviceCooperativeMatrix2PropertiesNV(reinterpret_cast<const VkPhysicalDeviceCooperativeMatrix2PropertiesNV *>(pNext), copy_state, false);
+                break;
             case VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_ACCELERATION_STRUCTURE_KHR:
                 safe_pNext = new safe_VkWriteDescriptorSetAccelerationStructureKHR(reinterpret_cast<const VkWriteDescriptorSetAccelerationStructureKHR *>(pNext), copy_state, false);
                 break;
@@ -3755,6 +3761,12 @@ void FreePnextChain(const void *pNext) {
             break;
         case VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_DEPTH_CLAMP_CONTROL_CREATE_INFO_EXT:
             delete reinterpret_cast<safe_VkPipelineViewportDepthClampControlCreateInfoEXT *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_2_FEATURES_NV:
+            delete reinterpret_cast<safe_VkPhysicalDeviceCooperativeMatrix2FeaturesNV *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_2_PROPERTIES_NV:
+            delete reinterpret_cast<safe_VkPhysicalDeviceCooperativeMatrix2PropertiesNV *>(header);
             break;
         case VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_ACCELERATION_STRUCTURE_KHR:
             delete reinterpret_cast<safe_VkWriteDescriptorSetAccelerationStructureKHR *>(header);

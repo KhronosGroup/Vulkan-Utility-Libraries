@@ -18833,6 +18833,85 @@ struct safe_VkPipelineViewportDepthClampControlCreateInfoEXT {
         return reinterpret_cast<VkPipelineViewportDepthClampControlCreateInfoEXT const*>(this);
     }
 };
+struct safe_VkCooperativeMatrixFlexibleDimensionsPropertiesNV {
+    VkStructureType sType;
+    void* pNext{};
+    uint32_t MGranularity;
+    uint32_t NGranularity;
+    uint32_t KGranularity;
+    VkComponentTypeKHR AType;
+    VkComponentTypeKHR BType;
+    VkComponentTypeKHR CType;
+    VkComponentTypeKHR ResultType;
+    VkBool32 saturatingAccumulation;
+    VkScopeKHR scope;
+    uint32_t workgroupInvocations;
+
+    safe_VkCooperativeMatrixFlexibleDimensionsPropertiesNV(const VkCooperativeMatrixFlexibleDimensionsPropertiesNV* in_struct,
+                                                           PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkCooperativeMatrixFlexibleDimensionsPropertiesNV(const safe_VkCooperativeMatrixFlexibleDimensionsPropertiesNV& copy_src);
+    safe_VkCooperativeMatrixFlexibleDimensionsPropertiesNV& operator=(
+        const safe_VkCooperativeMatrixFlexibleDimensionsPropertiesNV& copy_src);
+    safe_VkCooperativeMatrixFlexibleDimensionsPropertiesNV();
+    ~safe_VkCooperativeMatrixFlexibleDimensionsPropertiesNV();
+    void initialize(const VkCooperativeMatrixFlexibleDimensionsPropertiesNV* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkCooperativeMatrixFlexibleDimensionsPropertiesNV* copy_src, PNextCopyState* copy_state = {});
+    VkCooperativeMatrixFlexibleDimensionsPropertiesNV* ptr() {
+        return reinterpret_cast<VkCooperativeMatrixFlexibleDimensionsPropertiesNV*>(this);
+    }
+    VkCooperativeMatrixFlexibleDimensionsPropertiesNV const* ptr() const {
+        return reinterpret_cast<VkCooperativeMatrixFlexibleDimensionsPropertiesNV const*>(this);
+    }
+};
+struct safe_VkPhysicalDeviceCooperativeMatrix2FeaturesNV {
+    VkStructureType sType;
+    void* pNext{};
+    VkBool32 cooperativeMatrixWorkgroupScope;
+    VkBool32 cooperativeMatrixFlexibleDimensions;
+    VkBool32 cooperativeMatrixReductions;
+    VkBool32 cooperativeMatrixConversions;
+    VkBool32 cooperativeMatrixPerElementOperations;
+    VkBool32 cooperativeMatrixTensorAddressing;
+    VkBool32 cooperativeMatrixBlockLoads;
+
+    safe_VkPhysicalDeviceCooperativeMatrix2FeaturesNV(const VkPhysicalDeviceCooperativeMatrix2FeaturesNV* in_struct,
+                                                      PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkPhysicalDeviceCooperativeMatrix2FeaturesNV(const safe_VkPhysicalDeviceCooperativeMatrix2FeaturesNV& copy_src);
+    safe_VkPhysicalDeviceCooperativeMatrix2FeaturesNV& operator=(const safe_VkPhysicalDeviceCooperativeMatrix2FeaturesNV& copy_src);
+    safe_VkPhysicalDeviceCooperativeMatrix2FeaturesNV();
+    ~safe_VkPhysicalDeviceCooperativeMatrix2FeaturesNV();
+    void initialize(const VkPhysicalDeviceCooperativeMatrix2FeaturesNV* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceCooperativeMatrix2FeaturesNV* copy_src, PNextCopyState* copy_state = {});
+    VkPhysicalDeviceCooperativeMatrix2FeaturesNV* ptr() {
+        return reinterpret_cast<VkPhysicalDeviceCooperativeMatrix2FeaturesNV*>(this);
+    }
+    VkPhysicalDeviceCooperativeMatrix2FeaturesNV const* ptr() const {
+        return reinterpret_cast<VkPhysicalDeviceCooperativeMatrix2FeaturesNV const*>(this);
+    }
+};
+struct safe_VkPhysicalDeviceCooperativeMatrix2PropertiesNV {
+    VkStructureType sType;
+    void* pNext{};
+    uint32_t cooperativeMatrixWorkgroupScopeMaxWorkgroupSize;
+    uint32_t cooperativeMatrixFlexibleDimensionsMaxDimension;
+    uint32_t cooperativeMatrixWorkgroupScopeReservedSharedMemory;
+
+    safe_VkPhysicalDeviceCooperativeMatrix2PropertiesNV(const VkPhysicalDeviceCooperativeMatrix2PropertiesNV* in_struct,
+                                                        PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkPhysicalDeviceCooperativeMatrix2PropertiesNV(const safe_VkPhysicalDeviceCooperativeMatrix2PropertiesNV& copy_src);
+    safe_VkPhysicalDeviceCooperativeMatrix2PropertiesNV& operator=(
+        const safe_VkPhysicalDeviceCooperativeMatrix2PropertiesNV& copy_src);
+    safe_VkPhysicalDeviceCooperativeMatrix2PropertiesNV();
+    ~safe_VkPhysicalDeviceCooperativeMatrix2PropertiesNV();
+    void initialize(const VkPhysicalDeviceCooperativeMatrix2PropertiesNV* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceCooperativeMatrix2PropertiesNV* copy_src, PNextCopyState* copy_state = {});
+    VkPhysicalDeviceCooperativeMatrix2PropertiesNV* ptr() {
+        return reinterpret_cast<VkPhysicalDeviceCooperativeMatrix2PropertiesNV*>(this);
+    }
+    VkPhysicalDeviceCooperativeMatrix2PropertiesNV const* ptr() const {
+        return reinterpret_cast<VkPhysicalDeviceCooperativeMatrix2PropertiesNV const*>(this);
+    }
+};
 struct safe_VkAccelerationStructureGeometryTrianglesDataKHR {
     VkStructureType sType;
     const void* pNext{};
