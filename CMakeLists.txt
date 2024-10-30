@@ -9,6 +9,11 @@ project(VUL LANGUAGES CXX)
 
 string(COMPARE EQUAL ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_SOURCE_DIR} VUL_IS_TOP_LEVEL) # Remove when min is 3.21
 
+# Control whether to install or not. By default its only on if this is the top level cmake project.
+if(NOT DEFINED VUL_ENABLE_INSTALL)
+    option(VUL_ENABLE_INSTALL "Enable install" ${VUL_IS_TOP_LEVEL})
+endif()
+
 set_property(GLOBAL PROPERTY USE_FOLDERS ON) # Remove when min is 3.26, see CMP0143
 
 set(CMAKE_CXX_STANDARD 17)
@@ -30,7 +35,7 @@ find_package(VulkanHeaders CONFIG)
 add_subdirectory(src)
 add_subdirectory(include)
 
-if (VUL_IS_TOP_LEVEL)
+if (VUL_ENABLE_INSTALL)
     option(BUILD_TESTS "Build tests")
     if (BUILD_TESTS)
         enable_testing()
