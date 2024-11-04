@@ -18833,6 +18833,41 @@ struct safe_VkPipelineViewportDepthClampControlCreateInfoEXT {
         return reinterpret_cast<VkPipelineViewportDepthClampControlCreateInfoEXT const*>(this);
     }
 };
+struct safe_VkPhysicalDeviceHdrVividFeaturesHUAWEI {
+    VkStructureType sType;
+    void* pNext{};
+    VkBool32 hdrVivid;
+
+    safe_VkPhysicalDeviceHdrVividFeaturesHUAWEI(const VkPhysicalDeviceHdrVividFeaturesHUAWEI* in_struct,
+                                                PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkPhysicalDeviceHdrVividFeaturesHUAWEI(const safe_VkPhysicalDeviceHdrVividFeaturesHUAWEI& copy_src);
+    safe_VkPhysicalDeviceHdrVividFeaturesHUAWEI& operator=(const safe_VkPhysicalDeviceHdrVividFeaturesHUAWEI& copy_src);
+    safe_VkPhysicalDeviceHdrVividFeaturesHUAWEI();
+    ~safe_VkPhysicalDeviceHdrVividFeaturesHUAWEI();
+    void initialize(const VkPhysicalDeviceHdrVividFeaturesHUAWEI* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceHdrVividFeaturesHUAWEI* copy_src, PNextCopyState* copy_state = {});
+    VkPhysicalDeviceHdrVividFeaturesHUAWEI* ptr() { return reinterpret_cast<VkPhysicalDeviceHdrVividFeaturesHUAWEI*>(this); }
+    VkPhysicalDeviceHdrVividFeaturesHUAWEI const* ptr() const {
+        return reinterpret_cast<VkPhysicalDeviceHdrVividFeaturesHUAWEI const*>(this);
+    }
+};
+struct safe_VkHdrVividDynamicMetadataHUAWEI {
+    VkStructureType sType;
+    const void* pNext{};
+    size_t dynamicMetadataSize;
+    const void* pDynamicMetadata{};
+
+    safe_VkHdrVividDynamicMetadataHUAWEI(const VkHdrVividDynamicMetadataHUAWEI* in_struct, PNextCopyState* copy_state = {},
+                                         bool copy_pnext = true);
+    safe_VkHdrVividDynamicMetadataHUAWEI(const safe_VkHdrVividDynamicMetadataHUAWEI& copy_src);
+    safe_VkHdrVividDynamicMetadataHUAWEI& operator=(const safe_VkHdrVividDynamicMetadataHUAWEI& copy_src);
+    safe_VkHdrVividDynamicMetadataHUAWEI();
+    ~safe_VkHdrVividDynamicMetadataHUAWEI();
+    void initialize(const VkHdrVividDynamicMetadataHUAWEI* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkHdrVividDynamicMetadataHUAWEI* copy_src, PNextCopyState* copy_state = {});
+    VkHdrVividDynamicMetadataHUAWEI* ptr() { return reinterpret_cast<VkHdrVividDynamicMetadataHUAWEI*>(this); }
+    VkHdrVividDynamicMetadataHUAWEI const* ptr() const { return reinterpret_cast<VkHdrVividDynamicMetadataHUAWEI const*>(this); }
+};
 struct safe_VkCooperativeMatrixFlexibleDimensionsPropertiesNV {
     VkStructureType sType;
     void* pNext{};

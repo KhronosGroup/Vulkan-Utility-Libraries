@@ -1870,6 +1870,12 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
             case VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_DEPTH_CLAMP_CONTROL_CREATE_INFO_EXT:
                 safe_pNext = new safe_VkPipelineViewportDepthClampControlCreateInfoEXT(reinterpret_cast<const VkPipelineViewportDepthClampControlCreateInfoEXT *>(pNext), copy_state, false);
                 break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HDR_VIVID_FEATURES_HUAWEI:
+                safe_pNext = new safe_VkPhysicalDeviceHdrVividFeaturesHUAWEI(reinterpret_cast<const VkPhysicalDeviceHdrVividFeaturesHUAWEI *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_HDR_VIVID_DYNAMIC_METADATA_HUAWEI:
+                safe_pNext = new safe_VkHdrVividDynamicMetadataHUAWEI(reinterpret_cast<const VkHdrVividDynamicMetadataHUAWEI *>(pNext), copy_state, false);
+                break;
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_2_FEATURES_NV:
                 safe_pNext = new safe_VkPhysicalDeviceCooperativeMatrix2FeaturesNV(reinterpret_cast<const VkPhysicalDeviceCooperativeMatrix2FeaturesNV *>(pNext), copy_state, false);
                 break;
@@ -3761,6 +3767,12 @@ void FreePnextChain(const void *pNext) {
             break;
         case VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_DEPTH_CLAMP_CONTROL_CREATE_INFO_EXT:
             delete reinterpret_cast<safe_VkPipelineViewportDepthClampControlCreateInfoEXT *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HDR_VIVID_FEATURES_HUAWEI:
+            delete reinterpret_cast<safe_VkPhysicalDeviceHdrVividFeaturesHUAWEI *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_HDR_VIVID_DYNAMIC_METADATA_HUAWEI:
+            delete reinterpret_cast<safe_VkHdrVividDynamicMetadataHUAWEI *>(header);
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_2_FEATURES_NV:
             delete reinterpret_cast<safe_VkPhysicalDeviceCooperativeMatrix2FeaturesNV *>(header);

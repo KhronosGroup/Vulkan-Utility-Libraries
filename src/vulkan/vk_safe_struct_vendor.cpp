@@ -15465,6 +15465,109 @@ void safe_VkImageAlignmentControlCreateInfoMESA::initialize(const safe_VkImageAl
     pNext = SafePnextCopy(copy_src->pNext);
 }
 
+safe_VkPhysicalDeviceHdrVividFeaturesHUAWEI::safe_VkPhysicalDeviceHdrVividFeaturesHUAWEI(
+    const VkPhysicalDeviceHdrVividFeaturesHUAWEI* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), hdrVivid(in_struct->hdrVivid) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceHdrVividFeaturesHUAWEI::safe_VkPhysicalDeviceHdrVividFeaturesHUAWEI()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HDR_VIVID_FEATURES_HUAWEI), pNext(nullptr), hdrVivid() {}
+
+safe_VkPhysicalDeviceHdrVividFeaturesHUAWEI::safe_VkPhysicalDeviceHdrVividFeaturesHUAWEI(
+    const safe_VkPhysicalDeviceHdrVividFeaturesHUAWEI& copy_src) {
+    sType = copy_src.sType;
+    hdrVivid = copy_src.hdrVivid;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceHdrVividFeaturesHUAWEI& safe_VkPhysicalDeviceHdrVividFeaturesHUAWEI::operator=(
+    const safe_VkPhysicalDeviceHdrVividFeaturesHUAWEI& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    hdrVivid = copy_src.hdrVivid;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceHdrVividFeaturesHUAWEI::~safe_VkPhysicalDeviceHdrVividFeaturesHUAWEI() { FreePnextChain(pNext); }
+
+void safe_VkPhysicalDeviceHdrVividFeaturesHUAWEI::initialize(const VkPhysicalDeviceHdrVividFeaturesHUAWEI* in_struct,
+                                                             [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    hdrVivid = in_struct->hdrVivid;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceHdrVividFeaturesHUAWEI::initialize(const safe_VkPhysicalDeviceHdrVividFeaturesHUAWEI* copy_src,
+                                                             [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    hdrVivid = copy_src->hdrVivid;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkHdrVividDynamicMetadataHUAWEI::safe_VkHdrVividDynamicMetadataHUAWEI(const VkHdrVividDynamicMetadataHUAWEI* in_struct,
+                                                                           [[maybe_unused]] PNextCopyState* copy_state,
+                                                                           bool copy_pnext)
+    : sType(in_struct->sType), dynamicMetadataSize(in_struct->dynamicMetadataSize), pDynamicMetadata(in_struct->pDynamicMetadata) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkHdrVividDynamicMetadataHUAWEI::safe_VkHdrVividDynamicMetadataHUAWEI()
+    : sType(VK_STRUCTURE_TYPE_HDR_VIVID_DYNAMIC_METADATA_HUAWEI),
+      pNext(nullptr),
+      dynamicMetadataSize(),
+      pDynamicMetadata(nullptr) {}
+
+safe_VkHdrVividDynamicMetadataHUAWEI::safe_VkHdrVividDynamicMetadataHUAWEI(const safe_VkHdrVividDynamicMetadataHUAWEI& copy_src) {
+    sType = copy_src.sType;
+    dynamicMetadataSize = copy_src.dynamicMetadataSize;
+    pDynamicMetadata = copy_src.pDynamicMetadata;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkHdrVividDynamicMetadataHUAWEI& safe_VkHdrVividDynamicMetadataHUAWEI::operator=(
+    const safe_VkHdrVividDynamicMetadataHUAWEI& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    dynamicMetadataSize = copy_src.dynamicMetadataSize;
+    pDynamicMetadata = copy_src.pDynamicMetadata;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkHdrVividDynamicMetadataHUAWEI::~safe_VkHdrVividDynamicMetadataHUAWEI() { FreePnextChain(pNext); }
+
+void safe_VkHdrVividDynamicMetadataHUAWEI::initialize(const VkHdrVividDynamicMetadataHUAWEI* in_struct,
+                                                      [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    dynamicMetadataSize = in_struct->dynamicMetadataSize;
+    pDynamicMetadata = in_struct->pDynamicMetadata;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkHdrVividDynamicMetadataHUAWEI::initialize(const safe_VkHdrVividDynamicMetadataHUAWEI* copy_src,
+                                                      [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    dynamicMetadataSize = copy_src->dynamicMetadataSize;
+    pDynamicMetadata = copy_src->pDynamicMetadata;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
 safe_VkCooperativeMatrixFlexibleDimensionsPropertiesNV::safe_VkCooperativeMatrixFlexibleDimensionsPropertiesNV(
     const VkCooperativeMatrixFlexibleDimensionsPropertiesNV* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
     bool copy_pnext)
