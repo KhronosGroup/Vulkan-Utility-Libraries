@@ -652,6 +652,8 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_CU_FUNCTION_CREATE_INFO_NVX";
         case VK_STRUCTURE_TYPE_CU_LAUNCH_INFO_NVX:
             return "VK_STRUCTURE_TYPE_CU_LAUNCH_INFO_NVX";
+        case VK_STRUCTURE_TYPE_CU_MODULE_TEXTURING_MODE_CREATE_INFO_NVX:
+            return "VK_STRUCTURE_TYPE_CU_MODULE_TEXTURING_MODE_CREATE_INFO_NVX";
         case VK_STRUCTURE_TYPE_IMAGE_VIEW_HANDLE_INFO_NVX:
             return "VK_STRUCTURE_TYPE_IMAGE_VIEW_HANDLE_INFO_NVX";
         case VK_STRUCTURE_TYPE_IMAGE_VIEW_ADDRESS_PROPERTIES_NVX:
@@ -1864,6 +1866,28 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_VIDEO_DECODE_AV1_SESSION_PARAMETERS_CREATE_INFO_KHR";
         case VK_STRUCTURE_TYPE_VIDEO_DECODE_AV1_DPB_SLOT_INFO_KHR:
             return "VK_STRUCTURE_TYPE_VIDEO_DECODE_AV1_DPB_SLOT_INFO_KHR";
+        case VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_CAPABILITIES_KHR:
+            return "VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_CAPABILITIES_KHR";
+        case VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_SESSION_PARAMETERS_CREATE_INFO_KHR:
+            return "VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_SESSION_PARAMETERS_CREATE_INFO_KHR";
+        case VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_PICTURE_INFO_KHR:
+            return "VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_PICTURE_INFO_KHR";
+        case VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_DPB_SLOT_INFO_KHR:
+            return "VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_DPB_SLOT_INFO_KHR";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VIDEO_ENCODE_AV1_FEATURES_KHR:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VIDEO_ENCODE_AV1_FEATURES_KHR";
+        case VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_PROFILE_INFO_KHR:
+            return "VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_PROFILE_INFO_KHR";
+        case VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_RATE_CONTROL_INFO_KHR:
+            return "VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_RATE_CONTROL_INFO_KHR";
+        case VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_RATE_CONTROL_LAYER_INFO_KHR:
+            return "VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_RATE_CONTROL_LAYER_INFO_KHR";
+        case VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_QUALITY_LEVEL_PROPERTIES_KHR:
+            return "VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_QUALITY_LEVEL_PROPERTIES_KHR";
+        case VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_SESSION_CREATE_INFO_KHR:
+            return "VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_SESSION_CREATE_INFO_KHR";
+        case VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_GOP_REMAINING_FRAME_INFO_KHR:
+            return "VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_GOP_REMAINING_FRAME_INFO_KHR";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VIDEO_MAINTENANCE_1_FEATURES_KHR:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VIDEO_MAINTENANCE_1_FEATURES_KHR";
         case VK_STRUCTURE_TYPE_VIDEO_INLINE_QUERY_INFO_KHR:
@@ -1942,6 +1966,30 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_BIND_DESCRIPTOR_BUFFER_EMBEDDED_SAMPLERS_INFO_EXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_POOL_OVERALLOCATION_FEATURES_NV:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_POOL_OVERALLOCATION_FEATURES_NV";
+        case VK_STRUCTURE_TYPE_DISPLAY_SURFACE_STEREO_CREATE_INFO_NV:
+            return "VK_STRUCTURE_TYPE_DISPLAY_SURFACE_STEREO_CREATE_INFO_NV";
+        case VK_STRUCTURE_TYPE_DISPLAY_MODE_STEREO_PROPERTIES_NV:
+            return "VK_STRUCTURE_TYPE_DISPLAY_MODE_STEREO_PROPERTIES_NV";
+        case VK_STRUCTURE_TYPE_VIDEO_ENCODE_QUANTIZATION_MAP_CAPABILITIES_KHR:
+            return "VK_STRUCTURE_TYPE_VIDEO_ENCODE_QUANTIZATION_MAP_CAPABILITIES_KHR";
+        case VK_STRUCTURE_TYPE_VIDEO_FORMAT_QUANTIZATION_MAP_PROPERTIES_KHR:
+            return "VK_STRUCTURE_TYPE_VIDEO_FORMAT_QUANTIZATION_MAP_PROPERTIES_KHR";
+        case VK_STRUCTURE_TYPE_VIDEO_ENCODE_QUANTIZATION_MAP_INFO_KHR:
+            return "VK_STRUCTURE_TYPE_VIDEO_ENCODE_QUANTIZATION_MAP_INFO_KHR";
+        case VK_STRUCTURE_TYPE_VIDEO_ENCODE_QUANTIZATION_MAP_SESSION_PARAMETERS_CREATE_INFO_KHR:
+            return "VK_STRUCTURE_TYPE_VIDEO_ENCODE_QUANTIZATION_MAP_SESSION_PARAMETERS_CREATE_INFO_KHR";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VIDEO_ENCODE_QUANTIZATION_MAP_FEATURES_KHR:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VIDEO_ENCODE_QUANTIZATION_MAP_FEATURES_KHR";
+        case VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_QUANTIZATION_MAP_CAPABILITIES_KHR:
+            return "VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_QUANTIZATION_MAP_CAPABILITIES_KHR";
+        case VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_QUANTIZATION_MAP_CAPABILITIES_KHR:
+            return "VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_QUANTIZATION_MAP_CAPABILITIES_KHR";
+        case VK_STRUCTURE_TYPE_VIDEO_FORMAT_H265_QUANTIZATION_MAP_PROPERTIES_KHR:
+            return "VK_STRUCTURE_TYPE_VIDEO_FORMAT_H265_QUANTIZATION_MAP_PROPERTIES_KHR";
+        case VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_QUANTIZATION_MAP_CAPABILITIES_KHR:
+            return "VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_QUANTIZATION_MAP_CAPABILITIES_KHR";
+        case VK_STRUCTURE_TYPE_VIDEO_FORMAT_AV1_QUANTIZATION_MAP_PROPERTIES_KHR:
+            return "VK_STRUCTURE_TYPE_VIDEO_FORMAT_AV1_QUANTIZATION_MAP_PROPERTIES_KHR";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAW_ACCESS_CHAINS_FEATURES_NV:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAW_ACCESS_CHAINS_FEATURES_NV";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_RELAXED_EXTENDED_INSTRUCTION_FEATURES_KHR:
@@ -2012,6 +2060,8 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_COOPERATIVE_MATRIX_FLEXIBLE_DIMENSIONS_PROPERTIES_NV";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_2_PROPERTIES_NV:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_2_PROPERTIES_NV";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_ROBUSTNESS_FEATURES_EXT:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_ROBUSTNESS_FEATURES_EXT";
         default:
             return "Unhandled VkStructureType";
     }
@@ -2084,6 +2134,8 @@ static inline const char* string_VkImageLayout(VkImageLayout input_value) {
             return "VK_IMAGE_LAYOUT_VIDEO_ENCODE_DPB_KHR";
         case VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT:
             return "VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT";
+        case VK_IMAGE_LAYOUT_VIDEO_ENCODE_QUANTIZATION_MAP_KHR:
+            return "VK_IMAGE_LAYOUT_VIDEO_ENCODE_QUANTIZATION_MAP_KHR";
         default:
             return "Unhandled VkImageLayout";
     }
@@ -3906,6 +3958,32 @@ static inline const char* string_VkScopeKHR(VkScopeKHR input_value) {
             return "Unhandled VkScopeKHR";
     }
 }
+static inline const char* string_VkVideoEncodeAV1PredictionModeKHR(VkVideoEncodeAV1PredictionModeKHR input_value) {
+    switch (input_value) {
+        case VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_INTRA_ONLY_KHR:
+            return "VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_INTRA_ONLY_KHR";
+        case VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_SINGLE_REFERENCE_KHR:
+            return "VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_SINGLE_REFERENCE_KHR";
+        case VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_UNIDIRECTIONAL_COMPOUND_KHR:
+            return "VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_UNIDIRECTIONAL_COMPOUND_KHR";
+        case VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_BIDIRECTIONAL_COMPOUND_KHR:
+            return "VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_BIDIRECTIONAL_COMPOUND_KHR";
+        default:
+            return "Unhandled VkVideoEncodeAV1PredictionModeKHR";
+    }
+}
+static inline const char* string_VkVideoEncodeAV1RateControlGroupKHR(VkVideoEncodeAV1RateControlGroupKHR input_value) {
+    switch (input_value) {
+        case VK_VIDEO_ENCODE_AV1_RATE_CONTROL_GROUP_INTRA_KHR:
+            return "VK_VIDEO_ENCODE_AV1_RATE_CONTROL_GROUP_INTRA_KHR";
+        case VK_VIDEO_ENCODE_AV1_RATE_CONTROL_GROUP_PREDICTIVE_KHR:
+            return "VK_VIDEO_ENCODE_AV1_RATE_CONTROL_GROUP_PREDICTIVE_KHR";
+        case VK_VIDEO_ENCODE_AV1_RATE_CONTROL_GROUP_BIPREDICTIVE_KHR:
+            return "VK_VIDEO_ENCODE_AV1_RATE_CONTROL_GROUP_BIPREDICTIVE_KHR";
+        default:
+            return "Unhandled VkVideoEncodeAV1RateControlGroupKHR";
+    }
+}
 static inline const char* string_VkLineRasterizationModeKHR(VkLineRasterizationModeKHR input_value) {
     switch (input_value) {
         case VK_LINE_RASTERIZATION_MODE_DEFAULT_KHR:
@@ -4918,6 +4996,20 @@ static inline const char* string_VkLayeredDriverUnderlyingApiMSFT(VkLayeredDrive
             return "Unhandled VkLayeredDriverUnderlyingApiMSFT";
     }
 }
+static inline const char* string_VkDisplaySurfaceStereoTypeNV(VkDisplaySurfaceStereoTypeNV input_value) {
+    switch (input_value) {
+        case VK_DISPLAY_SURFACE_STEREO_TYPE_NONE_NV:
+            return "VK_DISPLAY_SURFACE_STEREO_TYPE_NONE_NV";
+        case VK_DISPLAY_SURFACE_STEREO_TYPE_ONBOARD_DIN_NV:
+            return "VK_DISPLAY_SURFACE_STEREO_TYPE_ONBOARD_DIN_NV";
+        case VK_DISPLAY_SURFACE_STEREO_TYPE_HDMI_3D_NV:
+            return "VK_DISPLAY_SURFACE_STEREO_TYPE_HDMI_3D_NV";
+        case VK_DISPLAY_SURFACE_STEREO_TYPE_INBAND_DISPLAYPORT_NV:
+            return "VK_DISPLAY_SURFACE_STEREO_TYPE_INBAND_DISPLAYPORT_NV";
+        default:
+            return "Unhandled VkDisplaySurfaceStereoTypeNV";
+    }
+}
 static inline const char* string_VkIndirectExecutionSetInfoTypeEXT(VkIndirectExecutionSetInfoTypeEXT input_value) {
     switch (input_value) {
         case VK_INDIRECT_EXECUTION_SET_INFO_TYPE_PIPELINES_EXT:
@@ -5346,6 +5438,10 @@ static inline const char* string_VkImageUsageFlagBits(VkImageUsageFlagBits input
             return "VK_IMAGE_USAGE_SAMPLE_WEIGHT_BIT_QCOM";
         case VK_IMAGE_USAGE_SAMPLE_BLOCK_MATCH_BIT_QCOM:
             return "VK_IMAGE_USAGE_SAMPLE_BLOCK_MATCH_BIT_QCOM";
+        case VK_IMAGE_USAGE_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR:
+            return "VK_IMAGE_USAGE_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR";
+        case VK_IMAGE_USAGE_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR:
+            return "VK_IMAGE_USAGE_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR";
         default:
             return "Unhandled VkImageUsageFlagBits";
     }
@@ -7439,6 +7535,8 @@ static inline const char* string_VkFormatFeatureFlagBits2(uint64_t input_value) 
     if (input_value == VK_FORMAT_FEATURE_2_OPTICAL_FLOW_IMAGE_BIT_NV) return "VK_FORMAT_FEATURE_2_OPTICAL_FLOW_IMAGE_BIT_NV";
     if (input_value == VK_FORMAT_FEATURE_2_OPTICAL_FLOW_VECTOR_BIT_NV) return "VK_FORMAT_FEATURE_2_OPTICAL_FLOW_VECTOR_BIT_NV";
     if (input_value == VK_FORMAT_FEATURE_2_OPTICAL_FLOW_COST_BIT_NV) return "VK_FORMAT_FEATURE_2_OPTICAL_FLOW_COST_BIT_NV";
+    if (input_value == VK_FORMAT_FEATURE_2_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR) return "VK_FORMAT_FEATURE_2_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR";
+    if (input_value == VK_FORMAT_FEATURE_2_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR) return "VK_FORMAT_FEATURE_2_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR";
     return "Unhandled VkFormatFeatureFlagBits2";
 }
 
@@ -7637,6 +7735,8 @@ static inline const char* string_VkVideoCodecOperationFlagBitsKHR(VkVideoCodecOp
             return "VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR";
         case VK_VIDEO_CODEC_OPERATION_DECODE_AV1_BIT_KHR:
             return "VK_VIDEO_CODEC_OPERATION_DECODE_AV1_BIT_KHR";
+        case VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR:
+            return "VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR";
         default:
             return "Unhandled VkVideoCodecOperationFlagBitsKHR";
     }
@@ -7757,6 +7857,10 @@ static inline const char* string_VkVideoSessionCreateFlagBitsKHR(VkVideoSessionC
             return "VK_VIDEO_SESSION_CREATE_ALLOW_ENCODE_PARAMETER_OPTIMIZATIONS_BIT_KHR";
         case VK_VIDEO_SESSION_CREATE_INLINE_QUERIES_BIT_KHR:
             return "VK_VIDEO_SESSION_CREATE_INLINE_QUERIES_BIT_KHR";
+        case VK_VIDEO_SESSION_CREATE_ALLOW_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR:
+            return "VK_VIDEO_SESSION_CREATE_ALLOW_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR";
+        case VK_VIDEO_SESSION_CREATE_ALLOW_ENCODE_EMPHASIS_MAP_BIT_KHR:
+            return "VK_VIDEO_SESSION_CREATE_ALLOW_ENCODE_EMPHASIS_MAP_BIT_KHR";
         default:
             return "Unhandled VkVideoSessionCreateFlagBitsKHR";
     }
@@ -7775,6 +7879,31 @@ static inline std::string string_VkVideoSessionCreateFlagsKHR(VkVideoSessionCrea
         input_value >>= 1;
     }
     if (ret.empty()) ret.append("VkVideoSessionCreateFlagsKHR(0)");
+    return ret;
+}
+#endif // __cplusplus
+static inline const char* string_VkVideoSessionParametersCreateFlagBitsKHR(VkVideoSessionParametersCreateFlagBitsKHR input_value) {
+    switch (input_value) {
+        case VK_VIDEO_SESSION_PARAMETERS_CREATE_QUANTIZATION_MAP_COMPATIBLE_BIT_KHR:
+            return "VK_VIDEO_SESSION_PARAMETERS_CREATE_QUANTIZATION_MAP_COMPATIBLE_BIT_KHR";
+        default:
+            return "Unhandled VkVideoSessionParametersCreateFlagBitsKHR";
+    }
+}
+
+#ifdef __cplusplus
+static inline std::string string_VkVideoSessionParametersCreateFlagsKHR(VkVideoSessionParametersCreateFlagsKHR input_value) {
+    std::string ret;
+    int index = 0;
+    while(input_value) {
+        if (input_value & 1) {
+            if( !ret.empty()) ret.append("|");
+            ret.append(string_VkVideoSessionParametersCreateFlagBitsKHR(static_cast<VkVideoSessionParametersCreateFlagBitsKHR>(1U << index)));
+        }
+        ++index;
+        input_value >>= 1;
+    }
+    if (ret.empty()) ret.append("VkVideoSessionParametersCreateFlagsKHR(0)");
     return ret;
 }
 #endif // __cplusplus
@@ -7885,6 +8014,8 @@ static inline const char* string_VkVideoEncodeH264CapabilityFlagBitsKHR(VkVideoE
             return "VK_VIDEO_ENCODE_H264_CAPABILITY_PER_SLICE_CONSTANT_QP_BIT_KHR";
         case VK_VIDEO_ENCODE_H264_CAPABILITY_GENERATE_PREFIX_NALU_BIT_KHR:
             return "VK_VIDEO_ENCODE_H264_CAPABILITY_GENERATE_PREFIX_NALU_BIT_KHR";
+        case VK_VIDEO_ENCODE_H264_CAPABILITY_MB_QP_DIFF_WRAPAROUND_BIT_KHR:
+            return "VK_VIDEO_ENCODE_H264_CAPABILITY_MB_QP_DIFF_WRAPAROUND_BIT_KHR";
         default:
             return "Unhandled VkVideoEncodeH264CapabilityFlagBitsKHR";
     }
@@ -8024,6 +8155,8 @@ static inline const char* string_VkVideoEncodeH265CapabilityFlagBitsKHR(VkVideoE
             return "VK_VIDEO_ENCODE_H265_CAPABILITY_MULTIPLE_TILES_PER_SLICE_SEGMENT_BIT_KHR";
         case VK_VIDEO_ENCODE_H265_CAPABILITY_MULTIPLE_SLICE_SEGMENTS_PER_TILE_BIT_KHR:
             return "VK_VIDEO_ENCODE_H265_CAPABILITY_MULTIPLE_SLICE_SEGMENTS_PER_TILE_BIT_KHR";
+        case VK_VIDEO_ENCODE_H265_CAPABILITY_CU_QP_DIFF_WRAPAROUND_BIT_KHR:
+            return "VK_VIDEO_ENCODE_H265_CAPABILITY_CU_QP_DIFF_WRAPAROUND_BIT_KHR";
         default:
             return "Unhandled VkVideoEncodeH265CapabilityFlagBitsKHR";
     }
@@ -8284,12 +8417,43 @@ static inline std::string string_VkMemoryUnmapFlagsKHR(VkMemoryUnmapFlagsKHR inp
     return ret;
 }
 #endif // __cplusplus
+static inline const char* string_VkVideoEncodeFlagBitsKHR(VkVideoEncodeFlagBitsKHR input_value) {
+    switch (input_value) {
+        case VK_VIDEO_ENCODE_WITH_QUANTIZATION_DELTA_MAP_BIT_KHR:
+            return "VK_VIDEO_ENCODE_WITH_QUANTIZATION_DELTA_MAP_BIT_KHR";
+        case VK_VIDEO_ENCODE_WITH_EMPHASIS_MAP_BIT_KHR:
+            return "VK_VIDEO_ENCODE_WITH_EMPHASIS_MAP_BIT_KHR";
+        default:
+            return "Unhandled VkVideoEncodeFlagBitsKHR";
+    }
+}
+
+#ifdef __cplusplus
+static inline std::string string_VkVideoEncodeFlagsKHR(VkVideoEncodeFlagsKHR input_value) {
+    std::string ret;
+    int index = 0;
+    while(input_value) {
+        if (input_value & 1) {
+            if( !ret.empty()) ret.append("|");
+            ret.append(string_VkVideoEncodeFlagBitsKHR(static_cast<VkVideoEncodeFlagBitsKHR>(1U << index)));
+        }
+        ++index;
+        input_value >>= 1;
+    }
+    if (ret.empty()) ret.append("VkVideoEncodeFlagsKHR(0)");
+    return ret;
+}
+#endif // __cplusplus
 static inline const char* string_VkVideoEncodeCapabilityFlagBitsKHR(VkVideoEncodeCapabilityFlagBitsKHR input_value) {
     switch (input_value) {
         case VK_VIDEO_ENCODE_CAPABILITY_PRECEDING_EXTERNALLY_ENCODED_BYTES_BIT_KHR:
             return "VK_VIDEO_ENCODE_CAPABILITY_PRECEDING_EXTERNALLY_ENCODED_BYTES_BIT_KHR";
         case VK_VIDEO_ENCODE_CAPABILITY_INSUFFICIENT_BITSTREAM_BUFFER_RANGE_DETECTION_BIT_KHR:
             return "VK_VIDEO_ENCODE_CAPABILITY_INSUFFICIENT_BITSTREAM_BUFFER_RANGE_DETECTION_BIT_KHR";
+        case VK_VIDEO_ENCODE_CAPABILITY_QUANTIZATION_DELTA_MAP_BIT_KHR:
+            return "VK_VIDEO_ENCODE_CAPABILITY_QUANTIZATION_DELTA_MAP_BIT_KHR";
+        case VK_VIDEO_ENCODE_CAPABILITY_EMPHASIS_MAP_BIT_KHR:
+            return "VK_VIDEO_ENCODE_CAPABILITY_EMPHASIS_MAP_BIT_KHR";
         default:
             return "Unhandled VkVideoEncodeCapabilityFlagBitsKHR";
     }
@@ -8538,6 +8702,128 @@ static inline std::string string_VkBufferUsageFlags2KHR(VkBufferUsageFlags2KHR i
         input_value >>= 1;
     }
     if (ret.empty()) ret.append("VkBufferUsageFlags2KHR(0)");
+    return ret;
+}
+#endif // __cplusplus
+static inline const char* string_VkVideoEncodeAV1CapabilityFlagBitsKHR(VkVideoEncodeAV1CapabilityFlagBitsKHR input_value) {
+    switch (input_value) {
+        case VK_VIDEO_ENCODE_AV1_CAPABILITY_PER_RATE_CONTROL_GROUP_MIN_MAX_Q_INDEX_BIT_KHR:
+            return "VK_VIDEO_ENCODE_AV1_CAPABILITY_PER_RATE_CONTROL_GROUP_MIN_MAX_Q_INDEX_BIT_KHR";
+        case VK_VIDEO_ENCODE_AV1_CAPABILITY_GENERATE_OBU_EXTENSION_HEADER_BIT_KHR:
+            return "VK_VIDEO_ENCODE_AV1_CAPABILITY_GENERATE_OBU_EXTENSION_HEADER_BIT_KHR";
+        case VK_VIDEO_ENCODE_AV1_CAPABILITY_PRIMARY_REFERENCE_CDF_ONLY_BIT_KHR:
+            return "VK_VIDEO_ENCODE_AV1_CAPABILITY_PRIMARY_REFERENCE_CDF_ONLY_BIT_KHR";
+        case VK_VIDEO_ENCODE_AV1_CAPABILITY_FRAME_SIZE_OVERRIDE_BIT_KHR:
+            return "VK_VIDEO_ENCODE_AV1_CAPABILITY_FRAME_SIZE_OVERRIDE_BIT_KHR";
+        case VK_VIDEO_ENCODE_AV1_CAPABILITY_MOTION_VECTOR_SCALING_BIT_KHR:
+            return "VK_VIDEO_ENCODE_AV1_CAPABILITY_MOTION_VECTOR_SCALING_BIT_KHR";
+        default:
+            return "Unhandled VkVideoEncodeAV1CapabilityFlagBitsKHR";
+    }
+}
+
+#ifdef __cplusplus
+static inline std::string string_VkVideoEncodeAV1CapabilityFlagsKHR(VkVideoEncodeAV1CapabilityFlagsKHR input_value) {
+    std::string ret;
+    int index = 0;
+    while(input_value) {
+        if (input_value & 1) {
+            if( !ret.empty()) ret.append("|");
+            ret.append(string_VkVideoEncodeAV1CapabilityFlagBitsKHR(static_cast<VkVideoEncodeAV1CapabilityFlagBitsKHR>(1U << index)));
+        }
+        ++index;
+        input_value >>= 1;
+    }
+    if (ret.empty()) ret.append("VkVideoEncodeAV1CapabilityFlagsKHR(0)");
+    return ret;
+}
+#endif // __cplusplus
+static inline const char* string_VkVideoEncodeAV1StdFlagBitsKHR(VkVideoEncodeAV1StdFlagBitsKHR input_value) {
+    switch (input_value) {
+        case VK_VIDEO_ENCODE_AV1_STD_UNIFORM_TILE_SPACING_FLAG_SET_BIT_KHR:
+            return "VK_VIDEO_ENCODE_AV1_STD_UNIFORM_TILE_SPACING_FLAG_SET_BIT_KHR";
+        case VK_VIDEO_ENCODE_AV1_STD_SKIP_MODE_PRESENT_UNSET_BIT_KHR:
+            return "VK_VIDEO_ENCODE_AV1_STD_SKIP_MODE_PRESENT_UNSET_BIT_KHR";
+        case VK_VIDEO_ENCODE_AV1_STD_PRIMARY_REF_FRAME_BIT_KHR:
+            return "VK_VIDEO_ENCODE_AV1_STD_PRIMARY_REF_FRAME_BIT_KHR";
+        case VK_VIDEO_ENCODE_AV1_STD_DELTA_Q_BIT_KHR:
+            return "VK_VIDEO_ENCODE_AV1_STD_DELTA_Q_BIT_KHR";
+        default:
+            return "Unhandled VkVideoEncodeAV1StdFlagBitsKHR";
+    }
+}
+
+#ifdef __cplusplus
+static inline std::string string_VkVideoEncodeAV1StdFlagsKHR(VkVideoEncodeAV1StdFlagsKHR input_value) {
+    std::string ret;
+    int index = 0;
+    while(input_value) {
+        if (input_value & 1) {
+            if( !ret.empty()) ret.append("|");
+            ret.append(string_VkVideoEncodeAV1StdFlagBitsKHR(static_cast<VkVideoEncodeAV1StdFlagBitsKHR>(1U << index)));
+        }
+        ++index;
+        input_value >>= 1;
+    }
+    if (ret.empty()) ret.append("VkVideoEncodeAV1StdFlagsKHR(0)");
+    return ret;
+}
+#endif // __cplusplus
+static inline const char* string_VkVideoEncodeAV1SuperblockSizeFlagBitsKHR(VkVideoEncodeAV1SuperblockSizeFlagBitsKHR input_value) {
+    switch (input_value) {
+        case VK_VIDEO_ENCODE_AV1_SUPERBLOCK_SIZE_64_BIT_KHR:
+            return "VK_VIDEO_ENCODE_AV1_SUPERBLOCK_SIZE_64_BIT_KHR";
+        case VK_VIDEO_ENCODE_AV1_SUPERBLOCK_SIZE_128_BIT_KHR:
+            return "VK_VIDEO_ENCODE_AV1_SUPERBLOCK_SIZE_128_BIT_KHR";
+        default:
+            return "Unhandled VkVideoEncodeAV1SuperblockSizeFlagBitsKHR";
+    }
+}
+
+#ifdef __cplusplus
+static inline std::string string_VkVideoEncodeAV1SuperblockSizeFlagsKHR(VkVideoEncodeAV1SuperblockSizeFlagsKHR input_value) {
+    std::string ret;
+    int index = 0;
+    while(input_value) {
+        if (input_value & 1) {
+            if( !ret.empty()) ret.append("|");
+            ret.append(string_VkVideoEncodeAV1SuperblockSizeFlagBitsKHR(static_cast<VkVideoEncodeAV1SuperblockSizeFlagBitsKHR>(1U << index)));
+        }
+        ++index;
+        input_value >>= 1;
+    }
+    if (ret.empty()) ret.append("VkVideoEncodeAV1SuperblockSizeFlagsKHR(0)");
+    return ret;
+}
+#endif // __cplusplus
+static inline const char* string_VkVideoEncodeAV1RateControlFlagBitsKHR(VkVideoEncodeAV1RateControlFlagBitsKHR input_value) {
+    switch (input_value) {
+        case VK_VIDEO_ENCODE_AV1_RATE_CONTROL_REGULAR_GOP_BIT_KHR:
+            return "VK_VIDEO_ENCODE_AV1_RATE_CONTROL_REGULAR_GOP_BIT_KHR";
+        case VK_VIDEO_ENCODE_AV1_RATE_CONTROL_TEMPORAL_LAYER_PATTERN_DYADIC_BIT_KHR:
+            return "VK_VIDEO_ENCODE_AV1_RATE_CONTROL_TEMPORAL_LAYER_PATTERN_DYADIC_BIT_KHR";
+        case VK_VIDEO_ENCODE_AV1_RATE_CONTROL_REFERENCE_PATTERN_FLAT_BIT_KHR:
+            return "VK_VIDEO_ENCODE_AV1_RATE_CONTROL_REFERENCE_PATTERN_FLAT_BIT_KHR";
+        case VK_VIDEO_ENCODE_AV1_RATE_CONTROL_REFERENCE_PATTERN_DYADIC_BIT_KHR:
+            return "VK_VIDEO_ENCODE_AV1_RATE_CONTROL_REFERENCE_PATTERN_DYADIC_BIT_KHR";
+        default:
+            return "Unhandled VkVideoEncodeAV1RateControlFlagBitsKHR";
+    }
+}
+
+#ifdef __cplusplus
+static inline std::string string_VkVideoEncodeAV1RateControlFlagsKHR(VkVideoEncodeAV1RateControlFlagsKHR input_value) {
+    std::string ret;
+    int index = 0;
+    while(input_value) {
+        if (input_value & 1) {
+            if( !ret.empty()) ret.append("|");
+            ret.append(string_VkVideoEncodeAV1RateControlFlagBitsKHR(static_cast<VkVideoEncodeAV1RateControlFlagBitsKHR>(1U << index)));
+        }
+        ++index;
+        input_value >>= 1;
+    }
+    if (ret.empty()) ret.append("VkVideoEncodeAV1RateControlFlagsKHR(0)");
     return ret;
 }
 #endif // __cplusplus

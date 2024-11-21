@@ -309,6 +309,54 @@ void safe_VkCuModuleCreateInfoNVX::initialize(const safe_VkCuModuleCreateInfoNVX
     }
 }
 
+safe_VkCuModuleTexturingModeCreateInfoNVX::safe_VkCuModuleTexturingModeCreateInfoNVX(
+    const VkCuModuleTexturingModeCreateInfoNVX* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), use64bitTexturing(in_struct->use64bitTexturing) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkCuModuleTexturingModeCreateInfoNVX::safe_VkCuModuleTexturingModeCreateInfoNVX()
+    : sType(VK_STRUCTURE_TYPE_CU_MODULE_TEXTURING_MODE_CREATE_INFO_NVX), pNext(nullptr), use64bitTexturing() {}
+
+safe_VkCuModuleTexturingModeCreateInfoNVX::safe_VkCuModuleTexturingModeCreateInfoNVX(
+    const safe_VkCuModuleTexturingModeCreateInfoNVX& copy_src) {
+    sType = copy_src.sType;
+    use64bitTexturing = copy_src.use64bitTexturing;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkCuModuleTexturingModeCreateInfoNVX& safe_VkCuModuleTexturingModeCreateInfoNVX::operator=(
+    const safe_VkCuModuleTexturingModeCreateInfoNVX& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    use64bitTexturing = copy_src.use64bitTexturing;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkCuModuleTexturingModeCreateInfoNVX::~safe_VkCuModuleTexturingModeCreateInfoNVX() { FreePnextChain(pNext); }
+
+void safe_VkCuModuleTexturingModeCreateInfoNVX::initialize(const VkCuModuleTexturingModeCreateInfoNVX* in_struct,
+                                                           [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    use64bitTexturing = in_struct->use64bitTexturing;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkCuModuleTexturingModeCreateInfoNVX::initialize(const safe_VkCuModuleTexturingModeCreateInfoNVX* copy_src,
+                                                           [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    use64bitTexturing = copy_src->use64bitTexturing;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
 safe_VkCuFunctionCreateInfoNVX::safe_VkCuFunctionCreateInfoNVX(const VkCuFunctionCreateInfoNVX* in_struct,
                                                                [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
     : sType(in_struct->sType), module(in_struct->module) {
@@ -15108,6 +15156,102 @@ void safe_VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV::initialize(
     const safe_VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
     sType = copy_src->sType;
     descriptorPoolOverallocation = copy_src->descriptorPoolOverallocation;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkDisplaySurfaceStereoCreateInfoNV::safe_VkDisplaySurfaceStereoCreateInfoNV(
+    const VkDisplaySurfaceStereoCreateInfoNV* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), stereoType(in_struct->stereoType) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkDisplaySurfaceStereoCreateInfoNV::safe_VkDisplaySurfaceStereoCreateInfoNV()
+    : sType(VK_STRUCTURE_TYPE_DISPLAY_SURFACE_STEREO_CREATE_INFO_NV), pNext(nullptr), stereoType() {}
+
+safe_VkDisplaySurfaceStereoCreateInfoNV::safe_VkDisplaySurfaceStereoCreateInfoNV(
+    const safe_VkDisplaySurfaceStereoCreateInfoNV& copy_src) {
+    sType = copy_src.sType;
+    stereoType = copy_src.stereoType;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkDisplaySurfaceStereoCreateInfoNV& safe_VkDisplaySurfaceStereoCreateInfoNV::operator=(
+    const safe_VkDisplaySurfaceStereoCreateInfoNV& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    stereoType = copy_src.stereoType;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkDisplaySurfaceStereoCreateInfoNV::~safe_VkDisplaySurfaceStereoCreateInfoNV() { FreePnextChain(pNext); }
+
+void safe_VkDisplaySurfaceStereoCreateInfoNV::initialize(const VkDisplaySurfaceStereoCreateInfoNV* in_struct,
+                                                         [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    stereoType = in_struct->stereoType;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkDisplaySurfaceStereoCreateInfoNV::initialize(const safe_VkDisplaySurfaceStereoCreateInfoNV* copy_src,
+                                                         [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    stereoType = copy_src->stereoType;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkDisplayModeStereoPropertiesNV::safe_VkDisplayModeStereoPropertiesNV(const VkDisplayModeStereoPropertiesNV* in_struct,
+                                                                           [[maybe_unused]] PNextCopyState* copy_state,
+                                                                           bool copy_pnext)
+    : sType(in_struct->sType), hdmi3DSupported(in_struct->hdmi3DSupported) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkDisplayModeStereoPropertiesNV::safe_VkDisplayModeStereoPropertiesNV()
+    : sType(VK_STRUCTURE_TYPE_DISPLAY_MODE_STEREO_PROPERTIES_NV), pNext(nullptr), hdmi3DSupported() {}
+
+safe_VkDisplayModeStereoPropertiesNV::safe_VkDisplayModeStereoPropertiesNV(const safe_VkDisplayModeStereoPropertiesNV& copy_src) {
+    sType = copy_src.sType;
+    hdmi3DSupported = copy_src.hdmi3DSupported;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkDisplayModeStereoPropertiesNV& safe_VkDisplayModeStereoPropertiesNV::operator=(
+    const safe_VkDisplayModeStereoPropertiesNV& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    hdmi3DSupported = copy_src.hdmi3DSupported;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkDisplayModeStereoPropertiesNV::~safe_VkDisplayModeStereoPropertiesNV() { FreePnextChain(pNext); }
+
+void safe_VkDisplayModeStereoPropertiesNV::initialize(const VkDisplayModeStereoPropertiesNV* in_struct,
+                                                      [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    hdmi3DSupported = in_struct->hdmi3DSupported;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkDisplayModeStereoPropertiesNV::initialize(const safe_VkDisplayModeStereoPropertiesNV* copy_src,
+                                                      [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    hdmi3DSupported = copy_src->hdmi3DSupported;
     pNext = SafePnextCopy(copy_src->pNext);
 }
 

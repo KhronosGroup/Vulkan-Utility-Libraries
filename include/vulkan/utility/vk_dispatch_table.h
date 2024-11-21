@@ -490,6 +490,7 @@ typedef struct VkuDeviceDispatchTable_ {
     PFN_vkDestroyCuFunctionNVX DestroyCuFunctionNVX;
     PFN_vkCmdCuLaunchKernelNVX CmdCuLaunchKernelNVX;
     PFN_vkGetImageViewHandleNVX GetImageViewHandleNVX;
+    PFN_vkGetImageViewHandle64NVX GetImageViewHandle64NVX;
     PFN_vkGetImageViewAddressNVX GetImageViewAddressNVX;
     PFN_vkCmdDrawIndirectCountAMD CmdDrawIndirectCountAMD;
     PFN_vkCmdDrawIndexedIndirectCountAMD CmdDrawIndexedIndirectCountAMD;
@@ -1102,6 +1103,7 @@ static inline void vkuInitDeviceDispatchTable(VkDevice device, VkuDeviceDispatch
     table->DestroyCuFunctionNVX = (PFN_vkDestroyCuFunctionNVX)gdpa(device, "vkDestroyCuFunctionNVX");
     table->CmdCuLaunchKernelNVX = (PFN_vkCmdCuLaunchKernelNVX)gdpa(device, "vkCmdCuLaunchKernelNVX");
     table->GetImageViewHandleNVX = (PFN_vkGetImageViewHandleNVX)gdpa(device, "vkGetImageViewHandleNVX");
+    table->GetImageViewHandle64NVX = (PFN_vkGetImageViewHandle64NVX)gdpa(device, "vkGetImageViewHandle64NVX");
     table->GetImageViewAddressNVX = (PFN_vkGetImageViewAddressNVX)gdpa(device, "vkGetImageViewAddressNVX");
     table->CmdDrawIndirectCountAMD = (PFN_vkCmdDrawIndirectCountAMD)gdpa(device, "vkCmdDrawIndirectCountAMD");
     table->CmdDrawIndexedIndirectCountAMD = (PFN_vkCmdDrawIndexedIndirectCountAMD)gdpa(device, "vkCmdDrawIndexedIndirectCountAMD");
