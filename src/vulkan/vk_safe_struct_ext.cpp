@@ -16647,6 +16647,59 @@ void safe_VkPipelineViewportDepthClampControlCreateInfoEXT::initialize(
     }
 }
 
+safe_VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT::safe_VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT(
+    const VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
+    bool copy_pnext)
+    : sType(in_struct->sType), vertexAttributeRobustness(in_struct->vertexAttributeRobustness) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT::safe_VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_ROBUSTNESS_FEATURES_EXT),
+      pNext(nullptr),
+      vertexAttributeRobustness() {}
+
+safe_VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT::safe_VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT(
+    const safe_VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT& copy_src) {
+    sType = copy_src.sType;
+    vertexAttributeRobustness = copy_src.vertexAttributeRobustness;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT& safe_VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT::operator=(
+    const safe_VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    vertexAttributeRobustness = copy_src.vertexAttributeRobustness;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT::~safe_VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT::initialize(
+    const VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    vertexAttributeRobustness = in_struct->vertexAttributeRobustness;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT::initialize(
+    const safe_VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    vertexAttributeRobustness = copy_src->vertexAttributeRobustness;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
 safe_VkPhysicalDeviceMeshShaderFeaturesEXT::safe_VkPhysicalDeviceMeshShaderFeaturesEXT(
     const VkPhysicalDeviceMeshShaderFeaturesEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
     : sType(in_struct->sType),
