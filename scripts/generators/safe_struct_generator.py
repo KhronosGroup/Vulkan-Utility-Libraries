@@ -487,9 +487,9 @@ void FreePnextChain(const void *pNext) {
                         }
                     }
                 ''',
-                # TODO: VkPushDescriptorSetWithTemplateInfoKHR needs a custom constructor to handle pData
-                # https://github.com/KhronosGroup/Vulkan-ValidationLayers/issues/7169
-                'VkPushDescriptorSetWithTemplateInfoKHR': '''
+                # TODO: VkPushDescriptorSetWithTemplateInfo needs a custom constructor to handle pData
+                # https://github.com/KhronosGroup/Vulkan-Utility-Libraries/issues/193
+                'VkPushDescriptorSetWithTemplateInfo': '''
                 ''',
             }
 
