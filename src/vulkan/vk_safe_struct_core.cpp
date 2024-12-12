@@ -17,6 +17,7 @@
 #include <vulkan/utility/vk_safe_struct.hpp>
 #include <vulkan/utility/vk_struct_helper.hpp>
 
+#include <cstddef>
 #include <cstring>
 
 namespace vku {
