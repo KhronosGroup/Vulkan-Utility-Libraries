@@ -10,8 +10,10 @@
 #pragma once
 
 #include "vk_layer_settings.h"
-#include <vector>
+
 #include <string>
+#include <utility>
+#include <vector>
 
 VkResult vkuGetLayerSettingValue(VkuLayerSettingSet layerSettingSet, const char *pSettingName, bool &settingValue);
 
