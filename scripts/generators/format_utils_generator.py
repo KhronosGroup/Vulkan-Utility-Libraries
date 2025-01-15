@@ -1,8 +1,8 @@
 #!/usr/bin/python3 -i
 #
-# Copyright 2023 The Khronos Group Inc.
-# Copyright 2023 Valve Corporation
-# Copyright 2023 LunarG, Inc.
+# Copyright 2023-2025 The Khronos Group Inc.
+# Copyright 2023-2025 Valve Corporation
+# Copyright 2023-2025 LunarG, Inc.
 #
 # SPDX-License-Identifier: Apache-2.0
 
@@ -71,9 +71,9 @@ class FormatUtilsOutputGenerator(BaseGenerator):
         out = []
         out.append(f'''// *** THIS FILE IS GENERATED - DO NOT EDIT ***
 // See {os.path.basename(__file__)} for modifications
-// Copyright 2023 The Khronos Group Inc.
-// Copyright 2023 Valve Corporation
-// Copyright 2023 LunarG, Inc.
+// Copyright 2023-2025 The Khronos Group Inc.
+// Copyright 2023-2025 Valve Corporation
+// Copyright 2023-2025 LunarG, Inc.
 //
 // SPDX-License-Identifier: Apache-2.0
 ''')
@@ -195,6 +195,8 @@ inline bool vkuFormatIsSinglePlane_422(VkFormat format);
 inline uint32_t vkuFormatPlaneCount(VkFormat format);
 
 // Returns whether a VkFormat is multiplane
+// Note - Formats like VK_FORMAT_G8B8G8R8_422_UNORM are NOT multi-planar, they require a
+//        VkSamplerYcbcrConversion and you should use vkuFormatRequiresYcbcrConversion instead
 inline bool vkuFormatIsMultiplane(VkFormat format) { return ((vkuFormatPlaneCount(format)) > 1u); }
 
 // Returns a VkFormat that is compatible with a given plane of a multiplane format
