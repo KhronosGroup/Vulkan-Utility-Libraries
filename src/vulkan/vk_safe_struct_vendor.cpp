@@ -15973,6 +15973,57 @@ void safe_VkPhysicalDeviceCooperativeMatrix2PropertiesNV::initialize(
     pNext = SafePnextCopy(copy_src->pNext);
 }
 
+safe_VkPhysicalDevicePipelineOpacityMicromapFeaturesARM::safe_VkPhysicalDevicePipelineOpacityMicromapFeaturesARM(
+    const VkPhysicalDevicePipelineOpacityMicromapFeaturesARM* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
+    bool copy_pnext)
+    : sType(in_struct->sType), pipelineOpacityMicromap(in_struct->pipelineOpacityMicromap) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDevicePipelineOpacityMicromapFeaturesARM::safe_VkPhysicalDevicePipelineOpacityMicromapFeaturesARM()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_OPACITY_MICROMAP_FEATURES_ARM), pNext(nullptr), pipelineOpacityMicromap() {}
+
+safe_VkPhysicalDevicePipelineOpacityMicromapFeaturesARM::safe_VkPhysicalDevicePipelineOpacityMicromapFeaturesARM(
+    const safe_VkPhysicalDevicePipelineOpacityMicromapFeaturesARM& copy_src) {
+    sType = copy_src.sType;
+    pipelineOpacityMicromap = copy_src.pipelineOpacityMicromap;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDevicePipelineOpacityMicromapFeaturesARM& safe_VkPhysicalDevicePipelineOpacityMicromapFeaturesARM::operator=(
+    const safe_VkPhysicalDevicePipelineOpacityMicromapFeaturesARM& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    pipelineOpacityMicromap = copy_src.pipelineOpacityMicromap;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDevicePipelineOpacityMicromapFeaturesARM::~safe_VkPhysicalDevicePipelineOpacityMicromapFeaturesARM() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkPhysicalDevicePipelineOpacityMicromapFeaturesARM::initialize(
+    const VkPhysicalDevicePipelineOpacityMicromapFeaturesARM* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    pipelineOpacityMicromap = in_struct->pipelineOpacityMicromap;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDevicePipelineOpacityMicromapFeaturesARM::initialize(
+    const safe_VkPhysicalDevicePipelineOpacityMicromapFeaturesARM* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    pipelineOpacityMicromap = copy_src->pipelineOpacityMicromap;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
 }  // namespace vku
 
 // NOLINTEND

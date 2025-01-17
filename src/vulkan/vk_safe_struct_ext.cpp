@@ -12339,54 +12339,6 @@ void safe_VkImageViewSlicedCreateInfoEXT::initialize(const safe_VkImageViewSlice
     pNext = SafePnextCopy(copy_src->pNext);
 }
 
-safe_VkPhysicalDeviceDepthClampZeroOneFeaturesEXT::safe_VkPhysicalDeviceDepthClampZeroOneFeaturesEXT(
-    const VkPhysicalDeviceDepthClampZeroOneFeaturesEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
-    : sType(in_struct->sType), depthClampZeroOne(in_struct->depthClampZeroOne) {
-    if (copy_pnext) {
-        pNext = SafePnextCopy(in_struct->pNext, copy_state);
-    }
-}
-
-safe_VkPhysicalDeviceDepthClampZeroOneFeaturesEXT::safe_VkPhysicalDeviceDepthClampZeroOneFeaturesEXT()
-    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_CLAMP_ZERO_ONE_FEATURES_EXT), pNext(nullptr), depthClampZeroOne() {}
-
-safe_VkPhysicalDeviceDepthClampZeroOneFeaturesEXT::safe_VkPhysicalDeviceDepthClampZeroOneFeaturesEXT(
-    const safe_VkPhysicalDeviceDepthClampZeroOneFeaturesEXT& copy_src) {
-    sType = copy_src.sType;
-    depthClampZeroOne = copy_src.depthClampZeroOne;
-    pNext = SafePnextCopy(copy_src.pNext);
-}
-
-safe_VkPhysicalDeviceDepthClampZeroOneFeaturesEXT& safe_VkPhysicalDeviceDepthClampZeroOneFeaturesEXT::operator=(
-    const safe_VkPhysicalDeviceDepthClampZeroOneFeaturesEXT& copy_src) {
-    if (&copy_src == this) return *this;
-
-    FreePnextChain(pNext);
-
-    sType = copy_src.sType;
-    depthClampZeroOne = copy_src.depthClampZeroOne;
-    pNext = SafePnextCopy(copy_src.pNext);
-
-    return *this;
-}
-
-safe_VkPhysicalDeviceDepthClampZeroOneFeaturesEXT::~safe_VkPhysicalDeviceDepthClampZeroOneFeaturesEXT() { FreePnextChain(pNext); }
-
-void safe_VkPhysicalDeviceDepthClampZeroOneFeaturesEXT::initialize(const VkPhysicalDeviceDepthClampZeroOneFeaturesEXT* in_struct,
-                                                                   [[maybe_unused]] PNextCopyState* copy_state) {
-    FreePnextChain(pNext);
-    sType = in_struct->sType;
-    depthClampZeroOne = in_struct->depthClampZeroOne;
-    pNext = SafePnextCopy(in_struct->pNext, copy_state);
-}
-
-void safe_VkPhysicalDeviceDepthClampZeroOneFeaturesEXT::initialize(
-    const safe_VkPhysicalDeviceDepthClampZeroOneFeaturesEXT* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
-    sType = copy_src->sType;
-    depthClampZeroOne = copy_src->depthClampZeroOne;
-    pNext = SafePnextCopy(copy_src->pNext);
-}
-
 safe_VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT::safe_VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT(
     const VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
     : sType(in_struct->sType), nonSeamlessCubeMap(in_struct->nonSeamlessCubeMap) {

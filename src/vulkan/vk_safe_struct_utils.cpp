@@ -887,6 +887,15 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_API_VULKAN_PROPERTIES_KHR:
                 safe_pNext = new safe_VkPhysicalDeviceLayeredApiVulkanPropertiesKHR(reinterpret_cast<const VkPhysicalDeviceLayeredApiVulkanPropertiesKHR *>(pNext), copy_state, false);
                 break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_8_FEATURES_KHR:
+                safe_pNext = new safe_VkPhysicalDeviceMaintenance8FeaturesKHR(reinterpret_cast<const VkPhysicalDeviceMaintenance8FeaturesKHR *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_MEMORY_BARRIER_ACCESS_FLAGS_3_KHR:
+                safe_pNext = new safe_VkMemoryBarrierAccessFlags3KHR(reinterpret_cast<const VkMemoryBarrierAccessFlags3KHR *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_CLAMP_ZERO_ONE_FEATURES_KHR:
+                safe_pNext = new safe_VkPhysicalDeviceDepthClampZeroOneFeaturesKHR(reinterpret_cast<const VkPhysicalDeviceDepthClampZeroOneFeaturesKHR *>(pNext), copy_state, false);
+                break;
             case VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT:
                 safe_pNext = new safe_VkDebugReportCallbackCreateInfoEXT(reinterpret_cast<const VkDebugReportCallbackCreateInfoEXT *>(pNext), copy_state, false);
                 break;
@@ -1653,9 +1662,6 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_SET_HOST_MAPPING_FEATURES_VALVE:
                 safe_pNext = new safe_VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE(reinterpret_cast<const VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE *>(pNext), copy_state, false);
                 break;
-            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_CLAMP_ZERO_ONE_FEATURES_EXT:
-                safe_pNext = new safe_VkPhysicalDeviceDepthClampZeroOneFeaturesEXT(reinterpret_cast<const VkPhysicalDeviceDepthClampZeroOneFeaturesEXT *>(pNext), copy_state, false);
-                break;
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_NON_SEAMLESS_CUBE_MAP_FEATURES_EXT:
                 safe_pNext = new safe_VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT(reinterpret_cast<const VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT *>(pNext), copy_state, false);
                 break;
@@ -1959,6 +1965,9 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
                 break;
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_2_PROPERTIES_NV:
                 safe_pNext = new safe_VkPhysicalDeviceCooperativeMatrix2PropertiesNV(reinterpret_cast<const VkPhysicalDeviceCooperativeMatrix2PropertiesNV *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_OPACITY_MICROMAP_FEATURES_ARM:
+                safe_pNext = new safe_VkPhysicalDevicePipelineOpacityMicromapFeaturesARM(reinterpret_cast<const VkPhysicalDevicePipelineOpacityMicromapFeaturesARM *>(pNext), copy_state, false);
                 break;
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_ROBUSTNESS_FEATURES_EXT:
                 safe_pNext = new safe_VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT(reinterpret_cast<const VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT *>(pNext), copy_state, false);
@@ -2866,6 +2875,15 @@ void FreePnextChain(const void *pNext) {
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_API_VULKAN_PROPERTIES_KHR:
             delete reinterpret_cast<safe_VkPhysicalDeviceLayeredApiVulkanPropertiesKHR *>(header);
             break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_8_FEATURES_KHR:
+            delete reinterpret_cast<safe_VkPhysicalDeviceMaintenance8FeaturesKHR *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_MEMORY_BARRIER_ACCESS_FLAGS_3_KHR:
+            delete reinterpret_cast<safe_VkMemoryBarrierAccessFlags3KHR *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_CLAMP_ZERO_ONE_FEATURES_KHR:
+            delete reinterpret_cast<safe_VkPhysicalDeviceDepthClampZeroOneFeaturesKHR *>(header);
+            break;
         case VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT:
             delete reinterpret_cast<safe_VkDebugReportCallbackCreateInfoEXT *>(header);
             break;
@@ -3632,9 +3650,6 @@ void FreePnextChain(const void *pNext) {
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_SET_HOST_MAPPING_FEATURES_VALVE:
             delete reinterpret_cast<safe_VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE *>(header);
             break;
-        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_CLAMP_ZERO_ONE_FEATURES_EXT:
-            delete reinterpret_cast<safe_VkPhysicalDeviceDepthClampZeroOneFeaturesEXT *>(header);
-            break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_NON_SEAMLESS_CUBE_MAP_FEATURES_EXT:
             delete reinterpret_cast<safe_VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT *>(header);
             break;
@@ -3938,6 +3953,9 @@ void FreePnextChain(const void *pNext) {
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_2_PROPERTIES_NV:
             delete reinterpret_cast<safe_VkPhysicalDeviceCooperativeMatrix2PropertiesNV *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_OPACITY_MICROMAP_FEATURES_ARM:
+            delete reinterpret_cast<safe_VkPhysicalDevicePipelineOpacityMicromapFeaturesARM *>(header);
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_ROBUSTNESS_FEATURES_EXT:
             delete reinterpret_cast<safe_VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT *>(header);

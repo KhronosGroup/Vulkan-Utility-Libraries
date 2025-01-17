@@ -1690,8 +1690,6 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_DESCRIPTOR_SET_BINDING_REFERENCE_VALVE";
         case VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_HOST_MAPPING_INFO_VALVE:
             return "VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_HOST_MAPPING_INFO_VALVE";
-        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_CLAMP_ZERO_ONE_FEATURES_EXT:
-            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_CLAMP_ZERO_ONE_FEATURES_EXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_NON_SEAMLESS_CUBE_MAP_FEATURES_EXT:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_NON_SEAMLESS_CUBE_MAP_FEATURES_EXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RENDER_PASS_STRIPED_FEATURES_ARM:
@@ -2044,6 +2042,10 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_GENERATED_COMMANDS_PIPELINE_INFO_EXT";
         case VK_STRUCTURE_TYPE_GENERATED_COMMANDS_SHADER_INFO_EXT:
             return "VK_STRUCTURE_TYPE_GENERATED_COMMANDS_SHADER_INFO_EXT";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_8_FEATURES_KHR:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_8_FEATURES_KHR";
+        case VK_STRUCTURE_TYPE_MEMORY_BARRIER_ACCESS_FLAGS_3_KHR:
+            return "VK_STRUCTURE_TYPE_MEMORY_BARRIER_ACCESS_FLAGS_3_KHR";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_ALIGNMENT_CONTROL_FEATURES_MESA:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_ALIGNMENT_CONTROL_FEATURES_MESA";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_ALIGNMENT_CONTROL_PROPERTIES_MESA:
@@ -2064,6 +2066,10 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_COOPERATIVE_MATRIX_FLEXIBLE_DIMENSIONS_PROPERTIES_NV";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_2_PROPERTIES_NV:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_2_PROPERTIES_NV";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_OPACITY_MICROMAP_FEATURES_ARM:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_OPACITY_MICROMAP_FEATURES_ARM";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_CLAMP_ZERO_ONE_FEATURES_KHR:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_CLAMP_ZERO_ONE_FEATURES_KHR";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_ROBUSTNESS_FEATURES_EXT:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_ROBUSTNESS_FEATURES_EXT";
         default:
@@ -6061,6 +6067,8 @@ static inline const char* string_VkPipelineCacheCreateFlagBits(VkPipelineCacheCr
     switch (input_value) {
         case VK_PIPELINE_CACHE_CREATE_EXTERNALLY_SYNCHRONIZED_BIT:
             return "VK_PIPELINE_CACHE_CREATE_EXTERNALLY_SYNCHRONIZED_BIT";
+        case VK_PIPELINE_CACHE_CREATE_INTERNALLY_SYNCHRONIZED_MERGE_BIT_KHR:
+            return "VK_PIPELINE_CACHE_CREATE_INTERNALLY_SYNCHRONIZED_MERGE_BIT_KHR";
         default:
             return "Unhandled VkPipelineCacheCreateFlagBits";
     }
@@ -6529,6 +6537,8 @@ static inline const char* string_VkDependencyFlagBits(VkDependencyFlagBits input
             return "VK_DEPENDENCY_VIEW_LOCAL_BIT";
         case VK_DEPENDENCY_FEEDBACK_LOOP_BIT_EXT:
             return "VK_DEPENDENCY_FEEDBACK_LOOP_BIT_EXT";
+        case VK_DEPENDENCY_QUEUE_FAMILY_OWNERSHIP_TRANSFER_USE_ALL_STAGES_BIT_KHR:
+            return "VK_DEPENDENCY_QUEUE_FAMILY_OWNERSHIP_TRANSFER_USE_ALL_STAGES_BIT_KHR";
         default:
             return "Unhandled VkDependencyFlagBits";
     }
@@ -7621,6 +7631,7 @@ static inline const char* string_VkPipelineCreateFlagBits2(uint64_t input_value)
     if (input_value == VK_PIPELINE_CREATE_2_DEPTH_STENCIL_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT) return "VK_PIPELINE_CREATE_2_DEPTH_STENCIL_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT";
     if (input_value == VK_PIPELINE_CREATE_2_RAY_TRACING_DISPLACEMENT_MICROMAP_BIT_NV) return "VK_PIPELINE_CREATE_2_RAY_TRACING_DISPLACEMENT_MICROMAP_BIT_NV";
     if (input_value == VK_PIPELINE_CREATE_2_DESCRIPTOR_BUFFER_BIT_EXT) return "VK_PIPELINE_CREATE_2_DESCRIPTOR_BUFFER_BIT_EXT";
+    if (input_value == VK_PIPELINE_CREATE_2_DISALLOW_OPACITY_MICROMAP_BIT_ARM) return "VK_PIPELINE_CREATE_2_DISALLOW_OPACITY_MICROMAP_BIT_ARM";
     if (input_value == VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR) return "VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR";
     if (input_value == VK_PIPELINE_CREATE_2_INDIRECT_BINDABLE_BIT_EXT) return "VK_PIPELINE_CREATE_2_INDIRECT_BINDABLE_BIT_EXT";
     return "Unhandled VkPipelineCreateFlagBits2";
@@ -8853,6 +8864,27 @@ static inline std::string string_VkVideoEncodeAV1RateControlFlagsKHR(VkVideoEnco
         input_value >>= 1;
     }
     if (ret.empty()) ret.append("VkVideoEncodeAV1RateControlFlagsKHR(0)");
+    return ret;
+}
+#endif // __cplusplus
+static inline const char* string_VkAccessFlagBits3KHR(uint64_t input_value) {
+    if (input_value == VK_ACCESS_3_NONE_KHR) return "VK_ACCESS_3_NONE_KHR";
+    return "Unhandled VkAccessFlagBits3KHR";
+}
+
+#ifdef __cplusplus
+static inline std::string string_VkAccessFlags3KHR(VkAccessFlags3KHR input_value) {
+    std::string ret;
+    int index = 0;
+    while(input_value) {
+        if (input_value & 1) {
+            if( !ret.empty()) ret.append("|");
+            ret.append(string_VkAccessFlagBits3KHR(static_cast<uint64_t>(1ULL << index)));
+        }
+        ++index;
+        input_value >>= 1;
+    }
+    if (ret.empty()) ret.append("VkAccessFlags3KHR(0)");
     return ret;
 }
 #endif // __cplusplus
