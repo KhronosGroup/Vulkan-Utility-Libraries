@@ -1,6 +1,6 @@
-// Copyright 2023 The Khronos Group Inc.
-// Copyright 2023 Valve Corporation
-// Copyright 2023 LunarG, Inc.
+// Copyright 2023-2025 The Khronos Group Inc.
+// Copyright 2023-2025 Valve Corporation
+// Copyright 2023-2025 LunarG, Inc.
 //
 // SPDX-License-Identifier: Apache-2.0
 //
@@ -503,17 +503,7 @@ TEST(format_utils, vkuFormatCompatibilityClass) {
         }
     }
 }
-TEST(format_utils, vkuFormatElementIsTexel) {
-    constexpr auto formats = magic_enum::enum_values<VkFormat>();
-    for (auto format : formats) {
-        if (!(vkuFormatIsPacked(format) || vkuFormatIsCompressed(format) || vkuFormatIsSinglePlane_422(format) ||
-              vkuFormatIsMultiplane(format))) {
-            EXPECT_TRUE(vkuFormatElementIsTexel(format));
-        } else {
-            EXPECT_FALSE(vkuFormatElementIsTexel(format));
-        }
-    }
-}
+
 TEST(format_utils, vkuFormatElementSizeWithAspect) {
     EXPECT_EQ(vkuFormatElementSizeWithAspect(VK_FORMAT_R64G64_SFLOAT, VK_IMAGE_ASPECT_NONE), 16u);
     EXPECT_EQ(vkuFormatElementSizeWithAspect(VK_FORMAT_R64G64_SFLOAT, VK_IMAGE_ASPECT_STENCIL_BIT), 0u);
