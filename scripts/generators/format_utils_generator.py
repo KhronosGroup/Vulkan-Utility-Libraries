@@ -216,9 +216,6 @@ inline VkExtent3D vkuFormatTexelBlockExtent(VkFormat format);
 // Returns the Compatibility Class of a VkFormat as defined by the spec
 inline enum VKU_FORMAT_COMPATIBILITY_CLASS vkuFormatCompatibilityClass(VkFormat format);
 
-// Return true if a VkFormat is 'normal', with one texel per format element
-inline bool vkuFormatElementIsTexel(VkFormat format);
-
 // Return size, in bytes, of one element of a VkFormat
 // Format must not be a depth, stencil, or multiplane format
 inline uint32_t vkuFormatElementSize(VkFormat format);
@@ -562,14 +559,6 @@ inline uint32_t vkuFormatComponentCount(VkFormat format) { return vkuGetFormatIn
 inline VkExtent3D vkuFormatTexelBlockExtent(VkFormat format) { return vkuGetFormatInfo(format).block_extent; }
 
 inline enum VKU_FORMAT_COMPATIBILITY_CLASS vkuFormatCompatibilityClass(VkFormat format) { return vkuGetFormatInfo(format).compatibility; }
-
-inline bool vkuFormatElementIsTexel(VkFormat format) {
-    if (vkuFormatIsPacked(format) || vkuFormatIsCompressed(format) || vkuFormatIsSinglePlane_422(format) || vkuFormatIsMultiplane(format)) {
-        return false;
-    } else {
-        return true;
-    }
-}
 
 inline uint32_t vkuFormatElementSize(VkFormat format) {
     return vkuFormatElementSizeWithAspect(format, VK_IMAGE_ASPECT_COLOR_BIT);
