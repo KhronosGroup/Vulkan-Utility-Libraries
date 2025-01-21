@@ -412,6 +412,18 @@ TEST(format_utils, vkuFindMultiplaneExtentDivisors) {
     EXPECT_EQ(vkuFindMultiplaneExtentDivisors(VK_FORMAT_G16_B16R16_2PLANE_422_UNORM, VK_IMAGE_ASPECT_PLANE_2_BIT).height, 1u);
 }
 
+TEST(format_utils, vkuFormatIsDepthStencilWithColorSizeCompatible) {
+    EXPECT_FALSE(
+        vkuFormatIsDepthStencilWithColorSizeCompatible(VK_FORMAT_G10X6_B10X6_R10X6_3PLANE_420_UNORM_3PACK16, VK_FORMAT_D16_UNORM));
+    EXPECT_FALSE(vkuFormatIsDepthStencilWithColorSizeCompatible(VK_FORMAT_D16_UNORM, VK_FORMAT_R16_SFLOAT));
+    EXPECT_FALSE(vkuFormatIsDepthStencilWithColorSizeCompatible(VK_FORMAT_R8_UINT, VK_FORMAT_D16_UNORM_S8_UINT));
+    EXPECT_FALSE(vkuFormatIsDepthStencilWithColorSizeCompatible(VK_FORMAT_R16_UNORM, VK_FORMAT_S8_UINT));
+
+    EXPECT_TRUE(vkuFormatIsDepthStencilWithColorSizeCompatible(VK_FORMAT_R16_SFLOAT, VK_FORMAT_D16_UNORM));
+    EXPECT_TRUE(vkuFormatIsDepthStencilWithColorSizeCompatible(VK_FORMAT_R16_UNORM, VK_FORMAT_D16_UNORM_S8_UINT));
+    EXPECT_TRUE(vkuFormatIsDepthStencilWithColorSizeCompatible(VK_FORMAT_R8_UINT, VK_FORMAT_S8_UINT));
+}
+
 TEST(format_utils, vkuFormatComponentCount) {
     for (auto [format, format_str] : magic_enum::enum_entries<VkFormat>()) {
         if (vkuFormatIsCompressed(format)) {
