@@ -220,12 +220,19 @@ inline VkExtent3D vkuFormatTexelBlockExtent(VkFormat format);
 // Returns the Compatibility Class of a VkFormat as defined by the spec
 inline enum VKU_FORMAT_COMPATIBILITY_CLASS vkuFormatCompatibilityClass(VkFormat format);
 
+// Returns the number of bytes in a single Texel Block.
+// When dealing with a depth/stencil format, need to consider using vkuFormatStencilSize or vkuFormatDepthSize.
+// When dealing with mulit-planar formats, need to consider using vkuGetPlaneIndex.
+inline uint32_t vkuFormatTexelBlockSize(VkFormat format);
+
 // Return size, in bytes, of one element of a VkFormat
 // Format must not be a depth, stencil, or multiplane format
+// Deprecated - Use vkuFormatTexelBlockSize - there is no "element" size in the spec
 inline uint32_t vkuFormatElementSize(VkFormat format);
 
 // Return the size in bytes of one texel of a VkFormat
 // For compressed or multi-plane, this may be a fractional number
+// Deprecated - Use vkuFormatTexelBlockSize - there is no "element" size in the spec
 inline uint32_t vkuFormatElementSizeWithAspect(VkFormat format, VkImageAspectFlagBits aspectMask);
 
 // Return the size in bytes of one texel of a VkFormat
@@ -291,7 +298,7 @@ struct VKU_FORMAT_COMPONENT_INFO {
 // Generic information for all formats
 struct VKU_FORMAT_INFO {
     enum VKU_FORMAT_COMPATIBILITY_CLASS compatibility;
-    uint32_t block_size;  // bytes
+    uint32_t texel_block_size;  // bytes
     uint32_t texel_per_block;
     VkExtent3D block_extent;
     uint32_t component_count;
@@ -585,10 +592,14 @@ inline VkExtent3D vkuFormatTexelBlockExtent(VkFormat format) { return vkuGetForm
 
 inline enum VKU_FORMAT_COMPATIBILITY_CLASS vkuFormatCompatibilityClass(VkFormat format) { return vkuGetFormatInfo(format).compatibility; }
 
+inline uint32_t vkuFormatTexelBlockSize(VkFormat format) { return vkuGetFormatInfo(format).texel_block_size; }
+
+// Deprecated - Use vkuFormatTexelBlockSize
 inline uint32_t vkuFormatElementSize(VkFormat format) {
     return vkuFormatElementSizeWithAspect(format, VK_IMAGE_ASPECT_COLOR_BIT);
 }
 
+// Deprecated - Use vkuFormatTexelBlockSize
 inline uint32_t vkuFormatElementSizeWithAspect(VkFormat format, VkImageAspectFlagBits aspectMask) {
     // Depth/Stencil aspect have separate helper functions
     if (aspectMask & VK_IMAGE_ASPECT_STENCIL_BIT) {
@@ -601,7 +612,7 @@ inline uint32_t vkuFormatElementSizeWithAspect(VkFormat format, VkImageAspectFla
         format = vkuFindMultiplaneCompatibleFormat(format, aspectMask);
     }
 
-    return vkuGetFormatInfo(format).block_size;
+    return vkuGetFormatInfo(format).texel_block_size;
 }
 
 inline double vkuFormatTexelSize(VkFormat format) {
