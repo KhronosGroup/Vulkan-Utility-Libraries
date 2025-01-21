@@ -516,6 +516,18 @@ TEST(format_utils, vkuFormatCompatibilityClass) {
     }
 }
 
+TEST(format_utils, vkuFormatTexelsPerBlock) {
+    EXPECT_EQ(vkuFormatTexelsPerBlock(VK_FORMAT_R64G64_SFLOAT), 1u);
+    EXPECT_EQ(vkuFormatTexelsPerBlock(VK_FORMAT_BC6H_UFLOAT_BLOCK), 16u);
+    EXPECT_EQ(vkuFormatTexelsPerBlock(VK_FORMAT_ASTC_5x4_SRGB_BLOCK), 20u);
+    EXPECT_EQ(vkuFormatTexelsPerBlock(VK_FORMAT_ASTC_5x5_SRGB_BLOCK), 25u);
+    EXPECT_EQ(vkuFormatTexelsPerBlock(VK_FORMAT_ASTC_12x12_SRGB_BLOCK), 144u);
+    EXPECT_EQ(vkuFormatTexelsPerBlock(VK_FORMAT_G16_B16_R16_3PLANE_420_UNORM), 1u);
+    EXPECT_EQ(vkuFormatTexelsPerBlock(VK_FORMAT_D32_SFLOAT), 1u);
+    EXPECT_EQ(vkuFormatTexelsPerBlock(VK_FORMAT_D32_SFLOAT_S8_UINT), 1u);
+    EXPECT_EQ(vkuFormatTexelsPerBlock(VK_FORMAT_S8_UINT), 1u);
+}
+
 TEST(format_utils, vkuFormatTexelBlockSize) {
     EXPECT_EQ(vkuFormatTexelBlockSize(VK_FORMAT_R64G64_SFLOAT), 16u);
     EXPECT_EQ(vkuFormatTexelBlockSize(VK_FORMAT_ASTC_5x4_SRGB_BLOCK), 16u);
