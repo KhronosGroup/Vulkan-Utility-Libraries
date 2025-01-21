@@ -274,6 +274,10 @@ inline VkExtent3D vkuFormatTexelBlockExtent(VkFormat format);
 // Returns the Compatibility Class of a VkFormat as defined by the spec
 inline enum VKU_FORMAT_COMPATIBILITY_CLASS vkuFormatCompatibilityClass(VkFormat format);
 
+// Returns the number of texels inside a texel block
+// Will always be 1 when not using compressed block formats
+inline uint32_t vkuFormatTexelsPerBlock(VkFormat format);
+
 // Returns the number of bytes in a single Texel Block.
 // When dealing with a depth/stencil format, need to consider using vkuFormatStencilSize or vkuFormatDepthSize.
 // When dealing with mulit-planar formats, need to consider using vkuGetPlaneIndex.
@@ -360,7 +364,7 @@ struct VKU_FORMAT_COMPONENT_INFO {
 struct VKU_FORMAT_INFO {
     enum VKU_FORMAT_COMPATIBILITY_CLASS compatibility;
     uint32_t texel_block_size;  // bytes
-    uint32_t texel_per_block;
+    uint32_t texels_per_block;
     VkExtent3D block_extent;
     uint32_t component_count;
     struct VKU_FORMAT_COMPONENT_INFO components[VKU_FORMAT_MAX_COMPONENTS];
@@ -2067,6 +2071,8 @@ inline uint32_t vkuFormatComponentCount(VkFormat format) { return vkuGetFormatIn
 inline VkExtent3D vkuFormatTexelBlockExtent(VkFormat format) { return vkuGetFormatInfo(format).block_extent; }
 
 inline enum VKU_FORMAT_COMPATIBILITY_CLASS vkuFormatCompatibilityClass(VkFormat format) { return vkuGetFormatInfo(format).compatibility; }
+
+inline uint32_t vkuFormatTexelsPerBlock(VkFormat format) { return vkuGetFormatInfo(format).texels_per_block; }
 
 inline uint32_t vkuFormatTexelBlockSize(VkFormat format) { return vkuGetFormatInfo(format).texel_block_size; }
 
