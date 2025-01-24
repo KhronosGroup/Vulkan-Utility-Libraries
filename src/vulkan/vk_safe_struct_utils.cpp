@@ -893,6 +893,18 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
             case VK_STRUCTURE_TYPE_MEMORY_BARRIER_ACCESS_FLAGS_3_KHR:
                 safe_pNext = new safe_VkMemoryBarrierAccessFlags3KHR(reinterpret_cast<const VkMemoryBarrierAccessFlags3KHR *>(pNext), copy_state, false);
                 break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VIDEO_MAINTENANCE_2_FEATURES_KHR:
+                safe_pNext = new safe_VkPhysicalDeviceVideoMaintenance2FeaturesKHR(reinterpret_cast<const VkPhysicalDeviceVideoMaintenance2FeaturesKHR *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_VIDEO_DECODE_H264_INLINE_SESSION_PARAMETERS_INFO_KHR:
+                safe_pNext = new safe_VkVideoDecodeH264InlineSessionParametersInfoKHR(reinterpret_cast<const VkVideoDecodeH264InlineSessionParametersInfoKHR *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_VIDEO_DECODE_H265_INLINE_SESSION_PARAMETERS_INFO_KHR:
+                safe_pNext = new safe_VkVideoDecodeH265InlineSessionParametersInfoKHR(reinterpret_cast<const VkVideoDecodeH265InlineSessionParametersInfoKHR *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_VIDEO_DECODE_AV1_INLINE_SESSION_PARAMETERS_INFO_KHR:
+                safe_pNext = new safe_VkVideoDecodeAV1InlineSessionParametersInfoKHR(reinterpret_cast<const VkVideoDecodeAV1InlineSessionParametersInfoKHR *>(pNext), copy_state, false);
+                break;
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_CLAMP_ZERO_ONE_FEATURES_KHR:
                 safe_pNext = new safe_VkPhysicalDeviceDepthClampZeroOneFeaturesKHR(reinterpret_cast<const VkPhysicalDeviceDepthClampZeroOneFeaturesKHR *>(pNext), copy_state, false);
                 break;
@@ -1969,6 +1981,11 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_OPACITY_MICROMAP_FEATURES_ARM:
                 safe_pNext = new safe_VkPhysicalDevicePipelineOpacityMicromapFeaturesARM(reinterpret_cast<const VkPhysicalDevicePipelineOpacityMicromapFeaturesARM *>(pNext), copy_state, false);
                 break;
+#ifdef VK_USE_PLATFORM_METAL_EXT
+            case VK_STRUCTURE_TYPE_IMPORT_MEMORY_METAL_HANDLE_INFO_EXT:
+                safe_pNext = new safe_VkImportMemoryMetalHandleInfoEXT(reinterpret_cast<const VkImportMemoryMetalHandleInfoEXT *>(pNext), copy_state, false);
+                break;
+#endif  // VK_USE_PLATFORM_METAL_EXT
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_ROBUSTNESS_FEATURES_EXT:
                 safe_pNext = new safe_VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT(reinterpret_cast<const VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT *>(pNext), copy_state, false);
                 break;
@@ -2880,6 +2897,18 @@ void FreePnextChain(const void *pNext) {
             break;
         case VK_STRUCTURE_TYPE_MEMORY_BARRIER_ACCESS_FLAGS_3_KHR:
             delete reinterpret_cast<safe_VkMemoryBarrierAccessFlags3KHR *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VIDEO_MAINTENANCE_2_FEATURES_KHR:
+            delete reinterpret_cast<safe_VkPhysicalDeviceVideoMaintenance2FeaturesKHR *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_VIDEO_DECODE_H264_INLINE_SESSION_PARAMETERS_INFO_KHR:
+            delete reinterpret_cast<safe_VkVideoDecodeH264InlineSessionParametersInfoKHR *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_VIDEO_DECODE_H265_INLINE_SESSION_PARAMETERS_INFO_KHR:
+            delete reinterpret_cast<safe_VkVideoDecodeH265InlineSessionParametersInfoKHR *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_VIDEO_DECODE_AV1_INLINE_SESSION_PARAMETERS_INFO_KHR:
+            delete reinterpret_cast<safe_VkVideoDecodeAV1InlineSessionParametersInfoKHR *>(header);
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_CLAMP_ZERO_ONE_FEATURES_KHR:
             delete reinterpret_cast<safe_VkPhysicalDeviceDepthClampZeroOneFeaturesKHR *>(header);
@@ -3957,6 +3986,11 @@ void FreePnextChain(const void *pNext) {
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_OPACITY_MICROMAP_FEATURES_ARM:
             delete reinterpret_cast<safe_VkPhysicalDevicePipelineOpacityMicromapFeaturesARM *>(header);
             break;
+#ifdef VK_USE_PLATFORM_METAL_EXT
+        case VK_STRUCTURE_TYPE_IMPORT_MEMORY_METAL_HANDLE_INFO_EXT:
+            delete reinterpret_cast<safe_VkImportMemoryMetalHandleInfoEXT *>(header);
+            break;
+#endif  // VK_USE_PLATFORM_METAL_EXT
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_ROBUSTNESS_FEATURES_EXT:
             delete reinterpret_cast<safe_VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT *>(header);
             break;

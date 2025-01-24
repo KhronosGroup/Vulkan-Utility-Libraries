@@ -768,6 +768,10 @@ typedef struct VkuDeviceDispatchTable_ {
     PFN_vkDestroyIndirectExecutionSetEXT DestroyIndirectExecutionSetEXT;
     PFN_vkUpdateIndirectExecutionSetPipelineEXT UpdateIndirectExecutionSetPipelineEXT;
     PFN_vkUpdateIndirectExecutionSetShaderEXT UpdateIndirectExecutionSetShaderEXT;
+#ifdef VK_USE_PLATFORM_METAL_EXT
+    PFN_vkGetMemoryMetalHandleEXT GetMemoryMetalHandleEXT;
+    PFN_vkGetMemoryMetalHandlePropertiesEXT GetMemoryMetalHandlePropertiesEXT;
+#endif  // VK_USE_PLATFORM_METAL_EXT
     PFN_vkCreateAccelerationStructureKHR CreateAccelerationStructureKHR;
     PFN_vkDestroyAccelerationStructureKHR DestroyAccelerationStructureKHR;
     PFN_vkCmdBuildAccelerationStructuresKHR CmdBuildAccelerationStructuresKHR;
@@ -1400,6 +1404,10 @@ static inline void vkuInitDeviceDispatchTable(VkDevice device, VkuDeviceDispatch
     table->DestroyIndirectExecutionSetEXT = (PFN_vkDestroyIndirectExecutionSetEXT)gdpa(device, "vkDestroyIndirectExecutionSetEXT");
     table->UpdateIndirectExecutionSetPipelineEXT = (PFN_vkUpdateIndirectExecutionSetPipelineEXT)gdpa(device, "vkUpdateIndirectExecutionSetPipelineEXT");
     table->UpdateIndirectExecutionSetShaderEXT = (PFN_vkUpdateIndirectExecutionSetShaderEXT)gdpa(device, "vkUpdateIndirectExecutionSetShaderEXT");
+#ifdef VK_USE_PLATFORM_METAL_EXT
+    table->GetMemoryMetalHandleEXT = (PFN_vkGetMemoryMetalHandleEXT)gdpa(device, "vkGetMemoryMetalHandleEXT");
+    table->GetMemoryMetalHandlePropertiesEXT = (PFN_vkGetMemoryMetalHandlePropertiesEXT)gdpa(device, "vkGetMemoryMetalHandlePropertiesEXT");
+#endif  // VK_USE_PLATFORM_METAL_EXT
     table->CreateAccelerationStructureKHR = (PFN_vkCreateAccelerationStructureKHR)gdpa(device, "vkCreateAccelerationStructureKHR");
     table->DestroyAccelerationStructureKHR = (PFN_vkDestroyAccelerationStructureKHR)gdpa(device, "vkDestroyAccelerationStructureKHR");
     table->CmdBuildAccelerationStructuresKHR = (PFN_vkCmdBuildAccelerationStructuresKHR)gdpa(device, "vkCmdBuildAccelerationStructuresKHR");
