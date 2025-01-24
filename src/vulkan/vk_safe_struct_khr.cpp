@@ -14772,6 +14772,358 @@ void safe_VkMemoryBarrierAccessFlags3KHR::initialize(const safe_VkMemoryBarrierA
     pNext = SafePnextCopy(copy_src->pNext);
 }
 
+safe_VkPhysicalDeviceVideoMaintenance2FeaturesKHR::safe_VkPhysicalDeviceVideoMaintenance2FeaturesKHR(
+    const VkPhysicalDeviceVideoMaintenance2FeaturesKHR* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), videoMaintenance2(in_struct->videoMaintenance2) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceVideoMaintenance2FeaturesKHR::safe_VkPhysicalDeviceVideoMaintenance2FeaturesKHR()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VIDEO_MAINTENANCE_2_FEATURES_KHR), pNext(nullptr), videoMaintenance2() {}
+
+safe_VkPhysicalDeviceVideoMaintenance2FeaturesKHR::safe_VkPhysicalDeviceVideoMaintenance2FeaturesKHR(
+    const safe_VkPhysicalDeviceVideoMaintenance2FeaturesKHR& copy_src) {
+    sType = copy_src.sType;
+    videoMaintenance2 = copy_src.videoMaintenance2;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceVideoMaintenance2FeaturesKHR& safe_VkPhysicalDeviceVideoMaintenance2FeaturesKHR::operator=(
+    const safe_VkPhysicalDeviceVideoMaintenance2FeaturesKHR& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    videoMaintenance2 = copy_src.videoMaintenance2;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceVideoMaintenance2FeaturesKHR::~safe_VkPhysicalDeviceVideoMaintenance2FeaturesKHR() { FreePnextChain(pNext); }
+
+void safe_VkPhysicalDeviceVideoMaintenance2FeaturesKHR::initialize(const VkPhysicalDeviceVideoMaintenance2FeaturesKHR* in_struct,
+                                                                   [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    videoMaintenance2 = in_struct->videoMaintenance2;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceVideoMaintenance2FeaturesKHR::initialize(
+    const safe_VkPhysicalDeviceVideoMaintenance2FeaturesKHR* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    videoMaintenance2 = copy_src->videoMaintenance2;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkVideoDecodeH264InlineSessionParametersInfoKHR::safe_VkVideoDecodeH264InlineSessionParametersInfoKHR(
+    const VkVideoDecodeH264InlineSessionParametersInfoKHR* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), pStdSPS(nullptr), pStdPPS(nullptr) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+    if (in_struct->pStdSPS) {
+        pStdSPS = new StdVideoH264SequenceParameterSet(*in_struct->pStdSPS);
+    }
+
+    if (in_struct->pStdPPS) {
+        pStdPPS = new StdVideoH264PictureParameterSet(*in_struct->pStdPPS);
+    }
+}
+
+safe_VkVideoDecodeH264InlineSessionParametersInfoKHR::safe_VkVideoDecodeH264InlineSessionParametersInfoKHR()
+    : sType(VK_STRUCTURE_TYPE_VIDEO_DECODE_H264_INLINE_SESSION_PARAMETERS_INFO_KHR),
+      pNext(nullptr),
+      pStdSPS(nullptr),
+      pStdPPS(nullptr) {}
+
+safe_VkVideoDecodeH264InlineSessionParametersInfoKHR::safe_VkVideoDecodeH264InlineSessionParametersInfoKHR(
+    const safe_VkVideoDecodeH264InlineSessionParametersInfoKHR& copy_src) {
+    sType = copy_src.sType;
+    pStdSPS = nullptr;
+    pStdPPS = nullptr;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    if (copy_src.pStdSPS) {
+        pStdSPS = new StdVideoH264SequenceParameterSet(*copy_src.pStdSPS);
+    }
+
+    if (copy_src.pStdPPS) {
+        pStdPPS = new StdVideoH264PictureParameterSet(*copy_src.pStdPPS);
+    }
+}
+
+safe_VkVideoDecodeH264InlineSessionParametersInfoKHR& safe_VkVideoDecodeH264InlineSessionParametersInfoKHR::operator=(
+    const safe_VkVideoDecodeH264InlineSessionParametersInfoKHR& copy_src) {
+    if (&copy_src == this) return *this;
+
+    if (pStdSPS) delete pStdSPS;
+    if (pStdPPS) delete pStdPPS;
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    pStdSPS = nullptr;
+    pStdPPS = nullptr;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    if (copy_src.pStdSPS) {
+        pStdSPS = new StdVideoH264SequenceParameterSet(*copy_src.pStdSPS);
+    }
+
+    if (copy_src.pStdPPS) {
+        pStdPPS = new StdVideoH264PictureParameterSet(*copy_src.pStdPPS);
+    }
+
+    return *this;
+}
+
+safe_VkVideoDecodeH264InlineSessionParametersInfoKHR::~safe_VkVideoDecodeH264InlineSessionParametersInfoKHR() {
+    if (pStdSPS) delete pStdSPS;
+    if (pStdPPS) delete pStdPPS;
+    FreePnextChain(pNext);
+}
+
+void safe_VkVideoDecodeH264InlineSessionParametersInfoKHR::initialize(
+    const VkVideoDecodeH264InlineSessionParametersInfoKHR* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    if (pStdSPS) delete pStdSPS;
+    if (pStdPPS) delete pStdPPS;
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    pStdSPS = nullptr;
+    pStdPPS = nullptr;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+
+    if (in_struct->pStdSPS) {
+        pStdSPS = new StdVideoH264SequenceParameterSet(*in_struct->pStdSPS);
+    }
+
+    if (in_struct->pStdPPS) {
+        pStdPPS = new StdVideoH264PictureParameterSet(*in_struct->pStdPPS);
+    }
+}
+
+void safe_VkVideoDecodeH264InlineSessionParametersInfoKHR::initialize(
+    const safe_VkVideoDecodeH264InlineSessionParametersInfoKHR* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    pStdSPS = nullptr;
+    pStdPPS = nullptr;
+    pNext = SafePnextCopy(copy_src->pNext);
+
+    if (copy_src->pStdSPS) {
+        pStdSPS = new StdVideoH264SequenceParameterSet(*copy_src->pStdSPS);
+    }
+
+    if (copy_src->pStdPPS) {
+        pStdPPS = new StdVideoH264PictureParameterSet(*copy_src->pStdPPS);
+    }
+}
+
+safe_VkVideoDecodeH265InlineSessionParametersInfoKHR::safe_VkVideoDecodeH265InlineSessionParametersInfoKHR(
+    const VkVideoDecodeH265InlineSessionParametersInfoKHR* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), pStdVPS(nullptr), pStdSPS(nullptr), pStdPPS(nullptr) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+    if (in_struct->pStdVPS) {
+        pStdVPS = new StdVideoH265VideoParameterSet(*in_struct->pStdVPS);
+    }
+
+    if (in_struct->pStdSPS) {
+        pStdSPS = new StdVideoH265SequenceParameterSet(*in_struct->pStdSPS);
+    }
+
+    if (in_struct->pStdPPS) {
+        pStdPPS = new StdVideoH265PictureParameterSet(*in_struct->pStdPPS);
+    }
+}
+
+safe_VkVideoDecodeH265InlineSessionParametersInfoKHR::safe_VkVideoDecodeH265InlineSessionParametersInfoKHR()
+    : sType(VK_STRUCTURE_TYPE_VIDEO_DECODE_H265_INLINE_SESSION_PARAMETERS_INFO_KHR),
+      pNext(nullptr),
+      pStdVPS(nullptr),
+      pStdSPS(nullptr),
+      pStdPPS(nullptr) {}
+
+safe_VkVideoDecodeH265InlineSessionParametersInfoKHR::safe_VkVideoDecodeH265InlineSessionParametersInfoKHR(
+    const safe_VkVideoDecodeH265InlineSessionParametersInfoKHR& copy_src) {
+    sType = copy_src.sType;
+    pStdVPS = nullptr;
+    pStdSPS = nullptr;
+    pStdPPS = nullptr;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    if (copy_src.pStdVPS) {
+        pStdVPS = new StdVideoH265VideoParameterSet(*copy_src.pStdVPS);
+    }
+
+    if (copy_src.pStdSPS) {
+        pStdSPS = new StdVideoH265SequenceParameterSet(*copy_src.pStdSPS);
+    }
+
+    if (copy_src.pStdPPS) {
+        pStdPPS = new StdVideoH265PictureParameterSet(*copy_src.pStdPPS);
+    }
+}
+
+safe_VkVideoDecodeH265InlineSessionParametersInfoKHR& safe_VkVideoDecodeH265InlineSessionParametersInfoKHR::operator=(
+    const safe_VkVideoDecodeH265InlineSessionParametersInfoKHR& copy_src) {
+    if (&copy_src == this) return *this;
+
+    if (pStdVPS) delete pStdVPS;
+    if (pStdSPS) delete pStdSPS;
+    if (pStdPPS) delete pStdPPS;
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    pStdVPS = nullptr;
+    pStdSPS = nullptr;
+    pStdPPS = nullptr;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    if (copy_src.pStdVPS) {
+        pStdVPS = new StdVideoH265VideoParameterSet(*copy_src.pStdVPS);
+    }
+
+    if (copy_src.pStdSPS) {
+        pStdSPS = new StdVideoH265SequenceParameterSet(*copy_src.pStdSPS);
+    }
+
+    if (copy_src.pStdPPS) {
+        pStdPPS = new StdVideoH265PictureParameterSet(*copy_src.pStdPPS);
+    }
+
+    return *this;
+}
+
+safe_VkVideoDecodeH265InlineSessionParametersInfoKHR::~safe_VkVideoDecodeH265InlineSessionParametersInfoKHR() {
+    if (pStdVPS) delete pStdVPS;
+    if (pStdSPS) delete pStdSPS;
+    if (pStdPPS) delete pStdPPS;
+    FreePnextChain(pNext);
+}
+
+void safe_VkVideoDecodeH265InlineSessionParametersInfoKHR::initialize(
+    const VkVideoDecodeH265InlineSessionParametersInfoKHR* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    if (pStdVPS) delete pStdVPS;
+    if (pStdSPS) delete pStdSPS;
+    if (pStdPPS) delete pStdPPS;
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    pStdVPS = nullptr;
+    pStdSPS = nullptr;
+    pStdPPS = nullptr;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+
+    if (in_struct->pStdVPS) {
+        pStdVPS = new StdVideoH265VideoParameterSet(*in_struct->pStdVPS);
+    }
+
+    if (in_struct->pStdSPS) {
+        pStdSPS = new StdVideoH265SequenceParameterSet(*in_struct->pStdSPS);
+    }
+
+    if (in_struct->pStdPPS) {
+        pStdPPS = new StdVideoH265PictureParameterSet(*in_struct->pStdPPS);
+    }
+}
+
+void safe_VkVideoDecodeH265InlineSessionParametersInfoKHR::initialize(
+    const safe_VkVideoDecodeH265InlineSessionParametersInfoKHR* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    pStdVPS = nullptr;
+    pStdSPS = nullptr;
+    pStdPPS = nullptr;
+    pNext = SafePnextCopy(copy_src->pNext);
+
+    if (copy_src->pStdVPS) {
+        pStdVPS = new StdVideoH265VideoParameterSet(*copy_src->pStdVPS);
+    }
+
+    if (copy_src->pStdSPS) {
+        pStdSPS = new StdVideoH265SequenceParameterSet(*copy_src->pStdSPS);
+    }
+
+    if (copy_src->pStdPPS) {
+        pStdPPS = new StdVideoH265PictureParameterSet(*copy_src->pStdPPS);
+    }
+}
+
+safe_VkVideoDecodeAV1InlineSessionParametersInfoKHR::safe_VkVideoDecodeAV1InlineSessionParametersInfoKHR(
+    const VkVideoDecodeAV1InlineSessionParametersInfoKHR* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), pStdSequenceHeader(nullptr) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+    if (in_struct->pStdSequenceHeader) {
+        pStdSequenceHeader = new StdVideoAV1SequenceHeader(*in_struct->pStdSequenceHeader);
+    }
+}
+
+safe_VkVideoDecodeAV1InlineSessionParametersInfoKHR::safe_VkVideoDecodeAV1InlineSessionParametersInfoKHR()
+    : sType(VK_STRUCTURE_TYPE_VIDEO_DECODE_AV1_INLINE_SESSION_PARAMETERS_INFO_KHR), pNext(nullptr), pStdSequenceHeader(nullptr) {}
+
+safe_VkVideoDecodeAV1InlineSessionParametersInfoKHR::safe_VkVideoDecodeAV1InlineSessionParametersInfoKHR(
+    const safe_VkVideoDecodeAV1InlineSessionParametersInfoKHR& copy_src) {
+    sType = copy_src.sType;
+    pStdSequenceHeader = nullptr;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    if (copy_src.pStdSequenceHeader) {
+        pStdSequenceHeader = new StdVideoAV1SequenceHeader(*copy_src.pStdSequenceHeader);
+    }
+}
+
+safe_VkVideoDecodeAV1InlineSessionParametersInfoKHR& safe_VkVideoDecodeAV1InlineSessionParametersInfoKHR::operator=(
+    const safe_VkVideoDecodeAV1InlineSessionParametersInfoKHR& copy_src) {
+    if (&copy_src == this) return *this;
+
+    if (pStdSequenceHeader) delete pStdSequenceHeader;
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    pStdSequenceHeader = nullptr;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    if (copy_src.pStdSequenceHeader) {
+        pStdSequenceHeader = new StdVideoAV1SequenceHeader(*copy_src.pStdSequenceHeader);
+    }
+
+    return *this;
+}
+
+safe_VkVideoDecodeAV1InlineSessionParametersInfoKHR::~safe_VkVideoDecodeAV1InlineSessionParametersInfoKHR() {
+    if (pStdSequenceHeader) delete pStdSequenceHeader;
+    FreePnextChain(pNext);
+}
+
+void safe_VkVideoDecodeAV1InlineSessionParametersInfoKHR::initialize(
+    const VkVideoDecodeAV1InlineSessionParametersInfoKHR* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    if (pStdSequenceHeader) delete pStdSequenceHeader;
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    pStdSequenceHeader = nullptr;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+
+    if (in_struct->pStdSequenceHeader) {
+        pStdSequenceHeader = new StdVideoAV1SequenceHeader(*in_struct->pStdSequenceHeader);
+    }
+}
+
+void safe_VkVideoDecodeAV1InlineSessionParametersInfoKHR::initialize(
+    const safe_VkVideoDecodeAV1InlineSessionParametersInfoKHR* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    pStdSequenceHeader = nullptr;
+    pNext = SafePnextCopy(copy_src->pNext);
+
+    if (copy_src->pStdSequenceHeader) {
+        pStdSequenceHeader = new StdVideoAV1SequenceHeader(*copy_src->pStdSequenceHeader);
+    }
+}
+
 safe_VkPhysicalDeviceDepthClampZeroOneFeaturesKHR::safe_VkPhysicalDeviceDepthClampZeroOneFeaturesKHR(
     const VkPhysicalDeviceDepthClampZeroOneFeaturesKHR* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
     : sType(in_struct->sType), depthClampZeroOne(in_struct->depthClampZeroOne) {

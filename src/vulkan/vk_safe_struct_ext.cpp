@@ -15493,6 +15493,161 @@ void safe_VkPipelineViewportDepthClampControlCreateInfoEXT::initialize(
         pDepthClampRange = new VkDepthClampRangeEXT(*copy_src->pDepthClampRange);
     }
 }
+#ifdef VK_USE_PLATFORM_METAL_EXT
+
+safe_VkImportMemoryMetalHandleInfoEXT::safe_VkImportMemoryMetalHandleInfoEXT(const VkImportMemoryMetalHandleInfoEXT* in_struct,
+                                                                             [[maybe_unused]] PNextCopyState* copy_state,
+                                                                             bool copy_pnext)
+    : sType(in_struct->sType), handleType(in_struct->handleType), handle(in_struct->handle) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkImportMemoryMetalHandleInfoEXT::safe_VkImportMemoryMetalHandleInfoEXT()
+    : sType(VK_STRUCTURE_TYPE_IMPORT_MEMORY_METAL_HANDLE_INFO_EXT), pNext(nullptr), handleType(), handle(nullptr) {}
+
+safe_VkImportMemoryMetalHandleInfoEXT::safe_VkImportMemoryMetalHandleInfoEXT(
+    const safe_VkImportMemoryMetalHandleInfoEXT& copy_src) {
+    sType = copy_src.sType;
+    handleType = copy_src.handleType;
+    handle = copy_src.handle;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkImportMemoryMetalHandleInfoEXT& safe_VkImportMemoryMetalHandleInfoEXT::operator=(
+    const safe_VkImportMemoryMetalHandleInfoEXT& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    handleType = copy_src.handleType;
+    handle = copy_src.handle;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkImportMemoryMetalHandleInfoEXT::~safe_VkImportMemoryMetalHandleInfoEXT() { FreePnextChain(pNext); }
+
+void safe_VkImportMemoryMetalHandleInfoEXT::initialize(const VkImportMemoryMetalHandleInfoEXT* in_struct,
+                                                       [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    handleType = in_struct->handleType;
+    handle = in_struct->handle;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkImportMemoryMetalHandleInfoEXT::initialize(const safe_VkImportMemoryMetalHandleInfoEXT* copy_src,
+                                                       [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    handleType = copy_src->handleType;
+    handle = copy_src->handle;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkMemoryMetalHandlePropertiesEXT::safe_VkMemoryMetalHandlePropertiesEXT(const VkMemoryMetalHandlePropertiesEXT* in_struct,
+                                                                             [[maybe_unused]] PNextCopyState* copy_state,
+                                                                             bool copy_pnext)
+    : sType(in_struct->sType), memoryTypeBits(in_struct->memoryTypeBits) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkMemoryMetalHandlePropertiesEXT::safe_VkMemoryMetalHandlePropertiesEXT()
+    : sType(VK_STRUCTURE_TYPE_MEMORY_METAL_HANDLE_PROPERTIES_EXT), pNext(nullptr), memoryTypeBits() {}
+
+safe_VkMemoryMetalHandlePropertiesEXT::safe_VkMemoryMetalHandlePropertiesEXT(
+    const safe_VkMemoryMetalHandlePropertiesEXT& copy_src) {
+    sType = copy_src.sType;
+    memoryTypeBits = copy_src.memoryTypeBits;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkMemoryMetalHandlePropertiesEXT& safe_VkMemoryMetalHandlePropertiesEXT::operator=(
+    const safe_VkMemoryMetalHandlePropertiesEXT& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    memoryTypeBits = copy_src.memoryTypeBits;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkMemoryMetalHandlePropertiesEXT::~safe_VkMemoryMetalHandlePropertiesEXT() { FreePnextChain(pNext); }
+
+void safe_VkMemoryMetalHandlePropertiesEXT::initialize(const VkMemoryMetalHandlePropertiesEXT* in_struct,
+                                                       [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    memoryTypeBits = in_struct->memoryTypeBits;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkMemoryMetalHandlePropertiesEXT::initialize(const safe_VkMemoryMetalHandlePropertiesEXT* copy_src,
+                                                       [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    memoryTypeBits = copy_src->memoryTypeBits;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkMemoryGetMetalHandleInfoEXT::safe_VkMemoryGetMetalHandleInfoEXT(const VkMemoryGetMetalHandleInfoEXT* in_struct,
+                                                                       [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), memory(in_struct->memory), handleType(in_struct->handleType) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkMemoryGetMetalHandleInfoEXT::safe_VkMemoryGetMetalHandleInfoEXT()
+    : sType(VK_STRUCTURE_TYPE_MEMORY_GET_METAL_HANDLE_INFO_EXT), pNext(nullptr), memory(), handleType() {}
+
+safe_VkMemoryGetMetalHandleInfoEXT::safe_VkMemoryGetMetalHandleInfoEXT(const safe_VkMemoryGetMetalHandleInfoEXT& copy_src) {
+    sType = copy_src.sType;
+    memory = copy_src.memory;
+    handleType = copy_src.handleType;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkMemoryGetMetalHandleInfoEXT& safe_VkMemoryGetMetalHandleInfoEXT::operator=(
+    const safe_VkMemoryGetMetalHandleInfoEXT& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    memory = copy_src.memory;
+    handleType = copy_src.handleType;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkMemoryGetMetalHandleInfoEXT::~safe_VkMemoryGetMetalHandleInfoEXT() { FreePnextChain(pNext); }
+
+void safe_VkMemoryGetMetalHandleInfoEXT::initialize(const VkMemoryGetMetalHandleInfoEXT* in_struct,
+                                                    [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    memory = in_struct->memory;
+    handleType = in_struct->handleType;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkMemoryGetMetalHandleInfoEXT::initialize(const safe_VkMemoryGetMetalHandleInfoEXT* copy_src,
+                                                    [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    memory = copy_src->memory;
+    handleType = copy_src->handleType;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+#endif  // VK_USE_PLATFORM_METAL_EXT
 
 safe_VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT::safe_VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT(
     const VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
