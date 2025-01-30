@@ -3,10 +3,10 @@
 
 /***************************************************************************
  *
- * Copyright (c) 2015-2024 The Khronos Group Inc.
- * Copyright (c) 2015-2024 Valve Corporation
- * Copyright (c) 2015-2024 LunarG, Inc.
- * Copyright (c) 2015-2024 Google Inc.
+ * Copyright (c) 2015-2025 The Khronos Group Inc.
+ * Copyright (c) 2015-2025 Valve Corporation
+ * Copyright (c) 2015-2025 LunarG, Inc.
+ * Copyright (c) 2015-2025 Google Inc.
  *
  * SPDX-License-Identifier: Apache-2.0
  *
@@ -1716,6 +1716,9 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
             case VK_STRUCTURE_TYPE_COMPUTE_PIPELINE_INDIRECT_BUFFER_INFO_NV:
                 safe_pNext = new safe_VkComputePipelineIndirectBufferInfoNV(reinterpret_cast<const VkComputePipelineIndirectBufferInfoNV *>(pNext), copy_state, false);
                 break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_LINEAR_SWEPT_SPHERES_FEATURES_NV:
+                safe_pNext = new safe_VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV(reinterpret_cast<const VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV *>(pNext), copy_state, false);
+                break;
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LINEAR_COLOR_ATTACHMENT_FEATURES_NV:
                 safe_pNext = new safe_VkPhysicalDeviceLinearColorAttachmentFeaturesNV(reinterpret_cast<const VkPhysicalDeviceLinearColorAttachmentFeaturesNV *>(pNext), copy_state, false);
                 break;
@@ -1822,6 +1825,12 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
                 break;
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_FEATURES_NV:
                 safe_pNext = new safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV(reinterpret_cast<const VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_VECTOR_PROPERTIES_NV:
+                safe_pNext = new safe_VkPhysicalDeviceCooperativeVectorPropertiesNV(reinterpret_cast<const VkPhysicalDeviceCooperativeVectorPropertiesNV *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_VECTOR_FEATURES_NV:
+                safe_pNext = new safe_VkPhysicalDeviceCooperativeVectorFeaturesNV(reinterpret_cast<const VkPhysicalDeviceCooperativeVectorFeaturesNV *>(pNext), copy_state, false);
                 break;
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_SPARSE_ADDRESS_SPACE_FEATURES_NV:
                 safe_pNext = new safe_VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV(reinterpret_cast<const VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV *>(pNext), copy_state, false);
@@ -1938,6 +1947,27 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
                 break;
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_VALIDATION_FEATURES_NV:
                 safe_pNext = new safe_VkPhysicalDeviceRayTracingValidationFeaturesNV(reinterpret_cast<const VkPhysicalDeviceRayTracingValidationFeaturesNV *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CLUSTER_ACCELERATION_STRUCTURE_FEATURES_NV:
+                safe_pNext = new safe_VkPhysicalDeviceClusterAccelerationStructureFeaturesNV(reinterpret_cast<const VkPhysicalDeviceClusterAccelerationStructureFeaturesNV *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CLUSTER_ACCELERATION_STRUCTURE_PROPERTIES_NV:
+                safe_pNext = new safe_VkPhysicalDeviceClusterAccelerationStructurePropertiesNV(reinterpret_cast<const VkPhysicalDeviceClusterAccelerationStructurePropertiesNV *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_RAY_TRACING_PIPELINE_CLUSTER_ACCELERATION_STRUCTURE_CREATE_INFO_NV:
+                safe_pNext = new safe_VkRayTracingPipelineClusterAccelerationStructureCreateInfoNV(reinterpret_cast<const VkRayTracingPipelineClusterAccelerationStructureCreateInfoNV *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PARTITIONED_ACCELERATION_STRUCTURE_FEATURES_NV:
+                safe_pNext = new safe_VkPhysicalDevicePartitionedAccelerationStructureFeaturesNV(reinterpret_cast<const VkPhysicalDevicePartitionedAccelerationStructureFeaturesNV *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PARTITIONED_ACCELERATION_STRUCTURE_PROPERTIES_NV:
+                safe_pNext = new safe_VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV(reinterpret_cast<const VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PARTITIONED_ACCELERATION_STRUCTURE_FLAGS_NV:
+                safe_pNext = new safe_VkPartitionedAccelerationStructureFlagsNV(reinterpret_cast<const VkPartitionedAccelerationStructureFlagsNV *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_PARTITIONED_ACCELERATION_STRUCTURE_NV:
+                safe_pNext = new safe_VkWriteDescriptorSetPartitionedAccelerationStructureNV(reinterpret_cast<const VkWriteDescriptorSetPartitionedAccelerationStructureNV *>(pNext), copy_state, false);
                 break;
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEVICE_GENERATED_COMMANDS_FEATURES_EXT:
                 safe_pNext = new safe_VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT(reinterpret_cast<const VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT *>(pNext), copy_state, false);
@@ -3721,6 +3751,9 @@ void FreePnextChain(const void *pNext) {
         case VK_STRUCTURE_TYPE_COMPUTE_PIPELINE_INDIRECT_BUFFER_INFO_NV:
             delete reinterpret_cast<safe_VkComputePipelineIndirectBufferInfoNV *>(header);
             break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_LINEAR_SWEPT_SPHERES_FEATURES_NV:
+            delete reinterpret_cast<safe_VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV *>(header);
+            break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LINEAR_COLOR_ATTACHMENT_FEATURES_NV:
             delete reinterpret_cast<safe_VkPhysicalDeviceLinearColorAttachmentFeaturesNV *>(header);
             break;
@@ -3827,6 +3860,12 @@ void FreePnextChain(const void *pNext) {
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_FEATURES_NV:
             delete reinterpret_cast<safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_VECTOR_PROPERTIES_NV:
+            delete reinterpret_cast<safe_VkPhysicalDeviceCooperativeVectorPropertiesNV *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_VECTOR_FEATURES_NV:
+            delete reinterpret_cast<safe_VkPhysicalDeviceCooperativeVectorFeaturesNV *>(header);
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_SPARSE_ADDRESS_SPACE_FEATURES_NV:
             delete reinterpret_cast<safe_VkPhysicalDeviceExtendedSparseAddressSpaceFeaturesNV *>(header);
@@ -3943,6 +3982,27 @@ void FreePnextChain(const void *pNext) {
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_VALIDATION_FEATURES_NV:
             delete reinterpret_cast<safe_VkPhysicalDeviceRayTracingValidationFeaturesNV *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CLUSTER_ACCELERATION_STRUCTURE_FEATURES_NV:
+            delete reinterpret_cast<safe_VkPhysicalDeviceClusterAccelerationStructureFeaturesNV *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CLUSTER_ACCELERATION_STRUCTURE_PROPERTIES_NV:
+            delete reinterpret_cast<safe_VkPhysicalDeviceClusterAccelerationStructurePropertiesNV *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_RAY_TRACING_PIPELINE_CLUSTER_ACCELERATION_STRUCTURE_CREATE_INFO_NV:
+            delete reinterpret_cast<safe_VkRayTracingPipelineClusterAccelerationStructureCreateInfoNV *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PARTITIONED_ACCELERATION_STRUCTURE_FEATURES_NV:
+            delete reinterpret_cast<safe_VkPhysicalDevicePartitionedAccelerationStructureFeaturesNV *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PARTITIONED_ACCELERATION_STRUCTURE_PROPERTIES_NV:
+            delete reinterpret_cast<safe_VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PARTITIONED_ACCELERATION_STRUCTURE_FLAGS_NV:
+            delete reinterpret_cast<safe_VkPartitionedAccelerationStructureFlagsNV *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_PARTITIONED_ACCELERATION_STRUCTURE_NV:
+            delete reinterpret_cast<safe_VkWriteDescriptorSetPartitionedAccelerationStructureNV *>(header);
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEVICE_GENERATED_COMMANDS_FEATURES_EXT:
             delete reinterpret_cast<safe_VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT *>(header);

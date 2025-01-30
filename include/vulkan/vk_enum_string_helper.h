@@ -1722,6 +1722,12 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_COMPUTE_PIPELINE_INDIRECT_BUFFER_INFO_NV";
         case VK_STRUCTURE_TYPE_PIPELINE_INDIRECT_DEVICE_ADDRESS_INFO_NV:
             return "VK_STRUCTURE_TYPE_PIPELINE_INDIRECT_DEVICE_ADDRESS_INFO_NV";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_LINEAR_SWEPT_SPHERES_FEATURES_NV:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_LINEAR_SWEPT_SPHERES_FEATURES_NV";
+        case VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_LINEAR_SWEPT_SPHERES_DATA_NV:
+            return "VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_LINEAR_SWEPT_SPHERES_DATA_NV";
+        case VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_SPHERES_DATA_NV:
+            return "VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_SPHERES_DATA_NV";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LINEAR_COLOR_ATTACHMENT_FEATURES_NV:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LINEAR_COLOR_ATTACHMENT_FEATURES_NV";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_MAXIMAL_RECONVERGENCE_FEATURES_KHR:
@@ -1836,6 +1842,14 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_FEATURES_NV";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_PROPERTIES_NV:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_PROPERTIES_NV";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_VECTOR_FEATURES_NV:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_VECTOR_FEATURES_NV";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_VECTOR_PROPERTIES_NV:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_VECTOR_PROPERTIES_NV";
+        case VK_STRUCTURE_TYPE_COOPERATIVE_VECTOR_PROPERTIES_NV:
+            return "VK_STRUCTURE_TYPE_COOPERATIVE_VECTOR_PROPERTIES_NV";
+        case VK_STRUCTURE_TYPE_CONVERT_COOPERATIVE_VECTOR_MATRIX_INFO_NV:
+            return "VK_STRUCTURE_TYPE_CONVERT_COOPERATIVE_VECTOR_MATRIX_INFO_NV";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_SPARSE_ADDRESS_SPACE_FEATURES_NV:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_SPARSE_ADDRESS_SPACE_FEATURES_NV";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_SPARSE_ADDRESS_SPACE_PROPERTIES_NV:
@@ -2014,6 +2028,34 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_REPLICATED_COMPOSITES_FEATURES_EXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_VALIDATION_FEATURES_NV:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_VALIDATION_FEATURES_NV";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CLUSTER_ACCELERATION_STRUCTURE_FEATURES_NV:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CLUSTER_ACCELERATION_STRUCTURE_FEATURES_NV";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CLUSTER_ACCELERATION_STRUCTURE_PROPERTIES_NV:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CLUSTER_ACCELERATION_STRUCTURE_PROPERTIES_NV";
+        case VK_STRUCTURE_TYPE_CLUSTER_ACCELERATION_STRUCTURE_CLUSTERS_BOTTOM_LEVEL_INPUT_NV:
+            return "VK_STRUCTURE_TYPE_CLUSTER_ACCELERATION_STRUCTURE_CLUSTERS_BOTTOM_LEVEL_INPUT_NV";
+        case VK_STRUCTURE_TYPE_CLUSTER_ACCELERATION_STRUCTURE_TRIANGLE_CLUSTER_INPUT_NV:
+            return "VK_STRUCTURE_TYPE_CLUSTER_ACCELERATION_STRUCTURE_TRIANGLE_CLUSTER_INPUT_NV";
+        case VK_STRUCTURE_TYPE_CLUSTER_ACCELERATION_STRUCTURE_MOVE_OBJECTS_INPUT_NV:
+            return "VK_STRUCTURE_TYPE_CLUSTER_ACCELERATION_STRUCTURE_MOVE_OBJECTS_INPUT_NV";
+        case VK_STRUCTURE_TYPE_CLUSTER_ACCELERATION_STRUCTURE_INPUT_INFO_NV:
+            return "VK_STRUCTURE_TYPE_CLUSTER_ACCELERATION_STRUCTURE_INPUT_INFO_NV";
+        case VK_STRUCTURE_TYPE_CLUSTER_ACCELERATION_STRUCTURE_COMMANDS_INFO_NV:
+            return "VK_STRUCTURE_TYPE_CLUSTER_ACCELERATION_STRUCTURE_COMMANDS_INFO_NV";
+        case VK_STRUCTURE_TYPE_RAY_TRACING_PIPELINE_CLUSTER_ACCELERATION_STRUCTURE_CREATE_INFO_NV:
+            return "VK_STRUCTURE_TYPE_RAY_TRACING_PIPELINE_CLUSTER_ACCELERATION_STRUCTURE_CREATE_INFO_NV";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PARTITIONED_ACCELERATION_STRUCTURE_FEATURES_NV:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PARTITIONED_ACCELERATION_STRUCTURE_FEATURES_NV";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PARTITIONED_ACCELERATION_STRUCTURE_PROPERTIES_NV:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PARTITIONED_ACCELERATION_STRUCTURE_PROPERTIES_NV";
+        case VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_PARTITIONED_ACCELERATION_STRUCTURE_NV:
+            return "VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_PARTITIONED_ACCELERATION_STRUCTURE_NV";
+        case VK_STRUCTURE_TYPE_PARTITIONED_ACCELERATION_STRUCTURE_INSTANCES_INPUT_NV:
+            return "VK_STRUCTURE_TYPE_PARTITIONED_ACCELERATION_STRUCTURE_INSTANCES_INPUT_NV";
+        case VK_STRUCTURE_TYPE_BUILD_PARTITIONED_ACCELERATION_STRUCTURE_INFO_NV:
+            return "VK_STRUCTURE_TYPE_BUILD_PARTITIONED_ACCELERATION_STRUCTURE_INFO_NV";
+        case VK_STRUCTURE_TYPE_PARTITIONED_ACCELERATION_STRUCTURE_FLAGS_NV:
+            return "VK_STRUCTURE_TYPE_PARTITIONED_ACCELERATION_STRUCTURE_FLAGS_NV";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEVICE_GENERATED_COMMANDS_FEATURES_EXT:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEVICE_GENERATED_COMMANDS_FEATURES_EXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEVICE_GENERATED_COMMANDS_PROPERTIES_EXT:
@@ -3504,6 +3546,8 @@ static inline const char* string_VkDescriptorType(VkDescriptorType input_value) 
             return "VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM";
         case VK_DESCRIPTOR_TYPE_MUTABLE_EXT:
             return "VK_DESCRIPTOR_TYPE_MUTABLE_EXT";
+        case VK_DESCRIPTOR_TYPE_PARTITIONED_ACCELERATION_STRUCTURE_NV:
+            return "VK_DESCRIPTOR_TYPE_PARTITIONED_ACCELERATION_STRUCTURE_NV";
         default:
             return "Unhandled VkDescriptorType";
     }
@@ -4006,6 +4050,14 @@ static inline const char* string_VkComponentTypeKHR(VkComponentTypeKHR input_val
             return "VK_COMPONENT_TYPE_UINT32_KHR";
         case VK_COMPONENT_TYPE_UINT64_KHR:
             return "VK_COMPONENT_TYPE_UINT64_KHR";
+        case VK_COMPONENT_TYPE_SINT8_PACKED_NV:
+            return "VK_COMPONENT_TYPE_SINT8_PACKED_NV";
+        case VK_COMPONENT_TYPE_UINT8_PACKED_NV:
+            return "VK_COMPONENT_TYPE_UINT8_PACKED_NV";
+        case VK_COMPONENT_TYPE_FLOAT_E4M3_NV:
+            return "VK_COMPONENT_TYPE_FLOAT_E4M3_NV";
+        case VK_COMPONENT_TYPE_FLOAT_E5M2_NV:
+            return "VK_COMPONENT_TYPE_FLOAT_E5M2_NV";
         default:
             return "Unhandled VkComponentTypeKHR";
     }
@@ -4370,6 +4422,10 @@ static inline const char* string_VkGeometryTypeKHR(VkGeometryTypeKHR input_value
             return "VK_GEOMETRY_TYPE_AABBS_KHR";
         case VK_GEOMETRY_TYPE_INSTANCES_KHR:
             return "VK_GEOMETRY_TYPE_INSTANCES_KHR";
+        case VK_GEOMETRY_TYPE_SPHERES_NV:
+            return "VK_GEOMETRY_TYPE_SPHERES_NV";
+        case VK_GEOMETRY_TYPE_LINEAR_SWEPT_SPHERES_NV:
+            return "VK_GEOMETRY_TYPE_LINEAR_SWEPT_SPHERES_NV";
         default:
             return "Unhandled VkGeometryTypeKHR";
     }
@@ -4750,6 +4806,8 @@ static inline const char* string_VkOpacityMicromapSpecialIndexEXT(VkOpacityMicro
             return "VK_OPACITY_MICROMAP_SPECIAL_INDEX_FULLY_UNKNOWN_TRANSPARENT_EXT";
         case VK_OPACITY_MICROMAP_SPECIAL_INDEX_FULLY_UNKNOWN_OPAQUE_EXT:
             return "VK_OPACITY_MICROMAP_SPECIAL_INDEX_FULLY_UNKNOWN_OPAQUE_EXT";
+        case VK_OPACITY_MICROMAP_SPECIAL_INDEX_CLUSTER_GEOMETRY_DISABLE_OPACITY_MICROMAP_NV:
+            return "VK_OPACITY_MICROMAP_SPECIAL_INDEX_CLUSTER_GEOMETRY_DISABLE_OPACITY_MICROMAP_NV";
         default:
             return "Unhandled VkOpacityMicromapSpecialIndexEXT";
     }
@@ -4790,6 +4848,26 @@ static inline const char* string_VkDisplacementMicromapFormatNV(VkDisplacementMi
     }
 }
 #endif  // VK_ENABLE_BETA_EXTENSIONS
+static inline const char* string_VkRayTracingLssIndexingModeNV(VkRayTracingLssIndexingModeNV input_value) {
+    switch (input_value) {
+        case VK_RAY_TRACING_LSS_INDEXING_MODE_LIST_NV:
+            return "VK_RAY_TRACING_LSS_INDEXING_MODE_LIST_NV";
+        case VK_RAY_TRACING_LSS_INDEXING_MODE_SUCCESSIVE_NV:
+            return "VK_RAY_TRACING_LSS_INDEXING_MODE_SUCCESSIVE_NV";
+        default:
+            return "Unhandled VkRayTracingLssIndexingModeNV";
+    }
+}
+static inline const char* string_VkRayTracingLssPrimitiveEndCapsModeNV(VkRayTracingLssPrimitiveEndCapsModeNV input_value) {
+    switch (input_value) {
+        case VK_RAY_TRACING_LSS_PRIMITIVE_END_CAPS_MODE_NONE_NV:
+            return "VK_RAY_TRACING_LSS_PRIMITIVE_END_CAPS_MODE_NONE_NV";
+        case VK_RAY_TRACING_LSS_PRIMITIVE_END_CAPS_MODE_CHAINED_NV:
+            return "VK_RAY_TRACING_LSS_PRIMITIVE_END_CAPS_MODE_CHAINED_NV";
+        default:
+            return "Unhandled VkRayTracingLssPrimitiveEndCapsModeNV";
+    }
+}
 static inline const char* string_VkSubpassMergeStatusEXT(VkSubpassMergeStatusEXT input_value) {
     switch (input_value) {
         case VK_SUBPASS_MERGE_STATUS_MERGED_EXT:
@@ -4924,6 +5002,20 @@ static inline const char* string_VkRayTracingInvocationReorderModeNV(VkRayTracin
             return "Unhandled VkRayTracingInvocationReorderModeNV";
     }
 }
+static inline const char* string_VkCooperativeVectorMatrixLayoutNV(VkCooperativeVectorMatrixLayoutNV input_value) {
+    switch (input_value) {
+        case VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_ROW_MAJOR_NV:
+            return "VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_ROW_MAJOR_NV";
+        case VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_COLUMN_MAJOR_NV:
+            return "VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_COLUMN_MAJOR_NV";
+        case VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_INFERENCING_OPTIMAL_NV:
+            return "VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_INFERENCING_OPTIMAL_NV";
+        case VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_TRAINING_OPTIMAL_NV:
+            return "VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_TRAINING_OPTIMAL_NV";
+        default:
+            return "Unhandled VkCooperativeVectorMatrixLayoutNV";
+    }
+}
 static inline const char* string_VkLayerSettingTypeEXT(VkLayerSettingTypeEXT input_value) {
     switch (input_value) {
         case VK_LAYER_SETTING_TYPE_BOOL32_EXT:
@@ -5032,6 +5124,58 @@ static inline const char* string_VkDisplaySurfaceStereoTypeNV(VkDisplaySurfaceSt
             return "VK_DISPLAY_SURFACE_STEREO_TYPE_INBAND_DISPLAYPORT_NV";
         default:
             return "Unhandled VkDisplaySurfaceStereoTypeNV";
+    }
+}
+static inline const char* string_VkClusterAccelerationStructureTypeNV(VkClusterAccelerationStructureTypeNV input_value) {
+    switch (input_value) {
+        case VK_CLUSTER_ACCELERATION_STRUCTURE_TYPE_CLUSTERS_BOTTOM_LEVEL_NV:
+            return "VK_CLUSTER_ACCELERATION_STRUCTURE_TYPE_CLUSTERS_BOTTOM_LEVEL_NV";
+        case VK_CLUSTER_ACCELERATION_STRUCTURE_TYPE_TRIANGLE_CLUSTER_NV:
+            return "VK_CLUSTER_ACCELERATION_STRUCTURE_TYPE_TRIANGLE_CLUSTER_NV";
+        case VK_CLUSTER_ACCELERATION_STRUCTURE_TYPE_TRIANGLE_CLUSTER_TEMPLATE_NV:
+            return "VK_CLUSTER_ACCELERATION_STRUCTURE_TYPE_TRIANGLE_CLUSTER_TEMPLATE_NV";
+        default:
+            return "Unhandled VkClusterAccelerationStructureTypeNV";
+    }
+}
+static inline const char* string_VkClusterAccelerationStructureOpTypeNV(VkClusterAccelerationStructureOpTypeNV input_value) {
+    switch (input_value) {
+        case VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_MOVE_OBJECTS_NV:
+            return "VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_MOVE_OBJECTS_NV";
+        case VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_BUILD_CLUSTERS_BOTTOM_LEVEL_NV:
+            return "VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_BUILD_CLUSTERS_BOTTOM_LEVEL_NV";
+        case VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_BUILD_TRIANGLE_CLUSTER_NV:
+            return "VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_BUILD_TRIANGLE_CLUSTER_NV";
+        case VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_BUILD_TRIANGLE_CLUSTER_TEMPLATE_NV:
+            return "VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_BUILD_TRIANGLE_CLUSTER_TEMPLATE_NV";
+        case VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_INSTANTIATE_TRIANGLE_CLUSTER_NV:
+            return "VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_INSTANTIATE_TRIANGLE_CLUSTER_NV";
+        default:
+            return "Unhandled VkClusterAccelerationStructureOpTypeNV";
+    }
+}
+static inline const char* string_VkClusterAccelerationStructureOpModeNV(VkClusterAccelerationStructureOpModeNV input_value) {
+    switch (input_value) {
+        case VK_CLUSTER_ACCELERATION_STRUCTURE_OP_MODE_IMPLICIT_DESTINATIONS_NV:
+            return "VK_CLUSTER_ACCELERATION_STRUCTURE_OP_MODE_IMPLICIT_DESTINATIONS_NV";
+        case VK_CLUSTER_ACCELERATION_STRUCTURE_OP_MODE_EXPLICIT_DESTINATIONS_NV:
+            return "VK_CLUSTER_ACCELERATION_STRUCTURE_OP_MODE_EXPLICIT_DESTINATIONS_NV";
+        case VK_CLUSTER_ACCELERATION_STRUCTURE_OP_MODE_COMPUTE_SIZES_NV:
+            return "VK_CLUSTER_ACCELERATION_STRUCTURE_OP_MODE_COMPUTE_SIZES_NV";
+        default:
+            return "Unhandled VkClusterAccelerationStructureOpModeNV";
+    }
+}
+static inline const char* string_VkPartitionedAccelerationStructureOpTypeNV(VkPartitionedAccelerationStructureOpTypeNV input_value) {
+    switch (input_value) {
+        case VK_PARTITIONED_ACCELERATION_STRUCTURE_OP_TYPE_WRITE_INSTANCE_NV:
+            return "VK_PARTITIONED_ACCELERATION_STRUCTURE_OP_TYPE_WRITE_INSTANCE_NV";
+        case VK_PARTITIONED_ACCELERATION_STRUCTURE_OP_TYPE_UPDATE_INSTANCE_NV:
+            return "VK_PARTITIONED_ACCELERATION_STRUCTURE_OP_TYPE_UPDATE_INSTANCE_NV";
+        case VK_PARTITIONED_ACCELERATION_STRUCTURE_OP_TYPE_WRITE_PARTITION_TRANSLATION_NV:
+            return "VK_PARTITIONED_ACCELERATION_STRUCTURE_OP_TYPE_WRITE_PARTITION_TRANSLATION_NV";
+        default:
+            return "Unhandled VkPartitionedAccelerationStructureOpTypeNV";
     }
 }
 static inline const char* string_VkIndirectExecutionSetInfoTypeEXT(VkIndirectExecutionSetInfoTypeEXT input_value) {
@@ -7385,6 +7529,7 @@ static inline const char* string_VkPipelineStageFlagBits2(uint64_t input_value) 
     if (input_value == VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT) return "VK_PIPELINE_STAGE_2_MICROMAP_BUILD_BIT_EXT";
     if (input_value == VK_PIPELINE_STAGE_2_CLUSTER_CULLING_SHADER_BIT_HUAWEI) return "VK_PIPELINE_STAGE_2_CLUSTER_CULLING_SHADER_BIT_HUAWEI";
     if (input_value == VK_PIPELINE_STAGE_2_OPTICAL_FLOW_BIT_NV) return "VK_PIPELINE_STAGE_2_OPTICAL_FLOW_BIT_NV";
+    if (input_value == VK_PIPELINE_STAGE_2_CONVERT_COOPERATIVE_VECTOR_MATRIX_BIT_NV) return "VK_PIPELINE_STAGE_2_CONVERT_COOPERATIVE_VECTOR_MATRIX_BIT_NV";
     return "Unhandled VkPipelineStageFlagBits2";
 }
 
@@ -7561,6 +7706,7 @@ static inline const char* string_VkFormatFeatureFlagBits2(uint64_t input_value) 
     if (input_value == VK_FORMAT_FEATURE_2_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR) return "VK_FORMAT_FEATURE_2_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR";
     if (input_value == VK_FORMAT_FEATURE_2_VIDEO_ENCODE_INPUT_BIT_KHR) return "VK_FORMAT_FEATURE_2_VIDEO_ENCODE_INPUT_BIT_KHR";
     if (input_value == VK_FORMAT_FEATURE_2_VIDEO_ENCODE_DPB_BIT_KHR) return "VK_FORMAT_FEATURE_2_VIDEO_ENCODE_DPB_BIT_KHR";
+    if (input_value == VK_FORMAT_FEATURE_2_ACCELERATION_STRUCTURE_RADIUS_BUFFER_BIT_NV) return "VK_FORMAT_FEATURE_2_ACCELERATION_STRUCTURE_RADIUS_BUFFER_BIT_NV";
     if (input_value == VK_FORMAT_FEATURE_2_LINEAR_COLOR_ATTACHMENT_BIT_NV) return "VK_FORMAT_FEATURE_2_LINEAR_COLOR_ATTACHMENT_BIT_NV";
     if (input_value == VK_FORMAT_FEATURE_2_WEIGHT_IMAGE_BIT_QCOM) return "VK_FORMAT_FEATURE_2_WEIGHT_IMAGE_BIT_QCOM";
     if (input_value == VK_FORMAT_FEATURE_2_WEIGHT_SAMPLED_IMAGE_BIT_QCOM) return "VK_FORMAT_FEATURE_2_WEIGHT_SAMPLED_IMAGE_BIT_QCOM";
@@ -7628,6 +7774,7 @@ static inline const char* string_VkPipelineCreateFlagBits2(uint64_t input_value)
 #ifdef VK_ENABLE_BETA_EXTENSIONS
     if (input_value == VK_PIPELINE_CREATE_2_EXECUTION_GRAPH_BIT_AMDX) return "VK_PIPELINE_CREATE_2_EXECUTION_GRAPH_BIT_AMDX";
 #endif  // VK_ENABLE_BETA_EXTENSIONS
+    if (input_value == VK_PIPELINE_CREATE_2_RAY_TRACING_ALLOW_SPHERES_AND_LINEAR_SWEPT_SPHERES_BIT_NV) return "VK_PIPELINE_CREATE_2_RAY_TRACING_ALLOW_SPHERES_AND_LINEAR_SWEPT_SPHERES_BIT_NV";
     if (input_value == VK_PIPELINE_CREATE_2_ENABLE_LEGACY_DITHERING_BIT_EXT) return "VK_PIPELINE_CREATE_2_ENABLE_LEGACY_DITHERING_BIT_EXT";
     if (input_value == VK_PIPELINE_CREATE_2_DEFER_COMPILE_BIT_NV) return "VK_PIPELINE_CREATE_2_DEFER_COMPILE_BIT_NV";
     if (input_value == VK_PIPELINE_CREATE_2_CAPTURE_STATISTICS_BIT_KHR) return "VK_PIPELINE_CREATE_2_CAPTURE_STATISTICS_BIT_KHR";
@@ -9882,6 +10029,157 @@ static inline std::string string_VkShaderCreateFlagsEXT(VkShaderCreateFlagsEXT i
         input_value >>= 1;
     }
     if (ret.empty()) ret.append("VkShaderCreateFlagsEXT(0)");
+    return ret;
+}
+#endif // __cplusplus
+static inline const char* string_VkClusterAccelerationStructureAddressResolutionFlagBitsNV(VkClusterAccelerationStructureAddressResolutionFlagBitsNV input_value) {
+    switch (input_value) {
+        case VK_CLUSTER_ACCELERATION_STRUCTURE_ADDRESS_RESOLUTION_INDIRECTED_DST_IMPLICIT_DATA_BIT_NV:
+            return "VK_CLUSTER_ACCELERATION_STRUCTURE_ADDRESS_RESOLUTION_INDIRECTED_DST_IMPLICIT_DATA_BIT_NV";
+        case VK_CLUSTER_ACCELERATION_STRUCTURE_ADDRESS_RESOLUTION_INDIRECTED_SCRATCH_DATA_BIT_NV:
+            return "VK_CLUSTER_ACCELERATION_STRUCTURE_ADDRESS_RESOLUTION_INDIRECTED_SCRATCH_DATA_BIT_NV";
+        case VK_CLUSTER_ACCELERATION_STRUCTURE_ADDRESS_RESOLUTION_INDIRECTED_DST_ADDRESS_ARRAY_BIT_NV:
+            return "VK_CLUSTER_ACCELERATION_STRUCTURE_ADDRESS_RESOLUTION_INDIRECTED_DST_ADDRESS_ARRAY_BIT_NV";
+        case VK_CLUSTER_ACCELERATION_STRUCTURE_ADDRESS_RESOLUTION_INDIRECTED_DST_SIZES_ARRAY_BIT_NV:
+            return "VK_CLUSTER_ACCELERATION_STRUCTURE_ADDRESS_RESOLUTION_INDIRECTED_DST_SIZES_ARRAY_BIT_NV";
+        case VK_CLUSTER_ACCELERATION_STRUCTURE_ADDRESS_RESOLUTION_INDIRECTED_SRC_INFOS_ARRAY_BIT_NV:
+            return "VK_CLUSTER_ACCELERATION_STRUCTURE_ADDRESS_RESOLUTION_INDIRECTED_SRC_INFOS_ARRAY_BIT_NV";
+        case VK_CLUSTER_ACCELERATION_STRUCTURE_ADDRESS_RESOLUTION_INDIRECTED_SRC_INFOS_COUNT_BIT_NV:
+            return "VK_CLUSTER_ACCELERATION_STRUCTURE_ADDRESS_RESOLUTION_INDIRECTED_SRC_INFOS_COUNT_BIT_NV";
+        default:
+            return "Unhandled VkClusterAccelerationStructureAddressResolutionFlagBitsNV";
+    }
+}
+
+#ifdef __cplusplus
+static inline std::string string_VkClusterAccelerationStructureAddressResolutionFlagsNV(VkClusterAccelerationStructureAddressResolutionFlagsNV input_value) {
+    std::string ret;
+    int index = 0;
+    while(input_value) {
+        if (input_value & 1) {
+            if( !ret.empty()) ret.append("|");
+            ret.append(string_VkClusterAccelerationStructureAddressResolutionFlagBitsNV(static_cast<VkClusterAccelerationStructureAddressResolutionFlagBitsNV>(1U << index)));
+        }
+        ++index;
+        input_value >>= 1;
+    }
+    if (ret.empty()) ret.append("VkClusterAccelerationStructureAddressResolutionFlagsNV(0)");
+    return ret;
+}
+#endif // __cplusplus
+static inline const char* string_VkClusterAccelerationStructureClusterFlagBitsNV(VkClusterAccelerationStructureClusterFlagBitsNV input_value) {
+    switch (input_value) {
+        case VK_CLUSTER_ACCELERATION_STRUCTURE_CLUSTER_ALLOW_DISABLE_OPACITY_MICROMAPS_NV:
+            return "VK_CLUSTER_ACCELERATION_STRUCTURE_CLUSTER_ALLOW_DISABLE_OPACITY_MICROMAPS_NV";
+        default:
+            return "Unhandled VkClusterAccelerationStructureClusterFlagBitsNV";
+    }
+}
+
+#ifdef __cplusplus
+static inline std::string string_VkClusterAccelerationStructureClusterFlagsNV(VkClusterAccelerationStructureClusterFlagsNV input_value) {
+    std::string ret;
+    int index = 0;
+    while(input_value) {
+        if (input_value & 1) {
+            if( !ret.empty()) ret.append("|");
+            ret.append(string_VkClusterAccelerationStructureClusterFlagBitsNV(static_cast<VkClusterAccelerationStructureClusterFlagBitsNV>(1U << index)));
+        }
+        ++index;
+        input_value >>= 1;
+    }
+    if (ret.empty()) ret.append("VkClusterAccelerationStructureClusterFlagsNV(0)");
+    return ret;
+}
+#endif // __cplusplus
+static inline const char* string_VkClusterAccelerationStructureGeometryFlagBitsNV(VkClusterAccelerationStructureGeometryFlagBitsNV input_value) {
+    switch (input_value) {
+        case VK_CLUSTER_ACCELERATION_STRUCTURE_GEOMETRY_CULL_DISABLE_BIT_NV:
+            return "VK_CLUSTER_ACCELERATION_STRUCTURE_GEOMETRY_CULL_DISABLE_BIT_NV";
+        case VK_CLUSTER_ACCELERATION_STRUCTURE_GEOMETRY_NO_DUPLICATE_ANYHIT_INVOCATION_BIT_NV:
+            return "VK_CLUSTER_ACCELERATION_STRUCTURE_GEOMETRY_NO_DUPLICATE_ANYHIT_INVOCATION_BIT_NV";
+        case VK_CLUSTER_ACCELERATION_STRUCTURE_GEOMETRY_OPAQUE_BIT_NV:
+            return "VK_CLUSTER_ACCELERATION_STRUCTURE_GEOMETRY_OPAQUE_BIT_NV";
+        default:
+            return "Unhandled VkClusterAccelerationStructureGeometryFlagBitsNV";
+    }
+}
+
+#ifdef __cplusplus
+static inline std::string string_VkClusterAccelerationStructureGeometryFlagsNV(VkClusterAccelerationStructureGeometryFlagsNV input_value) {
+    std::string ret;
+    int index = 0;
+    while(input_value) {
+        if (input_value & 1) {
+            if( !ret.empty()) ret.append("|");
+            ret.append(string_VkClusterAccelerationStructureGeometryFlagBitsNV(static_cast<VkClusterAccelerationStructureGeometryFlagBitsNV>(1U << index)));
+        }
+        ++index;
+        input_value >>= 1;
+    }
+    if (ret.empty()) ret.append("VkClusterAccelerationStructureGeometryFlagsNV(0)");
+    return ret;
+}
+#endif // __cplusplus
+static inline const char* string_VkClusterAccelerationStructureIndexFormatFlagBitsNV(VkClusterAccelerationStructureIndexFormatFlagBitsNV input_value) {
+    switch (input_value) {
+        case VK_CLUSTER_ACCELERATION_STRUCTURE_INDEX_FORMAT_8BIT_NV:
+            return "VK_CLUSTER_ACCELERATION_STRUCTURE_INDEX_FORMAT_8BIT_NV";
+        case VK_CLUSTER_ACCELERATION_STRUCTURE_INDEX_FORMAT_16BIT_NV:
+            return "VK_CLUSTER_ACCELERATION_STRUCTURE_INDEX_FORMAT_16BIT_NV";
+        case VK_CLUSTER_ACCELERATION_STRUCTURE_INDEX_FORMAT_32BIT_NV:
+            return "VK_CLUSTER_ACCELERATION_STRUCTURE_INDEX_FORMAT_32BIT_NV";
+        default:
+            return "Unhandled VkClusterAccelerationStructureIndexFormatFlagBitsNV";
+    }
+}
+
+#ifdef __cplusplus
+static inline std::string string_VkClusterAccelerationStructureIndexFormatFlagsNV(VkClusterAccelerationStructureIndexFormatFlagsNV input_value) {
+    std::string ret;
+    int index = 0;
+    while(input_value) {
+        if (input_value & 1) {
+            if( !ret.empty()) ret.append("|");
+            ret.append(string_VkClusterAccelerationStructureIndexFormatFlagBitsNV(static_cast<VkClusterAccelerationStructureIndexFormatFlagBitsNV>(1U << index)));
+        }
+        ++index;
+        input_value >>= 1;
+    }
+    if (ret.empty()) ret.append("VkClusterAccelerationStructureIndexFormatFlagsNV(0)");
+    return ret;
+}
+#endif // __cplusplus
+static inline const char* string_VkPartitionedAccelerationStructureInstanceFlagBitsNV(VkPartitionedAccelerationStructureInstanceFlagBitsNV input_value) {
+    switch (input_value) {
+        case VK_PARTITIONED_ACCELERATION_STRUCTURE_INSTANCE_FLAG_TRIANGLE_FACING_CULL_DISABLE_BIT_NV:
+            return "VK_PARTITIONED_ACCELERATION_STRUCTURE_INSTANCE_FLAG_TRIANGLE_FACING_CULL_DISABLE_BIT_NV";
+        case VK_PARTITIONED_ACCELERATION_STRUCTURE_INSTANCE_FLAG_TRIANGLE_FLIP_FACING_BIT_NV:
+            return "VK_PARTITIONED_ACCELERATION_STRUCTURE_INSTANCE_FLAG_TRIANGLE_FLIP_FACING_BIT_NV";
+        case VK_PARTITIONED_ACCELERATION_STRUCTURE_INSTANCE_FLAG_FORCE_OPAQUE_BIT_NV:
+            return "VK_PARTITIONED_ACCELERATION_STRUCTURE_INSTANCE_FLAG_FORCE_OPAQUE_BIT_NV";
+        case VK_PARTITIONED_ACCELERATION_STRUCTURE_INSTANCE_FLAG_FORCE_NO_OPAQUE_BIT_NV:
+            return "VK_PARTITIONED_ACCELERATION_STRUCTURE_INSTANCE_FLAG_FORCE_NO_OPAQUE_BIT_NV";
+        case VK_PARTITIONED_ACCELERATION_STRUCTURE_INSTANCE_FLAG_ENABLE_EXPLICIT_BOUNDING_BOX_NV:
+            return "VK_PARTITIONED_ACCELERATION_STRUCTURE_INSTANCE_FLAG_ENABLE_EXPLICIT_BOUNDING_BOX_NV";
+        default:
+            return "Unhandled VkPartitionedAccelerationStructureInstanceFlagBitsNV";
+    }
+}
+
+#ifdef __cplusplus
+static inline std::string string_VkPartitionedAccelerationStructureInstanceFlagsNV(VkPartitionedAccelerationStructureInstanceFlagsNV input_value) {
+    std::string ret;
+    int index = 0;
+    while(input_value) {
+        if (input_value & 1) {
+            if( !ret.empty()) ret.append("|");
+            ret.append(string_VkPartitionedAccelerationStructureInstanceFlagBitsNV(static_cast<VkPartitionedAccelerationStructureInstanceFlagBitsNV>(1U << index)));
+        }
+        ++index;
+        input_value >>= 1;
+    }
+    if (ret.empty()) ret.append("VkPartitionedAccelerationStructureInstanceFlagsNV(0)");
     return ret;
 }
 #endif // __cplusplus

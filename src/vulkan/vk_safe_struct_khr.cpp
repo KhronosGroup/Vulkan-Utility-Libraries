@@ -3,10 +3,10 @@
 
 /***************************************************************************
  *
- * Copyright (c) 2015-2024 The Khronos Group Inc.
- * Copyright (c) 2015-2024 Valve Corporation
- * Copyright (c) 2015-2024 LunarG, Inc.
- * Copyright (c) 2015-2024 Google Inc.
+ * Copyright (c) 2015-2025 The Khronos Group Inc.
+ * Copyright (c) 2015-2025 Valve Corporation
+ * Copyright (c) 2015-2025 LunarG, Inc.
+ * Copyright (c) 2015-2025 Google Inc.
  *
  * SPDX-License-Identifier: Apache-2.0
  *
@@ -15242,6 +15242,69 @@ void safe_VkDeviceOrHostAddressKHR::initialize(const safe_VkDeviceOrHostAddressK
     hostAddress = copy_src->hostAddress;
 }
 
+safe_VkAccelerationStructureBuildSizesInfoKHR::safe_VkAccelerationStructureBuildSizesInfoKHR(
+    const VkAccelerationStructureBuildSizesInfoKHR* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType),
+      accelerationStructureSize(in_struct->accelerationStructureSize),
+      updateScratchSize(in_struct->updateScratchSize),
+      buildScratchSize(in_struct->buildScratchSize) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkAccelerationStructureBuildSizesInfoKHR::safe_VkAccelerationStructureBuildSizesInfoKHR()
+    : sType(VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_BUILD_SIZES_INFO_KHR),
+      pNext(nullptr),
+      accelerationStructureSize(),
+      updateScratchSize(),
+      buildScratchSize() {}
+
+safe_VkAccelerationStructureBuildSizesInfoKHR::safe_VkAccelerationStructureBuildSizesInfoKHR(
+    const safe_VkAccelerationStructureBuildSizesInfoKHR& copy_src) {
+    sType = copy_src.sType;
+    accelerationStructureSize = copy_src.accelerationStructureSize;
+    updateScratchSize = copy_src.updateScratchSize;
+    buildScratchSize = copy_src.buildScratchSize;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkAccelerationStructureBuildSizesInfoKHR& safe_VkAccelerationStructureBuildSizesInfoKHR::operator=(
+    const safe_VkAccelerationStructureBuildSizesInfoKHR& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    accelerationStructureSize = copy_src.accelerationStructureSize;
+    updateScratchSize = copy_src.updateScratchSize;
+    buildScratchSize = copy_src.buildScratchSize;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkAccelerationStructureBuildSizesInfoKHR::~safe_VkAccelerationStructureBuildSizesInfoKHR() { FreePnextChain(pNext); }
+
+void safe_VkAccelerationStructureBuildSizesInfoKHR::initialize(const VkAccelerationStructureBuildSizesInfoKHR* in_struct,
+                                                               [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    accelerationStructureSize = in_struct->accelerationStructureSize;
+    updateScratchSize = in_struct->updateScratchSize;
+    buildScratchSize = in_struct->buildScratchSize;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkAccelerationStructureBuildSizesInfoKHR::initialize(const safe_VkAccelerationStructureBuildSizesInfoKHR* copy_src,
+                                                               [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    accelerationStructureSize = copy_src->accelerationStructureSize;
+    updateScratchSize = copy_src->updateScratchSize;
+    buildScratchSize = copy_src->buildScratchSize;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
 safe_VkAccelerationStructureGeometryTrianglesDataKHR::safe_VkAccelerationStructureGeometryTrianglesDataKHR(
     const VkAccelerationStructureGeometryTrianglesDataKHR* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
     : sType(in_struct->sType),
@@ -16073,69 +16136,6 @@ void safe_VkCopyAccelerationStructureInfoKHR::initialize(const safe_VkCopyAccele
     src = copy_src->src;
     dst = copy_src->dst;
     mode = copy_src->mode;
-    pNext = SafePnextCopy(copy_src->pNext);
-}
-
-safe_VkAccelerationStructureBuildSizesInfoKHR::safe_VkAccelerationStructureBuildSizesInfoKHR(
-    const VkAccelerationStructureBuildSizesInfoKHR* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
-    : sType(in_struct->sType),
-      accelerationStructureSize(in_struct->accelerationStructureSize),
-      updateScratchSize(in_struct->updateScratchSize),
-      buildScratchSize(in_struct->buildScratchSize) {
-    if (copy_pnext) {
-        pNext = SafePnextCopy(in_struct->pNext, copy_state);
-    }
-}
-
-safe_VkAccelerationStructureBuildSizesInfoKHR::safe_VkAccelerationStructureBuildSizesInfoKHR()
-    : sType(VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_BUILD_SIZES_INFO_KHR),
-      pNext(nullptr),
-      accelerationStructureSize(),
-      updateScratchSize(),
-      buildScratchSize() {}
-
-safe_VkAccelerationStructureBuildSizesInfoKHR::safe_VkAccelerationStructureBuildSizesInfoKHR(
-    const safe_VkAccelerationStructureBuildSizesInfoKHR& copy_src) {
-    sType = copy_src.sType;
-    accelerationStructureSize = copy_src.accelerationStructureSize;
-    updateScratchSize = copy_src.updateScratchSize;
-    buildScratchSize = copy_src.buildScratchSize;
-    pNext = SafePnextCopy(copy_src.pNext);
-}
-
-safe_VkAccelerationStructureBuildSizesInfoKHR& safe_VkAccelerationStructureBuildSizesInfoKHR::operator=(
-    const safe_VkAccelerationStructureBuildSizesInfoKHR& copy_src) {
-    if (&copy_src == this) return *this;
-
-    FreePnextChain(pNext);
-
-    sType = copy_src.sType;
-    accelerationStructureSize = copy_src.accelerationStructureSize;
-    updateScratchSize = copy_src.updateScratchSize;
-    buildScratchSize = copy_src.buildScratchSize;
-    pNext = SafePnextCopy(copy_src.pNext);
-
-    return *this;
-}
-
-safe_VkAccelerationStructureBuildSizesInfoKHR::~safe_VkAccelerationStructureBuildSizesInfoKHR() { FreePnextChain(pNext); }
-
-void safe_VkAccelerationStructureBuildSizesInfoKHR::initialize(const VkAccelerationStructureBuildSizesInfoKHR* in_struct,
-                                                               [[maybe_unused]] PNextCopyState* copy_state) {
-    FreePnextChain(pNext);
-    sType = in_struct->sType;
-    accelerationStructureSize = in_struct->accelerationStructureSize;
-    updateScratchSize = in_struct->updateScratchSize;
-    buildScratchSize = in_struct->buildScratchSize;
-    pNext = SafePnextCopy(in_struct->pNext, copy_state);
-}
-
-void safe_VkAccelerationStructureBuildSizesInfoKHR::initialize(const safe_VkAccelerationStructureBuildSizesInfoKHR* copy_src,
-                                                               [[maybe_unused]] PNextCopyState* copy_state) {
-    sType = copy_src->sType;
-    accelerationStructureSize = copy_src->accelerationStructureSize;
-    updateScratchSize = copy_src->updateScratchSize;
-    buildScratchSize = copy_src->buildScratchSize;
     pNext = SafePnextCopy(copy_src->pNext);
 }
 
