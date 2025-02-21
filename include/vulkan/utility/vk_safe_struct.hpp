@@ -20291,6 +20291,40 @@ struct safe_VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT {
         return reinterpret_cast<VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT const*>(this);
     }
 };
+struct safe_VkSetPresentConfigNV {
+    VkStructureType sType;
+    const void* pNext{};
+    uint32_t numFramesPerBatch;
+    uint32_t presentConfigFeedback;
+
+    safe_VkSetPresentConfigNV(const VkSetPresentConfigNV* in_struct, PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkSetPresentConfigNV(const safe_VkSetPresentConfigNV& copy_src);
+    safe_VkSetPresentConfigNV& operator=(const safe_VkSetPresentConfigNV& copy_src);
+    safe_VkSetPresentConfigNV();
+    ~safe_VkSetPresentConfigNV();
+    void initialize(const VkSetPresentConfigNV* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkSetPresentConfigNV* copy_src, PNextCopyState* copy_state = {});
+    VkSetPresentConfigNV* ptr() { return reinterpret_cast<VkSetPresentConfigNV*>(this); }
+    VkSetPresentConfigNV const* ptr() const { return reinterpret_cast<VkSetPresentConfigNV const*>(this); }
+};
+struct safe_VkPhysicalDevicePresentMeteringFeaturesNV {
+    VkStructureType sType;
+    void* pNext{};
+    VkBool32 presentMetering;
+
+    safe_VkPhysicalDevicePresentMeteringFeaturesNV(const VkPhysicalDevicePresentMeteringFeaturesNV* in_struct,
+                                                   PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkPhysicalDevicePresentMeteringFeaturesNV(const safe_VkPhysicalDevicePresentMeteringFeaturesNV& copy_src);
+    safe_VkPhysicalDevicePresentMeteringFeaturesNV& operator=(const safe_VkPhysicalDevicePresentMeteringFeaturesNV& copy_src);
+    safe_VkPhysicalDevicePresentMeteringFeaturesNV();
+    ~safe_VkPhysicalDevicePresentMeteringFeaturesNV();
+    void initialize(const VkPhysicalDevicePresentMeteringFeaturesNV* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDevicePresentMeteringFeaturesNV* copy_src, PNextCopyState* copy_state = {});
+    VkPhysicalDevicePresentMeteringFeaturesNV* ptr() { return reinterpret_cast<VkPhysicalDevicePresentMeteringFeaturesNV*>(this); }
+    VkPhysicalDevicePresentMeteringFeaturesNV const* ptr() const {
+        return reinterpret_cast<VkPhysicalDevicePresentMeteringFeaturesNV const*>(this);
+    }
+};
 struct safe_VkAccelerationStructureGeometryTrianglesDataKHR {
     VkStructureType sType;
     const void* pNext{};

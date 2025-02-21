@@ -17715,6 +17715,104 @@ void safe_VkPhysicalDevicePipelineOpacityMicromapFeaturesARM::initialize(
     pNext = SafePnextCopy(copy_src->pNext);
 }
 
+safe_VkSetPresentConfigNV::safe_VkSetPresentConfigNV(const VkSetPresentConfigNV* in_struct,
+                                                     [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType),
+      numFramesPerBatch(in_struct->numFramesPerBatch),
+      presentConfigFeedback(in_struct->presentConfigFeedback) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkSetPresentConfigNV::safe_VkSetPresentConfigNV()
+    : sType(VK_STRUCTURE_TYPE_SET_PRESENT_CONFIG_NV), pNext(nullptr), numFramesPerBatch(), presentConfigFeedback() {}
+
+safe_VkSetPresentConfigNV::safe_VkSetPresentConfigNV(const safe_VkSetPresentConfigNV& copy_src) {
+    sType = copy_src.sType;
+    numFramesPerBatch = copy_src.numFramesPerBatch;
+    presentConfigFeedback = copy_src.presentConfigFeedback;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkSetPresentConfigNV& safe_VkSetPresentConfigNV::operator=(const safe_VkSetPresentConfigNV& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    numFramesPerBatch = copy_src.numFramesPerBatch;
+    presentConfigFeedback = copy_src.presentConfigFeedback;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkSetPresentConfigNV::~safe_VkSetPresentConfigNV() { FreePnextChain(pNext); }
+
+void safe_VkSetPresentConfigNV::initialize(const VkSetPresentConfigNV* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    numFramesPerBatch = in_struct->numFramesPerBatch;
+    presentConfigFeedback = in_struct->presentConfigFeedback;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkSetPresentConfigNV::initialize(const safe_VkSetPresentConfigNV* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    numFramesPerBatch = copy_src->numFramesPerBatch;
+    presentConfigFeedback = copy_src->presentConfigFeedback;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkPhysicalDevicePresentMeteringFeaturesNV::safe_VkPhysicalDevicePresentMeteringFeaturesNV(
+    const VkPhysicalDevicePresentMeteringFeaturesNV* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), presentMetering(in_struct->presentMetering) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDevicePresentMeteringFeaturesNV::safe_VkPhysicalDevicePresentMeteringFeaturesNV()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_METERING_FEATURES_NV), pNext(nullptr), presentMetering() {}
+
+safe_VkPhysicalDevicePresentMeteringFeaturesNV::safe_VkPhysicalDevicePresentMeteringFeaturesNV(
+    const safe_VkPhysicalDevicePresentMeteringFeaturesNV& copy_src) {
+    sType = copy_src.sType;
+    presentMetering = copy_src.presentMetering;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDevicePresentMeteringFeaturesNV& safe_VkPhysicalDevicePresentMeteringFeaturesNV::operator=(
+    const safe_VkPhysicalDevicePresentMeteringFeaturesNV& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    presentMetering = copy_src.presentMetering;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDevicePresentMeteringFeaturesNV::~safe_VkPhysicalDevicePresentMeteringFeaturesNV() { FreePnextChain(pNext); }
+
+void safe_VkPhysicalDevicePresentMeteringFeaturesNV::initialize(const VkPhysicalDevicePresentMeteringFeaturesNV* in_struct,
+                                                                [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    presentMetering = in_struct->presentMetering;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDevicePresentMeteringFeaturesNV::initialize(const safe_VkPhysicalDevicePresentMeteringFeaturesNV* copy_src,
+                                                                [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    presentMetering = copy_src->presentMetering;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
 }  // namespace vku
 
 // NOLINTEND
