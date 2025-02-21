@@ -14108,6 +14108,7 @@ struct safe_VkDeviceDiagnosticsConfigCreateInfoNV {
         return reinterpret_cast<VkDeviceDiagnosticsConfigCreateInfoNV const*>(this);
     }
 };
+#ifdef VK_ENABLE_BETA_EXTENSIONS
 struct safe_VkCudaModuleCreateInfoNV {
     VkStructureType sType;
     const void* pNext{};
@@ -14209,6 +14210,7 @@ struct safe_VkPhysicalDeviceCudaKernelLaunchPropertiesNV {
         return reinterpret_cast<VkPhysicalDeviceCudaKernelLaunchPropertiesNV const*>(this);
     }
 };
+#endif  // VK_ENABLE_BETA_EXTENSIONS
 struct safe_VkQueryLowLatencySupportNV {
     VkStructureType sType;
     const void* pNext{};
@@ -20291,6 +20293,7 @@ struct safe_VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT {
         return reinterpret_cast<VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT const*>(this);
     }
 };
+#ifdef VK_ENABLE_BETA_EXTENSIONS
 struct safe_VkSetPresentConfigNV {
     VkStructureType sType;
     const void* pNext{};
@@ -20325,6 +20328,7 @@ struct safe_VkPhysicalDevicePresentMeteringFeaturesNV {
         return reinterpret_cast<VkPhysicalDevicePresentMeteringFeaturesNV const*>(this);
     }
 };
+#endif  // VK_ENABLE_BETA_EXTENSIONS
 struct safe_VkAccelerationStructureGeometryTrianglesDataKHR {
     VkStructureType sType;
     const void* pNext{};
