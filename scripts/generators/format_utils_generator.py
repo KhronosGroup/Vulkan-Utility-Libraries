@@ -7,8 +7,8 @@
 # SPDX-License-Identifier: Apache-2.0
 
 import os
-from generators.vulkan_object import (Format)
-from generators.base_generator import BaseGenerator
+from vulkan_object import (Format)
+from base_generator import BaseGenerator
 
 # Make C name friendly class name
 def getClassName(className: str) -> str:
