@@ -7909,6 +7909,7 @@ void safe_VkDeviceDiagnosticsConfigCreateInfoNV::initialize(const safe_VkDeviceD
     flags = copy_src->flags;
     pNext = SafePnextCopy(copy_src->pNext);
 }
+#ifdef VK_ENABLE_BETA_EXTENSIONS
 
 safe_VkCudaModuleCreateInfoNV::safe_VkCudaModuleCreateInfoNV(const VkCudaModuleCreateInfoNV* in_struct,
                                                              [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
@@ -8272,6 +8273,7 @@ void safe_VkPhysicalDeviceCudaKernelLaunchPropertiesNV::initialize(
     computeCapabilityMajor = copy_src->computeCapabilityMajor;
     pNext = SafePnextCopy(copy_src->pNext);
 }
+#endif  // VK_ENABLE_BETA_EXTENSIONS
 
 safe_VkQueryLowLatencySupportNV::safe_VkQueryLowLatencySupportNV(const VkQueryLowLatencySupportNV* in_struct,
                                                                  [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
@@ -17714,6 +17716,7 @@ void safe_VkPhysicalDevicePipelineOpacityMicromapFeaturesARM::initialize(
     pipelineOpacityMicromap = copy_src->pipelineOpacityMicromap;
     pNext = SafePnextCopy(copy_src->pNext);
 }
+#ifdef VK_ENABLE_BETA_EXTENSIONS
 
 safe_VkSetPresentConfigNV::safe_VkSetPresentConfigNV(const VkSetPresentConfigNV* in_struct,
                                                      [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
@@ -17812,6 +17815,7 @@ void safe_VkPhysicalDevicePresentMeteringFeaturesNV::initialize(const safe_VkPhy
     presentMetering = copy_src->presentMetering;
     pNext = SafePnextCopy(copy_src->pNext);
 }
+#endif  // VK_ENABLE_BETA_EXTENSIONS
 
 }  // namespace vku
 
