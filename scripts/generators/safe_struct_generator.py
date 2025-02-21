@@ -10,8 +10,8 @@
 
 import os
 import re
-from generators.vulkan_object import Struct, Member
-from generators.base_generator import BaseGenerator
+from vulkan_object import Struct, Member
+from base_generator import BaseGenerator
 from generators.generator_utils import PlatformGuardHelper
 
 class SafeStructOutputGenerator(BaseGenerator):
