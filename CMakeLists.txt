@@ -34,6 +34,11 @@ if (PROJECT_IS_TOP_LEVEL)
         enable_testing()
         add_subdirectory(tests)
     endif()
+endif()
+
+option(VUL_ENABLE_INSTALL "Enable install" ${PROJECT_IS_TOP_LEVEL})
+
+if (VUL_ENABLE_INSTALL)
 
     include(GNUInstallDirs)
     include(CMakePackageConfigHelpers)
