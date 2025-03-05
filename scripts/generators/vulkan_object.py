@@ -218,6 +218,7 @@ class Struct:
 class EnumField:
     """<enum> of type enum"""
     name: str # ex) VK_DYNAMIC_STATE_SCISSOR
+    numericValue: int # ex) 1000470001
     negative: bool # True if negative values are allowed (ex. VkResult)
     protect: (str | None) # ex) VK_ENABLE_BETA_EXTENSIONS
 

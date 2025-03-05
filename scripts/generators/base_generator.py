@@ -516,7 +516,11 @@ class BaseGenerator(OutputGenerator):
 
             for elem in enumElem.findall('enum'):
                 fieldName = elem.get('name')
-
+                fieldNumericValue = 0
+                if elem.get('value'):
+                    fieldNumericValue = int(elem.get('value'), 16) if elem.get('value')[:2] == '0x' else int(elem.get('value'))
+                elif elem.get('extnumber') and elem.get('offset'):
+                    fieldNumericValue = 1000000000 + (int(elem.get('extnumber')) - 1) * 1000 + int(elem.get('offset'))
                 if elem.get('alias') is not None:
                     self.enumFieldAliasMap[fieldName] = elem.get('alias')
                     continue
@@ -527,7 +531,7 @@ class BaseGenerator(OutputGenerator):
                 # Some values have multiple extensions (ex VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS_KHR)
                 # genGroup() lists them twice
                 if next((x for x in fields if x.name == fieldName), None) is None:
-                    fields.append(EnumField(fieldName, negative, protect, []))
+                    fields.append(EnumField(fieldName, fieldNumericValue, negative, protect, []))
 
             self.vk.enums[groupName] = Enum(groupName, groupProtect, bitwidth, True, fields, [], [])
 
