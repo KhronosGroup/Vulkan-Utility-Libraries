@@ -263,7 +263,7 @@ inline VkExtent2D vkuFindMultiplaneExtentDivisors(VkFormat mp_fmt, VkImageAspect
 
 // From table in spec vkspec.html#formats-compatible-zs-color
 // Introduced in VK_KHR_maintenance8 to allow copying between color and depth/stencil formats
-inline bool vkuFormatIsDepthStencilWithColorSizeCompatible(VkFormat color_format, VkFormat ds_format);
+inline bool vkuFormatIsDepthStencilWithColorSizeCompatible(VkFormat color_format, VkFormat ds_format, VkImageAspectFlags aspect_mask);
 
 // Returns the count of components in a VkFormat
 inline uint32_t vkuFormatComponentCount(VkFormat format);
@@ -2046,24 +2046,30 @@ inline VkExtent2D vkuFindMultiplaneExtentDivisors(VkFormat mp_fmt, VkImageAspect
 }
 
 // TODO - This should be generated, but will need updating the spec XML and table
-inline bool vkuFormatIsDepthStencilWithColorSizeCompatible(VkFormat color_format, VkFormat ds_format) {
-    switch (ds_format) {
-        case VK_FORMAT_D32_SFLOAT:
-        case VK_FORMAT_D32_SFLOAT_S8_UINT:
-            return color_format == VK_FORMAT_R32_SFLOAT || color_format == VK_FORMAT_R32_SINT || color_format == VK_FORMAT_R32_UINT;
-        case VK_FORMAT_X8_D24_UNORM_PACK32:
-        case VK_FORMAT_D24_UNORM_S8_UINT:
-            return color_format == VK_FORMAT_R32_SFLOAT || color_format == VK_FORMAT_R32_SINT || color_format == VK_FORMAT_R32_UINT;
-        case VK_FORMAT_D16_UNORM:
-        case VK_FORMAT_D16_UNORM_S8_UINT:
-            return color_format == VK_FORMAT_R16_SFLOAT || color_format == VK_FORMAT_R16_UNORM ||
-                   color_format == VK_FORMAT_R16_SNORM  || color_format == VK_FORMAT_R16_UINT || color_format == VK_FORMAT_R16_SINT;
-        case VK_FORMAT_S8_UINT:
-            return color_format == VK_FORMAT_R8_UINT || color_format == VK_FORMAT_R8_SINT ||
-                   color_format == VK_FORMAT_R8_UNORM || color_format == VK_FORMAT_R8_SNORM;
-        default:
-            return false;
+// Some few case don't have an aspect mask, so might need to check both the Depth and Stencil possiblity
+inline bool vkuFormatIsDepthStencilWithColorSizeCompatible(VkFormat color_format, VkFormat ds_format, VkImageAspectFlags aspect_mask) {
+    bool valid = false;
+
+    if (aspect_mask & VK_IMAGE_ASPECT_STENCIL_BIT) {
+        if (ds_format == VK_FORMAT_S8_UINT || ds_format == VK_FORMAT_D16_UNORM_S8_UINT ||
+            ds_format == VK_FORMAT_D24_UNORM_S8_UINT || ds_format == VK_FORMAT_D32_SFLOAT_S8_UINT) {
+            valid |= (color_format == VK_FORMAT_R8_UINT || color_format == VK_FORMAT_R8_SINT ||
+                      color_format == VK_FORMAT_R8_UNORM || color_format == VK_FORMAT_R8_SNORM);
+        }
     }
+
+    if (aspect_mask & VK_IMAGE_ASPECT_DEPTH_BIT) {
+        if (ds_format == VK_FORMAT_D32_SFLOAT || ds_format == VK_FORMAT_D32_SFLOAT_S8_UINT ||
+            ds_format == VK_FORMAT_X8_D24_UNORM_PACK32 || ds_format == VK_FORMAT_D24_UNORM_S8_UINT) {
+            valid |= (color_format == VK_FORMAT_R32_SFLOAT || color_format == VK_FORMAT_R32_SINT || color_format == VK_FORMAT_R32_UINT);
+        }
+        if (ds_format == VK_FORMAT_D16_UNORM || ds_format == VK_FORMAT_D16_UNORM_S8_UINT) {
+            valid |= (color_format == VK_FORMAT_R16_SFLOAT || color_format == VK_FORMAT_R16_UNORM ||
+                      color_format == VK_FORMAT_R16_SNORM  || color_format == VK_FORMAT_R16_UINT || color_format == VK_FORMAT_R16_SINT);
+        }
+    }
+
+    return valid;
 }
 
 inline uint32_t vkuFormatComponentCount(VkFormat format) { return vkuGetFormatInfo(format).component_count; }
