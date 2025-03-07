@@ -1196,8 +1196,10 @@ template<> inline VkObjectType GetObjectType<VkValidationCacheEXT>() { return VK
 template<> inline VkObjectType GetObjectType<VkAccelerationStructureNV>() { return VK_OBJECT_TYPE_ACCELERATION_STRUCTURE_NV; }
 template<> inline VkObjectType GetObjectType<VkPerformanceConfigurationINTEL>() { return VK_OBJECT_TYPE_PERFORMANCE_CONFIGURATION_INTEL; }
 template<> inline VkObjectType GetObjectType<VkIndirectCommandsLayoutNV>() { return VK_OBJECT_TYPE_INDIRECT_COMMANDS_LAYOUT_NV; }
+#ifdef VK_ENABLE_BETA_EXTENSIONS
 template<> inline VkObjectType GetObjectType<VkCudaModuleNV>() { return VK_OBJECT_TYPE_CUDA_MODULE_NV; }
 template<> inline VkObjectType GetObjectType<VkCudaFunctionNV>() { return VK_OBJECT_TYPE_CUDA_FUNCTION_NV; }
+#endif  // VK_ENABLE_BETA_EXTENSIONS
 template<> inline VkObjectType GetObjectType<VkAccelerationStructureKHR>() { return VK_OBJECT_TYPE_ACCELERATION_STRUCTURE_KHR; }
 #ifdef VK_USE_PLATFORM_FUCHSIA
 template<> inline VkObjectType GetObjectType<VkBufferCollectionFUCHSIA>() { return VK_OBJECT_TYPE_BUFFER_COLLECTION_FUCHSIA; }
