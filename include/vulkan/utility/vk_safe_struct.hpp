@@ -7546,6 +7546,26 @@ struct safe_VkDisplayPlaneCapabilities2KHR {
     VkDisplayPlaneCapabilities2KHR* ptr() { return reinterpret_cast<VkDisplayPlaneCapabilities2KHR*>(this); }
     VkDisplayPlaneCapabilities2KHR const* ptr() const { return reinterpret_cast<VkDisplayPlaneCapabilities2KHR const*>(this); }
 };
+struct safe_VkPhysicalDeviceShaderBfloat16FeaturesKHR {
+    VkStructureType sType;
+    void* pNext{};
+    VkBool32 shaderBFloat16Type;
+    VkBool32 shaderBFloat16DotProduct;
+    VkBool32 shaderBFloat16CooperativeMatrix;
+
+    safe_VkPhysicalDeviceShaderBfloat16FeaturesKHR(const VkPhysicalDeviceShaderBfloat16FeaturesKHR* in_struct,
+                                                   PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkPhysicalDeviceShaderBfloat16FeaturesKHR(const safe_VkPhysicalDeviceShaderBfloat16FeaturesKHR& copy_src);
+    safe_VkPhysicalDeviceShaderBfloat16FeaturesKHR& operator=(const safe_VkPhysicalDeviceShaderBfloat16FeaturesKHR& copy_src);
+    safe_VkPhysicalDeviceShaderBfloat16FeaturesKHR();
+    ~safe_VkPhysicalDeviceShaderBfloat16FeaturesKHR();
+    void initialize(const VkPhysicalDeviceShaderBfloat16FeaturesKHR* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceShaderBfloat16FeaturesKHR* copy_src, PNextCopyState* copy_state = {});
+    VkPhysicalDeviceShaderBfloat16FeaturesKHR* ptr() { return reinterpret_cast<VkPhysicalDeviceShaderBfloat16FeaturesKHR*>(this); }
+    VkPhysicalDeviceShaderBfloat16FeaturesKHR const* ptr() const {
+        return reinterpret_cast<VkPhysicalDeviceShaderBfloat16FeaturesKHR const*>(this);
+    }
+};
 #ifdef VK_ENABLE_BETA_EXTENSIONS
 struct safe_VkPhysicalDevicePortabilitySubsetFeaturesKHR {
     VkStructureType sType;
@@ -17054,70 +17074,71 @@ struct safe_VkRenderPassStripeSubmitInfoARM {
     VkRenderPassStripeSubmitInfoARM* ptr() { return reinterpret_cast<VkRenderPassStripeSubmitInfoARM*>(this); }
     VkRenderPassStripeSubmitInfoARM const* ptr() const { return reinterpret_cast<VkRenderPassStripeSubmitInfoARM const*>(this); }
 };
-struct safe_VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM {
+struct safe_VkPhysicalDeviceFragmentDensityMapOffsetFeaturesEXT {
     VkStructureType sType;
     void* pNext{};
     VkBool32 fragmentDensityMapOffset;
 
-    safe_VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM(const VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM* in_struct,
-                                                              PNextCopyState* copy_state = {}, bool copy_pnext = true);
-    safe_VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM(
-        const safe_VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM& copy_src);
-    safe_VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM& operator=(
-        const safe_VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM& copy_src);
-    safe_VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM();
-    ~safe_VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM();
-    void initialize(const VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM* in_struct, PNextCopyState* copy_state = {});
-    void initialize(const safe_VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM* copy_src, PNextCopyState* copy_state = {});
-    VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM* ptr() {
-        return reinterpret_cast<VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM*>(this);
+    safe_VkPhysicalDeviceFragmentDensityMapOffsetFeaturesEXT(const VkPhysicalDeviceFragmentDensityMapOffsetFeaturesEXT* in_struct,
+                                                             PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkPhysicalDeviceFragmentDensityMapOffsetFeaturesEXT(
+        const safe_VkPhysicalDeviceFragmentDensityMapOffsetFeaturesEXT& copy_src);
+    safe_VkPhysicalDeviceFragmentDensityMapOffsetFeaturesEXT& operator=(
+        const safe_VkPhysicalDeviceFragmentDensityMapOffsetFeaturesEXT& copy_src);
+    safe_VkPhysicalDeviceFragmentDensityMapOffsetFeaturesEXT();
+    ~safe_VkPhysicalDeviceFragmentDensityMapOffsetFeaturesEXT();
+    void initialize(const VkPhysicalDeviceFragmentDensityMapOffsetFeaturesEXT* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceFragmentDensityMapOffsetFeaturesEXT* copy_src, PNextCopyState* copy_state = {});
+    VkPhysicalDeviceFragmentDensityMapOffsetFeaturesEXT* ptr() {
+        return reinterpret_cast<VkPhysicalDeviceFragmentDensityMapOffsetFeaturesEXT*>(this);
     }
-    VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM const* ptr() const {
-        return reinterpret_cast<VkPhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM const*>(this);
+    VkPhysicalDeviceFragmentDensityMapOffsetFeaturesEXT const* ptr() const {
+        return reinterpret_cast<VkPhysicalDeviceFragmentDensityMapOffsetFeaturesEXT const*>(this);
     }
 };
-struct safe_VkPhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM {
+struct safe_VkPhysicalDeviceFragmentDensityMapOffsetPropertiesEXT {
     VkStructureType sType;
     void* pNext{};
     VkExtent2D fragmentDensityOffsetGranularity;
 
-    safe_VkPhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM(
-        const VkPhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM* in_struct, PNextCopyState* copy_state = {},
+    safe_VkPhysicalDeviceFragmentDensityMapOffsetPropertiesEXT(
+        const VkPhysicalDeviceFragmentDensityMapOffsetPropertiesEXT* in_struct, PNextCopyState* copy_state = {},
         bool copy_pnext = true);
-    safe_VkPhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM(
-        const safe_VkPhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM& copy_src);
-    safe_VkPhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM& operator=(
-        const safe_VkPhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM& copy_src);
-    safe_VkPhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM();
-    ~safe_VkPhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM();
-    void initialize(const VkPhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM* in_struct, PNextCopyState* copy_state = {});
-    void initialize(const safe_VkPhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM* copy_src, PNextCopyState* copy_state = {});
-    VkPhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM* ptr() {
-        return reinterpret_cast<VkPhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM*>(this);
+    safe_VkPhysicalDeviceFragmentDensityMapOffsetPropertiesEXT(
+        const safe_VkPhysicalDeviceFragmentDensityMapOffsetPropertiesEXT& copy_src);
+    safe_VkPhysicalDeviceFragmentDensityMapOffsetPropertiesEXT& operator=(
+        const safe_VkPhysicalDeviceFragmentDensityMapOffsetPropertiesEXT& copy_src);
+    safe_VkPhysicalDeviceFragmentDensityMapOffsetPropertiesEXT();
+    ~safe_VkPhysicalDeviceFragmentDensityMapOffsetPropertiesEXT();
+    void initialize(const VkPhysicalDeviceFragmentDensityMapOffsetPropertiesEXT* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceFragmentDensityMapOffsetPropertiesEXT* copy_src, PNextCopyState* copy_state = {});
+    VkPhysicalDeviceFragmentDensityMapOffsetPropertiesEXT* ptr() {
+        return reinterpret_cast<VkPhysicalDeviceFragmentDensityMapOffsetPropertiesEXT*>(this);
     }
-    VkPhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM const* ptr() const {
-        return reinterpret_cast<VkPhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM const*>(this);
+    VkPhysicalDeviceFragmentDensityMapOffsetPropertiesEXT const* ptr() const {
+        return reinterpret_cast<VkPhysicalDeviceFragmentDensityMapOffsetPropertiesEXT const*>(this);
     }
 };
-struct safe_VkSubpassFragmentDensityMapOffsetEndInfoQCOM {
+struct safe_VkRenderPassFragmentDensityMapOffsetEndInfoEXT {
     VkStructureType sType;
     const void* pNext{};
     uint32_t fragmentDensityOffsetCount;
     const VkOffset2D* pFragmentDensityOffsets{};
 
-    safe_VkSubpassFragmentDensityMapOffsetEndInfoQCOM(const VkSubpassFragmentDensityMapOffsetEndInfoQCOM* in_struct,
-                                                      PNextCopyState* copy_state = {}, bool copy_pnext = true);
-    safe_VkSubpassFragmentDensityMapOffsetEndInfoQCOM(const safe_VkSubpassFragmentDensityMapOffsetEndInfoQCOM& copy_src);
-    safe_VkSubpassFragmentDensityMapOffsetEndInfoQCOM& operator=(const safe_VkSubpassFragmentDensityMapOffsetEndInfoQCOM& copy_src);
-    safe_VkSubpassFragmentDensityMapOffsetEndInfoQCOM();
-    ~safe_VkSubpassFragmentDensityMapOffsetEndInfoQCOM();
-    void initialize(const VkSubpassFragmentDensityMapOffsetEndInfoQCOM* in_struct, PNextCopyState* copy_state = {});
-    void initialize(const safe_VkSubpassFragmentDensityMapOffsetEndInfoQCOM* copy_src, PNextCopyState* copy_state = {});
-    VkSubpassFragmentDensityMapOffsetEndInfoQCOM* ptr() {
-        return reinterpret_cast<VkSubpassFragmentDensityMapOffsetEndInfoQCOM*>(this);
+    safe_VkRenderPassFragmentDensityMapOffsetEndInfoEXT(const VkRenderPassFragmentDensityMapOffsetEndInfoEXT* in_struct,
+                                                        PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkRenderPassFragmentDensityMapOffsetEndInfoEXT(const safe_VkRenderPassFragmentDensityMapOffsetEndInfoEXT& copy_src);
+    safe_VkRenderPassFragmentDensityMapOffsetEndInfoEXT& operator=(
+        const safe_VkRenderPassFragmentDensityMapOffsetEndInfoEXT& copy_src);
+    safe_VkRenderPassFragmentDensityMapOffsetEndInfoEXT();
+    ~safe_VkRenderPassFragmentDensityMapOffsetEndInfoEXT();
+    void initialize(const VkRenderPassFragmentDensityMapOffsetEndInfoEXT* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkRenderPassFragmentDensityMapOffsetEndInfoEXT* copy_src, PNextCopyState* copy_state = {});
+    VkRenderPassFragmentDensityMapOffsetEndInfoEXT* ptr() {
+        return reinterpret_cast<VkRenderPassFragmentDensityMapOffsetEndInfoEXT*>(this);
     }
-    VkSubpassFragmentDensityMapOffsetEndInfoQCOM const* ptr() const {
-        return reinterpret_cast<VkSubpassFragmentDensityMapOffsetEndInfoQCOM const*>(this);
+    VkRenderPassFragmentDensityMapOffsetEndInfoEXT const* ptr() const {
+        return reinterpret_cast<VkRenderPassFragmentDensityMapOffsetEndInfoEXT const*>(this);
     }
 };
 struct safe_VkPhysicalDeviceCopyMemoryIndirectFeaturesNV {
@@ -20329,6 +20350,20 @@ struct safe_VkPhysicalDevicePresentMeteringFeaturesNV {
     }
 };
 #endif  // VK_ENABLE_BETA_EXTENSIONS
+struct safe_VkRenderingEndInfoEXT {
+    VkStructureType sType;
+    const void* pNext{};
+
+    safe_VkRenderingEndInfoEXT(const VkRenderingEndInfoEXT* in_struct, PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkRenderingEndInfoEXT(const safe_VkRenderingEndInfoEXT& copy_src);
+    safe_VkRenderingEndInfoEXT& operator=(const safe_VkRenderingEndInfoEXT& copy_src);
+    safe_VkRenderingEndInfoEXT();
+    ~safe_VkRenderingEndInfoEXT();
+    void initialize(const VkRenderingEndInfoEXT* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkRenderingEndInfoEXT* copy_src, PNextCopyState* copy_state = {});
+    VkRenderingEndInfoEXT* ptr() { return reinterpret_cast<VkRenderingEndInfoEXT*>(this); }
+    VkRenderingEndInfoEXT const* ptr() const { return reinterpret_cast<VkRenderingEndInfoEXT const*>(this); }
+};
 struct safe_VkAccelerationStructureGeometryTrianglesDataKHR {
     VkStructureType sType;
     const void* pNext{};
