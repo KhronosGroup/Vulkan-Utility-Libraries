@@ -26,7 +26,13 @@ def formatHasEqualBitsize(format: Format, bitsize: str) -> bool:
 
 # True if all components are same numericFormat
 def formatHasNumericFormat(format: Format, numericFormat: str) -> bool:
-    return all(x.numericFormat == numericFormat for x in format.components)
+    if numericFormat == 'SRGB':
+        # For SRGB, the Alpha will be UNORM, but it is still considered an SRGB format
+        if format.name == 'VK_FORMAT_A8_UNORM':
+            return False
+        return all(x.type == 'A' or x.numericFormat == numericFormat for x in format.components)
+    else:
+        return all(x.numericFormat == numericFormat for x in format.components)
 
 class FormatUtilsOutputGenerator(BaseGenerator):
     def __init__(self):
