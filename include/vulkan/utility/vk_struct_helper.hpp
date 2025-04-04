@@ -751,6 +751,12 @@ template <> inline VkStructureType GetSType<VkCudaLaunchInfoNV>() { return VK_ST
 template <> inline VkStructureType GetSType<VkPhysicalDeviceCudaKernelLaunchFeaturesNV>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUDA_KERNEL_LAUNCH_FEATURES_NV; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceCudaKernelLaunchPropertiesNV>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUDA_KERNEL_LAUNCH_PROPERTIES_NV; }
 #endif  // VK_ENABLE_BETA_EXTENSIONS
+template <> inline VkStructureType GetSType<VkPhysicalDeviceTileShadingFeaturesQCOM>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TILE_SHADING_FEATURES_QCOM; }
+template <> inline VkStructureType GetSType<VkPhysicalDeviceTileShadingPropertiesQCOM>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TILE_SHADING_PROPERTIES_QCOM; }
+template <> inline VkStructureType GetSType<VkRenderPassTileShadingCreateInfoQCOM>() { return VK_STRUCTURE_TYPE_RENDER_PASS_TILE_SHADING_CREATE_INFO_QCOM; }
+template <> inline VkStructureType GetSType<VkPerTileBeginInfoQCOM>() { return VK_STRUCTURE_TYPE_PER_TILE_BEGIN_INFO_QCOM; }
+template <> inline VkStructureType GetSType<VkPerTileEndInfoQCOM>() { return VK_STRUCTURE_TYPE_PER_TILE_END_INFO_QCOM; }
+template <> inline VkStructureType GetSType<VkDispatchTileInfoQCOM>() { return VK_STRUCTURE_TYPE_DISPATCH_TILE_INFO_QCOM; }
 template <> inline VkStructureType GetSType<VkQueryLowLatencySupportNV>() { return VK_STRUCTURE_TYPE_QUERY_LOW_LATENCY_SUPPORT_NV; }
 #ifdef VK_USE_PLATFORM_METAL_EXT
 template <> inline VkStructureType GetSType<VkExportMetalObjectCreateInfoEXT>() { return VK_STRUCTURE_TYPE_EXPORT_METAL_OBJECT_CREATE_INFO_EXT; }
@@ -1004,6 +1010,10 @@ template <> inline VkStructureType GetSType<VkPhysicalDeviceDescriptorPoolOveral
 template <> inline VkStructureType GetSType<VkDisplaySurfaceStereoCreateInfoNV>() { return VK_STRUCTURE_TYPE_DISPLAY_SURFACE_STEREO_CREATE_INFO_NV; }
 template <> inline VkStructureType GetSType<VkDisplayModeStereoPropertiesNV>() { return VK_STRUCTURE_TYPE_DISPLAY_MODE_STEREO_PROPERTIES_NV; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceRawAccessChainsFeaturesNV>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAW_ACCESS_CHAINS_FEATURES_NV; }
+template <> inline VkStructureType GetSType<VkExternalComputeQueueDeviceCreateInfoNV>() { return VK_STRUCTURE_TYPE_EXTERNAL_COMPUTE_QUEUE_DEVICE_CREATE_INFO_NV; }
+template <> inline VkStructureType GetSType<VkExternalComputeQueueCreateInfoNV>() { return VK_STRUCTURE_TYPE_EXTERNAL_COMPUTE_QUEUE_CREATE_INFO_NV; }
+template <> inline VkStructureType GetSType<VkExternalComputeQueueDataParamsNV>() { return VK_STRUCTURE_TYPE_EXTERNAL_COMPUTE_QUEUE_DATA_PARAMS_NV; }
+template <> inline VkStructureType GetSType<VkPhysicalDeviceExternalComputeQueuePropertiesNV>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_COMPUTE_QUEUE_PROPERTIES_NV; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceCommandBufferInheritanceFeaturesNV>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMMAND_BUFFER_INHERITANCE_FEATURES_NV; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ATOMIC_FLOAT16_VECTOR_FEATURES_NV; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_REPLICATED_COMPOSITES_FEATURES_EXT; }
@@ -1209,6 +1219,7 @@ template<> inline VkObjectType GetObjectType<VkBufferCollectionFUCHSIA>() { retu
 template<> inline VkObjectType GetObjectType<VkMicromapEXT>() { return VK_OBJECT_TYPE_MICROMAP_EXT; }
 template<> inline VkObjectType GetObjectType<VkOpticalFlowSessionNV>() { return VK_OBJECT_TYPE_OPTICAL_FLOW_SESSION_NV; }
 template<> inline VkObjectType GetObjectType<VkShaderEXT>() { return VK_OBJECT_TYPE_SHADER_EXT; }
+template<> inline VkObjectType GetObjectType<VkExternalComputeQueueNV>() { return VK_OBJECT_TYPE_EXTERNAL_COMPUTE_QUEUE_NV; }
 template<> inline VkObjectType GetObjectType<VkIndirectExecutionSetEXT>() { return VK_OBJECT_TYPE_INDIRECT_EXECUTION_SET_EXT; }
 template<> inline VkObjectType GetObjectType<VkIndirectCommandsLayoutEXT>() { return VK_OBJECT_TYPE_INDIRECT_COMMANDS_LAYOUT_EXT; }
 

@@ -1391,6 +1391,15 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
                 safe_pNext = new safe_VkPhysicalDeviceCudaKernelLaunchPropertiesNV(reinterpret_cast<const VkPhysicalDeviceCudaKernelLaunchPropertiesNV *>(pNext), copy_state, false);
                 break;
 #endif  // VK_ENABLE_BETA_EXTENSIONS
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TILE_SHADING_FEATURES_QCOM:
+                safe_pNext = new safe_VkPhysicalDeviceTileShadingFeaturesQCOM(reinterpret_cast<const VkPhysicalDeviceTileShadingFeaturesQCOM *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TILE_SHADING_PROPERTIES_QCOM:
+                safe_pNext = new safe_VkPhysicalDeviceTileShadingPropertiesQCOM(reinterpret_cast<const VkPhysicalDeviceTileShadingPropertiesQCOM *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_RENDER_PASS_TILE_SHADING_CREATE_INFO_QCOM:
+                safe_pNext = new safe_VkRenderPassTileShadingCreateInfoQCOM(reinterpret_cast<const VkRenderPassTileShadingCreateInfoQCOM *>(pNext), copy_state, false);
+                break;
             case VK_STRUCTURE_TYPE_QUERY_LOW_LATENCY_SUPPORT_NV:
                 safe_pNext = new safe_VkQueryLowLatencySupportNV(reinterpret_cast<const VkQueryLowLatencySupportNV *>(pNext), copy_state, false);
                 break;
@@ -1946,6 +1955,12 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
                 break;
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAW_ACCESS_CHAINS_FEATURES_NV:
                 safe_pNext = new safe_VkPhysicalDeviceRawAccessChainsFeaturesNV(reinterpret_cast<const VkPhysicalDeviceRawAccessChainsFeaturesNV *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_EXTERNAL_COMPUTE_QUEUE_DEVICE_CREATE_INFO_NV:
+                safe_pNext = new safe_VkExternalComputeQueueDeviceCreateInfoNV(reinterpret_cast<const VkExternalComputeQueueDeviceCreateInfoNV *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_COMPUTE_QUEUE_PROPERTIES_NV:
+                safe_pNext = new safe_VkPhysicalDeviceExternalComputeQueuePropertiesNV(reinterpret_cast<const VkPhysicalDeviceExternalComputeQueuePropertiesNV *>(pNext), copy_state, false);
                 break;
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMMAND_BUFFER_INHERITANCE_FEATURES_NV:
                 safe_pNext = new safe_VkPhysicalDeviceCommandBufferInheritanceFeaturesNV(reinterpret_cast<const VkPhysicalDeviceCommandBufferInheritanceFeaturesNV *>(pNext), copy_state, false);
@@ -3445,6 +3460,15 @@ void FreePnextChain(const void *pNext) {
             delete reinterpret_cast<safe_VkPhysicalDeviceCudaKernelLaunchPropertiesNV *>(header);
             break;
 #endif  // VK_ENABLE_BETA_EXTENSIONS
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TILE_SHADING_FEATURES_QCOM:
+            delete reinterpret_cast<safe_VkPhysicalDeviceTileShadingFeaturesQCOM *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TILE_SHADING_PROPERTIES_QCOM:
+            delete reinterpret_cast<safe_VkPhysicalDeviceTileShadingPropertiesQCOM *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_RENDER_PASS_TILE_SHADING_CREATE_INFO_QCOM:
+            delete reinterpret_cast<safe_VkRenderPassTileShadingCreateInfoQCOM *>(header);
+            break;
         case VK_STRUCTURE_TYPE_QUERY_LOW_LATENCY_SUPPORT_NV:
             delete reinterpret_cast<safe_VkQueryLowLatencySupportNV *>(header);
             break;
@@ -4000,6 +4024,12 @@ void FreePnextChain(const void *pNext) {
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAW_ACCESS_CHAINS_FEATURES_NV:
             delete reinterpret_cast<safe_VkPhysicalDeviceRawAccessChainsFeaturesNV *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_EXTERNAL_COMPUTE_QUEUE_DEVICE_CREATE_INFO_NV:
+            delete reinterpret_cast<safe_VkExternalComputeQueueDeviceCreateInfoNV *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_COMPUTE_QUEUE_PROPERTIES_NV:
+            delete reinterpret_cast<safe_VkPhysicalDeviceExternalComputeQueuePropertiesNV *>(header);
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMMAND_BUFFER_INHERITANCE_FEATURES_NV:
             delete reinterpret_cast<safe_VkPhysicalDeviceCommandBufferInheritanceFeaturesNV *>(header);

@@ -1422,6 +1422,18 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUDA_KERNEL_LAUNCH_PROPERTIES_NV:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUDA_KERNEL_LAUNCH_PROPERTIES_NV";
 #endif  // VK_ENABLE_BETA_EXTENSIONS
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TILE_SHADING_FEATURES_QCOM:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TILE_SHADING_FEATURES_QCOM";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TILE_SHADING_PROPERTIES_QCOM:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TILE_SHADING_PROPERTIES_QCOM";
+        case VK_STRUCTURE_TYPE_RENDER_PASS_TILE_SHADING_CREATE_INFO_QCOM:
+            return "VK_STRUCTURE_TYPE_RENDER_PASS_TILE_SHADING_CREATE_INFO_QCOM";
+        case VK_STRUCTURE_TYPE_PER_TILE_BEGIN_INFO_QCOM:
+            return "VK_STRUCTURE_TYPE_PER_TILE_BEGIN_INFO_QCOM";
+        case VK_STRUCTURE_TYPE_PER_TILE_END_INFO_QCOM:
+            return "VK_STRUCTURE_TYPE_PER_TILE_END_INFO_QCOM";
+        case VK_STRUCTURE_TYPE_DISPATCH_TILE_INFO_QCOM:
+            return "VK_STRUCTURE_TYPE_DISPATCH_TILE_INFO_QCOM";
         case VK_STRUCTURE_TYPE_QUERY_LOW_LATENCY_SUPPORT_NV:
             return "VK_STRUCTURE_TYPE_QUERY_LOW_LATENCY_SUPPORT_NV";
         case VK_STRUCTURE_TYPE_EXPORT_METAL_OBJECT_CREATE_INFO_EXT:
@@ -2006,6 +2018,14 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_VIDEO_FORMAT_AV1_QUANTIZATION_MAP_PROPERTIES_KHR";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAW_ACCESS_CHAINS_FEATURES_NV:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAW_ACCESS_CHAINS_FEATURES_NV";
+        case VK_STRUCTURE_TYPE_EXTERNAL_COMPUTE_QUEUE_DEVICE_CREATE_INFO_NV:
+            return "VK_STRUCTURE_TYPE_EXTERNAL_COMPUTE_QUEUE_DEVICE_CREATE_INFO_NV";
+        case VK_STRUCTURE_TYPE_EXTERNAL_COMPUTE_QUEUE_CREATE_INFO_NV:
+            return "VK_STRUCTURE_TYPE_EXTERNAL_COMPUTE_QUEUE_CREATE_INFO_NV";
+        case VK_STRUCTURE_TYPE_EXTERNAL_COMPUTE_QUEUE_DATA_PARAMS_NV:
+            return "VK_STRUCTURE_TYPE_EXTERNAL_COMPUTE_QUEUE_DATA_PARAMS_NV";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_COMPUTE_QUEUE_PROPERTIES_NV:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_COMPUTE_QUEUE_PROPERTIES_NV";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_RELAXED_EXTENDED_INSTRUCTION_FEATURES_KHR:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_RELAXED_EXTENDED_INSTRUCTION_FEATURES_KHR";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMMAND_BUFFER_INHERITANCE_FEATURES_NV:
@@ -2326,6 +2346,8 @@ static inline const char* string_VkObjectType(VkObjectType input_value) {
             return "VK_OBJECT_TYPE_SHADER_EXT";
         case VK_OBJECT_TYPE_PIPELINE_BINARY_KHR:
             return "VK_OBJECT_TYPE_PIPELINE_BINARY_KHR";
+        case VK_OBJECT_TYPE_EXTERNAL_COMPUTE_QUEUE_NV:
+            return "VK_OBJECT_TYPE_EXTERNAL_COMPUTE_QUEUE_NV";
         case VK_OBJECT_TYPE_INDIRECT_COMMANDS_LAYOUT_EXT:
             return "VK_OBJECT_TYPE_INDIRECT_COMMANDS_LAYOUT_EXT";
         case VK_OBJECT_TYPE_INDIRECT_EXECUTION_SET_EXT:
@@ -6794,6 +6816,8 @@ static inline const char* string_VkSubpassDescriptionFlagBits(VkSubpassDescripti
             return "VK_SUBPASS_DESCRIPTION_FRAGMENT_REGION_BIT_QCOM";
         case VK_SUBPASS_DESCRIPTION_SHADER_RESOLVE_BIT_QCOM:
             return "VK_SUBPASS_DESCRIPTION_SHADER_RESOLVE_BIT_QCOM";
+        case VK_SUBPASS_DESCRIPTION_TILE_SHADING_APRON_BIT_QCOM:
+            return "VK_SUBPASS_DESCRIPTION_TILE_SHADING_APRON_BIT_QCOM";
         case VK_SUBPASS_DESCRIPTION_RASTERIZATION_ORDER_ATTACHMENT_COLOR_ACCESS_BIT_EXT:
             return "VK_SUBPASS_DESCRIPTION_RASTERIZATION_ORDER_ATTACHMENT_COLOR_ACCESS_BIT_EXT";
         case VK_SUBPASS_DESCRIPTION_RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_BIT_EXT:
@@ -7591,6 +7615,8 @@ static inline const char* string_VkAccessFlagBits2(uint64_t input_value) {
     if (input_value == VK_ACCESS_2_VIDEO_DECODE_WRITE_BIT_KHR) return "VK_ACCESS_2_VIDEO_DECODE_WRITE_BIT_KHR";
     if (input_value == VK_ACCESS_2_VIDEO_ENCODE_READ_BIT_KHR) return "VK_ACCESS_2_VIDEO_ENCODE_READ_BIT_KHR";
     if (input_value == VK_ACCESS_2_VIDEO_ENCODE_WRITE_BIT_KHR) return "VK_ACCESS_2_VIDEO_ENCODE_WRITE_BIT_KHR";
+    if (input_value == VK_ACCESS_2_SHADER_TILE_ATTACHMENT_READ_BIT_QCOM) return "VK_ACCESS_2_SHADER_TILE_ATTACHMENT_READ_BIT_QCOM";
+    if (input_value == VK_ACCESS_2_SHADER_TILE_ATTACHMENT_WRITE_BIT_QCOM) return "VK_ACCESS_2_SHADER_TILE_ATTACHMENT_WRITE_BIT_QCOM";
     if (input_value == VK_ACCESS_2_TRANSFORM_FEEDBACK_WRITE_BIT_EXT) return "VK_ACCESS_2_TRANSFORM_FEEDBACK_WRITE_BIT_EXT";
     if (input_value == VK_ACCESS_2_TRANSFORM_FEEDBACK_COUNTER_READ_BIT_EXT) return "VK_ACCESS_2_TRANSFORM_FEEDBACK_COUNTER_READ_BIT_EXT";
     if (input_value == VK_ACCESS_2_TRANSFORM_FEEDBACK_COUNTER_WRITE_BIT_EXT) return "VK_ACCESS_2_TRANSFORM_FEEDBACK_COUNTER_WRITE_BIT_EXT";
@@ -9527,6 +9553,33 @@ static inline std::string string_VkDeviceDiagnosticsConfigFlagsNV(VkDeviceDiagno
         input_value >>= 1;
     }
     if (ret.empty()) ret.append("VkDeviceDiagnosticsConfigFlagsNV(0)");
+    return ret;
+}
+#endif // __cplusplus
+static inline const char* string_VkTileShadingRenderPassFlagBitsQCOM(VkTileShadingRenderPassFlagBitsQCOM input_value) {
+    switch (input_value) {
+        case VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM:
+            return "VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM";
+        case VK_TILE_SHADING_RENDER_PASS_PER_TILE_EXECUTION_BIT_QCOM:
+            return "VK_TILE_SHADING_RENDER_PASS_PER_TILE_EXECUTION_BIT_QCOM";
+        default:
+            return "Unhandled VkTileShadingRenderPassFlagBitsQCOM";
+    }
+}
+
+#ifdef __cplusplus
+static inline std::string string_VkTileShadingRenderPassFlagsQCOM(VkTileShadingRenderPassFlagsQCOM input_value) {
+    std::string ret;
+    int index = 0;
+    while(input_value) {
+        if (input_value & 1) {
+            if( !ret.empty()) ret.append("|");
+            ret.append(string_VkTileShadingRenderPassFlagBitsQCOM(static_cast<VkTileShadingRenderPassFlagBitsQCOM>(1U << index)));
+        }
+        ++index;
+        input_value >>= 1;
+    }
+    if (ret.empty()) ret.append("VkTileShadingRenderPassFlagsQCOM(0)");
     return ret;
 }
 #endif // __cplusplus
