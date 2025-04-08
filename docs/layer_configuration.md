@@ -369,3 +369,13 @@ $ export VK_VALIDATION_REPORT_FLAGS=debug:error:perf:info:warn
 $ export VK_VALIDATION_ENABLE_MESSAGE_LIMIT=true
 $ export VK_VALIDATION_DUPLICATE_MESSAGE_LIMIT=3
 ```
+
+#### Example Usage on Android:
+
+```
+$ adb setprop debug.vvl.validation_core true
+$ adb setprop debug.vulkan.validation.validation_sync true
+$ adb setprop debug.vulkan.validation.thread_safety true
+$ adb setprop debug.vulkan.validation.enable_message_limit true
+$ adb setprop debug.vulkan.validation.duplicate_message_limit 3
+```
