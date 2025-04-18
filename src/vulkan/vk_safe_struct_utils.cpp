@@ -1947,6 +1947,21 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_POOL_OVERALLOCATION_FEATURES_NV:
                 safe_pNext = new safe_VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV(reinterpret_cast<const VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV *>(pNext), copy_state, false);
                 break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TILE_MEMORY_HEAP_FEATURES_QCOM:
+                safe_pNext = new safe_VkPhysicalDeviceTileMemoryHeapFeaturesQCOM(reinterpret_cast<const VkPhysicalDeviceTileMemoryHeapFeaturesQCOM *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TILE_MEMORY_HEAP_PROPERTIES_QCOM:
+                safe_pNext = new safe_VkPhysicalDeviceTileMemoryHeapPropertiesQCOM(reinterpret_cast<const VkPhysicalDeviceTileMemoryHeapPropertiesQCOM *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_TILE_MEMORY_REQUIREMENTS_QCOM:
+                safe_pNext = new safe_VkTileMemoryRequirementsQCOM(reinterpret_cast<const VkTileMemoryRequirementsQCOM *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_TILE_MEMORY_BIND_INFO_QCOM:
+                safe_pNext = new safe_VkTileMemoryBindInfoQCOM(reinterpret_cast<const VkTileMemoryBindInfoQCOM *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_TILE_MEMORY_SIZE_INFO_QCOM:
+                safe_pNext = new safe_VkTileMemorySizeInfoQCOM(reinterpret_cast<const VkTileMemorySizeInfoQCOM *>(pNext), copy_state, false);
+                break;
             case VK_STRUCTURE_TYPE_DISPLAY_SURFACE_STEREO_CREATE_INFO_NV:
                 safe_pNext = new safe_VkDisplaySurfaceStereoCreateInfoNV(reinterpret_cast<const VkDisplaySurfaceStereoCreateInfoNV *>(pNext), copy_state, false);
                 break;
@@ -4015,6 +4030,21 @@ void FreePnextChain(const void *pNext) {
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_POOL_OVERALLOCATION_FEATURES_NV:
             delete reinterpret_cast<safe_VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TILE_MEMORY_HEAP_FEATURES_QCOM:
+            delete reinterpret_cast<safe_VkPhysicalDeviceTileMemoryHeapFeaturesQCOM *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TILE_MEMORY_HEAP_PROPERTIES_QCOM:
+            delete reinterpret_cast<safe_VkPhysicalDeviceTileMemoryHeapPropertiesQCOM *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_TILE_MEMORY_REQUIREMENTS_QCOM:
+            delete reinterpret_cast<safe_VkTileMemoryRequirementsQCOM *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_TILE_MEMORY_BIND_INFO_QCOM:
+            delete reinterpret_cast<safe_VkTileMemoryBindInfoQCOM *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_TILE_MEMORY_SIZE_INFO_QCOM:
+            delete reinterpret_cast<safe_VkTileMemorySizeInfoQCOM *>(header);
             break;
         case VK_STRUCTURE_TYPE_DISPLAY_SURFACE_STEREO_CREATE_INFO_NV:
             delete reinterpret_cast<safe_VkDisplaySurfaceStereoCreateInfoNV *>(header);

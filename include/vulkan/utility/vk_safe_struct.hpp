@@ -19294,6 +19294,96 @@ struct safe_VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV {
         return reinterpret_cast<VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV const*>(this);
     }
 };
+struct safe_VkPhysicalDeviceTileMemoryHeapFeaturesQCOM {
+    VkStructureType sType;
+    void* pNext{};
+    VkBool32 tileMemoryHeap;
+
+    safe_VkPhysicalDeviceTileMemoryHeapFeaturesQCOM(const VkPhysicalDeviceTileMemoryHeapFeaturesQCOM* in_struct,
+                                                    PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkPhysicalDeviceTileMemoryHeapFeaturesQCOM(const safe_VkPhysicalDeviceTileMemoryHeapFeaturesQCOM& copy_src);
+    safe_VkPhysicalDeviceTileMemoryHeapFeaturesQCOM& operator=(const safe_VkPhysicalDeviceTileMemoryHeapFeaturesQCOM& copy_src);
+    safe_VkPhysicalDeviceTileMemoryHeapFeaturesQCOM();
+    ~safe_VkPhysicalDeviceTileMemoryHeapFeaturesQCOM();
+    void initialize(const VkPhysicalDeviceTileMemoryHeapFeaturesQCOM* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceTileMemoryHeapFeaturesQCOM* copy_src, PNextCopyState* copy_state = {});
+    VkPhysicalDeviceTileMemoryHeapFeaturesQCOM* ptr() {
+        return reinterpret_cast<VkPhysicalDeviceTileMemoryHeapFeaturesQCOM*>(this);
+    }
+    VkPhysicalDeviceTileMemoryHeapFeaturesQCOM const* ptr() const {
+        return reinterpret_cast<VkPhysicalDeviceTileMemoryHeapFeaturesQCOM const*>(this);
+    }
+};
+struct safe_VkPhysicalDeviceTileMemoryHeapPropertiesQCOM {
+    VkStructureType sType;
+    void* pNext{};
+    VkBool32 queueSubmitBoundary;
+    VkBool32 tileBufferTransfers;
+
+    safe_VkPhysicalDeviceTileMemoryHeapPropertiesQCOM(const VkPhysicalDeviceTileMemoryHeapPropertiesQCOM* in_struct,
+                                                      PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkPhysicalDeviceTileMemoryHeapPropertiesQCOM(const safe_VkPhysicalDeviceTileMemoryHeapPropertiesQCOM& copy_src);
+    safe_VkPhysicalDeviceTileMemoryHeapPropertiesQCOM& operator=(const safe_VkPhysicalDeviceTileMemoryHeapPropertiesQCOM& copy_src);
+    safe_VkPhysicalDeviceTileMemoryHeapPropertiesQCOM();
+    ~safe_VkPhysicalDeviceTileMemoryHeapPropertiesQCOM();
+    void initialize(const VkPhysicalDeviceTileMemoryHeapPropertiesQCOM* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceTileMemoryHeapPropertiesQCOM* copy_src, PNextCopyState* copy_state = {});
+    VkPhysicalDeviceTileMemoryHeapPropertiesQCOM* ptr() {
+        return reinterpret_cast<VkPhysicalDeviceTileMemoryHeapPropertiesQCOM*>(this);
+    }
+    VkPhysicalDeviceTileMemoryHeapPropertiesQCOM const* ptr() const {
+        return reinterpret_cast<VkPhysicalDeviceTileMemoryHeapPropertiesQCOM const*>(this);
+    }
+};
+struct safe_VkTileMemoryRequirementsQCOM {
+    VkStructureType sType;
+    void* pNext{};
+    VkDeviceSize size;
+    VkDeviceSize alignment;
+
+    safe_VkTileMemoryRequirementsQCOM(const VkTileMemoryRequirementsQCOM* in_struct, PNextCopyState* copy_state = {},
+                                      bool copy_pnext = true);
+    safe_VkTileMemoryRequirementsQCOM(const safe_VkTileMemoryRequirementsQCOM& copy_src);
+    safe_VkTileMemoryRequirementsQCOM& operator=(const safe_VkTileMemoryRequirementsQCOM& copy_src);
+    safe_VkTileMemoryRequirementsQCOM();
+    ~safe_VkTileMemoryRequirementsQCOM();
+    void initialize(const VkTileMemoryRequirementsQCOM* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkTileMemoryRequirementsQCOM* copy_src, PNextCopyState* copy_state = {});
+    VkTileMemoryRequirementsQCOM* ptr() { return reinterpret_cast<VkTileMemoryRequirementsQCOM*>(this); }
+    VkTileMemoryRequirementsQCOM const* ptr() const { return reinterpret_cast<VkTileMemoryRequirementsQCOM const*>(this); }
+};
+struct safe_VkTileMemoryBindInfoQCOM {
+    VkStructureType sType;
+    const void* pNext{};
+    VkDeviceMemory memory;
+
+    safe_VkTileMemoryBindInfoQCOM(const VkTileMemoryBindInfoQCOM* in_struct, PNextCopyState* copy_state = {},
+                                  bool copy_pnext = true);
+    safe_VkTileMemoryBindInfoQCOM(const safe_VkTileMemoryBindInfoQCOM& copy_src);
+    safe_VkTileMemoryBindInfoQCOM& operator=(const safe_VkTileMemoryBindInfoQCOM& copy_src);
+    safe_VkTileMemoryBindInfoQCOM();
+    ~safe_VkTileMemoryBindInfoQCOM();
+    void initialize(const VkTileMemoryBindInfoQCOM* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkTileMemoryBindInfoQCOM* copy_src, PNextCopyState* copy_state = {});
+    VkTileMemoryBindInfoQCOM* ptr() { return reinterpret_cast<VkTileMemoryBindInfoQCOM*>(this); }
+    VkTileMemoryBindInfoQCOM const* ptr() const { return reinterpret_cast<VkTileMemoryBindInfoQCOM const*>(this); }
+};
+struct safe_VkTileMemorySizeInfoQCOM {
+    VkStructureType sType;
+    const void* pNext{};
+    VkDeviceSize size;
+
+    safe_VkTileMemorySizeInfoQCOM(const VkTileMemorySizeInfoQCOM* in_struct, PNextCopyState* copy_state = {},
+                                  bool copy_pnext = true);
+    safe_VkTileMemorySizeInfoQCOM(const safe_VkTileMemorySizeInfoQCOM& copy_src);
+    safe_VkTileMemorySizeInfoQCOM& operator=(const safe_VkTileMemorySizeInfoQCOM& copy_src);
+    safe_VkTileMemorySizeInfoQCOM();
+    ~safe_VkTileMemorySizeInfoQCOM();
+    void initialize(const VkTileMemorySizeInfoQCOM* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkTileMemorySizeInfoQCOM* copy_src, PNextCopyState* copy_state = {});
+    VkTileMemorySizeInfoQCOM* ptr() { return reinterpret_cast<VkTileMemorySizeInfoQCOM*>(this); }
+    VkTileMemorySizeInfoQCOM const* ptr() const { return reinterpret_cast<VkTileMemorySizeInfoQCOM const*>(this); }
+};
 struct safe_VkDisplaySurfaceStereoCreateInfoNV {
     VkStructureType sType;
     const void* pNext{};

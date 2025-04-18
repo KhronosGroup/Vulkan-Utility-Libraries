@@ -1007,6 +1007,11 @@ template <> inline VkStructureType GetSType<VkPhysicalDeviceExternalMemoryScreen
 #endif  // VK_USE_PLATFORM_SCREEN_QNX
 template <> inline VkStructureType GetSType<VkPhysicalDeviceLayeredDriverPropertiesMSFT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_DRIVER_PROPERTIES_MSFT; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceDescriptorPoolOverallocationFeaturesNV>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_POOL_OVERALLOCATION_FEATURES_NV; }
+template <> inline VkStructureType GetSType<VkPhysicalDeviceTileMemoryHeapFeaturesQCOM>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TILE_MEMORY_HEAP_FEATURES_QCOM; }
+template <> inline VkStructureType GetSType<VkPhysicalDeviceTileMemoryHeapPropertiesQCOM>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TILE_MEMORY_HEAP_PROPERTIES_QCOM; }
+template <> inline VkStructureType GetSType<VkTileMemoryRequirementsQCOM>() { return VK_STRUCTURE_TYPE_TILE_MEMORY_REQUIREMENTS_QCOM; }
+template <> inline VkStructureType GetSType<VkTileMemoryBindInfoQCOM>() { return VK_STRUCTURE_TYPE_TILE_MEMORY_BIND_INFO_QCOM; }
+template <> inline VkStructureType GetSType<VkTileMemorySizeInfoQCOM>() { return VK_STRUCTURE_TYPE_TILE_MEMORY_SIZE_INFO_QCOM; }
 template <> inline VkStructureType GetSType<VkDisplaySurfaceStereoCreateInfoNV>() { return VK_STRUCTURE_TYPE_DISPLAY_SURFACE_STEREO_CREATE_INFO_NV; }
 template <> inline VkStructureType GetSType<VkDisplayModeStereoPropertiesNV>() { return VK_STRUCTURE_TYPE_DISPLAY_MODE_STEREO_PROPERTIES_NV; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceRawAccessChainsFeaturesNV>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAW_ACCESS_CHAINS_FEATURES_NV; }
