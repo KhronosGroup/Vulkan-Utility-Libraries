@@ -911,6 +911,12 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_CLAMP_ZERO_ONE_FEATURES_KHR:
                 safe_pNext = new safe_VkPhysicalDeviceDepthClampZeroOneFeaturesKHR(reinterpret_cast<const VkPhysicalDeviceDepthClampZeroOneFeaturesKHR *>(pNext), copy_state, false);
                 break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ROBUSTNESS_2_FEATURES_KHR:
+                safe_pNext = new safe_VkPhysicalDeviceRobustness2FeaturesKHR(reinterpret_cast<const VkPhysicalDeviceRobustness2FeaturesKHR *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ROBUSTNESS_2_PROPERTIES_KHR:
+                safe_pNext = new safe_VkPhysicalDeviceRobustness2PropertiesKHR(reinterpret_cast<const VkPhysicalDeviceRobustness2PropertiesKHR *>(pNext), copy_state, false);
+                break;
             case VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT:
                 safe_pNext = new safe_VkDebugReportCallbackCreateInfoEXT(reinterpret_cast<const VkDebugReportCallbackCreateInfoEXT *>(pNext), copy_state, false);
                 break;
@@ -1352,12 +1358,6 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
                 break;
             case VK_STRUCTURE_TYPE_DEVICE_DEVICE_MEMORY_REPORT_CREATE_INFO_EXT:
                 safe_pNext = new safe_VkDeviceDeviceMemoryReportCreateInfoEXT(reinterpret_cast<const VkDeviceDeviceMemoryReportCreateInfoEXT *>(pNext), copy_state, false);
-                break;
-            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ROBUSTNESS_2_FEATURES_EXT:
-                safe_pNext = new safe_VkPhysicalDeviceRobustness2FeaturesEXT(reinterpret_cast<const VkPhysicalDeviceRobustness2FeaturesEXT *>(pNext), copy_state, false);
-                break;
-            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ROBUSTNESS_2_PROPERTIES_EXT:
-                safe_pNext = new safe_VkPhysicalDeviceRobustness2PropertiesEXT(reinterpret_cast<const VkPhysicalDeviceRobustness2PropertiesEXT *>(pNext), copy_state, false);
                 break;
             case VK_STRUCTURE_TYPE_SAMPLER_CUSTOM_BORDER_COLOR_CREATE_INFO_EXT:
                 safe_pNext = new safe_VkSamplerCustomBorderColorCreateInfoEXT(reinterpret_cast<const VkSamplerCustomBorderColorCreateInfoEXT *>(pNext), copy_state, false);
@@ -2995,6 +2995,12 @@ void FreePnextChain(const void *pNext) {
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_CLAMP_ZERO_ONE_FEATURES_KHR:
             delete reinterpret_cast<safe_VkPhysicalDeviceDepthClampZeroOneFeaturesKHR *>(header);
             break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ROBUSTNESS_2_FEATURES_KHR:
+            delete reinterpret_cast<safe_VkPhysicalDeviceRobustness2FeaturesKHR *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ROBUSTNESS_2_PROPERTIES_KHR:
+            delete reinterpret_cast<safe_VkPhysicalDeviceRobustness2PropertiesKHR *>(header);
+            break;
         case VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT:
             delete reinterpret_cast<safe_VkDebugReportCallbackCreateInfoEXT *>(header);
             break;
@@ -3436,12 +3442,6 @@ void FreePnextChain(const void *pNext) {
             break;
         case VK_STRUCTURE_TYPE_DEVICE_DEVICE_MEMORY_REPORT_CREATE_INFO_EXT:
             delete reinterpret_cast<safe_VkDeviceDeviceMemoryReportCreateInfoEXT *>(header);
-            break;
-        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ROBUSTNESS_2_FEATURES_EXT:
-            delete reinterpret_cast<safe_VkPhysicalDeviceRobustness2FeaturesEXT *>(header);
-            break;
-        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ROBUSTNESS_2_PROPERTIES_EXT:
-            delete reinterpret_cast<safe_VkPhysicalDeviceRobustness2PropertiesEXT *>(header);
             break;
         case VK_STRUCTURE_TYPE_SAMPLER_CUSTOM_BORDER_COLOR_CREATE_INFO_EXT:
             delete reinterpret_cast<safe_VkSamplerCustomBorderColorCreateInfoEXT *>(header);
