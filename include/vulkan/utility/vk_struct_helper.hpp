@@ -1074,6 +1074,7 @@ template <> inline VkStructureType GetSType<VkSetPresentConfigNV>() { return VK_
 template <> inline VkStructureType GetSType<VkPhysicalDevicePresentMeteringFeaturesNV>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_METERING_FEATURES_NV; }
 #endif  // VK_ENABLE_BETA_EXTENSIONS
 template <> inline VkStructureType GetSType<VkRenderingEndInfoEXT>() { return VK_STRUCTURE_TYPE_RENDERING_END_INFO_EXT; }
+template <> inline VkStructureType GetSType<VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ZERO_INITIALIZE_DEVICE_MEMORY_FEATURES_EXT; }
 template <> inline VkStructureType GetSType<VkAccelerationStructureGeometryTrianglesDataKHR>() { return VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_TRIANGLES_DATA_KHR; }
 template <> inline VkStructureType GetSType<VkAccelerationStructureGeometryAabbsDataKHR>() { return VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_AABBS_DATA_KHR; }
 template <> inline VkStructureType GetSType<VkAccelerationStructureGeometryInstancesDataKHR>() { return VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_INSTANCES_DATA_KHR; }

@@ -2170,6 +2170,8 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_RENDER_PASS_FRAGMENT_DENSITY_MAP_OFFSET_END_INFO_EXT";
         case VK_STRUCTURE_TYPE_RENDERING_END_INFO_EXT:
             return "VK_STRUCTURE_TYPE_RENDERING_END_INFO_EXT";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ZERO_INITIALIZE_DEVICE_MEMORY_FEATURES_EXT:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ZERO_INITIALIZE_DEVICE_MEMORY_FEATURES_EXT";
         default:
             return "Unhandled VkStructureType";
     }
@@ -2244,6 +2246,8 @@ static inline const char* string_VkImageLayout(VkImageLayout input_value) {
             return "VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT";
         case VK_IMAGE_LAYOUT_VIDEO_ENCODE_QUANTIZATION_MAP_KHR:
             return "VK_IMAGE_LAYOUT_VIDEO_ENCODE_QUANTIZATION_MAP_KHR";
+        case VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT:
+            return "VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT";
         default:
             return "Unhandled VkImageLayout";
     }
@@ -5654,8 +5658,8 @@ static inline const char* string_VkImageUsageFlagBits(VkImageUsageFlagBits input
             return "VK_IMAGE_USAGE_SAMPLE_WEIGHT_BIT_QCOM";
         case VK_IMAGE_USAGE_SAMPLE_BLOCK_MATCH_BIT_QCOM:
             return "VK_IMAGE_USAGE_SAMPLE_BLOCK_MATCH_BIT_QCOM";
-        case VK_IMAGE_USAGE_TILE_MEMORY_QCOM:
-            return "VK_IMAGE_USAGE_TILE_MEMORY_QCOM";
+        case VK_IMAGE_USAGE_TILE_MEMORY_BIT_QCOM:
+            return "VK_IMAGE_USAGE_TILE_MEMORY_BIT_QCOM";
         case VK_IMAGE_USAGE_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR:
             return "VK_IMAGE_USAGE_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR";
         case VK_IMAGE_USAGE_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR:
@@ -6223,8 +6227,8 @@ static inline const char* string_VkBufferUsageFlagBits(VkBufferUsageFlagBits inp
             return "VK_BUFFER_USAGE_MICROMAP_BUILD_INPUT_READ_ONLY_BIT_EXT";
         case VK_BUFFER_USAGE_MICROMAP_STORAGE_BIT_EXT:
             return "VK_BUFFER_USAGE_MICROMAP_STORAGE_BIT_EXT";
-        case VK_BUFFER_USAGE_TILE_MEMORY_QCOM:
-            return "VK_BUFFER_USAGE_TILE_MEMORY_QCOM";
+        case VK_BUFFER_USAGE_TILE_MEMORY_BIT_QCOM:
+            return "VK_BUFFER_USAGE_TILE_MEMORY_BIT_QCOM";
         default:
             return "Unhandled VkBufferUsageFlagBits";
     }
@@ -7108,6 +7112,8 @@ static inline const char* string_VkMemoryAllocateFlagBits(VkMemoryAllocateFlagBi
             return "VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT";
         case VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT:
             return "VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT";
+        case VK_MEMORY_ALLOCATE_ZERO_INITIALIZE_BIT_EXT:
+            return "VK_MEMORY_ALLOCATE_ZERO_INITIALIZE_BIT_EXT";
         default:
             return "Unhandled VkMemoryAllocateFlagBits";
     }
@@ -7907,7 +7913,7 @@ static inline const char* string_VkBufferUsageFlagBits2(uint64_t input_value) {
     if (input_value == VK_BUFFER_USAGE_2_PUSH_DESCRIPTORS_DESCRIPTOR_BUFFER_BIT_EXT) return "VK_BUFFER_USAGE_2_PUSH_DESCRIPTORS_DESCRIPTOR_BUFFER_BIT_EXT";
     if (input_value == VK_BUFFER_USAGE_2_MICROMAP_BUILD_INPUT_READ_ONLY_BIT_EXT) return "VK_BUFFER_USAGE_2_MICROMAP_BUILD_INPUT_READ_ONLY_BIT_EXT";
     if (input_value == VK_BUFFER_USAGE_2_MICROMAP_STORAGE_BIT_EXT) return "VK_BUFFER_USAGE_2_MICROMAP_STORAGE_BIT_EXT";
-    if (input_value == VK_BUFFER_USAGE_2_TILE_MEMORY_QCOM) return "VK_BUFFER_USAGE_2_TILE_MEMORY_QCOM";
+    if (input_value == VK_BUFFER_USAGE_2_TILE_MEMORY_BIT_QCOM) return "VK_BUFFER_USAGE_2_TILE_MEMORY_BIT_QCOM";
     if (input_value == VK_BUFFER_USAGE_2_PREPROCESS_BUFFER_BIT_EXT) return "VK_BUFFER_USAGE_2_PREPROCESS_BUFFER_BIT_EXT";
     return "Unhandled VkBufferUsageFlagBits2";
 }
