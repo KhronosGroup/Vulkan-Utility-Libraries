@@ -2068,6 +2068,9 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
                 safe_pNext = new safe_VkPhysicalDevicePresentMeteringFeaturesNV(reinterpret_cast<const VkPhysicalDevicePresentMeteringFeaturesNV *>(pNext), copy_state, false);
                 break;
 #endif  // VK_ENABLE_BETA_EXTENSIONS
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ZERO_INITIALIZE_DEVICE_MEMORY_FEATURES_EXT:
+                safe_pNext = new safe_VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesEXT(reinterpret_cast<const VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesEXT *>(pNext), copy_state, false);
+                break;
             case VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_ACCELERATION_STRUCTURE_KHR:
                 safe_pNext = new safe_VkWriteDescriptorSetAccelerationStructureKHR(reinterpret_cast<const VkWriteDescriptorSetAccelerationStructureKHR *>(pNext), copy_state, false);
                 break;
@@ -4152,6 +4155,9 @@ void FreePnextChain(const void *pNext) {
             delete reinterpret_cast<safe_VkPhysicalDevicePresentMeteringFeaturesNV *>(header);
             break;
 #endif  // VK_ENABLE_BETA_EXTENSIONS
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ZERO_INITIALIZE_DEVICE_MEMORY_FEATURES_EXT:
+            delete reinterpret_cast<safe_VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesEXT *>(header);
+            break;
         case VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_ACCELERATION_STRUCTURE_KHR:
             delete reinterpret_cast<safe_VkWriteDescriptorSetAccelerationStructureKHR *>(header);
             break;

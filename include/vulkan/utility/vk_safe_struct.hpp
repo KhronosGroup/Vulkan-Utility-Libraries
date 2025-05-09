@@ -20643,6 +20643,29 @@ struct safe_VkRenderingEndInfoEXT {
     VkRenderingEndInfoEXT* ptr() { return reinterpret_cast<VkRenderingEndInfoEXT*>(this); }
     VkRenderingEndInfoEXT const* ptr() const { return reinterpret_cast<VkRenderingEndInfoEXT const*>(this); }
 };
+struct safe_VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesEXT {
+    VkStructureType sType;
+    void* pNext{};
+    VkBool32 zeroInitializeDeviceMemory;
+
+    safe_VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesEXT(
+        const VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesEXT* in_struct, PNextCopyState* copy_state = {},
+        bool copy_pnext = true);
+    safe_VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesEXT(
+        const safe_VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesEXT& copy_src);
+    safe_VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesEXT& operator=(
+        const safe_VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesEXT& copy_src);
+    safe_VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesEXT();
+    ~safe_VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesEXT();
+    void initialize(const VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesEXT* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesEXT* copy_src, PNextCopyState* copy_state = {});
+    VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesEXT* ptr() {
+        return reinterpret_cast<VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesEXT*>(this);
+    }
+    VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesEXT const* ptr() const {
+        return reinterpret_cast<VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesEXT const*>(this);
+    }
+};
 struct safe_VkAccelerationStructureGeometryTrianglesDataKHR {
     VkStructureType sType;
     const void* pNext{};

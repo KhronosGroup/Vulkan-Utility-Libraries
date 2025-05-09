@@ -15817,6 +15817,59 @@ void safe_VkRenderingEndInfoEXT::initialize(const safe_VkRenderingEndInfoEXT* co
     pNext = SafePnextCopy(copy_src->pNext);
 }
 
+safe_VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesEXT::safe_VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesEXT(
+    const VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
+    bool copy_pnext)
+    : sType(in_struct->sType), zeroInitializeDeviceMemory(in_struct->zeroInitializeDeviceMemory) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesEXT::safe_VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesEXT()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ZERO_INITIALIZE_DEVICE_MEMORY_FEATURES_EXT),
+      pNext(nullptr),
+      zeroInitializeDeviceMemory() {}
+
+safe_VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesEXT::safe_VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesEXT(
+    const safe_VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesEXT& copy_src) {
+    sType = copy_src.sType;
+    zeroInitializeDeviceMemory = copy_src.zeroInitializeDeviceMemory;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesEXT& safe_VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesEXT::operator=(
+    const safe_VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesEXT& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    zeroInitializeDeviceMemory = copy_src.zeroInitializeDeviceMemory;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesEXT::~safe_VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesEXT() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesEXT::initialize(
+    const VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    zeroInitializeDeviceMemory = in_struct->zeroInitializeDeviceMemory;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesEXT::initialize(
+    const safe_VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesEXT* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    zeroInitializeDeviceMemory = copy_src->zeroInitializeDeviceMemory;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
 safe_VkPhysicalDeviceMeshShaderFeaturesEXT::safe_VkPhysicalDeviceMeshShaderFeaturesEXT(
     const VkPhysicalDeviceMeshShaderFeaturesEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
     : sType(in_struct->sType),
