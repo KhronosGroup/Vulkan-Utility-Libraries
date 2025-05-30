@@ -20593,6 +20593,24 @@ struct safe_VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT {
         return reinterpret_cast<VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT const*>(this);
     }
 };
+struct safe_VkPhysicalDeviceFormatPackFeaturesARM {
+    VkStructureType sType;
+    void* pNext{};
+    VkBool32 formatPack;
+
+    safe_VkPhysicalDeviceFormatPackFeaturesARM(const VkPhysicalDeviceFormatPackFeaturesARM* in_struct,
+                                               PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkPhysicalDeviceFormatPackFeaturesARM(const safe_VkPhysicalDeviceFormatPackFeaturesARM& copy_src);
+    safe_VkPhysicalDeviceFormatPackFeaturesARM& operator=(const safe_VkPhysicalDeviceFormatPackFeaturesARM& copy_src);
+    safe_VkPhysicalDeviceFormatPackFeaturesARM();
+    ~safe_VkPhysicalDeviceFormatPackFeaturesARM();
+    void initialize(const VkPhysicalDeviceFormatPackFeaturesARM* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceFormatPackFeaturesARM* copy_src, PNextCopyState* copy_state = {});
+    VkPhysicalDeviceFormatPackFeaturesARM* ptr() { return reinterpret_cast<VkPhysicalDeviceFormatPackFeaturesARM*>(this); }
+    VkPhysicalDeviceFormatPackFeaturesARM const* ptr() const {
+        return reinterpret_cast<VkPhysicalDeviceFormatPackFeaturesARM const*>(this);
+    }
+};
 #ifdef VK_ENABLE_BETA_EXTENSIONS
 struct safe_VkSetPresentConfigNV {
     VkStructureType sType;

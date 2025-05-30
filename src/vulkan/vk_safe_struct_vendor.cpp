@@ -18338,6 +18338,54 @@ void safe_VkPhysicalDevicePipelineOpacityMicromapFeaturesARM::initialize(
     pipelineOpacityMicromap = copy_src->pipelineOpacityMicromap;
     pNext = SafePnextCopy(copy_src->pNext);
 }
+
+safe_VkPhysicalDeviceFormatPackFeaturesARM::safe_VkPhysicalDeviceFormatPackFeaturesARM(
+    const VkPhysicalDeviceFormatPackFeaturesARM* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), formatPack(in_struct->formatPack) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceFormatPackFeaturesARM::safe_VkPhysicalDeviceFormatPackFeaturesARM()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FORMAT_PACK_FEATURES_ARM), pNext(nullptr), formatPack() {}
+
+safe_VkPhysicalDeviceFormatPackFeaturesARM::safe_VkPhysicalDeviceFormatPackFeaturesARM(
+    const safe_VkPhysicalDeviceFormatPackFeaturesARM& copy_src) {
+    sType = copy_src.sType;
+    formatPack = copy_src.formatPack;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceFormatPackFeaturesARM& safe_VkPhysicalDeviceFormatPackFeaturesARM::operator=(
+    const safe_VkPhysicalDeviceFormatPackFeaturesARM& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    formatPack = copy_src.formatPack;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceFormatPackFeaturesARM::~safe_VkPhysicalDeviceFormatPackFeaturesARM() { FreePnextChain(pNext); }
+
+void safe_VkPhysicalDeviceFormatPackFeaturesARM::initialize(const VkPhysicalDeviceFormatPackFeaturesARM* in_struct,
+                                                            [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    formatPack = in_struct->formatPack;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceFormatPackFeaturesARM::initialize(const safe_VkPhysicalDeviceFormatPackFeaturesARM* copy_src,
+                                                            [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    formatPack = copy_src->formatPack;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
 #ifdef VK_ENABLE_BETA_EXTENSIONS
 
 safe_VkSetPresentConfigNV::safe_VkSetPresentConfigNV(const VkSetPresentConfigNV* in_struct,
