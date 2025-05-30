@@ -1069,6 +1069,7 @@ template <> inline VkStructureType GetSType<VkMemoryMetalHandlePropertiesEXT>() 
 template <> inline VkStructureType GetSType<VkMemoryGetMetalHandleInfoEXT>() { return VK_STRUCTURE_TYPE_MEMORY_GET_METAL_HANDLE_INFO_EXT; }
 #endif  // VK_USE_PLATFORM_METAL_EXT
 template <> inline VkStructureType GetSType<VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_ROBUSTNESS_FEATURES_EXT; }
+template <> inline VkStructureType GetSType<VkPhysicalDeviceFormatPackFeaturesARM>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FORMAT_PACK_FEATURES_ARM; }
 #ifdef VK_ENABLE_BETA_EXTENSIONS
 template <> inline VkStructureType GetSType<VkSetPresentConfigNV>() { return VK_STRUCTURE_TYPE_SET_PRESENT_CONFIG_NV; }
 template <> inline VkStructureType GetSType<VkPhysicalDevicePresentMeteringFeaturesNV>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_METERING_FEATURES_NV; }
