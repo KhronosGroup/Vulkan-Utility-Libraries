@@ -22,6 +22,54 @@
 
 namespace vku {
 
+safe_VkAttachmentFeedbackLoopInfoEXT::safe_VkAttachmentFeedbackLoopInfoEXT(const VkAttachmentFeedbackLoopInfoEXT* in_struct,
+                                                                           [[maybe_unused]] PNextCopyState* copy_state,
+                                                                           bool copy_pnext)
+    : sType(in_struct->sType), feedbackLoopEnable(in_struct->feedbackLoopEnable) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkAttachmentFeedbackLoopInfoEXT::safe_VkAttachmentFeedbackLoopInfoEXT()
+    : sType(VK_STRUCTURE_TYPE_ATTACHMENT_FEEDBACK_LOOP_INFO_EXT), pNext(nullptr), feedbackLoopEnable() {}
+
+safe_VkAttachmentFeedbackLoopInfoEXT::safe_VkAttachmentFeedbackLoopInfoEXT(const safe_VkAttachmentFeedbackLoopInfoEXT& copy_src) {
+    sType = copy_src.sType;
+    feedbackLoopEnable = copy_src.feedbackLoopEnable;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkAttachmentFeedbackLoopInfoEXT& safe_VkAttachmentFeedbackLoopInfoEXT::operator=(
+    const safe_VkAttachmentFeedbackLoopInfoEXT& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    feedbackLoopEnable = copy_src.feedbackLoopEnable;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkAttachmentFeedbackLoopInfoEXT::~safe_VkAttachmentFeedbackLoopInfoEXT() { FreePnextChain(pNext); }
+
+void safe_VkAttachmentFeedbackLoopInfoEXT::initialize(const VkAttachmentFeedbackLoopInfoEXT* in_struct,
+                                                      [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    feedbackLoopEnable = in_struct->feedbackLoopEnable;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkAttachmentFeedbackLoopInfoEXT::initialize(const safe_VkAttachmentFeedbackLoopInfoEXT* copy_src,
+                                                      [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    feedbackLoopEnable = copy_src->feedbackLoopEnable;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
 safe_VkSetDescriptorBufferOffsetsInfoEXT::safe_VkSetDescriptorBufferOffsetsInfoEXT(
     const VkSetDescriptorBufferOffsetsInfoEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
     : sType(in_struct->sType),
@@ -14298,6 +14346,63 @@ void safe_VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT::initialize(
     const safe_VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
     sType = copy_src->sType;
     shaderReplicatedComposites = copy_src->shaderReplicatedComposites;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkPhysicalDeviceShaderFloat8FeaturesEXT::safe_VkPhysicalDeviceShaderFloat8FeaturesEXT(
+    const VkPhysicalDeviceShaderFloat8FeaturesEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType),
+      shaderFloat8(in_struct->shaderFloat8),
+      shaderFloat8CooperativeMatrix(in_struct->shaderFloat8CooperativeMatrix) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceShaderFloat8FeaturesEXT::safe_VkPhysicalDeviceShaderFloat8FeaturesEXT()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_FLOAT8_FEATURES_EXT),
+      pNext(nullptr),
+      shaderFloat8(),
+      shaderFloat8CooperativeMatrix() {}
+
+safe_VkPhysicalDeviceShaderFloat8FeaturesEXT::safe_VkPhysicalDeviceShaderFloat8FeaturesEXT(
+    const safe_VkPhysicalDeviceShaderFloat8FeaturesEXT& copy_src) {
+    sType = copy_src.sType;
+    shaderFloat8 = copy_src.shaderFloat8;
+    shaderFloat8CooperativeMatrix = copy_src.shaderFloat8CooperativeMatrix;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceShaderFloat8FeaturesEXT& safe_VkPhysicalDeviceShaderFloat8FeaturesEXT::operator=(
+    const safe_VkPhysicalDeviceShaderFloat8FeaturesEXT& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    shaderFloat8 = copy_src.shaderFloat8;
+    shaderFloat8CooperativeMatrix = copy_src.shaderFloat8CooperativeMatrix;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceShaderFloat8FeaturesEXT::~safe_VkPhysicalDeviceShaderFloat8FeaturesEXT() { FreePnextChain(pNext); }
+
+void safe_VkPhysicalDeviceShaderFloat8FeaturesEXT::initialize(const VkPhysicalDeviceShaderFloat8FeaturesEXT* in_struct,
+                                                              [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    shaderFloat8 = in_struct->shaderFloat8;
+    shaderFloat8CooperativeMatrix = in_struct->shaderFloat8CooperativeMatrix;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceShaderFloat8FeaturesEXT::initialize(const safe_VkPhysicalDeviceShaderFloat8FeaturesEXT* copy_src,
+                                                              [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    shaderFloat8 = copy_src->shaderFloat8;
+    shaderFloat8CooperativeMatrix = copy_src->shaderFloat8CooperativeMatrix;
     pNext = SafePnextCopy(copy_src->pNext);
 }
 
