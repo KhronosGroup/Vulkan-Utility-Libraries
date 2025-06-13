@@ -2144,6 +2144,15 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FORMAT_PACK_FEATURES_ARM:
                 safe_pNext = new safe_VkPhysicalDeviceFormatPackFeaturesARM(reinterpret_cast<const VkPhysicalDeviceFormatPackFeaturesARM *>(pNext), copy_state, false);
                 break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_LAYERED_FEATURES_VALVE:
+                safe_pNext = new safe_VkPhysicalDeviceFragmentDensityMapLayeredFeaturesVALVE(reinterpret_cast<const VkPhysicalDeviceFragmentDensityMapLayeredFeaturesVALVE *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_LAYERED_PROPERTIES_VALVE:
+                safe_pNext = new safe_VkPhysicalDeviceFragmentDensityMapLayeredPropertiesVALVE(reinterpret_cast<const VkPhysicalDeviceFragmentDensityMapLayeredPropertiesVALVE *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PIPELINE_FRAGMENT_DENSITY_MAP_LAYERED_CREATE_INFO_VALVE:
+                safe_pNext = new safe_VkPipelineFragmentDensityMapLayeredCreateInfoVALVE(reinterpret_cast<const VkPipelineFragmentDensityMapLayeredCreateInfoVALVE *>(pNext), copy_state, false);
+                break;
 #ifdef VK_ENABLE_BETA_EXTENSIONS
             case VK_STRUCTURE_TYPE_SET_PRESENT_CONFIG_NV:
                 safe_pNext = new safe_VkSetPresentConfigNV(reinterpret_cast<const VkSetPresentConfigNV *>(pNext), copy_state, false);
@@ -4314,6 +4323,15 @@ void FreePnextChain(const void *pNext) {
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FORMAT_PACK_FEATURES_ARM:
             delete reinterpret_cast<safe_VkPhysicalDeviceFormatPackFeaturesARM *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_LAYERED_FEATURES_VALVE:
+            delete reinterpret_cast<safe_VkPhysicalDeviceFragmentDensityMapLayeredFeaturesVALVE *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_LAYERED_PROPERTIES_VALVE:
+            delete reinterpret_cast<safe_VkPhysicalDeviceFragmentDensityMapLayeredPropertiesVALVE *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PIPELINE_FRAGMENT_DENSITY_MAP_LAYERED_CREATE_INFO_VALVE:
+            delete reinterpret_cast<safe_VkPipelineFragmentDensityMapLayeredCreateInfoVALVE *>(header);
             break;
 #ifdef VK_ENABLE_BETA_EXTENSIONS
         case VK_STRUCTURE_TYPE_SET_PRESENT_CONFIG_NV:

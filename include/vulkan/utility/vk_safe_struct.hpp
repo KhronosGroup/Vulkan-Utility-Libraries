@@ -18478,7 +18478,7 @@ struct safe_VkPhysicalDeviceDescriptorBufferTensorFeaturesARM {
 };
 struct safe_VkPhysicalDeviceDescriptorBufferTensorPropertiesARM {
     VkStructureType sType;
-    const void* pNext{};
+    void* pNext{};
     size_t tensorCaptureReplayDescriptorDataSize;
     size_t tensorViewCaptureReplayDescriptorDataSize;
     size_t tensorDescriptorSize;
@@ -21130,6 +21130,25 @@ struct safe_VkPipelineViewportDepthClampControlCreateInfoEXT {
         return reinterpret_cast<VkPipelineViewportDepthClampControlCreateInfoEXT const*>(this);
     }
 };
+#ifdef VK_USE_PLATFORM_OHOS
+struct safe_VkOHSurfaceCreateInfoOHOS {
+    VkStructureType sType;
+    const void* pNext{};
+    VkSurfaceCreateFlagsOHOS flags;
+    OHNativeWindow* window{};
+
+    safe_VkOHSurfaceCreateInfoOHOS(const VkOHSurfaceCreateInfoOHOS* in_struct, PNextCopyState* copy_state = {},
+                                   bool copy_pnext = true);
+    safe_VkOHSurfaceCreateInfoOHOS(const safe_VkOHSurfaceCreateInfoOHOS& copy_src);
+    safe_VkOHSurfaceCreateInfoOHOS& operator=(const safe_VkOHSurfaceCreateInfoOHOS& copy_src);
+    safe_VkOHSurfaceCreateInfoOHOS();
+    ~safe_VkOHSurfaceCreateInfoOHOS();
+    void initialize(const VkOHSurfaceCreateInfoOHOS* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkOHSurfaceCreateInfoOHOS* copy_src, PNextCopyState* copy_state = {});
+    VkOHSurfaceCreateInfoOHOS* ptr() { return reinterpret_cast<VkOHSurfaceCreateInfoOHOS*>(this); }
+    VkOHSurfaceCreateInfoOHOS const* ptr() const { return reinterpret_cast<VkOHSurfaceCreateInfoOHOS const*>(this); }
+};
+#endif  // VK_USE_PLATFORM_OHOS
 struct safe_VkPhysicalDeviceHdrVividFeaturesHUAWEI {
     VkStructureType sType;
     void* pNext{};
@@ -21356,6 +21375,74 @@ struct safe_VkPhysicalDeviceFormatPackFeaturesARM {
     VkPhysicalDeviceFormatPackFeaturesARM* ptr() { return reinterpret_cast<VkPhysicalDeviceFormatPackFeaturesARM*>(this); }
     VkPhysicalDeviceFormatPackFeaturesARM const* ptr() const {
         return reinterpret_cast<VkPhysicalDeviceFormatPackFeaturesARM const*>(this);
+    }
+};
+struct safe_VkPhysicalDeviceFragmentDensityMapLayeredFeaturesVALVE {
+    VkStructureType sType;
+    void* pNext{};
+    VkBool32 fragmentDensityMapLayered;
+
+    safe_VkPhysicalDeviceFragmentDensityMapLayeredFeaturesVALVE(
+        const VkPhysicalDeviceFragmentDensityMapLayeredFeaturesVALVE* in_struct, PNextCopyState* copy_state = {},
+        bool copy_pnext = true);
+    safe_VkPhysicalDeviceFragmentDensityMapLayeredFeaturesVALVE(
+        const safe_VkPhysicalDeviceFragmentDensityMapLayeredFeaturesVALVE& copy_src);
+    safe_VkPhysicalDeviceFragmentDensityMapLayeredFeaturesVALVE& operator=(
+        const safe_VkPhysicalDeviceFragmentDensityMapLayeredFeaturesVALVE& copy_src);
+    safe_VkPhysicalDeviceFragmentDensityMapLayeredFeaturesVALVE();
+    ~safe_VkPhysicalDeviceFragmentDensityMapLayeredFeaturesVALVE();
+    void initialize(const VkPhysicalDeviceFragmentDensityMapLayeredFeaturesVALVE* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceFragmentDensityMapLayeredFeaturesVALVE* copy_src, PNextCopyState* copy_state = {});
+    VkPhysicalDeviceFragmentDensityMapLayeredFeaturesVALVE* ptr() {
+        return reinterpret_cast<VkPhysicalDeviceFragmentDensityMapLayeredFeaturesVALVE*>(this);
+    }
+    VkPhysicalDeviceFragmentDensityMapLayeredFeaturesVALVE const* ptr() const {
+        return reinterpret_cast<VkPhysicalDeviceFragmentDensityMapLayeredFeaturesVALVE const*>(this);
+    }
+};
+struct safe_VkPhysicalDeviceFragmentDensityMapLayeredPropertiesVALVE {
+    VkStructureType sType;
+    void* pNext{};
+    uint32_t maxFragmentDensityMapLayers;
+
+    safe_VkPhysicalDeviceFragmentDensityMapLayeredPropertiesVALVE(
+        const VkPhysicalDeviceFragmentDensityMapLayeredPropertiesVALVE* in_struct, PNextCopyState* copy_state = {},
+        bool copy_pnext = true);
+    safe_VkPhysicalDeviceFragmentDensityMapLayeredPropertiesVALVE(
+        const safe_VkPhysicalDeviceFragmentDensityMapLayeredPropertiesVALVE& copy_src);
+    safe_VkPhysicalDeviceFragmentDensityMapLayeredPropertiesVALVE& operator=(
+        const safe_VkPhysicalDeviceFragmentDensityMapLayeredPropertiesVALVE& copy_src);
+    safe_VkPhysicalDeviceFragmentDensityMapLayeredPropertiesVALVE();
+    ~safe_VkPhysicalDeviceFragmentDensityMapLayeredPropertiesVALVE();
+    void initialize(const VkPhysicalDeviceFragmentDensityMapLayeredPropertiesVALVE* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceFragmentDensityMapLayeredPropertiesVALVE* copy_src, PNextCopyState* copy_state = {});
+    VkPhysicalDeviceFragmentDensityMapLayeredPropertiesVALVE* ptr() {
+        return reinterpret_cast<VkPhysicalDeviceFragmentDensityMapLayeredPropertiesVALVE*>(this);
+    }
+    VkPhysicalDeviceFragmentDensityMapLayeredPropertiesVALVE const* ptr() const {
+        return reinterpret_cast<VkPhysicalDeviceFragmentDensityMapLayeredPropertiesVALVE const*>(this);
+    }
+};
+struct safe_VkPipelineFragmentDensityMapLayeredCreateInfoVALVE {
+    VkStructureType sType;
+    const void* pNext{};
+    uint32_t maxFragmentDensityMapLayers;
+
+    safe_VkPipelineFragmentDensityMapLayeredCreateInfoVALVE(const VkPipelineFragmentDensityMapLayeredCreateInfoVALVE* in_struct,
+                                                            PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkPipelineFragmentDensityMapLayeredCreateInfoVALVE(
+        const safe_VkPipelineFragmentDensityMapLayeredCreateInfoVALVE& copy_src);
+    safe_VkPipelineFragmentDensityMapLayeredCreateInfoVALVE& operator=(
+        const safe_VkPipelineFragmentDensityMapLayeredCreateInfoVALVE& copy_src);
+    safe_VkPipelineFragmentDensityMapLayeredCreateInfoVALVE();
+    ~safe_VkPipelineFragmentDensityMapLayeredCreateInfoVALVE();
+    void initialize(const VkPipelineFragmentDensityMapLayeredCreateInfoVALVE* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPipelineFragmentDensityMapLayeredCreateInfoVALVE* copy_src, PNextCopyState* copy_state = {});
+    VkPipelineFragmentDensityMapLayeredCreateInfoVALVE* ptr() {
+        return reinterpret_cast<VkPipelineFragmentDensityMapLayeredCreateInfoVALVE*>(this);
+    }
+    VkPipelineFragmentDensityMapLayeredCreateInfoVALVE const* ptr() const {
+        return reinterpret_cast<VkPipelineFragmentDensityMapLayeredCreateInfoVALVE const*>(this);
     }
 };
 #ifdef VK_ENABLE_BETA_EXTENSIONS
