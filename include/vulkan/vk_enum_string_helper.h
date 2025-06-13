@@ -2210,6 +2210,8 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_VIDEO_DECODE_H265_INLINE_SESSION_PARAMETERS_INFO_KHR";
         case VK_STRUCTURE_TYPE_VIDEO_DECODE_AV1_INLINE_SESSION_PARAMETERS_INFO_KHR:
             return "VK_STRUCTURE_TYPE_VIDEO_DECODE_AV1_INLINE_SESSION_PARAMETERS_INFO_KHR";
+        case VK_STRUCTURE_TYPE_OH_SURFACE_CREATE_INFO_OHOS:
+            return "VK_STRUCTURE_TYPE_OH_SURFACE_CREATE_INFO_OHOS";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HDR_VIVID_FEATURES_HUAWEI:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HDR_VIVID_FEATURES_HUAWEI";
         case VK_STRUCTURE_TYPE_HDR_VIVID_DYNAMIC_METADATA_HUAWEI:
@@ -2234,6 +2236,12 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_ROBUSTNESS_FEATURES_EXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FORMAT_PACK_FEATURES_ARM:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FORMAT_PACK_FEATURES_ARM";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_LAYERED_FEATURES_VALVE:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_LAYERED_FEATURES_VALVE";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_LAYERED_PROPERTIES_VALVE:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_LAYERED_PROPERTIES_VALVE";
+        case VK_STRUCTURE_TYPE_PIPELINE_FRAGMENT_DENSITY_MAP_LAYERED_CREATE_INFO_VALVE:
+            return "VK_STRUCTURE_TYPE_PIPELINE_FRAGMENT_DENSITY_MAP_LAYERED_CREATE_INFO_VALVE";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ROBUSTNESS_2_FEATURES_KHR:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ROBUSTNESS_2_FEATURES_KHR";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ROBUSTNESS_2_PROPERTIES_KHR:
@@ -4226,10 +4234,6 @@ static inline const char* string_VkComponentTypeKHR(VkComponentTypeKHR input_val
             return "VK_COMPONENT_TYPE_SINT8_PACKED_NV";
         case VK_COMPONENT_TYPE_UINT8_PACKED_NV:
             return "VK_COMPONENT_TYPE_UINT8_PACKED_NV";
-        case VK_COMPONENT_TYPE_FLOAT_E4M3_NV:
-            return "VK_COMPONENT_TYPE_FLOAT_E4M3_NV";
-        case VK_COMPONENT_TYPE_FLOAT_E5M2_NV:
-            return "VK_COMPONENT_TYPE_FLOAT_E5M2_NV";
         case VK_COMPONENT_TYPE_FLOAT8_E4M3_EXT:
             return "VK_COMPONENT_TYPE_FLOAT8_E4M3_EXT";
         case VK_COMPONENT_TYPE_FLOAT8_E5M2_EXT:
@@ -6978,6 +6982,8 @@ static inline const char* string_VkRenderPassCreateFlagBits(VkRenderPassCreateFl
     switch (input_value) {
         case VK_RENDER_PASS_CREATE_TRANSFORM_BIT_QCOM:
             return "VK_RENDER_PASS_CREATE_TRANSFORM_BIT_QCOM";
+        case VK_RENDER_PASS_CREATE_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE:
+            return "VK_RENDER_PASS_CREATE_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE";
         default:
             return "Unhandled VkRenderPassCreateFlagBits";
     }
@@ -7886,6 +7892,8 @@ static inline const char* string_VkRenderingFlagBits(VkRenderingFlagBits input_v
             return "VK_RENDERING_ENABLE_LEGACY_DITHERING_BIT_EXT";
         case VK_RENDERING_CONTENTS_INLINE_BIT_KHR:
             return "VK_RENDERING_CONTENTS_INLINE_BIT_KHR";
+        case VK_RENDERING_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE:
+            return "VK_RENDERING_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE";
         default:
             return "Unhandled VkRenderingFlagBits";
     }
@@ -8040,6 +8048,7 @@ static inline const char* string_VkPipelineCreateFlagBits2(uint64_t input_value)
     if (input_value == VK_PIPELINE_CREATE_2_DISALLOW_OPACITY_MICROMAP_BIT_ARM) return "VK_PIPELINE_CREATE_2_DISALLOW_OPACITY_MICROMAP_BIT_ARM";
     if (input_value == VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR) return "VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR";
     if (input_value == VK_PIPELINE_CREATE_2_INDIRECT_BINDABLE_BIT_EXT) return "VK_PIPELINE_CREATE_2_INDIRECT_BINDABLE_BIT_EXT";
+    if (input_value == VK_PIPELINE_CREATE_2_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE) return "VK_PIPELINE_CREATE_2_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE";
     return "Unhandled VkPipelineCreateFlagBits2";
 }
 
@@ -12714,6 +12723,10 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
             return "VkPhysicalDeviceDepthClampControlFeaturesEXT";
         case VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_DEPTH_CLAMP_CONTROL_CREATE_INFO_EXT:
             return "VkPipelineViewportDepthClampControlCreateInfoEXT";
+#ifdef VK_USE_PLATFORM_OHOS
+        case VK_STRUCTURE_TYPE_OH_SURFACE_CREATE_INFO_OHOS:
+            return "VkOHSurfaceCreateInfoOHOS";
+#endif  // VK_USE_PLATFORM_OHOS
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HDR_VIVID_FEATURES_HUAWEI:
             return "VkPhysicalDeviceHdrVividFeaturesHUAWEI";
         case VK_STRUCTURE_TYPE_HDR_VIVID_DYNAMIC_METADATA_HUAWEI:
@@ -12738,6 +12751,12 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
             return "VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FORMAT_PACK_FEATURES_ARM:
             return "VkPhysicalDeviceFormatPackFeaturesARM";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_LAYERED_FEATURES_VALVE:
+            return "VkPhysicalDeviceFragmentDensityMapLayeredFeaturesVALVE";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_LAYERED_PROPERTIES_VALVE:
+            return "VkPhysicalDeviceFragmentDensityMapLayeredPropertiesVALVE";
+        case VK_STRUCTURE_TYPE_PIPELINE_FRAGMENT_DENSITY_MAP_LAYERED_CREATE_INFO_VALVE:
+            return "VkPipelineFragmentDensityMapLayeredCreateInfoVALVE";
 #ifdef VK_ENABLE_BETA_EXTENSIONS
         case VK_STRUCTURE_TYPE_SET_PRESENT_CONFIG_NV:
             return "VkSetPresentConfigNV";

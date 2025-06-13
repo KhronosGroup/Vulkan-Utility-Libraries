@@ -19699,6 +19699,82 @@ void safe_VkImageAlignmentControlCreateInfoMESA::initialize(const safe_VkImageAl
     maximumRequestedAlignment = copy_src->maximumRequestedAlignment;
     pNext = SafePnextCopy(copy_src->pNext);
 }
+#ifdef VK_USE_PLATFORM_OHOS
+
+safe_VkOHSurfaceCreateInfoOHOS::safe_VkOHSurfaceCreateInfoOHOS(const VkOHSurfaceCreateInfoOHOS* in_struct,
+                                                               [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), flags(in_struct->flags), window(nullptr) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+    if (in_struct->window) {
+        window = new OHNativeWindow(*in_struct->window);
+    }
+}
+
+safe_VkOHSurfaceCreateInfoOHOS::safe_VkOHSurfaceCreateInfoOHOS()
+    : sType(VK_STRUCTURE_TYPE_OH_SURFACE_CREATE_INFO_OHOS), pNext(nullptr), flags(), window(nullptr) {}
+
+safe_VkOHSurfaceCreateInfoOHOS::safe_VkOHSurfaceCreateInfoOHOS(const safe_VkOHSurfaceCreateInfoOHOS& copy_src) {
+    sType = copy_src.sType;
+    flags = copy_src.flags;
+    window = nullptr;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    if (copy_src.window) {
+        window = new OHNativeWindow(*copy_src.window);
+    }
+}
+
+safe_VkOHSurfaceCreateInfoOHOS& safe_VkOHSurfaceCreateInfoOHOS::operator=(const safe_VkOHSurfaceCreateInfoOHOS& copy_src) {
+    if (&copy_src == this) return *this;
+
+    if (window) delete window;
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    flags = copy_src.flags;
+    window = nullptr;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    if (copy_src.window) {
+        window = new OHNativeWindow(*copy_src.window);
+    }
+
+    return *this;
+}
+
+safe_VkOHSurfaceCreateInfoOHOS::~safe_VkOHSurfaceCreateInfoOHOS() {
+    if (window) delete window;
+    FreePnextChain(pNext);
+}
+
+void safe_VkOHSurfaceCreateInfoOHOS::initialize(const VkOHSurfaceCreateInfoOHOS* in_struct,
+                                                [[maybe_unused]] PNextCopyState* copy_state) {
+    if (window) delete window;
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    flags = in_struct->flags;
+    window = nullptr;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+
+    if (in_struct->window) {
+        window = new OHNativeWindow(*in_struct->window);
+    }
+}
+
+void safe_VkOHSurfaceCreateInfoOHOS::initialize(const safe_VkOHSurfaceCreateInfoOHOS* copy_src,
+                                                [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    flags = copy_src->flags;
+    window = nullptr;
+    pNext = SafePnextCopy(copy_src->pNext);
+
+    if (copy_src->window) {
+        window = new OHNativeWindow(*copy_src->window);
+    }
+}
+#endif  // VK_USE_PLATFORM_OHOS
 
 safe_VkPhysicalDeviceHdrVividFeaturesHUAWEI::safe_VkPhysicalDeviceHdrVividFeaturesHUAWEI(
     const VkPhysicalDeviceHdrVividFeaturesHUAWEI* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
@@ -20159,6 +20235,166 @@ void safe_VkPhysicalDeviceFormatPackFeaturesARM::initialize(const safe_VkPhysica
                                                             [[maybe_unused]] PNextCopyState* copy_state) {
     sType = copy_src->sType;
     formatPack = copy_src->formatPack;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkPhysicalDeviceFragmentDensityMapLayeredFeaturesVALVE::safe_VkPhysicalDeviceFragmentDensityMapLayeredFeaturesVALVE(
+    const VkPhysicalDeviceFragmentDensityMapLayeredFeaturesVALVE* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
+    bool copy_pnext)
+    : sType(in_struct->sType), fragmentDensityMapLayered(in_struct->fragmentDensityMapLayered) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceFragmentDensityMapLayeredFeaturesVALVE::safe_VkPhysicalDeviceFragmentDensityMapLayeredFeaturesVALVE()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_LAYERED_FEATURES_VALVE),
+      pNext(nullptr),
+      fragmentDensityMapLayered() {}
+
+safe_VkPhysicalDeviceFragmentDensityMapLayeredFeaturesVALVE::safe_VkPhysicalDeviceFragmentDensityMapLayeredFeaturesVALVE(
+    const safe_VkPhysicalDeviceFragmentDensityMapLayeredFeaturesVALVE& copy_src) {
+    sType = copy_src.sType;
+    fragmentDensityMapLayered = copy_src.fragmentDensityMapLayered;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceFragmentDensityMapLayeredFeaturesVALVE& safe_VkPhysicalDeviceFragmentDensityMapLayeredFeaturesVALVE::operator=(
+    const safe_VkPhysicalDeviceFragmentDensityMapLayeredFeaturesVALVE& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    fragmentDensityMapLayered = copy_src.fragmentDensityMapLayered;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceFragmentDensityMapLayeredFeaturesVALVE::~safe_VkPhysicalDeviceFragmentDensityMapLayeredFeaturesVALVE() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkPhysicalDeviceFragmentDensityMapLayeredFeaturesVALVE::initialize(
+    const VkPhysicalDeviceFragmentDensityMapLayeredFeaturesVALVE* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    fragmentDensityMapLayered = in_struct->fragmentDensityMapLayered;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceFragmentDensityMapLayeredFeaturesVALVE::initialize(
+    const safe_VkPhysicalDeviceFragmentDensityMapLayeredFeaturesVALVE* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    fragmentDensityMapLayered = copy_src->fragmentDensityMapLayered;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkPhysicalDeviceFragmentDensityMapLayeredPropertiesVALVE::safe_VkPhysicalDeviceFragmentDensityMapLayeredPropertiesVALVE(
+    const VkPhysicalDeviceFragmentDensityMapLayeredPropertiesVALVE* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
+    bool copy_pnext)
+    : sType(in_struct->sType), maxFragmentDensityMapLayers(in_struct->maxFragmentDensityMapLayers) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceFragmentDensityMapLayeredPropertiesVALVE::safe_VkPhysicalDeviceFragmentDensityMapLayeredPropertiesVALVE()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_LAYERED_PROPERTIES_VALVE),
+      pNext(nullptr),
+      maxFragmentDensityMapLayers() {}
+
+safe_VkPhysicalDeviceFragmentDensityMapLayeredPropertiesVALVE::safe_VkPhysicalDeviceFragmentDensityMapLayeredPropertiesVALVE(
+    const safe_VkPhysicalDeviceFragmentDensityMapLayeredPropertiesVALVE& copy_src) {
+    sType = copy_src.sType;
+    maxFragmentDensityMapLayers = copy_src.maxFragmentDensityMapLayers;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceFragmentDensityMapLayeredPropertiesVALVE&
+safe_VkPhysicalDeviceFragmentDensityMapLayeredPropertiesVALVE::operator=(
+    const safe_VkPhysicalDeviceFragmentDensityMapLayeredPropertiesVALVE& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    maxFragmentDensityMapLayers = copy_src.maxFragmentDensityMapLayers;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceFragmentDensityMapLayeredPropertiesVALVE::~safe_VkPhysicalDeviceFragmentDensityMapLayeredPropertiesVALVE() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkPhysicalDeviceFragmentDensityMapLayeredPropertiesVALVE::initialize(
+    const VkPhysicalDeviceFragmentDensityMapLayeredPropertiesVALVE* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    maxFragmentDensityMapLayers = in_struct->maxFragmentDensityMapLayers;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceFragmentDensityMapLayeredPropertiesVALVE::initialize(
+    const safe_VkPhysicalDeviceFragmentDensityMapLayeredPropertiesVALVE* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    maxFragmentDensityMapLayers = copy_src->maxFragmentDensityMapLayers;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkPipelineFragmentDensityMapLayeredCreateInfoVALVE::safe_VkPipelineFragmentDensityMapLayeredCreateInfoVALVE(
+    const VkPipelineFragmentDensityMapLayeredCreateInfoVALVE* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
+    bool copy_pnext)
+    : sType(in_struct->sType), maxFragmentDensityMapLayers(in_struct->maxFragmentDensityMapLayers) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPipelineFragmentDensityMapLayeredCreateInfoVALVE::safe_VkPipelineFragmentDensityMapLayeredCreateInfoVALVE()
+    : sType(VK_STRUCTURE_TYPE_PIPELINE_FRAGMENT_DENSITY_MAP_LAYERED_CREATE_INFO_VALVE),
+      pNext(nullptr),
+      maxFragmentDensityMapLayers() {}
+
+safe_VkPipelineFragmentDensityMapLayeredCreateInfoVALVE::safe_VkPipelineFragmentDensityMapLayeredCreateInfoVALVE(
+    const safe_VkPipelineFragmentDensityMapLayeredCreateInfoVALVE& copy_src) {
+    sType = copy_src.sType;
+    maxFragmentDensityMapLayers = copy_src.maxFragmentDensityMapLayers;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPipelineFragmentDensityMapLayeredCreateInfoVALVE& safe_VkPipelineFragmentDensityMapLayeredCreateInfoVALVE::operator=(
+    const safe_VkPipelineFragmentDensityMapLayeredCreateInfoVALVE& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    maxFragmentDensityMapLayers = copy_src.maxFragmentDensityMapLayers;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPipelineFragmentDensityMapLayeredCreateInfoVALVE::~safe_VkPipelineFragmentDensityMapLayeredCreateInfoVALVE() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkPipelineFragmentDensityMapLayeredCreateInfoVALVE::initialize(
+    const VkPipelineFragmentDensityMapLayeredCreateInfoVALVE* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    maxFragmentDensityMapLayers = in_struct->maxFragmentDensityMapLayers;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPipelineFragmentDensityMapLayeredCreateInfoVALVE::initialize(
+    const safe_VkPipelineFragmentDensityMapLayeredCreateInfoVALVE* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    maxFragmentDensityMapLayers = copy_src->maxFragmentDensityMapLayers;
     pNext = SafePnextCopy(copy_src->pNext);
 }
 #ifdef VK_ENABLE_BETA_EXTENSIONS
