@@ -16679,6 +16679,1395 @@ void safe_VkLatencySurfaceCapabilitiesNV::initialize(const safe_VkLatencySurface
     }
 }
 
+safe_VkPhysicalDeviceDataGraphFeaturesARM::safe_VkPhysicalDeviceDataGraphFeaturesARM(
+    const VkPhysicalDeviceDataGraphFeaturesARM* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType),
+      dataGraph(in_struct->dataGraph),
+      dataGraphUpdateAfterBind(in_struct->dataGraphUpdateAfterBind),
+      dataGraphSpecializationConstants(in_struct->dataGraphSpecializationConstants),
+      dataGraphDescriptorBuffer(in_struct->dataGraphDescriptorBuffer),
+      dataGraphShaderModule(in_struct->dataGraphShaderModule) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceDataGraphFeaturesARM::safe_VkPhysicalDeviceDataGraphFeaturesARM()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DATA_GRAPH_FEATURES_ARM),
+      pNext(nullptr),
+      dataGraph(),
+      dataGraphUpdateAfterBind(),
+      dataGraphSpecializationConstants(),
+      dataGraphDescriptorBuffer(),
+      dataGraphShaderModule() {}
+
+safe_VkPhysicalDeviceDataGraphFeaturesARM::safe_VkPhysicalDeviceDataGraphFeaturesARM(
+    const safe_VkPhysicalDeviceDataGraphFeaturesARM& copy_src) {
+    sType = copy_src.sType;
+    dataGraph = copy_src.dataGraph;
+    dataGraphUpdateAfterBind = copy_src.dataGraphUpdateAfterBind;
+    dataGraphSpecializationConstants = copy_src.dataGraphSpecializationConstants;
+    dataGraphDescriptorBuffer = copy_src.dataGraphDescriptorBuffer;
+    dataGraphShaderModule = copy_src.dataGraphShaderModule;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceDataGraphFeaturesARM& safe_VkPhysicalDeviceDataGraphFeaturesARM::operator=(
+    const safe_VkPhysicalDeviceDataGraphFeaturesARM& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    dataGraph = copy_src.dataGraph;
+    dataGraphUpdateAfterBind = copy_src.dataGraphUpdateAfterBind;
+    dataGraphSpecializationConstants = copy_src.dataGraphSpecializationConstants;
+    dataGraphDescriptorBuffer = copy_src.dataGraphDescriptorBuffer;
+    dataGraphShaderModule = copy_src.dataGraphShaderModule;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceDataGraphFeaturesARM::~safe_VkPhysicalDeviceDataGraphFeaturesARM() { FreePnextChain(pNext); }
+
+void safe_VkPhysicalDeviceDataGraphFeaturesARM::initialize(const VkPhysicalDeviceDataGraphFeaturesARM* in_struct,
+                                                           [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    dataGraph = in_struct->dataGraph;
+    dataGraphUpdateAfterBind = in_struct->dataGraphUpdateAfterBind;
+    dataGraphSpecializationConstants = in_struct->dataGraphSpecializationConstants;
+    dataGraphDescriptorBuffer = in_struct->dataGraphDescriptorBuffer;
+    dataGraphShaderModule = in_struct->dataGraphShaderModule;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceDataGraphFeaturesARM::initialize(const safe_VkPhysicalDeviceDataGraphFeaturesARM* copy_src,
+                                                           [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    dataGraph = copy_src->dataGraph;
+    dataGraphUpdateAfterBind = copy_src->dataGraphUpdateAfterBind;
+    dataGraphSpecializationConstants = copy_src->dataGraphSpecializationConstants;
+    dataGraphDescriptorBuffer = copy_src->dataGraphDescriptorBuffer;
+    dataGraphShaderModule = copy_src->dataGraphShaderModule;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkDataGraphPipelineConstantARM::safe_VkDataGraphPipelineConstantARM(const VkDataGraphPipelineConstantARM* in_struct,
+                                                                         [[maybe_unused]] PNextCopyState* copy_state,
+                                                                         bool copy_pnext)
+    : sType(in_struct->sType), id(in_struct->id), pConstantData(in_struct->pConstantData) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkDataGraphPipelineConstantARM::safe_VkDataGraphPipelineConstantARM()
+    : sType(VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_CONSTANT_ARM), pNext(nullptr), id(), pConstantData(nullptr) {}
+
+safe_VkDataGraphPipelineConstantARM::safe_VkDataGraphPipelineConstantARM(const safe_VkDataGraphPipelineConstantARM& copy_src) {
+    sType = copy_src.sType;
+    id = copy_src.id;
+    pConstantData = copy_src.pConstantData;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkDataGraphPipelineConstantARM& safe_VkDataGraphPipelineConstantARM::operator=(
+    const safe_VkDataGraphPipelineConstantARM& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    id = copy_src.id;
+    pConstantData = copy_src.pConstantData;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkDataGraphPipelineConstantARM::~safe_VkDataGraphPipelineConstantARM() { FreePnextChain(pNext); }
+
+void safe_VkDataGraphPipelineConstantARM::initialize(const VkDataGraphPipelineConstantARM* in_struct,
+                                                     [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    id = in_struct->id;
+    pConstantData = in_struct->pConstantData;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkDataGraphPipelineConstantARM::initialize(const safe_VkDataGraphPipelineConstantARM* copy_src,
+                                                     [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    id = copy_src->id;
+    pConstantData = copy_src->pConstantData;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkDataGraphPipelineResourceInfoARM::safe_VkDataGraphPipelineResourceInfoARM(
+    const VkDataGraphPipelineResourceInfoARM* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType),
+      descriptorSet(in_struct->descriptorSet),
+      binding(in_struct->binding),
+      arrayElement(in_struct->arrayElement) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkDataGraphPipelineResourceInfoARM::safe_VkDataGraphPipelineResourceInfoARM()
+    : sType(VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_RESOURCE_INFO_ARM), pNext(nullptr), descriptorSet(), binding(), arrayElement() {}
+
+safe_VkDataGraphPipelineResourceInfoARM::safe_VkDataGraphPipelineResourceInfoARM(
+    const safe_VkDataGraphPipelineResourceInfoARM& copy_src) {
+    sType = copy_src.sType;
+    descriptorSet = copy_src.descriptorSet;
+    binding = copy_src.binding;
+    arrayElement = copy_src.arrayElement;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkDataGraphPipelineResourceInfoARM& safe_VkDataGraphPipelineResourceInfoARM::operator=(
+    const safe_VkDataGraphPipelineResourceInfoARM& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    descriptorSet = copy_src.descriptorSet;
+    binding = copy_src.binding;
+    arrayElement = copy_src.arrayElement;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkDataGraphPipelineResourceInfoARM::~safe_VkDataGraphPipelineResourceInfoARM() { FreePnextChain(pNext); }
+
+void safe_VkDataGraphPipelineResourceInfoARM::initialize(const VkDataGraphPipelineResourceInfoARM* in_struct,
+                                                         [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    descriptorSet = in_struct->descriptorSet;
+    binding = in_struct->binding;
+    arrayElement = in_struct->arrayElement;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkDataGraphPipelineResourceInfoARM::initialize(const safe_VkDataGraphPipelineResourceInfoARM* copy_src,
+                                                         [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    descriptorSet = copy_src->descriptorSet;
+    binding = copy_src->binding;
+    arrayElement = copy_src->arrayElement;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkDataGraphPipelineCompilerControlCreateInfoARM::safe_VkDataGraphPipelineCompilerControlCreateInfoARM(
+    const VkDataGraphPipelineCompilerControlCreateInfoARM* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+    pVendorOptions = SafeStringCopy(in_struct->pVendorOptions);
+}
+
+safe_VkDataGraphPipelineCompilerControlCreateInfoARM::safe_VkDataGraphPipelineCompilerControlCreateInfoARM()
+    : sType(VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_COMPILER_CONTROL_CREATE_INFO_ARM), pNext(nullptr), pVendorOptions(nullptr) {}
+
+safe_VkDataGraphPipelineCompilerControlCreateInfoARM::safe_VkDataGraphPipelineCompilerControlCreateInfoARM(
+    const safe_VkDataGraphPipelineCompilerControlCreateInfoARM& copy_src) {
+    sType = copy_src.sType;
+    pNext = SafePnextCopy(copy_src.pNext);
+    pVendorOptions = SafeStringCopy(copy_src.pVendorOptions);
+}
+
+safe_VkDataGraphPipelineCompilerControlCreateInfoARM& safe_VkDataGraphPipelineCompilerControlCreateInfoARM::operator=(
+    const safe_VkDataGraphPipelineCompilerControlCreateInfoARM& copy_src) {
+    if (&copy_src == this) return *this;
+
+    if (pVendorOptions) delete[] pVendorOptions;
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    pNext = SafePnextCopy(copy_src.pNext);
+    pVendorOptions = SafeStringCopy(copy_src.pVendorOptions);
+
+    return *this;
+}
+
+safe_VkDataGraphPipelineCompilerControlCreateInfoARM::~safe_VkDataGraphPipelineCompilerControlCreateInfoARM() {
+    if (pVendorOptions) delete[] pVendorOptions;
+    FreePnextChain(pNext);
+}
+
+void safe_VkDataGraphPipelineCompilerControlCreateInfoARM::initialize(
+    const VkDataGraphPipelineCompilerControlCreateInfoARM* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    if (pVendorOptions) delete[] pVendorOptions;
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    pVendorOptions = SafeStringCopy(in_struct->pVendorOptions);
+}
+
+void safe_VkDataGraphPipelineCompilerControlCreateInfoARM::initialize(
+    const safe_VkDataGraphPipelineCompilerControlCreateInfoARM* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    pNext = SafePnextCopy(copy_src->pNext);
+    pVendorOptions = SafeStringCopy(copy_src->pVendorOptions);
+}
+
+safe_VkDataGraphPipelineCreateInfoARM::safe_VkDataGraphPipelineCreateInfoARM(const VkDataGraphPipelineCreateInfoARM* in_struct,
+                                                                             [[maybe_unused]] PNextCopyState* copy_state,
+                                                                             bool copy_pnext)
+    : sType(in_struct->sType),
+      flags(in_struct->flags),
+      layout(in_struct->layout),
+      resourceInfoCount(in_struct->resourceInfoCount),
+      pResourceInfos(nullptr) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+    if (resourceInfoCount && in_struct->pResourceInfos) {
+        pResourceInfos = new safe_VkDataGraphPipelineResourceInfoARM[resourceInfoCount];
+        for (uint32_t i = 0; i < resourceInfoCount; ++i) {
+            pResourceInfos[i].initialize(&in_struct->pResourceInfos[i]);
+        }
+    }
+}
+
+safe_VkDataGraphPipelineCreateInfoARM::safe_VkDataGraphPipelineCreateInfoARM()
+    : sType(VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_CREATE_INFO_ARM),
+      pNext(nullptr),
+      flags(),
+      layout(),
+      resourceInfoCount(),
+      pResourceInfos(nullptr) {}
+
+safe_VkDataGraphPipelineCreateInfoARM::safe_VkDataGraphPipelineCreateInfoARM(
+    const safe_VkDataGraphPipelineCreateInfoARM& copy_src) {
+    sType = copy_src.sType;
+    flags = copy_src.flags;
+    layout = copy_src.layout;
+    resourceInfoCount = copy_src.resourceInfoCount;
+    pResourceInfos = nullptr;
+    pNext = SafePnextCopy(copy_src.pNext);
+    if (resourceInfoCount && copy_src.pResourceInfos) {
+        pResourceInfos = new safe_VkDataGraphPipelineResourceInfoARM[resourceInfoCount];
+        for (uint32_t i = 0; i < resourceInfoCount; ++i) {
+            pResourceInfos[i].initialize(&copy_src.pResourceInfos[i]);
+        }
+    }
+}
+
+safe_VkDataGraphPipelineCreateInfoARM& safe_VkDataGraphPipelineCreateInfoARM::operator=(
+    const safe_VkDataGraphPipelineCreateInfoARM& copy_src) {
+    if (&copy_src == this) return *this;
+
+    if (pResourceInfos) delete[] pResourceInfos;
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    flags = copy_src.flags;
+    layout = copy_src.layout;
+    resourceInfoCount = copy_src.resourceInfoCount;
+    pResourceInfos = nullptr;
+    pNext = SafePnextCopy(copy_src.pNext);
+    if (resourceInfoCount && copy_src.pResourceInfos) {
+        pResourceInfos = new safe_VkDataGraphPipelineResourceInfoARM[resourceInfoCount];
+        for (uint32_t i = 0; i < resourceInfoCount; ++i) {
+            pResourceInfos[i].initialize(&copy_src.pResourceInfos[i]);
+        }
+    }
+
+    return *this;
+}
+
+safe_VkDataGraphPipelineCreateInfoARM::~safe_VkDataGraphPipelineCreateInfoARM() {
+    if (pResourceInfos) delete[] pResourceInfos;
+    FreePnextChain(pNext);
+}
+
+void safe_VkDataGraphPipelineCreateInfoARM::initialize(const VkDataGraphPipelineCreateInfoARM* in_struct,
+                                                       [[maybe_unused]] PNextCopyState* copy_state) {
+    if (pResourceInfos) delete[] pResourceInfos;
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    flags = in_struct->flags;
+    layout = in_struct->layout;
+    resourceInfoCount = in_struct->resourceInfoCount;
+    pResourceInfos = nullptr;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    if (resourceInfoCount && in_struct->pResourceInfos) {
+        pResourceInfos = new safe_VkDataGraphPipelineResourceInfoARM[resourceInfoCount];
+        for (uint32_t i = 0; i < resourceInfoCount; ++i) {
+            pResourceInfos[i].initialize(&in_struct->pResourceInfos[i]);
+        }
+    }
+}
+
+void safe_VkDataGraphPipelineCreateInfoARM::initialize(const safe_VkDataGraphPipelineCreateInfoARM* copy_src,
+                                                       [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    flags = copy_src->flags;
+    layout = copy_src->layout;
+    resourceInfoCount = copy_src->resourceInfoCount;
+    pResourceInfos = nullptr;
+    pNext = SafePnextCopy(copy_src->pNext);
+    if (resourceInfoCount && copy_src->pResourceInfos) {
+        pResourceInfos = new safe_VkDataGraphPipelineResourceInfoARM[resourceInfoCount];
+        for (uint32_t i = 0; i < resourceInfoCount; ++i) {
+            pResourceInfos[i].initialize(&copy_src->pResourceInfos[i]);
+        }
+    }
+}
+
+safe_VkDataGraphPipelineShaderModuleCreateInfoARM::safe_VkDataGraphPipelineShaderModuleCreateInfoARM(
+    const VkDataGraphPipelineShaderModuleCreateInfoARM* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType),
+      module(in_struct->module),
+      pSpecializationInfo(nullptr),
+      constantCount(in_struct->constantCount),
+      pConstants(nullptr) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+    pName = SafeStringCopy(in_struct->pName);
+    if (in_struct->pSpecializationInfo) pSpecializationInfo = new safe_VkSpecializationInfo(in_struct->pSpecializationInfo);
+    if (constantCount && in_struct->pConstants) {
+        pConstants = new safe_VkDataGraphPipelineConstantARM[constantCount];
+        for (uint32_t i = 0; i < constantCount; ++i) {
+            pConstants[i].initialize(&in_struct->pConstants[i]);
+        }
+    }
+}
+
+safe_VkDataGraphPipelineShaderModuleCreateInfoARM::safe_VkDataGraphPipelineShaderModuleCreateInfoARM()
+    : sType(VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SHADER_MODULE_CREATE_INFO_ARM),
+      pNext(nullptr),
+      module(),
+      pName(nullptr),
+      pSpecializationInfo(nullptr),
+      constantCount(),
+      pConstants(nullptr) {}
+
+safe_VkDataGraphPipelineShaderModuleCreateInfoARM::safe_VkDataGraphPipelineShaderModuleCreateInfoARM(
+    const safe_VkDataGraphPipelineShaderModuleCreateInfoARM& copy_src) {
+    sType = copy_src.sType;
+    module = copy_src.module;
+    pSpecializationInfo = nullptr;
+    constantCount = copy_src.constantCount;
+    pConstants = nullptr;
+    pNext = SafePnextCopy(copy_src.pNext);
+    pName = SafeStringCopy(copy_src.pName);
+    if (copy_src.pSpecializationInfo) pSpecializationInfo = new safe_VkSpecializationInfo(*copy_src.pSpecializationInfo);
+    if (constantCount && copy_src.pConstants) {
+        pConstants = new safe_VkDataGraphPipelineConstantARM[constantCount];
+        for (uint32_t i = 0; i < constantCount; ++i) {
+            pConstants[i].initialize(&copy_src.pConstants[i]);
+        }
+    }
+}
+
+safe_VkDataGraphPipelineShaderModuleCreateInfoARM& safe_VkDataGraphPipelineShaderModuleCreateInfoARM::operator=(
+    const safe_VkDataGraphPipelineShaderModuleCreateInfoARM& copy_src) {
+    if (&copy_src == this) return *this;
+
+    if (pName) delete[] pName;
+    if (pSpecializationInfo) delete pSpecializationInfo;
+    if (pConstants) delete[] pConstants;
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    module = copy_src.module;
+    pSpecializationInfo = nullptr;
+    constantCount = copy_src.constantCount;
+    pConstants = nullptr;
+    pNext = SafePnextCopy(copy_src.pNext);
+    pName = SafeStringCopy(copy_src.pName);
+    if (copy_src.pSpecializationInfo) pSpecializationInfo = new safe_VkSpecializationInfo(*copy_src.pSpecializationInfo);
+    if (constantCount && copy_src.pConstants) {
+        pConstants = new safe_VkDataGraphPipelineConstantARM[constantCount];
+        for (uint32_t i = 0; i < constantCount; ++i) {
+            pConstants[i].initialize(&copy_src.pConstants[i]);
+        }
+    }
+
+    return *this;
+}
+
+safe_VkDataGraphPipelineShaderModuleCreateInfoARM::~safe_VkDataGraphPipelineShaderModuleCreateInfoARM() {
+    if (pName) delete[] pName;
+    if (pSpecializationInfo) delete pSpecializationInfo;
+    if (pConstants) delete[] pConstants;
+    FreePnextChain(pNext);
+}
+
+void safe_VkDataGraphPipelineShaderModuleCreateInfoARM::initialize(const VkDataGraphPipelineShaderModuleCreateInfoARM* in_struct,
+                                                                   [[maybe_unused]] PNextCopyState* copy_state) {
+    if (pName) delete[] pName;
+    if (pSpecializationInfo) delete pSpecializationInfo;
+    if (pConstants) delete[] pConstants;
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    module = in_struct->module;
+    pSpecializationInfo = nullptr;
+    constantCount = in_struct->constantCount;
+    pConstants = nullptr;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    pName = SafeStringCopy(in_struct->pName);
+    if (in_struct->pSpecializationInfo) pSpecializationInfo = new safe_VkSpecializationInfo(in_struct->pSpecializationInfo);
+    if (constantCount && in_struct->pConstants) {
+        pConstants = new safe_VkDataGraphPipelineConstantARM[constantCount];
+        for (uint32_t i = 0; i < constantCount; ++i) {
+            pConstants[i].initialize(&in_struct->pConstants[i]);
+        }
+    }
+}
+
+void safe_VkDataGraphPipelineShaderModuleCreateInfoARM::initialize(
+    const safe_VkDataGraphPipelineShaderModuleCreateInfoARM* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    module = copy_src->module;
+    pSpecializationInfo = nullptr;
+    constantCount = copy_src->constantCount;
+    pConstants = nullptr;
+    pNext = SafePnextCopy(copy_src->pNext);
+    pName = SafeStringCopy(copy_src->pName);
+    if (copy_src->pSpecializationInfo) pSpecializationInfo = new safe_VkSpecializationInfo(*copy_src->pSpecializationInfo);
+    if (constantCount && copy_src->pConstants) {
+        pConstants = new safe_VkDataGraphPipelineConstantARM[constantCount];
+        for (uint32_t i = 0; i < constantCount; ++i) {
+            pConstants[i].initialize(&copy_src->pConstants[i]);
+        }
+    }
+}
+
+safe_VkDataGraphPipelineSessionCreateInfoARM::safe_VkDataGraphPipelineSessionCreateInfoARM(
+    const VkDataGraphPipelineSessionCreateInfoARM* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), flags(in_struct->flags), dataGraphPipeline(in_struct->dataGraphPipeline) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkDataGraphPipelineSessionCreateInfoARM::safe_VkDataGraphPipelineSessionCreateInfoARM()
+    : sType(VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SESSION_CREATE_INFO_ARM), pNext(nullptr), flags(), dataGraphPipeline() {}
+
+safe_VkDataGraphPipelineSessionCreateInfoARM::safe_VkDataGraphPipelineSessionCreateInfoARM(
+    const safe_VkDataGraphPipelineSessionCreateInfoARM& copy_src) {
+    sType = copy_src.sType;
+    flags = copy_src.flags;
+    dataGraphPipeline = copy_src.dataGraphPipeline;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkDataGraphPipelineSessionCreateInfoARM& safe_VkDataGraphPipelineSessionCreateInfoARM::operator=(
+    const safe_VkDataGraphPipelineSessionCreateInfoARM& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    flags = copy_src.flags;
+    dataGraphPipeline = copy_src.dataGraphPipeline;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkDataGraphPipelineSessionCreateInfoARM::~safe_VkDataGraphPipelineSessionCreateInfoARM() { FreePnextChain(pNext); }
+
+void safe_VkDataGraphPipelineSessionCreateInfoARM::initialize(const VkDataGraphPipelineSessionCreateInfoARM* in_struct,
+                                                              [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    flags = in_struct->flags;
+    dataGraphPipeline = in_struct->dataGraphPipeline;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkDataGraphPipelineSessionCreateInfoARM::initialize(const safe_VkDataGraphPipelineSessionCreateInfoARM* copy_src,
+                                                              [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    flags = copy_src->flags;
+    dataGraphPipeline = copy_src->dataGraphPipeline;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkDataGraphPipelineSessionBindPointRequirementsInfoARM::safe_VkDataGraphPipelineSessionBindPointRequirementsInfoARM(
+    const VkDataGraphPipelineSessionBindPointRequirementsInfoARM* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
+    bool copy_pnext)
+    : sType(in_struct->sType), session(in_struct->session) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkDataGraphPipelineSessionBindPointRequirementsInfoARM::safe_VkDataGraphPipelineSessionBindPointRequirementsInfoARM()
+    : sType(VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SESSION_BIND_POINT_REQUIREMENTS_INFO_ARM), pNext(nullptr), session() {}
+
+safe_VkDataGraphPipelineSessionBindPointRequirementsInfoARM::safe_VkDataGraphPipelineSessionBindPointRequirementsInfoARM(
+    const safe_VkDataGraphPipelineSessionBindPointRequirementsInfoARM& copy_src) {
+    sType = copy_src.sType;
+    session = copy_src.session;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkDataGraphPipelineSessionBindPointRequirementsInfoARM& safe_VkDataGraphPipelineSessionBindPointRequirementsInfoARM::operator=(
+    const safe_VkDataGraphPipelineSessionBindPointRequirementsInfoARM& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    session = copy_src.session;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkDataGraphPipelineSessionBindPointRequirementsInfoARM::~safe_VkDataGraphPipelineSessionBindPointRequirementsInfoARM() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkDataGraphPipelineSessionBindPointRequirementsInfoARM::initialize(
+    const VkDataGraphPipelineSessionBindPointRequirementsInfoARM* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    session = in_struct->session;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkDataGraphPipelineSessionBindPointRequirementsInfoARM::initialize(
+    const safe_VkDataGraphPipelineSessionBindPointRequirementsInfoARM* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    session = copy_src->session;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkDataGraphPipelineSessionBindPointRequirementARM::safe_VkDataGraphPipelineSessionBindPointRequirementARM(
+    const VkDataGraphPipelineSessionBindPointRequirementARM* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
+    bool copy_pnext)
+    : sType(in_struct->sType),
+      bindPoint(in_struct->bindPoint),
+      bindPointType(in_struct->bindPointType),
+      numObjects(in_struct->numObjects) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkDataGraphPipelineSessionBindPointRequirementARM::safe_VkDataGraphPipelineSessionBindPointRequirementARM()
+    : sType(VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SESSION_BIND_POINT_REQUIREMENT_ARM),
+      pNext(nullptr),
+      bindPoint(),
+      bindPointType(),
+      numObjects() {}
+
+safe_VkDataGraphPipelineSessionBindPointRequirementARM::safe_VkDataGraphPipelineSessionBindPointRequirementARM(
+    const safe_VkDataGraphPipelineSessionBindPointRequirementARM& copy_src) {
+    sType = copy_src.sType;
+    bindPoint = copy_src.bindPoint;
+    bindPointType = copy_src.bindPointType;
+    numObjects = copy_src.numObjects;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkDataGraphPipelineSessionBindPointRequirementARM& safe_VkDataGraphPipelineSessionBindPointRequirementARM::operator=(
+    const safe_VkDataGraphPipelineSessionBindPointRequirementARM& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    bindPoint = copy_src.bindPoint;
+    bindPointType = copy_src.bindPointType;
+    numObjects = copy_src.numObjects;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkDataGraphPipelineSessionBindPointRequirementARM::~safe_VkDataGraphPipelineSessionBindPointRequirementARM() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkDataGraphPipelineSessionBindPointRequirementARM::initialize(
+    const VkDataGraphPipelineSessionBindPointRequirementARM* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    bindPoint = in_struct->bindPoint;
+    bindPointType = in_struct->bindPointType;
+    numObjects = in_struct->numObjects;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkDataGraphPipelineSessionBindPointRequirementARM::initialize(
+    const safe_VkDataGraphPipelineSessionBindPointRequirementARM* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    bindPoint = copy_src->bindPoint;
+    bindPointType = copy_src->bindPointType;
+    numObjects = copy_src->numObjects;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkDataGraphPipelineSessionMemoryRequirementsInfoARM::safe_VkDataGraphPipelineSessionMemoryRequirementsInfoARM(
+    const VkDataGraphPipelineSessionMemoryRequirementsInfoARM* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
+    bool copy_pnext)
+    : sType(in_struct->sType), session(in_struct->session), bindPoint(in_struct->bindPoint), objectIndex(in_struct->objectIndex) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkDataGraphPipelineSessionMemoryRequirementsInfoARM::safe_VkDataGraphPipelineSessionMemoryRequirementsInfoARM()
+    : sType(VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SESSION_MEMORY_REQUIREMENTS_INFO_ARM),
+      pNext(nullptr),
+      session(),
+      bindPoint(),
+      objectIndex() {}
+
+safe_VkDataGraphPipelineSessionMemoryRequirementsInfoARM::safe_VkDataGraphPipelineSessionMemoryRequirementsInfoARM(
+    const safe_VkDataGraphPipelineSessionMemoryRequirementsInfoARM& copy_src) {
+    sType = copy_src.sType;
+    session = copy_src.session;
+    bindPoint = copy_src.bindPoint;
+    objectIndex = copy_src.objectIndex;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkDataGraphPipelineSessionMemoryRequirementsInfoARM& safe_VkDataGraphPipelineSessionMemoryRequirementsInfoARM::operator=(
+    const safe_VkDataGraphPipelineSessionMemoryRequirementsInfoARM& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    session = copy_src.session;
+    bindPoint = copy_src.bindPoint;
+    objectIndex = copy_src.objectIndex;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkDataGraphPipelineSessionMemoryRequirementsInfoARM::~safe_VkDataGraphPipelineSessionMemoryRequirementsInfoARM() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkDataGraphPipelineSessionMemoryRequirementsInfoARM::initialize(
+    const VkDataGraphPipelineSessionMemoryRequirementsInfoARM* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    session = in_struct->session;
+    bindPoint = in_struct->bindPoint;
+    objectIndex = in_struct->objectIndex;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkDataGraphPipelineSessionMemoryRequirementsInfoARM::initialize(
+    const safe_VkDataGraphPipelineSessionMemoryRequirementsInfoARM* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    session = copy_src->session;
+    bindPoint = copy_src->bindPoint;
+    objectIndex = copy_src->objectIndex;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkBindDataGraphPipelineSessionMemoryInfoARM::safe_VkBindDataGraphPipelineSessionMemoryInfoARM(
+    const VkBindDataGraphPipelineSessionMemoryInfoARM* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType),
+      session(in_struct->session),
+      bindPoint(in_struct->bindPoint),
+      objectIndex(in_struct->objectIndex),
+      memory(in_struct->memory),
+      memoryOffset(in_struct->memoryOffset) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkBindDataGraphPipelineSessionMemoryInfoARM::safe_VkBindDataGraphPipelineSessionMemoryInfoARM()
+    : sType(VK_STRUCTURE_TYPE_BIND_DATA_GRAPH_PIPELINE_SESSION_MEMORY_INFO_ARM),
+      pNext(nullptr),
+      session(),
+      bindPoint(),
+      objectIndex(),
+      memory(),
+      memoryOffset() {}
+
+safe_VkBindDataGraphPipelineSessionMemoryInfoARM::safe_VkBindDataGraphPipelineSessionMemoryInfoARM(
+    const safe_VkBindDataGraphPipelineSessionMemoryInfoARM& copy_src) {
+    sType = copy_src.sType;
+    session = copy_src.session;
+    bindPoint = copy_src.bindPoint;
+    objectIndex = copy_src.objectIndex;
+    memory = copy_src.memory;
+    memoryOffset = copy_src.memoryOffset;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkBindDataGraphPipelineSessionMemoryInfoARM& safe_VkBindDataGraphPipelineSessionMemoryInfoARM::operator=(
+    const safe_VkBindDataGraphPipelineSessionMemoryInfoARM& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    session = copy_src.session;
+    bindPoint = copy_src.bindPoint;
+    objectIndex = copy_src.objectIndex;
+    memory = copy_src.memory;
+    memoryOffset = copy_src.memoryOffset;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkBindDataGraphPipelineSessionMemoryInfoARM::~safe_VkBindDataGraphPipelineSessionMemoryInfoARM() { FreePnextChain(pNext); }
+
+void safe_VkBindDataGraphPipelineSessionMemoryInfoARM::initialize(const VkBindDataGraphPipelineSessionMemoryInfoARM* in_struct,
+                                                                  [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    session = in_struct->session;
+    bindPoint = in_struct->bindPoint;
+    objectIndex = in_struct->objectIndex;
+    memory = in_struct->memory;
+    memoryOffset = in_struct->memoryOffset;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkBindDataGraphPipelineSessionMemoryInfoARM::initialize(const safe_VkBindDataGraphPipelineSessionMemoryInfoARM* copy_src,
+                                                                  [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    session = copy_src->session;
+    bindPoint = copy_src->bindPoint;
+    objectIndex = copy_src->objectIndex;
+    memory = copy_src->memory;
+    memoryOffset = copy_src->memoryOffset;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkDataGraphPipelineInfoARM::safe_VkDataGraphPipelineInfoARM(const VkDataGraphPipelineInfoARM* in_struct,
+                                                                 [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), dataGraphPipeline(in_struct->dataGraphPipeline) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkDataGraphPipelineInfoARM::safe_VkDataGraphPipelineInfoARM()
+    : sType(VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_INFO_ARM), pNext(nullptr), dataGraphPipeline() {}
+
+safe_VkDataGraphPipelineInfoARM::safe_VkDataGraphPipelineInfoARM(const safe_VkDataGraphPipelineInfoARM& copy_src) {
+    sType = copy_src.sType;
+    dataGraphPipeline = copy_src.dataGraphPipeline;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkDataGraphPipelineInfoARM& safe_VkDataGraphPipelineInfoARM::operator=(const safe_VkDataGraphPipelineInfoARM& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    dataGraphPipeline = copy_src.dataGraphPipeline;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkDataGraphPipelineInfoARM::~safe_VkDataGraphPipelineInfoARM() { FreePnextChain(pNext); }
+
+void safe_VkDataGraphPipelineInfoARM::initialize(const VkDataGraphPipelineInfoARM* in_struct,
+                                                 [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    dataGraphPipeline = in_struct->dataGraphPipeline;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkDataGraphPipelineInfoARM::initialize(const safe_VkDataGraphPipelineInfoARM* copy_src,
+                                                 [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    dataGraphPipeline = copy_src->dataGraphPipeline;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkDataGraphPipelinePropertyQueryResultARM::safe_VkDataGraphPipelinePropertyQueryResultARM(
+    const VkDataGraphPipelinePropertyQueryResultARM* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType),
+      property(in_struct->property),
+      isText(in_struct->isText),
+      dataSize(in_struct->dataSize),
+      pData(nullptr) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+    if (in_struct->pData != nullptr) {
+        auto temp = new std::byte[in_struct->dataSize];
+        std::memcpy(temp, in_struct->pData, in_struct->dataSize);
+        pData = temp;
+    }
+}
+
+safe_VkDataGraphPipelinePropertyQueryResultARM::safe_VkDataGraphPipelinePropertyQueryResultARM()
+    : sType(VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_PROPERTY_QUERY_RESULT_ARM),
+      pNext(nullptr),
+      property(),
+      isText(),
+      dataSize(),
+      pData(nullptr) {}
+
+safe_VkDataGraphPipelinePropertyQueryResultARM::safe_VkDataGraphPipelinePropertyQueryResultARM(
+    const safe_VkDataGraphPipelinePropertyQueryResultARM& copy_src) {
+    sType = copy_src.sType;
+    property = copy_src.property;
+    isText = copy_src.isText;
+    dataSize = copy_src.dataSize;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    if (copy_src.pData != nullptr) {
+        auto temp = new std::byte[copy_src.dataSize];
+        std::memcpy(temp, copy_src.pData, copy_src.dataSize);
+        pData = temp;
+    }
+}
+
+safe_VkDataGraphPipelinePropertyQueryResultARM& safe_VkDataGraphPipelinePropertyQueryResultARM::operator=(
+    const safe_VkDataGraphPipelinePropertyQueryResultARM& copy_src) {
+    if (&copy_src == this) return *this;
+
+    if (pData != nullptr) {
+        auto temp = reinterpret_cast<const std::byte*>(pData);
+        delete[] temp;
+    }
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    property = copy_src.property;
+    isText = copy_src.isText;
+    dataSize = copy_src.dataSize;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    if (copy_src.pData != nullptr) {
+        auto temp = new std::byte[copy_src.dataSize];
+        std::memcpy(temp, copy_src.pData, copy_src.dataSize);
+        pData = temp;
+    }
+
+    return *this;
+}
+
+safe_VkDataGraphPipelinePropertyQueryResultARM::~safe_VkDataGraphPipelinePropertyQueryResultARM() {
+    if (pData != nullptr) {
+        auto temp = reinterpret_cast<const std::byte*>(pData);
+        delete[] temp;
+    }
+    FreePnextChain(pNext);
+}
+
+void safe_VkDataGraphPipelinePropertyQueryResultARM::initialize(const VkDataGraphPipelinePropertyQueryResultARM* in_struct,
+                                                                [[maybe_unused]] PNextCopyState* copy_state) {
+    if (pData != nullptr) {
+        auto temp = reinterpret_cast<const std::byte*>(pData);
+        delete[] temp;
+    }
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    property = in_struct->property;
+    isText = in_struct->isText;
+    dataSize = in_struct->dataSize;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+
+    if (in_struct->pData != nullptr) {
+        auto temp = new std::byte[in_struct->dataSize];
+        std::memcpy(temp, in_struct->pData, in_struct->dataSize);
+        pData = temp;
+    }
+}
+
+void safe_VkDataGraphPipelinePropertyQueryResultARM::initialize(const safe_VkDataGraphPipelinePropertyQueryResultARM* copy_src,
+                                                                [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    property = copy_src->property;
+    isText = copy_src->isText;
+    dataSize = copy_src->dataSize;
+    pNext = SafePnextCopy(copy_src->pNext);
+
+    if (copy_src->pData != nullptr) {
+        auto temp = new std::byte[copy_src->dataSize];
+        std::memcpy(temp, copy_src->pData, copy_src->dataSize);
+        pData = temp;
+    }
+}
+
+safe_VkDataGraphPipelineIdentifierCreateInfoARM::safe_VkDataGraphPipelineIdentifierCreateInfoARM(
+    const VkDataGraphPipelineIdentifierCreateInfoARM* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), identifierSize(in_struct->identifierSize), pIdentifier(nullptr) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+    if (in_struct->pIdentifier) {
+        pIdentifier = new uint8_t[in_struct->identifierSize];
+        memcpy((void*)pIdentifier, (void*)in_struct->pIdentifier, sizeof(uint8_t) * in_struct->identifierSize);
+    }
+}
+
+safe_VkDataGraphPipelineIdentifierCreateInfoARM::safe_VkDataGraphPipelineIdentifierCreateInfoARM()
+    : sType(VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_IDENTIFIER_CREATE_INFO_ARM),
+      pNext(nullptr),
+      identifierSize(),
+      pIdentifier(nullptr) {}
+
+safe_VkDataGraphPipelineIdentifierCreateInfoARM::safe_VkDataGraphPipelineIdentifierCreateInfoARM(
+    const safe_VkDataGraphPipelineIdentifierCreateInfoARM& copy_src) {
+    sType = copy_src.sType;
+    identifierSize = copy_src.identifierSize;
+    pIdentifier = nullptr;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    if (copy_src.pIdentifier) {
+        pIdentifier = new uint8_t[copy_src.identifierSize];
+        memcpy((void*)pIdentifier, (void*)copy_src.pIdentifier, sizeof(uint8_t) * copy_src.identifierSize);
+    }
+}
+
+safe_VkDataGraphPipelineIdentifierCreateInfoARM& safe_VkDataGraphPipelineIdentifierCreateInfoARM::operator=(
+    const safe_VkDataGraphPipelineIdentifierCreateInfoARM& copy_src) {
+    if (&copy_src == this) return *this;
+
+    if (pIdentifier) delete[] pIdentifier;
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    identifierSize = copy_src.identifierSize;
+    pIdentifier = nullptr;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    if (copy_src.pIdentifier) {
+        pIdentifier = new uint8_t[copy_src.identifierSize];
+        memcpy((void*)pIdentifier, (void*)copy_src.pIdentifier, sizeof(uint8_t) * copy_src.identifierSize);
+    }
+
+    return *this;
+}
+
+safe_VkDataGraphPipelineIdentifierCreateInfoARM::~safe_VkDataGraphPipelineIdentifierCreateInfoARM() {
+    if (pIdentifier) delete[] pIdentifier;
+    FreePnextChain(pNext);
+}
+
+void safe_VkDataGraphPipelineIdentifierCreateInfoARM::initialize(const VkDataGraphPipelineIdentifierCreateInfoARM* in_struct,
+                                                                 [[maybe_unused]] PNextCopyState* copy_state) {
+    if (pIdentifier) delete[] pIdentifier;
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    identifierSize = in_struct->identifierSize;
+    pIdentifier = nullptr;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+
+    if (in_struct->pIdentifier) {
+        pIdentifier = new uint8_t[in_struct->identifierSize];
+        memcpy((void*)pIdentifier, (void*)in_struct->pIdentifier, sizeof(uint8_t) * in_struct->identifierSize);
+    }
+}
+
+void safe_VkDataGraphPipelineIdentifierCreateInfoARM::initialize(const safe_VkDataGraphPipelineIdentifierCreateInfoARM* copy_src,
+                                                                 [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    identifierSize = copy_src->identifierSize;
+    pIdentifier = nullptr;
+    pNext = SafePnextCopy(copy_src->pNext);
+
+    if (copy_src->pIdentifier) {
+        pIdentifier = new uint8_t[copy_src->identifierSize];
+        memcpy((void*)pIdentifier, (void*)copy_src->pIdentifier, sizeof(uint8_t) * copy_src->identifierSize);
+    }
+}
+
+safe_VkDataGraphPipelineDispatchInfoARM::safe_VkDataGraphPipelineDispatchInfoARM(
+    const VkDataGraphPipelineDispatchInfoARM* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), flags(in_struct->flags) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkDataGraphPipelineDispatchInfoARM::safe_VkDataGraphPipelineDispatchInfoARM()
+    : sType(VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_DISPATCH_INFO_ARM), pNext(nullptr), flags() {}
+
+safe_VkDataGraphPipelineDispatchInfoARM::safe_VkDataGraphPipelineDispatchInfoARM(
+    const safe_VkDataGraphPipelineDispatchInfoARM& copy_src) {
+    sType = copy_src.sType;
+    flags = copy_src.flags;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkDataGraphPipelineDispatchInfoARM& safe_VkDataGraphPipelineDispatchInfoARM::operator=(
+    const safe_VkDataGraphPipelineDispatchInfoARM& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    flags = copy_src.flags;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkDataGraphPipelineDispatchInfoARM::~safe_VkDataGraphPipelineDispatchInfoARM() { FreePnextChain(pNext); }
+
+void safe_VkDataGraphPipelineDispatchInfoARM::initialize(const VkDataGraphPipelineDispatchInfoARM* in_struct,
+                                                         [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    flags = in_struct->flags;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkDataGraphPipelineDispatchInfoARM::initialize(const safe_VkDataGraphPipelineDispatchInfoARM* copy_src,
+                                                         [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    flags = copy_src->flags;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkQueueFamilyDataGraphPropertiesARM::safe_VkQueueFamilyDataGraphPropertiesARM(
+    const VkQueueFamilyDataGraphPropertiesARM* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), engine(in_struct->engine), operation(in_struct->operation) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkQueueFamilyDataGraphPropertiesARM::safe_VkQueueFamilyDataGraphPropertiesARM()
+    : sType(VK_STRUCTURE_TYPE_QUEUE_FAMILY_DATA_GRAPH_PROPERTIES_ARM), pNext(nullptr), engine(), operation() {}
+
+safe_VkQueueFamilyDataGraphPropertiesARM::safe_VkQueueFamilyDataGraphPropertiesARM(
+    const safe_VkQueueFamilyDataGraphPropertiesARM& copy_src) {
+    sType = copy_src.sType;
+    engine = copy_src.engine;
+    operation = copy_src.operation;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkQueueFamilyDataGraphPropertiesARM& safe_VkQueueFamilyDataGraphPropertiesARM::operator=(
+    const safe_VkQueueFamilyDataGraphPropertiesARM& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    engine = copy_src.engine;
+    operation = copy_src.operation;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkQueueFamilyDataGraphPropertiesARM::~safe_VkQueueFamilyDataGraphPropertiesARM() { FreePnextChain(pNext); }
+
+void safe_VkQueueFamilyDataGraphPropertiesARM::initialize(const VkQueueFamilyDataGraphPropertiesARM* in_struct,
+                                                          [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    engine = in_struct->engine;
+    operation = in_struct->operation;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkQueueFamilyDataGraphPropertiesARM::initialize(const safe_VkQueueFamilyDataGraphPropertiesARM* copy_src,
+                                                          [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    engine = copy_src->engine;
+    operation = copy_src->operation;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkDataGraphProcessingEngineCreateInfoARM::safe_VkDataGraphProcessingEngineCreateInfoARM(
+    const VkDataGraphProcessingEngineCreateInfoARM* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), processingEngineCount(in_struct->processingEngineCount), pProcessingEngines(nullptr) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+    if (in_struct->pProcessingEngines) {
+        pProcessingEngines = new VkPhysicalDeviceDataGraphProcessingEngineARM[in_struct->processingEngineCount];
+        memcpy((void*)pProcessingEngines, (void*)in_struct->pProcessingEngines,
+               sizeof(VkPhysicalDeviceDataGraphProcessingEngineARM) * in_struct->processingEngineCount);
+    }
+}
+
+safe_VkDataGraphProcessingEngineCreateInfoARM::safe_VkDataGraphProcessingEngineCreateInfoARM()
+    : sType(VK_STRUCTURE_TYPE_DATA_GRAPH_PROCESSING_ENGINE_CREATE_INFO_ARM),
+      pNext(nullptr),
+      processingEngineCount(),
+      pProcessingEngines(nullptr) {}
+
+safe_VkDataGraphProcessingEngineCreateInfoARM::safe_VkDataGraphProcessingEngineCreateInfoARM(
+    const safe_VkDataGraphProcessingEngineCreateInfoARM& copy_src) {
+    sType = copy_src.sType;
+    processingEngineCount = copy_src.processingEngineCount;
+    pProcessingEngines = nullptr;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    if (copy_src.pProcessingEngines) {
+        pProcessingEngines = new VkPhysicalDeviceDataGraphProcessingEngineARM[copy_src.processingEngineCount];
+        memcpy((void*)pProcessingEngines, (void*)copy_src.pProcessingEngines,
+               sizeof(VkPhysicalDeviceDataGraphProcessingEngineARM) * copy_src.processingEngineCount);
+    }
+}
+
+safe_VkDataGraphProcessingEngineCreateInfoARM& safe_VkDataGraphProcessingEngineCreateInfoARM::operator=(
+    const safe_VkDataGraphProcessingEngineCreateInfoARM& copy_src) {
+    if (&copy_src == this) return *this;
+
+    if (pProcessingEngines) delete[] pProcessingEngines;
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    processingEngineCount = copy_src.processingEngineCount;
+    pProcessingEngines = nullptr;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    if (copy_src.pProcessingEngines) {
+        pProcessingEngines = new VkPhysicalDeviceDataGraphProcessingEngineARM[copy_src.processingEngineCount];
+        memcpy((void*)pProcessingEngines, (void*)copy_src.pProcessingEngines,
+               sizeof(VkPhysicalDeviceDataGraphProcessingEngineARM) * copy_src.processingEngineCount);
+    }
+
+    return *this;
+}
+
+safe_VkDataGraphProcessingEngineCreateInfoARM::~safe_VkDataGraphProcessingEngineCreateInfoARM() {
+    if (pProcessingEngines) delete[] pProcessingEngines;
+    FreePnextChain(pNext);
+}
+
+void safe_VkDataGraphProcessingEngineCreateInfoARM::initialize(const VkDataGraphProcessingEngineCreateInfoARM* in_struct,
+                                                               [[maybe_unused]] PNextCopyState* copy_state) {
+    if (pProcessingEngines) delete[] pProcessingEngines;
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    processingEngineCount = in_struct->processingEngineCount;
+    pProcessingEngines = nullptr;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+
+    if (in_struct->pProcessingEngines) {
+        pProcessingEngines = new VkPhysicalDeviceDataGraphProcessingEngineARM[in_struct->processingEngineCount];
+        memcpy((void*)pProcessingEngines, (void*)in_struct->pProcessingEngines,
+               sizeof(VkPhysicalDeviceDataGraphProcessingEngineARM) * in_struct->processingEngineCount);
+    }
+}
+
+void safe_VkDataGraphProcessingEngineCreateInfoARM::initialize(const safe_VkDataGraphProcessingEngineCreateInfoARM* copy_src,
+                                                               [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    processingEngineCount = copy_src->processingEngineCount;
+    pProcessingEngines = nullptr;
+    pNext = SafePnextCopy(copy_src->pNext);
+
+    if (copy_src->pProcessingEngines) {
+        pProcessingEngines = new VkPhysicalDeviceDataGraphProcessingEngineARM[copy_src->processingEngineCount];
+        memcpy((void*)pProcessingEngines, (void*)copy_src->pProcessingEngines,
+               sizeof(VkPhysicalDeviceDataGraphProcessingEngineARM) * copy_src->processingEngineCount);
+    }
+}
+
+safe_VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM::safe_VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM(
+    const VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
+    bool copy_pnext)
+    : sType(in_struct->sType), queueFamilyIndex(in_struct->queueFamilyIndex), engineType(in_struct->engineType) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM::safe_VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_QUEUE_FAMILY_DATA_GRAPH_PROCESSING_ENGINE_INFO_ARM),
+      pNext(nullptr),
+      queueFamilyIndex(),
+      engineType() {}
+
+safe_VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM::safe_VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM(
+    const safe_VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM& copy_src) {
+    sType = copy_src.sType;
+    queueFamilyIndex = copy_src.queueFamilyIndex;
+    engineType = copy_src.engineType;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM&
+safe_VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM::operator=(
+    const safe_VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    queueFamilyIndex = copy_src.queueFamilyIndex;
+    engineType = copy_src.engineType;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM::
+    ~safe_VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM::initialize(
+    const VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    queueFamilyIndex = in_struct->queueFamilyIndex;
+    engineType = in_struct->engineType;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM::initialize(
+    const safe_VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    queueFamilyIndex = copy_src->queueFamilyIndex;
+    engineType = copy_src->engineType;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkQueueFamilyDataGraphProcessingEnginePropertiesARM::safe_VkQueueFamilyDataGraphProcessingEnginePropertiesARM(
+    const VkQueueFamilyDataGraphProcessingEnginePropertiesARM* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
+    bool copy_pnext)
+    : sType(in_struct->sType),
+      foreignSemaphoreHandleTypes(in_struct->foreignSemaphoreHandleTypes),
+      foreignMemoryHandleTypes(in_struct->foreignMemoryHandleTypes) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkQueueFamilyDataGraphProcessingEnginePropertiesARM::safe_VkQueueFamilyDataGraphProcessingEnginePropertiesARM()
+    : sType(VK_STRUCTURE_TYPE_QUEUE_FAMILY_DATA_GRAPH_PROCESSING_ENGINE_PROPERTIES_ARM),
+      pNext(nullptr),
+      foreignSemaphoreHandleTypes(),
+      foreignMemoryHandleTypes() {}
+
+safe_VkQueueFamilyDataGraphProcessingEnginePropertiesARM::safe_VkQueueFamilyDataGraphProcessingEnginePropertiesARM(
+    const safe_VkQueueFamilyDataGraphProcessingEnginePropertiesARM& copy_src) {
+    sType = copy_src.sType;
+    foreignSemaphoreHandleTypes = copy_src.foreignSemaphoreHandleTypes;
+    foreignMemoryHandleTypes = copy_src.foreignMemoryHandleTypes;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkQueueFamilyDataGraphProcessingEnginePropertiesARM& safe_VkQueueFamilyDataGraphProcessingEnginePropertiesARM::operator=(
+    const safe_VkQueueFamilyDataGraphProcessingEnginePropertiesARM& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    foreignSemaphoreHandleTypes = copy_src.foreignSemaphoreHandleTypes;
+    foreignMemoryHandleTypes = copy_src.foreignMemoryHandleTypes;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkQueueFamilyDataGraphProcessingEnginePropertiesARM::~safe_VkQueueFamilyDataGraphProcessingEnginePropertiesARM() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkQueueFamilyDataGraphProcessingEnginePropertiesARM::initialize(
+    const VkQueueFamilyDataGraphProcessingEnginePropertiesARM* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    foreignSemaphoreHandleTypes = in_struct->foreignSemaphoreHandleTypes;
+    foreignMemoryHandleTypes = in_struct->foreignMemoryHandleTypes;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkQueueFamilyDataGraphProcessingEnginePropertiesARM::initialize(
+    const safe_VkQueueFamilyDataGraphProcessingEnginePropertiesARM* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    foreignSemaphoreHandleTypes = copy_src->foreignSemaphoreHandleTypes;
+    foreignMemoryHandleTypes = copy_src->foreignMemoryHandleTypes;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM::
+    safe_VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM(
+        const VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM* in_struct,
+        [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), dimension(in_struct->dimension), zeroCount(in_struct->zeroCount), groupSize(in_struct->groupSize) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM::
+    safe_VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM()
+    : sType(VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_CONSTANT_TENSOR_SEMI_STRUCTURED_SPARSITY_INFO_ARM),
+      pNext(nullptr),
+      dimension(),
+      zeroCount(),
+      groupSize() {}
+
+safe_VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM::
+    safe_VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM(
+        const safe_VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM& copy_src) {
+    sType = copy_src.sType;
+    dimension = copy_src.dimension;
+    zeroCount = copy_src.zeroCount;
+    groupSize = copy_src.groupSize;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM&
+safe_VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM::operator=(
+    const safe_VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    dimension = copy_src.dimension;
+    zeroCount = copy_src.zeroCount;
+    groupSize = copy_src.groupSize;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM::
+    ~safe_VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM::initialize(
+    const VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    dimension = in_struct->dimension;
+    zeroCount = in_struct->zeroCount;
+    groupSize = in_struct->groupSize;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM::initialize(
+    const safe_VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM* copy_src,
+    [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    dimension = copy_src->dimension;
+    zeroCount = copy_src->zeroCount;
+    groupSize = copy_src->groupSize;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
 safe_VkPhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM::safe_VkPhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM(
     const VkPhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
     bool copy_pnext)
