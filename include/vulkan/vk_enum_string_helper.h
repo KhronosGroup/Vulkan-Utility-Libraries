@@ -1962,6 +1962,46 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_COOPERATIVE_MATRIX_PROPERTIES_KHR";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_PROPERTIES_KHR:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_PROPERTIES_KHR";
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_CREATE_INFO_ARM:
+            return "VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_CREATE_INFO_ARM";
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SESSION_CREATE_INFO_ARM:
+            return "VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SESSION_CREATE_INFO_ARM";
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_RESOURCE_INFO_ARM:
+            return "VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_RESOURCE_INFO_ARM";
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_CONSTANT_ARM:
+            return "VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_CONSTANT_ARM";
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SESSION_MEMORY_REQUIREMENTS_INFO_ARM:
+            return "VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SESSION_MEMORY_REQUIREMENTS_INFO_ARM";
+        case VK_STRUCTURE_TYPE_BIND_DATA_GRAPH_PIPELINE_SESSION_MEMORY_INFO_ARM:
+            return "VK_STRUCTURE_TYPE_BIND_DATA_GRAPH_PIPELINE_SESSION_MEMORY_INFO_ARM";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DATA_GRAPH_FEATURES_ARM:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DATA_GRAPH_FEATURES_ARM";
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SHADER_MODULE_CREATE_INFO_ARM:
+            return "VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SHADER_MODULE_CREATE_INFO_ARM";
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_PROPERTY_QUERY_RESULT_ARM:
+            return "VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_PROPERTY_QUERY_RESULT_ARM";
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_INFO_ARM:
+            return "VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_INFO_ARM";
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_COMPILER_CONTROL_CREATE_INFO_ARM:
+            return "VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_COMPILER_CONTROL_CREATE_INFO_ARM";
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SESSION_BIND_POINT_REQUIREMENTS_INFO_ARM:
+            return "VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SESSION_BIND_POINT_REQUIREMENTS_INFO_ARM";
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SESSION_BIND_POINT_REQUIREMENT_ARM:
+            return "VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SESSION_BIND_POINT_REQUIREMENT_ARM";
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_IDENTIFIER_CREATE_INFO_ARM:
+            return "VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_IDENTIFIER_CREATE_INFO_ARM";
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_DISPATCH_INFO_ARM:
+            return "VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_DISPATCH_INFO_ARM";
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PROCESSING_ENGINE_CREATE_INFO_ARM:
+            return "VK_STRUCTURE_TYPE_DATA_GRAPH_PROCESSING_ENGINE_CREATE_INFO_ARM";
+        case VK_STRUCTURE_TYPE_QUEUE_FAMILY_DATA_GRAPH_PROCESSING_ENGINE_PROPERTIES_ARM:
+            return "VK_STRUCTURE_TYPE_QUEUE_FAMILY_DATA_GRAPH_PROCESSING_ENGINE_PROPERTIES_ARM";
+        case VK_STRUCTURE_TYPE_QUEUE_FAMILY_DATA_GRAPH_PROPERTIES_ARM:
+            return "VK_STRUCTURE_TYPE_QUEUE_FAMILY_DATA_GRAPH_PROPERTIES_ARM";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_QUEUE_FAMILY_DATA_GRAPH_PROCESSING_ENGINE_INFO_ARM:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_QUEUE_FAMILY_DATA_GRAPH_PROCESSING_ENGINE_INFO_ARM";
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_CONSTANT_TENSOR_SEMI_STRUCTURED_SPARSITY_INFO_ARM:
+            return "VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_CONSTANT_TENSOR_SEMI_STRUCTURED_SPARSITY_INFO_ARM";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PER_VIEW_RENDER_AREAS_FEATURES_QCOM:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PER_VIEW_RENDER_AREAS_FEATURES_QCOM";
         case VK_STRUCTURE_TYPE_MULTIVIEW_PER_VIEW_RENDER_AREAS_RENDER_PASS_BEGIN_INFO_QCOM:
@@ -2456,6 +2496,8 @@ static inline const char* string_VkObjectType(VkObjectType input_value) {
             return "VK_OBJECT_TYPE_SHADER_EXT";
         case VK_OBJECT_TYPE_PIPELINE_BINARY_KHR:
             return "VK_OBJECT_TYPE_PIPELINE_BINARY_KHR";
+        case VK_OBJECT_TYPE_DATA_GRAPH_PIPELINE_SESSION_ARM:
+            return "VK_OBJECT_TYPE_DATA_GRAPH_PIPELINE_SESSION_ARM";
         case VK_OBJECT_TYPE_EXTERNAL_COMPUTE_QUEUE_NV:
             return "VK_OBJECT_TYPE_EXTERNAL_COMPUTE_QUEUE_NV";
         case VK_OBJECT_TYPE_INDIRECT_COMMANDS_LAYOUT_EXT:
@@ -3770,6 +3812,8 @@ static inline const char* string_VkPipelineBindPoint(VkPipelineBindPoint input_v
             return "VK_PIPELINE_BIND_POINT_RAY_TRACING_KHR";
         case VK_PIPELINE_BIND_POINT_SUBPASS_SHADING_HUAWEI:
             return "VK_PIPELINE_BIND_POINT_SUBPASS_SHADING_HUAWEI";
+        case VK_PIPELINE_BIND_POINT_DATA_GRAPH_ARM:
+            return "VK_PIPELINE_BIND_POINT_DATA_GRAPH_ARM";
         default:
             return "Unhandled VkPipelineBindPoint";
     }
@@ -5278,6 +5322,48 @@ static inline const char* string_VkOutOfBandQueueTypeNV(VkOutOfBandQueueTypeNV i
             return "Unhandled VkOutOfBandQueueTypeNV";
     }
 }
+static inline const char* string_VkDataGraphPipelineSessionBindPointARM(VkDataGraphPipelineSessionBindPointARM input_value) {
+    switch (input_value) {
+        case VK_DATA_GRAPH_PIPELINE_SESSION_BIND_POINT_TRANSIENT_ARM:
+            return "VK_DATA_GRAPH_PIPELINE_SESSION_BIND_POINT_TRANSIENT_ARM";
+        default:
+            return "Unhandled VkDataGraphPipelineSessionBindPointARM";
+    }
+}
+static inline const char* string_VkDataGraphPipelineSessionBindPointTypeARM(VkDataGraphPipelineSessionBindPointTypeARM input_value) {
+    switch (input_value) {
+        case VK_DATA_GRAPH_PIPELINE_SESSION_BIND_POINT_TYPE_MEMORY_ARM:
+            return "VK_DATA_GRAPH_PIPELINE_SESSION_BIND_POINT_TYPE_MEMORY_ARM";
+        default:
+            return "Unhandled VkDataGraphPipelineSessionBindPointTypeARM";
+    }
+}
+static inline const char* string_VkDataGraphPipelinePropertyARM(VkDataGraphPipelinePropertyARM input_value) {
+    switch (input_value) {
+        case VK_DATA_GRAPH_PIPELINE_PROPERTY_CREATION_LOG_ARM:
+            return "VK_DATA_GRAPH_PIPELINE_PROPERTY_CREATION_LOG_ARM";
+        case VK_DATA_GRAPH_PIPELINE_PROPERTY_IDENTIFIER_ARM:
+            return "VK_DATA_GRAPH_PIPELINE_PROPERTY_IDENTIFIER_ARM";
+        default:
+            return "Unhandled VkDataGraphPipelinePropertyARM";
+    }
+}
+static inline const char* string_VkPhysicalDeviceDataGraphProcessingEngineTypeARM(VkPhysicalDeviceDataGraphProcessingEngineTypeARM input_value) {
+    switch (input_value) {
+        case VK_PHYSICAL_DEVICE_DATA_GRAPH_PROCESSING_ENGINE_TYPE_DEFAULT_ARM:
+            return "VK_PHYSICAL_DEVICE_DATA_GRAPH_PROCESSING_ENGINE_TYPE_DEFAULT_ARM";
+        default:
+            return "Unhandled VkPhysicalDeviceDataGraphProcessingEngineTypeARM";
+    }
+}
+static inline const char* string_VkPhysicalDeviceDataGraphOperationTypeARM(VkPhysicalDeviceDataGraphOperationTypeARM input_value) {
+    switch (input_value) {
+        case VK_PHYSICAL_DEVICE_DATA_GRAPH_OPERATION_TYPE_SPIRV_EXTENDED_INSTRUCTION_SET_ARM:
+            return "VK_PHYSICAL_DEVICE_DATA_GRAPH_OPERATION_TYPE_SPIRV_EXTENDED_INSTRUCTION_SET_ARM";
+        default:
+            return "Unhandled VkPhysicalDeviceDataGraphOperationTypeARM";
+    }
+}
 static inline const char* string_VkBlockMatchWindowCompareModeQCOM(VkBlockMatchWindowCompareModeQCOM input_value) {
     switch (input_value) {
         case VK_BLOCK_MATCH_WINDOW_COMPARE_MODE_MIN_QCOM:
@@ -5350,6 +5436,8 @@ static inline const char* string_VkClusterAccelerationStructureOpTypeNV(VkCluste
             return "VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_BUILD_TRIANGLE_CLUSTER_TEMPLATE_NV";
         case VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_INSTANTIATE_TRIANGLE_CLUSTER_NV:
             return "VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_INSTANTIATE_TRIANGLE_CLUSTER_NV";
+        case VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_GET_CLUSTER_TEMPLATE_INDICES_NV:
+            return "VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_GET_CLUSTER_TEMPLATE_INDICES_NV";
         default:
             return "Unhandled VkClusterAccelerationStructureOpTypeNV";
     }
@@ -5948,6 +6036,8 @@ static inline const char* string_VkQueueFlagBits(VkQueueFlagBits input_value) {
             return "VK_QUEUE_VIDEO_ENCODE_BIT_KHR";
         case VK_QUEUE_OPTICAL_FLOW_BIT_NV:
             return "VK_QUEUE_OPTICAL_FLOW_BIT_NV";
+        case VK_QUEUE_DATA_GRAPH_BIT_ARM:
+            return "VK_QUEUE_DATA_GRAPH_BIT_ARM";
         default:
             return "Unhandled VkQueueFlagBits";
     }
@@ -7771,6 +7861,7 @@ static inline const char* string_VkPipelineStageFlagBits2(uint64_t input_value) 
     if (input_value == VK_PIPELINE_STAGE_2_CLUSTER_CULLING_SHADER_BIT_HUAWEI) return "VK_PIPELINE_STAGE_2_CLUSTER_CULLING_SHADER_BIT_HUAWEI";
     if (input_value == VK_PIPELINE_STAGE_2_OPTICAL_FLOW_BIT_NV) return "VK_PIPELINE_STAGE_2_OPTICAL_FLOW_BIT_NV";
     if (input_value == VK_PIPELINE_STAGE_2_CONVERT_COOPERATIVE_VECTOR_MATRIX_BIT_NV) return "VK_PIPELINE_STAGE_2_CONVERT_COOPERATIVE_VECTOR_MATRIX_BIT_NV";
+    if (input_value == VK_PIPELINE_STAGE_2_DATA_GRAPH_BIT_ARM) return "VK_PIPELINE_STAGE_2_DATA_GRAPH_BIT_ARM";
     return "Unhandled VkPipelineStageFlagBits2";
 }
 
@@ -7836,6 +7927,8 @@ static inline const char* string_VkAccessFlagBits2(uint64_t input_value) {
     if (input_value == VK_ACCESS_2_MICROMAP_WRITE_BIT_EXT) return "VK_ACCESS_2_MICROMAP_WRITE_BIT_EXT";
     if (input_value == VK_ACCESS_2_OPTICAL_FLOW_READ_BIT_NV) return "VK_ACCESS_2_OPTICAL_FLOW_READ_BIT_NV";
     if (input_value == VK_ACCESS_2_OPTICAL_FLOW_WRITE_BIT_NV) return "VK_ACCESS_2_OPTICAL_FLOW_WRITE_BIT_NV";
+    if (input_value == VK_ACCESS_2_DATA_GRAPH_READ_BIT_ARM) return "VK_ACCESS_2_DATA_GRAPH_READ_BIT_ARM";
+    if (input_value == VK_ACCESS_2_DATA_GRAPH_WRITE_BIT_ARM) return "VK_ACCESS_2_DATA_GRAPH_WRITE_BIT_ARM";
     return "Unhandled VkAccessFlagBits2";
 }
 
@@ -7962,6 +8055,7 @@ static inline const char* string_VkFormatFeatureFlagBits2(uint64_t input_value) 
     if (input_value == VK_FORMAT_FEATURE_2_OPTICAL_FLOW_IMAGE_BIT_NV) return "VK_FORMAT_FEATURE_2_OPTICAL_FLOW_IMAGE_BIT_NV";
     if (input_value == VK_FORMAT_FEATURE_2_OPTICAL_FLOW_VECTOR_BIT_NV) return "VK_FORMAT_FEATURE_2_OPTICAL_FLOW_VECTOR_BIT_NV";
     if (input_value == VK_FORMAT_FEATURE_2_OPTICAL_FLOW_COST_BIT_NV) return "VK_FORMAT_FEATURE_2_OPTICAL_FLOW_COST_BIT_NV";
+    if (input_value == VK_FORMAT_FEATURE_2_TENSOR_DATA_GRAPH_BIT_ARM) return "VK_FORMAT_FEATURE_2_TENSOR_DATA_GRAPH_BIT_ARM";
     if (input_value == VK_FORMAT_FEATURE_2_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR) return "VK_FORMAT_FEATURE_2_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR";
     if (input_value == VK_FORMAT_FEATURE_2_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR) return "VK_FORMAT_FEATURE_2_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR";
     return "Unhandled VkFormatFeatureFlagBits2";
@@ -8097,6 +8191,7 @@ static inline const char* string_VkBufferUsageFlagBits2(uint64_t input_value) {
     if (input_value == VK_BUFFER_USAGE_2_PUSH_DESCRIPTORS_DESCRIPTOR_BUFFER_BIT_EXT) return "VK_BUFFER_USAGE_2_PUSH_DESCRIPTORS_DESCRIPTOR_BUFFER_BIT_EXT";
     if (input_value == VK_BUFFER_USAGE_2_MICROMAP_BUILD_INPUT_READ_ONLY_BIT_EXT) return "VK_BUFFER_USAGE_2_MICROMAP_BUILD_INPUT_READ_ONLY_BIT_EXT";
     if (input_value == VK_BUFFER_USAGE_2_MICROMAP_STORAGE_BIT_EXT) return "VK_BUFFER_USAGE_2_MICROMAP_STORAGE_BIT_EXT";
+    if (input_value == VK_BUFFER_USAGE_2_DATA_GRAPH_FOREIGN_DESCRIPTOR_BIT_ARM) return "VK_BUFFER_USAGE_2_DATA_GRAPH_FOREIGN_DESCRIPTOR_BIT_ARM";
     if (input_value == VK_BUFFER_USAGE_2_TILE_MEMORY_BIT_QCOM) return "VK_BUFFER_USAGE_2_TILE_MEMORY_BIT_QCOM";
     if (input_value == VK_BUFFER_USAGE_2_PREPROCESS_BUFFER_BIT_EXT) return "VK_BUFFER_USAGE_2_PREPROCESS_BUFFER_BIT_EXT";
     return "Unhandled VkBufferUsageFlagBits2";
@@ -10198,6 +10293,7 @@ static inline const char* string_VkTensorUsageFlagBitsARM(uint64_t input_value) 
     if (input_value == VK_TENSOR_USAGE_TRANSFER_SRC_BIT_ARM) return "VK_TENSOR_USAGE_TRANSFER_SRC_BIT_ARM";
     if (input_value == VK_TENSOR_USAGE_TRANSFER_DST_BIT_ARM) return "VK_TENSOR_USAGE_TRANSFER_DST_BIT_ARM";
     if (input_value == VK_TENSOR_USAGE_IMAGE_ALIASING_BIT_ARM) return "VK_TENSOR_USAGE_IMAGE_ALIASING_BIT_ARM";
+    if (input_value == VK_TENSOR_USAGE_DATA_GRAPH_BIT_ARM) return "VK_TENSOR_USAGE_DATA_GRAPH_BIT_ARM";
     return "Unhandled VkTensorUsageFlagBitsARM";
 }
 
@@ -10382,8 +10478,31 @@ static inline std::string string_VkShaderCreateFlagsEXT(VkShaderCreateFlagsEXT i
     return ret;
 }
 #endif // __cplusplus
+static inline const char* string_VkDataGraphPipelineSessionCreateFlagBitsARM(uint64_t input_value) {
+    if (input_value == VK_DATA_GRAPH_PIPELINE_SESSION_CREATE_PROTECTED_BIT_ARM) return "VK_DATA_GRAPH_PIPELINE_SESSION_CREATE_PROTECTED_BIT_ARM";
+    return "Unhandled VkDataGraphPipelineSessionCreateFlagBitsARM";
+}
+
+#ifdef __cplusplus
+static inline std::string string_VkDataGraphPipelineSessionCreateFlagsARM(VkDataGraphPipelineSessionCreateFlagsARM input_value) {
+    std::string ret;
+    int index = 0;
+    while(input_value) {
+        if (input_value & 1) {
+            if( !ret.empty()) ret.append("|");
+            ret.append(string_VkDataGraphPipelineSessionCreateFlagBitsARM(static_cast<uint64_t>(1ULL << index)));
+        }
+        ++index;
+        input_value >>= 1;
+    }
+    if (ret.empty()) ret.append("VkDataGraphPipelineSessionCreateFlagsARM(0)");
+    return ret;
+}
+#endif // __cplusplus
 static inline const char* string_VkClusterAccelerationStructureAddressResolutionFlagBitsNV(VkClusterAccelerationStructureAddressResolutionFlagBitsNV input_value) {
     switch (input_value) {
+        case VK_CLUSTER_ACCELERATION_STRUCTURE_ADDRESS_RESOLUTION_NONE_NV:
+            return "VK_CLUSTER_ACCELERATION_STRUCTURE_ADDRESS_RESOLUTION_NONE_NV";
         case VK_CLUSTER_ACCELERATION_STRUCTURE_ADDRESS_RESOLUTION_INDIRECTED_DST_IMPLICIT_DATA_BIT_NV:
             return "VK_CLUSTER_ACCELERATION_STRUCTURE_ADDRESS_RESOLUTION_INDIRECTED_DST_IMPLICIT_DATA_BIT_NV";
         case VK_CLUSTER_ACCELERATION_STRUCTURE_ADDRESS_RESOLUTION_INDIRECTED_SCRATCH_DATA_BIT_NV:
@@ -12579,6 +12698,46 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
             return "VkOutOfBandQueueTypeInfoNV";
         case VK_STRUCTURE_TYPE_LATENCY_SURFACE_CAPABILITIES_NV:
             return "VkLatencySurfaceCapabilitiesNV";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DATA_GRAPH_FEATURES_ARM:
+            return "VkPhysicalDeviceDataGraphFeaturesARM";
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_CONSTANT_ARM:
+            return "VkDataGraphPipelineConstantARM";
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_RESOURCE_INFO_ARM:
+            return "VkDataGraphPipelineResourceInfoARM";
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_COMPILER_CONTROL_CREATE_INFO_ARM:
+            return "VkDataGraphPipelineCompilerControlCreateInfoARM";
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_CREATE_INFO_ARM:
+            return "VkDataGraphPipelineCreateInfoARM";
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SHADER_MODULE_CREATE_INFO_ARM:
+            return "VkDataGraphPipelineShaderModuleCreateInfoARM";
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SESSION_CREATE_INFO_ARM:
+            return "VkDataGraphPipelineSessionCreateInfoARM";
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SESSION_BIND_POINT_REQUIREMENTS_INFO_ARM:
+            return "VkDataGraphPipelineSessionBindPointRequirementsInfoARM";
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SESSION_BIND_POINT_REQUIREMENT_ARM:
+            return "VkDataGraphPipelineSessionBindPointRequirementARM";
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SESSION_MEMORY_REQUIREMENTS_INFO_ARM:
+            return "VkDataGraphPipelineSessionMemoryRequirementsInfoARM";
+        case VK_STRUCTURE_TYPE_BIND_DATA_GRAPH_PIPELINE_SESSION_MEMORY_INFO_ARM:
+            return "VkBindDataGraphPipelineSessionMemoryInfoARM";
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_INFO_ARM:
+            return "VkDataGraphPipelineInfoARM";
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_PROPERTY_QUERY_RESULT_ARM:
+            return "VkDataGraphPipelinePropertyQueryResultARM";
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_IDENTIFIER_CREATE_INFO_ARM:
+            return "VkDataGraphPipelineIdentifierCreateInfoARM";
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_DISPATCH_INFO_ARM:
+            return "VkDataGraphPipelineDispatchInfoARM";
+        case VK_STRUCTURE_TYPE_QUEUE_FAMILY_DATA_GRAPH_PROPERTIES_ARM:
+            return "VkQueueFamilyDataGraphPropertiesARM";
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PROCESSING_ENGINE_CREATE_INFO_ARM:
+            return "VkDataGraphProcessingEngineCreateInfoARM";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_QUEUE_FAMILY_DATA_GRAPH_PROCESSING_ENGINE_INFO_ARM:
+            return "VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM";
+        case VK_STRUCTURE_TYPE_QUEUE_FAMILY_DATA_GRAPH_PROCESSING_ENGINE_PROPERTIES_ARM:
+            return "VkQueueFamilyDataGraphProcessingEnginePropertiesARM";
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_CONSTANT_TENSOR_SEMI_STRUCTURED_SPARSITY_INFO_ARM:
+            return "VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PER_VIEW_RENDER_AREAS_FEATURES_QCOM:
             return "VkPhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM";
         case VK_STRUCTURE_TYPE_MULTIVIEW_PER_VIEW_RENDER_AREAS_RENDER_PASS_BEGIN_INFO_QCOM:

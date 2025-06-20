@@ -1826,6 +1826,9 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
             case VK_STRUCTURE_TYPE_DIRECT_DRIVER_LOADING_LIST_LUNARG:
                 safe_pNext = new safe_VkDirectDriverLoadingListLUNARG(reinterpret_cast<const VkDirectDriverLoadingListLUNARG *>(pNext), copy_state, false);
                 break;
+            case VK_STRUCTURE_TYPE_TENSOR_DESCRIPTION_ARM:
+                safe_pNext = new safe_VkTensorDescriptionARM(reinterpret_cast<const VkTensorDescriptionARM *>(pNext), copy_state, false);
+                break;
             case VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_TENSOR_ARM:
                 safe_pNext = new safe_VkWriteDescriptorSetTensorARM(reinterpret_cast<const VkWriteDescriptorSetTensorARM *>(pNext), copy_state, false);
                 break;
@@ -1965,6 +1968,24 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
                 break;
             case VK_STRUCTURE_TYPE_LATENCY_SURFACE_CAPABILITIES_NV:
                 safe_pNext = new safe_VkLatencySurfaceCapabilitiesNV(reinterpret_cast<const VkLatencySurfaceCapabilitiesNV *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DATA_GRAPH_FEATURES_ARM:
+                safe_pNext = new safe_VkPhysicalDeviceDataGraphFeaturesARM(reinterpret_cast<const VkPhysicalDeviceDataGraphFeaturesARM *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_COMPILER_CONTROL_CREATE_INFO_ARM:
+                safe_pNext = new safe_VkDataGraphPipelineCompilerControlCreateInfoARM(reinterpret_cast<const VkDataGraphPipelineCompilerControlCreateInfoARM *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SHADER_MODULE_CREATE_INFO_ARM:
+                safe_pNext = new safe_VkDataGraphPipelineShaderModuleCreateInfoARM(reinterpret_cast<const VkDataGraphPipelineShaderModuleCreateInfoARM *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_IDENTIFIER_CREATE_INFO_ARM:
+                safe_pNext = new safe_VkDataGraphPipelineIdentifierCreateInfoARM(reinterpret_cast<const VkDataGraphPipelineIdentifierCreateInfoARM *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_DATA_GRAPH_PROCESSING_ENGINE_CREATE_INFO_ARM:
+                safe_pNext = new safe_VkDataGraphProcessingEngineCreateInfoARM(reinterpret_cast<const VkDataGraphProcessingEngineCreateInfoARM *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_CONSTANT_TENSOR_SEMI_STRUCTURED_SPARSITY_INFO_ARM:
+                safe_pNext = new safe_VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM(reinterpret_cast<const VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM *>(pNext), copy_state, false);
                 break;
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PER_VIEW_RENDER_AREAS_FEATURES_QCOM:
                 safe_pNext = new safe_VkPhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM(reinterpret_cast<const VkPhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM *>(pNext), copy_state, false);
@@ -4006,6 +4027,9 @@ void FreePnextChain(const void *pNext) {
         case VK_STRUCTURE_TYPE_DIRECT_DRIVER_LOADING_LIST_LUNARG:
             delete reinterpret_cast<safe_VkDirectDriverLoadingListLUNARG *>(header);
             break;
+        case VK_STRUCTURE_TYPE_TENSOR_DESCRIPTION_ARM:
+            delete reinterpret_cast<safe_VkTensorDescriptionARM *>(header);
+            break;
         case VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_TENSOR_ARM:
             delete reinterpret_cast<safe_VkWriteDescriptorSetTensorARM *>(header);
             break;
@@ -4145,6 +4169,24 @@ void FreePnextChain(const void *pNext) {
             break;
         case VK_STRUCTURE_TYPE_LATENCY_SURFACE_CAPABILITIES_NV:
             delete reinterpret_cast<safe_VkLatencySurfaceCapabilitiesNV *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DATA_GRAPH_FEATURES_ARM:
+            delete reinterpret_cast<safe_VkPhysicalDeviceDataGraphFeaturesARM *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_COMPILER_CONTROL_CREATE_INFO_ARM:
+            delete reinterpret_cast<safe_VkDataGraphPipelineCompilerControlCreateInfoARM *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SHADER_MODULE_CREATE_INFO_ARM:
+            delete reinterpret_cast<safe_VkDataGraphPipelineShaderModuleCreateInfoARM *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_IDENTIFIER_CREATE_INFO_ARM:
+            delete reinterpret_cast<safe_VkDataGraphPipelineIdentifierCreateInfoARM *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PROCESSING_ENGINE_CREATE_INFO_ARM:
+            delete reinterpret_cast<safe_VkDataGraphProcessingEngineCreateInfoARM *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_CONSTANT_TENSOR_SEMI_STRUCTURED_SPARSITY_INFO_ARM:
+            delete reinterpret_cast<safe_VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM *>(header);
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PER_VIEW_RENDER_AREAS_FEATURES_QCOM:
             delete reinterpret_cast<safe_VkPhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM *>(header);

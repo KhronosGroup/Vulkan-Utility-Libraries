@@ -19616,6 +19616,431 @@ struct safe_VkLatencySurfaceCapabilitiesNV {
     VkLatencySurfaceCapabilitiesNV* ptr() { return reinterpret_cast<VkLatencySurfaceCapabilitiesNV*>(this); }
     VkLatencySurfaceCapabilitiesNV const* ptr() const { return reinterpret_cast<VkLatencySurfaceCapabilitiesNV const*>(this); }
 };
+struct safe_VkPhysicalDeviceDataGraphFeaturesARM {
+    VkStructureType sType;
+    void* pNext{};
+    VkBool32 dataGraph;
+    VkBool32 dataGraphUpdateAfterBind;
+    VkBool32 dataGraphSpecializationConstants;
+    VkBool32 dataGraphDescriptorBuffer;
+    VkBool32 dataGraphShaderModule;
+
+    safe_VkPhysicalDeviceDataGraphFeaturesARM(const VkPhysicalDeviceDataGraphFeaturesARM* in_struct,
+                                              PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkPhysicalDeviceDataGraphFeaturesARM(const safe_VkPhysicalDeviceDataGraphFeaturesARM& copy_src);
+    safe_VkPhysicalDeviceDataGraphFeaturesARM& operator=(const safe_VkPhysicalDeviceDataGraphFeaturesARM& copy_src);
+    safe_VkPhysicalDeviceDataGraphFeaturesARM();
+    ~safe_VkPhysicalDeviceDataGraphFeaturesARM();
+    void initialize(const VkPhysicalDeviceDataGraphFeaturesARM* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceDataGraphFeaturesARM* copy_src, PNextCopyState* copy_state = {});
+    VkPhysicalDeviceDataGraphFeaturesARM* ptr() { return reinterpret_cast<VkPhysicalDeviceDataGraphFeaturesARM*>(this); }
+    VkPhysicalDeviceDataGraphFeaturesARM const* ptr() const {
+        return reinterpret_cast<VkPhysicalDeviceDataGraphFeaturesARM const*>(this);
+    }
+};
+struct safe_VkDataGraphPipelineConstantARM {
+    VkStructureType sType;
+    const void* pNext{};
+    uint32_t id;
+    const void* pConstantData{};
+
+    safe_VkDataGraphPipelineConstantARM(const VkDataGraphPipelineConstantARM* in_struct, PNextCopyState* copy_state = {},
+                                        bool copy_pnext = true);
+    safe_VkDataGraphPipelineConstantARM(const safe_VkDataGraphPipelineConstantARM& copy_src);
+    safe_VkDataGraphPipelineConstantARM& operator=(const safe_VkDataGraphPipelineConstantARM& copy_src);
+    safe_VkDataGraphPipelineConstantARM();
+    ~safe_VkDataGraphPipelineConstantARM();
+    void initialize(const VkDataGraphPipelineConstantARM* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkDataGraphPipelineConstantARM* copy_src, PNextCopyState* copy_state = {});
+    VkDataGraphPipelineConstantARM* ptr() { return reinterpret_cast<VkDataGraphPipelineConstantARM*>(this); }
+    VkDataGraphPipelineConstantARM const* ptr() const { return reinterpret_cast<VkDataGraphPipelineConstantARM const*>(this); }
+};
+struct safe_VkDataGraphPipelineResourceInfoARM {
+    VkStructureType sType;
+    const void* pNext{};
+    uint32_t descriptorSet;
+    uint32_t binding;
+    uint32_t arrayElement;
+
+    safe_VkDataGraphPipelineResourceInfoARM(const VkDataGraphPipelineResourceInfoARM* in_struct, PNextCopyState* copy_state = {},
+                                            bool copy_pnext = true);
+    safe_VkDataGraphPipelineResourceInfoARM(const safe_VkDataGraphPipelineResourceInfoARM& copy_src);
+    safe_VkDataGraphPipelineResourceInfoARM& operator=(const safe_VkDataGraphPipelineResourceInfoARM& copy_src);
+    safe_VkDataGraphPipelineResourceInfoARM();
+    ~safe_VkDataGraphPipelineResourceInfoARM();
+    void initialize(const VkDataGraphPipelineResourceInfoARM* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkDataGraphPipelineResourceInfoARM* copy_src, PNextCopyState* copy_state = {});
+    VkDataGraphPipelineResourceInfoARM* ptr() { return reinterpret_cast<VkDataGraphPipelineResourceInfoARM*>(this); }
+    VkDataGraphPipelineResourceInfoARM const* ptr() const {
+        return reinterpret_cast<VkDataGraphPipelineResourceInfoARM const*>(this);
+    }
+};
+struct safe_VkDataGraphPipelineCompilerControlCreateInfoARM {
+    VkStructureType sType;
+    const void* pNext{};
+    const char* pVendorOptions{};
+
+    safe_VkDataGraphPipelineCompilerControlCreateInfoARM(const VkDataGraphPipelineCompilerControlCreateInfoARM* in_struct,
+                                                         PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkDataGraphPipelineCompilerControlCreateInfoARM(const safe_VkDataGraphPipelineCompilerControlCreateInfoARM& copy_src);
+    safe_VkDataGraphPipelineCompilerControlCreateInfoARM& operator=(
+        const safe_VkDataGraphPipelineCompilerControlCreateInfoARM& copy_src);
+    safe_VkDataGraphPipelineCompilerControlCreateInfoARM();
+    ~safe_VkDataGraphPipelineCompilerControlCreateInfoARM();
+    void initialize(const VkDataGraphPipelineCompilerControlCreateInfoARM* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkDataGraphPipelineCompilerControlCreateInfoARM* copy_src, PNextCopyState* copy_state = {});
+    VkDataGraphPipelineCompilerControlCreateInfoARM* ptr() {
+        return reinterpret_cast<VkDataGraphPipelineCompilerControlCreateInfoARM*>(this);
+    }
+    VkDataGraphPipelineCompilerControlCreateInfoARM const* ptr() const {
+        return reinterpret_cast<VkDataGraphPipelineCompilerControlCreateInfoARM const*>(this);
+    }
+};
+struct safe_VkDataGraphPipelineCreateInfoARM {
+    VkStructureType sType;
+    const void* pNext{};
+    VkPipelineCreateFlags2KHR flags;
+    VkPipelineLayout layout;
+    uint32_t resourceInfoCount;
+    safe_VkDataGraphPipelineResourceInfoARM* pResourceInfos{};
+
+    safe_VkDataGraphPipelineCreateInfoARM(const VkDataGraphPipelineCreateInfoARM* in_struct, PNextCopyState* copy_state = {},
+                                          bool copy_pnext = true);
+    safe_VkDataGraphPipelineCreateInfoARM(const safe_VkDataGraphPipelineCreateInfoARM& copy_src);
+    safe_VkDataGraphPipelineCreateInfoARM& operator=(const safe_VkDataGraphPipelineCreateInfoARM& copy_src);
+    safe_VkDataGraphPipelineCreateInfoARM();
+    ~safe_VkDataGraphPipelineCreateInfoARM();
+    void initialize(const VkDataGraphPipelineCreateInfoARM* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkDataGraphPipelineCreateInfoARM* copy_src, PNextCopyState* copy_state = {});
+    VkDataGraphPipelineCreateInfoARM* ptr() { return reinterpret_cast<VkDataGraphPipelineCreateInfoARM*>(this); }
+    VkDataGraphPipelineCreateInfoARM const* ptr() const { return reinterpret_cast<VkDataGraphPipelineCreateInfoARM const*>(this); }
+};
+struct safe_VkDataGraphPipelineShaderModuleCreateInfoARM {
+    VkStructureType sType;
+    const void* pNext{};
+    VkShaderModule module;
+    const char* pName{};
+    safe_VkSpecializationInfo* pSpecializationInfo{};
+    uint32_t constantCount;
+    safe_VkDataGraphPipelineConstantARM* pConstants{};
+
+    safe_VkDataGraphPipelineShaderModuleCreateInfoARM(const VkDataGraphPipelineShaderModuleCreateInfoARM* in_struct,
+                                                      PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkDataGraphPipelineShaderModuleCreateInfoARM(const safe_VkDataGraphPipelineShaderModuleCreateInfoARM& copy_src);
+    safe_VkDataGraphPipelineShaderModuleCreateInfoARM& operator=(const safe_VkDataGraphPipelineShaderModuleCreateInfoARM& copy_src);
+    safe_VkDataGraphPipelineShaderModuleCreateInfoARM();
+    ~safe_VkDataGraphPipelineShaderModuleCreateInfoARM();
+    void initialize(const VkDataGraphPipelineShaderModuleCreateInfoARM* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkDataGraphPipelineShaderModuleCreateInfoARM* copy_src, PNextCopyState* copy_state = {});
+    VkDataGraphPipelineShaderModuleCreateInfoARM* ptr() {
+        return reinterpret_cast<VkDataGraphPipelineShaderModuleCreateInfoARM*>(this);
+    }
+    VkDataGraphPipelineShaderModuleCreateInfoARM const* ptr() const {
+        return reinterpret_cast<VkDataGraphPipelineShaderModuleCreateInfoARM const*>(this);
+    }
+};
+struct safe_VkDataGraphPipelineSessionCreateInfoARM {
+    VkStructureType sType;
+    const void* pNext{};
+    VkDataGraphPipelineSessionCreateFlagsARM flags;
+    VkPipeline dataGraphPipeline;
+
+    safe_VkDataGraphPipelineSessionCreateInfoARM(const VkDataGraphPipelineSessionCreateInfoARM* in_struct,
+                                                 PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkDataGraphPipelineSessionCreateInfoARM(const safe_VkDataGraphPipelineSessionCreateInfoARM& copy_src);
+    safe_VkDataGraphPipelineSessionCreateInfoARM& operator=(const safe_VkDataGraphPipelineSessionCreateInfoARM& copy_src);
+    safe_VkDataGraphPipelineSessionCreateInfoARM();
+    ~safe_VkDataGraphPipelineSessionCreateInfoARM();
+    void initialize(const VkDataGraphPipelineSessionCreateInfoARM* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkDataGraphPipelineSessionCreateInfoARM* copy_src, PNextCopyState* copy_state = {});
+    VkDataGraphPipelineSessionCreateInfoARM* ptr() { return reinterpret_cast<VkDataGraphPipelineSessionCreateInfoARM*>(this); }
+    VkDataGraphPipelineSessionCreateInfoARM const* ptr() const {
+        return reinterpret_cast<VkDataGraphPipelineSessionCreateInfoARM const*>(this);
+    }
+};
+struct safe_VkDataGraphPipelineSessionBindPointRequirementsInfoARM {
+    VkStructureType sType;
+    const void* pNext{};
+    VkDataGraphPipelineSessionARM session;
+
+    safe_VkDataGraphPipelineSessionBindPointRequirementsInfoARM(
+        const VkDataGraphPipelineSessionBindPointRequirementsInfoARM* in_struct, PNextCopyState* copy_state = {},
+        bool copy_pnext = true);
+    safe_VkDataGraphPipelineSessionBindPointRequirementsInfoARM(
+        const safe_VkDataGraphPipelineSessionBindPointRequirementsInfoARM& copy_src);
+    safe_VkDataGraphPipelineSessionBindPointRequirementsInfoARM& operator=(
+        const safe_VkDataGraphPipelineSessionBindPointRequirementsInfoARM& copy_src);
+    safe_VkDataGraphPipelineSessionBindPointRequirementsInfoARM();
+    ~safe_VkDataGraphPipelineSessionBindPointRequirementsInfoARM();
+    void initialize(const VkDataGraphPipelineSessionBindPointRequirementsInfoARM* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkDataGraphPipelineSessionBindPointRequirementsInfoARM* copy_src, PNextCopyState* copy_state = {});
+    VkDataGraphPipelineSessionBindPointRequirementsInfoARM* ptr() {
+        return reinterpret_cast<VkDataGraphPipelineSessionBindPointRequirementsInfoARM*>(this);
+    }
+    VkDataGraphPipelineSessionBindPointRequirementsInfoARM const* ptr() const {
+        return reinterpret_cast<VkDataGraphPipelineSessionBindPointRequirementsInfoARM const*>(this);
+    }
+};
+struct safe_VkDataGraphPipelineSessionBindPointRequirementARM {
+    VkStructureType sType;
+    const void* pNext{};
+    VkDataGraphPipelineSessionBindPointARM bindPoint;
+    VkDataGraphPipelineSessionBindPointTypeARM bindPointType;
+    uint32_t numObjects;
+
+    safe_VkDataGraphPipelineSessionBindPointRequirementARM(const VkDataGraphPipelineSessionBindPointRequirementARM* in_struct,
+                                                           PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkDataGraphPipelineSessionBindPointRequirementARM(const safe_VkDataGraphPipelineSessionBindPointRequirementARM& copy_src);
+    safe_VkDataGraphPipelineSessionBindPointRequirementARM& operator=(
+        const safe_VkDataGraphPipelineSessionBindPointRequirementARM& copy_src);
+    safe_VkDataGraphPipelineSessionBindPointRequirementARM();
+    ~safe_VkDataGraphPipelineSessionBindPointRequirementARM();
+    void initialize(const VkDataGraphPipelineSessionBindPointRequirementARM* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkDataGraphPipelineSessionBindPointRequirementARM* copy_src, PNextCopyState* copy_state = {});
+    VkDataGraphPipelineSessionBindPointRequirementARM* ptr() {
+        return reinterpret_cast<VkDataGraphPipelineSessionBindPointRequirementARM*>(this);
+    }
+    VkDataGraphPipelineSessionBindPointRequirementARM const* ptr() const {
+        return reinterpret_cast<VkDataGraphPipelineSessionBindPointRequirementARM const*>(this);
+    }
+};
+struct safe_VkDataGraphPipelineSessionMemoryRequirementsInfoARM {
+    VkStructureType sType;
+    const void* pNext{};
+    VkDataGraphPipelineSessionARM session;
+    VkDataGraphPipelineSessionBindPointARM bindPoint;
+    uint32_t objectIndex;
+
+    safe_VkDataGraphPipelineSessionMemoryRequirementsInfoARM(const VkDataGraphPipelineSessionMemoryRequirementsInfoARM* in_struct,
+                                                             PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkDataGraphPipelineSessionMemoryRequirementsInfoARM(
+        const safe_VkDataGraphPipelineSessionMemoryRequirementsInfoARM& copy_src);
+    safe_VkDataGraphPipelineSessionMemoryRequirementsInfoARM& operator=(
+        const safe_VkDataGraphPipelineSessionMemoryRequirementsInfoARM& copy_src);
+    safe_VkDataGraphPipelineSessionMemoryRequirementsInfoARM();
+    ~safe_VkDataGraphPipelineSessionMemoryRequirementsInfoARM();
+    void initialize(const VkDataGraphPipelineSessionMemoryRequirementsInfoARM* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkDataGraphPipelineSessionMemoryRequirementsInfoARM* copy_src, PNextCopyState* copy_state = {});
+    VkDataGraphPipelineSessionMemoryRequirementsInfoARM* ptr() {
+        return reinterpret_cast<VkDataGraphPipelineSessionMemoryRequirementsInfoARM*>(this);
+    }
+    VkDataGraphPipelineSessionMemoryRequirementsInfoARM const* ptr() const {
+        return reinterpret_cast<VkDataGraphPipelineSessionMemoryRequirementsInfoARM const*>(this);
+    }
+};
+struct safe_VkBindDataGraphPipelineSessionMemoryInfoARM {
+    VkStructureType sType;
+    const void* pNext{};
+    VkDataGraphPipelineSessionARM session;
+    VkDataGraphPipelineSessionBindPointARM bindPoint;
+    uint32_t objectIndex;
+    VkDeviceMemory memory;
+    VkDeviceSize memoryOffset;
+
+    safe_VkBindDataGraphPipelineSessionMemoryInfoARM(const VkBindDataGraphPipelineSessionMemoryInfoARM* in_struct,
+                                                     PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkBindDataGraphPipelineSessionMemoryInfoARM(const safe_VkBindDataGraphPipelineSessionMemoryInfoARM& copy_src);
+    safe_VkBindDataGraphPipelineSessionMemoryInfoARM& operator=(const safe_VkBindDataGraphPipelineSessionMemoryInfoARM& copy_src);
+    safe_VkBindDataGraphPipelineSessionMemoryInfoARM();
+    ~safe_VkBindDataGraphPipelineSessionMemoryInfoARM();
+    void initialize(const VkBindDataGraphPipelineSessionMemoryInfoARM* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkBindDataGraphPipelineSessionMemoryInfoARM* copy_src, PNextCopyState* copy_state = {});
+    VkBindDataGraphPipelineSessionMemoryInfoARM* ptr() {
+        return reinterpret_cast<VkBindDataGraphPipelineSessionMemoryInfoARM*>(this);
+    }
+    VkBindDataGraphPipelineSessionMemoryInfoARM const* ptr() const {
+        return reinterpret_cast<VkBindDataGraphPipelineSessionMemoryInfoARM const*>(this);
+    }
+};
+struct safe_VkDataGraphPipelineInfoARM {
+    VkStructureType sType;
+    const void* pNext{};
+    VkPipeline dataGraphPipeline;
+
+    safe_VkDataGraphPipelineInfoARM(const VkDataGraphPipelineInfoARM* in_struct, PNextCopyState* copy_state = {},
+                                    bool copy_pnext = true);
+    safe_VkDataGraphPipelineInfoARM(const safe_VkDataGraphPipelineInfoARM& copy_src);
+    safe_VkDataGraphPipelineInfoARM& operator=(const safe_VkDataGraphPipelineInfoARM& copy_src);
+    safe_VkDataGraphPipelineInfoARM();
+    ~safe_VkDataGraphPipelineInfoARM();
+    void initialize(const VkDataGraphPipelineInfoARM* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkDataGraphPipelineInfoARM* copy_src, PNextCopyState* copy_state = {});
+    VkDataGraphPipelineInfoARM* ptr() { return reinterpret_cast<VkDataGraphPipelineInfoARM*>(this); }
+    VkDataGraphPipelineInfoARM const* ptr() const { return reinterpret_cast<VkDataGraphPipelineInfoARM const*>(this); }
+};
+struct safe_VkDataGraphPipelinePropertyQueryResultARM {
+    VkStructureType sType;
+    const void* pNext{};
+    VkDataGraphPipelinePropertyARM property;
+    VkBool32 isText;
+    size_t dataSize;
+    void* pData{};
+
+    safe_VkDataGraphPipelinePropertyQueryResultARM(const VkDataGraphPipelinePropertyQueryResultARM* in_struct,
+                                                   PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkDataGraphPipelinePropertyQueryResultARM(const safe_VkDataGraphPipelinePropertyQueryResultARM& copy_src);
+    safe_VkDataGraphPipelinePropertyQueryResultARM& operator=(const safe_VkDataGraphPipelinePropertyQueryResultARM& copy_src);
+    safe_VkDataGraphPipelinePropertyQueryResultARM();
+    ~safe_VkDataGraphPipelinePropertyQueryResultARM();
+    void initialize(const VkDataGraphPipelinePropertyQueryResultARM* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkDataGraphPipelinePropertyQueryResultARM* copy_src, PNextCopyState* copy_state = {});
+    VkDataGraphPipelinePropertyQueryResultARM* ptr() { return reinterpret_cast<VkDataGraphPipelinePropertyQueryResultARM*>(this); }
+    VkDataGraphPipelinePropertyQueryResultARM const* ptr() const {
+        return reinterpret_cast<VkDataGraphPipelinePropertyQueryResultARM const*>(this);
+    }
+};
+struct safe_VkDataGraphPipelineIdentifierCreateInfoARM {
+    VkStructureType sType;
+    const void* pNext{};
+    uint32_t identifierSize;
+    const uint8_t* pIdentifier{};
+
+    safe_VkDataGraphPipelineIdentifierCreateInfoARM(const VkDataGraphPipelineIdentifierCreateInfoARM* in_struct,
+                                                    PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkDataGraphPipelineIdentifierCreateInfoARM(const safe_VkDataGraphPipelineIdentifierCreateInfoARM& copy_src);
+    safe_VkDataGraphPipelineIdentifierCreateInfoARM& operator=(const safe_VkDataGraphPipelineIdentifierCreateInfoARM& copy_src);
+    safe_VkDataGraphPipelineIdentifierCreateInfoARM();
+    ~safe_VkDataGraphPipelineIdentifierCreateInfoARM();
+    void initialize(const VkDataGraphPipelineIdentifierCreateInfoARM* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkDataGraphPipelineIdentifierCreateInfoARM* copy_src, PNextCopyState* copy_state = {});
+    VkDataGraphPipelineIdentifierCreateInfoARM* ptr() {
+        return reinterpret_cast<VkDataGraphPipelineIdentifierCreateInfoARM*>(this);
+    }
+    VkDataGraphPipelineIdentifierCreateInfoARM const* ptr() const {
+        return reinterpret_cast<VkDataGraphPipelineIdentifierCreateInfoARM const*>(this);
+    }
+};
+struct safe_VkDataGraphPipelineDispatchInfoARM {
+    VkStructureType sType;
+    void* pNext{};
+    VkDataGraphPipelineDispatchFlagsARM flags;
+
+    safe_VkDataGraphPipelineDispatchInfoARM(const VkDataGraphPipelineDispatchInfoARM* in_struct, PNextCopyState* copy_state = {},
+                                            bool copy_pnext = true);
+    safe_VkDataGraphPipelineDispatchInfoARM(const safe_VkDataGraphPipelineDispatchInfoARM& copy_src);
+    safe_VkDataGraphPipelineDispatchInfoARM& operator=(const safe_VkDataGraphPipelineDispatchInfoARM& copy_src);
+    safe_VkDataGraphPipelineDispatchInfoARM();
+    ~safe_VkDataGraphPipelineDispatchInfoARM();
+    void initialize(const VkDataGraphPipelineDispatchInfoARM* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkDataGraphPipelineDispatchInfoARM* copy_src, PNextCopyState* copy_state = {});
+    VkDataGraphPipelineDispatchInfoARM* ptr() { return reinterpret_cast<VkDataGraphPipelineDispatchInfoARM*>(this); }
+    VkDataGraphPipelineDispatchInfoARM const* ptr() const {
+        return reinterpret_cast<VkDataGraphPipelineDispatchInfoARM const*>(this);
+    }
+};
+struct safe_VkQueueFamilyDataGraphPropertiesARM {
+    VkStructureType sType;
+    const void* pNext{};
+    VkPhysicalDeviceDataGraphProcessingEngineARM engine;
+    VkPhysicalDeviceDataGraphOperationSupportARM operation;
+
+    safe_VkQueueFamilyDataGraphPropertiesARM(const VkQueueFamilyDataGraphPropertiesARM* in_struct, PNextCopyState* copy_state = {},
+                                             bool copy_pnext = true);
+    safe_VkQueueFamilyDataGraphPropertiesARM(const safe_VkQueueFamilyDataGraphPropertiesARM& copy_src);
+    safe_VkQueueFamilyDataGraphPropertiesARM& operator=(const safe_VkQueueFamilyDataGraphPropertiesARM& copy_src);
+    safe_VkQueueFamilyDataGraphPropertiesARM();
+    ~safe_VkQueueFamilyDataGraphPropertiesARM();
+    void initialize(const VkQueueFamilyDataGraphPropertiesARM* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkQueueFamilyDataGraphPropertiesARM* copy_src, PNextCopyState* copy_state = {});
+    VkQueueFamilyDataGraphPropertiesARM* ptr() { return reinterpret_cast<VkQueueFamilyDataGraphPropertiesARM*>(this); }
+    VkQueueFamilyDataGraphPropertiesARM const* ptr() const {
+        return reinterpret_cast<VkQueueFamilyDataGraphPropertiesARM const*>(this);
+    }
+};
+struct safe_VkDataGraphProcessingEngineCreateInfoARM {
+    VkStructureType sType;
+    const void* pNext{};
+    uint32_t processingEngineCount;
+    VkPhysicalDeviceDataGraphProcessingEngineARM* pProcessingEngines{};
+
+    safe_VkDataGraphProcessingEngineCreateInfoARM(const VkDataGraphProcessingEngineCreateInfoARM* in_struct,
+                                                  PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkDataGraphProcessingEngineCreateInfoARM(const safe_VkDataGraphProcessingEngineCreateInfoARM& copy_src);
+    safe_VkDataGraphProcessingEngineCreateInfoARM& operator=(const safe_VkDataGraphProcessingEngineCreateInfoARM& copy_src);
+    safe_VkDataGraphProcessingEngineCreateInfoARM();
+    ~safe_VkDataGraphProcessingEngineCreateInfoARM();
+    void initialize(const VkDataGraphProcessingEngineCreateInfoARM* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkDataGraphProcessingEngineCreateInfoARM* copy_src, PNextCopyState* copy_state = {});
+    VkDataGraphProcessingEngineCreateInfoARM* ptr() { return reinterpret_cast<VkDataGraphProcessingEngineCreateInfoARM*>(this); }
+    VkDataGraphProcessingEngineCreateInfoARM const* ptr() const {
+        return reinterpret_cast<VkDataGraphProcessingEngineCreateInfoARM const*>(this);
+    }
+};
+struct safe_VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM {
+    VkStructureType sType;
+    const void* pNext{};
+    uint32_t queueFamilyIndex;
+    VkPhysicalDeviceDataGraphProcessingEngineTypeARM engineType;
+
+    safe_VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM(
+        const VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM* in_struct, PNextCopyState* copy_state = {},
+        bool copy_pnext = true);
+    safe_VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM(
+        const safe_VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM& copy_src);
+    safe_VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM& operator=(
+        const safe_VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM& copy_src);
+    safe_VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM();
+    ~safe_VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM();
+    void initialize(const VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM* copy_src,
+                    PNextCopyState* copy_state = {});
+    VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM* ptr() {
+        return reinterpret_cast<VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM*>(this);
+    }
+    VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM const* ptr() const {
+        return reinterpret_cast<VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM const*>(this);
+    }
+};
+struct safe_VkQueueFamilyDataGraphProcessingEnginePropertiesARM {
+    VkStructureType sType;
+    const void* pNext{};
+    VkExternalSemaphoreHandleTypeFlags foreignSemaphoreHandleTypes;
+    VkExternalMemoryHandleTypeFlags foreignMemoryHandleTypes;
+
+    safe_VkQueueFamilyDataGraphProcessingEnginePropertiesARM(const VkQueueFamilyDataGraphProcessingEnginePropertiesARM* in_struct,
+                                                             PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkQueueFamilyDataGraphProcessingEnginePropertiesARM(
+        const safe_VkQueueFamilyDataGraphProcessingEnginePropertiesARM& copy_src);
+    safe_VkQueueFamilyDataGraphProcessingEnginePropertiesARM& operator=(
+        const safe_VkQueueFamilyDataGraphProcessingEnginePropertiesARM& copy_src);
+    safe_VkQueueFamilyDataGraphProcessingEnginePropertiesARM();
+    ~safe_VkQueueFamilyDataGraphProcessingEnginePropertiesARM();
+    void initialize(const VkQueueFamilyDataGraphProcessingEnginePropertiesARM* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkQueueFamilyDataGraphProcessingEnginePropertiesARM* copy_src, PNextCopyState* copy_state = {});
+    VkQueueFamilyDataGraphProcessingEnginePropertiesARM* ptr() {
+        return reinterpret_cast<VkQueueFamilyDataGraphProcessingEnginePropertiesARM*>(this);
+    }
+    VkQueueFamilyDataGraphProcessingEnginePropertiesARM const* ptr() const {
+        return reinterpret_cast<VkQueueFamilyDataGraphProcessingEnginePropertiesARM const*>(this);
+    }
+};
+struct safe_VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM {
+    VkStructureType sType;
+    const void* pNext{};
+    uint32_t dimension;
+    uint32_t zeroCount;
+    uint32_t groupSize;
+
+    safe_VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM(
+        const VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM* in_struct, PNextCopyState* copy_state = {},
+        bool copy_pnext = true);
+    safe_VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM(
+        const safe_VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM& copy_src);
+    safe_VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM& operator=(
+        const safe_VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM& copy_src);
+    safe_VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM();
+    ~safe_VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM();
+    void initialize(const VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM* in_struct,
+                    PNextCopyState* copy_state = {});
+    void initialize(const safe_VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM* copy_src,
+                    PNextCopyState* copy_state = {});
+    VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM* ptr() {
+        return reinterpret_cast<VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM*>(this);
+    }
+    VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM const* ptr() const {
+        return reinterpret_cast<VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM const*>(this);
+    }
+};
 struct safe_VkPhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM {
     VkStructureType sType;
     void* pNext{};
