@@ -328,7 +328,7 @@ std::string LayerSettings::GetEnvSetting(const char *pSettingName) {
 
         for (int trim_index = TRIM_FIRST; trim_index <= TRIM_LAST; ++trim_index) {
             const std::string &env_name =
-                GetEnvSettingName(cur_layer_name, this->prefix.c_str(), pSettingName, static_cast<TrimMode>(trim_index));
+                GetEnvSettingName(cur_layer_name, nullptr, pSettingName, static_cast<TrimMode>(trim_index));
             std::string result = GetEnvironment(env_name.c_str());
             if (!result.empty()) {
                 return result;
