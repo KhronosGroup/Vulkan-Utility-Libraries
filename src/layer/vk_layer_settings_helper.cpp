@@ -282,3 +282,22 @@ VkResult vkuGetUnknownSettings(const VkLayerSettingsCreateInfoEXT *pFirstCreateI
 
     return result;
 }
+
+VkResult vkuGetUnknownSettings(VkuLayerSettingSet layerSettingSet, uint32_t layerSettingsCount, const char **pLayerSettings,
+                               const VkLayerSettingsCreateInfoEXT *pFirstCreateInfo, std::vector<const char *> &unknownSettings) {
+    uint32_t unknown_setting_count = 0;
+    VkResult result = vkuGatherUnknownSettings(layerSettingSet, layerSettingsCount, pLayerSettings, pFirstCreateInfo,
+                                               &unknown_setting_count, nullptr);
+    if (result != VK_SUCCESS) {
+        return result;
+    }
+
+    if (unknown_setting_count > 0) {
+        unknownSettings.resize(unknown_setting_count);
+
+        result = vkuGatherUnknownSettings(layerSettingSet, layerSettingsCount, pLayerSettings, pFirstCreateInfo,
+                                          &unknown_setting_count, &unknownSettings[0]);
+    }
+
+    return result;
+}

@@ -290,6 +290,11 @@ std::vector<std::string> &LayerSettings::GetSettingCache(const std::string &sett
     return this->string_setting_cache[settingName];
 }
 
+const std::string &LayerSettings::GetLayerName() const {
+    assert(!this->layer_name.empty());
+    return this->layer_name;
+}
+
 bool LayerSettings::HasEnvSetting(const char *pSettingName) {
     assert(pSettingName != nullptr);
 
