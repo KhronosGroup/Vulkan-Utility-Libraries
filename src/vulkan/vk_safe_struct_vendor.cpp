@@ -21887,6 +21887,60 @@ void safe_VkPhysicalDevicePresentMeteringFeaturesNV::initialize(const safe_VkPhy
 }
 #endif  // VK_ENABLE_BETA_EXTENSIONS
 
+safe_VkPhysicalDevicePipelineCacheIncrementalModeFeaturesSEC::safe_VkPhysicalDevicePipelineCacheIncrementalModeFeaturesSEC(
+    const VkPhysicalDevicePipelineCacheIncrementalModeFeaturesSEC* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
+    bool copy_pnext)
+    : sType(in_struct->sType), pipelineCacheIncrementalMode(in_struct->pipelineCacheIncrementalMode) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDevicePipelineCacheIncrementalModeFeaturesSEC::safe_VkPhysicalDevicePipelineCacheIncrementalModeFeaturesSEC()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_CACHE_INCREMENTAL_MODE_FEATURES_SEC),
+      pNext(nullptr),
+      pipelineCacheIncrementalMode() {}
+
+safe_VkPhysicalDevicePipelineCacheIncrementalModeFeaturesSEC::safe_VkPhysicalDevicePipelineCacheIncrementalModeFeaturesSEC(
+    const safe_VkPhysicalDevicePipelineCacheIncrementalModeFeaturesSEC& copy_src) {
+    sType = copy_src.sType;
+    pipelineCacheIncrementalMode = copy_src.pipelineCacheIncrementalMode;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDevicePipelineCacheIncrementalModeFeaturesSEC&
+safe_VkPhysicalDevicePipelineCacheIncrementalModeFeaturesSEC::operator=(
+    const safe_VkPhysicalDevicePipelineCacheIncrementalModeFeaturesSEC& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    pipelineCacheIncrementalMode = copy_src.pipelineCacheIncrementalMode;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDevicePipelineCacheIncrementalModeFeaturesSEC::~safe_VkPhysicalDevicePipelineCacheIncrementalModeFeaturesSEC() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkPhysicalDevicePipelineCacheIncrementalModeFeaturesSEC::initialize(
+    const VkPhysicalDevicePipelineCacheIncrementalModeFeaturesSEC* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    pipelineCacheIncrementalMode = in_struct->pipelineCacheIncrementalMode;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDevicePipelineCacheIncrementalModeFeaturesSEC::initialize(
+    const safe_VkPhysicalDevicePipelineCacheIncrementalModeFeaturesSEC* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    pipelineCacheIncrementalMode = copy_src->pipelineCacheIncrementalMode;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
 }  // namespace vku
 
 // NOLINTEND

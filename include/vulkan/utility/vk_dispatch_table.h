@@ -492,6 +492,7 @@ typedef struct VkuDeviceDispatchTable_ {
     PFN_vkGetPipelineKeyKHR GetPipelineKeyKHR;
     PFN_vkGetPipelineBinaryDataKHR GetPipelineBinaryDataKHR;
     PFN_vkReleaseCapturedPipelineDataKHR ReleaseCapturedPipelineDataKHR;
+    PFN_vkReleaseSwapchainImagesKHR ReleaseSwapchainImagesKHR;
     PFN_vkCmdSetLineStippleKHR CmdSetLineStippleKHR;
     PFN_vkGetCalibratedTimestampsKHR GetCalibratedTimestampsKHR;
     PFN_vkCmdBindDescriptorSets2KHR CmdBindDescriptorSets2KHR;
@@ -1164,6 +1165,7 @@ static inline void vkuInitDeviceDispatchTable(VkDevice device, VkuDeviceDispatch
     table->GetPipelineKeyKHR = (PFN_vkGetPipelineKeyKHR)gdpa(device, "vkGetPipelineKeyKHR");
     table->GetPipelineBinaryDataKHR = (PFN_vkGetPipelineBinaryDataKHR)gdpa(device, "vkGetPipelineBinaryDataKHR");
     table->ReleaseCapturedPipelineDataKHR = (PFN_vkReleaseCapturedPipelineDataKHR)gdpa(device, "vkReleaseCapturedPipelineDataKHR");
+    table->ReleaseSwapchainImagesKHR = (PFN_vkReleaseSwapchainImagesKHR)gdpa(device, "vkReleaseSwapchainImagesKHR");
     table->CmdSetLineStippleKHR = (PFN_vkCmdSetLineStippleKHR)gdpa(device, "vkCmdSetLineStippleKHR");
     table->GetCalibratedTimestampsKHR = (PFN_vkGetCalibratedTimestampsKHR)gdpa(device, "vkGetCalibratedTimestampsKHR");
     table->CmdBindDescriptorSets2KHR = (PFN_vkCmdBindDescriptorSets2KHR)gdpa(device, "vkCmdBindDescriptorSets2KHR");
