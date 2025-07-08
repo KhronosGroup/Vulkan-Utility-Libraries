@@ -568,12 +568,17 @@ TEST(test_layer_setting_cpp, vkuGetUnknownSettings_legacy) {
     const char* setting_names[] = {"int32_value", "int64_value", "uint32_value", "uint64_value", "float_value", "double_value"};
     const std::uint32_t setting_name_count = static_cast<std::uint32_t>(std::size(setting_names));
 
+    VkuLayerSettingSet layerSettingSet = VK_NULL_HANDLE;
+    vkuCreateLayerSettingSet("VK_LAYER_LUNARG_test", &layer_settings_create_info, nullptr, nullptr, &layerSettingSet);
+
     std::vector<const char*> unknown_settings;
-    vkuGetUnknownSettings(&layer_settings_create_info, setting_name_count, setting_names, unknown_settings);
+    vkuGetUnknownSettings(layerSettingSet, setting_name_count, setting_names, &layer_settings_create_info, unknown_settings);
     EXPECT_EQ(2, unknown_settings.size());
 
     EXPECT_STREQ("bool_value", unknown_settings[0]);
     EXPECT_STREQ("frameset_value", unknown_settings[1]);
+
+    vkuDestroyLayerSettingSet(layerSettingSet, nullptr);
 }
 
 TEST(test_layer_setting_cpp, vkuGetUnknownSettings) {

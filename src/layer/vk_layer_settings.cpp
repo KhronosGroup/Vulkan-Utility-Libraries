@@ -690,41 +690,9 @@ static bool vkuHasSetting(uint32_t settingsCount, const char **pSettings, const 
     return false;
 }
 
-VkResult vkuGetUnknownSettings(const VkLayerSettingsCreateInfoEXT *pCreateInfo, uint32_t settingsCount, const char **pSettings,
-                               uint32_t *pUnknownSettingCount, const char **pUnknownSettings) {
-    assert(pUnknownSettingCount != nullptr);
-
-    const VkLayerSettingsCreateInfoEXT *current_create_info = pCreateInfo;
-
-    uint32_t current_unknown_setting_count = 0;
-    while (current_create_info != nullptr) {
-        for (uint32_t info_index = 0, info_count = current_create_info->settingCount; info_index < info_count; ++info_index) {
-            const char *current_setting_name = current_create_info->pSettings[info_index].pSettingName;
-            if (!vkuHasSetting(settingsCount, pSettings, current_setting_name)) {
-                if (pUnknownSettings != nullptr && current_unknown_setting_count < *pUnknownSettingCount) {
-                    pUnknownSettings[current_unknown_setting_count] = current_setting_name;
-                }
-
-                ++current_unknown_setting_count;
-            }
-        }
-
-        current_create_info = vkuNextLayerSettingsCreateInfo(current_create_info);
-    }
-
-    if (pUnknownSettings == nullptr) {
-        *pUnknownSettingCount = current_unknown_setting_count;
-        return VK_SUCCESS;
-    } else if (current_unknown_setting_count > *pUnknownSettingCount) {
-        return VK_INCOMPLETE;
-    }
-
-    return VK_SUCCESS;
-}
-
-VkResult vkuGatherUnknownSettings(VkuLayerSettingSet layerSettingSet, uint32_t layerSettingsCount, const char **pLayerSettings,
-                                  const VkLayerSettingsCreateInfoEXT *pCreateInfo, uint32_t *pUnknownSettingCount,
-                                  const char **pUnknownSettings) {
+VkResult vkuGetUnknownSettings(VkuLayerSettingSet layerSettingSet, uint32_t layerSettingsCount, const char **pLayerSettings,
+                               const VkLayerSettingsCreateInfoEXT *pCreateInfo, uint32_t *pUnknownSettingCount,
+                               const char **pUnknownSettings) {
     assert(pUnknownSettingCount != nullptr);
 
     if (layerSettingSet == VK_NULL_HANDLE) {
