@@ -54,6 +54,8 @@ static inline const char* string_VkResult(VkResult input_value) {
             return "VK_ERROR_FRAGMENTED_POOL";
         case VK_ERROR_UNKNOWN:
             return "VK_ERROR_UNKNOWN";
+        case VK_ERROR_VALIDATION_FAILED:
+            return "VK_ERROR_VALIDATION_FAILED";
         case VK_ERROR_OUT_OF_POOL_MEMORY:
             return "VK_ERROR_OUT_OF_POOL_MEMORY";
         case VK_ERROR_INVALID_EXTERNAL_HANDLE:
@@ -76,8 +78,6 @@ static inline const char* string_VkResult(VkResult input_value) {
             return "VK_ERROR_OUT_OF_DATE_KHR";
         case VK_ERROR_INCOMPATIBLE_DISPLAY_KHR:
             return "VK_ERROR_INCOMPATIBLE_DISPLAY_KHR";
-        case VK_ERROR_VALIDATION_FAILED_EXT:
-            return "VK_ERROR_VALIDATION_FAILED_EXT";
         case VK_ERROR_INVALID_SHADER_NV:
             return "VK_ERROR_INVALID_SHADER_NV";
         case VK_ERROR_IMAGE_USAGE_NOT_SUPPORTED_KHR:
@@ -9811,6 +9811,8 @@ static inline const char* string_VkBuildAccelerationStructureFlagBitsKHR(VkBuild
 #endif  // VK_ENABLE_BETA_EXTENSIONS
         case VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_DATA_ACCESS_BIT_KHR:
             return "VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_DATA_ACCESS_BIT_KHR";
+        case VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_CLUSTER_OPACITY_MICROMAPS_BIT_NV:
+            return "VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_CLUSTER_OPACITY_MICROMAPS_BIT_NV";
         default:
             return "Unhandled VkBuildAccelerationStructureFlagBitsKHR";
     }
