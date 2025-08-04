@@ -1834,6 +1834,12 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_ANTI_LAG_DATA_AMD";
         case VK_STRUCTURE_TYPE_ANTI_LAG_PRESENTATION_INFO_AMD:
             return "VK_STRUCTURE_TYPE_ANTI_LAG_PRESENTATION_INFO_AMD";
+#ifdef VK_ENABLE_BETA_EXTENSIONS
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DENSE_GEOMETRY_FORMAT_FEATURES_AMDX:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DENSE_GEOMETRY_FORMAT_FEATURES_AMDX";
+        case VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_DENSE_GEOMETRY_FORMAT_TRIANGLES_DATA_AMDX:
+            return "VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_DENSE_GEOMETRY_FORMAT_TRIANGLES_DATA_AMDX";
+#endif  // VK_ENABLE_BETA_EXTENSIONS
         case VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_PRESENT_ID_2_KHR:
             return "VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_PRESENT_ID_2_KHR";
         case VK_STRUCTURE_TYPE_PRESENT_ID_2_KHR:
@@ -4672,6 +4678,10 @@ static inline const char* string_VkGeometryTypeKHR(VkGeometryTypeKHR input_value
             return "VK_GEOMETRY_TYPE_SPHERES_NV";
         case VK_GEOMETRY_TYPE_LINEAR_SWEPT_SPHERES_NV:
             return "VK_GEOMETRY_TYPE_LINEAR_SWEPT_SPHERES_NV";
+#ifdef VK_ENABLE_BETA_EXTENSIONS
+        case VK_GEOMETRY_TYPE_DENSE_GEOMETRY_FORMAT_TRIANGLES_AMDX:
+            return "VK_GEOMETRY_TYPE_DENSE_GEOMETRY_FORMAT_TRIANGLES_AMDX";
+#endif  // VK_ENABLE_BETA_EXTENSIONS
         default:
             return "Unhandled VkGeometryTypeKHR";
     }
@@ -5228,6 +5238,16 @@ static inline const char* string_VkAntiLagStageAMD(VkAntiLagStageAMD input_value
             return "Unhandled VkAntiLagStageAMD";
     }
 }
+#ifdef VK_ENABLE_BETA_EXTENSIONS
+static inline const char* string_VkCompressedTriangleFormatAMDX(VkCompressedTriangleFormatAMDX input_value) {
+    switch (input_value) {
+        case VK_COMPRESSED_TRIANGLE_FORMAT_DGF1_AMDX:
+            return "VK_COMPRESSED_TRIANGLE_FORMAT_DGF1_AMDX";
+        default:
+            return "Unhandled VkCompressedTriangleFormatAMDX";
+    }
+}
+#endif  // VK_ENABLE_BETA_EXTENSIONS
 static inline const char* string_VkShaderCodeTypeEXT(VkShaderCodeTypeEXT input_value) {
     switch (input_value) {
         case VK_SHADER_CODE_TYPE_BINARY_EXT:
@@ -8203,6 +8223,9 @@ static inline const char* string_VkBufferUsageFlagBits2(uint64_t input_value) {
     if (input_value == VK_BUFFER_USAGE_2_PUSH_DESCRIPTORS_DESCRIPTOR_BUFFER_BIT_EXT) return "VK_BUFFER_USAGE_2_PUSH_DESCRIPTORS_DESCRIPTOR_BUFFER_BIT_EXT";
     if (input_value == VK_BUFFER_USAGE_2_MICROMAP_BUILD_INPUT_READ_ONLY_BIT_EXT) return "VK_BUFFER_USAGE_2_MICROMAP_BUILD_INPUT_READ_ONLY_BIT_EXT";
     if (input_value == VK_BUFFER_USAGE_2_MICROMAP_STORAGE_BIT_EXT) return "VK_BUFFER_USAGE_2_MICROMAP_STORAGE_BIT_EXT";
+#ifdef VK_ENABLE_BETA_EXTENSIONS
+    if (input_value == VK_BUFFER_USAGE_2_COMPRESSED_DATA_DGF1_BIT_AMDX) return "VK_BUFFER_USAGE_2_COMPRESSED_DATA_DGF1_BIT_AMDX";
+#endif  // VK_ENABLE_BETA_EXTENSIONS
     if (input_value == VK_BUFFER_USAGE_2_DATA_GRAPH_FOREIGN_DESCRIPTOR_BIT_ARM) return "VK_BUFFER_USAGE_2_DATA_GRAPH_FOREIGN_DESCRIPTOR_BIT_ARM";
     if (input_value == VK_BUFFER_USAGE_2_TILE_MEMORY_BIT_QCOM) return "VK_BUFFER_USAGE_2_TILE_MEMORY_BIT_QCOM";
     if (input_value == VK_BUFFER_USAGE_2_PREPROCESS_BUFFER_BIT_EXT) return "VK_BUFFER_USAGE_2_PREPROCESS_BUFFER_BIT_EXT";
@@ -11801,10 +11824,10 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
             return "VkPhysicalDeviceLayeredApiPropertiesListKHR";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_API_VULKAN_PROPERTIES_KHR:
             return "VkPhysicalDeviceLayeredApiVulkanPropertiesKHR";
-        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_8_FEATURES_KHR:
-            return "VkPhysicalDeviceMaintenance8FeaturesKHR";
         case VK_STRUCTURE_TYPE_MEMORY_BARRIER_ACCESS_FLAGS_3_KHR:
             return "VkMemoryBarrierAccessFlags3KHR";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_8_FEATURES_KHR:
+            return "VkPhysicalDeviceMaintenance8FeaturesKHR";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_9_FEATURES_KHR:
             return "VkPhysicalDeviceMaintenance9FeaturesKHR";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_9_PROPERTIES_KHR:
@@ -12699,6 +12722,12 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
             return "VkAntiLagPresentationInfoAMD";
         case VK_STRUCTURE_TYPE_ANTI_LAG_DATA_AMD:
             return "VkAntiLagDataAMD";
+#ifdef VK_ENABLE_BETA_EXTENSIONS
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DENSE_GEOMETRY_FORMAT_FEATURES_AMDX:
+            return "VkPhysicalDeviceDenseGeometryFormatFeaturesAMDX";
+        case VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_DENSE_GEOMETRY_FORMAT_TRIANGLES_DATA_AMDX:
+            return "VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX";
+#endif  // VK_ENABLE_BETA_EXTENSIONS
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_OBJECT_FEATURES_EXT:
             return "VkPhysicalDeviceShaderObjectFeaturesEXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_OBJECT_PROPERTIES_EXT:

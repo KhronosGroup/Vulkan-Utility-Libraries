@@ -16307,54 +16307,6 @@ void safe_VkPhysicalDeviceLayeredApiVulkanPropertiesKHR::initialize(
     pNext = SafePnextCopy(copy_src->pNext);
 }
 
-safe_VkPhysicalDeviceMaintenance8FeaturesKHR::safe_VkPhysicalDeviceMaintenance8FeaturesKHR(
-    const VkPhysicalDeviceMaintenance8FeaturesKHR* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
-    : sType(in_struct->sType), maintenance8(in_struct->maintenance8) {
-    if (copy_pnext) {
-        pNext = SafePnextCopy(in_struct->pNext, copy_state);
-    }
-}
-
-safe_VkPhysicalDeviceMaintenance8FeaturesKHR::safe_VkPhysicalDeviceMaintenance8FeaturesKHR()
-    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_8_FEATURES_KHR), pNext(nullptr), maintenance8() {}
-
-safe_VkPhysicalDeviceMaintenance8FeaturesKHR::safe_VkPhysicalDeviceMaintenance8FeaturesKHR(
-    const safe_VkPhysicalDeviceMaintenance8FeaturesKHR& copy_src) {
-    sType = copy_src.sType;
-    maintenance8 = copy_src.maintenance8;
-    pNext = SafePnextCopy(copy_src.pNext);
-}
-
-safe_VkPhysicalDeviceMaintenance8FeaturesKHR& safe_VkPhysicalDeviceMaintenance8FeaturesKHR::operator=(
-    const safe_VkPhysicalDeviceMaintenance8FeaturesKHR& copy_src) {
-    if (&copy_src == this) return *this;
-
-    FreePnextChain(pNext);
-
-    sType = copy_src.sType;
-    maintenance8 = copy_src.maintenance8;
-    pNext = SafePnextCopy(copy_src.pNext);
-
-    return *this;
-}
-
-safe_VkPhysicalDeviceMaintenance8FeaturesKHR::~safe_VkPhysicalDeviceMaintenance8FeaturesKHR() { FreePnextChain(pNext); }
-
-void safe_VkPhysicalDeviceMaintenance8FeaturesKHR::initialize(const VkPhysicalDeviceMaintenance8FeaturesKHR* in_struct,
-                                                              [[maybe_unused]] PNextCopyState* copy_state) {
-    FreePnextChain(pNext);
-    sType = in_struct->sType;
-    maintenance8 = in_struct->maintenance8;
-    pNext = SafePnextCopy(in_struct->pNext, copy_state);
-}
-
-void safe_VkPhysicalDeviceMaintenance8FeaturesKHR::initialize(const safe_VkPhysicalDeviceMaintenance8FeaturesKHR* copy_src,
-                                                              [[maybe_unused]] PNextCopyState* copy_state) {
-    sType = copy_src->sType;
-    maintenance8 = copy_src->maintenance8;
-    pNext = SafePnextCopy(copy_src->pNext);
-}
-
 safe_VkMemoryBarrierAccessFlags3KHR::safe_VkMemoryBarrierAccessFlags3KHR(const VkMemoryBarrierAccessFlags3KHR* in_struct,
                                                                          [[maybe_unused]] PNextCopyState* copy_state,
                                                                          bool copy_pnext)
@@ -16404,6 +16356,54 @@ void safe_VkMemoryBarrierAccessFlags3KHR::initialize(const safe_VkMemoryBarrierA
     sType = copy_src->sType;
     srcAccessMask3 = copy_src->srcAccessMask3;
     dstAccessMask3 = copy_src->dstAccessMask3;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkPhysicalDeviceMaintenance8FeaturesKHR::safe_VkPhysicalDeviceMaintenance8FeaturesKHR(
+    const VkPhysicalDeviceMaintenance8FeaturesKHR* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), maintenance8(in_struct->maintenance8) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceMaintenance8FeaturesKHR::safe_VkPhysicalDeviceMaintenance8FeaturesKHR()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_8_FEATURES_KHR), pNext(nullptr), maintenance8() {}
+
+safe_VkPhysicalDeviceMaintenance8FeaturesKHR::safe_VkPhysicalDeviceMaintenance8FeaturesKHR(
+    const safe_VkPhysicalDeviceMaintenance8FeaturesKHR& copy_src) {
+    sType = copy_src.sType;
+    maintenance8 = copy_src.maintenance8;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceMaintenance8FeaturesKHR& safe_VkPhysicalDeviceMaintenance8FeaturesKHR::operator=(
+    const safe_VkPhysicalDeviceMaintenance8FeaturesKHR& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    maintenance8 = copy_src.maintenance8;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceMaintenance8FeaturesKHR::~safe_VkPhysicalDeviceMaintenance8FeaturesKHR() { FreePnextChain(pNext); }
+
+void safe_VkPhysicalDeviceMaintenance8FeaturesKHR::initialize(const VkPhysicalDeviceMaintenance8FeaturesKHR* in_struct,
+                                                              [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    maintenance8 = in_struct->maintenance8;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceMaintenance8FeaturesKHR::initialize(const safe_VkPhysicalDeviceMaintenance8FeaturesKHR* copy_src,
+                                                              [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    maintenance8 = copy_src->maintenance8;
     pNext = SafePnextCopy(copy_src->pNext);
 }
 
