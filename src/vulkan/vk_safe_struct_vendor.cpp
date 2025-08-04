@@ -15144,6 +15144,149 @@ void safe_VkAntiLagDataAMD::initialize(const safe_VkAntiLagDataAMD* copy_src, [[
     pNext = SafePnextCopy(copy_src->pNext);
     if (copy_src->pPresentationInfo) pPresentationInfo = new safe_VkAntiLagPresentationInfoAMD(*copy_src->pPresentationInfo);
 }
+#ifdef VK_ENABLE_BETA_EXTENSIONS
+
+safe_VkPhysicalDeviceDenseGeometryFormatFeaturesAMDX::safe_VkPhysicalDeviceDenseGeometryFormatFeaturesAMDX(
+    const VkPhysicalDeviceDenseGeometryFormatFeaturesAMDX* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), denseGeometryFormat(in_struct->denseGeometryFormat) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceDenseGeometryFormatFeaturesAMDX::safe_VkPhysicalDeviceDenseGeometryFormatFeaturesAMDX()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DENSE_GEOMETRY_FORMAT_FEATURES_AMDX), pNext(nullptr), denseGeometryFormat() {}
+
+safe_VkPhysicalDeviceDenseGeometryFormatFeaturesAMDX::safe_VkPhysicalDeviceDenseGeometryFormatFeaturesAMDX(
+    const safe_VkPhysicalDeviceDenseGeometryFormatFeaturesAMDX& copy_src) {
+    sType = copy_src.sType;
+    denseGeometryFormat = copy_src.denseGeometryFormat;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceDenseGeometryFormatFeaturesAMDX& safe_VkPhysicalDeviceDenseGeometryFormatFeaturesAMDX::operator=(
+    const safe_VkPhysicalDeviceDenseGeometryFormatFeaturesAMDX& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    denseGeometryFormat = copy_src.denseGeometryFormat;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceDenseGeometryFormatFeaturesAMDX::~safe_VkPhysicalDeviceDenseGeometryFormatFeaturesAMDX() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkPhysicalDeviceDenseGeometryFormatFeaturesAMDX::initialize(
+    const VkPhysicalDeviceDenseGeometryFormatFeaturesAMDX* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    denseGeometryFormat = in_struct->denseGeometryFormat;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceDenseGeometryFormatFeaturesAMDX::initialize(
+    const safe_VkPhysicalDeviceDenseGeometryFormatFeaturesAMDX* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    denseGeometryFormat = copy_src->denseGeometryFormat;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX::safe_VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX(
+    const VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
+    bool copy_pnext)
+    : sType(in_struct->sType),
+      compressedData(&in_struct->compressedData),
+      dataSize(in_struct->dataSize),
+      numTriangles(in_struct->numTriangles),
+      numVertices(in_struct->numVertices),
+      maxPrimitiveIndex(in_struct->maxPrimitiveIndex),
+      maxGeometryIndex(in_struct->maxGeometryIndex),
+      format(in_struct->format) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX::safe_VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX()
+    : sType(VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_DENSE_GEOMETRY_FORMAT_TRIANGLES_DATA_AMDX),
+      pNext(nullptr),
+      dataSize(),
+      numTriangles(),
+      numVertices(),
+      maxPrimitiveIndex(),
+      maxGeometryIndex(),
+      format() {}
+
+safe_VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX::safe_VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX(
+    const safe_VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX& copy_src) {
+    sType = copy_src.sType;
+    compressedData.initialize(&copy_src.compressedData);
+    dataSize = copy_src.dataSize;
+    numTriangles = copy_src.numTriangles;
+    numVertices = copy_src.numVertices;
+    maxPrimitiveIndex = copy_src.maxPrimitiveIndex;
+    maxGeometryIndex = copy_src.maxGeometryIndex;
+    format = copy_src.format;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX&
+safe_VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX::operator=(
+    const safe_VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    compressedData.initialize(&copy_src.compressedData);
+    dataSize = copy_src.dataSize;
+    numTriangles = copy_src.numTriangles;
+    numVertices = copy_src.numVertices;
+    maxPrimitiveIndex = copy_src.maxPrimitiveIndex;
+    maxGeometryIndex = copy_src.maxGeometryIndex;
+    format = copy_src.format;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX::
+    ~safe_VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX::initialize(
+    const VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    compressedData.initialize(&in_struct->compressedData);
+    dataSize = in_struct->dataSize;
+    numTriangles = in_struct->numTriangles;
+    numVertices = in_struct->numVertices;
+    maxPrimitiveIndex = in_struct->maxPrimitiveIndex;
+    maxGeometryIndex = in_struct->maxGeometryIndex;
+    format = in_struct->format;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX::initialize(
+    const safe_VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    compressedData.initialize(&copy_src->compressedData);
+    dataSize = copy_src->dataSize;
+    numTriangles = copy_src->numTriangles;
+    numVertices = copy_src->numVertices;
+    maxPrimitiveIndex = copy_src->maxPrimitiveIndex;
+    maxGeometryIndex = copy_src->maxGeometryIndex;
+    format = copy_src->format;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+#endif  // VK_ENABLE_BETA_EXTENSIONS
 
 safe_VkPhysicalDeviceTilePropertiesFeaturesQCOM::safe_VkPhysicalDeviceTilePropertiesFeaturesQCOM(
     const VkPhysicalDeviceTilePropertiesFeaturesQCOM* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)

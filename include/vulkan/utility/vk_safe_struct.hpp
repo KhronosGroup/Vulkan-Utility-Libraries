@@ -10093,6 +10093,23 @@ struct safe_VkPhysicalDeviceLayeredApiVulkanPropertiesKHR {
         return reinterpret_cast<VkPhysicalDeviceLayeredApiVulkanPropertiesKHR const*>(this);
     }
 };
+struct safe_VkMemoryBarrierAccessFlags3KHR {
+    VkStructureType sType;
+    const void* pNext{};
+    VkAccessFlags3KHR srcAccessMask3;
+    VkAccessFlags3KHR dstAccessMask3;
+
+    safe_VkMemoryBarrierAccessFlags3KHR(const VkMemoryBarrierAccessFlags3KHR* in_struct, PNextCopyState* copy_state = {},
+                                        bool copy_pnext = true);
+    safe_VkMemoryBarrierAccessFlags3KHR(const safe_VkMemoryBarrierAccessFlags3KHR& copy_src);
+    safe_VkMemoryBarrierAccessFlags3KHR& operator=(const safe_VkMemoryBarrierAccessFlags3KHR& copy_src);
+    safe_VkMemoryBarrierAccessFlags3KHR();
+    ~safe_VkMemoryBarrierAccessFlags3KHR();
+    void initialize(const VkMemoryBarrierAccessFlags3KHR* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkMemoryBarrierAccessFlags3KHR* copy_src, PNextCopyState* copy_state = {});
+    VkMemoryBarrierAccessFlags3KHR* ptr() { return reinterpret_cast<VkMemoryBarrierAccessFlags3KHR*>(this); }
+    VkMemoryBarrierAccessFlags3KHR const* ptr() const { return reinterpret_cast<VkMemoryBarrierAccessFlags3KHR const*>(this); }
+};
 struct safe_VkPhysicalDeviceMaintenance8FeaturesKHR {
     VkStructureType sType;
     void* pNext{};
@@ -10110,23 +10127,6 @@ struct safe_VkPhysicalDeviceMaintenance8FeaturesKHR {
     VkPhysicalDeviceMaintenance8FeaturesKHR const* ptr() const {
         return reinterpret_cast<VkPhysicalDeviceMaintenance8FeaturesKHR const*>(this);
     }
-};
-struct safe_VkMemoryBarrierAccessFlags3KHR {
-    VkStructureType sType;
-    const void* pNext{};
-    VkAccessFlags3KHR srcAccessMask3;
-    VkAccessFlags3KHR dstAccessMask3;
-
-    safe_VkMemoryBarrierAccessFlags3KHR(const VkMemoryBarrierAccessFlags3KHR* in_struct, PNextCopyState* copy_state = {},
-                                        bool copy_pnext = true);
-    safe_VkMemoryBarrierAccessFlags3KHR(const safe_VkMemoryBarrierAccessFlags3KHR& copy_src);
-    safe_VkMemoryBarrierAccessFlags3KHR& operator=(const safe_VkMemoryBarrierAccessFlags3KHR& copy_src);
-    safe_VkMemoryBarrierAccessFlags3KHR();
-    ~safe_VkMemoryBarrierAccessFlags3KHR();
-    void initialize(const VkMemoryBarrierAccessFlags3KHR* in_struct, PNextCopyState* copy_state = {});
-    void initialize(const safe_VkMemoryBarrierAccessFlags3KHR* copy_src, PNextCopyState* copy_state = {});
-    VkMemoryBarrierAccessFlags3KHR* ptr() { return reinterpret_cast<VkMemoryBarrierAccessFlags3KHR*>(this); }
-    VkMemoryBarrierAccessFlags3KHR const* ptr() const { return reinterpret_cast<VkMemoryBarrierAccessFlags3KHR const*>(this); }
 };
 struct safe_VkPhysicalDeviceMaintenance9FeaturesKHR {
     VkStructureType sType;
@@ -19040,6 +19040,59 @@ struct safe_VkAntiLagDataAMD {
     VkAntiLagDataAMD* ptr() { return reinterpret_cast<VkAntiLagDataAMD*>(this); }
     VkAntiLagDataAMD const* ptr() const { return reinterpret_cast<VkAntiLagDataAMD const*>(this); }
 };
+#ifdef VK_ENABLE_BETA_EXTENSIONS
+struct safe_VkPhysicalDeviceDenseGeometryFormatFeaturesAMDX {
+    VkStructureType sType;
+    void* pNext{};
+    VkBool32 denseGeometryFormat;
+
+    safe_VkPhysicalDeviceDenseGeometryFormatFeaturesAMDX(const VkPhysicalDeviceDenseGeometryFormatFeaturesAMDX* in_struct,
+                                                         PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkPhysicalDeviceDenseGeometryFormatFeaturesAMDX(const safe_VkPhysicalDeviceDenseGeometryFormatFeaturesAMDX& copy_src);
+    safe_VkPhysicalDeviceDenseGeometryFormatFeaturesAMDX& operator=(
+        const safe_VkPhysicalDeviceDenseGeometryFormatFeaturesAMDX& copy_src);
+    safe_VkPhysicalDeviceDenseGeometryFormatFeaturesAMDX();
+    ~safe_VkPhysicalDeviceDenseGeometryFormatFeaturesAMDX();
+    void initialize(const VkPhysicalDeviceDenseGeometryFormatFeaturesAMDX* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceDenseGeometryFormatFeaturesAMDX* copy_src, PNextCopyState* copy_state = {});
+    VkPhysicalDeviceDenseGeometryFormatFeaturesAMDX* ptr() {
+        return reinterpret_cast<VkPhysicalDeviceDenseGeometryFormatFeaturesAMDX*>(this);
+    }
+    VkPhysicalDeviceDenseGeometryFormatFeaturesAMDX const* ptr() const {
+        return reinterpret_cast<VkPhysicalDeviceDenseGeometryFormatFeaturesAMDX const*>(this);
+    }
+};
+struct safe_VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX {
+    VkStructureType sType;
+    const void* pNext{};
+    safe_VkDeviceOrHostAddressConstKHR compressedData;
+    VkDeviceSize dataSize;
+    uint32_t numTriangles;
+    uint32_t numVertices;
+    uint32_t maxPrimitiveIndex;
+    uint32_t maxGeometryIndex;
+    VkCompressedTriangleFormatAMDX format;
+
+    safe_VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX(
+        const VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX* in_struct, PNextCopyState* copy_state = {},
+        bool copy_pnext = true);
+    safe_VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX(
+        const safe_VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX& copy_src);
+    safe_VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX& operator=(
+        const safe_VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX& copy_src);
+    safe_VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX();
+    ~safe_VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX();
+    void initialize(const VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX* copy_src,
+                    PNextCopyState* copy_state = {});
+    VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX* ptr() {
+        return reinterpret_cast<VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX*>(this);
+    }
+    VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX const* ptr() const {
+        return reinterpret_cast<VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX const*>(this);
+    }
+};
+#endif  // VK_ENABLE_BETA_EXTENSIONS
 struct safe_VkPhysicalDeviceShaderObjectFeaturesEXT {
     VkStructureType sType;
     void* pNext{};
