@@ -8465,6 +8465,27 @@ struct safe_VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR {
         return reinterpret_cast<VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR const*>(this);
     }
 };
+struct safe_VkPhysicalDeviceShaderUntypedPointersFeaturesKHR {
+    VkStructureType sType;
+    void* pNext{};
+    VkBool32 shaderUntypedPointers;
+
+    safe_VkPhysicalDeviceShaderUntypedPointersFeaturesKHR(const VkPhysicalDeviceShaderUntypedPointersFeaturesKHR* in_struct,
+                                                          PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkPhysicalDeviceShaderUntypedPointersFeaturesKHR(const safe_VkPhysicalDeviceShaderUntypedPointersFeaturesKHR& copy_src);
+    safe_VkPhysicalDeviceShaderUntypedPointersFeaturesKHR& operator=(
+        const safe_VkPhysicalDeviceShaderUntypedPointersFeaturesKHR& copy_src);
+    safe_VkPhysicalDeviceShaderUntypedPointersFeaturesKHR();
+    ~safe_VkPhysicalDeviceShaderUntypedPointersFeaturesKHR();
+    void initialize(const VkPhysicalDeviceShaderUntypedPointersFeaturesKHR* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceShaderUntypedPointersFeaturesKHR* copy_src, PNextCopyState* copy_state = {});
+    VkPhysicalDeviceShaderUntypedPointersFeaturesKHR* ptr() {
+        return reinterpret_cast<VkPhysicalDeviceShaderUntypedPointersFeaturesKHR*>(this);
+    }
+    VkPhysicalDeviceShaderUntypedPointersFeaturesKHR const* ptr() const {
+        return reinterpret_cast<VkPhysicalDeviceShaderUntypedPointersFeaturesKHR const*>(this);
+    }
+};
 struct safe_VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR {
     VkStructureType sType;
     void* pNext{};

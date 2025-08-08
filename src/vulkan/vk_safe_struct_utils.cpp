@@ -761,6 +761,9 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_MAINTENANCE_1_FEATURES_KHR:
                 safe_pNext = new safe_VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR(reinterpret_cast<const VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR *>(pNext), copy_state, false);
                 break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_UNTYPED_POINTERS_FEATURES_KHR:
+                safe_pNext = new safe_VkPhysicalDeviceShaderUntypedPointersFeaturesKHR(reinterpret_cast<const VkPhysicalDeviceShaderUntypedPointersFeaturesKHR *>(pNext), copy_state, false);
+                break;
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_MAXIMAL_RECONVERGENCE_FEATURES_KHR:
                 safe_pNext = new safe_VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR(reinterpret_cast<const VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR *>(pNext), copy_state, false);
                 break;
@@ -2987,6 +2990,9 @@ void FreePnextChain(const void *pNext) {
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_MAINTENANCE_1_FEATURES_KHR:
             delete reinterpret_cast<safe_VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_UNTYPED_POINTERS_FEATURES_KHR:
+            delete reinterpret_cast<safe_VkPhysicalDeviceShaderUntypedPointersFeaturesKHR *>(header);
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_MAXIMAL_RECONVERGENCE_FEATURES_KHR:
             delete reinterpret_cast<safe_VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR *>(header);
