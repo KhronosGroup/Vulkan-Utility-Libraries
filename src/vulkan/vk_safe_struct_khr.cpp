@@ -10959,6 +10959,56 @@ void safe_VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR::initialize(
     pNext = SafePnextCopy(copy_src->pNext);
 }
 
+safe_VkPhysicalDeviceShaderUntypedPointersFeaturesKHR::safe_VkPhysicalDeviceShaderUntypedPointersFeaturesKHR(
+    const VkPhysicalDeviceShaderUntypedPointersFeaturesKHR* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), shaderUntypedPointers(in_struct->shaderUntypedPointers) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceShaderUntypedPointersFeaturesKHR::safe_VkPhysicalDeviceShaderUntypedPointersFeaturesKHR()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_UNTYPED_POINTERS_FEATURES_KHR), pNext(nullptr), shaderUntypedPointers() {}
+
+safe_VkPhysicalDeviceShaderUntypedPointersFeaturesKHR::safe_VkPhysicalDeviceShaderUntypedPointersFeaturesKHR(
+    const safe_VkPhysicalDeviceShaderUntypedPointersFeaturesKHR& copy_src) {
+    sType = copy_src.sType;
+    shaderUntypedPointers = copy_src.shaderUntypedPointers;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceShaderUntypedPointersFeaturesKHR& safe_VkPhysicalDeviceShaderUntypedPointersFeaturesKHR::operator=(
+    const safe_VkPhysicalDeviceShaderUntypedPointersFeaturesKHR& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    shaderUntypedPointers = copy_src.shaderUntypedPointers;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceShaderUntypedPointersFeaturesKHR::~safe_VkPhysicalDeviceShaderUntypedPointersFeaturesKHR() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkPhysicalDeviceShaderUntypedPointersFeaturesKHR::initialize(
+    const VkPhysicalDeviceShaderUntypedPointersFeaturesKHR* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    shaderUntypedPointers = in_struct->shaderUntypedPointers;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceShaderUntypedPointersFeaturesKHR::initialize(
+    const safe_VkPhysicalDeviceShaderUntypedPointersFeaturesKHR* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    shaderUntypedPointers = copy_src->shaderUntypedPointers;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
 safe_VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR::safe_VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR(
     const VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
     bool copy_pnext)

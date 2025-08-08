@@ -450,6 +450,7 @@ template <> inline VkStructureType GetSType<VkPhysicalDeviceFragmentShaderBaryce
 template <> inline VkStructureType GetSType<VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SUBGROUP_UNIFORM_CONTROL_FLOW_FEATURES_KHR; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_WORKGROUP_MEMORY_EXPLICIT_LAYOUT_FEATURES_KHR; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_MAINTENANCE_1_FEATURES_KHR; }
+template <> inline VkStructureType GetSType<VkPhysicalDeviceShaderUntypedPointersFeaturesKHR>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_UNTYPED_POINTERS_FEATURES_KHR; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_MAXIMAL_RECONVERGENCE_FEATURES_KHR; }
 template <> inline VkStructureType GetSType<VkSurfaceCapabilitiesPresentId2KHR>() { return VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_PRESENT_ID_2_KHR; }
 template <> inline VkStructureType GetSType<VkPresentId2KHR>() { return VK_STRUCTURE_TYPE_PRESENT_ID_2_KHR; }
