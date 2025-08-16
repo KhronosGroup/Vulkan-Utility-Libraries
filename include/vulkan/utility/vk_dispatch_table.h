@@ -594,6 +594,10 @@ typedef struct VkuDeviceDispatchTable_ {
     PFN_vkCmdSetCheckpointNV CmdSetCheckpointNV;
     PFN_vkGetQueueCheckpointDataNV GetQueueCheckpointDataNV;
     PFN_vkGetQueueCheckpointData2NV GetQueueCheckpointData2NV;
+    PFN_vkSetSwapchainPresentTimingQueueSizeEXT SetSwapchainPresentTimingQueueSizeEXT;
+    PFN_vkGetSwapchainTimingPropertiesEXT GetSwapchainTimingPropertiesEXT;
+    PFN_vkGetSwapchainTimeDomainPropertiesEXT GetSwapchainTimeDomainPropertiesEXT;
+    PFN_vkGetPastPresentationTimingEXT GetPastPresentationTimingEXT;
     PFN_vkInitializePerformanceApiINTEL InitializePerformanceApiINTEL;
     PFN_vkUninitializePerformanceApiINTEL UninitializePerformanceApiINTEL;
     PFN_vkCmdSetPerformanceMarkerINTEL CmdSetPerformanceMarkerINTEL;
@@ -1267,6 +1271,10 @@ static inline void vkuInitDeviceDispatchTable(VkDevice device, VkuDeviceDispatch
     table->CmdSetCheckpointNV = (PFN_vkCmdSetCheckpointNV)gdpa(device, "vkCmdSetCheckpointNV");
     table->GetQueueCheckpointDataNV = (PFN_vkGetQueueCheckpointDataNV)gdpa(device, "vkGetQueueCheckpointDataNV");
     table->GetQueueCheckpointData2NV = (PFN_vkGetQueueCheckpointData2NV)gdpa(device, "vkGetQueueCheckpointData2NV");
+    table->SetSwapchainPresentTimingQueueSizeEXT = (PFN_vkSetSwapchainPresentTimingQueueSizeEXT)gdpa(device, "vkSetSwapchainPresentTimingQueueSizeEXT");
+    table->GetSwapchainTimingPropertiesEXT = (PFN_vkGetSwapchainTimingPropertiesEXT)gdpa(device, "vkGetSwapchainTimingPropertiesEXT");
+    table->GetSwapchainTimeDomainPropertiesEXT = (PFN_vkGetSwapchainTimeDomainPropertiesEXT)gdpa(device, "vkGetSwapchainTimeDomainPropertiesEXT");
+    table->GetPastPresentationTimingEXT = (PFN_vkGetPastPresentationTimingEXT)gdpa(device, "vkGetPastPresentationTimingEXT");
     table->InitializePerformanceApiINTEL = (PFN_vkInitializePerformanceApiINTEL)gdpa(device, "vkInitializePerformanceApiINTEL");
     table->UninitializePerformanceApiINTEL = (PFN_vkUninitializePerformanceApiINTEL)gdpa(device, "vkUninitializePerformanceApiINTEL");
     table->CmdSetPerformanceMarkerINTEL = (PFN_vkCmdSetPerformanceMarkerINTEL)gdpa(device, "vkCmdSetPerformanceMarkerINTEL");

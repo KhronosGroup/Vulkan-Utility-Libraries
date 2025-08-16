@@ -1273,6 +1273,18 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
             case VK_STRUCTURE_TYPE_QUEUE_FAMILY_CHECKPOINT_PROPERTIES_2_NV:
                 safe_pNext = new safe_VkQueueFamilyCheckpointProperties2NV(reinterpret_cast<const VkQueueFamilyCheckpointProperties2NV *>(pNext), copy_state, false);
                 break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_TIMING_FEATURES_EXT:
+                safe_pNext = new safe_VkPhysicalDevicePresentTimingFeaturesEXT(reinterpret_cast<const VkPhysicalDevicePresentTimingFeaturesEXT *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PRESENT_TIMING_SURFACE_CAPABILITIES_EXT:
+                safe_pNext = new safe_VkPresentTimingSurfaceCapabilitiesEXT(reinterpret_cast<const VkPresentTimingSurfaceCapabilitiesEXT *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_SWAPCHAIN_CALIBRATED_TIMESTAMP_INFO_EXT:
+                safe_pNext = new safe_VkSwapchainCalibratedTimestampInfoEXT(reinterpret_cast<const VkSwapchainCalibratedTimestampInfoEXT *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PRESENT_TIMINGS_INFO_EXT:
+                safe_pNext = new safe_VkPresentTimingsInfoEXT(reinterpret_cast<const VkPresentTimingsInfoEXT *>(pNext), copy_state, false);
+                break;
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_INTEGER_FUNCTIONS_2_FEATURES_INTEL:
                 safe_pNext = new safe_VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL(reinterpret_cast<const VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL *>(pNext), copy_state, false);
                 break;
@@ -3502,6 +3514,18 @@ void FreePnextChain(const void *pNext) {
             break;
         case VK_STRUCTURE_TYPE_QUEUE_FAMILY_CHECKPOINT_PROPERTIES_2_NV:
             delete reinterpret_cast<safe_VkQueueFamilyCheckpointProperties2NV *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_TIMING_FEATURES_EXT:
+            delete reinterpret_cast<safe_VkPhysicalDevicePresentTimingFeaturesEXT *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PRESENT_TIMING_SURFACE_CAPABILITIES_EXT:
+            delete reinterpret_cast<safe_VkPresentTimingSurfaceCapabilitiesEXT *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_SWAPCHAIN_CALIBRATED_TIMESTAMP_INFO_EXT:
+            delete reinterpret_cast<safe_VkSwapchainCalibratedTimestampInfoEXT *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PRESENT_TIMINGS_INFO_EXT:
+            delete reinterpret_cast<safe_VkPresentTimingsInfoEXT *>(header);
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_INTEGER_FUNCTIONS_2_FEATURES_INTEL:
             delete reinterpret_cast<safe_VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL *>(header);

@@ -12998,6 +12998,198 @@ struct safe_VkCheckpointData2NV {
     VkCheckpointData2NV* ptr() { return reinterpret_cast<VkCheckpointData2NV*>(this); }
     VkCheckpointData2NV const* ptr() const { return reinterpret_cast<VkCheckpointData2NV const*>(this); }
 };
+struct safe_VkPhysicalDevicePresentTimingFeaturesEXT {
+    VkStructureType sType;
+    void* pNext{};
+    VkBool32 presentTiming;
+    VkBool32 presentAtAbsoluteTime;
+    VkBool32 presentAtRelativeTime;
+
+    safe_VkPhysicalDevicePresentTimingFeaturesEXT(const VkPhysicalDevicePresentTimingFeaturesEXT* in_struct,
+                                                  PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkPhysicalDevicePresentTimingFeaturesEXT(const safe_VkPhysicalDevicePresentTimingFeaturesEXT& copy_src);
+    safe_VkPhysicalDevicePresentTimingFeaturesEXT& operator=(const safe_VkPhysicalDevicePresentTimingFeaturesEXT& copy_src);
+    safe_VkPhysicalDevicePresentTimingFeaturesEXT();
+    ~safe_VkPhysicalDevicePresentTimingFeaturesEXT();
+    void initialize(const VkPhysicalDevicePresentTimingFeaturesEXT* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDevicePresentTimingFeaturesEXT* copy_src, PNextCopyState* copy_state = {});
+    VkPhysicalDevicePresentTimingFeaturesEXT* ptr() { return reinterpret_cast<VkPhysicalDevicePresentTimingFeaturesEXT*>(this); }
+    VkPhysicalDevicePresentTimingFeaturesEXT const* ptr() const {
+        return reinterpret_cast<VkPhysicalDevicePresentTimingFeaturesEXT const*>(this);
+    }
+};
+struct safe_VkPresentTimingSurfaceCapabilitiesEXT {
+    VkStructureType sType;
+    void* pNext{};
+    VkBool32 presentTimingSupported;
+    VkBool32 presentAtAbsoluteTimeSupported;
+    VkBool32 presentAtRelativeTimeSupported;
+    VkPresentStageFlagsEXT presentStageQueries;
+
+    safe_VkPresentTimingSurfaceCapabilitiesEXT(const VkPresentTimingSurfaceCapabilitiesEXT* in_struct,
+                                               PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkPresentTimingSurfaceCapabilitiesEXT(const safe_VkPresentTimingSurfaceCapabilitiesEXT& copy_src);
+    safe_VkPresentTimingSurfaceCapabilitiesEXT& operator=(const safe_VkPresentTimingSurfaceCapabilitiesEXT& copy_src);
+    safe_VkPresentTimingSurfaceCapabilitiesEXT();
+    ~safe_VkPresentTimingSurfaceCapabilitiesEXT();
+    void initialize(const VkPresentTimingSurfaceCapabilitiesEXT* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPresentTimingSurfaceCapabilitiesEXT* copy_src, PNextCopyState* copy_state = {});
+    VkPresentTimingSurfaceCapabilitiesEXT* ptr() { return reinterpret_cast<VkPresentTimingSurfaceCapabilitiesEXT*>(this); }
+    VkPresentTimingSurfaceCapabilitiesEXT const* ptr() const {
+        return reinterpret_cast<VkPresentTimingSurfaceCapabilitiesEXT const*>(this);
+    }
+};
+struct safe_VkSwapchainCalibratedTimestampInfoEXT {
+    VkStructureType sType;
+    const void* pNext{};
+    VkSwapchainKHR swapchain;
+    VkPresentStageFlagsEXT presentStage;
+    uint64_t timeDomainId;
+
+    safe_VkSwapchainCalibratedTimestampInfoEXT(const VkSwapchainCalibratedTimestampInfoEXT* in_struct,
+                                               PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkSwapchainCalibratedTimestampInfoEXT(const safe_VkSwapchainCalibratedTimestampInfoEXT& copy_src);
+    safe_VkSwapchainCalibratedTimestampInfoEXT& operator=(const safe_VkSwapchainCalibratedTimestampInfoEXT& copy_src);
+    safe_VkSwapchainCalibratedTimestampInfoEXT();
+    ~safe_VkSwapchainCalibratedTimestampInfoEXT();
+    void initialize(const VkSwapchainCalibratedTimestampInfoEXT* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkSwapchainCalibratedTimestampInfoEXT* copy_src, PNextCopyState* copy_state = {});
+    VkSwapchainCalibratedTimestampInfoEXT* ptr() { return reinterpret_cast<VkSwapchainCalibratedTimestampInfoEXT*>(this); }
+    VkSwapchainCalibratedTimestampInfoEXT const* ptr() const {
+        return reinterpret_cast<VkSwapchainCalibratedTimestampInfoEXT const*>(this);
+    }
+};
+struct safe_VkSwapchainTimingPropertiesEXT {
+    VkStructureType sType;
+    void* pNext{};
+    uint64_t refreshDuration;
+    uint64_t refreshInterval;
+
+    safe_VkSwapchainTimingPropertiesEXT(const VkSwapchainTimingPropertiesEXT* in_struct, PNextCopyState* copy_state = {},
+                                        bool copy_pnext = true);
+    safe_VkSwapchainTimingPropertiesEXT(const safe_VkSwapchainTimingPropertiesEXT& copy_src);
+    safe_VkSwapchainTimingPropertiesEXT& operator=(const safe_VkSwapchainTimingPropertiesEXT& copy_src);
+    safe_VkSwapchainTimingPropertiesEXT();
+    ~safe_VkSwapchainTimingPropertiesEXT();
+    void initialize(const VkSwapchainTimingPropertiesEXT* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkSwapchainTimingPropertiesEXT* copy_src, PNextCopyState* copy_state = {});
+    VkSwapchainTimingPropertiesEXT* ptr() { return reinterpret_cast<VkSwapchainTimingPropertiesEXT*>(this); }
+    VkSwapchainTimingPropertiesEXT const* ptr() const { return reinterpret_cast<VkSwapchainTimingPropertiesEXT const*>(this); }
+};
+struct safe_VkSwapchainTimeDomainPropertiesEXT {
+    VkStructureType sType;
+    void* pNext{};
+    uint32_t timeDomainCount;
+    VkTimeDomainKHR* pTimeDomains{};
+    uint64_t* pTimeDomainIds{};
+
+    safe_VkSwapchainTimeDomainPropertiesEXT(const VkSwapchainTimeDomainPropertiesEXT* in_struct, PNextCopyState* copy_state = {},
+                                            bool copy_pnext = true);
+    safe_VkSwapchainTimeDomainPropertiesEXT(const safe_VkSwapchainTimeDomainPropertiesEXT& copy_src);
+    safe_VkSwapchainTimeDomainPropertiesEXT& operator=(const safe_VkSwapchainTimeDomainPropertiesEXT& copy_src);
+    safe_VkSwapchainTimeDomainPropertiesEXT();
+    ~safe_VkSwapchainTimeDomainPropertiesEXT();
+    void initialize(const VkSwapchainTimeDomainPropertiesEXT* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkSwapchainTimeDomainPropertiesEXT* copy_src, PNextCopyState* copy_state = {});
+    VkSwapchainTimeDomainPropertiesEXT* ptr() { return reinterpret_cast<VkSwapchainTimeDomainPropertiesEXT*>(this); }
+    VkSwapchainTimeDomainPropertiesEXT const* ptr() const {
+        return reinterpret_cast<VkSwapchainTimeDomainPropertiesEXT const*>(this);
+    }
+};
+struct safe_VkPastPresentationTimingInfoEXT {
+    VkStructureType sType;
+    const void* pNext{};
+    VkPastPresentationTimingFlagsEXT flags;
+    VkSwapchainKHR swapchain;
+
+    safe_VkPastPresentationTimingInfoEXT(const VkPastPresentationTimingInfoEXT* in_struct, PNextCopyState* copy_state = {},
+                                         bool copy_pnext = true);
+    safe_VkPastPresentationTimingInfoEXT(const safe_VkPastPresentationTimingInfoEXT& copy_src);
+    safe_VkPastPresentationTimingInfoEXT& operator=(const safe_VkPastPresentationTimingInfoEXT& copy_src);
+    safe_VkPastPresentationTimingInfoEXT();
+    ~safe_VkPastPresentationTimingInfoEXT();
+    void initialize(const VkPastPresentationTimingInfoEXT* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPastPresentationTimingInfoEXT* copy_src, PNextCopyState* copy_state = {});
+    VkPastPresentationTimingInfoEXT* ptr() { return reinterpret_cast<VkPastPresentationTimingInfoEXT*>(this); }
+    VkPastPresentationTimingInfoEXT const* ptr() const { return reinterpret_cast<VkPastPresentationTimingInfoEXT const*>(this); }
+};
+struct safe_VkPastPresentationTimingEXT {
+    VkStructureType sType;
+    void* pNext{};
+    uint64_t presentId;
+    uint64_t targetTime;
+    uint32_t presentStageCount;
+    VkPresentStageTimeEXT* pPresentStages{};
+    VkTimeDomainKHR timeDomain;
+    uint64_t timeDomainId;
+    VkBool32 reportComplete;
+
+    safe_VkPastPresentationTimingEXT(const VkPastPresentationTimingEXT* in_struct, PNextCopyState* copy_state = {},
+                                     bool copy_pnext = true);
+    safe_VkPastPresentationTimingEXT(const safe_VkPastPresentationTimingEXT& copy_src);
+    safe_VkPastPresentationTimingEXT& operator=(const safe_VkPastPresentationTimingEXT& copy_src);
+    safe_VkPastPresentationTimingEXT();
+    ~safe_VkPastPresentationTimingEXT();
+    void initialize(const VkPastPresentationTimingEXT* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPastPresentationTimingEXT* copy_src, PNextCopyState* copy_state = {});
+    VkPastPresentationTimingEXT* ptr() { return reinterpret_cast<VkPastPresentationTimingEXT*>(this); }
+    VkPastPresentationTimingEXT const* ptr() const { return reinterpret_cast<VkPastPresentationTimingEXT const*>(this); }
+};
+struct safe_VkPastPresentationTimingPropertiesEXT {
+    VkStructureType sType;
+    void* pNext{};
+    uint64_t timingPropertiesCounter;
+    uint64_t timeDomainsCounter;
+    uint32_t presentationTimingCount;
+    safe_VkPastPresentationTimingEXT* pPresentationTimings{};
+
+    safe_VkPastPresentationTimingPropertiesEXT(const VkPastPresentationTimingPropertiesEXT* in_struct,
+                                               PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkPastPresentationTimingPropertiesEXT(const safe_VkPastPresentationTimingPropertiesEXT& copy_src);
+    safe_VkPastPresentationTimingPropertiesEXT& operator=(const safe_VkPastPresentationTimingPropertiesEXT& copy_src);
+    safe_VkPastPresentationTimingPropertiesEXT();
+    ~safe_VkPastPresentationTimingPropertiesEXT();
+    void initialize(const VkPastPresentationTimingPropertiesEXT* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPastPresentationTimingPropertiesEXT* copy_src, PNextCopyState* copy_state = {});
+    VkPastPresentationTimingPropertiesEXT* ptr() { return reinterpret_cast<VkPastPresentationTimingPropertiesEXT*>(this); }
+    VkPastPresentationTimingPropertiesEXT const* ptr() const {
+        return reinterpret_cast<VkPastPresentationTimingPropertiesEXT const*>(this);
+    }
+};
+struct safe_VkPresentTimingInfoEXT {
+    VkStructureType sType;
+    const void* pNext{};
+    VkPresentTimingInfoFlagsEXT flags;
+    uint64_t targetTime;
+    uint64_t timeDomainId;
+    VkPresentStageFlagsEXT presentStageQueries;
+
+    safe_VkPresentTimingInfoEXT(const VkPresentTimingInfoEXT* in_struct, PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkPresentTimingInfoEXT(const safe_VkPresentTimingInfoEXT& copy_src);
+    safe_VkPresentTimingInfoEXT& operator=(const safe_VkPresentTimingInfoEXT& copy_src);
+    safe_VkPresentTimingInfoEXT();
+    ~safe_VkPresentTimingInfoEXT();
+    void initialize(const VkPresentTimingInfoEXT* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPresentTimingInfoEXT* copy_src, PNextCopyState* copy_state = {});
+    VkPresentTimingInfoEXT* ptr() { return reinterpret_cast<VkPresentTimingInfoEXT*>(this); }
+    VkPresentTimingInfoEXT const* ptr() const { return reinterpret_cast<VkPresentTimingInfoEXT const*>(this); }
+};
+struct safe_VkPresentTimingsInfoEXT {
+    VkStructureType sType;
+    const void* pNext{};
+    uint32_t swapchainCount;
+    safe_VkPresentTimingInfoEXT* pTimingInfos{};
+
+    safe_VkPresentTimingsInfoEXT(const VkPresentTimingsInfoEXT* in_struct, PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkPresentTimingsInfoEXT(const safe_VkPresentTimingsInfoEXT& copy_src);
+    safe_VkPresentTimingsInfoEXT& operator=(const safe_VkPresentTimingsInfoEXT& copy_src);
+    safe_VkPresentTimingsInfoEXT();
+    ~safe_VkPresentTimingsInfoEXT();
+    void initialize(const VkPresentTimingsInfoEXT* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPresentTimingsInfoEXT* copy_src, PNextCopyState* copy_state = {});
+    VkPresentTimingsInfoEXT* ptr() { return reinterpret_cast<VkPresentTimingsInfoEXT*>(this); }
+    VkPresentTimingsInfoEXT const* ptr() const { return reinterpret_cast<VkPresentTimingsInfoEXT const*>(this); }
+};
 struct safe_VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL {
     VkStructureType sType;
     void* pNext{};

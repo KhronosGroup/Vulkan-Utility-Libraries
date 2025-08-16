@@ -94,6 +94,8 @@ static inline const char* string_VkResult(VkResult input_value) {
             return "VK_ERROR_VIDEO_STD_VERSION_NOT_SUPPORTED_KHR";
         case VK_ERROR_INVALID_DRM_FORMAT_MODIFIER_PLANE_LAYOUT_EXT:
             return "VK_ERROR_INVALID_DRM_FORMAT_MODIFIER_PLANE_LAYOUT_EXT";
+        case VK_ERROR_PRESENT_TIMING_QUEUE_FULL_EXT:
+            return "VK_ERROR_PRESENT_TIMING_QUEUE_FULL_EXT";
         case VK_ERROR_FULL_SCREEN_EXCLUSIVE_MODE_LOST_EXT:
             return "VK_ERROR_FULL_SCREEN_EXCLUSIVE_MODE_LOST_EXT";
         case VK_THREAD_IDLE_KHR:
@@ -1182,6 +1184,26 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_QUEUE_FAMILY_CHECKPOINT_PROPERTIES_2_NV";
         case VK_STRUCTURE_TYPE_CHECKPOINT_DATA_2_NV:
             return "VK_STRUCTURE_TYPE_CHECKPOINT_DATA_2_NV";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_TIMING_FEATURES_EXT:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_TIMING_FEATURES_EXT";
+        case VK_STRUCTURE_TYPE_SWAPCHAIN_TIMING_PROPERTIES_EXT:
+            return "VK_STRUCTURE_TYPE_SWAPCHAIN_TIMING_PROPERTIES_EXT";
+        case VK_STRUCTURE_TYPE_SWAPCHAIN_TIME_DOMAIN_PROPERTIES_EXT:
+            return "VK_STRUCTURE_TYPE_SWAPCHAIN_TIME_DOMAIN_PROPERTIES_EXT";
+        case VK_STRUCTURE_TYPE_PRESENT_TIMINGS_INFO_EXT:
+            return "VK_STRUCTURE_TYPE_PRESENT_TIMINGS_INFO_EXT";
+        case VK_STRUCTURE_TYPE_PRESENT_TIMING_INFO_EXT:
+            return "VK_STRUCTURE_TYPE_PRESENT_TIMING_INFO_EXT";
+        case VK_STRUCTURE_TYPE_PAST_PRESENTATION_TIMING_INFO_EXT:
+            return "VK_STRUCTURE_TYPE_PAST_PRESENTATION_TIMING_INFO_EXT";
+        case VK_STRUCTURE_TYPE_PAST_PRESENTATION_TIMING_PROPERTIES_EXT:
+            return "VK_STRUCTURE_TYPE_PAST_PRESENTATION_TIMING_PROPERTIES_EXT";
+        case VK_STRUCTURE_TYPE_PAST_PRESENTATION_TIMING_EXT:
+            return "VK_STRUCTURE_TYPE_PAST_PRESENTATION_TIMING_EXT";
+        case VK_STRUCTURE_TYPE_PRESENT_TIMING_SURFACE_CAPABILITIES_EXT:
+            return "VK_STRUCTURE_TYPE_PRESENT_TIMING_SURFACE_CAPABILITIES_EXT";
+        case VK_STRUCTURE_TYPE_SWAPCHAIN_CALIBRATED_TIMESTAMP_INFO_EXT:
+            return "VK_STRUCTURE_TYPE_SWAPCHAIN_CALIBRATED_TIMESTAMP_INFO_EXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_INTEGER_FUNCTIONS_2_FEATURES_INTEL:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_INTEGER_FUNCTIONS_2_FEATURES_INTEL";
         case VK_STRUCTURE_TYPE_QUERY_POOL_PERFORMANCE_QUERY_CREATE_INFO_INTEL:
@@ -4356,6 +4378,10 @@ static inline const char* string_VkTimeDomainKHR(VkTimeDomainKHR input_value) {
             return "VK_TIME_DOMAIN_CLOCK_MONOTONIC_RAW_KHR";
         case VK_TIME_DOMAIN_QUERY_PERFORMANCE_COUNTER_KHR:
             return "VK_TIME_DOMAIN_QUERY_PERFORMANCE_COUNTER_KHR";
+        case VK_TIME_DOMAIN_PRESENT_STAGE_LOCAL_EXT:
+            return "VK_TIME_DOMAIN_PRESENT_STAGE_LOCAL_EXT";
+        case VK_TIME_DOMAIN_SWAPCHAIN_LOCAL_EXT:
+            return "VK_TIME_DOMAIN_SWAPCHAIN_LOCAL_EXT";
         default:
             return "Unhandled VkTimeDomainKHR";
     }
@@ -8355,6 +8381,8 @@ static inline const char* string_VkSwapchainCreateFlagBitsKHR(VkSwapchainCreateF
             return "VK_SWAPCHAIN_CREATE_PROTECTED_BIT_KHR";
         case VK_SWAPCHAIN_CREATE_MUTABLE_FORMAT_BIT_KHR:
             return "VK_SWAPCHAIN_CREATE_MUTABLE_FORMAT_BIT_KHR";
+        case VK_SWAPCHAIN_CREATE_PRESENT_TIMING_BIT_EXT:
+            return "VK_SWAPCHAIN_CREATE_PRESENT_TIMING_BIT_EXT";
         case VK_SWAPCHAIN_CREATE_PRESENT_ID_2_BIT_KHR:
             return "VK_SWAPCHAIN_CREATE_PRESENT_ID_2_BIT_KHR";
         case VK_SWAPCHAIN_CREATE_PRESENT_WAIT_2_BIT_KHR:
@@ -9856,6 +9884,91 @@ static inline std::string string_VkBuildAccelerationStructureFlagsKHR(VkBuildAcc
         input_value >>= 1;
     }
     if (ret.empty()) ret.append("VkBuildAccelerationStructureFlagsKHR(0)");
+    return ret;
+}
+#endif // __cplusplus
+static inline const char* string_VkPresentStageFlagBitsEXT(VkPresentStageFlagBitsEXT input_value) {
+    switch (input_value) {
+        case VK_PRESENT_STAGE_QUEUE_OPERATIONS_END_BIT_EXT:
+            return "VK_PRESENT_STAGE_QUEUE_OPERATIONS_END_BIT_EXT";
+        case VK_PRESENT_STAGE_REQUEST_DEQUEUED_BIT_EXT:
+            return "VK_PRESENT_STAGE_REQUEST_DEQUEUED_BIT_EXT";
+        case VK_PRESENT_STAGE_IMAGE_FIRST_PIXEL_OUT_BIT_EXT:
+            return "VK_PRESENT_STAGE_IMAGE_FIRST_PIXEL_OUT_BIT_EXT";
+        case VK_PRESENT_STAGE_IMAGE_FIRST_PIXEL_VISIBLE_BIT_EXT:
+            return "VK_PRESENT_STAGE_IMAGE_FIRST_PIXEL_VISIBLE_BIT_EXT";
+        default:
+            return "Unhandled VkPresentStageFlagBitsEXT";
+    }
+}
+
+#ifdef __cplusplus
+static inline std::string string_VkPresentStageFlagsEXT(VkPresentStageFlagsEXT input_value) {
+    std::string ret;
+    int index = 0;
+    while(input_value) {
+        if (input_value & 1) {
+            if( !ret.empty()) ret.append("|");
+            ret.append(string_VkPresentStageFlagBitsEXT(static_cast<VkPresentStageFlagBitsEXT>(1U << index)));
+        }
+        ++index;
+        input_value >>= 1;
+    }
+    if (ret.empty()) ret.append("VkPresentStageFlagsEXT(0)");
+    return ret;
+}
+#endif // __cplusplus
+static inline const char* string_VkPastPresentationTimingFlagBitsEXT(VkPastPresentationTimingFlagBitsEXT input_value) {
+    switch (input_value) {
+        case VK_PAST_PRESENTATION_TIMING_ALLOW_PARTIAL_RESULTS_BIT_EXT:
+            return "VK_PAST_PRESENTATION_TIMING_ALLOW_PARTIAL_RESULTS_BIT_EXT";
+        case VK_PAST_PRESENTATION_TIMING_ALLOW_OUT_OF_ORDER_RESULTS_BIT_EXT:
+            return "VK_PAST_PRESENTATION_TIMING_ALLOW_OUT_OF_ORDER_RESULTS_BIT_EXT";
+        default:
+            return "Unhandled VkPastPresentationTimingFlagBitsEXT";
+    }
+}
+
+#ifdef __cplusplus
+static inline std::string string_VkPastPresentationTimingFlagsEXT(VkPastPresentationTimingFlagsEXT input_value) {
+    std::string ret;
+    int index = 0;
+    while(input_value) {
+        if (input_value & 1) {
+            if( !ret.empty()) ret.append("|");
+            ret.append(string_VkPastPresentationTimingFlagBitsEXT(static_cast<VkPastPresentationTimingFlagBitsEXT>(1U << index)));
+        }
+        ++index;
+        input_value >>= 1;
+    }
+    if (ret.empty()) ret.append("VkPastPresentationTimingFlagsEXT(0)");
+    return ret;
+}
+#endif // __cplusplus
+static inline const char* string_VkPresentTimingInfoFlagBitsEXT(VkPresentTimingInfoFlagBitsEXT input_value) {
+    switch (input_value) {
+        case VK_PRESENT_TIMING_INFO_PRESENT_AT_RELATIVE_TIME_BIT_EXT:
+            return "VK_PRESENT_TIMING_INFO_PRESENT_AT_RELATIVE_TIME_BIT_EXT";
+        case VK_PRESENT_TIMING_INFO_PRESENT_AT_NEAREST_REFRESH_CYCLE_BIT_EXT:
+            return "VK_PRESENT_TIMING_INFO_PRESENT_AT_NEAREST_REFRESH_CYCLE_BIT_EXT";
+        default:
+            return "Unhandled VkPresentTimingInfoFlagBitsEXT";
+    }
+}
+
+#ifdef __cplusplus
+static inline std::string string_VkPresentTimingInfoFlagsEXT(VkPresentTimingInfoFlagsEXT input_value) {
+    std::string ret;
+    int index = 0;
+    while(input_value) {
+        if (input_value & 1) {
+            if( !ret.empty()) ret.append("|");
+            ret.append(string_VkPresentTimingInfoFlagBitsEXT(static_cast<VkPresentTimingInfoFlagBitsEXT>(1U << index)));
+        }
+        ++index;
+        input_value >>= 1;
+    }
+    if (ret.empty()) ret.append("VkPresentTimingInfoFlagsEXT(0)");
     return ret;
 }
 #endif // __cplusplus
@@ -12122,6 +12235,26 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
             return "VkQueueFamilyCheckpointProperties2NV";
         case VK_STRUCTURE_TYPE_CHECKPOINT_DATA_2_NV:
             return "VkCheckpointData2NV";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_TIMING_FEATURES_EXT:
+            return "VkPhysicalDevicePresentTimingFeaturesEXT";
+        case VK_STRUCTURE_TYPE_PRESENT_TIMING_SURFACE_CAPABILITIES_EXT:
+            return "VkPresentTimingSurfaceCapabilitiesEXT";
+        case VK_STRUCTURE_TYPE_SWAPCHAIN_CALIBRATED_TIMESTAMP_INFO_EXT:
+            return "VkSwapchainCalibratedTimestampInfoEXT";
+        case VK_STRUCTURE_TYPE_SWAPCHAIN_TIMING_PROPERTIES_EXT:
+            return "VkSwapchainTimingPropertiesEXT";
+        case VK_STRUCTURE_TYPE_SWAPCHAIN_TIME_DOMAIN_PROPERTIES_EXT:
+            return "VkSwapchainTimeDomainPropertiesEXT";
+        case VK_STRUCTURE_TYPE_PAST_PRESENTATION_TIMING_INFO_EXT:
+            return "VkPastPresentationTimingInfoEXT";
+        case VK_STRUCTURE_TYPE_PAST_PRESENTATION_TIMING_EXT:
+            return "VkPastPresentationTimingEXT";
+        case VK_STRUCTURE_TYPE_PAST_PRESENTATION_TIMING_PROPERTIES_EXT:
+            return "VkPastPresentationTimingPropertiesEXT";
+        case VK_STRUCTURE_TYPE_PRESENT_TIMING_INFO_EXT:
+            return "VkPresentTimingInfoEXT";
+        case VK_STRUCTURE_TYPE_PRESENT_TIMINGS_INFO_EXT:
+            return "VkPresentTimingsInfoEXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_INTEGER_FUNCTIONS_2_FEATURES_INTEL:
             return "VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL";
         case VK_STRUCTURE_TYPE_INITIALIZE_PERFORMANCE_API_INFO_INTEL:
