@@ -21730,22 +21730,21 @@ struct safe_VkPipelineViewportDepthClampControlCreateInfoEXT {
     }
 };
 #ifdef VK_USE_PLATFORM_OHOS
-struct safe_VkOHSurfaceCreateInfoOHOS {
+struct safe_VkSurfaceCreateInfoOHOS {
     VkStructureType sType;
     const void* pNext{};
     VkSurfaceCreateFlagsOHOS flags;
     OHNativeWindow* window{};
 
-    safe_VkOHSurfaceCreateInfoOHOS(const VkOHSurfaceCreateInfoOHOS* in_struct, PNextCopyState* copy_state = {},
-                                   bool copy_pnext = true);
-    safe_VkOHSurfaceCreateInfoOHOS(const safe_VkOHSurfaceCreateInfoOHOS& copy_src);
-    safe_VkOHSurfaceCreateInfoOHOS& operator=(const safe_VkOHSurfaceCreateInfoOHOS& copy_src);
-    safe_VkOHSurfaceCreateInfoOHOS();
-    ~safe_VkOHSurfaceCreateInfoOHOS();
-    void initialize(const VkOHSurfaceCreateInfoOHOS* in_struct, PNextCopyState* copy_state = {});
-    void initialize(const safe_VkOHSurfaceCreateInfoOHOS* copy_src, PNextCopyState* copy_state = {});
-    VkOHSurfaceCreateInfoOHOS* ptr() { return reinterpret_cast<VkOHSurfaceCreateInfoOHOS*>(this); }
-    VkOHSurfaceCreateInfoOHOS const* ptr() const { return reinterpret_cast<VkOHSurfaceCreateInfoOHOS const*>(this); }
+    safe_VkSurfaceCreateInfoOHOS(const VkSurfaceCreateInfoOHOS* in_struct, PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkSurfaceCreateInfoOHOS(const safe_VkSurfaceCreateInfoOHOS& copy_src);
+    safe_VkSurfaceCreateInfoOHOS& operator=(const safe_VkSurfaceCreateInfoOHOS& copy_src);
+    safe_VkSurfaceCreateInfoOHOS();
+    ~safe_VkSurfaceCreateInfoOHOS();
+    void initialize(const VkSurfaceCreateInfoOHOS* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkSurfaceCreateInfoOHOS* copy_src, PNextCopyState* copy_state = {});
+    VkSurfaceCreateInfoOHOS* ptr() { return reinterpret_cast<VkSurfaceCreateInfoOHOS*>(this); }
+    VkSurfaceCreateInfoOHOS const* ptr() const { return reinterpret_cast<VkSurfaceCreateInfoOHOS const*>(this); }
 };
 #endif  // VK_USE_PLATFORM_OHOS
 struct safe_VkPhysicalDeviceHdrVividFeaturesHUAWEI {
