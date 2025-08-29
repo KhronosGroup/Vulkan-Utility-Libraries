@@ -21233,8 +21233,8 @@ void safe_VkImageAlignmentControlCreateInfoMESA::initialize(const safe_VkImageAl
 }
 #ifdef VK_USE_PLATFORM_OHOS
 
-safe_VkOHSurfaceCreateInfoOHOS::safe_VkOHSurfaceCreateInfoOHOS(const VkOHSurfaceCreateInfoOHOS* in_struct,
-                                                               [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+safe_VkSurfaceCreateInfoOHOS::safe_VkSurfaceCreateInfoOHOS(const VkSurfaceCreateInfoOHOS* in_struct,
+                                                           [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
     : sType(in_struct->sType), flags(in_struct->flags), window(nullptr) {
     if (copy_pnext) {
         pNext = SafePnextCopy(in_struct->pNext, copy_state);
@@ -21244,10 +21244,10 @@ safe_VkOHSurfaceCreateInfoOHOS::safe_VkOHSurfaceCreateInfoOHOS(const VkOHSurface
     }
 }
 
-safe_VkOHSurfaceCreateInfoOHOS::safe_VkOHSurfaceCreateInfoOHOS()
-    : sType(VK_STRUCTURE_TYPE_OH_SURFACE_CREATE_INFO_OHOS), pNext(nullptr), flags(), window(nullptr) {}
+safe_VkSurfaceCreateInfoOHOS::safe_VkSurfaceCreateInfoOHOS()
+    : sType(VK_STRUCTURE_TYPE_SURFACE_CREATE_INFO_OHOS), pNext(nullptr), flags(), window(nullptr) {}
 
-safe_VkOHSurfaceCreateInfoOHOS::safe_VkOHSurfaceCreateInfoOHOS(const safe_VkOHSurfaceCreateInfoOHOS& copy_src) {
+safe_VkSurfaceCreateInfoOHOS::safe_VkSurfaceCreateInfoOHOS(const safe_VkSurfaceCreateInfoOHOS& copy_src) {
     sType = copy_src.sType;
     flags = copy_src.flags;
     window = nullptr;
@@ -21258,7 +21258,7 @@ safe_VkOHSurfaceCreateInfoOHOS::safe_VkOHSurfaceCreateInfoOHOS(const safe_VkOHSu
     }
 }
 
-safe_VkOHSurfaceCreateInfoOHOS& safe_VkOHSurfaceCreateInfoOHOS::operator=(const safe_VkOHSurfaceCreateInfoOHOS& copy_src) {
+safe_VkSurfaceCreateInfoOHOS& safe_VkSurfaceCreateInfoOHOS::operator=(const safe_VkSurfaceCreateInfoOHOS& copy_src) {
     if (&copy_src == this) return *this;
 
     if (window) delete window;
@@ -21276,13 +21276,13 @@ safe_VkOHSurfaceCreateInfoOHOS& safe_VkOHSurfaceCreateInfoOHOS::operator=(const 
     return *this;
 }
 
-safe_VkOHSurfaceCreateInfoOHOS::~safe_VkOHSurfaceCreateInfoOHOS() {
+safe_VkSurfaceCreateInfoOHOS::~safe_VkSurfaceCreateInfoOHOS() {
     if (window) delete window;
     FreePnextChain(pNext);
 }
 
-void safe_VkOHSurfaceCreateInfoOHOS::initialize(const VkOHSurfaceCreateInfoOHOS* in_struct,
-                                                [[maybe_unused]] PNextCopyState* copy_state) {
+void safe_VkSurfaceCreateInfoOHOS::initialize(const VkSurfaceCreateInfoOHOS* in_struct,
+                                              [[maybe_unused]] PNextCopyState* copy_state) {
     if (window) delete window;
     FreePnextChain(pNext);
     sType = in_struct->sType;
@@ -21295,8 +21295,8 @@ void safe_VkOHSurfaceCreateInfoOHOS::initialize(const VkOHSurfaceCreateInfoOHOS*
     }
 }
 
-void safe_VkOHSurfaceCreateInfoOHOS::initialize(const safe_VkOHSurfaceCreateInfoOHOS* copy_src,
-                                                [[maybe_unused]] PNextCopyState* copy_state) {
+void safe_VkSurfaceCreateInfoOHOS::initialize(const safe_VkSurfaceCreateInfoOHOS* copy_src,
+                                              [[maybe_unused]] PNextCopyState* copy_state) {
     sType = copy_src->sType;
     flags = copy_src->flags;
     window = nullptr;
