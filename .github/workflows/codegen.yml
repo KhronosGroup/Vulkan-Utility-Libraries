@@ -1,0 +1,52 @@
+# Copyright 2025 The Khronos Group Inc.
+# Copyright 2025 Valve Corporation
+# Copyright 2025 LunarG, Inc.
+#
+# SPDX-License-Identifier: Apache-2.0
+
+name: Run codegen
+
+on:
+  workflow_dispatch:
+
+jobs:
+  run_codegen:
+    name: Run codegen
+    runs-on: ubuntu-latest
+    env:
+        PR_NUMBER: ${{ github.event.number }}
+
+    steps:
+      - uses: actions/create-github-app-token@v2
+        id: generate-token
+        with:
+          app-id: ${{ vars.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+            python-version: '3.12'
+
+      - name: Update known_good.json dependencies
+        run: python scripts/update_known_good.py
+
+      - name: Check out repository code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Generate source
+        run: |
+          scripts/update_deps.py --dir external --no-build
+          scripts/generate_source.py external/Vulkan-Headers/registry/
+
+      - name: Diff source to see if anything changed
+        id: git-diff
+        run: echo "::set-output name=git-diff::$(git diff --quiet HEAD~0 || echo true)"
+
+      - name: Create pull request
+        run: gh pr create -B main -H run-codegen --title 'Update to latest Vulkan-Headers' --body 'Created by Github action'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
