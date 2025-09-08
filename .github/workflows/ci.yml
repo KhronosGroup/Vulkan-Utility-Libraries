@@ -25,13 +25,13 @@ jobs:
       - uses: actions/checkout@v5
       - name: Set up Python 3.8
         if: matrix.os != 'macos-latest'
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: '3.8'
       # MacOS machine can run on arm64 and it doesn't support 3.8
       - name: Set up Python 3.10.11
         if: matrix.os == 'macos-latest'
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: '3.10.11'
       - name: Test CMake Minimum
@@ -68,7 +68,7 @@ jobs:
         abi: [ armeabi-v7a, arm64-v8a ]
     steps:
       - uses: actions/checkout@v5
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: '3.8'
       - uses: lukka/get-cmake@latest
@@ -100,7 +100,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v5
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: '3.10'
       - name: Install WSI dependencies
@@ -112,7 +112,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v5
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: '3.10'
       - name: Generate source
