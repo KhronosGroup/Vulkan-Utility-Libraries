@@ -24,7 +24,7 @@ set(API_TYPE "vulkan")
 
 add_subdirectory(scripts)
 
-find_package(VulkanHeaders CONFIG)
+find_package(VulkanHeaders ${CMAKE_PROJECT_VERSION} CONFIG)
 
 option(VUL_ENABLE_ASAN "Use address sanitization")
 if (VUL_ENABLE_ASAN)
