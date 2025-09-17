@@ -5,7 +5,8 @@
 # SPDX-License-Identifier: Apache-2.0
 cmake_minimum_required(VERSION 3.22.1)
 
-project(VUL LANGUAGES CXX)
+# The VERSION field is generated with the "--generated-version" flag in the generate_source.py script
+project(VUL VERSION 1.4.326 LANGUAGES CXX)
 
 set_property(GLOBAL PROPERTY USE_FOLDERS ON) # Remove when min is 3.26, see CMP0143
 
