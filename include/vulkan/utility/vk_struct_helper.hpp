@@ -882,6 +882,10 @@ template <> inline VkStructureType GetSType<VkScreenSurfaceCreateInfoQNX>() { re
 template <> inline VkStructureType GetSType<VkPhysicalDeviceColorWriteEnableFeaturesEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COLOR_WRITE_ENABLE_FEATURES_EXT; }
 template <> inline VkStructureType GetSType<VkPipelineColorWriteCreateInfoEXT>() { return VK_STRUCTURE_TYPE_PIPELINE_COLOR_WRITE_CREATE_INFO_EXT; }
 template <> inline VkStructureType GetSType<VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRIMITIVES_GENERATED_QUERY_FEATURES_EXT; }
+template <> inline VkStructureType GetSType<VkPhysicalDeviceVideoEncodeRgbConversionFeaturesVALVE>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VIDEO_ENCODE_RGB_CONVERSION_FEATURES_VALVE; }
+template <> inline VkStructureType GetSType<VkVideoEncodeRgbConversionCapabilitiesVALVE>() { return VK_STRUCTURE_TYPE_VIDEO_ENCODE_RGB_CONVERSION_CAPABILITIES_VALVE; }
+template <> inline VkStructureType GetSType<VkVideoEncodeProfileRgbConversionInfoVALVE>() { return VK_STRUCTURE_TYPE_VIDEO_ENCODE_PROFILE_RGB_CONVERSION_INFO_VALVE; }
+template <> inline VkStructureType GetSType<VkVideoEncodeSessionRgbConversionCreateInfoVALVE>() { return VK_STRUCTURE_TYPE_VIDEO_ENCODE_SESSION_RGB_CONVERSION_CREATE_INFO_VALVE; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceImageViewMinLodFeaturesEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_VIEW_MIN_LOD_FEATURES_EXT; }
 template <> inline VkStructureType GetSType<VkImageViewMinLodCreateInfoEXT>() { return VK_STRUCTURE_TYPE_IMAGE_VIEW_MIN_LOD_CREATE_INFO_EXT; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceMultiDrawFeaturesEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTI_DRAW_FEATURES_EXT; }

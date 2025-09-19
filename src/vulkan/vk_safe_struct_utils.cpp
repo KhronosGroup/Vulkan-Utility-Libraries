@@ -1668,6 +1668,18 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRIMITIVES_GENERATED_QUERY_FEATURES_EXT:
                 safe_pNext = new safe_VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT(reinterpret_cast<const VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT *>(pNext), copy_state, false);
                 break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VIDEO_ENCODE_RGB_CONVERSION_FEATURES_VALVE:
+                safe_pNext = new safe_VkPhysicalDeviceVideoEncodeRgbConversionFeaturesVALVE(reinterpret_cast<const VkPhysicalDeviceVideoEncodeRgbConversionFeaturesVALVE *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_VIDEO_ENCODE_RGB_CONVERSION_CAPABILITIES_VALVE:
+                safe_pNext = new safe_VkVideoEncodeRgbConversionCapabilitiesVALVE(reinterpret_cast<const VkVideoEncodeRgbConversionCapabilitiesVALVE *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_VIDEO_ENCODE_PROFILE_RGB_CONVERSION_INFO_VALVE:
+                safe_pNext = new safe_VkVideoEncodeProfileRgbConversionInfoVALVE(reinterpret_cast<const VkVideoEncodeProfileRgbConversionInfoVALVE *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_VIDEO_ENCODE_SESSION_RGB_CONVERSION_CREATE_INFO_VALVE:
+                safe_pNext = new safe_VkVideoEncodeSessionRgbConversionCreateInfoVALVE(reinterpret_cast<const VkVideoEncodeSessionRgbConversionCreateInfoVALVE *>(pNext), copy_state, false);
+                break;
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_VIEW_MIN_LOD_FEATURES_EXT:
                 safe_pNext = new safe_VkPhysicalDeviceImageViewMinLodFeaturesEXT(reinterpret_cast<const VkPhysicalDeviceImageViewMinLodFeaturesEXT *>(pNext), copy_state, false);
                 break;
@@ -3897,6 +3909,18 @@ void FreePnextChain(const void *pNext) {
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRIMITIVES_GENERATED_QUERY_FEATURES_EXT:
             delete reinterpret_cast<safe_VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VIDEO_ENCODE_RGB_CONVERSION_FEATURES_VALVE:
+            delete reinterpret_cast<safe_VkPhysicalDeviceVideoEncodeRgbConversionFeaturesVALVE *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_VIDEO_ENCODE_RGB_CONVERSION_CAPABILITIES_VALVE:
+            delete reinterpret_cast<safe_VkVideoEncodeRgbConversionCapabilitiesVALVE *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_VIDEO_ENCODE_PROFILE_RGB_CONVERSION_INFO_VALVE:
+            delete reinterpret_cast<safe_VkVideoEncodeProfileRgbConversionInfoVALVE *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_VIDEO_ENCODE_SESSION_RGB_CONVERSION_CREATE_INFO_VALVE:
+            delete reinterpret_cast<safe_VkVideoEncodeSessionRgbConversionCreateInfoVALVE *>(header);
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_VIEW_MIN_LOD_FEATURES_EXT:
             delete reinterpret_cast<safe_VkPhysicalDeviceImageViewMinLodFeaturesEXT *>(header);

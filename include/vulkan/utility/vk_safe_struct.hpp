@@ -4133,7 +4133,7 @@ struct safe_VkPhysicalDeviceSubgroupSizeControlProperties {
 };
 struct safe_VkPipelineShaderStageRequiredSubgroupSizeCreateInfo {
     VkStructureType sType;
-    void* pNext{};
+    const void* pNext{};
     uint32_t requiredSubgroupSize;
 
     safe_VkPipelineShaderStageRequiredSubgroupSizeCreateInfo(const VkPipelineShaderStageRequiredSubgroupSizeCreateInfo* in_struct,
@@ -16707,6 +16707,96 @@ struct safe_VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT {
     }
     VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT const* ptr() const {
         return reinterpret_cast<VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT const*>(this);
+    }
+};
+struct safe_VkPhysicalDeviceVideoEncodeRgbConversionFeaturesVALVE {
+    VkStructureType sType;
+    void* pNext{};
+    VkBool32 videoEncodeRgbConversion;
+
+    safe_VkPhysicalDeviceVideoEncodeRgbConversionFeaturesVALVE(
+        const VkPhysicalDeviceVideoEncodeRgbConversionFeaturesVALVE* in_struct, PNextCopyState* copy_state = {},
+        bool copy_pnext = true);
+    safe_VkPhysicalDeviceVideoEncodeRgbConversionFeaturesVALVE(
+        const safe_VkPhysicalDeviceVideoEncodeRgbConversionFeaturesVALVE& copy_src);
+    safe_VkPhysicalDeviceVideoEncodeRgbConversionFeaturesVALVE& operator=(
+        const safe_VkPhysicalDeviceVideoEncodeRgbConversionFeaturesVALVE& copy_src);
+    safe_VkPhysicalDeviceVideoEncodeRgbConversionFeaturesVALVE();
+    ~safe_VkPhysicalDeviceVideoEncodeRgbConversionFeaturesVALVE();
+    void initialize(const VkPhysicalDeviceVideoEncodeRgbConversionFeaturesVALVE* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceVideoEncodeRgbConversionFeaturesVALVE* copy_src, PNextCopyState* copy_state = {});
+    VkPhysicalDeviceVideoEncodeRgbConversionFeaturesVALVE* ptr() {
+        return reinterpret_cast<VkPhysicalDeviceVideoEncodeRgbConversionFeaturesVALVE*>(this);
+    }
+    VkPhysicalDeviceVideoEncodeRgbConversionFeaturesVALVE const* ptr() const {
+        return reinterpret_cast<VkPhysicalDeviceVideoEncodeRgbConversionFeaturesVALVE const*>(this);
+    }
+};
+struct safe_VkVideoEncodeRgbConversionCapabilitiesVALVE {
+    VkStructureType sType;
+    void* pNext{};
+    VkVideoEncodeRgbModelConversionFlagsVALVE rgbModels;
+    VkVideoEncodeRgbRangeCompressionFlagsVALVE rgbRanges;
+    VkVideoEncodeRgbChromaOffsetFlagsVALVE xChromaOffsets;
+    VkVideoEncodeRgbChromaOffsetFlagsVALVE yChromaOffsets;
+
+    safe_VkVideoEncodeRgbConversionCapabilitiesVALVE(const VkVideoEncodeRgbConversionCapabilitiesVALVE* in_struct,
+                                                     PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkVideoEncodeRgbConversionCapabilitiesVALVE(const safe_VkVideoEncodeRgbConversionCapabilitiesVALVE& copy_src);
+    safe_VkVideoEncodeRgbConversionCapabilitiesVALVE& operator=(const safe_VkVideoEncodeRgbConversionCapabilitiesVALVE& copy_src);
+    safe_VkVideoEncodeRgbConversionCapabilitiesVALVE();
+    ~safe_VkVideoEncodeRgbConversionCapabilitiesVALVE();
+    void initialize(const VkVideoEncodeRgbConversionCapabilitiesVALVE* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkVideoEncodeRgbConversionCapabilitiesVALVE* copy_src, PNextCopyState* copy_state = {});
+    VkVideoEncodeRgbConversionCapabilitiesVALVE* ptr() {
+        return reinterpret_cast<VkVideoEncodeRgbConversionCapabilitiesVALVE*>(this);
+    }
+    VkVideoEncodeRgbConversionCapabilitiesVALVE const* ptr() const {
+        return reinterpret_cast<VkVideoEncodeRgbConversionCapabilitiesVALVE const*>(this);
+    }
+};
+struct safe_VkVideoEncodeProfileRgbConversionInfoVALVE {
+    VkStructureType sType;
+    const void* pNext{};
+    VkBool32 performEncodeRgbConversion;
+
+    safe_VkVideoEncodeProfileRgbConversionInfoVALVE(const VkVideoEncodeProfileRgbConversionInfoVALVE* in_struct,
+                                                    PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkVideoEncodeProfileRgbConversionInfoVALVE(const safe_VkVideoEncodeProfileRgbConversionInfoVALVE& copy_src);
+    safe_VkVideoEncodeProfileRgbConversionInfoVALVE& operator=(const safe_VkVideoEncodeProfileRgbConversionInfoVALVE& copy_src);
+    safe_VkVideoEncodeProfileRgbConversionInfoVALVE();
+    ~safe_VkVideoEncodeProfileRgbConversionInfoVALVE();
+    void initialize(const VkVideoEncodeProfileRgbConversionInfoVALVE* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkVideoEncodeProfileRgbConversionInfoVALVE* copy_src, PNextCopyState* copy_state = {});
+    VkVideoEncodeProfileRgbConversionInfoVALVE* ptr() {
+        return reinterpret_cast<VkVideoEncodeProfileRgbConversionInfoVALVE*>(this);
+    }
+    VkVideoEncodeProfileRgbConversionInfoVALVE const* ptr() const {
+        return reinterpret_cast<VkVideoEncodeProfileRgbConversionInfoVALVE const*>(this);
+    }
+};
+struct safe_VkVideoEncodeSessionRgbConversionCreateInfoVALVE {
+    VkStructureType sType;
+    const void* pNext{};
+    VkVideoEncodeRgbModelConversionFlagBitsVALVE rgbModel;
+    VkVideoEncodeRgbRangeCompressionFlagBitsVALVE rgbRange;
+    VkVideoEncodeRgbChromaOffsetFlagBitsVALVE xChromaOffset;
+    VkVideoEncodeRgbChromaOffsetFlagBitsVALVE yChromaOffset;
+
+    safe_VkVideoEncodeSessionRgbConversionCreateInfoVALVE(const VkVideoEncodeSessionRgbConversionCreateInfoVALVE* in_struct,
+                                                          PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkVideoEncodeSessionRgbConversionCreateInfoVALVE(const safe_VkVideoEncodeSessionRgbConversionCreateInfoVALVE& copy_src);
+    safe_VkVideoEncodeSessionRgbConversionCreateInfoVALVE& operator=(
+        const safe_VkVideoEncodeSessionRgbConversionCreateInfoVALVE& copy_src);
+    safe_VkVideoEncodeSessionRgbConversionCreateInfoVALVE();
+    ~safe_VkVideoEncodeSessionRgbConversionCreateInfoVALVE();
+    void initialize(const VkVideoEncodeSessionRgbConversionCreateInfoVALVE* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkVideoEncodeSessionRgbConversionCreateInfoVALVE* copy_src, PNextCopyState* copy_state = {});
+    VkVideoEncodeSessionRgbConversionCreateInfoVALVE* ptr() {
+        return reinterpret_cast<VkVideoEncodeSessionRgbConversionCreateInfoVALVE*>(this);
+    }
+    VkVideoEncodeSessionRgbConversionCreateInfoVALVE const* ptr() const {
+        return reinterpret_cast<VkVideoEncodeSessionRgbConversionCreateInfoVALVE const*>(this);
     }
 };
 struct safe_VkPhysicalDeviceImageViewMinLodFeaturesEXT {
