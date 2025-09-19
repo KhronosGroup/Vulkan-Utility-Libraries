@@ -1612,6 +1612,14 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_MAINTENANCE_1_FEATURES_KHR";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_UNTYPED_POINTERS_FEATURES_KHR:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_UNTYPED_POINTERS_FEATURES_KHR";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VIDEO_ENCODE_RGB_CONVERSION_FEATURES_VALVE:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VIDEO_ENCODE_RGB_CONVERSION_FEATURES_VALVE";
+        case VK_STRUCTURE_TYPE_VIDEO_ENCODE_RGB_CONVERSION_CAPABILITIES_VALVE:
+            return "VK_STRUCTURE_TYPE_VIDEO_ENCODE_RGB_CONVERSION_CAPABILITIES_VALVE";
+        case VK_STRUCTURE_TYPE_VIDEO_ENCODE_PROFILE_RGB_CONVERSION_INFO_VALVE:
+            return "VK_STRUCTURE_TYPE_VIDEO_ENCODE_PROFILE_RGB_CONVERSION_INFO_VALVE";
+        case VK_STRUCTURE_TYPE_VIDEO_ENCODE_SESSION_RGB_CONVERSION_CREATE_INFO_VALVE:
+            return "VK_STRUCTURE_TYPE_VIDEO_ENCODE_SESSION_RGB_CONVERSION_CREATE_INFO_VALVE";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_VIEW_MIN_LOD_FEATURES_EXT:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_VIEW_MIN_LOD_FEATURES_EXT";
         case VK_STRUCTURE_TYPE_IMAGE_VIEW_MIN_LOD_CREATE_INFO_EXT:
@@ -10228,6 +10236,93 @@ static inline std::string string_VkFrameBoundaryFlagsEXT(VkFrameBoundaryFlagsEXT
     return ret;
 }
 #endif // __cplusplus
+static inline const char* string_VkVideoEncodeRgbModelConversionFlagBitsVALVE(VkVideoEncodeRgbModelConversionFlagBitsVALVE input_value) {
+    switch (input_value) {
+        case VK_VIDEO_ENCODE_RGB_MODEL_CONVERSION_RGB_IDENTITY_BIT_VALVE:
+            return "VK_VIDEO_ENCODE_RGB_MODEL_CONVERSION_RGB_IDENTITY_BIT_VALVE";
+        case VK_VIDEO_ENCODE_RGB_MODEL_CONVERSION_YCBCR_IDENTITY_BIT_VALVE:
+            return "VK_VIDEO_ENCODE_RGB_MODEL_CONVERSION_YCBCR_IDENTITY_BIT_VALVE";
+        case VK_VIDEO_ENCODE_RGB_MODEL_CONVERSION_YCBCR_709_BIT_VALVE:
+            return "VK_VIDEO_ENCODE_RGB_MODEL_CONVERSION_YCBCR_709_BIT_VALVE";
+        case VK_VIDEO_ENCODE_RGB_MODEL_CONVERSION_YCBCR_601_BIT_VALVE:
+            return "VK_VIDEO_ENCODE_RGB_MODEL_CONVERSION_YCBCR_601_BIT_VALVE";
+        case VK_VIDEO_ENCODE_RGB_MODEL_CONVERSION_YCBCR_2020_BIT_VALVE:
+            return "VK_VIDEO_ENCODE_RGB_MODEL_CONVERSION_YCBCR_2020_BIT_VALVE";
+        default:
+            return "Unhandled VkVideoEncodeRgbModelConversionFlagBitsVALVE";
+    }
+}
+
+#ifdef __cplusplus
+static inline std::string string_VkVideoEncodeRgbModelConversionFlagsVALVE(VkVideoEncodeRgbModelConversionFlagsVALVE input_value) {
+    std::string ret;
+    int index = 0;
+    while(input_value) {
+        if (input_value & 1) {
+            if( !ret.empty()) ret.append("|");
+            ret.append(string_VkVideoEncodeRgbModelConversionFlagBitsVALVE(static_cast<VkVideoEncodeRgbModelConversionFlagBitsVALVE>(1U << index)));
+        }
+        ++index;
+        input_value >>= 1;
+    }
+    if (ret.empty()) ret.append("VkVideoEncodeRgbModelConversionFlagsVALVE(0)");
+    return ret;
+}
+#endif // __cplusplus
+static inline const char* string_VkVideoEncodeRgbRangeCompressionFlagBitsVALVE(VkVideoEncodeRgbRangeCompressionFlagBitsVALVE input_value) {
+    switch (input_value) {
+        case VK_VIDEO_ENCODE_RGB_RANGE_COMPRESSION_FULL_RANGE_BIT_VALVE:
+            return "VK_VIDEO_ENCODE_RGB_RANGE_COMPRESSION_FULL_RANGE_BIT_VALVE";
+        case VK_VIDEO_ENCODE_RGB_RANGE_COMPRESSION_NARROW_RANGE_BIT_VALVE:
+            return "VK_VIDEO_ENCODE_RGB_RANGE_COMPRESSION_NARROW_RANGE_BIT_VALVE";
+        default:
+            return "Unhandled VkVideoEncodeRgbRangeCompressionFlagBitsVALVE";
+    }
+}
+
+#ifdef __cplusplus
+static inline std::string string_VkVideoEncodeRgbRangeCompressionFlagsVALVE(VkVideoEncodeRgbRangeCompressionFlagsVALVE input_value) {
+    std::string ret;
+    int index = 0;
+    while(input_value) {
+        if (input_value & 1) {
+            if( !ret.empty()) ret.append("|");
+            ret.append(string_VkVideoEncodeRgbRangeCompressionFlagBitsVALVE(static_cast<VkVideoEncodeRgbRangeCompressionFlagBitsVALVE>(1U << index)));
+        }
+        ++index;
+        input_value >>= 1;
+    }
+    if (ret.empty()) ret.append("VkVideoEncodeRgbRangeCompressionFlagsVALVE(0)");
+    return ret;
+}
+#endif // __cplusplus
+static inline const char* string_VkVideoEncodeRgbChromaOffsetFlagBitsVALVE(VkVideoEncodeRgbChromaOffsetFlagBitsVALVE input_value) {
+    switch (input_value) {
+        case VK_VIDEO_ENCODE_RGB_CHROMA_OFFSET_COSITED_EVEN_BIT_VALVE:
+            return "VK_VIDEO_ENCODE_RGB_CHROMA_OFFSET_COSITED_EVEN_BIT_VALVE";
+        case VK_VIDEO_ENCODE_RGB_CHROMA_OFFSET_MIDPOINT_BIT_VALVE:
+            return "VK_VIDEO_ENCODE_RGB_CHROMA_OFFSET_MIDPOINT_BIT_VALVE";
+        default:
+            return "Unhandled VkVideoEncodeRgbChromaOffsetFlagBitsVALVE";
+    }
+}
+
+#ifdef __cplusplus
+static inline std::string string_VkVideoEncodeRgbChromaOffsetFlagsVALVE(VkVideoEncodeRgbChromaOffsetFlagsVALVE input_value) {
+    std::string ret;
+    int index = 0;
+    while(input_value) {
+        if (input_value & 1) {
+            if( !ret.empty()) ret.append("|");
+            ret.append(string_VkVideoEncodeRgbChromaOffsetFlagBitsVALVE(static_cast<VkVideoEncodeRgbChromaOffsetFlagBitsVALVE>(1U << index)));
+        }
+        ++index;
+        input_value >>= 1;
+    }
+    if (ret.empty()) ret.append("VkVideoEncodeRgbChromaOffsetFlagsVALVE(0)");
+    return ret;
+}
+#endif // __cplusplus
 static inline const char* string_VkBuildMicromapFlagBitsEXT(VkBuildMicromapFlagBitsEXT input_value) {
     switch (input_value) {
         case VK_BUILD_MICROMAP_PREFER_FAST_TRACE_BIT_EXT:
@@ -12498,6 +12593,14 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
             return "VkPipelineColorWriteCreateInfoEXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRIMITIVES_GENERATED_QUERY_FEATURES_EXT:
             return "VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VIDEO_ENCODE_RGB_CONVERSION_FEATURES_VALVE:
+            return "VkPhysicalDeviceVideoEncodeRgbConversionFeaturesVALVE";
+        case VK_STRUCTURE_TYPE_VIDEO_ENCODE_RGB_CONVERSION_CAPABILITIES_VALVE:
+            return "VkVideoEncodeRgbConversionCapabilitiesVALVE";
+        case VK_STRUCTURE_TYPE_VIDEO_ENCODE_PROFILE_RGB_CONVERSION_INFO_VALVE:
+            return "VkVideoEncodeProfileRgbConversionInfoVALVE";
+        case VK_STRUCTURE_TYPE_VIDEO_ENCODE_SESSION_RGB_CONVERSION_CREATE_INFO_VALVE:
+            return "VkVideoEncodeSessionRgbConversionCreateInfoVALVE";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_VIEW_MIN_LOD_FEATURES_EXT:
             return "VkPhysicalDeviceImageViewMinLodFeaturesEXT";
         case VK_STRUCTURE_TYPE_IMAGE_VIEW_MIN_LOD_CREATE_INFO_EXT:

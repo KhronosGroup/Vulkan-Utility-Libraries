@@ -10494,6 +10494,247 @@ void safe_VkScreenSurfaceCreateInfoQNX::initialize(const safe_VkScreenSurfaceCre
     window = copy_src->window;
 }
 #endif  // VK_USE_PLATFORM_SCREEN_QNX
+
+safe_VkPhysicalDeviceVideoEncodeRgbConversionFeaturesVALVE::safe_VkPhysicalDeviceVideoEncodeRgbConversionFeaturesVALVE(
+    const VkPhysicalDeviceVideoEncodeRgbConversionFeaturesVALVE* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
+    bool copy_pnext)
+    : sType(in_struct->sType), videoEncodeRgbConversion(in_struct->videoEncodeRgbConversion) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceVideoEncodeRgbConversionFeaturesVALVE::safe_VkPhysicalDeviceVideoEncodeRgbConversionFeaturesVALVE()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VIDEO_ENCODE_RGB_CONVERSION_FEATURES_VALVE),
+      pNext(nullptr),
+      videoEncodeRgbConversion() {}
+
+safe_VkPhysicalDeviceVideoEncodeRgbConversionFeaturesVALVE::safe_VkPhysicalDeviceVideoEncodeRgbConversionFeaturesVALVE(
+    const safe_VkPhysicalDeviceVideoEncodeRgbConversionFeaturesVALVE& copy_src) {
+    sType = copy_src.sType;
+    videoEncodeRgbConversion = copy_src.videoEncodeRgbConversion;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceVideoEncodeRgbConversionFeaturesVALVE& safe_VkPhysicalDeviceVideoEncodeRgbConversionFeaturesVALVE::operator=(
+    const safe_VkPhysicalDeviceVideoEncodeRgbConversionFeaturesVALVE& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    videoEncodeRgbConversion = copy_src.videoEncodeRgbConversion;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceVideoEncodeRgbConversionFeaturesVALVE::~safe_VkPhysicalDeviceVideoEncodeRgbConversionFeaturesVALVE() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkPhysicalDeviceVideoEncodeRgbConversionFeaturesVALVE::initialize(
+    const VkPhysicalDeviceVideoEncodeRgbConversionFeaturesVALVE* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    videoEncodeRgbConversion = in_struct->videoEncodeRgbConversion;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceVideoEncodeRgbConversionFeaturesVALVE::initialize(
+    const safe_VkPhysicalDeviceVideoEncodeRgbConversionFeaturesVALVE* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    videoEncodeRgbConversion = copy_src->videoEncodeRgbConversion;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkVideoEncodeRgbConversionCapabilitiesVALVE::safe_VkVideoEncodeRgbConversionCapabilitiesVALVE(
+    const VkVideoEncodeRgbConversionCapabilitiesVALVE* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType),
+      rgbModels(in_struct->rgbModels),
+      rgbRanges(in_struct->rgbRanges),
+      xChromaOffsets(in_struct->xChromaOffsets),
+      yChromaOffsets(in_struct->yChromaOffsets) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkVideoEncodeRgbConversionCapabilitiesVALVE::safe_VkVideoEncodeRgbConversionCapabilitiesVALVE()
+    : sType(VK_STRUCTURE_TYPE_VIDEO_ENCODE_RGB_CONVERSION_CAPABILITIES_VALVE),
+      pNext(nullptr),
+      rgbModels(),
+      rgbRanges(),
+      xChromaOffsets(),
+      yChromaOffsets() {}
+
+safe_VkVideoEncodeRgbConversionCapabilitiesVALVE::safe_VkVideoEncodeRgbConversionCapabilitiesVALVE(
+    const safe_VkVideoEncodeRgbConversionCapabilitiesVALVE& copy_src) {
+    sType = copy_src.sType;
+    rgbModels = copy_src.rgbModels;
+    rgbRanges = copy_src.rgbRanges;
+    xChromaOffsets = copy_src.xChromaOffsets;
+    yChromaOffsets = copy_src.yChromaOffsets;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkVideoEncodeRgbConversionCapabilitiesVALVE& safe_VkVideoEncodeRgbConversionCapabilitiesVALVE::operator=(
+    const safe_VkVideoEncodeRgbConversionCapabilitiesVALVE& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    rgbModels = copy_src.rgbModels;
+    rgbRanges = copy_src.rgbRanges;
+    xChromaOffsets = copy_src.xChromaOffsets;
+    yChromaOffsets = copy_src.yChromaOffsets;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkVideoEncodeRgbConversionCapabilitiesVALVE::~safe_VkVideoEncodeRgbConversionCapabilitiesVALVE() { FreePnextChain(pNext); }
+
+void safe_VkVideoEncodeRgbConversionCapabilitiesVALVE::initialize(const VkVideoEncodeRgbConversionCapabilitiesVALVE* in_struct,
+                                                                  [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    rgbModels = in_struct->rgbModels;
+    rgbRanges = in_struct->rgbRanges;
+    xChromaOffsets = in_struct->xChromaOffsets;
+    yChromaOffsets = in_struct->yChromaOffsets;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkVideoEncodeRgbConversionCapabilitiesVALVE::initialize(const safe_VkVideoEncodeRgbConversionCapabilitiesVALVE* copy_src,
+                                                                  [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    rgbModels = copy_src->rgbModels;
+    rgbRanges = copy_src->rgbRanges;
+    xChromaOffsets = copy_src->xChromaOffsets;
+    yChromaOffsets = copy_src->yChromaOffsets;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkVideoEncodeProfileRgbConversionInfoVALVE::safe_VkVideoEncodeProfileRgbConversionInfoVALVE(
+    const VkVideoEncodeProfileRgbConversionInfoVALVE* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), performEncodeRgbConversion(in_struct->performEncodeRgbConversion) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkVideoEncodeProfileRgbConversionInfoVALVE::safe_VkVideoEncodeProfileRgbConversionInfoVALVE()
+    : sType(VK_STRUCTURE_TYPE_VIDEO_ENCODE_PROFILE_RGB_CONVERSION_INFO_VALVE), pNext(nullptr), performEncodeRgbConversion() {}
+
+safe_VkVideoEncodeProfileRgbConversionInfoVALVE::safe_VkVideoEncodeProfileRgbConversionInfoVALVE(
+    const safe_VkVideoEncodeProfileRgbConversionInfoVALVE& copy_src) {
+    sType = copy_src.sType;
+    performEncodeRgbConversion = copy_src.performEncodeRgbConversion;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkVideoEncodeProfileRgbConversionInfoVALVE& safe_VkVideoEncodeProfileRgbConversionInfoVALVE::operator=(
+    const safe_VkVideoEncodeProfileRgbConversionInfoVALVE& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    performEncodeRgbConversion = copy_src.performEncodeRgbConversion;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkVideoEncodeProfileRgbConversionInfoVALVE::~safe_VkVideoEncodeProfileRgbConversionInfoVALVE() { FreePnextChain(pNext); }
+
+void safe_VkVideoEncodeProfileRgbConversionInfoVALVE::initialize(const VkVideoEncodeProfileRgbConversionInfoVALVE* in_struct,
+                                                                 [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    performEncodeRgbConversion = in_struct->performEncodeRgbConversion;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkVideoEncodeProfileRgbConversionInfoVALVE::initialize(const safe_VkVideoEncodeProfileRgbConversionInfoVALVE* copy_src,
+                                                                 [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    performEncodeRgbConversion = copy_src->performEncodeRgbConversion;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkVideoEncodeSessionRgbConversionCreateInfoVALVE::safe_VkVideoEncodeSessionRgbConversionCreateInfoVALVE(
+    const VkVideoEncodeSessionRgbConversionCreateInfoVALVE* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType),
+      rgbModel(in_struct->rgbModel),
+      rgbRange(in_struct->rgbRange),
+      xChromaOffset(in_struct->xChromaOffset),
+      yChromaOffset(in_struct->yChromaOffset) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkVideoEncodeSessionRgbConversionCreateInfoVALVE::safe_VkVideoEncodeSessionRgbConversionCreateInfoVALVE()
+    : sType(VK_STRUCTURE_TYPE_VIDEO_ENCODE_SESSION_RGB_CONVERSION_CREATE_INFO_VALVE),
+      pNext(nullptr),
+      rgbModel(),
+      rgbRange(),
+      xChromaOffset(),
+      yChromaOffset() {}
+
+safe_VkVideoEncodeSessionRgbConversionCreateInfoVALVE::safe_VkVideoEncodeSessionRgbConversionCreateInfoVALVE(
+    const safe_VkVideoEncodeSessionRgbConversionCreateInfoVALVE& copy_src) {
+    sType = copy_src.sType;
+    rgbModel = copy_src.rgbModel;
+    rgbRange = copy_src.rgbRange;
+    xChromaOffset = copy_src.xChromaOffset;
+    yChromaOffset = copy_src.yChromaOffset;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkVideoEncodeSessionRgbConversionCreateInfoVALVE& safe_VkVideoEncodeSessionRgbConversionCreateInfoVALVE::operator=(
+    const safe_VkVideoEncodeSessionRgbConversionCreateInfoVALVE& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    rgbModel = copy_src.rgbModel;
+    rgbRange = copy_src.rgbRange;
+    xChromaOffset = copy_src.xChromaOffset;
+    yChromaOffset = copy_src.yChromaOffset;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkVideoEncodeSessionRgbConversionCreateInfoVALVE::~safe_VkVideoEncodeSessionRgbConversionCreateInfoVALVE() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkVideoEncodeSessionRgbConversionCreateInfoVALVE::initialize(
+    const VkVideoEncodeSessionRgbConversionCreateInfoVALVE* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    rgbModel = in_struct->rgbModel;
+    rgbRange = in_struct->rgbRange;
+    xChromaOffset = in_struct->xChromaOffset;
+    yChromaOffset = in_struct->yChromaOffset;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkVideoEncodeSessionRgbConversionCreateInfoVALVE::initialize(
+    const safe_VkVideoEncodeSessionRgbConversionCreateInfoVALVE* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    rgbModel = copy_src->rgbModel;
+    rgbRange = copy_src->rgbRange;
+    xChromaOffset = copy_src->xChromaOffset;
+    yChromaOffset = copy_src->yChromaOffset;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
 #ifdef VK_ENABLE_BETA_EXTENSIONS
 
 safe_VkPhysicalDeviceDisplacementMicromapFeaturesNV::safe_VkPhysicalDeviceDisplacementMicromapFeaturesNV(
