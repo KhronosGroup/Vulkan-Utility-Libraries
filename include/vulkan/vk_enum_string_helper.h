@@ -1706,8 +1706,6 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_RENDER_PASS_STRIPE_SUBMIT_INFO_ARM";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COPY_MEMORY_INDIRECT_FEATURES_NV:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COPY_MEMORY_INDIRECT_FEATURES_NV";
-        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COPY_MEMORY_INDIRECT_PROPERTIES_NV:
-            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COPY_MEMORY_INDIRECT_PROPERTIES_NV";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_DECOMPRESSION_FEATURES_NV:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_DECOMPRESSION_FEATURES_NV";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_DECOMPRESSION_PROPERTIES_NV:
@@ -2124,6 +2122,14 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_TILE_MEMORY_BIND_INFO_QCOM";
         case VK_STRUCTURE_TYPE_TILE_MEMORY_SIZE_INFO_QCOM:
             return "VK_STRUCTURE_TYPE_TILE_MEMORY_SIZE_INFO_QCOM";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COPY_MEMORY_INDIRECT_FEATURES_KHR:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COPY_MEMORY_INDIRECT_FEATURES_KHR";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COPY_MEMORY_INDIRECT_PROPERTIES_KHR:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COPY_MEMORY_INDIRECT_PROPERTIES_KHR";
+        case VK_STRUCTURE_TYPE_COPY_MEMORY_INDIRECT_INFO_KHR:
+            return "VK_STRUCTURE_TYPE_COPY_MEMORY_INDIRECT_INFO_KHR";
+        case VK_STRUCTURE_TYPE_COPY_MEMORY_TO_IMAGE_INDIRECT_INFO_KHR:
+            return "VK_STRUCTURE_TYPE_COPY_MEMORY_TO_IMAGE_INDIRECT_INFO_KHR";
         case VK_STRUCTURE_TYPE_DISPLAY_SURFACE_STEREO_CREATE_INFO_NV:
             return "VK_STRUCTURE_TYPE_DISPLAY_SURFACE_STEREO_CREATE_INFO_NV";
         case VK_STRUCTURE_TYPE_DISPLAY_MODE_STEREO_PROPERTIES_NV:
@@ -7904,6 +7910,7 @@ static inline const char* string_VkPipelineStageFlagBits2(uint64_t input_value) 
     if (input_value == VK_PIPELINE_STAGE_2_OPTICAL_FLOW_BIT_NV) return "VK_PIPELINE_STAGE_2_OPTICAL_FLOW_BIT_NV";
     if (input_value == VK_PIPELINE_STAGE_2_CONVERT_COOPERATIVE_VECTOR_MATRIX_BIT_NV) return "VK_PIPELINE_STAGE_2_CONVERT_COOPERATIVE_VECTOR_MATRIX_BIT_NV";
     if (input_value == VK_PIPELINE_STAGE_2_DATA_GRAPH_BIT_ARM) return "VK_PIPELINE_STAGE_2_DATA_GRAPH_BIT_ARM";
+    if (input_value == VK_PIPELINE_STAGE_2_COPY_INDIRECT_BIT_KHR) return "VK_PIPELINE_STAGE_2_COPY_INDIRECT_BIT_KHR";
     return "Unhandled VkPipelineStageFlagBits2";
 }
 
@@ -8098,6 +8105,7 @@ static inline const char* string_VkFormatFeatureFlagBits2(uint64_t input_value) 
     if (input_value == VK_FORMAT_FEATURE_2_OPTICAL_FLOW_VECTOR_BIT_NV) return "VK_FORMAT_FEATURE_2_OPTICAL_FLOW_VECTOR_BIT_NV";
     if (input_value == VK_FORMAT_FEATURE_2_OPTICAL_FLOW_COST_BIT_NV) return "VK_FORMAT_FEATURE_2_OPTICAL_FLOW_COST_BIT_NV";
     if (input_value == VK_FORMAT_FEATURE_2_TENSOR_DATA_GRAPH_BIT_ARM) return "VK_FORMAT_FEATURE_2_TENSOR_DATA_GRAPH_BIT_ARM";
+    if (input_value == VK_FORMAT_FEATURE_2_COPY_IMAGE_INDIRECT_DST_BIT_KHR) return "VK_FORMAT_FEATURE_2_COPY_IMAGE_INDIRECT_DST_BIT_KHR";
     if (input_value == VK_FORMAT_FEATURE_2_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR) return "VK_FORMAT_FEATURE_2_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR";
     if (input_value == VK_FORMAT_FEATURE_2_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR) return "VK_FORMAT_FEATURE_2_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR";
     return "Unhandled VkFormatFeatureFlagBits2";
@@ -9494,6 +9502,35 @@ static inline std::string string_VkVideoEncodeAV1RateControlFlagsKHR(VkVideoEnco
         input_value >>= 1;
     }
     if (ret.empty()) ret.append("VkVideoEncodeAV1RateControlFlagsKHR(0)");
+    return ret;
+}
+#endif // __cplusplus
+static inline const char* string_VkAddressCopyFlagBitsKHR(VkAddressCopyFlagBitsKHR input_value) {
+    switch (input_value) {
+        case VK_ADDRESS_COPY_DEVICE_LOCAL_BIT_KHR:
+            return "VK_ADDRESS_COPY_DEVICE_LOCAL_BIT_KHR";
+        case VK_ADDRESS_COPY_SPARSE_BIT_KHR:
+            return "VK_ADDRESS_COPY_SPARSE_BIT_KHR";
+        case VK_ADDRESS_COPY_PROTECTED_BIT_KHR:
+            return "VK_ADDRESS_COPY_PROTECTED_BIT_KHR";
+        default:
+            return "Unhandled VkAddressCopyFlagBitsKHR";
+    }
+}
+
+#ifdef __cplusplus
+static inline std::string string_VkAddressCopyFlagsKHR(VkAddressCopyFlagsKHR input_value) {
+    std::string ret;
+    int index = 0;
+    while(input_value) {
+        if (input_value & 1) {
+            if( !ret.empty()) ret.append("|");
+            ret.append(string_VkAddressCopyFlagBitsKHR(static_cast<VkAddressCopyFlagBitsKHR>(1U << index)));
+        }
+        ++index;
+        input_value >>= 1;
+    }
+    if (ret.empty()) ret.append("VkAddressCopyFlagsKHR(0)");
     return ret;
 }
 #endif // __cplusplus
@@ -11881,6 +11918,14 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
             return "VkSetDescriptorBufferOffsetsInfoEXT";
         case VK_STRUCTURE_TYPE_BIND_DESCRIPTOR_BUFFER_EMBEDDED_SAMPLERS_INFO_EXT:
             return "VkBindDescriptorBufferEmbeddedSamplersInfoEXT";
+        case VK_STRUCTURE_TYPE_COPY_MEMORY_INDIRECT_INFO_KHR:
+            return "VkCopyMemoryIndirectInfoKHR";
+        case VK_STRUCTURE_TYPE_COPY_MEMORY_TO_IMAGE_INDIRECT_INFO_KHR:
+            return "VkCopyMemoryToImageIndirectInfoKHR";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COPY_MEMORY_INDIRECT_FEATURES_KHR:
+            return "VkPhysicalDeviceCopyMemoryIndirectFeaturesKHR";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COPY_MEMORY_INDIRECT_PROPERTIES_KHR:
+            return "VkPhysicalDeviceCopyMemoryIndirectPropertiesKHR";
         case VK_STRUCTURE_TYPE_VIDEO_ENCODE_INTRA_REFRESH_CAPABILITIES_KHR:
             return "VkVideoEncodeIntraRefreshCapabilitiesKHR";
         case VK_STRUCTURE_TYPE_VIDEO_ENCODE_SESSION_INTRA_REFRESH_CREATE_INFO_KHR:
@@ -12693,8 +12738,6 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
             return "VkRenderPassFragmentDensityMapOffsetEndInfoEXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COPY_MEMORY_INDIRECT_FEATURES_NV:
             return "VkPhysicalDeviceCopyMemoryIndirectFeaturesNV";
-        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COPY_MEMORY_INDIRECT_PROPERTIES_NV:
-            return "VkPhysicalDeviceCopyMemoryIndirectPropertiesNV";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_DECOMPRESSION_FEATURES_NV:
             return "VkPhysicalDeviceMemoryDecompressionFeaturesNV";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_DECOMPRESSION_PROPERTIES_NV:
