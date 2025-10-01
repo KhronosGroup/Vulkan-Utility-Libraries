@@ -85,7 +85,7 @@ if (VUL_ENABLE_INSTALL)
     file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/VulkanUtilityLibrariesConfig.cmake.in" [=[
         include(CMakeFindDependencyMacro)
         # NOTE: Because VulkanHeaders is a PUBLIC dependency it needs to be found prior to VulkanUtilityLibraries
-        find_dependency(VulkanHeaders REQUIRED)
+        find_dependency(VulkanHeaders @PROJECT_VERSION@ REQUIRED)
 
         @PACKAGE_INIT@
 
