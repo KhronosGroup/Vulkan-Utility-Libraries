@@ -19,8 +19,8 @@ jobs:
     runs-on: ${{matrix.os}}
     strategy:
       matrix:
-        config: [Debug, Release]
-        os: [ ubuntu-22.04, ubuntu-24.04, windows-latest, macos-latest ]
+        config: [ Debug, Release ]
+        os: [ ubuntu-22.04, ubuntu-24.04, ubuntu-24.04-arm, windows-latest, macos-latest ]
     steps:
       - uses: actions/checkout@v5
       - name: Set up Python 3.8
@@ -47,15 +47,20 @@ jobs:
   windows-arm64:
     # Use chromium as a test build, so don't run this job unless something simple works first
     needs: chromium
-    runs-on: windows-latest
-    env:
-      CMAKE_GENERATOR: Ninja
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        include:
+          - os: windows-latest
+            msvc_arch: amd64_arm64
+          - os: windows-11-arm
+            msvc_arch: arm64
     steps:
       - uses: actions/checkout@v5
       - uses: ilammy/msvc-dev-cmd@v1
         with:
-          arch: amd64_arm64
-      - run: cmake -S. -B build -D VUL_WERROR=ON -D CMAKE_BUILD_TYPE=Debug -D UPDATE_DEPS=ON
+          arch: ${{ matrix.msvc_arch }}
+      - run: cmake -S. -B build -D VUL_WERROR=ON -D CMAKE_BUILD_TYPE=Debug -D UPDATE_DEPS=ON -G Ninja
       - run: cmake --build build
       - run: cmake --install build --prefix build/install
 
