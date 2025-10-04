@@ -6,7 +6,7 @@
 cmake_minimum_required(VERSION 3.22.1)
 
 # The VERSION field is generated with the "--generated-version" flag in the generate_source.py script
-project(VUL VERSION 1.4.327 LANGUAGES CXX)
+project(VUL VERSION 1.4.328 LANGUAGES CXX)
 
 set_property(GLOBAL PROPERTY USE_FOLDERS ON) # Remove when min is 3.26, see CMP0143
 
@@ -24,7 +24,7 @@ set(API_TYPE "vulkan")
 
 add_subdirectory(scripts)
 
-find_package(VulkanHeaders ${CMAKE_PROJECT_VERSION} CONFIG)
+find_package(VulkanHeaders ${PROJECT_VERSION} CONFIG)
 
 option(VUL_ENABLE_ASAN "Use address sanitization")
 if (VUL_ENABLE_ASAN)
