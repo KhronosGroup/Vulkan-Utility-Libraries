@@ -92,7 +92,7 @@ jobs:
     steps:
     - uses: actions/checkout@v5
     - name: REUSE Compliance Check
-      uses: fsfe/reuse-action@v5
+      uses: fsfe/reuse-action@v6
 
   # Test to ensure we don't accidentally break the Chromium build.
   chromium:
