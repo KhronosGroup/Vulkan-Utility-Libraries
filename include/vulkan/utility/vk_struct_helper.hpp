@@ -537,6 +537,7 @@ template <> inline VkStructureType GetSType<VkPhysicalDeviceLayeredApiProperties
 template <> inline VkStructureType GetSType<VkPhysicalDeviceLayeredApiVulkanPropertiesKHR>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_API_VULKAN_PROPERTIES_KHR; }
 template <> inline VkStructureType GetSType<VkMemoryBarrierAccessFlags3KHR>() { return VK_STRUCTURE_TYPE_MEMORY_BARRIER_ACCESS_FLAGS_3_KHR; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceMaintenance8FeaturesKHR>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_8_FEATURES_KHR; }
+template <> inline VkStructureType GetSType<VkPhysicalDeviceShaderFmaFeaturesKHR>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_FMA_FEATURES_KHR; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceMaintenance9FeaturesKHR>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_9_FEATURES_KHR; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceMaintenance9PropertiesKHR>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_9_PROPERTIES_KHR; }
 template <> inline VkStructureType GetSType<VkQueueFamilyOwnershipTransferPropertiesKHR>() { return VK_STRUCTURE_TYPE_QUEUE_FAMILY_OWNERSHIP_TRANSFER_PROPERTIES_KHR; }

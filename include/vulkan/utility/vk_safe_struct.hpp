@@ -10234,6 +10234,26 @@ struct safe_VkPhysicalDeviceMaintenance8FeaturesKHR {
         return reinterpret_cast<VkPhysicalDeviceMaintenance8FeaturesKHR const*>(this);
     }
 };
+struct safe_VkPhysicalDeviceShaderFmaFeaturesKHR {
+    VkStructureType sType;
+    void* pNext{};
+    VkBool32 shaderFmaFloat16;
+    VkBool32 shaderFmaFloat32;
+    VkBool32 shaderFmaFloat64;
+
+    safe_VkPhysicalDeviceShaderFmaFeaturesKHR(const VkPhysicalDeviceShaderFmaFeaturesKHR* in_struct,
+                                              PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkPhysicalDeviceShaderFmaFeaturesKHR(const safe_VkPhysicalDeviceShaderFmaFeaturesKHR& copy_src);
+    safe_VkPhysicalDeviceShaderFmaFeaturesKHR& operator=(const safe_VkPhysicalDeviceShaderFmaFeaturesKHR& copy_src);
+    safe_VkPhysicalDeviceShaderFmaFeaturesKHR();
+    ~safe_VkPhysicalDeviceShaderFmaFeaturesKHR();
+    void initialize(const VkPhysicalDeviceShaderFmaFeaturesKHR* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceShaderFmaFeaturesKHR* copy_src, PNextCopyState* copy_state = {});
+    VkPhysicalDeviceShaderFmaFeaturesKHR* ptr() { return reinterpret_cast<VkPhysicalDeviceShaderFmaFeaturesKHR*>(this); }
+    VkPhysicalDeviceShaderFmaFeaturesKHR const* ptr() const {
+        return reinterpret_cast<VkPhysicalDeviceShaderFmaFeaturesKHR const*>(this);
+    }
+};
 struct safe_VkPhysicalDeviceMaintenance9FeaturesKHR {
     VkStructureType sType;
     void* pNext{};
