@@ -977,6 +977,9 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_8_FEATURES_KHR:
                 safe_pNext = new safe_VkPhysicalDeviceMaintenance8FeaturesKHR(reinterpret_cast<const VkPhysicalDeviceMaintenance8FeaturesKHR *>(pNext), copy_state, false);
                 break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_FMA_FEATURES_KHR:
+                safe_pNext = new safe_VkPhysicalDeviceShaderFmaFeaturesKHR(reinterpret_cast<const VkPhysicalDeviceShaderFmaFeaturesKHR *>(pNext), copy_state, false);
+                break;
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_9_FEATURES_KHR:
                 safe_pNext = new safe_VkPhysicalDeviceMaintenance9FeaturesKHR(reinterpret_cast<const VkPhysicalDeviceMaintenance9FeaturesKHR *>(pNext), copy_state, false);
                 break;
@@ -3221,6 +3224,9 @@ void FreePnextChain(const void *pNext) {
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_8_FEATURES_KHR:
             delete reinterpret_cast<safe_VkPhysicalDeviceMaintenance8FeaturesKHR *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_FMA_FEATURES_KHR:
+            delete reinterpret_cast<safe_VkPhysicalDeviceShaderFmaFeaturesKHR *>(header);
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_9_FEATURES_KHR:
             delete reinterpret_cast<safe_VkPhysicalDeviceMaintenance9FeaturesKHR *>(header);

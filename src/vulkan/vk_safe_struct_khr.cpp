@@ -16746,6 +16746,69 @@ void safe_VkPhysicalDeviceMaintenance8FeaturesKHR::initialize(const safe_VkPhysi
     pNext = SafePnextCopy(copy_src->pNext);
 }
 
+safe_VkPhysicalDeviceShaderFmaFeaturesKHR::safe_VkPhysicalDeviceShaderFmaFeaturesKHR(
+    const VkPhysicalDeviceShaderFmaFeaturesKHR* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType),
+      shaderFmaFloat16(in_struct->shaderFmaFloat16),
+      shaderFmaFloat32(in_struct->shaderFmaFloat32),
+      shaderFmaFloat64(in_struct->shaderFmaFloat64) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceShaderFmaFeaturesKHR::safe_VkPhysicalDeviceShaderFmaFeaturesKHR()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_FMA_FEATURES_KHR),
+      pNext(nullptr),
+      shaderFmaFloat16(),
+      shaderFmaFloat32(),
+      shaderFmaFloat64() {}
+
+safe_VkPhysicalDeviceShaderFmaFeaturesKHR::safe_VkPhysicalDeviceShaderFmaFeaturesKHR(
+    const safe_VkPhysicalDeviceShaderFmaFeaturesKHR& copy_src) {
+    sType = copy_src.sType;
+    shaderFmaFloat16 = copy_src.shaderFmaFloat16;
+    shaderFmaFloat32 = copy_src.shaderFmaFloat32;
+    shaderFmaFloat64 = copy_src.shaderFmaFloat64;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceShaderFmaFeaturesKHR& safe_VkPhysicalDeviceShaderFmaFeaturesKHR::operator=(
+    const safe_VkPhysicalDeviceShaderFmaFeaturesKHR& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    shaderFmaFloat16 = copy_src.shaderFmaFloat16;
+    shaderFmaFloat32 = copy_src.shaderFmaFloat32;
+    shaderFmaFloat64 = copy_src.shaderFmaFloat64;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceShaderFmaFeaturesKHR::~safe_VkPhysicalDeviceShaderFmaFeaturesKHR() { FreePnextChain(pNext); }
+
+void safe_VkPhysicalDeviceShaderFmaFeaturesKHR::initialize(const VkPhysicalDeviceShaderFmaFeaturesKHR* in_struct,
+                                                           [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    shaderFmaFloat16 = in_struct->shaderFmaFloat16;
+    shaderFmaFloat32 = in_struct->shaderFmaFloat32;
+    shaderFmaFloat64 = in_struct->shaderFmaFloat64;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceShaderFmaFeaturesKHR::initialize(const safe_VkPhysicalDeviceShaderFmaFeaturesKHR* copy_src,
+                                                           [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    shaderFmaFloat16 = copy_src->shaderFmaFloat16;
+    shaderFmaFloat32 = copy_src->shaderFmaFloat32;
+    shaderFmaFloat64 = copy_src->shaderFmaFloat64;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
 safe_VkPhysicalDeviceMaintenance9FeaturesKHR::safe_VkPhysicalDeviceMaintenance9FeaturesKHR(
     const VkPhysicalDeviceMaintenance9FeaturesKHR* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
     : sType(in_struct->sType), maintenance9(in_struct->maintenance9) {
