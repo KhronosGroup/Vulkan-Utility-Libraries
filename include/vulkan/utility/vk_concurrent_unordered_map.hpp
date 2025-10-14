@@ -175,7 +175,7 @@ class unordered_map {
 
     bool empty() const {
         bool result = 0;
-        for (int h = 0; h < BUCKETS; ++h) {
+        for (size_t h = 0; h < BUCKETS; ++h) {
             ReadLockGuard lock(locks[h].lock);
             result |= maps[h].empty();
         }

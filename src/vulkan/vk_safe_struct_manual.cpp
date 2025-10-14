@@ -202,9 +202,14 @@ safe_VkAccelerationStructureGeometryKHR& safe_VkAccelerationStructureGeometryKHR
 }
 
 safe_VkAccelerationStructureGeometryKHR::~safe_VkAccelerationStructureGeometryKHR() {
-    auto iter = GetAccelStructGeomHostAllocMap().pop(this);
-    if (iter != GetAccelStructGeomHostAllocMap().end()) {
-        delete iter->second;
+    // Protect destructions of elements in GetAccelStructGeomHostAllocMap.
+    // It should not be needed to check for emptyness of the map,
+    // but testing showed doing so fixes a crash that can occur at application exit.
+    if (!GetAccelStructGeomHostAllocMap().empty()) {
+        auto iter = GetAccelStructGeomHostAllocMap().pop(this);
+        if (iter != GetAccelStructGeomHostAllocMap().end()) {
+            delete iter->second;
+        }
     }
     FreePnextChain(pNext);
     if (geometryType == VK_GEOMETRY_TYPE_INSTANCES_KHR) {
