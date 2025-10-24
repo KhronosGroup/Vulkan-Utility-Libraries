@@ -334,9 +334,10 @@ Some settings from the settings file can also be set using environment variables
 
 The environment variable names for the layer settings have multiple variants that follows the format:
 
-   VK_`<`*`LayerVendor`*`>_`<`*`LayerName`*`>_<`*`setting_name`*`>` which take precedent over:
-   VK_`<`*`LayerName`*`>_<`*`setting_name`*`>` which take precedent over:
-   VK_`<`*`setting_name`*`>`
+- `VK_<`*`LayerVendor`*`>_<`*`LayerName`*`>_<`*`setting_name`*`>` which take precedent over:
+- `VK_<`*`LayerName`*`>_<`*`setting_name`*`>` which take precedent over:
+- `VK_<`*`setting_name`*`>` precedent?
+- `VK_LAYER_<`*`setting_name`*`>`
 
 This approach allows to share the same setting name for potentially multiple layers but still use different values for the same setting name if
 this is what is required for the Vulkan developer use case.
