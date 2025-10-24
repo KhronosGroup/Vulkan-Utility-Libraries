@@ -63,17 +63,11 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
             case VK_STRUCTURE_TYPE_COMPUTE_PIPELINE_CREATE_INFO:
                 safe_pNext = new safe_VkComputePipelineCreateInfo(reinterpret_cast<const VkComputePipelineCreateInfo *>(pNext), copy_state, false);
                 break;
-            case VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_CREATE_INFO:
-                safe_pNext = new safe_VkGraphicsPipelineCreateInfo(reinterpret_cast<const VkGraphicsPipelineCreateInfo *>(pNext), copy_state, false);
-                break;
             case VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO:
                 safe_pNext = new safe_VkPipelineLayoutCreateInfo(reinterpret_cast<const VkPipelineLayoutCreateInfo *>(pNext), copy_state, false);
                 break;
-            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBGROUP_PROPERTIES:
-                safe_pNext = new safe_VkPhysicalDeviceSubgroupProperties(reinterpret_cast<const VkPhysicalDeviceSubgroupProperties *>(pNext), copy_state, false);
-                break;
-            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_16BIT_STORAGE_FEATURES:
-                safe_pNext = new safe_VkPhysicalDevice16BitStorageFeatures(reinterpret_cast<const VkPhysicalDevice16BitStorageFeatures *>(pNext), copy_state, false);
+            case VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_CREATE_INFO:
+                safe_pNext = new safe_VkGraphicsPipelineCreateInfo(reinterpret_cast<const VkGraphicsPipelineCreateInfo *>(pNext), copy_state, false);
                 break;
             case VK_STRUCTURE_TYPE_MEMORY_DEDICATED_REQUIREMENTS:
                 safe_pNext = new safe_VkMemoryDedicatedRequirements(reinterpret_cast<const VkMemoryDedicatedRequirements *>(pNext), copy_state, false);
@@ -83,9 +77,6 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
                 break;
             case VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_FLAGS_INFO:
                 safe_pNext = new safe_VkMemoryAllocateFlagsInfo(reinterpret_cast<const VkMemoryAllocateFlagsInfo *>(pNext), copy_state, false);
-                break;
-            case VK_STRUCTURE_TYPE_DEVICE_GROUP_RENDER_PASS_BEGIN_INFO:
-                safe_pNext = new safe_VkDeviceGroupRenderPassBeginInfo(reinterpret_cast<const VkDeviceGroupRenderPassBeginInfo *>(pNext), copy_state, false);
                 break;
             case VK_STRUCTURE_TYPE_DEVICE_GROUP_COMMAND_BUFFER_BEGIN_INFO:
                 safe_pNext = new safe_VkDeviceGroupCommandBufferBeginInfo(reinterpret_cast<const VkDeviceGroupCommandBufferBeginInfo *>(pNext), copy_state, false);
@@ -108,29 +99,8 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FEATURES_2:
                 safe_pNext = new safe_VkPhysicalDeviceFeatures2(reinterpret_cast<const VkPhysicalDeviceFeatures2 *>(pNext), copy_state, false);
                 break;
-            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_POINT_CLIPPING_PROPERTIES:
-                safe_pNext = new safe_VkPhysicalDevicePointClippingProperties(reinterpret_cast<const VkPhysicalDevicePointClippingProperties *>(pNext), copy_state, false);
-                break;
-            case VK_STRUCTURE_TYPE_RENDER_PASS_INPUT_ATTACHMENT_ASPECT_CREATE_INFO:
-                safe_pNext = new safe_VkRenderPassInputAttachmentAspectCreateInfo(reinterpret_cast<const VkRenderPassInputAttachmentAspectCreateInfo *>(pNext), copy_state, false);
-                break;
             case VK_STRUCTURE_TYPE_IMAGE_VIEW_USAGE_CREATE_INFO:
                 safe_pNext = new safe_VkImageViewUsageCreateInfo(reinterpret_cast<const VkImageViewUsageCreateInfo *>(pNext), copy_state, false);
-                break;
-            case VK_STRUCTURE_TYPE_PIPELINE_TESSELLATION_DOMAIN_ORIGIN_STATE_CREATE_INFO:
-                safe_pNext = new safe_VkPipelineTessellationDomainOriginStateCreateInfo(reinterpret_cast<const VkPipelineTessellationDomainOriginStateCreateInfo *>(pNext), copy_state, false);
-                break;
-            case VK_STRUCTURE_TYPE_RENDER_PASS_MULTIVIEW_CREATE_INFO:
-                safe_pNext = new safe_VkRenderPassMultiviewCreateInfo(reinterpret_cast<const VkRenderPassMultiviewCreateInfo *>(pNext), copy_state, false);
-                break;
-            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_FEATURES:
-                safe_pNext = new safe_VkPhysicalDeviceMultiviewFeatures(reinterpret_cast<const VkPhysicalDeviceMultiviewFeatures *>(pNext), copy_state, false);
-                break;
-            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PROPERTIES:
-                safe_pNext = new safe_VkPhysicalDeviceMultiviewProperties(reinterpret_cast<const VkPhysicalDeviceMultiviewProperties *>(pNext), copy_state, false);
-                break;
-            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTERS_FEATURES:
-                safe_pNext = new safe_VkPhysicalDeviceVariablePointersFeatures(reinterpret_cast<const VkPhysicalDeviceVariablePointersFeatures *>(pNext), copy_state, false);
                 break;
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROTECTED_MEMORY_FEATURES:
                 safe_pNext = new safe_VkPhysicalDeviceProtectedMemoryFeatures(reinterpret_cast<const VkPhysicalDeviceProtectedMemoryFeatures *>(pNext), copy_state, false);
@@ -141,20 +111,11 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
             case VK_STRUCTURE_TYPE_PROTECTED_SUBMIT_INFO:
                 safe_pNext = new safe_VkProtectedSubmitInfo(reinterpret_cast<const VkProtectedSubmitInfo *>(pNext), copy_state, false);
                 break;
-            case VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_INFO:
-                safe_pNext = new safe_VkSamplerYcbcrConversionInfo(reinterpret_cast<const VkSamplerYcbcrConversionInfo *>(pNext), copy_state, false);
-                break;
             case VK_STRUCTURE_TYPE_BIND_IMAGE_PLANE_MEMORY_INFO:
                 safe_pNext = new safe_VkBindImagePlaneMemoryInfo(reinterpret_cast<const VkBindImagePlaneMemoryInfo *>(pNext), copy_state, false);
                 break;
             case VK_STRUCTURE_TYPE_IMAGE_PLANE_MEMORY_REQUIREMENTS_INFO:
                 safe_pNext = new safe_VkImagePlaneMemoryRequirementsInfo(reinterpret_cast<const VkImagePlaneMemoryRequirementsInfo *>(pNext), copy_state, false);
-                break;
-            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLER_YCBCR_CONVERSION_FEATURES:
-                safe_pNext = new safe_VkPhysicalDeviceSamplerYcbcrConversionFeatures(reinterpret_cast<const VkPhysicalDeviceSamplerYcbcrConversionFeatures *>(pNext), copy_state, false);
-                break;
-            case VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_IMAGE_FORMAT_PROPERTIES:
-                safe_pNext = new safe_VkSamplerYcbcrConversionImageFormatProperties(reinterpret_cast<const VkSamplerYcbcrConversionImageFormatProperties *>(pNext), copy_state, false);
                 break;
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_IMAGE_FORMAT_INFO:
                 safe_pNext = new safe_VkPhysicalDeviceExternalImageFormatInfo(reinterpret_cast<const VkPhysicalDeviceExternalImageFormatInfo *>(pNext), copy_state, false);
@@ -180,8 +141,47 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
             case VK_STRUCTURE_TYPE_EXPORT_SEMAPHORE_CREATE_INFO:
                 safe_pNext = new safe_VkExportSemaphoreCreateInfo(reinterpret_cast<const VkExportSemaphoreCreateInfo *>(pNext), copy_state, false);
                 break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBGROUP_PROPERTIES:
+                safe_pNext = new safe_VkPhysicalDeviceSubgroupProperties(reinterpret_cast<const VkPhysicalDeviceSubgroupProperties *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_16BIT_STORAGE_FEATURES:
+                safe_pNext = new safe_VkPhysicalDevice16BitStorageFeatures(reinterpret_cast<const VkPhysicalDevice16BitStorageFeatures *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTERS_FEATURES:
+                safe_pNext = new safe_VkPhysicalDeviceVariablePointersFeatures(reinterpret_cast<const VkPhysicalDeviceVariablePointersFeatures *>(pNext), copy_state, false);
+                break;
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_3_PROPERTIES:
                 safe_pNext = new safe_VkPhysicalDeviceMaintenance3Properties(reinterpret_cast<const VkPhysicalDeviceMaintenance3Properties *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_INFO:
+                safe_pNext = new safe_VkSamplerYcbcrConversionInfo(reinterpret_cast<const VkSamplerYcbcrConversionInfo *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLER_YCBCR_CONVERSION_FEATURES:
+                safe_pNext = new safe_VkPhysicalDeviceSamplerYcbcrConversionFeatures(reinterpret_cast<const VkPhysicalDeviceSamplerYcbcrConversionFeatures *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_IMAGE_FORMAT_PROPERTIES:
+                safe_pNext = new safe_VkSamplerYcbcrConversionImageFormatProperties(reinterpret_cast<const VkSamplerYcbcrConversionImageFormatProperties *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_DEVICE_GROUP_RENDER_PASS_BEGIN_INFO:
+                safe_pNext = new safe_VkDeviceGroupRenderPassBeginInfo(reinterpret_cast<const VkDeviceGroupRenderPassBeginInfo *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_POINT_CLIPPING_PROPERTIES:
+                safe_pNext = new safe_VkPhysicalDevicePointClippingProperties(reinterpret_cast<const VkPhysicalDevicePointClippingProperties *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_RENDER_PASS_INPUT_ATTACHMENT_ASPECT_CREATE_INFO:
+                safe_pNext = new safe_VkRenderPassInputAttachmentAspectCreateInfo(reinterpret_cast<const VkRenderPassInputAttachmentAspectCreateInfo *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PIPELINE_TESSELLATION_DOMAIN_ORIGIN_STATE_CREATE_INFO:
+                safe_pNext = new safe_VkPipelineTessellationDomainOriginStateCreateInfo(reinterpret_cast<const VkPipelineTessellationDomainOriginStateCreateInfo *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_RENDER_PASS_MULTIVIEW_CREATE_INFO:
+                safe_pNext = new safe_VkRenderPassMultiviewCreateInfo(reinterpret_cast<const VkRenderPassMultiviewCreateInfo *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_FEATURES:
+                safe_pNext = new safe_VkPhysicalDeviceMultiviewFeatures(reinterpret_cast<const VkPhysicalDeviceMultiviewFeatures *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PROPERTIES:
+                safe_pNext = new safe_VkPhysicalDeviceMultiviewProperties(reinterpret_cast<const VkPhysicalDeviceMultiviewProperties *>(pNext), copy_state, false);
                 break;
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETERS_FEATURES:
                 safe_pNext = new safe_VkPhysicalDeviceShaderDrawParametersFeatures(reinterpret_cast<const VkPhysicalDeviceShaderDrawParametersFeatures *>(pNext), copy_state, false);
@@ -201,80 +201,11 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
             case VK_STRUCTURE_TYPE_IMAGE_FORMAT_LIST_CREATE_INFO:
                 safe_pNext = new safe_VkImageFormatListCreateInfo(reinterpret_cast<const VkImageFormatListCreateInfo *>(pNext), copy_state, false);
                 break;
-            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_8BIT_STORAGE_FEATURES:
-                safe_pNext = new safe_VkPhysicalDevice8BitStorageFeatures(reinterpret_cast<const VkPhysicalDevice8BitStorageFeatures *>(pNext), copy_state, false);
-                break;
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DRIVER_PROPERTIES:
                 safe_pNext = new safe_VkPhysicalDeviceDriverProperties(reinterpret_cast<const VkPhysicalDeviceDriverProperties *>(pNext), copy_state, false);
                 break;
-            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ATOMIC_INT64_FEATURES:
-                safe_pNext = new safe_VkPhysicalDeviceShaderAtomicInt64Features(reinterpret_cast<const VkPhysicalDeviceShaderAtomicInt64Features *>(pNext), copy_state, false);
-                break;
-            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_FLOAT16_INT8_FEATURES:
-                safe_pNext = new safe_VkPhysicalDeviceShaderFloat16Int8Features(reinterpret_cast<const VkPhysicalDeviceShaderFloat16Int8Features *>(pNext), copy_state, false);
-                break;
-            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FLOAT_CONTROLS_PROPERTIES:
-                safe_pNext = new safe_VkPhysicalDeviceFloatControlsProperties(reinterpret_cast<const VkPhysicalDeviceFloatControlsProperties *>(pNext), copy_state, false);
-                break;
-            case VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_BINDING_FLAGS_CREATE_INFO:
-                safe_pNext = new safe_VkDescriptorSetLayoutBindingFlagsCreateInfo(reinterpret_cast<const VkDescriptorSetLayoutBindingFlagsCreateInfo *>(pNext), copy_state, false);
-                break;
-            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_INDEXING_FEATURES:
-                safe_pNext = new safe_VkPhysicalDeviceDescriptorIndexingFeatures(reinterpret_cast<const VkPhysicalDeviceDescriptorIndexingFeatures *>(pNext), copy_state, false);
-                break;
-            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_INDEXING_PROPERTIES:
-                safe_pNext = new safe_VkPhysicalDeviceDescriptorIndexingProperties(reinterpret_cast<const VkPhysicalDeviceDescriptorIndexingProperties *>(pNext), copy_state, false);
-                break;
-            case VK_STRUCTURE_TYPE_DESCRIPTOR_SET_VARIABLE_DESCRIPTOR_COUNT_ALLOCATE_INFO:
-                safe_pNext = new safe_VkDescriptorSetVariableDescriptorCountAllocateInfo(reinterpret_cast<const VkDescriptorSetVariableDescriptorCountAllocateInfo *>(pNext), copy_state, false);
-                break;
-            case VK_STRUCTURE_TYPE_DESCRIPTOR_SET_VARIABLE_DESCRIPTOR_COUNT_LAYOUT_SUPPORT:
-                safe_pNext = new safe_VkDescriptorSetVariableDescriptorCountLayoutSupport(reinterpret_cast<const VkDescriptorSetVariableDescriptorCountLayoutSupport *>(pNext), copy_state, false);
-                break;
-            case VK_STRUCTURE_TYPE_SUBPASS_DESCRIPTION_DEPTH_STENCIL_RESOLVE:
-                safe_pNext = new safe_VkSubpassDescriptionDepthStencilResolve(reinterpret_cast<const VkSubpassDescriptionDepthStencilResolve *>(pNext), copy_state, false);
-                break;
-            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_STENCIL_RESOLVE_PROPERTIES:
-                safe_pNext = new safe_VkPhysicalDeviceDepthStencilResolveProperties(reinterpret_cast<const VkPhysicalDeviceDepthStencilResolveProperties *>(pNext), copy_state, false);
-                break;
-            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SCALAR_BLOCK_LAYOUT_FEATURES:
-                safe_pNext = new safe_VkPhysicalDeviceScalarBlockLayoutFeatures(reinterpret_cast<const VkPhysicalDeviceScalarBlockLayoutFeatures *>(pNext), copy_state, false);
-                break;
-            case VK_STRUCTURE_TYPE_IMAGE_STENCIL_USAGE_CREATE_INFO:
-                safe_pNext = new safe_VkImageStencilUsageCreateInfo(reinterpret_cast<const VkImageStencilUsageCreateInfo *>(pNext), copy_state, false);
-                break;
-            case VK_STRUCTURE_TYPE_SAMPLER_REDUCTION_MODE_CREATE_INFO:
-                safe_pNext = new safe_VkSamplerReductionModeCreateInfo(reinterpret_cast<const VkSamplerReductionModeCreateInfo *>(pNext), copy_state, false);
-                break;
-            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLER_FILTER_MINMAX_PROPERTIES:
-                safe_pNext = new safe_VkPhysicalDeviceSamplerFilterMinmaxProperties(reinterpret_cast<const VkPhysicalDeviceSamplerFilterMinmaxProperties *>(pNext), copy_state, false);
-                break;
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_MEMORY_MODEL_FEATURES:
                 safe_pNext = new safe_VkPhysicalDeviceVulkanMemoryModelFeatures(reinterpret_cast<const VkPhysicalDeviceVulkanMemoryModelFeatures *>(pNext), copy_state, false);
-                break;
-            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGELESS_FRAMEBUFFER_FEATURES:
-                safe_pNext = new safe_VkPhysicalDeviceImagelessFramebufferFeatures(reinterpret_cast<const VkPhysicalDeviceImagelessFramebufferFeatures *>(pNext), copy_state, false);
-                break;
-            case VK_STRUCTURE_TYPE_FRAMEBUFFER_ATTACHMENTS_CREATE_INFO:
-                safe_pNext = new safe_VkFramebufferAttachmentsCreateInfo(reinterpret_cast<const VkFramebufferAttachmentsCreateInfo *>(pNext), copy_state, false);
-                break;
-            case VK_STRUCTURE_TYPE_RENDER_PASS_ATTACHMENT_BEGIN_INFO:
-                safe_pNext = new safe_VkRenderPassAttachmentBeginInfo(reinterpret_cast<const VkRenderPassAttachmentBeginInfo *>(pNext), copy_state, false);
-                break;
-            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_UNIFORM_BUFFER_STANDARD_LAYOUT_FEATURES:
-                safe_pNext = new safe_VkPhysicalDeviceUniformBufferStandardLayoutFeatures(reinterpret_cast<const VkPhysicalDeviceUniformBufferStandardLayoutFeatures *>(pNext), copy_state, false);
-                break;
-            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SUBGROUP_EXTENDED_TYPES_FEATURES:
-                safe_pNext = new safe_VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures(reinterpret_cast<const VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures *>(pNext), copy_state, false);
-                break;
-            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SEPARATE_DEPTH_STENCIL_LAYOUTS_FEATURES:
-                safe_pNext = new safe_VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures(reinterpret_cast<const VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures *>(pNext), copy_state, false);
-                break;
-            case VK_STRUCTURE_TYPE_ATTACHMENT_REFERENCE_STENCIL_LAYOUT:
-                safe_pNext = new safe_VkAttachmentReferenceStencilLayout(reinterpret_cast<const VkAttachmentReferenceStencilLayout *>(pNext), copy_state, false);
-                break;
-            case VK_STRUCTURE_TYPE_ATTACHMENT_DESCRIPTION_STENCIL_LAYOUT:
-                safe_pNext = new safe_VkAttachmentDescriptionStencilLayout(reinterpret_cast<const VkAttachmentDescriptionStencilLayout *>(pNext), copy_state, false);
                 break;
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HOST_QUERY_RESET_FEATURES:
                 safe_pNext = new safe_VkPhysicalDeviceHostQueryResetFeatures(reinterpret_cast<const VkPhysicalDeviceHostQueryResetFeatures *>(pNext), copy_state, false);
@@ -300,11 +231,104 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
             case VK_STRUCTURE_TYPE_MEMORY_OPAQUE_CAPTURE_ADDRESS_ALLOCATE_INFO:
                 safe_pNext = new safe_VkMemoryOpaqueCaptureAddressAllocateInfo(reinterpret_cast<const VkMemoryOpaqueCaptureAddressAllocateInfo *>(pNext), copy_state, false);
                 break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_8BIT_STORAGE_FEATURES:
+                safe_pNext = new safe_VkPhysicalDevice8BitStorageFeatures(reinterpret_cast<const VkPhysicalDevice8BitStorageFeatures *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ATOMIC_INT64_FEATURES:
+                safe_pNext = new safe_VkPhysicalDeviceShaderAtomicInt64Features(reinterpret_cast<const VkPhysicalDeviceShaderAtomicInt64Features *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_FLOAT16_INT8_FEATURES:
+                safe_pNext = new safe_VkPhysicalDeviceShaderFloat16Int8Features(reinterpret_cast<const VkPhysicalDeviceShaderFloat16Int8Features *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FLOAT_CONTROLS_PROPERTIES:
+                safe_pNext = new safe_VkPhysicalDeviceFloatControlsProperties(reinterpret_cast<const VkPhysicalDeviceFloatControlsProperties *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_BINDING_FLAGS_CREATE_INFO:
+                safe_pNext = new safe_VkDescriptorSetLayoutBindingFlagsCreateInfo(reinterpret_cast<const VkDescriptorSetLayoutBindingFlagsCreateInfo *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_INDEXING_FEATURES:
+                safe_pNext = new safe_VkPhysicalDeviceDescriptorIndexingFeatures(reinterpret_cast<const VkPhysicalDeviceDescriptorIndexingFeatures *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_INDEXING_PROPERTIES:
+                safe_pNext = new safe_VkPhysicalDeviceDescriptorIndexingProperties(reinterpret_cast<const VkPhysicalDeviceDescriptorIndexingProperties *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_DESCRIPTOR_SET_VARIABLE_DESCRIPTOR_COUNT_ALLOCATE_INFO:
+                safe_pNext = new safe_VkDescriptorSetVariableDescriptorCountAllocateInfo(reinterpret_cast<const VkDescriptorSetVariableDescriptorCountAllocateInfo *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_DESCRIPTOR_SET_VARIABLE_DESCRIPTOR_COUNT_LAYOUT_SUPPORT:
+                safe_pNext = new safe_VkDescriptorSetVariableDescriptorCountLayoutSupport(reinterpret_cast<const VkDescriptorSetVariableDescriptorCountLayoutSupport *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SCALAR_BLOCK_LAYOUT_FEATURES:
+                safe_pNext = new safe_VkPhysicalDeviceScalarBlockLayoutFeatures(reinterpret_cast<const VkPhysicalDeviceScalarBlockLayoutFeatures *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_SAMPLER_REDUCTION_MODE_CREATE_INFO:
+                safe_pNext = new safe_VkSamplerReductionModeCreateInfo(reinterpret_cast<const VkSamplerReductionModeCreateInfo *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLER_FILTER_MINMAX_PROPERTIES:
+                safe_pNext = new safe_VkPhysicalDeviceSamplerFilterMinmaxProperties(reinterpret_cast<const VkPhysicalDeviceSamplerFilterMinmaxProperties *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_UNIFORM_BUFFER_STANDARD_LAYOUT_FEATURES:
+                safe_pNext = new safe_VkPhysicalDeviceUniformBufferStandardLayoutFeatures(reinterpret_cast<const VkPhysicalDeviceUniformBufferStandardLayoutFeatures *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SUBGROUP_EXTENDED_TYPES_FEATURES:
+                safe_pNext = new safe_VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures(reinterpret_cast<const VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_SUBPASS_DESCRIPTION_DEPTH_STENCIL_RESOLVE:
+                safe_pNext = new safe_VkSubpassDescriptionDepthStencilResolve(reinterpret_cast<const VkSubpassDescriptionDepthStencilResolve *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_STENCIL_RESOLVE_PROPERTIES:
+                safe_pNext = new safe_VkPhysicalDeviceDepthStencilResolveProperties(reinterpret_cast<const VkPhysicalDeviceDepthStencilResolveProperties *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_IMAGE_STENCIL_USAGE_CREATE_INFO:
+                safe_pNext = new safe_VkImageStencilUsageCreateInfo(reinterpret_cast<const VkImageStencilUsageCreateInfo *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGELESS_FRAMEBUFFER_FEATURES:
+                safe_pNext = new safe_VkPhysicalDeviceImagelessFramebufferFeatures(reinterpret_cast<const VkPhysicalDeviceImagelessFramebufferFeatures *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_FRAMEBUFFER_ATTACHMENTS_CREATE_INFO:
+                safe_pNext = new safe_VkFramebufferAttachmentsCreateInfo(reinterpret_cast<const VkFramebufferAttachmentsCreateInfo *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_RENDER_PASS_ATTACHMENT_BEGIN_INFO:
+                safe_pNext = new safe_VkRenderPassAttachmentBeginInfo(reinterpret_cast<const VkRenderPassAttachmentBeginInfo *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SEPARATE_DEPTH_STENCIL_LAYOUTS_FEATURES:
+                safe_pNext = new safe_VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures(reinterpret_cast<const VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_ATTACHMENT_REFERENCE_STENCIL_LAYOUT:
+                safe_pNext = new safe_VkAttachmentReferenceStencilLayout(reinterpret_cast<const VkAttachmentReferenceStencilLayout *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_ATTACHMENT_DESCRIPTION_STENCIL_LAYOUT:
+                safe_pNext = new safe_VkAttachmentDescriptionStencilLayout(reinterpret_cast<const VkAttachmentDescriptionStencilLayout *>(pNext), copy_state, false);
+                break;
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_3_FEATURES:
                 safe_pNext = new safe_VkPhysicalDeviceVulkan13Features(reinterpret_cast<const VkPhysicalDeviceVulkan13Features *>(pNext), copy_state, false);
                 break;
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_3_PROPERTIES:
                 safe_pNext = new safe_VkPhysicalDeviceVulkan13Properties(reinterpret_cast<const VkPhysicalDeviceVulkan13Properties *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRIVATE_DATA_FEATURES:
+                safe_pNext = new safe_VkPhysicalDevicePrivateDataFeatures(reinterpret_cast<const VkPhysicalDevicePrivateDataFeatures *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_DEVICE_PRIVATE_DATA_CREATE_INFO:
+                safe_pNext = new safe_VkDevicePrivateDataCreateInfo(reinterpret_cast<const VkDevicePrivateDataCreateInfo *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_MEMORY_BARRIER_2:
+                safe_pNext = new safe_VkMemoryBarrier2(reinterpret_cast<const VkMemoryBarrier2 *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SYNCHRONIZATION_2_FEATURES:
+                safe_pNext = new safe_VkPhysicalDeviceSynchronization2Features(reinterpret_cast<const VkPhysicalDeviceSynchronization2Features *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TEXTURE_COMPRESSION_ASTC_HDR_FEATURES:
+                safe_pNext = new safe_VkPhysicalDeviceTextureCompressionASTCHDRFeatures(reinterpret_cast<const VkPhysicalDeviceTextureCompressionASTCHDRFeatures *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_FORMAT_PROPERTIES_3:
+                safe_pNext = new safe_VkFormatProperties3(reinterpret_cast<const VkFormatProperties3 *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_4_FEATURES:
+                safe_pNext = new safe_VkPhysicalDeviceMaintenance4Features(reinterpret_cast<const VkPhysicalDeviceMaintenance4Features *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_4_PROPERTIES:
+                safe_pNext = new safe_VkPhysicalDeviceMaintenance4Properties(reinterpret_cast<const VkPhysicalDeviceMaintenance4Properties *>(pNext), copy_state, false);
                 break;
             case VK_STRUCTURE_TYPE_PIPELINE_CREATION_FEEDBACK_CREATE_INFO:
                 safe_pNext = new safe_VkPipelineCreationFeedbackCreateInfo(reinterpret_cast<const VkPipelineCreationFeedbackCreateInfo *>(pNext), copy_state, false);
@@ -315,20 +339,8 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DEMOTE_TO_HELPER_INVOCATION_FEATURES:
                 safe_pNext = new safe_VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures(reinterpret_cast<const VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures *>(pNext), copy_state, false);
                 break;
-            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRIVATE_DATA_FEATURES:
-                safe_pNext = new safe_VkPhysicalDevicePrivateDataFeatures(reinterpret_cast<const VkPhysicalDevicePrivateDataFeatures *>(pNext), copy_state, false);
-                break;
-            case VK_STRUCTURE_TYPE_DEVICE_PRIVATE_DATA_CREATE_INFO:
-                safe_pNext = new safe_VkDevicePrivateDataCreateInfo(reinterpret_cast<const VkDevicePrivateDataCreateInfo *>(pNext), copy_state, false);
-                break;
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_CREATION_CACHE_CONTROL_FEATURES:
                 safe_pNext = new safe_VkPhysicalDevicePipelineCreationCacheControlFeatures(reinterpret_cast<const VkPhysicalDevicePipelineCreationCacheControlFeatures *>(pNext), copy_state, false);
-                break;
-            case VK_STRUCTURE_TYPE_MEMORY_BARRIER_2:
-                safe_pNext = new safe_VkMemoryBarrier2(reinterpret_cast<const VkMemoryBarrier2 *>(pNext), copy_state, false);
-                break;
-            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SYNCHRONIZATION_2_FEATURES:
-                safe_pNext = new safe_VkPhysicalDeviceSynchronization2Features(reinterpret_cast<const VkPhysicalDeviceSynchronization2Features *>(pNext), copy_state, false);
                 break;
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ZERO_INITIALIZE_WORKGROUP_MEMORY_FEATURES:
                 safe_pNext = new safe_VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures(reinterpret_cast<const VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures *>(pNext), copy_state, false);
@@ -357,18 +369,6 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
             case VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_INLINE_UNIFORM_BLOCK_CREATE_INFO:
                 safe_pNext = new safe_VkDescriptorPoolInlineUniformBlockCreateInfo(reinterpret_cast<const VkDescriptorPoolInlineUniformBlockCreateInfo *>(pNext), copy_state, false);
                 break;
-            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TEXTURE_COMPRESSION_ASTC_HDR_FEATURES:
-                safe_pNext = new safe_VkPhysicalDeviceTextureCompressionASTCHDRFeatures(reinterpret_cast<const VkPhysicalDeviceTextureCompressionASTCHDRFeatures *>(pNext), copy_state, false);
-                break;
-            case VK_STRUCTURE_TYPE_PIPELINE_RENDERING_CREATE_INFO:
-                safe_pNext = new safe_VkPipelineRenderingCreateInfo(reinterpret_cast<const VkPipelineRenderingCreateInfo *>(pNext), copy_state, false);
-                break;
-            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DYNAMIC_RENDERING_FEATURES:
-                safe_pNext = new safe_VkPhysicalDeviceDynamicRenderingFeatures(reinterpret_cast<const VkPhysicalDeviceDynamicRenderingFeatures *>(pNext), copy_state, false);
-                break;
-            case VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_RENDERING_INFO:
-                safe_pNext = new safe_VkCommandBufferInheritanceRenderingInfo(reinterpret_cast<const VkCommandBufferInheritanceRenderingInfo *>(pNext), copy_state, false);
-                break;
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_INTEGER_DOT_PRODUCT_FEATURES:
                 safe_pNext = new safe_VkPhysicalDeviceShaderIntegerDotProductFeatures(reinterpret_cast<const VkPhysicalDeviceShaderIntegerDotProductFeatures *>(pNext), copy_state, false);
                 break;
@@ -378,14 +378,14 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TEXEL_BUFFER_ALIGNMENT_PROPERTIES:
                 safe_pNext = new safe_VkPhysicalDeviceTexelBufferAlignmentProperties(reinterpret_cast<const VkPhysicalDeviceTexelBufferAlignmentProperties *>(pNext), copy_state, false);
                 break;
-            case VK_STRUCTURE_TYPE_FORMAT_PROPERTIES_3:
-                safe_pNext = new safe_VkFormatProperties3(reinterpret_cast<const VkFormatProperties3 *>(pNext), copy_state, false);
+            case VK_STRUCTURE_TYPE_PIPELINE_RENDERING_CREATE_INFO:
+                safe_pNext = new safe_VkPipelineRenderingCreateInfo(reinterpret_cast<const VkPipelineRenderingCreateInfo *>(pNext), copy_state, false);
                 break;
-            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_4_FEATURES:
-                safe_pNext = new safe_VkPhysicalDeviceMaintenance4Features(reinterpret_cast<const VkPhysicalDeviceMaintenance4Features *>(pNext), copy_state, false);
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DYNAMIC_RENDERING_FEATURES:
+                safe_pNext = new safe_VkPhysicalDeviceDynamicRenderingFeatures(reinterpret_cast<const VkPhysicalDeviceDynamicRenderingFeatures *>(pNext), copy_state, false);
                 break;
-            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_4_PROPERTIES:
-                safe_pNext = new safe_VkPhysicalDeviceMaintenance4Properties(reinterpret_cast<const VkPhysicalDeviceMaintenance4Properties *>(pNext), copy_state, false);
+            case VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_RENDERING_INFO:
+                safe_pNext = new safe_VkCommandBufferInheritanceRenderingInfo(reinterpret_cast<const VkCommandBufferInheritanceRenderingInfo *>(pNext), copy_state, false);
                 break;
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_4_FEATURES:
                 safe_pNext = new safe_VkPhysicalDeviceVulkan14Features(reinterpret_cast<const VkPhysicalDeviceVulkan14Features *>(pNext), copy_state, false);
@@ -402,6 +402,39 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
             case VK_STRUCTURE_TYPE_QUEUE_FAMILY_GLOBAL_PRIORITY_PROPERTIES:
                 safe_pNext = new safe_VkQueueFamilyGlobalPriorityProperties(reinterpret_cast<const VkQueueFamilyGlobalPriorityProperties *>(pNext), copy_state, false);
                 break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INDEX_TYPE_UINT8_FEATURES:
+                safe_pNext = new safe_VkPhysicalDeviceIndexTypeUint8Features(reinterpret_cast<const VkPhysicalDeviceIndexTypeUint8Features *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_5_FEATURES:
+                safe_pNext = new safe_VkPhysicalDeviceMaintenance5Features(reinterpret_cast<const VkPhysicalDeviceMaintenance5Features *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_5_PROPERTIES:
+                safe_pNext = new safe_VkPhysicalDeviceMaintenance5Properties(reinterpret_cast<const VkPhysicalDeviceMaintenance5Properties *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_BUFFER_USAGE_FLAGS_2_CREATE_INFO:
+                safe_pNext = new safe_VkBufferUsageFlags2CreateInfo(reinterpret_cast<const VkBufferUsageFlags2CreateInfo *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_6_FEATURES:
+                safe_pNext = new safe_VkPhysicalDeviceMaintenance6Features(reinterpret_cast<const VkPhysicalDeviceMaintenance6Features *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_6_PROPERTIES:
+                safe_pNext = new safe_VkPhysicalDeviceMaintenance6Properties(reinterpret_cast<const VkPhysicalDeviceMaintenance6Properties *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_BIND_MEMORY_STATUS:
+                safe_pNext = new safe_VkBindMemoryStatus(reinterpret_cast<const VkBindMemoryStatus *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HOST_IMAGE_COPY_FEATURES:
+                safe_pNext = new safe_VkPhysicalDeviceHostImageCopyFeatures(reinterpret_cast<const VkPhysicalDeviceHostImageCopyFeatures *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HOST_IMAGE_COPY_PROPERTIES:
+                safe_pNext = new safe_VkPhysicalDeviceHostImageCopyProperties(reinterpret_cast<const VkPhysicalDeviceHostImageCopyProperties *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_SUBRESOURCE_HOST_MEMCPY_SIZE:
+                safe_pNext = new safe_VkSubresourceHostMemcpySize(reinterpret_cast<const VkSubresourceHostMemcpySize *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_HOST_IMAGE_COPY_DEVICE_PERFORMANCE_QUERY:
+                safe_pNext = new safe_VkHostImageCopyDevicePerformanceQuery(reinterpret_cast<const VkHostImageCopyDevicePerformanceQuery *>(pNext), copy_state, false);
+                break;
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SUBGROUP_ROTATE_FEATURES:
                 safe_pNext = new safe_VkPhysicalDeviceShaderSubgroupRotateFeatures(reinterpret_cast<const VkPhysicalDeviceShaderSubgroupRotateFeatures *>(pNext), copy_state, false);
                 break;
@@ -410,6 +443,24 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
                 break;
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_EXPECT_ASSUME_FEATURES:
                 safe_pNext = new safe_VkPhysicalDeviceShaderExpectAssumeFeatures(reinterpret_cast<const VkPhysicalDeviceShaderExpectAssumeFeatures *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PIPELINE_CREATE_FLAGS_2_CREATE_INFO:
+                safe_pNext = new safe_VkPipelineCreateFlags2CreateInfo(reinterpret_cast<const VkPipelineCreateFlags2CreateInfo *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PUSH_DESCRIPTOR_PROPERTIES:
+                safe_pNext = new safe_VkPhysicalDevicePushDescriptorProperties(reinterpret_cast<const VkPhysicalDevicePushDescriptorProperties *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_PROTECTED_ACCESS_FEATURES:
+                safe_pNext = new safe_VkPhysicalDevicePipelineProtectedAccessFeatures(reinterpret_cast<const VkPhysicalDevicePipelineProtectedAccessFeatures *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_ROBUSTNESS_FEATURES:
+                safe_pNext = new safe_VkPhysicalDevicePipelineRobustnessFeatures(reinterpret_cast<const VkPhysicalDevicePipelineRobustnessFeatures *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_ROBUSTNESS_PROPERTIES:
+                safe_pNext = new safe_VkPhysicalDevicePipelineRobustnessProperties(reinterpret_cast<const VkPhysicalDevicePipelineRobustnessProperties *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PIPELINE_ROBUSTNESS_CREATE_INFO:
+                safe_pNext = new safe_VkPipelineRobustnessCreateInfo(reinterpret_cast<const VkPipelineRobustnessCreateInfo *>(pNext), copy_state, false);
                 break;
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LINE_RASTERIZATION_FEATURES:
                 safe_pNext = new safe_VkPhysicalDeviceLineRasterizationFeatures(reinterpret_cast<const VkPhysicalDeviceLineRasterizationFeatures *>(pNext), copy_state, false);
@@ -429,24 +480,6 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_FEATURES:
                 safe_pNext = new safe_VkPhysicalDeviceVertexAttributeDivisorFeatures(reinterpret_cast<const VkPhysicalDeviceVertexAttributeDivisorFeatures *>(pNext), copy_state, false);
                 break;
-            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INDEX_TYPE_UINT8_FEATURES:
-                safe_pNext = new safe_VkPhysicalDeviceIndexTypeUint8Features(reinterpret_cast<const VkPhysicalDeviceIndexTypeUint8Features *>(pNext), copy_state, false);
-                break;
-            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_5_FEATURES:
-                safe_pNext = new safe_VkPhysicalDeviceMaintenance5Features(reinterpret_cast<const VkPhysicalDeviceMaintenance5Features *>(pNext), copy_state, false);
-                break;
-            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_5_PROPERTIES:
-                safe_pNext = new safe_VkPhysicalDeviceMaintenance5Properties(reinterpret_cast<const VkPhysicalDeviceMaintenance5Properties *>(pNext), copy_state, false);
-                break;
-            case VK_STRUCTURE_TYPE_PIPELINE_CREATE_FLAGS_2_CREATE_INFO:
-                safe_pNext = new safe_VkPipelineCreateFlags2CreateInfo(reinterpret_cast<const VkPipelineCreateFlags2CreateInfo *>(pNext), copy_state, false);
-                break;
-            case VK_STRUCTURE_TYPE_BUFFER_USAGE_FLAGS_2_CREATE_INFO:
-                safe_pNext = new safe_VkBufferUsageFlags2CreateInfo(reinterpret_cast<const VkBufferUsageFlags2CreateInfo *>(pNext), copy_state, false);
-                break;
-            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PUSH_DESCRIPTOR_PROPERTIES:
-                safe_pNext = new safe_VkPhysicalDevicePushDescriptorProperties(reinterpret_cast<const VkPhysicalDevicePushDescriptorProperties *>(pNext), copy_state, false);
-                break;
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DYNAMIC_RENDERING_LOCAL_READ_FEATURES:
                 safe_pNext = new safe_VkPhysicalDeviceDynamicRenderingLocalReadFeatures(reinterpret_cast<const VkPhysicalDeviceDynamicRenderingLocalReadFeatures *>(pNext), copy_state, false);
                 break;
@@ -455,39 +488,6 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
                 break;
             case VK_STRUCTURE_TYPE_RENDERING_INPUT_ATTACHMENT_INDEX_INFO:
                 safe_pNext = new safe_VkRenderingInputAttachmentIndexInfo(reinterpret_cast<const VkRenderingInputAttachmentIndexInfo *>(pNext), copy_state, false);
-                break;
-            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_6_FEATURES:
-                safe_pNext = new safe_VkPhysicalDeviceMaintenance6Features(reinterpret_cast<const VkPhysicalDeviceMaintenance6Features *>(pNext), copy_state, false);
-                break;
-            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_6_PROPERTIES:
-                safe_pNext = new safe_VkPhysicalDeviceMaintenance6Properties(reinterpret_cast<const VkPhysicalDeviceMaintenance6Properties *>(pNext), copy_state, false);
-                break;
-            case VK_STRUCTURE_TYPE_BIND_MEMORY_STATUS:
-                safe_pNext = new safe_VkBindMemoryStatus(reinterpret_cast<const VkBindMemoryStatus *>(pNext), copy_state, false);
-                break;
-            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_PROTECTED_ACCESS_FEATURES:
-                safe_pNext = new safe_VkPhysicalDevicePipelineProtectedAccessFeatures(reinterpret_cast<const VkPhysicalDevicePipelineProtectedAccessFeatures *>(pNext), copy_state, false);
-                break;
-            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_ROBUSTNESS_FEATURES:
-                safe_pNext = new safe_VkPhysicalDevicePipelineRobustnessFeatures(reinterpret_cast<const VkPhysicalDevicePipelineRobustnessFeatures *>(pNext), copy_state, false);
-                break;
-            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_ROBUSTNESS_PROPERTIES:
-                safe_pNext = new safe_VkPhysicalDevicePipelineRobustnessProperties(reinterpret_cast<const VkPhysicalDevicePipelineRobustnessProperties *>(pNext), copy_state, false);
-                break;
-            case VK_STRUCTURE_TYPE_PIPELINE_ROBUSTNESS_CREATE_INFO:
-                safe_pNext = new safe_VkPipelineRobustnessCreateInfo(reinterpret_cast<const VkPipelineRobustnessCreateInfo *>(pNext), copy_state, false);
-                break;
-            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HOST_IMAGE_COPY_FEATURES:
-                safe_pNext = new safe_VkPhysicalDeviceHostImageCopyFeatures(reinterpret_cast<const VkPhysicalDeviceHostImageCopyFeatures *>(pNext), copy_state, false);
-                break;
-            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HOST_IMAGE_COPY_PROPERTIES:
-                safe_pNext = new safe_VkPhysicalDeviceHostImageCopyProperties(reinterpret_cast<const VkPhysicalDeviceHostImageCopyProperties *>(pNext), copy_state, false);
-                break;
-            case VK_STRUCTURE_TYPE_SUBRESOURCE_HOST_MEMCPY_SIZE:
-                safe_pNext = new safe_VkSubresourceHostMemcpySize(reinterpret_cast<const VkSubresourceHostMemcpySize *>(pNext), copy_state, false);
-                break;
-            case VK_STRUCTURE_TYPE_HOST_IMAGE_COPY_DEVICE_PERFORMANCE_QUERY:
-                safe_pNext = new safe_VkHostImageCopyDevicePerformanceQuery(reinterpret_cast<const VkHostImageCopyDevicePerformanceQuery *>(pNext), copy_state, false);
                 break;
             case VK_STRUCTURE_TYPE_IMAGE_SWAPCHAIN_CREATE_INFO_KHR:
                 safe_pNext = new safe_VkImageSwapchainCreateInfoKHR(reinterpret_cast<const VkImageSwapchainCreateInfoKHR *>(pNext), copy_state, false);
@@ -1012,6 +1012,18 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
                 break;
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_MODE_FIFO_LATEST_READY_FEATURES_KHR:
                 safe_pNext = new safe_VkPhysicalDevicePresentModeFifoLatestReadyFeaturesKHR(reinterpret_cast<const VkPhysicalDevicePresentModeFifoLatestReadyFeaturesKHR *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_10_FEATURES_KHR:
+                safe_pNext = new safe_VkPhysicalDeviceMaintenance10FeaturesKHR(reinterpret_cast<const VkPhysicalDeviceMaintenance10FeaturesKHR *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_10_PROPERTIES_KHR:
+                safe_pNext = new safe_VkPhysicalDeviceMaintenance10PropertiesKHR(reinterpret_cast<const VkPhysicalDeviceMaintenance10PropertiesKHR *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_RENDERING_ATTACHMENT_FLAGS_INFO_KHR:
+                safe_pNext = new safe_VkRenderingAttachmentFlagsInfoKHR(reinterpret_cast<const VkRenderingAttachmentFlagsInfoKHR *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_RESOLVE_IMAGE_MODE_INFO_KHR:
+                safe_pNext = new safe_VkResolveImageModeInfoKHR(reinterpret_cast<const VkResolveImageModeInfoKHR *>(pNext), copy_state, false);
                 break;
             case VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT:
                 safe_pNext = new safe_VkDebugReportCallbackCreateInfoEXT(reinterpret_cast<const VkDebugReportCallbackCreateInfoEXT *>(pNext), copy_state, false);
@@ -1796,11 +1808,11 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COPY_MEMORY_INDIRECT_FEATURES_NV:
                 safe_pNext = new safe_VkPhysicalDeviceCopyMemoryIndirectFeaturesNV(reinterpret_cast<const VkPhysicalDeviceCopyMemoryIndirectFeaturesNV *>(pNext), copy_state, false);
                 break;
-            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_DECOMPRESSION_FEATURES_NV:
-                safe_pNext = new safe_VkPhysicalDeviceMemoryDecompressionFeaturesNV(reinterpret_cast<const VkPhysicalDeviceMemoryDecompressionFeaturesNV *>(pNext), copy_state, false);
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_DECOMPRESSION_FEATURES_EXT:
+                safe_pNext = new safe_VkPhysicalDeviceMemoryDecompressionFeaturesEXT(reinterpret_cast<const VkPhysicalDeviceMemoryDecompressionFeaturesEXT *>(pNext), copy_state, false);
                 break;
-            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_DECOMPRESSION_PROPERTIES_NV:
-                safe_pNext = new safe_VkPhysicalDeviceMemoryDecompressionPropertiesNV(reinterpret_cast<const VkPhysicalDeviceMemoryDecompressionPropertiesNV *>(pNext), copy_state, false);
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_DECOMPRESSION_PROPERTIES_EXT:
+                safe_pNext = new safe_VkPhysicalDeviceMemoryDecompressionPropertiesEXT(reinterpret_cast<const VkPhysicalDeviceMemoryDecompressionPropertiesEXT *>(pNext), copy_state, false);
                 break;
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEVICE_GENERATED_COMMANDS_COMPUTE_FEATURES_NV:
                 safe_pNext = new safe_VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV(reinterpret_cast<const VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV *>(pNext), copy_state, false);
@@ -2183,6 +2195,17 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
             case VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_DEPTH_CLAMP_CONTROL_CREATE_INFO_EXT:
                 safe_pNext = new safe_VkPipelineViewportDepthClampControlCreateInfoEXT(reinterpret_cast<const VkPipelineViewportDepthClampControlCreateInfoEXT *>(pNext), copy_state, false);
                 break;
+#ifdef VK_USE_PLATFORM_OHOS
+            case VK_STRUCTURE_TYPE_NATIVE_BUFFER_OHOS:
+                safe_pNext = new safe_VkNativeBufferOHOS(reinterpret_cast<const VkNativeBufferOHOS *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_SWAPCHAIN_IMAGE_CREATE_INFO_OHOS:
+                safe_pNext = new safe_VkSwapchainImageCreateInfoOHOS(reinterpret_cast<const VkSwapchainImageCreateInfoOHOS *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENTATION_PROPERTIES_OHOS:
+                safe_pNext = new safe_VkPhysicalDevicePresentationPropertiesOHOS(reinterpret_cast<const VkPhysicalDevicePresentationPropertiesOHOS *>(pNext), copy_state, false);
+                break;
+#endif  // VK_USE_PLATFORM_OHOS
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HDR_VIVID_FEATURES_HUAWEI:
                 safe_pNext = new safe_VkPhysicalDeviceHdrVividFeaturesHUAWEI(reinterpret_cast<const VkPhysicalDeviceHdrVividFeaturesHUAWEI *>(pNext), copy_state, false);
                 break;
@@ -2229,8 +2252,14 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ZERO_INITIALIZE_DEVICE_MEMORY_FEATURES_EXT:
                 safe_pNext = new safe_VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesEXT(reinterpret_cast<const VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesEXT *>(pNext), copy_state, false);
                 break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_64_BIT_INDEXING_FEATURES_EXT:
+                safe_pNext = new safe_VkPhysicalDeviceShader64BitIndexingFeaturesEXT(reinterpret_cast<const VkPhysicalDeviceShader64BitIndexingFeaturesEXT *>(pNext), copy_state, false);
+                break;
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_CACHE_INCREMENTAL_MODE_FEATURES_SEC:
                 safe_pNext = new safe_VkPhysicalDevicePipelineCacheIncrementalModeFeaturesSEC(reinterpret_cast<const VkPhysicalDevicePipelineCacheIncrementalModeFeaturesSEC *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_UNIFORM_BUFFER_UNSIZED_ARRAY_FEATURES_EXT:
+                safe_pNext = new safe_VkPhysicalDeviceShaderUniformBufferUnsizedArrayFeaturesEXT(reinterpret_cast<const VkPhysicalDeviceShaderUniformBufferUnsizedArrayFeaturesEXT *>(pNext), copy_state, false);
                 break;
             case VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_ACCELERATION_STRUCTURE_KHR:
                 safe_pNext = new safe_VkWriteDescriptorSetAccelerationStructureKHR(reinterpret_cast<const VkWriteDescriptorSetAccelerationStructureKHR *>(pNext), copy_state, false);
@@ -2311,17 +2340,11 @@ void FreePnextChain(const void *pNext) {
         case VK_STRUCTURE_TYPE_COMPUTE_PIPELINE_CREATE_INFO:
             delete reinterpret_cast<safe_VkComputePipelineCreateInfo *>(header);
             break;
-        case VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_CREATE_INFO:
-            delete reinterpret_cast<safe_VkGraphicsPipelineCreateInfo *>(header);
-            break;
         case VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO:
             delete reinterpret_cast<safe_VkPipelineLayoutCreateInfo *>(header);
             break;
-        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBGROUP_PROPERTIES:
-            delete reinterpret_cast<safe_VkPhysicalDeviceSubgroupProperties *>(header);
-            break;
-        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_16BIT_STORAGE_FEATURES:
-            delete reinterpret_cast<safe_VkPhysicalDevice16BitStorageFeatures *>(header);
+        case VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_CREATE_INFO:
+            delete reinterpret_cast<safe_VkGraphicsPipelineCreateInfo *>(header);
             break;
         case VK_STRUCTURE_TYPE_MEMORY_DEDICATED_REQUIREMENTS:
             delete reinterpret_cast<safe_VkMemoryDedicatedRequirements *>(header);
@@ -2331,9 +2354,6 @@ void FreePnextChain(const void *pNext) {
             break;
         case VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_FLAGS_INFO:
             delete reinterpret_cast<safe_VkMemoryAllocateFlagsInfo *>(header);
-            break;
-        case VK_STRUCTURE_TYPE_DEVICE_GROUP_RENDER_PASS_BEGIN_INFO:
-            delete reinterpret_cast<safe_VkDeviceGroupRenderPassBeginInfo *>(header);
             break;
         case VK_STRUCTURE_TYPE_DEVICE_GROUP_COMMAND_BUFFER_BEGIN_INFO:
             delete reinterpret_cast<safe_VkDeviceGroupCommandBufferBeginInfo *>(header);
@@ -2356,29 +2376,8 @@ void FreePnextChain(const void *pNext) {
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FEATURES_2:
             delete reinterpret_cast<safe_VkPhysicalDeviceFeatures2 *>(header);
             break;
-        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_POINT_CLIPPING_PROPERTIES:
-            delete reinterpret_cast<safe_VkPhysicalDevicePointClippingProperties *>(header);
-            break;
-        case VK_STRUCTURE_TYPE_RENDER_PASS_INPUT_ATTACHMENT_ASPECT_CREATE_INFO:
-            delete reinterpret_cast<safe_VkRenderPassInputAttachmentAspectCreateInfo *>(header);
-            break;
         case VK_STRUCTURE_TYPE_IMAGE_VIEW_USAGE_CREATE_INFO:
             delete reinterpret_cast<safe_VkImageViewUsageCreateInfo *>(header);
-            break;
-        case VK_STRUCTURE_TYPE_PIPELINE_TESSELLATION_DOMAIN_ORIGIN_STATE_CREATE_INFO:
-            delete reinterpret_cast<safe_VkPipelineTessellationDomainOriginStateCreateInfo *>(header);
-            break;
-        case VK_STRUCTURE_TYPE_RENDER_PASS_MULTIVIEW_CREATE_INFO:
-            delete reinterpret_cast<safe_VkRenderPassMultiviewCreateInfo *>(header);
-            break;
-        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_FEATURES:
-            delete reinterpret_cast<safe_VkPhysicalDeviceMultiviewFeatures *>(header);
-            break;
-        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PROPERTIES:
-            delete reinterpret_cast<safe_VkPhysicalDeviceMultiviewProperties *>(header);
-            break;
-        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTERS_FEATURES:
-            delete reinterpret_cast<safe_VkPhysicalDeviceVariablePointersFeatures *>(header);
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROTECTED_MEMORY_FEATURES:
             delete reinterpret_cast<safe_VkPhysicalDeviceProtectedMemoryFeatures *>(header);
@@ -2389,20 +2388,11 @@ void FreePnextChain(const void *pNext) {
         case VK_STRUCTURE_TYPE_PROTECTED_SUBMIT_INFO:
             delete reinterpret_cast<safe_VkProtectedSubmitInfo *>(header);
             break;
-        case VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_INFO:
-            delete reinterpret_cast<safe_VkSamplerYcbcrConversionInfo *>(header);
-            break;
         case VK_STRUCTURE_TYPE_BIND_IMAGE_PLANE_MEMORY_INFO:
             delete reinterpret_cast<safe_VkBindImagePlaneMemoryInfo *>(header);
             break;
         case VK_STRUCTURE_TYPE_IMAGE_PLANE_MEMORY_REQUIREMENTS_INFO:
             delete reinterpret_cast<safe_VkImagePlaneMemoryRequirementsInfo *>(header);
-            break;
-        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLER_YCBCR_CONVERSION_FEATURES:
-            delete reinterpret_cast<safe_VkPhysicalDeviceSamplerYcbcrConversionFeatures *>(header);
-            break;
-        case VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_IMAGE_FORMAT_PROPERTIES:
-            delete reinterpret_cast<safe_VkSamplerYcbcrConversionImageFormatProperties *>(header);
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_IMAGE_FORMAT_INFO:
             delete reinterpret_cast<safe_VkPhysicalDeviceExternalImageFormatInfo *>(header);
@@ -2428,8 +2418,47 @@ void FreePnextChain(const void *pNext) {
         case VK_STRUCTURE_TYPE_EXPORT_SEMAPHORE_CREATE_INFO:
             delete reinterpret_cast<safe_VkExportSemaphoreCreateInfo *>(header);
             break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBGROUP_PROPERTIES:
+            delete reinterpret_cast<safe_VkPhysicalDeviceSubgroupProperties *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_16BIT_STORAGE_FEATURES:
+            delete reinterpret_cast<safe_VkPhysicalDevice16BitStorageFeatures *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTERS_FEATURES:
+            delete reinterpret_cast<safe_VkPhysicalDeviceVariablePointersFeatures *>(header);
+            break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_3_PROPERTIES:
             delete reinterpret_cast<safe_VkPhysicalDeviceMaintenance3Properties *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_INFO:
+            delete reinterpret_cast<safe_VkSamplerYcbcrConversionInfo *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLER_YCBCR_CONVERSION_FEATURES:
+            delete reinterpret_cast<safe_VkPhysicalDeviceSamplerYcbcrConversionFeatures *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_IMAGE_FORMAT_PROPERTIES:
+            delete reinterpret_cast<safe_VkSamplerYcbcrConversionImageFormatProperties *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_DEVICE_GROUP_RENDER_PASS_BEGIN_INFO:
+            delete reinterpret_cast<safe_VkDeviceGroupRenderPassBeginInfo *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_POINT_CLIPPING_PROPERTIES:
+            delete reinterpret_cast<safe_VkPhysicalDevicePointClippingProperties *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_RENDER_PASS_INPUT_ATTACHMENT_ASPECT_CREATE_INFO:
+            delete reinterpret_cast<safe_VkRenderPassInputAttachmentAspectCreateInfo *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PIPELINE_TESSELLATION_DOMAIN_ORIGIN_STATE_CREATE_INFO:
+            delete reinterpret_cast<safe_VkPipelineTessellationDomainOriginStateCreateInfo *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_RENDER_PASS_MULTIVIEW_CREATE_INFO:
+            delete reinterpret_cast<safe_VkRenderPassMultiviewCreateInfo *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_FEATURES:
+            delete reinterpret_cast<safe_VkPhysicalDeviceMultiviewFeatures *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PROPERTIES:
+            delete reinterpret_cast<safe_VkPhysicalDeviceMultiviewProperties *>(header);
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETERS_FEATURES:
             delete reinterpret_cast<safe_VkPhysicalDeviceShaderDrawParametersFeatures *>(header);
@@ -2449,80 +2478,11 @@ void FreePnextChain(const void *pNext) {
         case VK_STRUCTURE_TYPE_IMAGE_FORMAT_LIST_CREATE_INFO:
             delete reinterpret_cast<safe_VkImageFormatListCreateInfo *>(header);
             break;
-        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_8BIT_STORAGE_FEATURES:
-            delete reinterpret_cast<safe_VkPhysicalDevice8BitStorageFeatures *>(header);
-            break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DRIVER_PROPERTIES:
             delete reinterpret_cast<safe_VkPhysicalDeviceDriverProperties *>(header);
             break;
-        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ATOMIC_INT64_FEATURES:
-            delete reinterpret_cast<safe_VkPhysicalDeviceShaderAtomicInt64Features *>(header);
-            break;
-        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_FLOAT16_INT8_FEATURES:
-            delete reinterpret_cast<safe_VkPhysicalDeviceShaderFloat16Int8Features *>(header);
-            break;
-        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FLOAT_CONTROLS_PROPERTIES:
-            delete reinterpret_cast<safe_VkPhysicalDeviceFloatControlsProperties *>(header);
-            break;
-        case VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_BINDING_FLAGS_CREATE_INFO:
-            delete reinterpret_cast<safe_VkDescriptorSetLayoutBindingFlagsCreateInfo *>(header);
-            break;
-        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_INDEXING_FEATURES:
-            delete reinterpret_cast<safe_VkPhysicalDeviceDescriptorIndexingFeatures *>(header);
-            break;
-        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_INDEXING_PROPERTIES:
-            delete reinterpret_cast<safe_VkPhysicalDeviceDescriptorIndexingProperties *>(header);
-            break;
-        case VK_STRUCTURE_TYPE_DESCRIPTOR_SET_VARIABLE_DESCRIPTOR_COUNT_ALLOCATE_INFO:
-            delete reinterpret_cast<safe_VkDescriptorSetVariableDescriptorCountAllocateInfo *>(header);
-            break;
-        case VK_STRUCTURE_TYPE_DESCRIPTOR_SET_VARIABLE_DESCRIPTOR_COUNT_LAYOUT_SUPPORT:
-            delete reinterpret_cast<safe_VkDescriptorSetVariableDescriptorCountLayoutSupport *>(header);
-            break;
-        case VK_STRUCTURE_TYPE_SUBPASS_DESCRIPTION_DEPTH_STENCIL_RESOLVE:
-            delete reinterpret_cast<safe_VkSubpassDescriptionDepthStencilResolve *>(header);
-            break;
-        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_STENCIL_RESOLVE_PROPERTIES:
-            delete reinterpret_cast<safe_VkPhysicalDeviceDepthStencilResolveProperties *>(header);
-            break;
-        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SCALAR_BLOCK_LAYOUT_FEATURES:
-            delete reinterpret_cast<safe_VkPhysicalDeviceScalarBlockLayoutFeatures *>(header);
-            break;
-        case VK_STRUCTURE_TYPE_IMAGE_STENCIL_USAGE_CREATE_INFO:
-            delete reinterpret_cast<safe_VkImageStencilUsageCreateInfo *>(header);
-            break;
-        case VK_STRUCTURE_TYPE_SAMPLER_REDUCTION_MODE_CREATE_INFO:
-            delete reinterpret_cast<safe_VkSamplerReductionModeCreateInfo *>(header);
-            break;
-        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLER_FILTER_MINMAX_PROPERTIES:
-            delete reinterpret_cast<safe_VkPhysicalDeviceSamplerFilterMinmaxProperties *>(header);
-            break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_MEMORY_MODEL_FEATURES:
             delete reinterpret_cast<safe_VkPhysicalDeviceVulkanMemoryModelFeatures *>(header);
-            break;
-        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGELESS_FRAMEBUFFER_FEATURES:
-            delete reinterpret_cast<safe_VkPhysicalDeviceImagelessFramebufferFeatures *>(header);
-            break;
-        case VK_STRUCTURE_TYPE_FRAMEBUFFER_ATTACHMENTS_CREATE_INFO:
-            delete reinterpret_cast<safe_VkFramebufferAttachmentsCreateInfo *>(header);
-            break;
-        case VK_STRUCTURE_TYPE_RENDER_PASS_ATTACHMENT_BEGIN_INFO:
-            delete reinterpret_cast<safe_VkRenderPassAttachmentBeginInfo *>(header);
-            break;
-        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_UNIFORM_BUFFER_STANDARD_LAYOUT_FEATURES:
-            delete reinterpret_cast<safe_VkPhysicalDeviceUniformBufferStandardLayoutFeatures *>(header);
-            break;
-        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SUBGROUP_EXTENDED_TYPES_FEATURES:
-            delete reinterpret_cast<safe_VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures *>(header);
-            break;
-        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SEPARATE_DEPTH_STENCIL_LAYOUTS_FEATURES:
-            delete reinterpret_cast<safe_VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures *>(header);
-            break;
-        case VK_STRUCTURE_TYPE_ATTACHMENT_REFERENCE_STENCIL_LAYOUT:
-            delete reinterpret_cast<safe_VkAttachmentReferenceStencilLayout *>(header);
-            break;
-        case VK_STRUCTURE_TYPE_ATTACHMENT_DESCRIPTION_STENCIL_LAYOUT:
-            delete reinterpret_cast<safe_VkAttachmentDescriptionStencilLayout *>(header);
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HOST_QUERY_RESET_FEATURES:
             delete reinterpret_cast<safe_VkPhysicalDeviceHostQueryResetFeatures *>(header);
@@ -2548,11 +2508,104 @@ void FreePnextChain(const void *pNext) {
         case VK_STRUCTURE_TYPE_MEMORY_OPAQUE_CAPTURE_ADDRESS_ALLOCATE_INFO:
             delete reinterpret_cast<safe_VkMemoryOpaqueCaptureAddressAllocateInfo *>(header);
             break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_8BIT_STORAGE_FEATURES:
+            delete reinterpret_cast<safe_VkPhysicalDevice8BitStorageFeatures *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ATOMIC_INT64_FEATURES:
+            delete reinterpret_cast<safe_VkPhysicalDeviceShaderAtomicInt64Features *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_FLOAT16_INT8_FEATURES:
+            delete reinterpret_cast<safe_VkPhysicalDeviceShaderFloat16Int8Features *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FLOAT_CONTROLS_PROPERTIES:
+            delete reinterpret_cast<safe_VkPhysicalDeviceFloatControlsProperties *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_BINDING_FLAGS_CREATE_INFO:
+            delete reinterpret_cast<safe_VkDescriptorSetLayoutBindingFlagsCreateInfo *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_INDEXING_FEATURES:
+            delete reinterpret_cast<safe_VkPhysicalDeviceDescriptorIndexingFeatures *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_INDEXING_PROPERTIES:
+            delete reinterpret_cast<safe_VkPhysicalDeviceDescriptorIndexingProperties *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_DESCRIPTOR_SET_VARIABLE_DESCRIPTOR_COUNT_ALLOCATE_INFO:
+            delete reinterpret_cast<safe_VkDescriptorSetVariableDescriptorCountAllocateInfo *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_DESCRIPTOR_SET_VARIABLE_DESCRIPTOR_COUNT_LAYOUT_SUPPORT:
+            delete reinterpret_cast<safe_VkDescriptorSetVariableDescriptorCountLayoutSupport *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SCALAR_BLOCK_LAYOUT_FEATURES:
+            delete reinterpret_cast<safe_VkPhysicalDeviceScalarBlockLayoutFeatures *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_SAMPLER_REDUCTION_MODE_CREATE_INFO:
+            delete reinterpret_cast<safe_VkSamplerReductionModeCreateInfo *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLER_FILTER_MINMAX_PROPERTIES:
+            delete reinterpret_cast<safe_VkPhysicalDeviceSamplerFilterMinmaxProperties *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_UNIFORM_BUFFER_STANDARD_LAYOUT_FEATURES:
+            delete reinterpret_cast<safe_VkPhysicalDeviceUniformBufferStandardLayoutFeatures *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SUBGROUP_EXTENDED_TYPES_FEATURES:
+            delete reinterpret_cast<safe_VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_SUBPASS_DESCRIPTION_DEPTH_STENCIL_RESOLVE:
+            delete reinterpret_cast<safe_VkSubpassDescriptionDepthStencilResolve *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_STENCIL_RESOLVE_PROPERTIES:
+            delete reinterpret_cast<safe_VkPhysicalDeviceDepthStencilResolveProperties *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_IMAGE_STENCIL_USAGE_CREATE_INFO:
+            delete reinterpret_cast<safe_VkImageStencilUsageCreateInfo *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGELESS_FRAMEBUFFER_FEATURES:
+            delete reinterpret_cast<safe_VkPhysicalDeviceImagelessFramebufferFeatures *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_FRAMEBUFFER_ATTACHMENTS_CREATE_INFO:
+            delete reinterpret_cast<safe_VkFramebufferAttachmentsCreateInfo *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_RENDER_PASS_ATTACHMENT_BEGIN_INFO:
+            delete reinterpret_cast<safe_VkRenderPassAttachmentBeginInfo *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SEPARATE_DEPTH_STENCIL_LAYOUTS_FEATURES:
+            delete reinterpret_cast<safe_VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_ATTACHMENT_REFERENCE_STENCIL_LAYOUT:
+            delete reinterpret_cast<safe_VkAttachmentReferenceStencilLayout *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_ATTACHMENT_DESCRIPTION_STENCIL_LAYOUT:
+            delete reinterpret_cast<safe_VkAttachmentDescriptionStencilLayout *>(header);
+            break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_3_FEATURES:
             delete reinterpret_cast<safe_VkPhysicalDeviceVulkan13Features *>(header);
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_3_PROPERTIES:
             delete reinterpret_cast<safe_VkPhysicalDeviceVulkan13Properties *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRIVATE_DATA_FEATURES:
+            delete reinterpret_cast<safe_VkPhysicalDevicePrivateDataFeatures *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_DEVICE_PRIVATE_DATA_CREATE_INFO:
+            delete reinterpret_cast<safe_VkDevicePrivateDataCreateInfo *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_MEMORY_BARRIER_2:
+            delete reinterpret_cast<safe_VkMemoryBarrier2 *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SYNCHRONIZATION_2_FEATURES:
+            delete reinterpret_cast<safe_VkPhysicalDeviceSynchronization2Features *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TEXTURE_COMPRESSION_ASTC_HDR_FEATURES:
+            delete reinterpret_cast<safe_VkPhysicalDeviceTextureCompressionASTCHDRFeatures *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_FORMAT_PROPERTIES_3:
+            delete reinterpret_cast<safe_VkFormatProperties3 *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_4_FEATURES:
+            delete reinterpret_cast<safe_VkPhysicalDeviceMaintenance4Features *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_4_PROPERTIES:
+            delete reinterpret_cast<safe_VkPhysicalDeviceMaintenance4Properties *>(header);
             break;
         case VK_STRUCTURE_TYPE_PIPELINE_CREATION_FEEDBACK_CREATE_INFO:
             delete reinterpret_cast<safe_VkPipelineCreationFeedbackCreateInfo *>(header);
@@ -2563,20 +2616,8 @@ void FreePnextChain(const void *pNext) {
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DEMOTE_TO_HELPER_INVOCATION_FEATURES:
             delete reinterpret_cast<safe_VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures *>(header);
             break;
-        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRIVATE_DATA_FEATURES:
-            delete reinterpret_cast<safe_VkPhysicalDevicePrivateDataFeatures *>(header);
-            break;
-        case VK_STRUCTURE_TYPE_DEVICE_PRIVATE_DATA_CREATE_INFO:
-            delete reinterpret_cast<safe_VkDevicePrivateDataCreateInfo *>(header);
-            break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_CREATION_CACHE_CONTROL_FEATURES:
             delete reinterpret_cast<safe_VkPhysicalDevicePipelineCreationCacheControlFeatures *>(header);
-            break;
-        case VK_STRUCTURE_TYPE_MEMORY_BARRIER_2:
-            delete reinterpret_cast<safe_VkMemoryBarrier2 *>(header);
-            break;
-        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SYNCHRONIZATION_2_FEATURES:
-            delete reinterpret_cast<safe_VkPhysicalDeviceSynchronization2Features *>(header);
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ZERO_INITIALIZE_WORKGROUP_MEMORY_FEATURES:
             delete reinterpret_cast<safe_VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures *>(header);
@@ -2605,18 +2646,6 @@ void FreePnextChain(const void *pNext) {
         case VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_INLINE_UNIFORM_BLOCK_CREATE_INFO:
             delete reinterpret_cast<safe_VkDescriptorPoolInlineUniformBlockCreateInfo *>(header);
             break;
-        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TEXTURE_COMPRESSION_ASTC_HDR_FEATURES:
-            delete reinterpret_cast<safe_VkPhysicalDeviceTextureCompressionASTCHDRFeatures *>(header);
-            break;
-        case VK_STRUCTURE_TYPE_PIPELINE_RENDERING_CREATE_INFO:
-            delete reinterpret_cast<safe_VkPipelineRenderingCreateInfo *>(header);
-            break;
-        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DYNAMIC_RENDERING_FEATURES:
-            delete reinterpret_cast<safe_VkPhysicalDeviceDynamicRenderingFeatures *>(header);
-            break;
-        case VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_RENDERING_INFO:
-            delete reinterpret_cast<safe_VkCommandBufferInheritanceRenderingInfo *>(header);
-            break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_INTEGER_DOT_PRODUCT_FEATURES:
             delete reinterpret_cast<safe_VkPhysicalDeviceShaderIntegerDotProductFeatures *>(header);
             break;
@@ -2626,14 +2655,14 @@ void FreePnextChain(const void *pNext) {
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TEXEL_BUFFER_ALIGNMENT_PROPERTIES:
             delete reinterpret_cast<safe_VkPhysicalDeviceTexelBufferAlignmentProperties *>(header);
             break;
-        case VK_STRUCTURE_TYPE_FORMAT_PROPERTIES_3:
-            delete reinterpret_cast<safe_VkFormatProperties3 *>(header);
+        case VK_STRUCTURE_TYPE_PIPELINE_RENDERING_CREATE_INFO:
+            delete reinterpret_cast<safe_VkPipelineRenderingCreateInfo *>(header);
             break;
-        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_4_FEATURES:
-            delete reinterpret_cast<safe_VkPhysicalDeviceMaintenance4Features *>(header);
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DYNAMIC_RENDERING_FEATURES:
+            delete reinterpret_cast<safe_VkPhysicalDeviceDynamicRenderingFeatures *>(header);
             break;
-        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_4_PROPERTIES:
-            delete reinterpret_cast<safe_VkPhysicalDeviceMaintenance4Properties *>(header);
+        case VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_RENDERING_INFO:
+            delete reinterpret_cast<safe_VkCommandBufferInheritanceRenderingInfo *>(header);
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_4_FEATURES:
             delete reinterpret_cast<safe_VkPhysicalDeviceVulkan14Features *>(header);
@@ -2650,6 +2679,39 @@ void FreePnextChain(const void *pNext) {
         case VK_STRUCTURE_TYPE_QUEUE_FAMILY_GLOBAL_PRIORITY_PROPERTIES:
             delete reinterpret_cast<safe_VkQueueFamilyGlobalPriorityProperties *>(header);
             break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INDEX_TYPE_UINT8_FEATURES:
+            delete reinterpret_cast<safe_VkPhysicalDeviceIndexTypeUint8Features *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_5_FEATURES:
+            delete reinterpret_cast<safe_VkPhysicalDeviceMaintenance5Features *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_5_PROPERTIES:
+            delete reinterpret_cast<safe_VkPhysicalDeviceMaintenance5Properties *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_BUFFER_USAGE_FLAGS_2_CREATE_INFO:
+            delete reinterpret_cast<safe_VkBufferUsageFlags2CreateInfo *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_6_FEATURES:
+            delete reinterpret_cast<safe_VkPhysicalDeviceMaintenance6Features *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_6_PROPERTIES:
+            delete reinterpret_cast<safe_VkPhysicalDeviceMaintenance6Properties *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_BIND_MEMORY_STATUS:
+            delete reinterpret_cast<safe_VkBindMemoryStatus *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HOST_IMAGE_COPY_FEATURES:
+            delete reinterpret_cast<safe_VkPhysicalDeviceHostImageCopyFeatures *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HOST_IMAGE_COPY_PROPERTIES:
+            delete reinterpret_cast<safe_VkPhysicalDeviceHostImageCopyProperties *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_SUBRESOURCE_HOST_MEMCPY_SIZE:
+            delete reinterpret_cast<safe_VkSubresourceHostMemcpySize *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_HOST_IMAGE_COPY_DEVICE_PERFORMANCE_QUERY:
+            delete reinterpret_cast<safe_VkHostImageCopyDevicePerformanceQuery *>(header);
+            break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SUBGROUP_ROTATE_FEATURES:
             delete reinterpret_cast<safe_VkPhysicalDeviceShaderSubgroupRotateFeatures *>(header);
             break;
@@ -2658,6 +2720,24 @@ void FreePnextChain(const void *pNext) {
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_EXPECT_ASSUME_FEATURES:
             delete reinterpret_cast<safe_VkPhysicalDeviceShaderExpectAssumeFeatures *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PIPELINE_CREATE_FLAGS_2_CREATE_INFO:
+            delete reinterpret_cast<safe_VkPipelineCreateFlags2CreateInfo *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PUSH_DESCRIPTOR_PROPERTIES:
+            delete reinterpret_cast<safe_VkPhysicalDevicePushDescriptorProperties *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_PROTECTED_ACCESS_FEATURES:
+            delete reinterpret_cast<safe_VkPhysicalDevicePipelineProtectedAccessFeatures *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_ROBUSTNESS_FEATURES:
+            delete reinterpret_cast<safe_VkPhysicalDevicePipelineRobustnessFeatures *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_ROBUSTNESS_PROPERTIES:
+            delete reinterpret_cast<safe_VkPhysicalDevicePipelineRobustnessProperties *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PIPELINE_ROBUSTNESS_CREATE_INFO:
+            delete reinterpret_cast<safe_VkPipelineRobustnessCreateInfo *>(header);
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LINE_RASTERIZATION_FEATURES:
             delete reinterpret_cast<safe_VkPhysicalDeviceLineRasterizationFeatures *>(header);
@@ -2677,24 +2757,6 @@ void FreePnextChain(const void *pNext) {
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_FEATURES:
             delete reinterpret_cast<safe_VkPhysicalDeviceVertexAttributeDivisorFeatures *>(header);
             break;
-        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INDEX_TYPE_UINT8_FEATURES:
-            delete reinterpret_cast<safe_VkPhysicalDeviceIndexTypeUint8Features *>(header);
-            break;
-        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_5_FEATURES:
-            delete reinterpret_cast<safe_VkPhysicalDeviceMaintenance5Features *>(header);
-            break;
-        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_5_PROPERTIES:
-            delete reinterpret_cast<safe_VkPhysicalDeviceMaintenance5Properties *>(header);
-            break;
-        case VK_STRUCTURE_TYPE_PIPELINE_CREATE_FLAGS_2_CREATE_INFO:
-            delete reinterpret_cast<safe_VkPipelineCreateFlags2CreateInfo *>(header);
-            break;
-        case VK_STRUCTURE_TYPE_BUFFER_USAGE_FLAGS_2_CREATE_INFO:
-            delete reinterpret_cast<safe_VkBufferUsageFlags2CreateInfo *>(header);
-            break;
-        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PUSH_DESCRIPTOR_PROPERTIES:
-            delete reinterpret_cast<safe_VkPhysicalDevicePushDescriptorProperties *>(header);
-            break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DYNAMIC_RENDERING_LOCAL_READ_FEATURES:
             delete reinterpret_cast<safe_VkPhysicalDeviceDynamicRenderingLocalReadFeatures *>(header);
             break;
@@ -2703,39 +2765,6 @@ void FreePnextChain(const void *pNext) {
             break;
         case VK_STRUCTURE_TYPE_RENDERING_INPUT_ATTACHMENT_INDEX_INFO:
             delete reinterpret_cast<safe_VkRenderingInputAttachmentIndexInfo *>(header);
-            break;
-        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_6_FEATURES:
-            delete reinterpret_cast<safe_VkPhysicalDeviceMaintenance6Features *>(header);
-            break;
-        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_6_PROPERTIES:
-            delete reinterpret_cast<safe_VkPhysicalDeviceMaintenance6Properties *>(header);
-            break;
-        case VK_STRUCTURE_TYPE_BIND_MEMORY_STATUS:
-            delete reinterpret_cast<safe_VkBindMemoryStatus *>(header);
-            break;
-        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_PROTECTED_ACCESS_FEATURES:
-            delete reinterpret_cast<safe_VkPhysicalDevicePipelineProtectedAccessFeatures *>(header);
-            break;
-        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_ROBUSTNESS_FEATURES:
-            delete reinterpret_cast<safe_VkPhysicalDevicePipelineRobustnessFeatures *>(header);
-            break;
-        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_ROBUSTNESS_PROPERTIES:
-            delete reinterpret_cast<safe_VkPhysicalDevicePipelineRobustnessProperties *>(header);
-            break;
-        case VK_STRUCTURE_TYPE_PIPELINE_ROBUSTNESS_CREATE_INFO:
-            delete reinterpret_cast<safe_VkPipelineRobustnessCreateInfo *>(header);
-            break;
-        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HOST_IMAGE_COPY_FEATURES:
-            delete reinterpret_cast<safe_VkPhysicalDeviceHostImageCopyFeatures *>(header);
-            break;
-        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HOST_IMAGE_COPY_PROPERTIES:
-            delete reinterpret_cast<safe_VkPhysicalDeviceHostImageCopyProperties *>(header);
-            break;
-        case VK_STRUCTURE_TYPE_SUBRESOURCE_HOST_MEMCPY_SIZE:
-            delete reinterpret_cast<safe_VkSubresourceHostMemcpySize *>(header);
-            break;
-        case VK_STRUCTURE_TYPE_HOST_IMAGE_COPY_DEVICE_PERFORMANCE_QUERY:
-            delete reinterpret_cast<safe_VkHostImageCopyDevicePerformanceQuery *>(header);
             break;
         case VK_STRUCTURE_TYPE_IMAGE_SWAPCHAIN_CREATE_INFO_KHR:
             delete reinterpret_cast<safe_VkImageSwapchainCreateInfoKHR *>(header);
@@ -3260,6 +3289,18 @@ void FreePnextChain(const void *pNext) {
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_MODE_FIFO_LATEST_READY_FEATURES_KHR:
             delete reinterpret_cast<safe_VkPhysicalDevicePresentModeFifoLatestReadyFeaturesKHR *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_10_FEATURES_KHR:
+            delete reinterpret_cast<safe_VkPhysicalDeviceMaintenance10FeaturesKHR *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_10_PROPERTIES_KHR:
+            delete reinterpret_cast<safe_VkPhysicalDeviceMaintenance10PropertiesKHR *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_RENDERING_ATTACHMENT_FLAGS_INFO_KHR:
+            delete reinterpret_cast<safe_VkRenderingAttachmentFlagsInfoKHR *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_RESOLVE_IMAGE_MODE_INFO_KHR:
+            delete reinterpret_cast<safe_VkResolveImageModeInfoKHR *>(header);
             break;
         case VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT:
             delete reinterpret_cast<safe_VkDebugReportCallbackCreateInfoEXT *>(header);
@@ -4044,11 +4085,11 @@ void FreePnextChain(const void *pNext) {
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COPY_MEMORY_INDIRECT_FEATURES_NV:
             delete reinterpret_cast<safe_VkPhysicalDeviceCopyMemoryIndirectFeaturesNV *>(header);
             break;
-        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_DECOMPRESSION_FEATURES_NV:
-            delete reinterpret_cast<safe_VkPhysicalDeviceMemoryDecompressionFeaturesNV *>(header);
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_DECOMPRESSION_FEATURES_EXT:
+            delete reinterpret_cast<safe_VkPhysicalDeviceMemoryDecompressionFeaturesEXT *>(header);
             break;
-        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_DECOMPRESSION_PROPERTIES_NV:
-            delete reinterpret_cast<safe_VkPhysicalDeviceMemoryDecompressionPropertiesNV *>(header);
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_DECOMPRESSION_PROPERTIES_EXT:
+            delete reinterpret_cast<safe_VkPhysicalDeviceMemoryDecompressionPropertiesEXT *>(header);
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEVICE_GENERATED_COMMANDS_COMPUTE_FEATURES_NV:
             delete reinterpret_cast<safe_VkPhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV *>(header);
@@ -4431,6 +4472,17 @@ void FreePnextChain(const void *pNext) {
         case VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_DEPTH_CLAMP_CONTROL_CREATE_INFO_EXT:
             delete reinterpret_cast<safe_VkPipelineViewportDepthClampControlCreateInfoEXT *>(header);
             break;
+#ifdef VK_USE_PLATFORM_OHOS
+        case VK_STRUCTURE_TYPE_NATIVE_BUFFER_OHOS:
+            delete reinterpret_cast<safe_VkNativeBufferOHOS *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_SWAPCHAIN_IMAGE_CREATE_INFO_OHOS:
+            delete reinterpret_cast<safe_VkSwapchainImageCreateInfoOHOS *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENTATION_PROPERTIES_OHOS:
+            delete reinterpret_cast<safe_VkPhysicalDevicePresentationPropertiesOHOS *>(header);
+            break;
+#endif  // VK_USE_PLATFORM_OHOS
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HDR_VIVID_FEATURES_HUAWEI:
             delete reinterpret_cast<safe_VkPhysicalDeviceHdrVividFeaturesHUAWEI *>(header);
             break;
@@ -4477,8 +4529,14 @@ void FreePnextChain(const void *pNext) {
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ZERO_INITIALIZE_DEVICE_MEMORY_FEATURES_EXT:
             delete reinterpret_cast<safe_VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesEXT *>(header);
             break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_64_BIT_INDEXING_FEATURES_EXT:
+            delete reinterpret_cast<safe_VkPhysicalDeviceShader64BitIndexingFeaturesEXT *>(header);
+            break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_CACHE_INCREMENTAL_MODE_FEATURES_SEC:
             delete reinterpret_cast<safe_VkPhysicalDevicePipelineCacheIncrementalModeFeaturesSEC *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_UNIFORM_BUFFER_UNSIZED_ARRAY_FEATURES_EXT:
+            delete reinterpret_cast<safe_VkPhysicalDeviceShaderUniformBufferUnsizedArrayFeaturesEXT *>(header);
             break;
         case VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_ACCELERATION_STRUCTURE_KHR:
             delete reinterpret_cast<safe_VkWriteDescriptorSetAccelerationStructureKHR *>(header);
