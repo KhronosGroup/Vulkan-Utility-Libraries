@@ -1850,6 +1850,20 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_NESTED_COMMAND_BUFFER_PROPERTIES_EXT:
                 safe_pNext = new safe_VkPhysicalDeviceNestedCommandBufferPropertiesEXT(reinterpret_cast<const VkPhysicalDeviceNestedCommandBufferPropertiesEXT *>(pNext), copy_state, false);
                 break;
+#ifdef VK_USE_PLATFORM_OHOS
+            case VK_STRUCTURE_TYPE_NATIVE_BUFFER_USAGE_OHOS:
+                safe_pNext = new safe_VkNativeBufferUsageOHOS(reinterpret_cast<const VkNativeBufferUsageOHOS *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_NATIVE_BUFFER_FORMAT_PROPERTIES_OHOS:
+                safe_pNext = new safe_VkNativeBufferFormatPropertiesOHOS(reinterpret_cast<const VkNativeBufferFormatPropertiesOHOS *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_IMPORT_NATIVE_BUFFER_INFO_OHOS:
+                safe_pNext = new safe_VkImportNativeBufferInfoOHOS(reinterpret_cast<const VkImportNativeBufferInfoOHOS *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_EXTERNAL_FORMAT_OHOS:
+                safe_pNext = new safe_VkExternalFormatOHOS(reinterpret_cast<const VkExternalFormatOHOS *>(pNext), copy_state, false);
+                break;
+#endif  // VK_USE_PLATFORM_OHOS
             case VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_ACQUIRE_UNMODIFIED_EXT:
                 safe_pNext = new safe_VkExternalMemoryAcquireUnmodifiedEXT(reinterpret_cast<const VkExternalMemoryAcquireUnmodifiedEXT *>(pNext), copy_state, false);
                 break;
@@ -2226,6 +2240,15 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
                 safe_pNext = new safe_VkImportMemoryMetalHandleInfoEXT(reinterpret_cast<const VkImportMemoryMetalHandleInfoEXT *>(pNext), copy_state, false);
                 break;
 #endif  // VK_USE_PLATFORM_METAL_EXT
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PERFORMANCE_COUNTERS_BY_REGION_FEATURES_ARM:
+                safe_pNext = new safe_VkPhysicalDevicePerformanceCountersByRegionFeaturesARM(reinterpret_cast<const VkPhysicalDevicePerformanceCountersByRegionFeaturesARM *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PERFORMANCE_COUNTERS_BY_REGION_PROPERTIES_ARM:
+                safe_pNext = new safe_VkPhysicalDevicePerformanceCountersByRegionPropertiesARM(reinterpret_cast<const VkPhysicalDevicePerformanceCountersByRegionPropertiesARM *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_RENDER_PASS_PERFORMANCE_COUNTERS_BY_REGION_BEGIN_INFO_ARM:
+                safe_pNext = new safe_VkRenderPassPerformanceCountersByRegionBeginInfoARM(reinterpret_cast<const VkRenderPassPerformanceCountersByRegionBeginInfoARM *>(pNext), copy_state, false);
+                break;
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_ROBUSTNESS_FEATURES_EXT:
                 safe_pNext = new safe_VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT(reinterpret_cast<const VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT *>(pNext), copy_state, false);
                 break;
@@ -4127,6 +4150,20 @@ void FreePnextChain(const void *pNext) {
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_NESTED_COMMAND_BUFFER_PROPERTIES_EXT:
             delete reinterpret_cast<safe_VkPhysicalDeviceNestedCommandBufferPropertiesEXT *>(header);
             break;
+#ifdef VK_USE_PLATFORM_OHOS
+        case VK_STRUCTURE_TYPE_NATIVE_BUFFER_USAGE_OHOS:
+            delete reinterpret_cast<safe_VkNativeBufferUsageOHOS *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_NATIVE_BUFFER_FORMAT_PROPERTIES_OHOS:
+            delete reinterpret_cast<safe_VkNativeBufferFormatPropertiesOHOS *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_IMPORT_NATIVE_BUFFER_INFO_OHOS:
+            delete reinterpret_cast<safe_VkImportNativeBufferInfoOHOS *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_EXTERNAL_FORMAT_OHOS:
+            delete reinterpret_cast<safe_VkExternalFormatOHOS *>(header);
+            break;
+#endif  // VK_USE_PLATFORM_OHOS
         case VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_ACQUIRE_UNMODIFIED_EXT:
             delete reinterpret_cast<safe_VkExternalMemoryAcquireUnmodifiedEXT *>(header);
             break;
@@ -4503,6 +4540,15 @@ void FreePnextChain(const void *pNext) {
             delete reinterpret_cast<safe_VkImportMemoryMetalHandleInfoEXT *>(header);
             break;
 #endif  // VK_USE_PLATFORM_METAL_EXT
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PERFORMANCE_COUNTERS_BY_REGION_FEATURES_ARM:
+            delete reinterpret_cast<safe_VkPhysicalDevicePerformanceCountersByRegionFeaturesARM *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PERFORMANCE_COUNTERS_BY_REGION_PROPERTIES_ARM:
+            delete reinterpret_cast<safe_VkPhysicalDevicePerformanceCountersByRegionPropertiesARM *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_RENDER_PASS_PERFORMANCE_COUNTERS_BY_REGION_BEGIN_INFO_ARM:
+            delete reinterpret_cast<safe_VkRenderPassPerformanceCountersByRegionBeginInfoARM *>(header);
+            break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_ROBUSTNESS_FEATURES_EXT:
             delete reinterpret_cast<safe_VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT *>(header);
             break;

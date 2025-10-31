@@ -958,6 +958,14 @@ template <> inline VkStructureType GetSType<VkPhysicalDeviceImageProcessingFeatu
 template <> inline VkStructureType GetSType<VkPhysicalDeviceImageProcessingPropertiesQCOM>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_PROCESSING_PROPERTIES_QCOM; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceNestedCommandBufferFeaturesEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_NESTED_COMMAND_BUFFER_FEATURES_EXT; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceNestedCommandBufferPropertiesEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_NESTED_COMMAND_BUFFER_PROPERTIES_EXT; }
+#ifdef VK_USE_PLATFORM_OHOS
+template <> inline VkStructureType GetSType<VkNativeBufferUsageOHOS>() { return VK_STRUCTURE_TYPE_NATIVE_BUFFER_USAGE_OHOS; }
+template <> inline VkStructureType GetSType<VkNativeBufferPropertiesOHOS>() { return VK_STRUCTURE_TYPE_NATIVE_BUFFER_PROPERTIES_OHOS; }
+template <> inline VkStructureType GetSType<VkNativeBufferFormatPropertiesOHOS>() { return VK_STRUCTURE_TYPE_NATIVE_BUFFER_FORMAT_PROPERTIES_OHOS; }
+template <> inline VkStructureType GetSType<VkImportNativeBufferInfoOHOS>() { return VK_STRUCTURE_TYPE_IMPORT_NATIVE_BUFFER_INFO_OHOS; }
+template <> inline VkStructureType GetSType<VkMemoryGetNativeBufferInfoOHOS>() { return VK_STRUCTURE_TYPE_MEMORY_GET_NATIVE_BUFFER_INFO_OHOS; }
+template <> inline VkStructureType GetSType<VkExternalFormatOHOS>() { return VK_STRUCTURE_TYPE_EXTERNAL_FORMAT_OHOS; }
+#endif  // VK_USE_PLATFORM_OHOS
 template <> inline VkStructureType GetSType<VkExternalMemoryAcquireUnmodifiedEXT>() { return VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_ACQUIRE_UNMODIFIED_EXT; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceExtendedDynamicState3FeaturesEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_DYNAMIC_STATE_3_FEATURES_EXT; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceExtendedDynamicState3PropertiesEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_DYNAMIC_STATE_3_PROPERTIES_EXT; }
@@ -1158,6 +1166,11 @@ template <> inline VkStructureType GetSType<VkImportMemoryMetalHandleInfoEXT>() 
 template <> inline VkStructureType GetSType<VkMemoryMetalHandlePropertiesEXT>() { return VK_STRUCTURE_TYPE_MEMORY_METAL_HANDLE_PROPERTIES_EXT; }
 template <> inline VkStructureType GetSType<VkMemoryGetMetalHandleInfoEXT>() { return VK_STRUCTURE_TYPE_MEMORY_GET_METAL_HANDLE_INFO_EXT; }
 #endif  // VK_USE_PLATFORM_METAL_EXT
+template <> inline VkStructureType GetSType<VkPhysicalDevicePerformanceCountersByRegionFeaturesARM>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PERFORMANCE_COUNTERS_BY_REGION_FEATURES_ARM; }
+template <> inline VkStructureType GetSType<VkPhysicalDevicePerformanceCountersByRegionPropertiesARM>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PERFORMANCE_COUNTERS_BY_REGION_PROPERTIES_ARM; }
+template <> inline VkStructureType GetSType<VkPerformanceCounterARM>() { return VK_STRUCTURE_TYPE_PERFORMANCE_COUNTER_ARM; }
+template <> inline VkStructureType GetSType<VkPerformanceCounterDescriptionARM>() { return VK_STRUCTURE_TYPE_PERFORMANCE_COUNTER_DESCRIPTION_ARM; }
+template <> inline VkStructureType GetSType<VkRenderPassPerformanceCountersByRegionBeginInfoARM>() { return VK_STRUCTURE_TYPE_RENDER_PASS_PERFORMANCE_COUNTERS_BY_REGION_BEGIN_INFO_ARM; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_ROBUSTNESS_FEATURES_EXT; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceFormatPackFeaturesARM>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FORMAT_PACK_FEATURES_ARM; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceFragmentDensityMapLayeredFeaturesVALVE>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_LAYERED_FEATURES_VALVE; }
