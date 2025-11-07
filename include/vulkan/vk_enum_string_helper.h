@@ -2366,6 +2366,10 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_MODE_FIFO_LATEST_READY_FEATURES_KHR";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_64_BIT_INDEXING_FEATURES_EXT:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_64_BIT_INDEXING_FEATURES_EXT";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DATA_GRAPH_MODEL_FEATURES_QCOM:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DATA_GRAPH_MODEL_FEATURES_QCOM";
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_BUILTIN_MODEL_CREATE_INFO_QCOM:
+            return "VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_BUILTIN_MODEL_CREATE_INFO_QCOM";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_10_FEATURES_KHR:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_10_FEATURES_KHR";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_10_PROPERTIES_KHR:
@@ -3318,6 +3322,8 @@ static inline const char* string_VkPipelineCacheHeaderVersion(VkPipelineCacheHea
     switch (input_value) {
         case VK_PIPELINE_CACHE_HEADER_VERSION_ONE:
             return "VK_PIPELINE_CACHE_HEADER_VERSION_ONE";
+        case VK_PIPELINE_CACHE_HEADER_VERSION_DATA_GRAPH_QCOM:
+            return "VK_PIPELINE_CACHE_HEADER_VERSION_DATA_GRAPH_QCOM";
         default:
             return "Unhandled VkPipelineCacheHeaderVersion";
     }
@@ -5446,6 +5452,10 @@ static inline const char* string_VkPhysicalDeviceDataGraphProcessingEngineTypeAR
     switch (input_value) {
         case VK_PHYSICAL_DEVICE_DATA_GRAPH_PROCESSING_ENGINE_TYPE_DEFAULT_ARM:
             return "VK_PHYSICAL_DEVICE_DATA_GRAPH_PROCESSING_ENGINE_TYPE_DEFAULT_ARM";
+        case VK_PHYSICAL_DEVICE_DATA_GRAPH_PROCESSING_ENGINE_TYPE_NEURAL_QCOM:
+            return "VK_PHYSICAL_DEVICE_DATA_GRAPH_PROCESSING_ENGINE_TYPE_NEURAL_QCOM";
+        case VK_PHYSICAL_DEVICE_DATA_GRAPH_PROCESSING_ENGINE_TYPE_COMPUTE_QCOM:
+            return "VK_PHYSICAL_DEVICE_DATA_GRAPH_PROCESSING_ENGINE_TYPE_COMPUTE_QCOM";
         default:
             return "Unhandled VkPhysicalDeviceDataGraphProcessingEngineTypeARM";
     }
@@ -5454,6 +5464,10 @@ static inline const char* string_VkPhysicalDeviceDataGraphOperationTypeARM(VkPhy
     switch (input_value) {
         case VK_PHYSICAL_DEVICE_DATA_GRAPH_OPERATION_TYPE_SPIRV_EXTENDED_INSTRUCTION_SET_ARM:
             return "VK_PHYSICAL_DEVICE_DATA_GRAPH_OPERATION_TYPE_SPIRV_EXTENDED_INSTRUCTION_SET_ARM";
+        case VK_PHYSICAL_DEVICE_DATA_GRAPH_OPERATION_TYPE_NEURAL_MODEL_QCOM:
+            return "VK_PHYSICAL_DEVICE_DATA_GRAPH_OPERATION_TYPE_NEURAL_MODEL_QCOM";
+        case VK_PHYSICAL_DEVICE_DATA_GRAPH_OPERATION_TYPE_BUILTIN_MODEL_QCOM:
+            return "VK_PHYSICAL_DEVICE_DATA_GRAPH_OPERATION_TYPE_BUILTIN_MODEL_QCOM";
         default:
             return "Unhandled VkPhysicalDeviceDataGraphOperationTypeARM";
     }
@@ -5604,6 +5618,14 @@ static inline const char* string_VkIndirectCommandsTokenTypeEXT(VkIndirectComman
             return "VK_INDIRECT_COMMANDS_TOKEN_TYPE_TRACE_RAYS2_EXT";
         default:
             return "Unhandled VkIndirectCommandsTokenTypeEXT";
+    }
+}
+static inline const char* string_VkDataGraphModelCacheTypeQCOM(VkDataGraphModelCacheTypeQCOM input_value) {
+    switch (input_value) {
+        case VK_DATA_GRAPH_MODEL_CACHE_TYPE_GENERIC_BINARY_QCOM:
+            return "VK_DATA_GRAPH_MODEL_CACHE_TYPE_GENERIC_BINARY_QCOM";
+        default:
+            return "Unhandled VkDataGraphModelCacheTypeQCOM";
     }
 }
 static inline const char* string_VkBuildAccelerationStructureModeKHR(VkBuildAccelerationStructureModeKHR input_value) {
@@ -13362,6 +13384,10 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
             return "VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesEXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_64_BIT_INDEXING_FEATURES_EXT:
             return "VkPhysicalDeviceShader64BitIndexingFeaturesEXT";
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_BUILTIN_MODEL_CREATE_INFO_QCOM:
+            return "VkDataGraphPipelineBuiltinModelCreateInfoQCOM";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DATA_GRAPH_MODEL_FEATURES_QCOM:
+            return "VkPhysicalDeviceDataGraphModelFeaturesQCOM";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_CACHE_INCREMENTAL_MODE_FEATURES_SEC:
             return "VkPhysicalDevicePipelineCacheIncrementalModeFeaturesSEC";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_UNIFORM_BUFFER_UNSIZED_ARRAY_FEATURES_EXT:

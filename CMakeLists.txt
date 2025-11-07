@@ -6,7 +6,7 @@
 cmake_minimum_required(VERSION 3.22.1)
 
 # The VERSION field is generated with the "--generated-version" flag in the generate_source.py script
-project(VUL VERSION 1.4.331 LANGUAGES CXX)
+project(VUL VERSION 1.4.332 LANGUAGES CXX)
 
 set_property(GLOBAL PROPERTY USE_FOLDERS ON) # Remove when min is 3.26, see CMP0143
 
@@ -103,5 +103,15 @@ if (VUL_ENABLE_INSTALL)
 
     install(FILES ${CMAKE_CURRENT_BINARY_DIR}/VulkanUtilityLibrariesConfig.cmake
         DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/VulkanUtilityLibraries
+    )
+endif()
+
+option(VUL_CODEGEN "Enable Vulkan-Utility-Libraries code generation")
+if(VUL_CODEGEN)
+    find_package(Python3 REQUIRED)
+    add_custom_target(vul_codegen
+        COMMAND Python3::Interpreter ${PROJECT_SOURCE_DIR}/scripts/generate_source.py
+            "${VULKAN_HEADERS_INSTALL_DIR}/${CMAKE_INSTALL_DATADIR}/vulkan/registry"
+            --generated-version ${VulkanHeaders_VERSION} --api ${API_TYPE}
     )
 endif()
