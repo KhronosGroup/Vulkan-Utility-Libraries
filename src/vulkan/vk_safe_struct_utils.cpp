@@ -2278,6 +2278,12 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_64_BIT_INDEXING_FEATURES_EXT:
                 safe_pNext = new safe_VkPhysicalDeviceShader64BitIndexingFeaturesEXT(reinterpret_cast<const VkPhysicalDeviceShader64BitIndexingFeaturesEXT *>(pNext), copy_state, false);
                 break;
+            case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_BUILTIN_MODEL_CREATE_INFO_QCOM:
+                safe_pNext = new safe_VkDataGraphPipelineBuiltinModelCreateInfoQCOM(reinterpret_cast<const VkDataGraphPipelineBuiltinModelCreateInfoQCOM *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DATA_GRAPH_MODEL_FEATURES_QCOM:
+                safe_pNext = new safe_VkPhysicalDeviceDataGraphModelFeaturesQCOM(reinterpret_cast<const VkPhysicalDeviceDataGraphModelFeaturesQCOM *>(pNext), copy_state, false);
+                break;
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_CACHE_INCREMENTAL_MODE_FEATURES_SEC:
                 safe_pNext = new safe_VkPhysicalDevicePipelineCacheIncrementalModeFeaturesSEC(reinterpret_cast<const VkPhysicalDevicePipelineCacheIncrementalModeFeaturesSEC *>(pNext), copy_state, false);
                 break;
@@ -4577,6 +4583,12 @@ void FreePnextChain(const void *pNext) {
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_64_BIT_INDEXING_FEATURES_EXT:
             delete reinterpret_cast<safe_VkPhysicalDeviceShader64BitIndexingFeaturesEXT *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_BUILTIN_MODEL_CREATE_INFO_QCOM:
+            delete reinterpret_cast<safe_VkDataGraphPipelineBuiltinModelCreateInfoQCOM *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DATA_GRAPH_MODEL_FEATURES_QCOM:
+            delete reinterpret_cast<safe_VkPhysicalDeviceDataGraphModelFeaturesQCOM *>(header);
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_CACHE_INCREMENTAL_MODE_FEATURES_SEC:
             delete reinterpret_cast<safe_VkPhysicalDevicePipelineCacheIncrementalModeFeaturesSEC *>(header);

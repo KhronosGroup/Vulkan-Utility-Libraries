@@ -1182,6 +1182,8 @@ template <> inline VkStructureType GetSType<VkPhysicalDevicePresentMeteringFeatu
 #endif  // VK_ENABLE_BETA_EXTENSIONS
 template <> inline VkStructureType GetSType<VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ZERO_INITIALIZE_DEVICE_MEMORY_FEATURES_EXT; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceShader64BitIndexingFeaturesEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_64_BIT_INDEXING_FEATURES_EXT; }
+template <> inline VkStructureType GetSType<VkDataGraphPipelineBuiltinModelCreateInfoQCOM>() { return VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_BUILTIN_MODEL_CREATE_INFO_QCOM; }
+template <> inline VkStructureType GetSType<VkPhysicalDeviceDataGraphModelFeaturesQCOM>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DATA_GRAPH_MODEL_FEATURES_QCOM; }
 template <> inline VkStructureType GetSType<VkPhysicalDevicePipelineCacheIncrementalModeFeaturesSEC>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_CACHE_INCREMENTAL_MODE_FEATURES_SEC; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceShaderUniformBufferUnsizedArrayFeaturesEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_UNIFORM_BUFFER_UNSIZED_ARRAY_FEATURES_EXT; }
 template <> inline VkStructureType GetSType<VkAccelerationStructureGeometryTrianglesDataKHR>() { return VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_TRIANGLES_DATA_KHR; }

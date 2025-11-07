@@ -22998,6 +22998,126 @@ void safe_VkPhysicalDevicePresentMeteringFeaturesNV::initialize(const safe_VkPhy
 }
 #endif  // VK_ENABLE_BETA_EXTENSIONS
 
+safe_VkDataGraphPipelineBuiltinModelCreateInfoQCOM::safe_VkDataGraphPipelineBuiltinModelCreateInfoQCOM(
+    const VkDataGraphPipelineBuiltinModelCreateInfoQCOM* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), pOperation(nullptr) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+    if (in_struct->pOperation) {
+        pOperation = new VkPhysicalDeviceDataGraphOperationSupportARM(*in_struct->pOperation);
+    }
+}
+
+safe_VkDataGraphPipelineBuiltinModelCreateInfoQCOM::safe_VkDataGraphPipelineBuiltinModelCreateInfoQCOM()
+    : sType(VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_BUILTIN_MODEL_CREATE_INFO_QCOM), pNext(nullptr), pOperation(nullptr) {}
+
+safe_VkDataGraphPipelineBuiltinModelCreateInfoQCOM::safe_VkDataGraphPipelineBuiltinModelCreateInfoQCOM(
+    const safe_VkDataGraphPipelineBuiltinModelCreateInfoQCOM& copy_src) {
+    sType = copy_src.sType;
+    pOperation = nullptr;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    if (copy_src.pOperation) {
+        pOperation = new VkPhysicalDeviceDataGraphOperationSupportARM(*copy_src.pOperation);
+    }
+}
+
+safe_VkDataGraphPipelineBuiltinModelCreateInfoQCOM& safe_VkDataGraphPipelineBuiltinModelCreateInfoQCOM::operator=(
+    const safe_VkDataGraphPipelineBuiltinModelCreateInfoQCOM& copy_src) {
+    if (&copy_src == this) return *this;
+
+    if (pOperation) delete pOperation;
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    pOperation = nullptr;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    if (copy_src.pOperation) {
+        pOperation = new VkPhysicalDeviceDataGraphOperationSupportARM(*copy_src.pOperation);
+    }
+
+    return *this;
+}
+
+safe_VkDataGraphPipelineBuiltinModelCreateInfoQCOM::~safe_VkDataGraphPipelineBuiltinModelCreateInfoQCOM() {
+    if (pOperation) delete pOperation;
+    FreePnextChain(pNext);
+}
+
+void safe_VkDataGraphPipelineBuiltinModelCreateInfoQCOM::initialize(const VkDataGraphPipelineBuiltinModelCreateInfoQCOM* in_struct,
+                                                                    [[maybe_unused]] PNextCopyState* copy_state) {
+    if (pOperation) delete pOperation;
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    pOperation = nullptr;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+
+    if (in_struct->pOperation) {
+        pOperation = new VkPhysicalDeviceDataGraphOperationSupportARM(*in_struct->pOperation);
+    }
+}
+
+void safe_VkDataGraphPipelineBuiltinModelCreateInfoQCOM::initialize(
+    const safe_VkDataGraphPipelineBuiltinModelCreateInfoQCOM* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    pOperation = nullptr;
+    pNext = SafePnextCopy(copy_src->pNext);
+
+    if (copy_src->pOperation) {
+        pOperation = new VkPhysicalDeviceDataGraphOperationSupportARM(*copy_src->pOperation);
+    }
+}
+
+safe_VkPhysicalDeviceDataGraphModelFeaturesQCOM::safe_VkPhysicalDeviceDataGraphModelFeaturesQCOM(
+    const VkPhysicalDeviceDataGraphModelFeaturesQCOM* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), dataGraphModel(in_struct->dataGraphModel) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceDataGraphModelFeaturesQCOM::safe_VkPhysicalDeviceDataGraphModelFeaturesQCOM()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DATA_GRAPH_MODEL_FEATURES_QCOM), pNext(nullptr), dataGraphModel() {}
+
+safe_VkPhysicalDeviceDataGraphModelFeaturesQCOM::safe_VkPhysicalDeviceDataGraphModelFeaturesQCOM(
+    const safe_VkPhysicalDeviceDataGraphModelFeaturesQCOM& copy_src) {
+    sType = copy_src.sType;
+    dataGraphModel = copy_src.dataGraphModel;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceDataGraphModelFeaturesQCOM& safe_VkPhysicalDeviceDataGraphModelFeaturesQCOM::operator=(
+    const safe_VkPhysicalDeviceDataGraphModelFeaturesQCOM& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    dataGraphModel = copy_src.dataGraphModel;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceDataGraphModelFeaturesQCOM::~safe_VkPhysicalDeviceDataGraphModelFeaturesQCOM() { FreePnextChain(pNext); }
+
+void safe_VkPhysicalDeviceDataGraphModelFeaturesQCOM::initialize(const VkPhysicalDeviceDataGraphModelFeaturesQCOM* in_struct,
+                                                                 [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    dataGraphModel = in_struct->dataGraphModel;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceDataGraphModelFeaturesQCOM::initialize(const safe_VkPhysicalDeviceDataGraphModelFeaturesQCOM* copy_src,
+                                                                 [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    dataGraphModel = copy_src->dataGraphModel;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
 safe_VkPhysicalDevicePipelineCacheIncrementalModeFeaturesSEC::safe_VkPhysicalDevicePipelineCacheIncrementalModeFeaturesSEC(
     const VkPhysicalDevicePipelineCacheIncrementalModeFeaturesSEC* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
     bool copy_pnext)

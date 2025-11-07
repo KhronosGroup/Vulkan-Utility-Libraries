@@ -22672,6 +22672,47 @@ struct safe_VkPhysicalDeviceShader64BitIndexingFeaturesEXT {
         return reinterpret_cast<VkPhysicalDeviceShader64BitIndexingFeaturesEXT const*>(this);
     }
 };
+struct safe_VkDataGraphPipelineBuiltinModelCreateInfoQCOM {
+    VkStructureType sType;
+    const void* pNext{};
+    const VkPhysicalDeviceDataGraphOperationSupportARM* pOperation{};
+
+    safe_VkDataGraphPipelineBuiltinModelCreateInfoQCOM(const VkDataGraphPipelineBuiltinModelCreateInfoQCOM* in_struct,
+                                                       PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkDataGraphPipelineBuiltinModelCreateInfoQCOM(const safe_VkDataGraphPipelineBuiltinModelCreateInfoQCOM& copy_src);
+    safe_VkDataGraphPipelineBuiltinModelCreateInfoQCOM& operator=(
+        const safe_VkDataGraphPipelineBuiltinModelCreateInfoQCOM& copy_src);
+    safe_VkDataGraphPipelineBuiltinModelCreateInfoQCOM();
+    ~safe_VkDataGraphPipelineBuiltinModelCreateInfoQCOM();
+    void initialize(const VkDataGraphPipelineBuiltinModelCreateInfoQCOM* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkDataGraphPipelineBuiltinModelCreateInfoQCOM* copy_src, PNextCopyState* copy_state = {});
+    VkDataGraphPipelineBuiltinModelCreateInfoQCOM* ptr() {
+        return reinterpret_cast<VkDataGraphPipelineBuiltinModelCreateInfoQCOM*>(this);
+    }
+    VkDataGraphPipelineBuiltinModelCreateInfoQCOM const* ptr() const {
+        return reinterpret_cast<VkDataGraphPipelineBuiltinModelCreateInfoQCOM const*>(this);
+    }
+};
+struct safe_VkPhysicalDeviceDataGraphModelFeaturesQCOM {
+    VkStructureType sType;
+    const void* pNext{};
+    VkBool32 dataGraphModel;
+
+    safe_VkPhysicalDeviceDataGraphModelFeaturesQCOM(const VkPhysicalDeviceDataGraphModelFeaturesQCOM* in_struct,
+                                                    PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkPhysicalDeviceDataGraphModelFeaturesQCOM(const safe_VkPhysicalDeviceDataGraphModelFeaturesQCOM& copy_src);
+    safe_VkPhysicalDeviceDataGraphModelFeaturesQCOM& operator=(const safe_VkPhysicalDeviceDataGraphModelFeaturesQCOM& copy_src);
+    safe_VkPhysicalDeviceDataGraphModelFeaturesQCOM();
+    ~safe_VkPhysicalDeviceDataGraphModelFeaturesQCOM();
+    void initialize(const VkPhysicalDeviceDataGraphModelFeaturesQCOM* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceDataGraphModelFeaturesQCOM* copy_src, PNextCopyState* copy_state = {});
+    VkPhysicalDeviceDataGraphModelFeaturesQCOM* ptr() {
+        return reinterpret_cast<VkPhysicalDeviceDataGraphModelFeaturesQCOM*>(this);
+    }
+    VkPhysicalDeviceDataGraphModelFeaturesQCOM const* ptr() const {
+        return reinterpret_cast<VkPhysicalDeviceDataGraphModelFeaturesQCOM const*>(this);
+    }
+};
 struct safe_VkPhysicalDevicePipelineCacheIncrementalModeFeaturesSEC {
     VkStructureType sType;
     void* pNext{};
