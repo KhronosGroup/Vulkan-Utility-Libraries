@@ -34,9 +34,11 @@ Any layer project that uses this library will provide these three methods to con
 Configuring layers means multiple tasks: Enabling layers; Ordering layers; Configuring the layers capabilities. These three aspects are described with each method to configure layers.
 
 Since a setting can be set via multiple methods here is the priority order:
-1. Environment variable
+1. Environment variables
 2. vk_layer_settings.txt
 3. `VK_EXT_layer_settings`
+
+For each of these methods, it's possible for Vulkan application developers to generate scripts and code from Vulkan Configurator, using either the GUI (using the context menu of each layers configuration) or the command line (using `vkconfig settings`). This generated files can either implement the default layer setting values of the values selected in the Vulkan Configurator GUI. 
 
 For more information, read the [Vulkan Layers whitepaper](https://github.com/KhronosGroup/Vulkan-Profiles/tree/main/doc/Configuring-Vulkan-Layers-Whitepaper.pdf).
 
@@ -101,6 +103,39 @@ Layer settings may be configured using the `VK_EXT_layer_settings` extension by 
     const VkLayerSettingsCreateInfoEXT layer_settings_create_info = {
         VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT, nullptr,
         static_cast<uint32_t>(std::size(settings)), settings};
+
+    const VkApplicationInfo app_info = initAppInfo();
+
+    const char* layers[] = {layer_name};
+
+    const VkInstanceCreateInfo inst_create_info = {
+        VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO, &layer_settings_create_info, 0,
+        &app_info,
+        static_cast<uint32_t>(std::size(layers)), layers,
+        0, nullptr
+    };
+
+    VkInstance instance = VK_NULL_HANDLE;
+    VkResult result = vkCreateInstance(&inst_create_info, nullptr, &instance);
+```
+
+### Configuring the layer settings using `VK_EXT_layer_settings` C++ helper library
+
+In Vulkan Configurator UI, using the context menu of each layers configuration, it's possible to generate a C++ helper library ("vulkan_layer_settings.hpp") matching the layer settings of the selected layers configuration.
+
+```cpp
+#include "vulkan_layer_settings.hpp"
+...
+
+    // Create an object with all the settigns initialized
+    LayerSettings layer_settings;
+
+    // We can modify the setting values:
+    layer_settings.validation.report_flags = {"error", "warn"};
+
+    const VkLayerSettingsCreateInfoEXT layer_settings_create_info = {
+        VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT, nullptr,
+        static_cast<uint32_t>(layer_settings.info().size()), &layer_settings.info()[0]};
 
     const VkApplicationInfo app_info = initAppInfo();
 
