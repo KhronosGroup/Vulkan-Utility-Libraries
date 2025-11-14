@@ -1994,8 +1994,8 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_PROPERTIES_NV:
                 safe_pNext = new safe_VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV(reinterpret_cast<const VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV *>(pNext), copy_state, false);
                 break;
-            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_FEATURES_NV:
-                safe_pNext = new safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV(reinterpret_cast<const VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV *>(pNext), copy_state, false);
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_FEATURES_EXT:
+                safe_pNext = new safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT(reinterpret_cast<const VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT *>(pNext), copy_state, false);
                 break;
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_VECTOR_PROPERTIES_NV:
                 safe_pNext = new safe_VkPhysicalDeviceCooperativeVectorPropertiesNV(reinterpret_cast<const VkPhysicalDeviceCooperativeVectorPropertiesNV *>(pNext), copy_state, false);
@@ -2203,6 +2203,9 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
             case VK_STRUCTURE_TYPE_IMAGE_ALIGNMENT_CONTROL_CREATE_INFO_MESA:
                 safe_pNext = new safe_VkImageAlignmentControlCreateInfoMESA(reinterpret_cast<const VkImageAlignmentControlCreateInfoMESA *>(pNext), copy_state, false);
                 break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_PROPERTIES_EXT:
+                safe_pNext = new safe_VkPhysicalDeviceRayTracingInvocationReorderPropertiesEXT(reinterpret_cast<const VkPhysicalDeviceRayTracingInvocationReorderPropertiesEXT *>(pNext), copy_state, false);
+                break;
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_CLAMP_CONTROL_FEATURES_EXT:
                 safe_pNext = new safe_VkPhysicalDeviceDepthClampControlFeaturesEXT(reinterpret_cast<const VkPhysicalDeviceDepthClampControlFeaturesEXT *>(pNext), copy_state, false);
                 break;
@@ -2277,6 +2280,12 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
                 break;
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_64_BIT_INDEXING_FEATURES_EXT:
                 safe_pNext = new safe_VkPhysicalDeviceShader64BitIndexingFeaturesEXT(reinterpret_cast<const VkPhysicalDeviceShader64BitIndexingFeaturesEXT *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUSTOM_RESOLVE_FEATURES_EXT:
+                safe_pNext = new safe_VkPhysicalDeviceCustomResolveFeaturesEXT(reinterpret_cast<const VkPhysicalDeviceCustomResolveFeaturesEXT *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_CUSTOM_RESOLVE_CREATE_INFO_EXT:
+                safe_pNext = new safe_VkCustomResolveCreateInfoEXT(reinterpret_cast<const VkCustomResolveCreateInfoEXT *>(pNext), copy_state, false);
                 break;
             case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_BUILTIN_MODEL_CREATE_INFO_QCOM:
                 safe_pNext = new safe_VkDataGraphPipelineBuiltinModelCreateInfoQCOM(reinterpret_cast<const VkDataGraphPipelineBuiltinModelCreateInfoQCOM *>(pNext), copy_state, false);
@@ -4300,8 +4309,8 @@ void FreePnextChain(const void *pNext) {
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_PROPERTIES_NV:
             delete reinterpret_cast<safe_VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV *>(header);
             break;
-        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_FEATURES_NV:
-            delete reinterpret_cast<safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV *>(header);
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_FEATURES_EXT:
+            delete reinterpret_cast<safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT *>(header);
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_VECTOR_PROPERTIES_NV:
             delete reinterpret_cast<safe_VkPhysicalDeviceCooperativeVectorPropertiesNV *>(header);
@@ -4509,6 +4518,9 @@ void FreePnextChain(const void *pNext) {
         case VK_STRUCTURE_TYPE_IMAGE_ALIGNMENT_CONTROL_CREATE_INFO_MESA:
             delete reinterpret_cast<safe_VkImageAlignmentControlCreateInfoMESA *>(header);
             break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_PROPERTIES_EXT:
+            delete reinterpret_cast<safe_VkPhysicalDeviceRayTracingInvocationReorderPropertiesEXT *>(header);
+            break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_CLAMP_CONTROL_FEATURES_EXT:
             delete reinterpret_cast<safe_VkPhysicalDeviceDepthClampControlFeaturesEXT *>(header);
             break;
@@ -4583,6 +4595,12 @@ void FreePnextChain(const void *pNext) {
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_64_BIT_INDEXING_FEATURES_EXT:
             delete reinterpret_cast<safe_VkPhysicalDeviceShader64BitIndexingFeaturesEXT *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUSTOM_RESOLVE_FEATURES_EXT:
+            delete reinterpret_cast<safe_VkPhysicalDeviceCustomResolveFeaturesEXT *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_CUSTOM_RESOLVE_CREATE_INFO_EXT:
+            delete reinterpret_cast<safe_VkCustomResolveCreateInfoEXT *>(header);
             break;
         case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_BUILTIN_MODEL_CREATE_INFO_QCOM:
             delete reinterpret_cast<safe_VkDataGraphPipelineBuiltinModelCreateInfoQCOM *>(header);

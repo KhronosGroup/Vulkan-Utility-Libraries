@@ -1924,8 +1924,6 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_RELEASE_SWAPCHAIN_IMAGES_INFO_KHR";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PER_VIEW_VIEWPORTS_FEATURES_QCOM:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PER_VIEW_VIEWPORTS_FEATURES_QCOM";
-        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_FEATURES_NV:
-            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_FEATURES_NV";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_PROPERTIES_NV:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_PROPERTIES_NV";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_VECTOR_FEATURES_NV:
@@ -2278,6 +2276,10 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_IMAGE_ALIGNMENT_CONTROL_CREATE_INFO_MESA";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_FMA_FEATURES_KHR:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_FMA_FEATURES_KHR";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_FEATURES_EXT:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_FEATURES_EXT";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_PROPERTIES_EXT:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_PROPERTIES_EXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_CLAMP_CONTROL_FEATURES_EXT:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_CLAMP_CONTROL_FEATURES_EXT";
         case VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_DEPTH_CLAMP_CONTROL_CREATE_INFO_EXT:
@@ -2366,6 +2368,12 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_MODE_FIFO_LATEST_READY_FEATURES_KHR";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_64_BIT_INDEXING_FEATURES_EXT:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_64_BIT_INDEXING_FEATURES_EXT";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUSTOM_RESOLVE_FEATURES_EXT:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUSTOM_RESOLVE_FEATURES_EXT";
+        case VK_STRUCTURE_TYPE_BEGIN_CUSTOM_RESOLVE_INFO_EXT:
+            return "VK_STRUCTURE_TYPE_BEGIN_CUSTOM_RESOLVE_INFO_EXT";
+        case VK_STRUCTURE_TYPE_CUSTOM_RESOLVE_CREATE_INFO_EXT:
+            return "VK_STRUCTURE_TYPE_CUSTOM_RESOLVE_CREATE_INFO_EXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DATA_GRAPH_MODEL_FEATURES_QCOM:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DATA_GRAPH_MODEL_FEATURES_QCOM";
         case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_BUILTIN_MODEL_CREATE_INFO_QCOM:
@@ -5336,14 +5344,14 @@ static inline const char* string_VkDepthClampModeEXT(VkDepthClampModeEXT input_v
             return "Unhandled VkDepthClampModeEXT";
     }
 }
-static inline const char* string_VkRayTracingInvocationReorderModeNV(VkRayTracingInvocationReorderModeNV input_value) {
+static inline const char* string_VkRayTracingInvocationReorderModeEXT(VkRayTracingInvocationReorderModeEXT input_value) {
     switch (input_value) {
-        case VK_RAY_TRACING_INVOCATION_REORDER_MODE_NONE_NV:
-            return "VK_RAY_TRACING_INVOCATION_REORDER_MODE_NONE_NV";
-        case VK_RAY_TRACING_INVOCATION_REORDER_MODE_REORDER_NV:
-            return "VK_RAY_TRACING_INVOCATION_REORDER_MODE_REORDER_NV";
+        case VK_RAY_TRACING_INVOCATION_REORDER_MODE_NONE_EXT:
+            return "VK_RAY_TRACING_INVOCATION_REORDER_MODE_NONE_EXT";
+        case VK_RAY_TRACING_INVOCATION_REORDER_MODE_REORDER_EXT:
+            return "VK_RAY_TRACING_INVOCATION_REORDER_MODE_REORDER_EXT";
         default:
-            return "Unhandled VkRayTracingInvocationReorderModeNV";
+            return "Unhandled VkRayTracingInvocationReorderModeEXT";
     }
 }
 static inline const char* string_VkCooperativeVectorMatrixLayoutNV(VkCooperativeVectorMatrixLayoutNV input_value) {
@@ -7354,10 +7362,6 @@ static inline const char* string_VkSubpassDescriptionFlagBits(VkSubpassDescripti
             return "VK_SUBPASS_DESCRIPTION_PER_VIEW_ATTRIBUTES_BIT_NVX";
         case VK_SUBPASS_DESCRIPTION_PER_VIEW_POSITION_X_ONLY_BIT_NVX:
             return "VK_SUBPASS_DESCRIPTION_PER_VIEW_POSITION_X_ONLY_BIT_NVX";
-        case VK_SUBPASS_DESCRIPTION_FRAGMENT_REGION_BIT_QCOM:
-            return "VK_SUBPASS_DESCRIPTION_FRAGMENT_REGION_BIT_QCOM";
-        case VK_SUBPASS_DESCRIPTION_SHADER_RESOLVE_BIT_QCOM:
-            return "VK_SUBPASS_DESCRIPTION_SHADER_RESOLVE_BIT_QCOM";
         case VK_SUBPASS_DESCRIPTION_TILE_SHADING_APRON_BIT_QCOM:
             return "VK_SUBPASS_DESCRIPTION_TILE_SHADING_APRON_BIT_QCOM";
         case VK_SUBPASS_DESCRIPTION_RASTERIZATION_ORDER_ATTACHMENT_COLOR_ACCESS_BIT_EXT:
@@ -7368,6 +7372,10 @@ static inline const char* string_VkSubpassDescriptionFlagBits(VkSubpassDescripti
             return "VK_SUBPASS_DESCRIPTION_RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_BIT_EXT";
         case VK_SUBPASS_DESCRIPTION_ENABLE_LEGACY_DITHERING_BIT_EXT:
             return "VK_SUBPASS_DESCRIPTION_ENABLE_LEGACY_DITHERING_BIT_EXT";
+        case VK_SUBPASS_DESCRIPTION_FRAGMENT_REGION_BIT_EXT:
+            return "VK_SUBPASS_DESCRIPTION_FRAGMENT_REGION_BIT_EXT";
+        case VK_SUBPASS_DESCRIPTION_CUSTOM_RESOLVE_BIT_EXT:
+            return "VK_SUBPASS_DESCRIPTION_CUSTOM_RESOLVE_BIT_EXT";
         default:
             return "Unhandled VkSubpassDescriptionFlagBits";
     }
@@ -7796,6 +7804,8 @@ static inline const char* string_VkResolveModeFlagBits(VkResolveModeFlagBits inp
             return "VK_RESOLVE_MODE_MAX_BIT";
         case VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID:
             return "VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID";
+        case VK_RESOLVE_MODE_CUSTOM_BIT_EXT:
+            return "VK_RESOLVE_MODE_CUSTOM_BIT_EXT";
         default:
             return "Unhandled VkResolveModeFlagBits";
     }
@@ -8187,6 +8197,10 @@ static inline const char* string_VkRenderingFlagBits(VkRenderingFlagBits input_v
             return "VK_RENDERING_CONTENTS_INLINE_BIT_KHR";
         case VK_RENDERING_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE:
             return "VK_RENDERING_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE";
+        case VK_RENDERING_FRAGMENT_REGION_BIT_EXT:
+            return "VK_RENDERING_FRAGMENT_REGION_BIT_EXT";
+        case VK_RENDERING_CUSTOM_RESOLVE_BIT_EXT:
+            return "VK_RENDERING_CUSTOM_RESOLVE_BIT_EXT";
         case VK_RENDERING_LOCAL_READ_CONCURRENT_ACCESS_CONTROL_BIT_KHR:
             return "VK_RENDERING_LOCAL_READ_CONCURRENT_ACCESS_CONTROL_BIT_KHR";
         default:
@@ -13092,8 +13106,8 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
             return "VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_PROPERTIES_NV:
             return "VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV";
-        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_FEATURES_NV:
-            return "VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_FEATURES_EXT:
+            return "VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_VECTOR_PROPERTIES_NV:
             return "VkPhysicalDeviceCooperativeVectorPropertiesNV";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_VECTOR_FEATURES_NV:
@@ -13320,6 +13334,8 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
             return "VkPhysicalDeviceImageAlignmentControlPropertiesMESA";
         case VK_STRUCTURE_TYPE_IMAGE_ALIGNMENT_CONTROL_CREATE_INFO_MESA:
             return "VkImageAlignmentControlCreateInfoMESA";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_PROPERTIES_EXT:
+            return "VkPhysicalDeviceRayTracingInvocationReorderPropertiesEXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_CLAMP_CONTROL_FEATURES_EXT:
             return "VkPhysicalDeviceDepthClampControlFeaturesEXT";
         case VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_DEPTH_CLAMP_CONTROL_CREATE_INFO_EXT:
@@ -13384,6 +13400,12 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
             return "VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesEXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_64_BIT_INDEXING_FEATURES_EXT:
             return "VkPhysicalDeviceShader64BitIndexingFeaturesEXT";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUSTOM_RESOLVE_FEATURES_EXT:
+            return "VkPhysicalDeviceCustomResolveFeaturesEXT";
+        case VK_STRUCTURE_TYPE_BEGIN_CUSTOM_RESOLVE_INFO_EXT:
+            return "VkBeginCustomResolveInfoEXT";
+        case VK_STRUCTURE_TYPE_CUSTOM_RESOLVE_CREATE_INFO_EXT:
+            return "VkCustomResolveCreateInfoEXT";
         case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_BUILTIN_MODEL_CREATE_INFO_QCOM:
             return "VkDataGraphPipelineBuiltinModelCreateInfoQCOM";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DATA_GRAPH_MODEL_FEATURES_QCOM:
