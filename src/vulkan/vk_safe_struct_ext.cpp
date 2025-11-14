@@ -13279,6 +13279,59 @@ void safe_VkShaderCreateInfoEXT::initialize(const safe_VkShaderCreateInfoEXT* co
     if (copy_src->pSpecializationInfo) pSpecializationInfo = new safe_VkSpecializationInfo(*copy_src->pSpecializationInfo);
 }
 
+safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT::safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT(
+    const VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
+    bool copy_pnext)
+    : sType(in_struct->sType), rayTracingInvocationReorder(in_struct->rayTracingInvocationReorder) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT::safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_FEATURES_EXT),
+      pNext(nullptr),
+      rayTracingInvocationReorder() {}
+
+safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT::safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT(
+    const safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT& copy_src) {
+    sType = copy_src.sType;
+    rayTracingInvocationReorder = copy_src.rayTracingInvocationReorder;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT& safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT::operator=(
+    const safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    rayTracingInvocationReorder = copy_src.rayTracingInvocationReorder;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT::~safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT::initialize(
+    const VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    rayTracingInvocationReorder = in_struct->rayTracingInvocationReorder;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT::initialize(
+    const safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    rayTracingInvocationReorder = copy_src->rayTracingInvocationReorder;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
 safe_VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT::safe_VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT(
     const VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
     bool copy_pnext)
@@ -15035,6 +15088,67 @@ void safe_VkWriteIndirectExecutionSetShaderEXT::initialize(const safe_VkWriteInd
     pNext = SafePnextCopy(copy_src->pNext);
 }
 
+safe_VkPhysicalDeviceRayTracingInvocationReorderPropertiesEXT::safe_VkPhysicalDeviceRayTracingInvocationReorderPropertiesEXT(
+    const VkPhysicalDeviceRayTracingInvocationReorderPropertiesEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
+    bool copy_pnext)
+    : sType(in_struct->sType),
+      rayTracingInvocationReorderReorderingHint(in_struct->rayTracingInvocationReorderReorderingHint),
+      maxShaderBindingTableRecordIndex(in_struct->maxShaderBindingTableRecordIndex) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceRayTracingInvocationReorderPropertiesEXT::safe_VkPhysicalDeviceRayTracingInvocationReorderPropertiesEXT()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_PROPERTIES_EXT),
+      pNext(nullptr),
+      rayTracingInvocationReorderReorderingHint(),
+      maxShaderBindingTableRecordIndex() {}
+
+safe_VkPhysicalDeviceRayTracingInvocationReorderPropertiesEXT::safe_VkPhysicalDeviceRayTracingInvocationReorderPropertiesEXT(
+    const safe_VkPhysicalDeviceRayTracingInvocationReorderPropertiesEXT& copy_src) {
+    sType = copy_src.sType;
+    rayTracingInvocationReorderReorderingHint = copy_src.rayTracingInvocationReorderReorderingHint;
+    maxShaderBindingTableRecordIndex = copy_src.maxShaderBindingTableRecordIndex;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceRayTracingInvocationReorderPropertiesEXT&
+safe_VkPhysicalDeviceRayTracingInvocationReorderPropertiesEXT::operator=(
+    const safe_VkPhysicalDeviceRayTracingInvocationReorderPropertiesEXT& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    rayTracingInvocationReorderReorderingHint = copy_src.rayTracingInvocationReorderReorderingHint;
+    maxShaderBindingTableRecordIndex = copy_src.maxShaderBindingTableRecordIndex;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceRayTracingInvocationReorderPropertiesEXT::~safe_VkPhysicalDeviceRayTracingInvocationReorderPropertiesEXT() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkPhysicalDeviceRayTracingInvocationReorderPropertiesEXT::initialize(
+    const VkPhysicalDeviceRayTracingInvocationReorderPropertiesEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    rayTracingInvocationReorderReorderingHint = in_struct->rayTracingInvocationReorderReorderingHint;
+    maxShaderBindingTableRecordIndex = in_struct->maxShaderBindingTableRecordIndex;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceRayTracingInvocationReorderPropertiesEXT::initialize(
+    const safe_VkPhysicalDeviceRayTracingInvocationReorderPropertiesEXT* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    rayTracingInvocationReorderReorderingHint = copy_src->rayTracingInvocationReorderReorderingHint;
+    maxShaderBindingTableRecordIndex = copy_src->maxShaderBindingTableRecordIndex;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
 safe_VkPhysicalDeviceDepthClampControlFeaturesEXT::safe_VkPhysicalDeviceDepthClampControlFeaturesEXT(
     const VkPhysicalDeviceDepthClampControlFeaturesEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
     : sType(in_struct->sType), depthClampControl(in_struct->depthClampControl) {
@@ -15471,6 +15585,203 @@ void safe_VkPhysicalDeviceShader64BitIndexingFeaturesEXT::initialize(
     sType = copy_src->sType;
     shader64BitIndexing = copy_src->shader64BitIndexing;
     pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkPhysicalDeviceCustomResolveFeaturesEXT::safe_VkPhysicalDeviceCustomResolveFeaturesEXT(
+    const VkPhysicalDeviceCustomResolveFeaturesEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), customResolve(in_struct->customResolve) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceCustomResolveFeaturesEXT::safe_VkPhysicalDeviceCustomResolveFeaturesEXT()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUSTOM_RESOLVE_FEATURES_EXT), pNext(nullptr), customResolve() {}
+
+safe_VkPhysicalDeviceCustomResolveFeaturesEXT::safe_VkPhysicalDeviceCustomResolveFeaturesEXT(
+    const safe_VkPhysicalDeviceCustomResolveFeaturesEXT& copy_src) {
+    sType = copy_src.sType;
+    customResolve = copy_src.customResolve;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceCustomResolveFeaturesEXT& safe_VkPhysicalDeviceCustomResolveFeaturesEXT::operator=(
+    const safe_VkPhysicalDeviceCustomResolveFeaturesEXT& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    customResolve = copy_src.customResolve;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceCustomResolveFeaturesEXT::~safe_VkPhysicalDeviceCustomResolveFeaturesEXT() { FreePnextChain(pNext); }
+
+void safe_VkPhysicalDeviceCustomResolveFeaturesEXT::initialize(const VkPhysicalDeviceCustomResolveFeaturesEXT* in_struct,
+                                                               [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    customResolve = in_struct->customResolve;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceCustomResolveFeaturesEXT::initialize(const safe_VkPhysicalDeviceCustomResolveFeaturesEXT* copy_src,
+                                                               [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    customResolve = copy_src->customResolve;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkBeginCustomResolveInfoEXT::safe_VkBeginCustomResolveInfoEXT(const VkBeginCustomResolveInfoEXT* in_struct,
+                                                                   [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkBeginCustomResolveInfoEXT::safe_VkBeginCustomResolveInfoEXT()
+    : sType(VK_STRUCTURE_TYPE_BEGIN_CUSTOM_RESOLVE_INFO_EXT), pNext(nullptr) {}
+
+safe_VkBeginCustomResolveInfoEXT::safe_VkBeginCustomResolveInfoEXT(const safe_VkBeginCustomResolveInfoEXT& copy_src) {
+    sType = copy_src.sType;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkBeginCustomResolveInfoEXT& safe_VkBeginCustomResolveInfoEXT::operator=(const safe_VkBeginCustomResolveInfoEXT& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkBeginCustomResolveInfoEXT::~safe_VkBeginCustomResolveInfoEXT() { FreePnextChain(pNext); }
+
+void safe_VkBeginCustomResolveInfoEXT::initialize(const VkBeginCustomResolveInfoEXT* in_struct,
+                                                  [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkBeginCustomResolveInfoEXT::initialize(const safe_VkBeginCustomResolveInfoEXT* copy_src,
+                                                  [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkCustomResolveCreateInfoEXT::safe_VkCustomResolveCreateInfoEXT(const VkCustomResolveCreateInfoEXT* in_struct,
+                                                                     [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType),
+      customResolve(in_struct->customResolve),
+      colorAttachmentCount(in_struct->colorAttachmentCount),
+      pColorAttachmentFormats(nullptr),
+      depthAttachmentFormat(in_struct->depthAttachmentFormat),
+      stencilAttachmentFormat(in_struct->stencilAttachmentFormat) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+    if (in_struct->pColorAttachmentFormats) {
+        pColorAttachmentFormats = new VkFormat[in_struct->colorAttachmentCount];
+        memcpy((void*)pColorAttachmentFormats, (void*)in_struct->pColorAttachmentFormats,
+               sizeof(VkFormat) * in_struct->colorAttachmentCount);
+    }
+}
+
+safe_VkCustomResolveCreateInfoEXT::safe_VkCustomResolveCreateInfoEXT()
+    : sType(VK_STRUCTURE_TYPE_CUSTOM_RESOLVE_CREATE_INFO_EXT),
+      pNext(nullptr),
+      customResolve(),
+      colorAttachmentCount(),
+      pColorAttachmentFormats(nullptr),
+      depthAttachmentFormat(),
+      stencilAttachmentFormat() {}
+
+safe_VkCustomResolveCreateInfoEXT::safe_VkCustomResolveCreateInfoEXT(const safe_VkCustomResolveCreateInfoEXT& copy_src) {
+    sType = copy_src.sType;
+    customResolve = copy_src.customResolve;
+    colorAttachmentCount = copy_src.colorAttachmentCount;
+    pColorAttachmentFormats = nullptr;
+    depthAttachmentFormat = copy_src.depthAttachmentFormat;
+    stencilAttachmentFormat = copy_src.stencilAttachmentFormat;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    if (copy_src.pColorAttachmentFormats) {
+        pColorAttachmentFormats = new VkFormat[copy_src.colorAttachmentCount];
+        memcpy((void*)pColorAttachmentFormats, (void*)copy_src.pColorAttachmentFormats,
+               sizeof(VkFormat) * copy_src.colorAttachmentCount);
+    }
+}
+
+safe_VkCustomResolveCreateInfoEXT& safe_VkCustomResolveCreateInfoEXT::operator=(const safe_VkCustomResolveCreateInfoEXT& copy_src) {
+    if (&copy_src == this) return *this;
+
+    if (pColorAttachmentFormats) delete[] pColorAttachmentFormats;
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    customResolve = copy_src.customResolve;
+    colorAttachmentCount = copy_src.colorAttachmentCount;
+    pColorAttachmentFormats = nullptr;
+    depthAttachmentFormat = copy_src.depthAttachmentFormat;
+    stencilAttachmentFormat = copy_src.stencilAttachmentFormat;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    if (copy_src.pColorAttachmentFormats) {
+        pColorAttachmentFormats = new VkFormat[copy_src.colorAttachmentCount];
+        memcpy((void*)pColorAttachmentFormats, (void*)copy_src.pColorAttachmentFormats,
+               sizeof(VkFormat) * copy_src.colorAttachmentCount);
+    }
+
+    return *this;
+}
+
+safe_VkCustomResolveCreateInfoEXT::~safe_VkCustomResolveCreateInfoEXT() {
+    if (pColorAttachmentFormats) delete[] pColorAttachmentFormats;
+    FreePnextChain(pNext);
+}
+
+void safe_VkCustomResolveCreateInfoEXT::initialize(const VkCustomResolveCreateInfoEXT* in_struct,
+                                                   [[maybe_unused]] PNextCopyState* copy_state) {
+    if (pColorAttachmentFormats) delete[] pColorAttachmentFormats;
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    customResolve = in_struct->customResolve;
+    colorAttachmentCount = in_struct->colorAttachmentCount;
+    pColorAttachmentFormats = nullptr;
+    depthAttachmentFormat = in_struct->depthAttachmentFormat;
+    stencilAttachmentFormat = in_struct->stencilAttachmentFormat;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+
+    if (in_struct->pColorAttachmentFormats) {
+        pColorAttachmentFormats = new VkFormat[in_struct->colorAttachmentCount];
+        memcpy((void*)pColorAttachmentFormats, (void*)in_struct->pColorAttachmentFormats,
+               sizeof(VkFormat) * in_struct->colorAttachmentCount);
+    }
+}
+
+void safe_VkCustomResolveCreateInfoEXT::initialize(const safe_VkCustomResolveCreateInfoEXT* copy_src,
+                                                   [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    customResolve = copy_src->customResolve;
+    colorAttachmentCount = copy_src->colorAttachmentCount;
+    pColorAttachmentFormats = nullptr;
+    depthAttachmentFormat = copy_src->depthAttachmentFormat;
+    stencilAttachmentFormat = copy_src->stencilAttachmentFormat;
+    pNext = SafePnextCopy(copy_src->pNext);
+
+    if (copy_src->pColorAttachmentFormats) {
+        pColorAttachmentFormats = new VkFormat[copy_src->colorAttachmentCount];
+        memcpy((void*)pColorAttachmentFormats, (void*)copy_src->pColorAttachmentFormats,
+               sizeof(VkFormat) * copy_src->colorAttachmentCount);
+    }
 }
 
 safe_VkPhysicalDeviceShaderUniformBufferUnsizedArrayFeaturesEXT::safe_VkPhysicalDeviceShaderUniformBufferUnsizedArrayFeaturesEXT(

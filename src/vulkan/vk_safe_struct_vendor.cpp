@@ -16033,59 +16033,6 @@ void safe_VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV::initialize(
     pNext = SafePnextCopy(copy_src->pNext);
 }
 
-safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV::safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV(
-    const VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
-    bool copy_pnext)
-    : sType(in_struct->sType), rayTracingInvocationReorder(in_struct->rayTracingInvocationReorder) {
-    if (copy_pnext) {
-        pNext = SafePnextCopy(in_struct->pNext, copy_state);
-    }
-}
-
-safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV::safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV()
-    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_FEATURES_NV),
-      pNext(nullptr),
-      rayTracingInvocationReorder() {}
-
-safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV::safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV(
-    const safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV& copy_src) {
-    sType = copy_src.sType;
-    rayTracingInvocationReorder = copy_src.rayTracingInvocationReorder;
-    pNext = SafePnextCopy(copy_src.pNext);
-}
-
-safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV& safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV::operator=(
-    const safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV& copy_src) {
-    if (&copy_src == this) return *this;
-
-    FreePnextChain(pNext);
-
-    sType = copy_src.sType;
-    rayTracingInvocationReorder = copy_src.rayTracingInvocationReorder;
-    pNext = SafePnextCopy(copy_src.pNext);
-
-    return *this;
-}
-
-safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV::~safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV() {
-    FreePnextChain(pNext);
-}
-
-void safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV::initialize(
-    const VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
-    FreePnextChain(pNext);
-    sType = in_struct->sType;
-    rayTracingInvocationReorder = in_struct->rayTracingInvocationReorder;
-    pNext = SafePnextCopy(in_struct->pNext, copy_state);
-}
-
-void safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV::initialize(
-    const safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
-    sType = copy_src->sType;
-    rayTracingInvocationReorder = copy_src->rayTracingInvocationReorder;
-    pNext = SafePnextCopy(copy_src->pNext);
-}
-
 safe_VkPhysicalDeviceCooperativeVectorPropertiesNV::safe_VkPhysicalDeviceCooperativeVectorPropertiesNV(
     const VkPhysicalDeviceCooperativeVectorPropertiesNV* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
     : sType(in_struct->sType),
