@@ -48,12 +48,12 @@ Guideline: Settings which are unknown by the layer will be ignored independently
 
 ### Enabling and ordering the layer using `vkCreateInstance()`
 
-Applications may programmatically activate layers via the `vkCreateInstance()` entry point. This
-is done by setting `enabledLayerCount` and `ppEnabledLayerNames` in the `VkInstanceCreateInfo`
-structure.
+Applications may programmatically activate layers via the `vkCreateInstance()` entry point. This is done by setting `enabledLayerCount` and `ppEnabledLayerNames` in the `VkInstanceCreateInfo` structure.
 
-The layer names order in `ppEnabledLayerNames` specifies the layers execution ordering from closer to the Vulkan application to closer
-to the Vulkan driver.
+The layer names order in `ppEnabledLayerNames` specifies the layers execution ordering from closer to the Vulkan application to closer to the Vulkan driver.
+
+Layer properties can be queried from an application with link:https://docs.vulkan.org/spec/latest/chapters/extensions.html#vkEnumerateInstanceLayerProperties[vkEnumerateInstanceLayerProperties].
+
 
 #### Code example to enable and order the validation and the profiles layers programmatically
 
