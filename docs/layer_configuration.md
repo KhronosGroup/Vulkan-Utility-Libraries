@@ -27,9 +27,9 @@ A *layers configuration* consists in two operations:
 - Configuring each layer themselves using layer settings.
 
 Vulkan layers can be configured using three different methods to match specific Vulkan developers' workflows:
-- Environment variables: [Loader environment variables](https://github.com/KhronosGroup/Vulkan-Loader/blob/main/docs/LoaderInterfaceArchitecture.md) and [per-layer settings environment variables](https://github.com/KhronosGroup/Vulkan-Utility-Libraries/blob/main/docs/layer_configuration.md#layer-settings-environment-variables).
-- Using dedicated Vulkan system files: [`vk_loader_settings.json`](https://github.com/KhronosGroup/Vulkan-Loader/blob/main/docs/LoaderSettingsFile.md) and [`vk_layer_settings.txt`](#configuring-the-layers-using-the-settings-file-vk_layer_settingstxt).
-- Using the Vulkan API, programmably in the Vulkan application: [`vkCreateInstance`](https://docs.vulkan.org/refpages/latest/refpages/source/vkCreateInstance.html) and [`VK_EXT_layer_settings`](#configuring-the-layer-settings-using-vk_ext_layer_settings) extension.
+- Using Environment variables: [Loader environment variables](https://github.com/KhronosGroup/Vulkan-Loader/blob/main/docs/LoaderInterfaceArchitecture.md) and [per-layer settings environment variables](https://github.com/KhronosGroup/Vulkan-Utility-Libraries/blob/main/docs/layer_configuration.md#layer-settings-environment-variables).
+- Using dedicated Vulkan system files: [`vk_loader_settings.json`](https://github.com/KhronosGroup/Vulkan-Loader/blob/main/docs/LoaderSettingsFile.md) and [`vk_layer_settings.txt`](https://github.com/KhronosGroup/Vulkan-Utility-Libraries/blob/main/docs/layer_configuration.md#configuring-the-layers-using-the-settings-file-vk_layer_settingstxt).
+- Using the Vulkan API, programmably in the Vulkan application: [`vkCreateInstance`](https://docs.vulkan.org/refpages/latest/refpages/source/vkCreateInstance.html) and [`VK_EXT_layer_settings`](https://github.com/KhronosGroup/Vulkan-Utility-Libraries/blob/main/docs/layer_configuration.md#configuring-the-layer-settings-using-vk_ext_layer_settings) extension.
 
 Since three methods exist and can be used simultanously, here is the priority order:
 1. Environment variables.
