@@ -1032,7 +1032,7 @@ template <> inline VkStructureType GetSType<VkPhysicalDeviceAmigoProfilingFeatur
 template <> inline VkStructureType GetSType<VkAmigoProfilingSubmitInfoSEC>() { return VK_STRUCTURE_TYPE_AMIGO_PROFILING_SUBMIT_INFO_SEC; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PER_VIEW_VIEWPORTS_FEATURES_QCOM; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_PROPERTIES_NV; }
-template <> inline VkStructureType GetSType<VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_FEATURES_EXT; }
+template <> inline VkStructureType GetSType<VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_FEATURES_NV; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceCooperativeVectorPropertiesNV>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_VECTOR_PROPERTIES_NV; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceCooperativeVectorFeaturesNV>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_VECTOR_FEATURES_NV; }
 template <> inline VkStructureType GetSType<VkCooperativeVectorPropertiesNV>() { return VK_STRUCTURE_TYPE_COOPERATIVE_VECTOR_PROPERTIES_NV; }
@@ -1148,6 +1148,7 @@ template <> inline VkStructureType GetSType<VkPhysicalDeviceImageAlignmentContro
 template <> inline VkStructureType GetSType<VkPhysicalDeviceImageAlignmentControlPropertiesMESA>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_ALIGNMENT_CONTROL_PROPERTIES_MESA; }
 template <> inline VkStructureType GetSType<VkImageAlignmentControlCreateInfoMESA>() { return VK_STRUCTURE_TYPE_IMAGE_ALIGNMENT_CONTROL_CREATE_INFO_MESA; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceRayTracingInvocationReorderPropertiesEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_PROPERTIES_EXT; }
+template <> inline VkStructureType GetSType<VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_FEATURES_EXT; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceDepthClampControlFeaturesEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_CLAMP_CONTROL_FEATURES_EXT; }
 template <> inline VkStructureType GetSType<VkPipelineViewportDepthClampControlCreateInfoEXT>() { return VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_DEPTH_CLAMP_CONTROL_CREATE_INFO_EXT; }
 #ifdef VK_USE_PLATFORM_OHOS
