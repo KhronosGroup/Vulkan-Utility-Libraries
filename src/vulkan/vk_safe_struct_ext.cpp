@@ -13279,59 +13279,6 @@ void safe_VkShaderCreateInfoEXT::initialize(const safe_VkShaderCreateInfoEXT* co
     if (copy_src->pSpecializationInfo) pSpecializationInfo = new safe_VkSpecializationInfo(*copy_src->pSpecializationInfo);
 }
 
-safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT::safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT(
-    const VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
-    bool copy_pnext)
-    : sType(in_struct->sType), rayTracingInvocationReorder(in_struct->rayTracingInvocationReorder) {
-    if (copy_pnext) {
-        pNext = SafePnextCopy(in_struct->pNext, copy_state);
-    }
-}
-
-safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT::safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT()
-    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_FEATURES_EXT),
-      pNext(nullptr),
-      rayTracingInvocationReorder() {}
-
-safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT::safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT(
-    const safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT& copy_src) {
-    sType = copy_src.sType;
-    rayTracingInvocationReorder = copy_src.rayTracingInvocationReorder;
-    pNext = SafePnextCopy(copy_src.pNext);
-}
-
-safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT& safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT::operator=(
-    const safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT& copy_src) {
-    if (&copy_src == this) return *this;
-
-    FreePnextChain(pNext);
-
-    sType = copy_src.sType;
-    rayTracingInvocationReorder = copy_src.rayTracingInvocationReorder;
-    pNext = SafePnextCopy(copy_src.pNext);
-
-    return *this;
-}
-
-safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT::~safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT() {
-    FreePnextChain(pNext);
-}
-
-void safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT::initialize(
-    const VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
-    FreePnextChain(pNext);
-    sType = in_struct->sType;
-    rayTracingInvocationReorder = in_struct->rayTracingInvocationReorder;
-    pNext = SafePnextCopy(in_struct->pNext, copy_state);
-}
-
-void safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT::initialize(
-    const safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
-    sType = copy_src->sType;
-    rayTracingInvocationReorder = copy_src->rayTracingInvocationReorder;
-    pNext = SafePnextCopy(copy_src->pNext);
-}
-
 safe_VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT::safe_VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT(
     const VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
     bool copy_pnext)
@@ -15146,6 +15093,59 @@ void safe_VkPhysicalDeviceRayTracingInvocationReorderPropertiesEXT::initialize(
     sType = copy_src->sType;
     rayTracingInvocationReorderReorderingHint = copy_src->rayTracingInvocationReorderReorderingHint;
     maxShaderBindingTableRecordIndex = copy_src->maxShaderBindingTableRecordIndex;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT::safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT(
+    const VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
+    bool copy_pnext)
+    : sType(in_struct->sType), rayTracingInvocationReorder(in_struct->rayTracingInvocationReorder) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT::safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_FEATURES_EXT),
+      pNext(nullptr),
+      rayTracingInvocationReorder() {}
+
+safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT::safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT(
+    const safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT& copy_src) {
+    sType = copy_src.sType;
+    rayTracingInvocationReorder = copy_src.rayTracingInvocationReorder;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT& safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT::operator=(
+    const safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    rayTracingInvocationReorder = copy_src.rayTracingInvocationReorder;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT::~safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT::initialize(
+    const VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    rayTracingInvocationReorder = in_struct->rayTracingInvocationReorder;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT::initialize(
+    const safe_VkPhysicalDeviceRayTracingInvocationReorderFeaturesEXT* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    rayTracingInvocationReorder = copy_src->rayTracingInvocationReorder;
     pNext = SafePnextCopy(copy_src->pNext);
 }
 
