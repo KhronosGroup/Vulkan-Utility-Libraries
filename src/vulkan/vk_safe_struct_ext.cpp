@@ -4033,6 +4033,799 @@ void safe_VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT::initialize(
     pNext = SafePnextCopy(copy_src->pNext);
 }
 
+safe_VkPhysicalDevicePresentTimingFeaturesEXT::safe_VkPhysicalDevicePresentTimingFeaturesEXT(
+    const VkPhysicalDevicePresentTimingFeaturesEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType),
+      presentTiming(in_struct->presentTiming),
+      presentAtAbsoluteTime(in_struct->presentAtAbsoluteTime),
+      presentAtRelativeTime(in_struct->presentAtRelativeTime) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDevicePresentTimingFeaturesEXT::safe_VkPhysicalDevicePresentTimingFeaturesEXT()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_TIMING_FEATURES_EXT),
+      pNext(nullptr),
+      presentTiming(),
+      presentAtAbsoluteTime(),
+      presentAtRelativeTime() {}
+
+safe_VkPhysicalDevicePresentTimingFeaturesEXT::safe_VkPhysicalDevicePresentTimingFeaturesEXT(
+    const safe_VkPhysicalDevicePresentTimingFeaturesEXT& copy_src) {
+    sType = copy_src.sType;
+    presentTiming = copy_src.presentTiming;
+    presentAtAbsoluteTime = copy_src.presentAtAbsoluteTime;
+    presentAtRelativeTime = copy_src.presentAtRelativeTime;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDevicePresentTimingFeaturesEXT& safe_VkPhysicalDevicePresentTimingFeaturesEXT::operator=(
+    const safe_VkPhysicalDevicePresentTimingFeaturesEXT& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    presentTiming = copy_src.presentTiming;
+    presentAtAbsoluteTime = copy_src.presentAtAbsoluteTime;
+    presentAtRelativeTime = copy_src.presentAtRelativeTime;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDevicePresentTimingFeaturesEXT::~safe_VkPhysicalDevicePresentTimingFeaturesEXT() { FreePnextChain(pNext); }
+
+void safe_VkPhysicalDevicePresentTimingFeaturesEXT::initialize(const VkPhysicalDevicePresentTimingFeaturesEXT* in_struct,
+                                                               [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    presentTiming = in_struct->presentTiming;
+    presentAtAbsoluteTime = in_struct->presentAtAbsoluteTime;
+    presentAtRelativeTime = in_struct->presentAtRelativeTime;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDevicePresentTimingFeaturesEXT::initialize(const safe_VkPhysicalDevicePresentTimingFeaturesEXT* copy_src,
+                                                               [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    presentTiming = copy_src->presentTiming;
+    presentAtAbsoluteTime = copy_src->presentAtAbsoluteTime;
+    presentAtRelativeTime = copy_src->presentAtRelativeTime;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkPresentTimingSurfaceCapabilitiesEXT::safe_VkPresentTimingSurfaceCapabilitiesEXT(
+    const VkPresentTimingSurfaceCapabilitiesEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType),
+      presentTimingSupported(in_struct->presentTimingSupported),
+      presentAtAbsoluteTimeSupported(in_struct->presentAtAbsoluteTimeSupported),
+      presentAtRelativeTimeSupported(in_struct->presentAtRelativeTimeSupported),
+      presentStageQueries(in_struct->presentStageQueries) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPresentTimingSurfaceCapabilitiesEXT::safe_VkPresentTimingSurfaceCapabilitiesEXT()
+    : sType(VK_STRUCTURE_TYPE_PRESENT_TIMING_SURFACE_CAPABILITIES_EXT),
+      pNext(nullptr),
+      presentTimingSupported(),
+      presentAtAbsoluteTimeSupported(),
+      presentAtRelativeTimeSupported(),
+      presentStageQueries() {}
+
+safe_VkPresentTimingSurfaceCapabilitiesEXT::safe_VkPresentTimingSurfaceCapabilitiesEXT(
+    const safe_VkPresentTimingSurfaceCapabilitiesEXT& copy_src) {
+    sType = copy_src.sType;
+    presentTimingSupported = copy_src.presentTimingSupported;
+    presentAtAbsoluteTimeSupported = copy_src.presentAtAbsoluteTimeSupported;
+    presentAtRelativeTimeSupported = copy_src.presentAtRelativeTimeSupported;
+    presentStageQueries = copy_src.presentStageQueries;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPresentTimingSurfaceCapabilitiesEXT& safe_VkPresentTimingSurfaceCapabilitiesEXT::operator=(
+    const safe_VkPresentTimingSurfaceCapabilitiesEXT& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    presentTimingSupported = copy_src.presentTimingSupported;
+    presentAtAbsoluteTimeSupported = copy_src.presentAtAbsoluteTimeSupported;
+    presentAtRelativeTimeSupported = copy_src.presentAtRelativeTimeSupported;
+    presentStageQueries = copy_src.presentStageQueries;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPresentTimingSurfaceCapabilitiesEXT::~safe_VkPresentTimingSurfaceCapabilitiesEXT() { FreePnextChain(pNext); }
+
+void safe_VkPresentTimingSurfaceCapabilitiesEXT::initialize(const VkPresentTimingSurfaceCapabilitiesEXT* in_struct,
+                                                            [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    presentTimingSupported = in_struct->presentTimingSupported;
+    presentAtAbsoluteTimeSupported = in_struct->presentAtAbsoluteTimeSupported;
+    presentAtRelativeTimeSupported = in_struct->presentAtRelativeTimeSupported;
+    presentStageQueries = in_struct->presentStageQueries;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPresentTimingSurfaceCapabilitiesEXT::initialize(const safe_VkPresentTimingSurfaceCapabilitiesEXT* copy_src,
+                                                            [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    presentTimingSupported = copy_src->presentTimingSupported;
+    presentAtAbsoluteTimeSupported = copy_src->presentAtAbsoluteTimeSupported;
+    presentAtRelativeTimeSupported = copy_src->presentAtRelativeTimeSupported;
+    presentStageQueries = copy_src->presentStageQueries;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkSwapchainCalibratedTimestampInfoEXT::safe_VkSwapchainCalibratedTimestampInfoEXT(
+    const VkSwapchainCalibratedTimestampInfoEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType),
+      swapchain(in_struct->swapchain),
+      presentStage(in_struct->presentStage),
+      timeDomainId(in_struct->timeDomainId) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkSwapchainCalibratedTimestampInfoEXT::safe_VkSwapchainCalibratedTimestampInfoEXT()
+    : sType(VK_STRUCTURE_TYPE_SWAPCHAIN_CALIBRATED_TIMESTAMP_INFO_EXT),
+      pNext(nullptr),
+      swapchain(),
+      presentStage(),
+      timeDomainId() {}
+
+safe_VkSwapchainCalibratedTimestampInfoEXT::safe_VkSwapchainCalibratedTimestampInfoEXT(
+    const safe_VkSwapchainCalibratedTimestampInfoEXT& copy_src) {
+    sType = copy_src.sType;
+    swapchain = copy_src.swapchain;
+    presentStage = copy_src.presentStage;
+    timeDomainId = copy_src.timeDomainId;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkSwapchainCalibratedTimestampInfoEXT& safe_VkSwapchainCalibratedTimestampInfoEXT::operator=(
+    const safe_VkSwapchainCalibratedTimestampInfoEXT& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    swapchain = copy_src.swapchain;
+    presentStage = copy_src.presentStage;
+    timeDomainId = copy_src.timeDomainId;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkSwapchainCalibratedTimestampInfoEXT::~safe_VkSwapchainCalibratedTimestampInfoEXT() { FreePnextChain(pNext); }
+
+void safe_VkSwapchainCalibratedTimestampInfoEXT::initialize(const VkSwapchainCalibratedTimestampInfoEXT* in_struct,
+                                                            [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    swapchain = in_struct->swapchain;
+    presentStage = in_struct->presentStage;
+    timeDomainId = in_struct->timeDomainId;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkSwapchainCalibratedTimestampInfoEXT::initialize(const safe_VkSwapchainCalibratedTimestampInfoEXT* copy_src,
+                                                            [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    swapchain = copy_src->swapchain;
+    presentStage = copy_src->presentStage;
+    timeDomainId = copy_src->timeDomainId;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkSwapchainTimingPropertiesEXT::safe_VkSwapchainTimingPropertiesEXT(const VkSwapchainTimingPropertiesEXT* in_struct,
+                                                                         [[maybe_unused]] PNextCopyState* copy_state,
+                                                                         bool copy_pnext)
+    : sType(in_struct->sType), refreshDuration(in_struct->refreshDuration), refreshInterval(in_struct->refreshInterval) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkSwapchainTimingPropertiesEXT::safe_VkSwapchainTimingPropertiesEXT()
+    : sType(VK_STRUCTURE_TYPE_SWAPCHAIN_TIMING_PROPERTIES_EXT), pNext(nullptr), refreshDuration(), refreshInterval() {}
+
+safe_VkSwapchainTimingPropertiesEXT::safe_VkSwapchainTimingPropertiesEXT(const safe_VkSwapchainTimingPropertiesEXT& copy_src) {
+    sType = copy_src.sType;
+    refreshDuration = copy_src.refreshDuration;
+    refreshInterval = copy_src.refreshInterval;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkSwapchainTimingPropertiesEXT& safe_VkSwapchainTimingPropertiesEXT::operator=(
+    const safe_VkSwapchainTimingPropertiesEXT& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    refreshDuration = copy_src.refreshDuration;
+    refreshInterval = copy_src.refreshInterval;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkSwapchainTimingPropertiesEXT::~safe_VkSwapchainTimingPropertiesEXT() { FreePnextChain(pNext); }
+
+void safe_VkSwapchainTimingPropertiesEXT::initialize(const VkSwapchainTimingPropertiesEXT* in_struct,
+                                                     [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    refreshDuration = in_struct->refreshDuration;
+    refreshInterval = in_struct->refreshInterval;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkSwapchainTimingPropertiesEXT::initialize(const safe_VkSwapchainTimingPropertiesEXT* copy_src,
+                                                     [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    refreshDuration = copy_src->refreshDuration;
+    refreshInterval = copy_src->refreshInterval;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkSwapchainTimeDomainPropertiesEXT::safe_VkSwapchainTimeDomainPropertiesEXT(
+    const VkSwapchainTimeDomainPropertiesEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), timeDomainCount(in_struct->timeDomainCount), pTimeDomains(nullptr), pTimeDomainIds(nullptr) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+    if (in_struct->pTimeDomains) {
+        pTimeDomains = new VkTimeDomainKHR[in_struct->timeDomainCount];
+        memcpy((void*)pTimeDomains, (void*)in_struct->pTimeDomains, sizeof(VkTimeDomainKHR) * in_struct->timeDomainCount);
+    }
+
+    if (in_struct->pTimeDomainIds) {
+        pTimeDomainIds = new uint64_t[in_struct->timeDomainCount];
+        memcpy((void*)pTimeDomainIds, (void*)in_struct->pTimeDomainIds, sizeof(uint64_t) * in_struct->timeDomainCount);
+    }
+}
+
+safe_VkSwapchainTimeDomainPropertiesEXT::safe_VkSwapchainTimeDomainPropertiesEXT()
+    : sType(VK_STRUCTURE_TYPE_SWAPCHAIN_TIME_DOMAIN_PROPERTIES_EXT),
+      pNext(nullptr),
+      timeDomainCount(),
+      pTimeDomains(nullptr),
+      pTimeDomainIds(nullptr) {}
+
+safe_VkSwapchainTimeDomainPropertiesEXT::safe_VkSwapchainTimeDomainPropertiesEXT(
+    const safe_VkSwapchainTimeDomainPropertiesEXT& copy_src) {
+    sType = copy_src.sType;
+    timeDomainCount = copy_src.timeDomainCount;
+    pTimeDomains = nullptr;
+    pTimeDomainIds = nullptr;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    if (copy_src.pTimeDomains) {
+        pTimeDomains = new VkTimeDomainKHR[copy_src.timeDomainCount];
+        memcpy((void*)pTimeDomains, (void*)copy_src.pTimeDomains, sizeof(VkTimeDomainKHR) * copy_src.timeDomainCount);
+    }
+
+    if (copy_src.pTimeDomainIds) {
+        pTimeDomainIds = new uint64_t[copy_src.timeDomainCount];
+        memcpy((void*)pTimeDomainIds, (void*)copy_src.pTimeDomainIds, sizeof(uint64_t) * copy_src.timeDomainCount);
+    }
+}
+
+safe_VkSwapchainTimeDomainPropertiesEXT& safe_VkSwapchainTimeDomainPropertiesEXT::operator=(
+    const safe_VkSwapchainTimeDomainPropertiesEXT& copy_src) {
+    if (&copy_src == this) return *this;
+
+    if (pTimeDomains) delete[] pTimeDomains;
+    if (pTimeDomainIds) delete[] pTimeDomainIds;
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    timeDomainCount = copy_src.timeDomainCount;
+    pTimeDomains = nullptr;
+    pTimeDomainIds = nullptr;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    if (copy_src.pTimeDomains) {
+        pTimeDomains = new VkTimeDomainKHR[copy_src.timeDomainCount];
+        memcpy((void*)pTimeDomains, (void*)copy_src.pTimeDomains, sizeof(VkTimeDomainKHR) * copy_src.timeDomainCount);
+    }
+
+    if (copy_src.pTimeDomainIds) {
+        pTimeDomainIds = new uint64_t[copy_src.timeDomainCount];
+        memcpy((void*)pTimeDomainIds, (void*)copy_src.pTimeDomainIds, sizeof(uint64_t) * copy_src.timeDomainCount);
+    }
+
+    return *this;
+}
+
+safe_VkSwapchainTimeDomainPropertiesEXT::~safe_VkSwapchainTimeDomainPropertiesEXT() {
+    if (pTimeDomains) delete[] pTimeDomains;
+    if (pTimeDomainIds) delete[] pTimeDomainIds;
+    FreePnextChain(pNext);
+}
+
+void safe_VkSwapchainTimeDomainPropertiesEXT::initialize(const VkSwapchainTimeDomainPropertiesEXT* in_struct,
+                                                         [[maybe_unused]] PNextCopyState* copy_state) {
+    if (pTimeDomains) delete[] pTimeDomains;
+    if (pTimeDomainIds) delete[] pTimeDomainIds;
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    timeDomainCount = in_struct->timeDomainCount;
+    pTimeDomains = nullptr;
+    pTimeDomainIds = nullptr;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+
+    if (in_struct->pTimeDomains) {
+        pTimeDomains = new VkTimeDomainKHR[in_struct->timeDomainCount];
+        memcpy((void*)pTimeDomains, (void*)in_struct->pTimeDomains, sizeof(VkTimeDomainKHR) * in_struct->timeDomainCount);
+    }
+
+    if (in_struct->pTimeDomainIds) {
+        pTimeDomainIds = new uint64_t[in_struct->timeDomainCount];
+        memcpy((void*)pTimeDomainIds, (void*)in_struct->pTimeDomainIds, sizeof(uint64_t) * in_struct->timeDomainCount);
+    }
+}
+
+void safe_VkSwapchainTimeDomainPropertiesEXT::initialize(const safe_VkSwapchainTimeDomainPropertiesEXT* copy_src,
+                                                         [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    timeDomainCount = copy_src->timeDomainCount;
+    pTimeDomains = nullptr;
+    pTimeDomainIds = nullptr;
+    pNext = SafePnextCopy(copy_src->pNext);
+
+    if (copy_src->pTimeDomains) {
+        pTimeDomains = new VkTimeDomainKHR[copy_src->timeDomainCount];
+        memcpy((void*)pTimeDomains, (void*)copy_src->pTimeDomains, sizeof(VkTimeDomainKHR) * copy_src->timeDomainCount);
+    }
+
+    if (copy_src->pTimeDomainIds) {
+        pTimeDomainIds = new uint64_t[copy_src->timeDomainCount];
+        memcpy((void*)pTimeDomainIds, (void*)copy_src->pTimeDomainIds, sizeof(uint64_t) * copy_src->timeDomainCount);
+    }
+}
+
+safe_VkPastPresentationTimingInfoEXT::safe_VkPastPresentationTimingInfoEXT(const VkPastPresentationTimingInfoEXT* in_struct,
+                                                                           [[maybe_unused]] PNextCopyState* copy_state,
+                                                                           bool copy_pnext)
+    : sType(in_struct->sType), flags(in_struct->flags), swapchain(in_struct->swapchain) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPastPresentationTimingInfoEXT::safe_VkPastPresentationTimingInfoEXT()
+    : sType(VK_STRUCTURE_TYPE_PAST_PRESENTATION_TIMING_INFO_EXT), pNext(nullptr), flags(), swapchain() {}
+
+safe_VkPastPresentationTimingInfoEXT::safe_VkPastPresentationTimingInfoEXT(const safe_VkPastPresentationTimingInfoEXT& copy_src) {
+    sType = copy_src.sType;
+    flags = copy_src.flags;
+    swapchain = copy_src.swapchain;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPastPresentationTimingInfoEXT& safe_VkPastPresentationTimingInfoEXT::operator=(
+    const safe_VkPastPresentationTimingInfoEXT& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    flags = copy_src.flags;
+    swapchain = copy_src.swapchain;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPastPresentationTimingInfoEXT::~safe_VkPastPresentationTimingInfoEXT() { FreePnextChain(pNext); }
+
+void safe_VkPastPresentationTimingInfoEXT::initialize(const VkPastPresentationTimingInfoEXT* in_struct,
+                                                      [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    flags = in_struct->flags;
+    swapchain = in_struct->swapchain;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPastPresentationTimingInfoEXT::initialize(const safe_VkPastPresentationTimingInfoEXT* copy_src,
+                                                      [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    flags = copy_src->flags;
+    swapchain = copy_src->swapchain;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkPastPresentationTimingEXT::safe_VkPastPresentationTimingEXT(const VkPastPresentationTimingEXT* in_struct,
+                                                                   [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType),
+      presentId(in_struct->presentId),
+      targetTime(in_struct->targetTime),
+      presentStageCount(in_struct->presentStageCount),
+      pPresentStages(nullptr),
+      timeDomain(in_struct->timeDomain),
+      timeDomainId(in_struct->timeDomainId),
+      reportComplete(in_struct->reportComplete) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+    if (in_struct->pPresentStages) {
+        pPresentStages = new VkPresentStageTimeEXT[in_struct->presentStageCount];
+        memcpy((void*)pPresentStages, (void*)in_struct->pPresentStages,
+               sizeof(VkPresentStageTimeEXT) * in_struct->presentStageCount);
+    }
+}
+
+safe_VkPastPresentationTimingEXT::safe_VkPastPresentationTimingEXT()
+    : sType(VK_STRUCTURE_TYPE_PAST_PRESENTATION_TIMING_EXT),
+      pNext(nullptr),
+      presentId(),
+      targetTime(),
+      presentStageCount(),
+      pPresentStages(nullptr),
+      timeDomain(),
+      timeDomainId(),
+      reportComplete() {}
+
+safe_VkPastPresentationTimingEXT::safe_VkPastPresentationTimingEXT(const safe_VkPastPresentationTimingEXT& copy_src) {
+    sType = copy_src.sType;
+    presentId = copy_src.presentId;
+    targetTime = copy_src.targetTime;
+    presentStageCount = copy_src.presentStageCount;
+    pPresentStages = nullptr;
+    timeDomain = copy_src.timeDomain;
+    timeDomainId = copy_src.timeDomainId;
+    reportComplete = copy_src.reportComplete;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    if (copy_src.pPresentStages) {
+        pPresentStages = new VkPresentStageTimeEXT[copy_src.presentStageCount];
+        memcpy((void*)pPresentStages, (void*)copy_src.pPresentStages, sizeof(VkPresentStageTimeEXT) * copy_src.presentStageCount);
+    }
+}
+
+safe_VkPastPresentationTimingEXT& safe_VkPastPresentationTimingEXT::operator=(const safe_VkPastPresentationTimingEXT& copy_src) {
+    if (&copy_src == this) return *this;
+
+    if (pPresentStages) delete[] pPresentStages;
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    presentId = copy_src.presentId;
+    targetTime = copy_src.targetTime;
+    presentStageCount = copy_src.presentStageCount;
+    pPresentStages = nullptr;
+    timeDomain = copy_src.timeDomain;
+    timeDomainId = copy_src.timeDomainId;
+    reportComplete = copy_src.reportComplete;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    if (copy_src.pPresentStages) {
+        pPresentStages = new VkPresentStageTimeEXT[copy_src.presentStageCount];
+        memcpy((void*)pPresentStages, (void*)copy_src.pPresentStages, sizeof(VkPresentStageTimeEXT) * copy_src.presentStageCount);
+    }
+
+    return *this;
+}
+
+safe_VkPastPresentationTimingEXT::~safe_VkPastPresentationTimingEXT() {
+    if (pPresentStages) delete[] pPresentStages;
+    FreePnextChain(pNext);
+}
+
+void safe_VkPastPresentationTimingEXT::initialize(const VkPastPresentationTimingEXT* in_struct,
+                                                  [[maybe_unused]] PNextCopyState* copy_state) {
+    if (pPresentStages) delete[] pPresentStages;
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    presentId = in_struct->presentId;
+    targetTime = in_struct->targetTime;
+    presentStageCount = in_struct->presentStageCount;
+    pPresentStages = nullptr;
+    timeDomain = in_struct->timeDomain;
+    timeDomainId = in_struct->timeDomainId;
+    reportComplete = in_struct->reportComplete;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+
+    if (in_struct->pPresentStages) {
+        pPresentStages = new VkPresentStageTimeEXT[in_struct->presentStageCount];
+        memcpy((void*)pPresentStages, (void*)in_struct->pPresentStages,
+               sizeof(VkPresentStageTimeEXT) * in_struct->presentStageCount);
+    }
+}
+
+void safe_VkPastPresentationTimingEXT::initialize(const safe_VkPastPresentationTimingEXT* copy_src,
+                                                  [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    presentId = copy_src->presentId;
+    targetTime = copy_src->targetTime;
+    presentStageCount = copy_src->presentStageCount;
+    pPresentStages = nullptr;
+    timeDomain = copy_src->timeDomain;
+    timeDomainId = copy_src->timeDomainId;
+    reportComplete = copy_src->reportComplete;
+    pNext = SafePnextCopy(copy_src->pNext);
+
+    if (copy_src->pPresentStages) {
+        pPresentStages = new VkPresentStageTimeEXT[copy_src->presentStageCount];
+        memcpy((void*)pPresentStages, (void*)copy_src->pPresentStages, sizeof(VkPresentStageTimeEXT) * copy_src->presentStageCount);
+    }
+}
+
+safe_VkPastPresentationTimingPropertiesEXT::safe_VkPastPresentationTimingPropertiesEXT(
+    const VkPastPresentationTimingPropertiesEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType),
+      timingPropertiesCounter(in_struct->timingPropertiesCounter),
+      timeDomainsCounter(in_struct->timeDomainsCounter),
+      presentationTimingCount(in_struct->presentationTimingCount),
+      pPresentationTimings(nullptr) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+    if (presentationTimingCount && in_struct->pPresentationTimings) {
+        pPresentationTimings = new safe_VkPastPresentationTimingEXT[presentationTimingCount];
+        for (uint32_t i = 0; i < presentationTimingCount; ++i) {
+            pPresentationTimings[i].initialize(&in_struct->pPresentationTimings[i]);
+        }
+    }
+}
+
+safe_VkPastPresentationTimingPropertiesEXT::safe_VkPastPresentationTimingPropertiesEXT()
+    : sType(VK_STRUCTURE_TYPE_PAST_PRESENTATION_TIMING_PROPERTIES_EXT),
+      pNext(nullptr),
+      timingPropertiesCounter(),
+      timeDomainsCounter(),
+      presentationTimingCount(),
+      pPresentationTimings(nullptr) {}
+
+safe_VkPastPresentationTimingPropertiesEXT::safe_VkPastPresentationTimingPropertiesEXT(
+    const safe_VkPastPresentationTimingPropertiesEXT& copy_src) {
+    sType = copy_src.sType;
+    timingPropertiesCounter = copy_src.timingPropertiesCounter;
+    timeDomainsCounter = copy_src.timeDomainsCounter;
+    presentationTimingCount = copy_src.presentationTimingCount;
+    pPresentationTimings = nullptr;
+    pNext = SafePnextCopy(copy_src.pNext);
+    if (presentationTimingCount && copy_src.pPresentationTimings) {
+        pPresentationTimings = new safe_VkPastPresentationTimingEXT[presentationTimingCount];
+        for (uint32_t i = 0; i < presentationTimingCount; ++i) {
+            pPresentationTimings[i].initialize(&copy_src.pPresentationTimings[i]);
+        }
+    }
+}
+
+safe_VkPastPresentationTimingPropertiesEXT& safe_VkPastPresentationTimingPropertiesEXT::operator=(
+    const safe_VkPastPresentationTimingPropertiesEXT& copy_src) {
+    if (&copy_src == this) return *this;
+
+    if (pPresentationTimings) delete[] pPresentationTimings;
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    timingPropertiesCounter = copy_src.timingPropertiesCounter;
+    timeDomainsCounter = copy_src.timeDomainsCounter;
+    presentationTimingCount = copy_src.presentationTimingCount;
+    pPresentationTimings = nullptr;
+    pNext = SafePnextCopy(copy_src.pNext);
+    if (presentationTimingCount && copy_src.pPresentationTimings) {
+        pPresentationTimings = new safe_VkPastPresentationTimingEXT[presentationTimingCount];
+        for (uint32_t i = 0; i < presentationTimingCount; ++i) {
+            pPresentationTimings[i].initialize(&copy_src.pPresentationTimings[i]);
+        }
+    }
+
+    return *this;
+}
+
+safe_VkPastPresentationTimingPropertiesEXT::~safe_VkPastPresentationTimingPropertiesEXT() {
+    if (pPresentationTimings) delete[] pPresentationTimings;
+    FreePnextChain(pNext);
+}
+
+void safe_VkPastPresentationTimingPropertiesEXT::initialize(const VkPastPresentationTimingPropertiesEXT* in_struct,
+                                                            [[maybe_unused]] PNextCopyState* copy_state) {
+    if (pPresentationTimings) delete[] pPresentationTimings;
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    timingPropertiesCounter = in_struct->timingPropertiesCounter;
+    timeDomainsCounter = in_struct->timeDomainsCounter;
+    presentationTimingCount = in_struct->presentationTimingCount;
+    pPresentationTimings = nullptr;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    if (presentationTimingCount && in_struct->pPresentationTimings) {
+        pPresentationTimings = new safe_VkPastPresentationTimingEXT[presentationTimingCount];
+        for (uint32_t i = 0; i < presentationTimingCount; ++i) {
+            pPresentationTimings[i].initialize(&in_struct->pPresentationTimings[i]);
+        }
+    }
+}
+
+void safe_VkPastPresentationTimingPropertiesEXT::initialize(const safe_VkPastPresentationTimingPropertiesEXT* copy_src,
+                                                            [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    timingPropertiesCounter = copy_src->timingPropertiesCounter;
+    timeDomainsCounter = copy_src->timeDomainsCounter;
+    presentationTimingCount = copy_src->presentationTimingCount;
+    pPresentationTimings = nullptr;
+    pNext = SafePnextCopy(copy_src->pNext);
+    if (presentationTimingCount && copy_src->pPresentationTimings) {
+        pPresentationTimings = new safe_VkPastPresentationTimingEXT[presentationTimingCount];
+        for (uint32_t i = 0; i < presentationTimingCount; ++i) {
+            pPresentationTimings[i].initialize(&copy_src->pPresentationTimings[i]);
+        }
+    }
+}
+
+safe_VkPresentTimingInfoEXT::safe_VkPresentTimingInfoEXT(const VkPresentTimingInfoEXT* in_struct,
+                                                         [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType),
+      flags(in_struct->flags),
+      targetTime(in_struct->targetTime),
+      timeDomainId(in_struct->timeDomainId),
+      presentStageQueries(in_struct->presentStageQueries),
+      targetTimeDomainPresentStage(in_struct->targetTimeDomainPresentStage) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPresentTimingInfoEXT::safe_VkPresentTimingInfoEXT()
+    : sType(VK_STRUCTURE_TYPE_PRESENT_TIMING_INFO_EXT),
+      pNext(nullptr),
+      flags(),
+      targetTime(),
+      timeDomainId(),
+      presentStageQueries(),
+      targetTimeDomainPresentStage() {}
+
+safe_VkPresentTimingInfoEXT::safe_VkPresentTimingInfoEXT(const safe_VkPresentTimingInfoEXT& copy_src) {
+    sType = copy_src.sType;
+    flags = copy_src.flags;
+    targetTime = copy_src.targetTime;
+    timeDomainId = copy_src.timeDomainId;
+    presentStageQueries = copy_src.presentStageQueries;
+    targetTimeDomainPresentStage = copy_src.targetTimeDomainPresentStage;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPresentTimingInfoEXT& safe_VkPresentTimingInfoEXT::operator=(const safe_VkPresentTimingInfoEXT& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    flags = copy_src.flags;
+    targetTime = copy_src.targetTime;
+    timeDomainId = copy_src.timeDomainId;
+    presentStageQueries = copy_src.presentStageQueries;
+    targetTimeDomainPresentStage = copy_src.targetTimeDomainPresentStage;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPresentTimingInfoEXT::~safe_VkPresentTimingInfoEXT() { FreePnextChain(pNext); }
+
+void safe_VkPresentTimingInfoEXT::initialize(const VkPresentTimingInfoEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    flags = in_struct->flags;
+    targetTime = in_struct->targetTime;
+    timeDomainId = in_struct->timeDomainId;
+    presentStageQueries = in_struct->presentStageQueries;
+    targetTimeDomainPresentStage = in_struct->targetTimeDomainPresentStage;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPresentTimingInfoEXT::initialize(const safe_VkPresentTimingInfoEXT* copy_src,
+                                             [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    flags = copy_src->flags;
+    targetTime = copy_src->targetTime;
+    timeDomainId = copy_src->timeDomainId;
+    presentStageQueries = copy_src->presentStageQueries;
+    targetTimeDomainPresentStage = copy_src->targetTimeDomainPresentStage;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkPresentTimingsInfoEXT::safe_VkPresentTimingsInfoEXT(const VkPresentTimingsInfoEXT* in_struct,
+                                                           [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), swapchainCount(in_struct->swapchainCount), pTimingInfos(nullptr) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+    if (swapchainCount && in_struct->pTimingInfos) {
+        pTimingInfos = new safe_VkPresentTimingInfoEXT[swapchainCount];
+        for (uint32_t i = 0; i < swapchainCount; ++i) {
+            pTimingInfos[i].initialize(&in_struct->pTimingInfos[i]);
+        }
+    }
+}
+
+safe_VkPresentTimingsInfoEXT::safe_VkPresentTimingsInfoEXT()
+    : sType(VK_STRUCTURE_TYPE_PRESENT_TIMINGS_INFO_EXT), pNext(nullptr), swapchainCount(), pTimingInfos(nullptr) {}
+
+safe_VkPresentTimingsInfoEXT::safe_VkPresentTimingsInfoEXT(const safe_VkPresentTimingsInfoEXT& copy_src) {
+    sType = copy_src.sType;
+    swapchainCount = copy_src.swapchainCount;
+    pTimingInfos = nullptr;
+    pNext = SafePnextCopy(copy_src.pNext);
+    if (swapchainCount && copy_src.pTimingInfos) {
+        pTimingInfos = new safe_VkPresentTimingInfoEXT[swapchainCount];
+        for (uint32_t i = 0; i < swapchainCount; ++i) {
+            pTimingInfos[i].initialize(&copy_src.pTimingInfos[i]);
+        }
+    }
+}
+
+safe_VkPresentTimingsInfoEXT& safe_VkPresentTimingsInfoEXT::operator=(const safe_VkPresentTimingsInfoEXT& copy_src) {
+    if (&copy_src == this) return *this;
+
+    if (pTimingInfos) delete[] pTimingInfos;
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    swapchainCount = copy_src.swapchainCount;
+    pTimingInfos = nullptr;
+    pNext = SafePnextCopy(copy_src.pNext);
+    if (swapchainCount && copy_src.pTimingInfos) {
+        pTimingInfos = new safe_VkPresentTimingInfoEXT[swapchainCount];
+        for (uint32_t i = 0; i < swapchainCount; ++i) {
+            pTimingInfos[i].initialize(&copy_src.pTimingInfos[i]);
+        }
+    }
+
+    return *this;
+}
+
+safe_VkPresentTimingsInfoEXT::~safe_VkPresentTimingsInfoEXT() {
+    if (pTimingInfos) delete[] pTimingInfos;
+    FreePnextChain(pNext);
+}
+
+void safe_VkPresentTimingsInfoEXT::initialize(const VkPresentTimingsInfoEXT* in_struct,
+                                              [[maybe_unused]] PNextCopyState* copy_state) {
+    if (pTimingInfos) delete[] pTimingInfos;
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    swapchainCount = in_struct->swapchainCount;
+    pTimingInfos = nullptr;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    if (swapchainCount && in_struct->pTimingInfos) {
+        pTimingInfos = new safe_VkPresentTimingInfoEXT[swapchainCount];
+        for (uint32_t i = 0; i < swapchainCount; ++i) {
+            pTimingInfos[i].initialize(&in_struct->pTimingInfos[i]);
+        }
+    }
+}
+
+void safe_VkPresentTimingsInfoEXT::initialize(const safe_VkPresentTimingsInfoEXT* copy_src,
+                                              [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    swapchainCount = copy_src->swapchainCount;
+    pTimingInfos = nullptr;
+    pNext = SafePnextCopy(copy_src->pNext);
+    if (swapchainCount && copy_src->pTimingInfos) {
+        pTimingInfos = new safe_VkPresentTimingInfoEXT[swapchainCount];
+        for (uint32_t i = 0; i < swapchainCount; ++i) {
+            pTimingInfos[i].initialize(&copy_src->pTimingInfos[i]);
+        }
+    }
+}
+
 safe_VkPhysicalDevicePCIBusInfoPropertiesEXT::safe_VkPhysicalDevicePCIBusInfoPropertiesEXT(
     const VkPhysicalDevicePCIBusInfoPropertiesEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
     : sType(in_struct->sType),
