@@ -23053,6 +23053,47 @@ struct safe_VkPhysicalDeviceShaderUniformBufferUnsizedArrayFeaturesEXT {
         return reinterpret_cast<VkPhysicalDeviceShaderUniformBufferUnsizedArrayFeaturesEXT const*>(this);
     }
 };
+struct safe_VkComputeOccupancyPriorityParametersNV {
+    VkStructureType sType;
+    const void* pNext{};
+    float occupancyPriority;
+    float occupancyThrottling;
+
+    safe_VkComputeOccupancyPriorityParametersNV(const VkComputeOccupancyPriorityParametersNV* in_struct,
+                                                PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkComputeOccupancyPriorityParametersNV(const safe_VkComputeOccupancyPriorityParametersNV& copy_src);
+    safe_VkComputeOccupancyPriorityParametersNV& operator=(const safe_VkComputeOccupancyPriorityParametersNV& copy_src);
+    safe_VkComputeOccupancyPriorityParametersNV();
+    ~safe_VkComputeOccupancyPriorityParametersNV();
+    void initialize(const VkComputeOccupancyPriorityParametersNV* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkComputeOccupancyPriorityParametersNV* copy_src, PNextCopyState* copy_state = {});
+    VkComputeOccupancyPriorityParametersNV* ptr() { return reinterpret_cast<VkComputeOccupancyPriorityParametersNV*>(this); }
+    VkComputeOccupancyPriorityParametersNV const* ptr() const {
+        return reinterpret_cast<VkComputeOccupancyPriorityParametersNV const*>(this);
+    }
+};
+struct safe_VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV {
+    VkStructureType sType;
+    void* pNext{};
+    VkBool32 computeOccupancyPriority;
+
+    safe_VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV(const VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV* in_struct,
+                                                            PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV(
+        const safe_VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV& copy_src);
+    safe_VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV& operator=(
+        const safe_VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV& copy_src);
+    safe_VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV();
+    ~safe_VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV();
+    void initialize(const VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV* copy_src, PNextCopyState* copy_state = {});
+    VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV* ptr() {
+        return reinterpret_cast<VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV*>(this);
+    }
+    VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV const* ptr() const {
+        return reinterpret_cast<VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV const*>(this);
+    }
+};
 struct safe_VkAccelerationStructureGeometryTrianglesDataKHR {
     VkStructureType sType;
     const void* pNext{};

@@ -23172,6 +23172,114 @@ void safe_VkPhysicalDevicePipelineCacheIncrementalModeFeaturesSEC::initialize(
     pNext = SafePnextCopy(copy_src->pNext);
 }
 
+safe_VkComputeOccupancyPriorityParametersNV::safe_VkComputeOccupancyPriorityParametersNV(
+    const VkComputeOccupancyPriorityParametersNV* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType),
+      occupancyPriority(in_struct->occupancyPriority),
+      occupancyThrottling(in_struct->occupancyThrottling) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkComputeOccupancyPriorityParametersNV::safe_VkComputeOccupancyPriorityParametersNV()
+    : sType(VK_STRUCTURE_TYPE_COMPUTE_OCCUPANCY_PRIORITY_PARAMETERS_NV),
+      pNext(nullptr),
+      occupancyPriority(),
+      occupancyThrottling() {}
+
+safe_VkComputeOccupancyPriorityParametersNV::safe_VkComputeOccupancyPriorityParametersNV(
+    const safe_VkComputeOccupancyPriorityParametersNV& copy_src) {
+    sType = copy_src.sType;
+    occupancyPriority = copy_src.occupancyPriority;
+    occupancyThrottling = copy_src.occupancyThrottling;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkComputeOccupancyPriorityParametersNV& safe_VkComputeOccupancyPriorityParametersNV::operator=(
+    const safe_VkComputeOccupancyPriorityParametersNV& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    occupancyPriority = copy_src.occupancyPriority;
+    occupancyThrottling = copy_src.occupancyThrottling;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkComputeOccupancyPriorityParametersNV::~safe_VkComputeOccupancyPriorityParametersNV() { FreePnextChain(pNext); }
+
+void safe_VkComputeOccupancyPriorityParametersNV::initialize(const VkComputeOccupancyPriorityParametersNV* in_struct,
+                                                             [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    occupancyPriority = in_struct->occupancyPriority;
+    occupancyThrottling = in_struct->occupancyThrottling;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkComputeOccupancyPriorityParametersNV::initialize(const safe_VkComputeOccupancyPriorityParametersNV* copy_src,
+                                                             [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    occupancyPriority = copy_src->occupancyPriority;
+    occupancyThrottling = copy_src->occupancyThrottling;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV::safe_VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV(
+    const VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
+    bool copy_pnext)
+    : sType(in_struct->sType), computeOccupancyPriority(in_struct->computeOccupancyPriority) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV::safe_VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMPUTE_OCCUPANCY_PRIORITY_FEATURES_NV), pNext(nullptr), computeOccupancyPriority() {}
+
+safe_VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV::safe_VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV(
+    const safe_VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV& copy_src) {
+    sType = copy_src.sType;
+    computeOccupancyPriority = copy_src.computeOccupancyPriority;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV& safe_VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV::operator=(
+    const safe_VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    computeOccupancyPriority = copy_src.computeOccupancyPriority;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV::~safe_VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV::initialize(
+    const VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    computeOccupancyPriority = in_struct->computeOccupancyPriority;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV::initialize(
+    const safe_VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    computeOccupancyPriority = copy_src->computeOccupancyPriority;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
 }  // namespace vku
 
 // NOLINTEND
