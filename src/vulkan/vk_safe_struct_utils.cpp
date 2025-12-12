@@ -2314,6 +2314,9 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_UNIFORM_BUFFER_UNSIZED_ARRAY_FEATURES_EXT:
                 safe_pNext = new safe_VkPhysicalDeviceShaderUniformBufferUnsizedArrayFeaturesEXT(reinterpret_cast<const VkPhysicalDeviceShaderUniformBufferUnsizedArrayFeaturesEXT *>(pNext), copy_state, false);
                 break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMPUTE_OCCUPANCY_PRIORITY_FEATURES_NV:
+                safe_pNext = new safe_VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV(reinterpret_cast<const VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV *>(pNext), copy_state, false);
+                break;
             case VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_ACCELERATION_STRUCTURE_KHR:
                 safe_pNext = new safe_VkWriteDescriptorSetAccelerationStructureKHR(reinterpret_cast<const VkWriteDescriptorSetAccelerationStructureKHR *>(pNext), copy_state, false);
                 break;
@@ -4643,6 +4646,9 @@ void FreePnextChain(const void *pNext) {
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_UNIFORM_BUFFER_UNSIZED_ARRAY_FEATURES_EXT:
             delete reinterpret_cast<safe_VkPhysicalDeviceShaderUniformBufferUnsizedArrayFeaturesEXT *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMPUTE_OCCUPANCY_PRIORITY_FEATURES_NV:
+            delete reinterpret_cast<safe_VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV *>(header);
             break;
         case VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_ACCELERATION_STRUCTURE_KHR:
             delete reinterpret_cast<safe_VkWriteDescriptorSetAccelerationStructureKHR *>(header);
