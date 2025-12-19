@@ -825,11 +825,6 @@ typedef struct VkuDeviceDispatchTable_ {
     PFN_vkDestroyIndirectExecutionSetEXT DestroyIndirectExecutionSetEXT;
     PFN_vkUpdateIndirectExecutionSetPipelineEXT UpdateIndirectExecutionSetPipelineEXT;
     PFN_vkUpdateIndirectExecutionSetShaderEXT UpdateIndirectExecutionSetShaderEXT;
-#ifdef VK_USE_PLATFORM_OHOS
-    PFN_vkGetSwapchainGrallocUsageOHOS GetSwapchainGrallocUsageOHOS;
-    PFN_vkAcquireImageOHOS AcquireImageOHOS;
-    PFN_vkQueueSignalReleaseImageOHOS QueueSignalReleaseImageOHOS;
-#endif  // VK_USE_PLATFORM_OHOS
 #ifdef VK_USE_PLATFORM_METAL_EXT
     PFN_vkGetMemoryMetalHandleEXT GetMemoryMetalHandleEXT;
     PFN_vkGetMemoryMetalHandlePropertiesEXT GetMemoryMetalHandlePropertiesEXT;
@@ -1518,11 +1513,6 @@ static inline void vkuInitDeviceDispatchTable(VkDevice device, VkuDeviceDispatch
     table->DestroyIndirectExecutionSetEXT = (PFN_vkDestroyIndirectExecutionSetEXT)gdpa(device, "vkDestroyIndirectExecutionSetEXT");
     table->UpdateIndirectExecutionSetPipelineEXT = (PFN_vkUpdateIndirectExecutionSetPipelineEXT)gdpa(device, "vkUpdateIndirectExecutionSetPipelineEXT");
     table->UpdateIndirectExecutionSetShaderEXT = (PFN_vkUpdateIndirectExecutionSetShaderEXT)gdpa(device, "vkUpdateIndirectExecutionSetShaderEXT");
-#ifdef VK_USE_PLATFORM_OHOS
-    table->GetSwapchainGrallocUsageOHOS = (PFN_vkGetSwapchainGrallocUsageOHOS)gdpa(device, "vkGetSwapchainGrallocUsageOHOS");
-    table->AcquireImageOHOS = (PFN_vkAcquireImageOHOS)gdpa(device, "vkAcquireImageOHOS");
-    table->QueueSignalReleaseImageOHOS = (PFN_vkQueueSignalReleaseImageOHOS)gdpa(device, "vkQueueSignalReleaseImageOHOS");
-#endif  // VK_USE_PLATFORM_OHOS
 #ifdef VK_USE_PLATFORM_METAL_EXT
     table->GetMemoryMetalHandleEXT = (PFN_vkGetMemoryMetalHandleEXT)gdpa(device, "vkGetMemoryMetalHandleEXT");
     table->GetMemoryMetalHandlePropertiesEXT = (PFN_vkGetMemoryMetalHandlePropertiesEXT)gdpa(device, "vkGetMemoryMetalHandlePropertiesEXT");

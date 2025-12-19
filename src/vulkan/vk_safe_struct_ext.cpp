@@ -7117,6 +7117,59 @@ void safe_VkPhysicalDeviceCustomBorderColorFeaturesEXT::initialize(
     customBorderColorWithoutFormat = copy_src->customBorderColorWithoutFormat;
     pNext = SafePnextCopy(copy_src->pNext);
 }
+
+safe_VkPhysicalDeviceTextureCompressionASTC3DFeaturesEXT::safe_VkPhysicalDeviceTextureCompressionASTC3DFeaturesEXT(
+    const VkPhysicalDeviceTextureCompressionASTC3DFeaturesEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
+    bool copy_pnext)
+    : sType(in_struct->sType), textureCompressionASTC_3D(in_struct->textureCompressionASTC_3D) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceTextureCompressionASTC3DFeaturesEXT::safe_VkPhysicalDeviceTextureCompressionASTC3DFeaturesEXT()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TEXTURE_COMPRESSION_ASTC_3D_FEATURES_EXT),
+      pNext(nullptr),
+      textureCompressionASTC_3D() {}
+
+safe_VkPhysicalDeviceTextureCompressionASTC3DFeaturesEXT::safe_VkPhysicalDeviceTextureCompressionASTC3DFeaturesEXT(
+    const safe_VkPhysicalDeviceTextureCompressionASTC3DFeaturesEXT& copy_src) {
+    sType = copy_src.sType;
+    textureCompressionASTC_3D = copy_src.textureCompressionASTC_3D;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceTextureCompressionASTC3DFeaturesEXT& safe_VkPhysicalDeviceTextureCompressionASTC3DFeaturesEXT::operator=(
+    const safe_VkPhysicalDeviceTextureCompressionASTC3DFeaturesEXT& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    textureCompressionASTC_3D = copy_src.textureCompressionASTC_3D;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceTextureCompressionASTC3DFeaturesEXT::~safe_VkPhysicalDeviceTextureCompressionASTC3DFeaturesEXT() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkPhysicalDeviceTextureCompressionASTC3DFeaturesEXT::initialize(
+    const VkPhysicalDeviceTextureCompressionASTC3DFeaturesEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    textureCompressionASTC_3D = in_struct->textureCompressionASTC_3D;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceTextureCompressionASTC3DFeaturesEXT::initialize(
+    const safe_VkPhysicalDeviceTextureCompressionASTC3DFeaturesEXT* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    textureCompressionASTC_3D = copy_src->textureCompressionASTC_3D;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
 #ifdef VK_USE_PLATFORM_METAL_EXT
 
 safe_VkExportMetalObjectCreateInfoEXT::safe_VkExportMetalObjectCreateInfoEXT(const VkExportMetalObjectCreateInfoEXT* in_struct,
@@ -16575,6 +16628,102 @@ void safe_VkCustomResolveCreateInfoEXT::initialize(const safe_VkCustomResolveCre
         memcpy((void*)pColorAttachmentFormats, (void*)copy_src->pColorAttachmentFormats,
                sizeof(VkFormat) * copy_src->colorAttachmentCount);
     }
+}
+
+safe_VkPhysicalDeviceShaderLongVectorFeaturesEXT::safe_VkPhysicalDeviceShaderLongVectorFeaturesEXT(
+    const VkPhysicalDeviceShaderLongVectorFeaturesEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), longVector(in_struct->longVector) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceShaderLongVectorFeaturesEXT::safe_VkPhysicalDeviceShaderLongVectorFeaturesEXT()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_LONG_VECTOR_FEATURES_EXT), pNext(nullptr), longVector() {}
+
+safe_VkPhysicalDeviceShaderLongVectorFeaturesEXT::safe_VkPhysicalDeviceShaderLongVectorFeaturesEXT(
+    const safe_VkPhysicalDeviceShaderLongVectorFeaturesEXT& copy_src) {
+    sType = copy_src.sType;
+    longVector = copy_src.longVector;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceShaderLongVectorFeaturesEXT& safe_VkPhysicalDeviceShaderLongVectorFeaturesEXT::operator=(
+    const safe_VkPhysicalDeviceShaderLongVectorFeaturesEXT& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    longVector = copy_src.longVector;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceShaderLongVectorFeaturesEXT::~safe_VkPhysicalDeviceShaderLongVectorFeaturesEXT() { FreePnextChain(pNext); }
+
+void safe_VkPhysicalDeviceShaderLongVectorFeaturesEXT::initialize(const VkPhysicalDeviceShaderLongVectorFeaturesEXT* in_struct,
+                                                                  [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    longVector = in_struct->longVector;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceShaderLongVectorFeaturesEXT::initialize(const safe_VkPhysicalDeviceShaderLongVectorFeaturesEXT* copy_src,
+                                                                  [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    longVector = copy_src->longVector;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkPhysicalDeviceShaderLongVectorPropertiesEXT::safe_VkPhysicalDeviceShaderLongVectorPropertiesEXT(
+    const VkPhysicalDeviceShaderLongVectorPropertiesEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), maxVectorComponents(in_struct->maxVectorComponents) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceShaderLongVectorPropertiesEXT::safe_VkPhysicalDeviceShaderLongVectorPropertiesEXT()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_LONG_VECTOR_PROPERTIES_EXT), pNext(nullptr), maxVectorComponents() {}
+
+safe_VkPhysicalDeviceShaderLongVectorPropertiesEXT::safe_VkPhysicalDeviceShaderLongVectorPropertiesEXT(
+    const safe_VkPhysicalDeviceShaderLongVectorPropertiesEXT& copy_src) {
+    sType = copy_src.sType;
+    maxVectorComponents = copy_src.maxVectorComponents;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceShaderLongVectorPropertiesEXT& safe_VkPhysicalDeviceShaderLongVectorPropertiesEXT::operator=(
+    const safe_VkPhysicalDeviceShaderLongVectorPropertiesEXT& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    maxVectorComponents = copy_src.maxVectorComponents;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceShaderLongVectorPropertiesEXT::~safe_VkPhysicalDeviceShaderLongVectorPropertiesEXT() { FreePnextChain(pNext); }
+
+void safe_VkPhysicalDeviceShaderLongVectorPropertiesEXT::initialize(const VkPhysicalDeviceShaderLongVectorPropertiesEXT* in_struct,
+                                                                    [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    maxVectorComponents = in_struct->maxVectorComponents;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceShaderLongVectorPropertiesEXT::initialize(
+    const safe_VkPhysicalDeviceShaderLongVectorPropertiesEXT* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    maxVectorComponents = copy_src->maxVectorComponents;
+    pNext = SafePnextCopy(copy_src->pNext);
 }
 
 safe_VkPhysicalDeviceShaderUniformBufferUnsizedArrayFeaturesEXT::safe_VkPhysicalDeviceShaderUniformBufferUnsizedArrayFeaturesEXT(
