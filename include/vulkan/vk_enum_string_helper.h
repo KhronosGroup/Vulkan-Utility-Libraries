@@ -1372,6 +1372,8 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUSTOM_BORDER_COLOR_PROPERTIES_EXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUSTOM_BORDER_COLOR_FEATURES_EXT:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUSTOM_BORDER_COLOR_FEATURES_EXT";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TEXTURE_COMPRESSION_ASTC_3D_FEATURES_EXT:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TEXTURE_COMPRESSION_ASTC_3D_FEATURES_EXT";
         case VK_STRUCTURE_TYPE_PIPELINE_LIBRARY_CREATE_INFO_KHR:
             return "VK_STRUCTURE_TYPE_PIPELINE_LIBRARY_CREATE_INFO_KHR";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_BARRIER_FEATURES_NV:
@@ -2324,12 +2326,6 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_VIDEO_DECODE_AV1_INLINE_SESSION_PARAMETERS_INFO_KHR";
         case VK_STRUCTURE_TYPE_SURFACE_CREATE_INFO_OHOS:
             return "VK_STRUCTURE_TYPE_SURFACE_CREATE_INFO_OHOS";
-        case VK_STRUCTURE_TYPE_NATIVE_BUFFER_OHOS:
-            return "VK_STRUCTURE_TYPE_NATIVE_BUFFER_OHOS";
-        case VK_STRUCTURE_TYPE_SWAPCHAIN_IMAGE_CREATE_INFO_OHOS:
-            return "VK_STRUCTURE_TYPE_SWAPCHAIN_IMAGE_CREATE_INFO_OHOS";
-        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENTATION_PROPERTIES_OHOS:
-            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENTATION_PROPERTIES_OHOS";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HDR_VIVID_FEATURES_HUAWEI:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HDR_VIVID_FEATURES_HUAWEI";
         case VK_STRUCTURE_TYPE_HDR_VIVID_DYNAMIC_METADATA_HUAWEI:
@@ -2412,6 +2408,10 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_RENDERING_END_INFO_KHR";
         case VK_STRUCTURE_TYPE_RESOLVE_IMAGE_MODE_INFO_KHR:
             return "VK_STRUCTURE_TYPE_RESOLVE_IMAGE_MODE_INFO_KHR";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_LONG_VECTOR_FEATURES_EXT:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_LONG_VECTOR_FEATURES_EXT";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_LONG_VECTOR_PROPERTIES_EXT:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_LONG_VECTOR_PROPERTIES_EXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_CACHE_INCREMENTAL_MODE_FEATURES_SEC:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_CACHE_INCREMENTAL_MODE_FEATURES_SEC";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_UNIFORM_BUFFER_UNSIZED_ARRAY_FEATURES_EXT:
@@ -3164,6 +3164,66 @@ static inline const char* string_VkFormat(VkFormat input_value) {
             return "VK_FORMAT_PVRTC2_2BPP_SRGB_BLOCK_IMG";
         case VK_FORMAT_PVRTC2_4BPP_SRGB_BLOCK_IMG:
             return "VK_FORMAT_PVRTC2_4BPP_SRGB_BLOCK_IMG";
+        case VK_FORMAT_ASTC_3x3x3_UNORM_BLOCK_EXT:
+            return "VK_FORMAT_ASTC_3x3x3_UNORM_BLOCK_EXT";
+        case VK_FORMAT_ASTC_3x3x3_SRGB_BLOCK_EXT:
+            return "VK_FORMAT_ASTC_3x3x3_SRGB_BLOCK_EXT";
+        case VK_FORMAT_ASTC_3x3x3_SFLOAT_BLOCK_EXT:
+            return "VK_FORMAT_ASTC_3x3x3_SFLOAT_BLOCK_EXT";
+        case VK_FORMAT_ASTC_4x3x3_UNORM_BLOCK_EXT:
+            return "VK_FORMAT_ASTC_4x3x3_UNORM_BLOCK_EXT";
+        case VK_FORMAT_ASTC_4x3x3_SRGB_BLOCK_EXT:
+            return "VK_FORMAT_ASTC_4x3x3_SRGB_BLOCK_EXT";
+        case VK_FORMAT_ASTC_4x3x3_SFLOAT_BLOCK_EXT:
+            return "VK_FORMAT_ASTC_4x3x3_SFLOAT_BLOCK_EXT";
+        case VK_FORMAT_ASTC_4x4x3_UNORM_BLOCK_EXT:
+            return "VK_FORMAT_ASTC_4x4x3_UNORM_BLOCK_EXT";
+        case VK_FORMAT_ASTC_4x4x3_SRGB_BLOCK_EXT:
+            return "VK_FORMAT_ASTC_4x4x3_SRGB_BLOCK_EXT";
+        case VK_FORMAT_ASTC_4x4x3_SFLOAT_BLOCK_EXT:
+            return "VK_FORMAT_ASTC_4x4x3_SFLOAT_BLOCK_EXT";
+        case VK_FORMAT_ASTC_4x4x4_UNORM_BLOCK_EXT:
+            return "VK_FORMAT_ASTC_4x4x4_UNORM_BLOCK_EXT";
+        case VK_FORMAT_ASTC_4x4x4_SRGB_BLOCK_EXT:
+            return "VK_FORMAT_ASTC_4x4x4_SRGB_BLOCK_EXT";
+        case VK_FORMAT_ASTC_4x4x4_SFLOAT_BLOCK_EXT:
+            return "VK_FORMAT_ASTC_4x4x4_SFLOAT_BLOCK_EXT";
+        case VK_FORMAT_ASTC_5x4x4_UNORM_BLOCK_EXT:
+            return "VK_FORMAT_ASTC_5x4x4_UNORM_BLOCK_EXT";
+        case VK_FORMAT_ASTC_5x4x4_SRGB_BLOCK_EXT:
+            return "VK_FORMAT_ASTC_5x4x4_SRGB_BLOCK_EXT";
+        case VK_FORMAT_ASTC_5x4x4_SFLOAT_BLOCK_EXT:
+            return "VK_FORMAT_ASTC_5x4x4_SFLOAT_BLOCK_EXT";
+        case VK_FORMAT_ASTC_5x5x4_UNORM_BLOCK_EXT:
+            return "VK_FORMAT_ASTC_5x5x4_UNORM_BLOCK_EXT";
+        case VK_FORMAT_ASTC_5x5x4_SRGB_BLOCK_EXT:
+            return "VK_FORMAT_ASTC_5x5x4_SRGB_BLOCK_EXT";
+        case VK_FORMAT_ASTC_5x5x4_SFLOAT_BLOCK_EXT:
+            return "VK_FORMAT_ASTC_5x5x4_SFLOAT_BLOCK_EXT";
+        case VK_FORMAT_ASTC_5x5x5_UNORM_BLOCK_EXT:
+            return "VK_FORMAT_ASTC_5x5x5_UNORM_BLOCK_EXT";
+        case VK_FORMAT_ASTC_5x5x5_SRGB_BLOCK_EXT:
+            return "VK_FORMAT_ASTC_5x5x5_SRGB_BLOCK_EXT";
+        case VK_FORMAT_ASTC_5x5x5_SFLOAT_BLOCK_EXT:
+            return "VK_FORMAT_ASTC_5x5x5_SFLOAT_BLOCK_EXT";
+        case VK_FORMAT_ASTC_6x5x5_UNORM_BLOCK_EXT:
+            return "VK_FORMAT_ASTC_6x5x5_UNORM_BLOCK_EXT";
+        case VK_FORMAT_ASTC_6x5x5_SRGB_BLOCK_EXT:
+            return "VK_FORMAT_ASTC_6x5x5_SRGB_BLOCK_EXT";
+        case VK_FORMAT_ASTC_6x5x5_SFLOAT_BLOCK_EXT:
+            return "VK_FORMAT_ASTC_6x5x5_SFLOAT_BLOCK_EXT";
+        case VK_FORMAT_ASTC_6x6x5_UNORM_BLOCK_EXT:
+            return "VK_FORMAT_ASTC_6x6x5_UNORM_BLOCK_EXT";
+        case VK_FORMAT_ASTC_6x6x5_SRGB_BLOCK_EXT:
+            return "VK_FORMAT_ASTC_6x6x5_SRGB_BLOCK_EXT";
+        case VK_FORMAT_ASTC_6x6x5_SFLOAT_BLOCK_EXT:
+            return "VK_FORMAT_ASTC_6x6x5_SFLOAT_BLOCK_EXT";
+        case VK_FORMAT_ASTC_6x6x6_UNORM_BLOCK_EXT:
+            return "VK_FORMAT_ASTC_6x6x6_UNORM_BLOCK_EXT";
+        case VK_FORMAT_ASTC_6x6x6_SRGB_BLOCK_EXT:
+            return "VK_FORMAT_ASTC_6x6x6_SRGB_BLOCK_EXT";
+        case VK_FORMAT_ASTC_6x6x6_SFLOAT_BLOCK_EXT:
+            return "VK_FORMAT_ASTC_6x6x6_SFLOAT_BLOCK_EXT";
         case VK_FORMAT_R8_BOOL_ARM:
             return "VK_FORMAT_R8_BOOL_ARM";
         case VK_FORMAT_R16G16_SFIXED5_NV:
@@ -11194,33 +11254,6 @@ static inline std::string string_VkIndirectCommandsLayoutUsageFlagsEXT(VkIndirec
     return ret;
 }
 #endif // __cplusplus
-#ifdef VK_USE_PLATFORM_OHOS
-static inline const char* string_VkSwapchainImageUsageFlagBitsOHOS(VkSwapchainImageUsageFlagBitsOHOS input_value) {
-    switch (input_value) {
-        case VK_SWAPCHAIN_IMAGE_USAGE_SHARED_BIT_OHOS:
-            return "VK_SWAPCHAIN_IMAGE_USAGE_SHARED_BIT_OHOS";
-        default:
-            return "Unhandled VkSwapchainImageUsageFlagBitsOHOS";
-    }
-}
-
-#ifdef __cplusplus
-static inline std::string string_VkSwapchainImageUsageFlagsOHOS(VkSwapchainImageUsageFlagsOHOS input_value) {
-    std::string ret;
-    int index = 0;
-    while(input_value) {
-        if (input_value & 1) {
-            if( !ret.empty()) ret.append("|");
-            ret.append(string_VkSwapchainImageUsageFlagBitsOHOS(static_cast<VkSwapchainImageUsageFlagBitsOHOS>(1U << index)));
-        }
-        ++index;
-        input_value >>= 1;
-    }
-    if (ret.empty()) ret.append("VkSwapchainImageUsageFlagsOHOS(0)");
-    return ret;
-}
-#endif // __cplusplus
-#endif  // VK_USE_PLATFORM_OHOS
 static inline const char* string_VkAccelerationStructureCreateFlagBitsKHR(VkAccelerationStructureCreateFlagBitsKHR input_value) {
     switch (input_value) {
         case VK_ACCELERATION_STRUCTURE_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_KHR:
@@ -12741,6 +12774,8 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
             return "VkPhysicalDeviceCustomBorderColorPropertiesEXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUSTOM_BORDER_COLOR_FEATURES_EXT:
             return "VkPhysicalDeviceCustomBorderColorFeaturesEXT";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TEXTURE_COMPRESSION_ASTC_3D_FEATURES_EXT:
+            return "VkPhysicalDeviceTextureCompressionASTC3DFeaturesEXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_BARRIER_FEATURES_NV:
             return "VkPhysicalDevicePresentBarrierFeaturesNV";
         case VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_PRESENT_BARRIER_NV:
@@ -13484,12 +13519,6 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
 #ifdef VK_USE_PLATFORM_OHOS
         case VK_STRUCTURE_TYPE_SURFACE_CREATE_INFO_OHOS:
             return "VkSurfaceCreateInfoOHOS";
-        case VK_STRUCTURE_TYPE_NATIVE_BUFFER_OHOS:
-            return "VkNativeBufferOHOS";
-        case VK_STRUCTURE_TYPE_SWAPCHAIN_IMAGE_CREATE_INFO_OHOS:
-            return "VkSwapchainImageCreateInfoOHOS";
-        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENTATION_PROPERTIES_OHOS:
-            return "VkPhysicalDevicePresentationPropertiesOHOS";
 #endif  // VK_USE_PLATFORM_OHOS
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HDR_VIVID_FEATURES_HUAWEI:
             return "VkPhysicalDeviceHdrVividFeaturesHUAWEI";
@@ -13551,6 +13580,10 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
             return "VkDataGraphPipelineBuiltinModelCreateInfoQCOM";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DATA_GRAPH_MODEL_FEATURES_QCOM:
             return "VkPhysicalDeviceDataGraphModelFeaturesQCOM";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_LONG_VECTOR_FEATURES_EXT:
+            return "VkPhysicalDeviceShaderLongVectorFeaturesEXT";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_LONG_VECTOR_PROPERTIES_EXT:
+            return "VkPhysicalDeviceShaderLongVectorPropertiesEXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_CACHE_INCREMENTAL_MODE_FEATURES_SEC:
             return "VkPhysicalDevicePipelineCacheIncrementalModeFeaturesSEC";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_UNIFORM_BUFFER_UNSIZED_ARRAY_FEATURES_EXT:

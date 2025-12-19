@@ -1464,6 +1464,9 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUSTOM_BORDER_COLOR_FEATURES_EXT:
                 safe_pNext = new safe_VkPhysicalDeviceCustomBorderColorFeaturesEXT(reinterpret_cast<const VkPhysicalDeviceCustomBorderColorFeaturesEXT *>(pNext), copy_state, false);
                 break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TEXTURE_COMPRESSION_ASTC_3D_FEATURES_EXT:
+                safe_pNext = new safe_VkPhysicalDeviceTextureCompressionASTC3DFeaturesEXT(reinterpret_cast<const VkPhysicalDeviceTextureCompressionASTC3DFeaturesEXT *>(pNext), copy_state, false);
+                break;
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_BARRIER_FEATURES_NV:
                 safe_pNext = new safe_VkPhysicalDevicePresentBarrierFeaturesNV(reinterpret_cast<const VkPhysicalDevicePresentBarrierFeaturesNV *>(pNext), copy_state, false);
                 break;
@@ -2227,17 +2230,6 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
             case VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_DEPTH_CLAMP_CONTROL_CREATE_INFO_EXT:
                 safe_pNext = new safe_VkPipelineViewportDepthClampControlCreateInfoEXT(reinterpret_cast<const VkPipelineViewportDepthClampControlCreateInfoEXT *>(pNext), copy_state, false);
                 break;
-#ifdef VK_USE_PLATFORM_OHOS
-            case VK_STRUCTURE_TYPE_NATIVE_BUFFER_OHOS:
-                safe_pNext = new safe_VkNativeBufferOHOS(reinterpret_cast<const VkNativeBufferOHOS *>(pNext), copy_state, false);
-                break;
-            case VK_STRUCTURE_TYPE_SWAPCHAIN_IMAGE_CREATE_INFO_OHOS:
-                safe_pNext = new safe_VkSwapchainImageCreateInfoOHOS(reinterpret_cast<const VkSwapchainImageCreateInfoOHOS *>(pNext), copy_state, false);
-                break;
-            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENTATION_PROPERTIES_OHOS:
-                safe_pNext = new safe_VkPhysicalDevicePresentationPropertiesOHOS(reinterpret_cast<const VkPhysicalDevicePresentationPropertiesOHOS *>(pNext), copy_state, false);
-                break;
-#endif  // VK_USE_PLATFORM_OHOS
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HDR_VIVID_FEATURES_HUAWEI:
                 safe_pNext = new safe_VkPhysicalDeviceHdrVividFeaturesHUAWEI(reinterpret_cast<const VkPhysicalDeviceHdrVividFeaturesHUAWEI *>(pNext), copy_state, false);
                 break;
@@ -2307,6 +2299,12 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
                 break;
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DATA_GRAPH_MODEL_FEATURES_QCOM:
                 safe_pNext = new safe_VkPhysicalDeviceDataGraphModelFeaturesQCOM(reinterpret_cast<const VkPhysicalDeviceDataGraphModelFeaturesQCOM *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_LONG_VECTOR_FEATURES_EXT:
+                safe_pNext = new safe_VkPhysicalDeviceShaderLongVectorFeaturesEXT(reinterpret_cast<const VkPhysicalDeviceShaderLongVectorFeaturesEXT *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_LONG_VECTOR_PROPERTIES_EXT:
+                safe_pNext = new safe_VkPhysicalDeviceShaderLongVectorPropertiesEXT(reinterpret_cast<const VkPhysicalDeviceShaderLongVectorPropertiesEXT *>(pNext), copy_state, false);
                 break;
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_CACHE_INCREMENTAL_MODE_FEATURES_SEC:
                 safe_pNext = new safe_VkPhysicalDevicePipelineCacheIncrementalModeFeaturesSEC(reinterpret_cast<const VkPhysicalDevicePipelineCacheIncrementalModeFeaturesSEC *>(pNext), copy_state, false);
@@ -3797,6 +3795,9 @@ void FreePnextChain(const void *pNext) {
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUSTOM_BORDER_COLOR_FEATURES_EXT:
             delete reinterpret_cast<safe_VkPhysicalDeviceCustomBorderColorFeaturesEXT *>(header);
             break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TEXTURE_COMPRESSION_ASTC_3D_FEATURES_EXT:
+            delete reinterpret_cast<safe_VkPhysicalDeviceTextureCompressionASTC3DFeaturesEXT *>(header);
+            break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_BARRIER_FEATURES_NV:
             delete reinterpret_cast<safe_VkPhysicalDevicePresentBarrierFeaturesNV *>(header);
             break;
@@ -4560,17 +4561,6 @@ void FreePnextChain(const void *pNext) {
         case VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_DEPTH_CLAMP_CONTROL_CREATE_INFO_EXT:
             delete reinterpret_cast<safe_VkPipelineViewportDepthClampControlCreateInfoEXT *>(header);
             break;
-#ifdef VK_USE_PLATFORM_OHOS
-        case VK_STRUCTURE_TYPE_NATIVE_BUFFER_OHOS:
-            delete reinterpret_cast<safe_VkNativeBufferOHOS *>(header);
-            break;
-        case VK_STRUCTURE_TYPE_SWAPCHAIN_IMAGE_CREATE_INFO_OHOS:
-            delete reinterpret_cast<safe_VkSwapchainImageCreateInfoOHOS *>(header);
-            break;
-        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENTATION_PROPERTIES_OHOS:
-            delete reinterpret_cast<safe_VkPhysicalDevicePresentationPropertiesOHOS *>(header);
-            break;
-#endif  // VK_USE_PLATFORM_OHOS
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HDR_VIVID_FEATURES_HUAWEI:
             delete reinterpret_cast<safe_VkPhysicalDeviceHdrVividFeaturesHUAWEI *>(header);
             break;
@@ -4640,6 +4630,12 @@ void FreePnextChain(const void *pNext) {
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DATA_GRAPH_MODEL_FEATURES_QCOM:
             delete reinterpret_cast<safe_VkPhysicalDeviceDataGraphModelFeaturesQCOM *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_LONG_VECTOR_FEATURES_EXT:
+            delete reinterpret_cast<safe_VkPhysicalDeviceShaderLongVectorFeaturesEXT *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_LONG_VECTOR_PROPERTIES_EXT:
+            delete reinterpret_cast<safe_VkPhysicalDeviceShaderLongVectorPropertiesEXT *>(header);
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_CACHE_INCREMENTAL_MODE_FEATURES_SEC:
             delete reinterpret_cast<safe_VkPhysicalDevicePipelineCacheIncrementalModeFeaturesSEC *>(header);
