@@ -20542,7 +20542,7 @@ struct safe_VkDataGraphPipelineSessionBindPointRequirementsInfoARM {
 };
 struct safe_VkDataGraphPipelineSessionBindPointRequirementARM {
     VkStructureType sType;
-    const void* pNext{};
+    void* pNext{};
     VkDataGraphPipelineSessionBindPointARM bindPoint;
     VkDataGraphPipelineSessionBindPointTypeARM bindPointType;
     uint32_t numObjects;
@@ -20629,7 +20629,7 @@ struct safe_VkDataGraphPipelineInfoARM {
 };
 struct safe_VkDataGraphPipelinePropertyQueryResultARM {
     VkStructureType sType;
-    const void* pNext{};
+    void* pNext{};
     VkDataGraphPipelinePropertyARM property;
     VkBool32 isText;
     size_t dataSize;
@@ -20689,7 +20689,7 @@ struct safe_VkDataGraphPipelineDispatchInfoARM {
 };
 struct safe_VkQueueFamilyDataGraphPropertiesARM {
     VkStructureType sType;
-    const void* pNext{};
+    void* pNext{};
     VkPhysicalDeviceDataGraphProcessingEngineARM engine;
     VkPhysicalDeviceDataGraphOperationSupportARM operation;
 
@@ -20752,7 +20752,7 @@ struct safe_VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM {
 };
 struct safe_VkQueueFamilyDataGraphProcessingEnginePropertiesARM {
     VkStructureType sType;
-    const void* pNext{};
+    void* pNext{};
     VkExternalSemaphoreHandleTypeFlags foreignSemaphoreHandleTypes;
     VkExternalMemoryHandleTypeFlags foreignMemoryHandleTypes;
 
