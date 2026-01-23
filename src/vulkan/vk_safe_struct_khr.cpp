@@ -12894,6 +12894,60 @@ void safe_VkReleaseSwapchainImagesInfoKHR::initialize(const safe_VkReleaseSwapch
     }
 }
 
+safe_VkPhysicalDeviceInternallySynchronizedQueuesFeaturesKHR::safe_VkPhysicalDeviceInternallySynchronizedQueuesFeaturesKHR(
+    const VkPhysicalDeviceInternallySynchronizedQueuesFeaturesKHR* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
+    bool copy_pnext)
+    : sType(in_struct->sType), internallySynchronizedQueues(in_struct->internallySynchronizedQueues) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceInternallySynchronizedQueuesFeaturesKHR::safe_VkPhysicalDeviceInternallySynchronizedQueuesFeaturesKHR()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INTERNALLY_SYNCHRONIZED_QUEUES_FEATURES_KHR),
+      pNext(nullptr),
+      internallySynchronizedQueues() {}
+
+safe_VkPhysicalDeviceInternallySynchronizedQueuesFeaturesKHR::safe_VkPhysicalDeviceInternallySynchronizedQueuesFeaturesKHR(
+    const safe_VkPhysicalDeviceInternallySynchronizedQueuesFeaturesKHR& copy_src) {
+    sType = copy_src.sType;
+    internallySynchronizedQueues = copy_src.internallySynchronizedQueues;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceInternallySynchronizedQueuesFeaturesKHR&
+safe_VkPhysicalDeviceInternallySynchronizedQueuesFeaturesKHR::operator=(
+    const safe_VkPhysicalDeviceInternallySynchronizedQueuesFeaturesKHR& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    internallySynchronizedQueues = copy_src.internallySynchronizedQueues;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceInternallySynchronizedQueuesFeaturesKHR::~safe_VkPhysicalDeviceInternallySynchronizedQueuesFeaturesKHR() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkPhysicalDeviceInternallySynchronizedQueuesFeaturesKHR::initialize(
+    const VkPhysicalDeviceInternallySynchronizedQueuesFeaturesKHR* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    internallySynchronizedQueues = in_struct->internallySynchronizedQueues;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceInternallySynchronizedQueuesFeaturesKHR::initialize(
+    const safe_VkPhysicalDeviceInternallySynchronizedQueuesFeaturesKHR* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    internallySynchronizedQueues = copy_src->internallySynchronizedQueues;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
 safe_VkCooperativeMatrixPropertiesKHR::safe_VkCooperativeMatrixPropertiesKHR(const VkCooperativeMatrixPropertiesKHR* in_struct,
                                                                              [[maybe_unused]] PNextCopyState* copy_state,
                                                                              bool copy_pnext)
