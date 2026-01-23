@@ -2572,105 +2572,21 @@ void safe_VkImageDescriptorInfoEXT::initialize(const safe_VkImageDescriptorInfoE
     if (copy_src->pView) pView = new safe_VkImageViewCreateInfo(*copy_src->pView);
 }
 
-safe_VkResourceDescriptorDataEXT::safe_VkResourceDescriptorDataEXT(const VkResourceDescriptorDataEXT* in_struct, PNextCopyState*) {
-    initialize(in_struct);
-}
-
-safe_VkResourceDescriptorDataEXT::safe_VkResourceDescriptorDataEXT() : pImage(nullptr) {}
-
-safe_VkResourceDescriptorDataEXT::safe_VkResourceDescriptorDataEXT(const safe_VkResourceDescriptorDataEXT& copy_src) {
-    pImage = nullptr;
-    pTexelBuffer = nullptr;
-    pAddressRange = nullptr;
-    pTensorARM = nullptr;
-    if (copy_src.pImage) pImage = new safe_VkImageDescriptorInfoEXT(*copy_src.pImage);
-    if (copy_src.pTexelBuffer) pTexelBuffer = new safe_VkTexelBufferDescriptorInfoEXT(*copy_src.pTexelBuffer);
-
-    if (copy_src.pAddressRange) {
-        pAddressRange = new VkDeviceAddressRangeEXT(*copy_src.pAddressRange);
-    }
-    if (copy_src.pTensorARM) pTensorARM = new safe_VkTensorViewCreateInfoARM(*copy_src.pTensorARM);
-}
-
-safe_VkResourceDescriptorDataEXT& safe_VkResourceDescriptorDataEXT::operator=(const safe_VkResourceDescriptorDataEXT& copy_src) {
-    if (&copy_src == this) return *this;
-
-    if (pImage) delete pImage;
-    if (pTexelBuffer) delete pTexelBuffer;
-    if (pAddressRange) delete pAddressRange;
-    if (pTensorARM) delete pTensorARM;
-
-    pImage = nullptr;
-    pTexelBuffer = nullptr;
-    pAddressRange = nullptr;
-    pTensorARM = nullptr;
-    if (copy_src.pImage) pImage = new safe_VkImageDescriptorInfoEXT(*copy_src.pImage);
-    if (copy_src.pTexelBuffer) pTexelBuffer = new safe_VkTexelBufferDescriptorInfoEXT(*copy_src.pTexelBuffer);
-
-    if (copy_src.pAddressRange) {
-        pAddressRange = new VkDeviceAddressRangeEXT(*copy_src.pAddressRange);
-    }
-    if (copy_src.pTensorARM) pTensorARM = new safe_VkTensorViewCreateInfoARM(*copy_src.pTensorARM);
-
-    return *this;
-}
-
-safe_VkResourceDescriptorDataEXT::~safe_VkResourceDescriptorDataEXT() {
-    if (pImage) delete pImage;
-    if (pTexelBuffer) delete pTexelBuffer;
-    if (pAddressRange) delete pAddressRange;
-    if (pTensorARM) delete pTensorARM;
-}
-
-void safe_VkResourceDescriptorDataEXT::initialize(const VkResourceDescriptorDataEXT* in_struct,
-                                                  [[maybe_unused]] PNextCopyState* copy_state) {
-    if (pImage) delete pImage;
-    if (pTexelBuffer) delete pTexelBuffer;
-    if (pAddressRange) delete pAddressRange;
-    if (pTensorARM) delete pTensorARM;
-    pImage = nullptr;
-    pTexelBuffer = nullptr;
-    pAddressRange = nullptr;
-    pTensorARM = nullptr;
-    if (in_struct->pImage) pImage = new safe_VkImageDescriptorInfoEXT(in_struct->pImage);
-    if (in_struct->pTexelBuffer) pTexelBuffer = new safe_VkTexelBufferDescriptorInfoEXT(in_struct->pTexelBuffer);
-
-    if (in_struct->pAddressRange) {
-        pAddressRange = new VkDeviceAddressRangeEXT(*in_struct->pAddressRange);
-    }
-    if (in_struct->pTensorARM) pTensorARM = new safe_VkTensorViewCreateInfoARM(in_struct->pTensorARM);
-}
-
-void safe_VkResourceDescriptorDataEXT::initialize(const safe_VkResourceDescriptorDataEXT* copy_src,
-                                                  [[maybe_unused]] PNextCopyState* copy_state) {
-    pImage = nullptr;
-    pTexelBuffer = nullptr;
-    pAddressRange = nullptr;
-    pTensorARM = nullptr;
-    if (copy_src->pImage) pImage = new safe_VkImageDescriptorInfoEXT(*copy_src->pImage);
-    if (copy_src->pTexelBuffer) pTexelBuffer = new safe_VkTexelBufferDescriptorInfoEXT(*copy_src->pTexelBuffer);
-
-    if (copy_src->pAddressRange) {
-        pAddressRange = new VkDeviceAddressRangeEXT(*copy_src->pAddressRange);
-    }
-    if (copy_src->pTensorARM) pTensorARM = new safe_VkTensorViewCreateInfoARM(*copy_src->pTensorARM);
-}
-
 safe_VkResourceDescriptorInfoEXT::safe_VkResourceDescriptorInfoEXT(const VkResourceDescriptorInfoEXT* in_struct,
                                                                    [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
-    : sType(in_struct->sType), type(in_struct->type), data(&in_struct->data) {
+    : sType(in_struct->sType), type(in_struct->type), data(in_struct->data) {
     if (copy_pnext) {
         pNext = SafePnextCopy(in_struct->pNext, copy_state);
     }
 }
 
 safe_VkResourceDescriptorInfoEXT::safe_VkResourceDescriptorInfoEXT()
-    : sType(VK_STRUCTURE_TYPE_RESOURCE_DESCRIPTOR_INFO_EXT), pNext(nullptr), type() {}
+    : sType(VK_STRUCTURE_TYPE_RESOURCE_DESCRIPTOR_INFO_EXT), pNext(nullptr), type(), data() {}
 
 safe_VkResourceDescriptorInfoEXT::safe_VkResourceDescriptorInfoEXT(const safe_VkResourceDescriptorInfoEXT& copy_src) {
     sType = copy_src.sType;
     type = copy_src.type;
-    data.initialize(&copy_src.data);
+    data = copy_src.data;
     pNext = SafePnextCopy(copy_src.pNext);
 }
 
@@ -2681,7 +2597,7 @@ safe_VkResourceDescriptorInfoEXT& safe_VkResourceDescriptorInfoEXT::operator=(co
 
     sType = copy_src.sType;
     type = copy_src.type;
-    data.initialize(&copy_src.data);
+    data = copy_src.data;
     pNext = SafePnextCopy(copy_src.pNext);
 
     return *this;
@@ -2694,7 +2610,7 @@ void safe_VkResourceDescriptorInfoEXT::initialize(const VkResourceDescriptorInfo
     FreePnextChain(pNext);
     sType = in_struct->sType;
     type = in_struct->type;
-    data.initialize(&in_struct->data);
+    data = in_struct->data;
     pNext = SafePnextCopy(in_struct->pNext, copy_state);
 }
 
@@ -2702,7 +2618,7 @@ void safe_VkResourceDescriptorInfoEXT::initialize(const safe_VkResourceDescripto
                                                   [[maybe_unused]] PNextCopyState* copy_state) {
     sType = copy_src->sType;
     type = copy_src->type;
-    data.initialize(&copy_src->data);
+    data = copy_src->data;
     pNext = SafePnextCopy(copy_src->pNext);
 }
 
