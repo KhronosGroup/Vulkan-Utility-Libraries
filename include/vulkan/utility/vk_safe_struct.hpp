@@ -12046,27 +12046,11 @@ struct safe_VkTensorViewCreateInfoARM {
     VkTensorViewCreateInfoARM* ptr() { return reinterpret_cast<VkTensorViewCreateInfoARM*>(this); }
     VkTensorViewCreateInfoARM const* ptr() const { return reinterpret_cast<VkTensorViewCreateInfoARM const*>(this); }
 };
-union safe_VkResourceDescriptorDataEXT {
-    safe_VkImageDescriptorInfoEXT* pImage;
-    safe_VkTexelBufferDescriptorInfoEXT* pTexelBuffer;
-    const VkDeviceAddressRangeEXT* pAddressRange{};
-    safe_VkTensorViewCreateInfoARM* pTensorARM;
-
-    safe_VkResourceDescriptorDataEXT(const VkResourceDescriptorDataEXT* in_struct, PNextCopyState* copy_state = {});
-    safe_VkResourceDescriptorDataEXT(const safe_VkResourceDescriptorDataEXT& copy_src);
-    safe_VkResourceDescriptorDataEXT& operator=(const safe_VkResourceDescriptorDataEXT& copy_src);
-    safe_VkResourceDescriptorDataEXT();
-    ~safe_VkResourceDescriptorDataEXT();
-    void initialize(const VkResourceDescriptorDataEXT* in_struct, PNextCopyState* copy_state = {});
-    void initialize(const safe_VkResourceDescriptorDataEXT* copy_src, PNextCopyState* copy_state = {});
-    VkResourceDescriptorDataEXT* ptr() { return reinterpret_cast<VkResourceDescriptorDataEXT*>(this); }
-    VkResourceDescriptorDataEXT const* ptr() const { return reinterpret_cast<VkResourceDescriptorDataEXT const*>(this); }
-};
 struct safe_VkResourceDescriptorInfoEXT {
     VkStructureType sType;
     const void* pNext{};
     VkDescriptorType type;
-    safe_VkResourceDescriptorDataEXT data;
+    VkResourceDescriptorDataEXT data;
 
     safe_VkResourceDescriptorInfoEXT(const VkResourceDescriptorInfoEXT* in_struct, PNextCopyState* copy_state = {},
                                      bool copy_pnext = true);

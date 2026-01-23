@@ -61,9 +61,11 @@ class SafeStructOutputGenerator(BaseGenerator):
             'VkDescriptorDataEXT',
             'VkIndirectCommandsTokenDataEXT',
             'VkIndirectExecutionSetInfoEXT',
+            'VkResourceDescriptorDataEXT',
         ]
         self.union_of_pointer_callers = [
             'VkDescriptorGetInfoEXT',
+            'VkResourceDescriptorInfoEXT',
         ]
 
         # Will update the the function interface
