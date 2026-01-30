@@ -695,6 +695,7 @@ template <> inline VkStructureType GetSType<VkPhysicalDeviceRepresentativeFragme
 template <> inline VkStructureType GetSType<VkPipelineRepresentativeFragmentTestStateCreateInfoNV>() { return VK_STRUCTURE_TYPE_PIPELINE_REPRESENTATIVE_FRAGMENT_TEST_STATE_CREATE_INFO_NV; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceImageViewImageFormatInfoEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_VIEW_IMAGE_FORMAT_INFO_EXT; }
 template <> inline VkStructureType GetSType<VkFilterCubicImageViewImageFormatPropertiesEXT>() { return VK_STRUCTURE_TYPE_FILTER_CUBIC_IMAGE_VIEW_IMAGE_FORMAT_PROPERTIES_EXT; }
+template <> inline VkStructureType GetSType<VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_CONVERSION_FEATURES_QCOM; }
 template <> inline VkStructureType GetSType<VkImportMemoryHostPointerInfoEXT>() { return VK_STRUCTURE_TYPE_IMPORT_MEMORY_HOST_POINTER_INFO_EXT; }
 template <> inline VkStructureType GetSType<VkMemoryHostPointerPropertiesEXT>() { return VK_STRUCTURE_TYPE_MEMORY_HOST_POINTER_PROPERTIES_EXT; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceExternalMemoryHostPropertiesEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_MEMORY_HOST_PROPERTIES_EXT; }

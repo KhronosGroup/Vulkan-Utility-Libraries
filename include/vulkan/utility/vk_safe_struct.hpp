@@ -13374,6 +13374,29 @@ struct safe_VkFilterCubicImageViewImageFormatPropertiesEXT {
         return reinterpret_cast<VkFilterCubicImageViewImageFormatPropertiesEXT const*>(this);
     }
 };
+struct safe_VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM {
+    VkStructureType sType;
+    void* pNext{};
+    VkBool32 cooperativeMatrixConversion;
+
+    safe_VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM(
+        const VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM* in_struct, PNextCopyState* copy_state = {},
+        bool copy_pnext = true);
+    safe_VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM(
+        const safe_VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM& copy_src);
+    safe_VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM& operator=(
+        const safe_VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM& copy_src);
+    safe_VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM();
+    ~safe_VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM();
+    void initialize(const VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM* copy_src, PNextCopyState* copy_state = {});
+    VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM* ptr() {
+        return reinterpret_cast<VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM*>(this);
+    }
+    VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM const* ptr() const {
+        return reinterpret_cast<VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM const*>(this);
+    }
+};
 struct safe_VkImportMemoryHostPointerInfoEXT {
     VkStructureType sType;
     const void* pNext{};

@@ -4698,6 +4698,60 @@ void safe_VkPipelineRepresentativeFragmentTestStateCreateInfoNV::initialize(
     pNext = SafePnextCopy(copy_src->pNext);
 }
 
+safe_VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM::safe_VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM(
+    const VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
+    bool copy_pnext)
+    : sType(in_struct->sType), cooperativeMatrixConversion(in_struct->cooperativeMatrixConversion) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM::safe_VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_CONVERSION_FEATURES_QCOM),
+      pNext(nullptr),
+      cooperativeMatrixConversion() {}
+
+safe_VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM::safe_VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM(
+    const safe_VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM& copy_src) {
+    sType = copy_src.sType;
+    cooperativeMatrixConversion = copy_src.cooperativeMatrixConversion;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM&
+safe_VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM::operator=(
+    const safe_VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    cooperativeMatrixConversion = copy_src.cooperativeMatrixConversion;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM::~safe_VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM::initialize(
+    const VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    cooperativeMatrixConversion = in_struct->cooperativeMatrixConversion;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM::initialize(
+    const safe_VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    cooperativeMatrixConversion = copy_src->cooperativeMatrixConversion;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
 safe_VkPipelineCompilerControlCreateInfoAMD::safe_VkPipelineCompilerControlCreateInfoAMD(
     const VkPipelineCompilerControlCreateInfoAMD* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
     : sType(in_struct->sType), compilerControlFlags(in_struct->compilerControlFlags) {
