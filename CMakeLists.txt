@@ -101,9 +101,14 @@ if (VUL_ENABLE_INSTALL)
         NO_CHECK_REQUIRED_COMPONENTS_MACRO
     )
 
-    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/VulkanUtilityLibrariesConfig.cmake
-        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/VulkanUtilityLibraries
-    )
+    write_basic_package_version_file(${CMAKE_CURRENT_BINARY_DIR}/VulkanUtilityLibrariesConfigVersion.cmake
+        VERSION ${PROJECT_VERSION}
+        COMPATIBILITY AnyNewerVersion)
+
+    install(FILES
+            ${CMAKE_CURRENT_BINARY_DIR}/VulkanUtilityLibrariesConfig.cmake
+            ${CMAKE_CURRENT_BINARY_DIR}/VulkanUtilityLibrariesConfigVersion.cmake
+        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/VulkanUtilityLibraries)
 endif()
 
 option(VUL_CODEGEN "Enable Vulkan-Utility-Libraries code generation")
