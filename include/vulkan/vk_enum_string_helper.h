@@ -2462,6 +2462,8 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMPUTE_OCCUPANCY_PRIORITY_FEATURES_NV";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SUBGROUP_PARTITIONED_FEATURES_EXT:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SUBGROUP_PARTITIONED_FEATURES_EXT";
+        case VK_STRUCTURE_TYPE_UBM_SURFACE_CREATE_INFO_SEC:
+            return "VK_STRUCTURE_TYPE_UBM_SURFACE_CREATE_INFO_SEC";
         default:
             return "Unhandled VkStructureType";
     }
@@ -3268,6 +3270,12 @@ static inline const char* string_VkFormat(VkFormat input_value) {
             return "VK_FORMAT_ASTC_6x6x6_SFLOAT_BLOCK_EXT";
         case VK_FORMAT_R8_BOOL_ARM:
             return "VK_FORMAT_R8_BOOL_ARM";
+        case VK_FORMAT_R16_SFLOAT_FPENCODING_BFLOAT16_ARM:
+            return "VK_FORMAT_R16_SFLOAT_FPENCODING_BFLOAT16_ARM";
+        case VK_FORMAT_R8_SFLOAT_FPENCODING_FLOAT8E4M3_ARM:
+            return "VK_FORMAT_R8_SFLOAT_FPENCODING_FLOAT8E4M3_ARM";
+        case VK_FORMAT_R8_SFLOAT_FPENCODING_FLOAT8E5M2_ARM:
+            return "VK_FORMAT_R8_SFLOAT_FPENCODING_FLOAT8E5M2_ARM";
         case VK_FORMAT_R16G16_SFIXED5_NV:
             return "VK_FORMAT_R16G16_SFIXED5_NV";
         case VK_FORMAT_R10X6_UINT_PACK16_ARM:
@@ -13765,6 +13773,10 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
             return "VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SUBGROUP_PARTITIONED_FEATURES_EXT:
             return "VkPhysicalDeviceShaderSubgroupPartitionedFeaturesEXT";
+#ifdef VK_USE_PLATFORM_UBM_SEC
+        case VK_STRUCTURE_TYPE_UBM_SURFACE_CREATE_INFO_SEC:
+            return "VkUbmSurfaceCreateInfoSEC";
+#endif  // VK_USE_PLATFORM_UBM_SEC
         case VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_TRIANGLES_DATA_KHR:
             return "VkAccelerationStructureGeometryTrianglesDataKHR";
         case VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_AABBS_DATA_KHR:
