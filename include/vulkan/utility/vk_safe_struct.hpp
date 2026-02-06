@@ -23695,6 +23695,26 @@ struct safe_VkPhysicalDeviceShaderSubgroupPartitionedFeaturesEXT {
         return reinterpret_cast<VkPhysicalDeviceShaderSubgroupPartitionedFeaturesEXT const*>(this);
     }
 };
+#ifdef VK_USE_PLATFORM_UBM_SEC
+struct safe_VkUbmSurfaceCreateInfoSEC {
+    VkStructureType sType;
+    const void* pNext{};
+    VkUbmSurfaceCreateFlagsSEC flags;
+    struct ubm_device* ubm_device{};
+    struct ubm_surface* ubm_surface{};
+
+    safe_VkUbmSurfaceCreateInfoSEC(const VkUbmSurfaceCreateInfoSEC* in_struct, PNextCopyState* copy_state = {},
+                                   bool copy_pnext = true);
+    safe_VkUbmSurfaceCreateInfoSEC(const safe_VkUbmSurfaceCreateInfoSEC& copy_src);
+    safe_VkUbmSurfaceCreateInfoSEC& operator=(const safe_VkUbmSurfaceCreateInfoSEC& copy_src);
+    safe_VkUbmSurfaceCreateInfoSEC();
+    ~safe_VkUbmSurfaceCreateInfoSEC();
+    void initialize(const VkUbmSurfaceCreateInfoSEC* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkUbmSurfaceCreateInfoSEC* copy_src, PNextCopyState* copy_state = {});
+    VkUbmSurfaceCreateInfoSEC* ptr() { return reinterpret_cast<VkUbmSurfaceCreateInfoSEC*>(this); }
+    VkUbmSurfaceCreateInfoSEC const* ptr() const { return reinterpret_cast<VkUbmSurfaceCreateInfoSEC const*>(this); }
+};
+#endif  // VK_USE_PLATFORM_UBM_SEC
 struct safe_VkAccelerationStructureGeometryTrianglesDataKHR {
     VkStructureType sType;
     const void* pNext{};

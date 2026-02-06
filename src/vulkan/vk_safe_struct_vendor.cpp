@@ -23451,6 +23451,109 @@ void safe_VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV::initialize(
     computeOccupancyPriority = copy_src->computeOccupancyPriority;
     pNext = SafePnextCopy(copy_src->pNext);
 }
+#ifdef VK_USE_PLATFORM_UBM_SEC
+
+safe_VkUbmSurfaceCreateInfoSEC::safe_VkUbmSurfaceCreateInfoSEC(const VkUbmSurfaceCreateInfoSEC* in_struct,
+                                                               [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), flags(in_struct->flags), ubm_device(nullptr), ubm_surface(nullptr) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+    if (in_struct->ubm_device) {
+        ubm_device = new ubm_device(*in_struct->ubm_device);
+    }
+
+    if (in_struct->ubm_surface) {
+        ubm_surface = new ubm_surface(*in_struct->ubm_surface);
+    }
+}
+
+safe_VkUbmSurfaceCreateInfoSEC::safe_VkUbmSurfaceCreateInfoSEC()
+    : sType(VK_STRUCTURE_TYPE_UBM_SURFACE_CREATE_INFO_SEC), pNext(nullptr), flags(), ubm_device(nullptr), ubm_surface(nullptr) {}
+
+safe_VkUbmSurfaceCreateInfoSEC::safe_VkUbmSurfaceCreateInfoSEC(const safe_VkUbmSurfaceCreateInfoSEC& copy_src) {
+    sType = copy_src.sType;
+    flags = copy_src.flags;
+    ubm_device = nullptr;
+    ubm_surface = nullptr;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    if (copy_src.ubm_device) {
+        ubm_device = new ubm_device(*copy_src.ubm_device);
+    }
+
+    if (copy_src.ubm_surface) {
+        ubm_surface = new ubm_surface(*copy_src.ubm_surface);
+    }
+}
+
+safe_VkUbmSurfaceCreateInfoSEC& safe_VkUbmSurfaceCreateInfoSEC::operator=(const safe_VkUbmSurfaceCreateInfoSEC& copy_src) {
+    if (&copy_src == this) return *this;
+
+    if (ubm_device) delete ubm_device;
+    if (ubm_surface) delete ubm_surface;
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    flags = copy_src.flags;
+    ubm_device = nullptr;
+    ubm_surface = nullptr;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    if (copy_src.ubm_device) {
+        ubm_device = new ubm_device(*copy_src.ubm_device);
+    }
+
+    if (copy_src.ubm_surface) {
+        ubm_surface = new ubm_surface(*copy_src.ubm_surface);
+    }
+
+    return *this;
+}
+
+safe_VkUbmSurfaceCreateInfoSEC::~safe_VkUbmSurfaceCreateInfoSEC() {
+    if (ubm_device) delete ubm_device;
+    if (ubm_surface) delete ubm_surface;
+    FreePnextChain(pNext);
+}
+
+void safe_VkUbmSurfaceCreateInfoSEC::initialize(const VkUbmSurfaceCreateInfoSEC* in_struct,
+                                                [[maybe_unused]] PNextCopyState* copy_state) {
+    if (ubm_device) delete ubm_device;
+    if (ubm_surface) delete ubm_surface;
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    flags = in_struct->flags;
+    ubm_device = nullptr;
+    ubm_surface = nullptr;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+
+    if (in_struct->ubm_device) {
+        ubm_device = new ubm_device(*in_struct->ubm_device);
+    }
+
+    if (in_struct->ubm_surface) {
+        ubm_surface = new ubm_surface(*in_struct->ubm_surface);
+    }
+}
+
+void safe_VkUbmSurfaceCreateInfoSEC::initialize(const safe_VkUbmSurfaceCreateInfoSEC* copy_src,
+                                                [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    flags = copy_src->flags;
+    ubm_device = nullptr;
+    ubm_surface = nullptr;
+    pNext = SafePnextCopy(copy_src->pNext);
+
+    if (copy_src->ubm_device) {
+        ubm_device = new ubm_device(*copy_src->ubm_device);
+    }
+
+    if (copy_src->ubm_surface) {
+        ubm_surface = new ubm_surface(*copy_src->ubm_surface);
+    }
+}
+#endif  // VK_USE_PLATFORM_UBM_SEC
 
 }  // namespace vku
 
