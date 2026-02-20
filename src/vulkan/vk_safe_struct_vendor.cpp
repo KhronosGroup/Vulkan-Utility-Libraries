@@ -23455,85 +23455,85 @@ void safe_VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV::initialize(
 
 safe_VkUbmSurfaceCreateInfoSEC::safe_VkUbmSurfaceCreateInfoSEC(const VkUbmSurfaceCreateInfoSEC* in_struct,
                                                                [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
-    : sType(in_struct->sType), flags(in_struct->flags), ubm_device(nullptr), ubm_surface(nullptr) {
+    : sType(in_struct->sType), flags(in_struct->flags), device(nullptr), surface(nullptr) {
     if (copy_pnext) {
         pNext = SafePnextCopy(in_struct->pNext, copy_state);
     }
-    if (in_struct->ubm_device) {
-        ubm_device = new ubm_device(*in_struct->ubm_device);
+    if (in_struct->device) {
+        device = new ubm_device(*in_struct->device);
     }
 
-    if (in_struct->ubm_surface) {
-        ubm_surface = new ubm_surface(*in_struct->ubm_surface);
+    if (in_struct->surface) {
+        surface = new ubm_surface(*in_struct->surface);
     }
 }
 
 safe_VkUbmSurfaceCreateInfoSEC::safe_VkUbmSurfaceCreateInfoSEC()
-    : sType(VK_STRUCTURE_TYPE_UBM_SURFACE_CREATE_INFO_SEC), pNext(nullptr), flags(), ubm_device(nullptr), ubm_surface(nullptr) {}
+    : sType(VK_STRUCTURE_TYPE_UBM_SURFACE_CREATE_INFO_SEC), pNext(nullptr), flags(), device(nullptr), surface(nullptr) {}
 
 safe_VkUbmSurfaceCreateInfoSEC::safe_VkUbmSurfaceCreateInfoSEC(const safe_VkUbmSurfaceCreateInfoSEC& copy_src) {
     sType = copy_src.sType;
     flags = copy_src.flags;
-    ubm_device = nullptr;
-    ubm_surface = nullptr;
+    device = nullptr;
+    surface = nullptr;
     pNext = SafePnextCopy(copy_src.pNext);
 
-    if (copy_src.ubm_device) {
-        ubm_device = new ubm_device(*copy_src.ubm_device);
+    if (copy_src.device) {
+        device = new ubm_device(*copy_src.device);
     }
 
-    if (copy_src.ubm_surface) {
-        ubm_surface = new ubm_surface(*copy_src.ubm_surface);
+    if (copy_src.surface) {
+        surface = new ubm_surface(*copy_src.surface);
     }
 }
 
 safe_VkUbmSurfaceCreateInfoSEC& safe_VkUbmSurfaceCreateInfoSEC::operator=(const safe_VkUbmSurfaceCreateInfoSEC& copy_src) {
     if (&copy_src == this) return *this;
 
-    if (ubm_device) delete ubm_device;
-    if (ubm_surface) delete ubm_surface;
+    if (device) delete device;
+    if (surface) delete surface;
     FreePnextChain(pNext);
 
     sType = copy_src.sType;
     flags = copy_src.flags;
-    ubm_device = nullptr;
-    ubm_surface = nullptr;
+    device = nullptr;
+    surface = nullptr;
     pNext = SafePnextCopy(copy_src.pNext);
 
-    if (copy_src.ubm_device) {
-        ubm_device = new ubm_device(*copy_src.ubm_device);
+    if (copy_src.device) {
+        device = new ubm_device(*copy_src.device);
     }
 
-    if (copy_src.ubm_surface) {
-        ubm_surface = new ubm_surface(*copy_src.ubm_surface);
+    if (copy_src.surface) {
+        surface = new ubm_surface(*copy_src.surface);
     }
 
     return *this;
 }
 
 safe_VkUbmSurfaceCreateInfoSEC::~safe_VkUbmSurfaceCreateInfoSEC() {
-    if (ubm_device) delete ubm_device;
-    if (ubm_surface) delete ubm_surface;
+    if (device) delete device;
+    if (surface) delete surface;
     FreePnextChain(pNext);
 }
 
 void safe_VkUbmSurfaceCreateInfoSEC::initialize(const VkUbmSurfaceCreateInfoSEC* in_struct,
                                                 [[maybe_unused]] PNextCopyState* copy_state) {
-    if (ubm_device) delete ubm_device;
-    if (ubm_surface) delete ubm_surface;
+    if (device) delete device;
+    if (surface) delete surface;
     FreePnextChain(pNext);
     sType = in_struct->sType;
     flags = in_struct->flags;
-    ubm_device = nullptr;
-    ubm_surface = nullptr;
+    device = nullptr;
+    surface = nullptr;
     pNext = SafePnextCopy(in_struct->pNext, copy_state);
 
-    if (in_struct->ubm_device) {
-        ubm_device = new ubm_device(*in_struct->ubm_device);
+    if (in_struct->device) {
+        device = new ubm_device(*in_struct->device);
     }
 
-    if (in_struct->ubm_surface) {
-        ubm_surface = new ubm_surface(*in_struct->ubm_surface);
+    if (in_struct->surface) {
+        surface = new ubm_surface(*in_struct->surface);
     }
 }
 
@@ -23541,19 +23541,92 @@ void safe_VkUbmSurfaceCreateInfoSEC::initialize(const safe_VkUbmSurfaceCreateInf
                                                 [[maybe_unused]] PNextCopyState* copy_state) {
     sType = copy_src->sType;
     flags = copy_src->flags;
-    ubm_device = nullptr;
-    ubm_surface = nullptr;
+    device = nullptr;
+    surface = nullptr;
     pNext = SafePnextCopy(copy_src->pNext);
 
-    if (copy_src->ubm_device) {
-        ubm_device = new ubm_device(*copy_src->ubm_device);
+    if (copy_src->device) {
+        device = new ubm_device(*copy_src->device);
     }
 
-    if (copy_src->ubm_surface) {
-        ubm_surface = new ubm_surface(*copy_src->ubm_surface);
+    if (copy_src->surface) {
+        surface = new ubm_surface(*copy_src->surface);
     }
 }
 #endif  // VK_USE_PLATFORM_UBM_SEC
+
+safe_VkPhysicalDeviceShaderMixedFloatDotProductFeaturesVALVE::safe_VkPhysicalDeviceShaderMixedFloatDotProductFeaturesVALVE(
+    const VkPhysicalDeviceShaderMixedFloatDotProductFeaturesVALVE* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
+    bool copy_pnext)
+    : sType(in_struct->sType),
+      shaderMixedFloatDotProductFloat16AccFloat32(in_struct->shaderMixedFloatDotProductFloat16AccFloat32),
+      shaderMixedFloatDotProductFloat16AccFloat16(in_struct->shaderMixedFloatDotProductFloat16AccFloat16),
+      shaderMixedFloatDotProductBFloat16Acc(in_struct->shaderMixedFloatDotProductBFloat16Acc),
+      shaderMixedFloatDotProductFloat8AccFloat32(in_struct->shaderMixedFloatDotProductFloat8AccFloat32) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceShaderMixedFloatDotProductFeaturesVALVE::safe_VkPhysicalDeviceShaderMixedFloatDotProductFeaturesVALVE()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_MIXED_FLOAT_DOT_PRODUCT_FEATURES_VALVE),
+      pNext(nullptr),
+      shaderMixedFloatDotProductFloat16AccFloat32(),
+      shaderMixedFloatDotProductFloat16AccFloat16(),
+      shaderMixedFloatDotProductBFloat16Acc(),
+      shaderMixedFloatDotProductFloat8AccFloat32() {}
+
+safe_VkPhysicalDeviceShaderMixedFloatDotProductFeaturesVALVE::safe_VkPhysicalDeviceShaderMixedFloatDotProductFeaturesVALVE(
+    const safe_VkPhysicalDeviceShaderMixedFloatDotProductFeaturesVALVE& copy_src) {
+    sType = copy_src.sType;
+    shaderMixedFloatDotProductFloat16AccFloat32 = copy_src.shaderMixedFloatDotProductFloat16AccFloat32;
+    shaderMixedFloatDotProductFloat16AccFloat16 = copy_src.shaderMixedFloatDotProductFloat16AccFloat16;
+    shaderMixedFloatDotProductBFloat16Acc = copy_src.shaderMixedFloatDotProductBFloat16Acc;
+    shaderMixedFloatDotProductFloat8AccFloat32 = copy_src.shaderMixedFloatDotProductFloat8AccFloat32;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceShaderMixedFloatDotProductFeaturesVALVE&
+safe_VkPhysicalDeviceShaderMixedFloatDotProductFeaturesVALVE::operator=(
+    const safe_VkPhysicalDeviceShaderMixedFloatDotProductFeaturesVALVE& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    shaderMixedFloatDotProductFloat16AccFloat32 = copy_src.shaderMixedFloatDotProductFloat16AccFloat32;
+    shaderMixedFloatDotProductFloat16AccFloat16 = copy_src.shaderMixedFloatDotProductFloat16AccFloat16;
+    shaderMixedFloatDotProductBFloat16Acc = copy_src.shaderMixedFloatDotProductBFloat16Acc;
+    shaderMixedFloatDotProductFloat8AccFloat32 = copy_src.shaderMixedFloatDotProductFloat8AccFloat32;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceShaderMixedFloatDotProductFeaturesVALVE::~safe_VkPhysicalDeviceShaderMixedFloatDotProductFeaturesVALVE() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkPhysicalDeviceShaderMixedFloatDotProductFeaturesVALVE::initialize(
+    const VkPhysicalDeviceShaderMixedFloatDotProductFeaturesVALVE* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    shaderMixedFloatDotProductFloat16AccFloat32 = in_struct->shaderMixedFloatDotProductFloat16AccFloat32;
+    shaderMixedFloatDotProductFloat16AccFloat16 = in_struct->shaderMixedFloatDotProductFloat16AccFloat16;
+    shaderMixedFloatDotProductBFloat16Acc = in_struct->shaderMixedFloatDotProductBFloat16Acc;
+    shaderMixedFloatDotProductFloat8AccFloat32 = in_struct->shaderMixedFloatDotProductFloat8AccFloat32;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceShaderMixedFloatDotProductFeaturesVALVE::initialize(
+    const safe_VkPhysicalDeviceShaderMixedFloatDotProductFeaturesVALVE* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    shaderMixedFloatDotProductFloat16AccFloat32 = copy_src->shaderMixedFloatDotProductFloat16AccFloat32;
+    shaderMixedFloatDotProductFloat16AccFloat16 = copy_src->shaderMixedFloatDotProductFloat16AccFloat16;
+    shaderMixedFloatDotProductBFloat16Acc = copy_src->shaderMixedFloatDotProductBFloat16Acc;
+    shaderMixedFloatDotProductFloat8AccFloat32 = copy_src->shaderMixedFloatDotProductFloat8AccFloat32;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
 
 }  // namespace vku
 

@@ -22,227 +22,6 @@
 
 namespace vku {
 
-safe_VkBufferMemoryBarrier::safe_VkBufferMemoryBarrier(const VkBufferMemoryBarrier* in_struct,
-                                                       [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
-    : sType(in_struct->sType),
-      srcAccessMask(in_struct->srcAccessMask),
-      dstAccessMask(in_struct->dstAccessMask),
-      srcQueueFamilyIndex(in_struct->srcQueueFamilyIndex),
-      dstQueueFamilyIndex(in_struct->dstQueueFamilyIndex),
-      buffer(in_struct->buffer),
-      offset(in_struct->offset),
-      size(in_struct->size) {
-    if (copy_pnext) {
-        pNext = SafePnextCopy(in_struct->pNext, copy_state);
-    }
-}
-
-safe_VkBufferMemoryBarrier::safe_VkBufferMemoryBarrier()
-    : sType(VK_STRUCTURE_TYPE_BUFFER_MEMORY_BARRIER),
-      pNext(nullptr),
-      srcAccessMask(),
-      dstAccessMask(),
-      srcQueueFamilyIndex(),
-      dstQueueFamilyIndex(),
-      buffer(),
-      offset(),
-      size() {}
-
-safe_VkBufferMemoryBarrier::safe_VkBufferMemoryBarrier(const safe_VkBufferMemoryBarrier& copy_src) {
-    sType = copy_src.sType;
-    srcAccessMask = copy_src.srcAccessMask;
-    dstAccessMask = copy_src.dstAccessMask;
-    srcQueueFamilyIndex = copy_src.srcQueueFamilyIndex;
-    dstQueueFamilyIndex = copy_src.dstQueueFamilyIndex;
-    buffer = copy_src.buffer;
-    offset = copy_src.offset;
-    size = copy_src.size;
-    pNext = SafePnextCopy(copy_src.pNext);
-}
-
-safe_VkBufferMemoryBarrier& safe_VkBufferMemoryBarrier::operator=(const safe_VkBufferMemoryBarrier& copy_src) {
-    if (&copy_src == this) return *this;
-
-    FreePnextChain(pNext);
-
-    sType = copy_src.sType;
-    srcAccessMask = copy_src.srcAccessMask;
-    dstAccessMask = copy_src.dstAccessMask;
-    srcQueueFamilyIndex = copy_src.srcQueueFamilyIndex;
-    dstQueueFamilyIndex = copy_src.dstQueueFamilyIndex;
-    buffer = copy_src.buffer;
-    offset = copy_src.offset;
-    size = copy_src.size;
-    pNext = SafePnextCopy(copy_src.pNext);
-
-    return *this;
-}
-
-safe_VkBufferMemoryBarrier::~safe_VkBufferMemoryBarrier() { FreePnextChain(pNext); }
-
-void safe_VkBufferMemoryBarrier::initialize(const VkBufferMemoryBarrier* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
-    FreePnextChain(pNext);
-    sType = in_struct->sType;
-    srcAccessMask = in_struct->srcAccessMask;
-    dstAccessMask = in_struct->dstAccessMask;
-    srcQueueFamilyIndex = in_struct->srcQueueFamilyIndex;
-    dstQueueFamilyIndex = in_struct->dstQueueFamilyIndex;
-    buffer = in_struct->buffer;
-    offset = in_struct->offset;
-    size = in_struct->size;
-    pNext = SafePnextCopy(in_struct->pNext, copy_state);
-}
-
-void safe_VkBufferMemoryBarrier::initialize(const safe_VkBufferMemoryBarrier* copy_src,
-                                            [[maybe_unused]] PNextCopyState* copy_state) {
-    sType = copy_src->sType;
-    srcAccessMask = copy_src->srcAccessMask;
-    dstAccessMask = copy_src->dstAccessMask;
-    srcQueueFamilyIndex = copy_src->srcQueueFamilyIndex;
-    dstQueueFamilyIndex = copy_src->dstQueueFamilyIndex;
-    buffer = copy_src->buffer;
-    offset = copy_src->offset;
-    size = copy_src->size;
-    pNext = SafePnextCopy(copy_src->pNext);
-}
-
-safe_VkImageMemoryBarrier::safe_VkImageMemoryBarrier(const VkImageMemoryBarrier* in_struct,
-                                                     [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
-    : sType(in_struct->sType),
-      srcAccessMask(in_struct->srcAccessMask),
-      dstAccessMask(in_struct->dstAccessMask),
-      oldLayout(in_struct->oldLayout),
-      newLayout(in_struct->newLayout),
-      srcQueueFamilyIndex(in_struct->srcQueueFamilyIndex),
-      dstQueueFamilyIndex(in_struct->dstQueueFamilyIndex),
-      image(in_struct->image),
-      subresourceRange(in_struct->subresourceRange) {
-    if (copy_pnext) {
-        pNext = SafePnextCopy(in_struct->pNext, copy_state);
-    }
-}
-
-safe_VkImageMemoryBarrier::safe_VkImageMemoryBarrier()
-    : sType(VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER),
-      pNext(nullptr),
-      srcAccessMask(),
-      dstAccessMask(),
-      oldLayout(),
-      newLayout(),
-      srcQueueFamilyIndex(),
-      dstQueueFamilyIndex(),
-      image(),
-      subresourceRange() {}
-
-safe_VkImageMemoryBarrier::safe_VkImageMemoryBarrier(const safe_VkImageMemoryBarrier& copy_src) {
-    sType = copy_src.sType;
-    srcAccessMask = copy_src.srcAccessMask;
-    dstAccessMask = copy_src.dstAccessMask;
-    oldLayout = copy_src.oldLayout;
-    newLayout = copy_src.newLayout;
-    srcQueueFamilyIndex = copy_src.srcQueueFamilyIndex;
-    dstQueueFamilyIndex = copy_src.dstQueueFamilyIndex;
-    image = copy_src.image;
-    subresourceRange = copy_src.subresourceRange;
-    pNext = SafePnextCopy(copy_src.pNext);
-}
-
-safe_VkImageMemoryBarrier& safe_VkImageMemoryBarrier::operator=(const safe_VkImageMemoryBarrier& copy_src) {
-    if (&copy_src == this) return *this;
-
-    FreePnextChain(pNext);
-
-    sType = copy_src.sType;
-    srcAccessMask = copy_src.srcAccessMask;
-    dstAccessMask = copy_src.dstAccessMask;
-    oldLayout = copy_src.oldLayout;
-    newLayout = copy_src.newLayout;
-    srcQueueFamilyIndex = copy_src.srcQueueFamilyIndex;
-    dstQueueFamilyIndex = copy_src.dstQueueFamilyIndex;
-    image = copy_src.image;
-    subresourceRange = copy_src.subresourceRange;
-    pNext = SafePnextCopy(copy_src.pNext);
-
-    return *this;
-}
-
-safe_VkImageMemoryBarrier::~safe_VkImageMemoryBarrier() { FreePnextChain(pNext); }
-
-void safe_VkImageMemoryBarrier::initialize(const VkImageMemoryBarrier* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
-    FreePnextChain(pNext);
-    sType = in_struct->sType;
-    srcAccessMask = in_struct->srcAccessMask;
-    dstAccessMask = in_struct->dstAccessMask;
-    oldLayout = in_struct->oldLayout;
-    newLayout = in_struct->newLayout;
-    srcQueueFamilyIndex = in_struct->srcQueueFamilyIndex;
-    dstQueueFamilyIndex = in_struct->dstQueueFamilyIndex;
-    image = in_struct->image;
-    subresourceRange = in_struct->subresourceRange;
-    pNext = SafePnextCopy(in_struct->pNext, copy_state);
-}
-
-void safe_VkImageMemoryBarrier::initialize(const safe_VkImageMemoryBarrier* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
-    sType = copy_src->sType;
-    srcAccessMask = copy_src->srcAccessMask;
-    dstAccessMask = copy_src->dstAccessMask;
-    oldLayout = copy_src->oldLayout;
-    newLayout = copy_src->newLayout;
-    srcQueueFamilyIndex = copy_src->srcQueueFamilyIndex;
-    dstQueueFamilyIndex = copy_src->dstQueueFamilyIndex;
-    image = copy_src->image;
-    subresourceRange = copy_src->subresourceRange;
-    pNext = SafePnextCopy(copy_src->pNext);
-}
-
-safe_VkMemoryBarrier::safe_VkMemoryBarrier(const VkMemoryBarrier* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
-                                           bool copy_pnext)
-    : sType(in_struct->sType), srcAccessMask(in_struct->srcAccessMask), dstAccessMask(in_struct->dstAccessMask) {
-    if (copy_pnext) {
-        pNext = SafePnextCopy(in_struct->pNext, copy_state);
-    }
-}
-
-safe_VkMemoryBarrier::safe_VkMemoryBarrier()
-    : sType(VK_STRUCTURE_TYPE_MEMORY_BARRIER), pNext(nullptr), srcAccessMask(), dstAccessMask() {}
-
-safe_VkMemoryBarrier::safe_VkMemoryBarrier(const safe_VkMemoryBarrier& copy_src) {
-    sType = copy_src.sType;
-    srcAccessMask = copy_src.srcAccessMask;
-    dstAccessMask = copy_src.dstAccessMask;
-    pNext = SafePnextCopy(copy_src.pNext);
-}
-
-safe_VkMemoryBarrier& safe_VkMemoryBarrier::operator=(const safe_VkMemoryBarrier& copy_src) {
-    if (&copy_src == this) return *this;
-
-    FreePnextChain(pNext);
-
-    sType = copy_src.sType;
-    srcAccessMask = copy_src.srcAccessMask;
-    dstAccessMask = copy_src.dstAccessMask;
-    pNext = SafePnextCopy(copy_src.pNext);
-
-    return *this;
-}
-
-safe_VkMemoryBarrier::~safe_VkMemoryBarrier() { FreePnextChain(pNext); }
-
-void safe_VkMemoryBarrier::initialize(const VkMemoryBarrier* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
-    FreePnextChain(pNext);
-    sType = in_struct->sType;
-    srcAccessMask = in_struct->srcAccessMask;
-    dstAccessMask = in_struct->dstAccessMask;
-    pNext = SafePnextCopy(in_struct->pNext, copy_state);
-}
-
-void safe_VkMemoryBarrier::initialize(const safe_VkMemoryBarrier* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
-    sType = copy_src->sType;
-    srcAccessMask = copy_src->srcAccessMask;
-    dstAccessMask = copy_src->dstAccessMask;
-    pNext = SafePnextCopy(copy_src->pNext);
-}
-
 safe_VkAllocationCallbacks::safe_VkAllocationCallbacks(const VkAllocationCallbacks* in_struct,
                                                        [[maybe_unused]] PNextCopyState* copy_state)
     : pUserData(in_struct->pUserData),
@@ -1184,6 +963,80 @@ void safe_VkMemoryAllocateInfo::initialize(const safe_VkMemoryAllocateInfo* copy
     pNext = SafePnextCopy(copy_src->pNext);
 }
 
+safe_VkSparseImageMemoryBindInfo::safe_VkSparseImageMemoryBindInfo(const VkSparseImageMemoryBindInfo* in_struct,
+                                                                   [[maybe_unused]] PNextCopyState* copy_state)
+    : image(in_struct->image), bindCount(in_struct->bindCount), pBinds(nullptr) {
+    if (bindCount && in_struct->pBinds) {
+        pBinds = new VkSparseImageMemoryBind[bindCount];
+        for (uint32_t i = 0; i < bindCount; ++i) {
+            pBinds[i] = in_struct->pBinds[i];
+        }
+    }
+}
+
+safe_VkSparseImageMemoryBindInfo::safe_VkSparseImageMemoryBindInfo() : image(), bindCount(), pBinds(nullptr) {}
+
+safe_VkSparseImageMemoryBindInfo::safe_VkSparseImageMemoryBindInfo(const safe_VkSparseImageMemoryBindInfo& copy_src) {
+    image = copy_src.image;
+    bindCount = copy_src.bindCount;
+    pBinds = nullptr;
+    if (bindCount && copy_src.pBinds) {
+        pBinds = new VkSparseImageMemoryBind[bindCount];
+        for (uint32_t i = 0; i < bindCount; ++i) {
+            pBinds[i] = copy_src.pBinds[i];
+        }
+    }
+}
+
+safe_VkSparseImageMemoryBindInfo& safe_VkSparseImageMemoryBindInfo::operator=(const safe_VkSparseImageMemoryBindInfo& copy_src) {
+    if (&copy_src == this) return *this;
+
+    if (pBinds) delete[] pBinds;
+
+    image = copy_src.image;
+    bindCount = copy_src.bindCount;
+    pBinds = nullptr;
+    if (bindCount && copy_src.pBinds) {
+        pBinds = new VkSparseImageMemoryBind[bindCount];
+        for (uint32_t i = 0; i < bindCount; ++i) {
+            pBinds[i] = copy_src.pBinds[i];
+        }
+    }
+
+    return *this;
+}
+
+safe_VkSparseImageMemoryBindInfo::~safe_VkSparseImageMemoryBindInfo() {
+    if (pBinds) delete[] pBinds;
+}
+
+void safe_VkSparseImageMemoryBindInfo::initialize(const VkSparseImageMemoryBindInfo* in_struct,
+                                                  [[maybe_unused]] PNextCopyState* copy_state) {
+    if (pBinds) delete[] pBinds;
+    image = in_struct->image;
+    bindCount = in_struct->bindCount;
+    pBinds = nullptr;
+    if (bindCount && in_struct->pBinds) {
+        pBinds = new VkSparseImageMemoryBind[bindCount];
+        for (uint32_t i = 0; i < bindCount; ++i) {
+            pBinds[i] = in_struct->pBinds[i];
+        }
+    }
+}
+
+void safe_VkSparseImageMemoryBindInfo::initialize(const safe_VkSparseImageMemoryBindInfo* copy_src,
+                                                  [[maybe_unused]] PNextCopyState* copy_state) {
+    image = copy_src->image;
+    bindCount = copy_src->bindCount;
+    pBinds = nullptr;
+    if (bindCount && copy_src->pBinds) {
+        pBinds = new VkSparseImageMemoryBind[bindCount];
+        for (uint32_t i = 0; i < bindCount; ++i) {
+            pBinds[i] = copy_src->pBinds[i];
+        }
+    }
+}
+
 safe_VkSparseBufferMemoryBindInfo::safe_VkSparseBufferMemoryBindInfo(const VkSparseBufferMemoryBindInfo* in_struct,
                                                                      [[maybe_unused]] PNextCopyState* copy_state)
     : buffer(in_struct->buffer), bindCount(in_struct->bindCount), pBinds(nullptr) {
@@ -1328,80 +1181,6 @@ void safe_VkSparseImageOpaqueMemoryBindInfo::initialize(const safe_VkSparseImage
     pBinds = nullptr;
     if (bindCount && copy_src->pBinds) {
         pBinds = new VkSparseMemoryBind[bindCount];
-        for (uint32_t i = 0; i < bindCount; ++i) {
-            pBinds[i] = copy_src->pBinds[i];
-        }
-    }
-}
-
-safe_VkSparseImageMemoryBindInfo::safe_VkSparseImageMemoryBindInfo(const VkSparseImageMemoryBindInfo* in_struct,
-                                                                   [[maybe_unused]] PNextCopyState* copy_state)
-    : image(in_struct->image), bindCount(in_struct->bindCount), pBinds(nullptr) {
-    if (bindCount && in_struct->pBinds) {
-        pBinds = new VkSparseImageMemoryBind[bindCount];
-        for (uint32_t i = 0; i < bindCount; ++i) {
-            pBinds[i] = in_struct->pBinds[i];
-        }
-    }
-}
-
-safe_VkSparseImageMemoryBindInfo::safe_VkSparseImageMemoryBindInfo() : image(), bindCount(), pBinds(nullptr) {}
-
-safe_VkSparseImageMemoryBindInfo::safe_VkSparseImageMemoryBindInfo(const safe_VkSparseImageMemoryBindInfo& copy_src) {
-    image = copy_src.image;
-    bindCount = copy_src.bindCount;
-    pBinds = nullptr;
-    if (bindCount && copy_src.pBinds) {
-        pBinds = new VkSparseImageMemoryBind[bindCount];
-        for (uint32_t i = 0; i < bindCount; ++i) {
-            pBinds[i] = copy_src.pBinds[i];
-        }
-    }
-}
-
-safe_VkSparseImageMemoryBindInfo& safe_VkSparseImageMemoryBindInfo::operator=(const safe_VkSparseImageMemoryBindInfo& copy_src) {
-    if (&copy_src == this) return *this;
-
-    if (pBinds) delete[] pBinds;
-
-    image = copy_src.image;
-    bindCount = copy_src.bindCount;
-    pBinds = nullptr;
-    if (bindCount && copy_src.pBinds) {
-        pBinds = new VkSparseImageMemoryBind[bindCount];
-        for (uint32_t i = 0; i < bindCount; ++i) {
-            pBinds[i] = copy_src.pBinds[i];
-        }
-    }
-
-    return *this;
-}
-
-safe_VkSparseImageMemoryBindInfo::~safe_VkSparseImageMemoryBindInfo() {
-    if (pBinds) delete[] pBinds;
-}
-
-void safe_VkSparseImageMemoryBindInfo::initialize(const VkSparseImageMemoryBindInfo* in_struct,
-                                                  [[maybe_unused]] PNextCopyState* copy_state) {
-    if (pBinds) delete[] pBinds;
-    image = in_struct->image;
-    bindCount = in_struct->bindCount;
-    pBinds = nullptr;
-    if (bindCount && in_struct->pBinds) {
-        pBinds = new VkSparseImageMemoryBind[bindCount];
-        for (uint32_t i = 0; i < bindCount; ++i) {
-            pBinds[i] = in_struct->pBinds[i];
-        }
-    }
-}
-
-void safe_VkSparseImageMemoryBindInfo::initialize(const safe_VkSparseImageMemoryBindInfo* copy_src,
-                                                  [[maybe_unused]] PNextCopyState* copy_state) {
-    image = copy_src->image;
-    bindCount = copy_src->bindCount;
-    pBinds = nullptr;
-    if (bindCount && copy_src->pBinds) {
-        pBinds = new VkSparseImageMemoryBind[bindCount];
         for (uint32_t i = 0; i < bindCount; ++i) {
             pBinds[i] = copy_src->pBinds[i];
         }
@@ -2431,6 +2210,227 @@ void safe_VkCommandBufferBeginInfo::initialize(const safe_VkCommandBufferBeginIn
     pInheritanceInfo = nullptr;
     pNext = SafePnextCopy(copy_src->pNext);
     if (copy_src->pInheritanceInfo) pInheritanceInfo = new safe_VkCommandBufferInheritanceInfo(*copy_src->pInheritanceInfo);
+}
+
+safe_VkBufferMemoryBarrier::safe_VkBufferMemoryBarrier(const VkBufferMemoryBarrier* in_struct,
+                                                       [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType),
+      srcAccessMask(in_struct->srcAccessMask),
+      dstAccessMask(in_struct->dstAccessMask),
+      srcQueueFamilyIndex(in_struct->srcQueueFamilyIndex),
+      dstQueueFamilyIndex(in_struct->dstQueueFamilyIndex),
+      buffer(in_struct->buffer),
+      offset(in_struct->offset),
+      size(in_struct->size) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkBufferMemoryBarrier::safe_VkBufferMemoryBarrier()
+    : sType(VK_STRUCTURE_TYPE_BUFFER_MEMORY_BARRIER),
+      pNext(nullptr),
+      srcAccessMask(),
+      dstAccessMask(),
+      srcQueueFamilyIndex(),
+      dstQueueFamilyIndex(),
+      buffer(),
+      offset(),
+      size() {}
+
+safe_VkBufferMemoryBarrier::safe_VkBufferMemoryBarrier(const safe_VkBufferMemoryBarrier& copy_src) {
+    sType = copy_src.sType;
+    srcAccessMask = copy_src.srcAccessMask;
+    dstAccessMask = copy_src.dstAccessMask;
+    srcQueueFamilyIndex = copy_src.srcQueueFamilyIndex;
+    dstQueueFamilyIndex = copy_src.dstQueueFamilyIndex;
+    buffer = copy_src.buffer;
+    offset = copy_src.offset;
+    size = copy_src.size;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkBufferMemoryBarrier& safe_VkBufferMemoryBarrier::operator=(const safe_VkBufferMemoryBarrier& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    srcAccessMask = copy_src.srcAccessMask;
+    dstAccessMask = copy_src.dstAccessMask;
+    srcQueueFamilyIndex = copy_src.srcQueueFamilyIndex;
+    dstQueueFamilyIndex = copy_src.dstQueueFamilyIndex;
+    buffer = copy_src.buffer;
+    offset = copy_src.offset;
+    size = copy_src.size;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkBufferMemoryBarrier::~safe_VkBufferMemoryBarrier() { FreePnextChain(pNext); }
+
+void safe_VkBufferMemoryBarrier::initialize(const VkBufferMemoryBarrier* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    srcAccessMask = in_struct->srcAccessMask;
+    dstAccessMask = in_struct->dstAccessMask;
+    srcQueueFamilyIndex = in_struct->srcQueueFamilyIndex;
+    dstQueueFamilyIndex = in_struct->dstQueueFamilyIndex;
+    buffer = in_struct->buffer;
+    offset = in_struct->offset;
+    size = in_struct->size;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkBufferMemoryBarrier::initialize(const safe_VkBufferMemoryBarrier* copy_src,
+                                            [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    srcAccessMask = copy_src->srcAccessMask;
+    dstAccessMask = copy_src->dstAccessMask;
+    srcQueueFamilyIndex = copy_src->srcQueueFamilyIndex;
+    dstQueueFamilyIndex = copy_src->dstQueueFamilyIndex;
+    buffer = copy_src->buffer;
+    offset = copy_src->offset;
+    size = copy_src->size;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkImageMemoryBarrier::safe_VkImageMemoryBarrier(const VkImageMemoryBarrier* in_struct,
+                                                     [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType),
+      srcAccessMask(in_struct->srcAccessMask),
+      dstAccessMask(in_struct->dstAccessMask),
+      oldLayout(in_struct->oldLayout),
+      newLayout(in_struct->newLayout),
+      srcQueueFamilyIndex(in_struct->srcQueueFamilyIndex),
+      dstQueueFamilyIndex(in_struct->dstQueueFamilyIndex),
+      image(in_struct->image),
+      subresourceRange(in_struct->subresourceRange) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkImageMemoryBarrier::safe_VkImageMemoryBarrier()
+    : sType(VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER),
+      pNext(nullptr),
+      srcAccessMask(),
+      dstAccessMask(),
+      oldLayout(),
+      newLayout(),
+      srcQueueFamilyIndex(),
+      dstQueueFamilyIndex(),
+      image(),
+      subresourceRange() {}
+
+safe_VkImageMemoryBarrier::safe_VkImageMemoryBarrier(const safe_VkImageMemoryBarrier& copy_src) {
+    sType = copy_src.sType;
+    srcAccessMask = copy_src.srcAccessMask;
+    dstAccessMask = copy_src.dstAccessMask;
+    oldLayout = copy_src.oldLayout;
+    newLayout = copy_src.newLayout;
+    srcQueueFamilyIndex = copy_src.srcQueueFamilyIndex;
+    dstQueueFamilyIndex = copy_src.dstQueueFamilyIndex;
+    image = copy_src.image;
+    subresourceRange = copy_src.subresourceRange;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkImageMemoryBarrier& safe_VkImageMemoryBarrier::operator=(const safe_VkImageMemoryBarrier& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    srcAccessMask = copy_src.srcAccessMask;
+    dstAccessMask = copy_src.dstAccessMask;
+    oldLayout = copy_src.oldLayout;
+    newLayout = copy_src.newLayout;
+    srcQueueFamilyIndex = copy_src.srcQueueFamilyIndex;
+    dstQueueFamilyIndex = copy_src.dstQueueFamilyIndex;
+    image = copy_src.image;
+    subresourceRange = copy_src.subresourceRange;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkImageMemoryBarrier::~safe_VkImageMemoryBarrier() { FreePnextChain(pNext); }
+
+void safe_VkImageMemoryBarrier::initialize(const VkImageMemoryBarrier* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    srcAccessMask = in_struct->srcAccessMask;
+    dstAccessMask = in_struct->dstAccessMask;
+    oldLayout = in_struct->oldLayout;
+    newLayout = in_struct->newLayout;
+    srcQueueFamilyIndex = in_struct->srcQueueFamilyIndex;
+    dstQueueFamilyIndex = in_struct->dstQueueFamilyIndex;
+    image = in_struct->image;
+    subresourceRange = in_struct->subresourceRange;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkImageMemoryBarrier::initialize(const safe_VkImageMemoryBarrier* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    srcAccessMask = copy_src->srcAccessMask;
+    dstAccessMask = copy_src->dstAccessMask;
+    oldLayout = copy_src->oldLayout;
+    newLayout = copy_src->newLayout;
+    srcQueueFamilyIndex = copy_src->srcQueueFamilyIndex;
+    dstQueueFamilyIndex = copy_src->dstQueueFamilyIndex;
+    image = copy_src->image;
+    subresourceRange = copy_src->subresourceRange;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkMemoryBarrier::safe_VkMemoryBarrier(const VkMemoryBarrier* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
+                                           bool copy_pnext)
+    : sType(in_struct->sType), srcAccessMask(in_struct->srcAccessMask), dstAccessMask(in_struct->dstAccessMask) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkMemoryBarrier::safe_VkMemoryBarrier()
+    : sType(VK_STRUCTURE_TYPE_MEMORY_BARRIER), pNext(nullptr), srcAccessMask(), dstAccessMask() {}
+
+safe_VkMemoryBarrier::safe_VkMemoryBarrier(const safe_VkMemoryBarrier& copy_src) {
+    sType = copy_src.sType;
+    srcAccessMask = copy_src.srcAccessMask;
+    dstAccessMask = copy_src.dstAccessMask;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkMemoryBarrier& safe_VkMemoryBarrier::operator=(const safe_VkMemoryBarrier& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    srcAccessMask = copy_src.srcAccessMask;
+    dstAccessMask = copy_src.dstAccessMask;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkMemoryBarrier::~safe_VkMemoryBarrier() { FreePnextChain(pNext); }
+
+void safe_VkMemoryBarrier::initialize(const VkMemoryBarrier* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    srcAccessMask = in_struct->srcAccessMask;
+    dstAccessMask = in_struct->dstAccessMask;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkMemoryBarrier::initialize(const safe_VkMemoryBarrier* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    srcAccessMask = copy_src->srcAccessMask;
+    dstAccessMask = copy_src->dstAccessMask;
+    pNext = SafePnextCopy(copy_src->pNext);
 }
 
 safe_VkEventCreateInfo::safe_VkEventCreateInfo(const VkEventCreateInfo* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
@@ -3992,6 +3992,667 @@ void safe_VkWriteDescriptorSet::initialize(const safe_VkWriteDescriptorSet* copy
     }
 }
 
+safe_VkPipelineColorBlendStateCreateInfo::safe_VkPipelineColorBlendStateCreateInfo(
+    const VkPipelineColorBlendStateCreateInfo* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType),
+      flags(in_struct->flags),
+      logicOpEnable(in_struct->logicOpEnable),
+      logicOp(in_struct->logicOp),
+      attachmentCount(in_struct->attachmentCount),
+      pAttachments(nullptr) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+    if (in_struct->pAttachments) {
+        pAttachments = new VkPipelineColorBlendAttachmentState[in_struct->attachmentCount];
+        memcpy((void*)pAttachments, (void*)in_struct->pAttachments,
+               sizeof(VkPipelineColorBlendAttachmentState) * in_struct->attachmentCount);
+    }
+
+    for (uint32_t i = 0; i < 4; ++i) {
+        blendConstants[i] = in_struct->blendConstants[i];
+    }
+}
+
+safe_VkPipelineColorBlendStateCreateInfo::safe_VkPipelineColorBlendStateCreateInfo()
+    : sType(VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_STATE_CREATE_INFO),
+      pNext(nullptr),
+      flags(),
+      logicOpEnable(),
+      logicOp(),
+      attachmentCount(),
+      pAttachments(nullptr) {}
+
+safe_VkPipelineColorBlendStateCreateInfo::safe_VkPipelineColorBlendStateCreateInfo(
+    const safe_VkPipelineColorBlendStateCreateInfo& copy_src) {
+    sType = copy_src.sType;
+    flags = copy_src.flags;
+    logicOpEnable = copy_src.logicOpEnable;
+    logicOp = copy_src.logicOp;
+    attachmentCount = copy_src.attachmentCount;
+    pAttachments = nullptr;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    if (copy_src.pAttachments) {
+        pAttachments = new VkPipelineColorBlendAttachmentState[copy_src.attachmentCount];
+        memcpy((void*)pAttachments, (void*)copy_src.pAttachments,
+               sizeof(VkPipelineColorBlendAttachmentState) * copy_src.attachmentCount);
+    }
+
+    for (uint32_t i = 0; i < 4; ++i) {
+        blendConstants[i] = copy_src.blendConstants[i];
+    }
+}
+
+safe_VkPipelineColorBlendStateCreateInfo& safe_VkPipelineColorBlendStateCreateInfo::operator=(
+    const safe_VkPipelineColorBlendStateCreateInfo& copy_src) {
+    if (&copy_src == this) return *this;
+
+    if (pAttachments) delete[] pAttachments;
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    flags = copy_src.flags;
+    logicOpEnable = copy_src.logicOpEnable;
+    logicOp = copy_src.logicOp;
+    attachmentCount = copy_src.attachmentCount;
+    pAttachments = nullptr;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    if (copy_src.pAttachments) {
+        pAttachments = new VkPipelineColorBlendAttachmentState[copy_src.attachmentCount];
+        memcpy((void*)pAttachments, (void*)copy_src.pAttachments,
+               sizeof(VkPipelineColorBlendAttachmentState) * copy_src.attachmentCount);
+    }
+
+    for (uint32_t i = 0; i < 4; ++i) {
+        blendConstants[i] = copy_src.blendConstants[i];
+    }
+
+    return *this;
+}
+
+safe_VkPipelineColorBlendStateCreateInfo::~safe_VkPipelineColorBlendStateCreateInfo() {
+    if (pAttachments) delete[] pAttachments;
+    FreePnextChain(pNext);
+}
+
+void safe_VkPipelineColorBlendStateCreateInfo::initialize(const VkPipelineColorBlendStateCreateInfo* in_struct,
+                                                          [[maybe_unused]] PNextCopyState* copy_state) {
+    if (pAttachments) delete[] pAttachments;
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    flags = in_struct->flags;
+    logicOpEnable = in_struct->logicOpEnable;
+    logicOp = in_struct->logicOp;
+    attachmentCount = in_struct->attachmentCount;
+    pAttachments = nullptr;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+
+    if (in_struct->pAttachments) {
+        pAttachments = new VkPipelineColorBlendAttachmentState[in_struct->attachmentCount];
+        memcpy((void*)pAttachments, (void*)in_struct->pAttachments,
+               sizeof(VkPipelineColorBlendAttachmentState) * in_struct->attachmentCount);
+    }
+
+    for (uint32_t i = 0; i < 4; ++i) {
+        blendConstants[i] = in_struct->blendConstants[i];
+    }
+}
+
+void safe_VkPipelineColorBlendStateCreateInfo::initialize(const safe_VkPipelineColorBlendStateCreateInfo* copy_src,
+                                                          [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    flags = copy_src->flags;
+    logicOpEnable = copy_src->logicOpEnable;
+    logicOp = copy_src->logicOp;
+    attachmentCount = copy_src->attachmentCount;
+    pAttachments = nullptr;
+    pNext = SafePnextCopy(copy_src->pNext);
+
+    if (copy_src->pAttachments) {
+        pAttachments = new VkPipelineColorBlendAttachmentState[copy_src->attachmentCount];
+        memcpy((void*)pAttachments, (void*)copy_src->pAttachments,
+               sizeof(VkPipelineColorBlendAttachmentState) * copy_src->attachmentCount);
+    }
+
+    for (uint32_t i = 0; i < 4; ++i) {
+        blendConstants[i] = copy_src->blendConstants[i];
+    }
+}
+
+safe_VkPipelineDepthStencilStateCreateInfo::safe_VkPipelineDepthStencilStateCreateInfo(
+    const VkPipelineDepthStencilStateCreateInfo* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType),
+      flags(in_struct->flags),
+      depthTestEnable(in_struct->depthTestEnable),
+      depthWriteEnable(in_struct->depthWriteEnable),
+      depthCompareOp(in_struct->depthCompareOp),
+      depthBoundsTestEnable(in_struct->depthBoundsTestEnable),
+      stencilTestEnable(in_struct->stencilTestEnable),
+      front(in_struct->front),
+      back(in_struct->back),
+      minDepthBounds(in_struct->minDepthBounds),
+      maxDepthBounds(in_struct->maxDepthBounds) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPipelineDepthStencilStateCreateInfo::safe_VkPipelineDepthStencilStateCreateInfo()
+    : sType(VK_STRUCTURE_TYPE_PIPELINE_DEPTH_STENCIL_STATE_CREATE_INFO),
+      pNext(nullptr),
+      flags(),
+      depthTestEnable(),
+      depthWriteEnable(),
+      depthCompareOp(),
+      depthBoundsTestEnable(),
+      stencilTestEnable(),
+      front(),
+      back(),
+      minDepthBounds(),
+      maxDepthBounds() {}
+
+safe_VkPipelineDepthStencilStateCreateInfo::safe_VkPipelineDepthStencilStateCreateInfo(
+    const safe_VkPipelineDepthStencilStateCreateInfo& copy_src) {
+    sType = copy_src.sType;
+    flags = copy_src.flags;
+    depthTestEnable = copy_src.depthTestEnable;
+    depthWriteEnable = copy_src.depthWriteEnable;
+    depthCompareOp = copy_src.depthCompareOp;
+    depthBoundsTestEnable = copy_src.depthBoundsTestEnable;
+    stencilTestEnable = copy_src.stencilTestEnable;
+    front = copy_src.front;
+    back = copy_src.back;
+    minDepthBounds = copy_src.minDepthBounds;
+    maxDepthBounds = copy_src.maxDepthBounds;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPipelineDepthStencilStateCreateInfo& safe_VkPipelineDepthStencilStateCreateInfo::operator=(
+    const safe_VkPipelineDepthStencilStateCreateInfo& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    flags = copy_src.flags;
+    depthTestEnable = copy_src.depthTestEnable;
+    depthWriteEnable = copy_src.depthWriteEnable;
+    depthCompareOp = copy_src.depthCompareOp;
+    depthBoundsTestEnable = copy_src.depthBoundsTestEnable;
+    stencilTestEnable = copy_src.stencilTestEnable;
+    front = copy_src.front;
+    back = copy_src.back;
+    minDepthBounds = copy_src.minDepthBounds;
+    maxDepthBounds = copy_src.maxDepthBounds;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPipelineDepthStencilStateCreateInfo::~safe_VkPipelineDepthStencilStateCreateInfo() { FreePnextChain(pNext); }
+
+void safe_VkPipelineDepthStencilStateCreateInfo::initialize(const VkPipelineDepthStencilStateCreateInfo* in_struct,
+                                                            [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    flags = in_struct->flags;
+    depthTestEnable = in_struct->depthTestEnable;
+    depthWriteEnable = in_struct->depthWriteEnable;
+    depthCompareOp = in_struct->depthCompareOp;
+    depthBoundsTestEnable = in_struct->depthBoundsTestEnable;
+    stencilTestEnable = in_struct->stencilTestEnable;
+    front = in_struct->front;
+    back = in_struct->back;
+    minDepthBounds = in_struct->minDepthBounds;
+    maxDepthBounds = in_struct->maxDepthBounds;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPipelineDepthStencilStateCreateInfo::initialize(const safe_VkPipelineDepthStencilStateCreateInfo* copy_src,
+                                                            [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    flags = copy_src->flags;
+    depthTestEnable = copy_src->depthTestEnable;
+    depthWriteEnable = copy_src->depthWriteEnable;
+    depthCompareOp = copy_src->depthCompareOp;
+    depthBoundsTestEnable = copy_src->depthBoundsTestEnable;
+    stencilTestEnable = copy_src->stencilTestEnable;
+    front = copy_src->front;
+    back = copy_src->back;
+    minDepthBounds = copy_src->minDepthBounds;
+    maxDepthBounds = copy_src->maxDepthBounds;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkPipelineDynamicStateCreateInfo::safe_VkPipelineDynamicStateCreateInfo(const VkPipelineDynamicStateCreateInfo* in_struct,
+                                                                             [[maybe_unused]] PNextCopyState* copy_state,
+                                                                             bool copy_pnext)
+    : sType(in_struct->sType), flags(in_struct->flags), dynamicStateCount(in_struct->dynamicStateCount), pDynamicStates(nullptr) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+    if (in_struct->pDynamicStates) {
+        pDynamicStates = new VkDynamicState[in_struct->dynamicStateCount];
+        memcpy((void*)pDynamicStates, (void*)in_struct->pDynamicStates, sizeof(VkDynamicState) * in_struct->dynamicStateCount);
+    }
+}
+
+safe_VkPipelineDynamicStateCreateInfo::safe_VkPipelineDynamicStateCreateInfo()
+    : sType(VK_STRUCTURE_TYPE_PIPELINE_DYNAMIC_STATE_CREATE_INFO),
+      pNext(nullptr),
+      flags(),
+      dynamicStateCount(),
+      pDynamicStates(nullptr) {}
+
+safe_VkPipelineDynamicStateCreateInfo::safe_VkPipelineDynamicStateCreateInfo(
+    const safe_VkPipelineDynamicStateCreateInfo& copy_src) {
+    sType = copy_src.sType;
+    flags = copy_src.flags;
+    dynamicStateCount = copy_src.dynamicStateCount;
+    pDynamicStates = nullptr;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    if (copy_src.pDynamicStates) {
+        pDynamicStates = new VkDynamicState[copy_src.dynamicStateCount];
+        memcpy((void*)pDynamicStates, (void*)copy_src.pDynamicStates, sizeof(VkDynamicState) * copy_src.dynamicStateCount);
+    }
+}
+
+safe_VkPipelineDynamicStateCreateInfo& safe_VkPipelineDynamicStateCreateInfo::operator=(
+    const safe_VkPipelineDynamicStateCreateInfo& copy_src) {
+    if (&copy_src == this) return *this;
+
+    if (pDynamicStates) delete[] pDynamicStates;
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    flags = copy_src.flags;
+    dynamicStateCount = copy_src.dynamicStateCount;
+    pDynamicStates = nullptr;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    if (copy_src.pDynamicStates) {
+        pDynamicStates = new VkDynamicState[copy_src.dynamicStateCount];
+        memcpy((void*)pDynamicStates, (void*)copy_src.pDynamicStates, sizeof(VkDynamicState) * copy_src.dynamicStateCount);
+    }
+
+    return *this;
+}
+
+safe_VkPipelineDynamicStateCreateInfo::~safe_VkPipelineDynamicStateCreateInfo() {
+    if (pDynamicStates) delete[] pDynamicStates;
+    FreePnextChain(pNext);
+}
+
+void safe_VkPipelineDynamicStateCreateInfo::initialize(const VkPipelineDynamicStateCreateInfo* in_struct,
+                                                       [[maybe_unused]] PNextCopyState* copy_state) {
+    if (pDynamicStates) delete[] pDynamicStates;
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    flags = in_struct->flags;
+    dynamicStateCount = in_struct->dynamicStateCount;
+    pDynamicStates = nullptr;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+
+    if (in_struct->pDynamicStates) {
+        pDynamicStates = new VkDynamicState[in_struct->dynamicStateCount];
+        memcpy((void*)pDynamicStates, (void*)in_struct->pDynamicStates, sizeof(VkDynamicState) * in_struct->dynamicStateCount);
+    }
+}
+
+void safe_VkPipelineDynamicStateCreateInfo::initialize(const safe_VkPipelineDynamicStateCreateInfo* copy_src,
+                                                       [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    flags = copy_src->flags;
+    dynamicStateCount = copy_src->dynamicStateCount;
+    pDynamicStates = nullptr;
+    pNext = SafePnextCopy(copy_src->pNext);
+
+    if (copy_src->pDynamicStates) {
+        pDynamicStates = new VkDynamicState[copy_src->dynamicStateCount];
+        memcpy((void*)pDynamicStates, (void*)copy_src->pDynamicStates, sizeof(VkDynamicState) * copy_src->dynamicStateCount);
+    }
+}
+
+safe_VkPipelineInputAssemblyStateCreateInfo::safe_VkPipelineInputAssemblyStateCreateInfo(
+    const VkPipelineInputAssemblyStateCreateInfo* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType),
+      flags(in_struct->flags),
+      topology(in_struct->topology),
+      primitiveRestartEnable(in_struct->primitiveRestartEnable) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPipelineInputAssemblyStateCreateInfo::safe_VkPipelineInputAssemblyStateCreateInfo()
+    : sType(VK_STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO),
+      pNext(nullptr),
+      flags(),
+      topology(),
+      primitiveRestartEnable() {}
+
+safe_VkPipelineInputAssemblyStateCreateInfo::safe_VkPipelineInputAssemblyStateCreateInfo(
+    const safe_VkPipelineInputAssemblyStateCreateInfo& copy_src) {
+    sType = copy_src.sType;
+    flags = copy_src.flags;
+    topology = copy_src.topology;
+    primitiveRestartEnable = copy_src.primitiveRestartEnable;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPipelineInputAssemblyStateCreateInfo& safe_VkPipelineInputAssemblyStateCreateInfo::operator=(
+    const safe_VkPipelineInputAssemblyStateCreateInfo& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    flags = copy_src.flags;
+    topology = copy_src.topology;
+    primitiveRestartEnable = copy_src.primitiveRestartEnable;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPipelineInputAssemblyStateCreateInfo::~safe_VkPipelineInputAssemblyStateCreateInfo() { FreePnextChain(pNext); }
+
+void safe_VkPipelineInputAssemblyStateCreateInfo::initialize(const VkPipelineInputAssemblyStateCreateInfo* in_struct,
+                                                             [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    flags = in_struct->flags;
+    topology = in_struct->topology;
+    primitiveRestartEnable = in_struct->primitiveRestartEnable;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPipelineInputAssemblyStateCreateInfo::initialize(const safe_VkPipelineInputAssemblyStateCreateInfo* copy_src,
+                                                             [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    flags = copy_src->flags;
+    topology = copy_src->topology;
+    primitiveRestartEnable = copy_src->primitiveRestartEnable;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkPipelineMultisampleStateCreateInfo::safe_VkPipelineMultisampleStateCreateInfo(
+    const VkPipelineMultisampleStateCreateInfo* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType),
+      flags(in_struct->flags),
+      rasterizationSamples(in_struct->rasterizationSamples),
+      sampleShadingEnable(in_struct->sampleShadingEnable),
+      minSampleShading(in_struct->minSampleShading),
+      pSampleMask(nullptr),
+      alphaToCoverageEnable(in_struct->alphaToCoverageEnable),
+      alphaToOneEnable(in_struct->alphaToOneEnable) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+    if (in_struct->pSampleMask) {
+        pSampleMask = new VkSampleMask(*in_struct->pSampleMask);
+    }
+}
+
+safe_VkPipelineMultisampleStateCreateInfo::safe_VkPipelineMultisampleStateCreateInfo()
+    : sType(VK_STRUCTURE_TYPE_PIPELINE_MULTISAMPLE_STATE_CREATE_INFO),
+      pNext(nullptr),
+      flags(),
+      rasterizationSamples(),
+      sampleShadingEnable(),
+      minSampleShading(),
+      pSampleMask(nullptr),
+      alphaToCoverageEnable(),
+      alphaToOneEnable() {}
+
+safe_VkPipelineMultisampleStateCreateInfo::safe_VkPipelineMultisampleStateCreateInfo(
+    const safe_VkPipelineMultisampleStateCreateInfo& copy_src) {
+    sType = copy_src.sType;
+    flags = copy_src.flags;
+    rasterizationSamples = copy_src.rasterizationSamples;
+    sampleShadingEnable = copy_src.sampleShadingEnable;
+    minSampleShading = copy_src.minSampleShading;
+    pSampleMask = nullptr;
+    alphaToCoverageEnable = copy_src.alphaToCoverageEnable;
+    alphaToOneEnable = copy_src.alphaToOneEnable;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    if (copy_src.pSampleMask) {
+        pSampleMask = new VkSampleMask(*copy_src.pSampleMask);
+    }
+}
+
+safe_VkPipelineMultisampleStateCreateInfo& safe_VkPipelineMultisampleStateCreateInfo::operator=(
+    const safe_VkPipelineMultisampleStateCreateInfo& copy_src) {
+    if (&copy_src == this) return *this;
+
+    if (pSampleMask) delete pSampleMask;
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    flags = copy_src.flags;
+    rasterizationSamples = copy_src.rasterizationSamples;
+    sampleShadingEnable = copy_src.sampleShadingEnable;
+    minSampleShading = copy_src.minSampleShading;
+    pSampleMask = nullptr;
+    alphaToCoverageEnable = copy_src.alphaToCoverageEnable;
+    alphaToOneEnable = copy_src.alphaToOneEnable;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    if (copy_src.pSampleMask) {
+        pSampleMask = new VkSampleMask(*copy_src.pSampleMask);
+    }
+
+    return *this;
+}
+
+safe_VkPipelineMultisampleStateCreateInfo::~safe_VkPipelineMultisampleStateCreateInfo() {
+    if (pSampleMask) delete pSampleMask;
+    FreePnextChain(pNext);
+}
+
+void safe_VkPipelineMultisampleStateCreateInfo::initialize(const VkPipelineMultisampleStateCreateInfo* in_struct,
+                                                           [[maybe_unused]] PNextCopyState* copy_state) {
+    if (pSampleMask) delete pSampleMask;
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    flags = in_struct->flags;
+    rasterizationSamples = in_struct->rasterizationSamples;
+    sampleShadingEnable = in_struct->sampleShadingEnable;
+    minSampleShading = in_struct->minSampleShading;
+    pSampleMask = nullptr;
+    alphaToCoverageEnable = in_struct->alphaToCoverageEnable;
+    alphaToOneEnable = in_struct->alphaToOneEnable;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+
+    if (in_struct->pSampleMask) {
+        pSampleMask = new VkSampleMask(*in_struct->pSampleMask);
+    }
+}
+
+void safe_VkPipelineMultisampleStateCreateInfo::initialize(const safe_VkPipelineMultisampleStateCreateInfo* copy_src,
+                                                           [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    flags = copy_src->flags;
+    rasterizationSamples = copy_src->rasterizationSamples;
+    sampleShadingEnable = copy_src->sampleShadingEnable;
+    minSampleShading = copy_src->minSampleShading;
+    pSampleMask = nullptr;
+    alphaToCoverageEnable = copy_src->alphaToCoverageEnable;
+    alphaToOneEnable = copy_src->alphaToOneEnable;
+    pNext = SafePnextCopy(copy_src->pNext);
+
+    if (copy_src->pSampleMask) {
+        pSampleMask = new VkSampleMask(*copy_src->pSampleMask);
+    }
+}
+
+safe_VkPipelineRasterizationStateCreateInfo::safe_VkPipelineRasterizationStateCreateInfo(
+    const VkPipelineRasterizationStateCreateInfo* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType),
+      flags(in_struct->flags),
+      depthClampEnable(in_struct->depthClampEnable),
+      rasterizerDiscardEnable(in_struct->rasterizerDiscardEnable),
+      polygonMode(in_struct->polygonMode),
+      cullMode(in_struct->cullMode),
+      frontFace(in_struct->frontFace),
+      depthBiasEnable(in_struct->depthBiasEnable),
+      depthBiasConstantFactor(in_struct->depthBiasConstantFactor),
+      depthBiasClamp(in_struct->depthBiasClamp),
+      depthBiasSlopeFactor(in_struct->depthBiasSlopeFactor),
+      lineWidth(in_struct->lineWidth) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPipelineRasterizationStateCreateInfo::safe_VkPipelineRasterizationStateCreateInfo()
+    : sType(VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_CREATE_INFO),
+      pNext(nullptr),
+      flags(),
+      depthClampEnable(),
+      rasterizerDiscardEnable(),
+      polygonMode(),
+      cullMode(),
+      frontFace(),
+      depthBiasEnable(),
+      depthBiasConstantFactor(),
+      depthBiasClamp(),
+      depthBiasSlopeFactor(),
+      lineWidth() {}
+
+safe_VkPipelineRasterizationStateCreateInfo::safe_VkPipelineRasterizationStateCreateInfo(
+    const safe_VkPipelineRasterizationStateCreateInfo& copy_src) {
+    sType = copy_src.sType;
+    flags = copy_src.flags;
+    depthClampEnable = copy_src.depthClampEnable;
+    rasterizerDiscardEnable = copy_src.rasterizerDiscardEnable;
+    polygonMode = copy_src.polygonMode;
+    cullMode = copy_src.cullMode;
+    frontFace = copy_src.frontFace;
+    depthBiasEnable = copy_src.depthBiasEnable;
+    depthBiasConstantFactor = copy_src.depthBiasConstantFactor;
+    depthBiasClamp = copy_src.depthBiasClamp;
+    depthBiasSlopeFactor = copy_src.depthBiasSlopeFactor;
+    lineWidth = copy_src.lineWidth;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPipelineRasterizationStateCreateInfo& safe_VkPipelineRasterizationStateCreateInfo::operator=(
+    const safe_VkPipelineRasterizationStateCreateInfo& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    flags = copy_src.flags;
+    depthClampEnable = copy_src.depthClampEnable;
+    rasterizerDiscardEnable = copy_src.rasterizerDiscardEnable;
+    polygonMode = copy_src.polygonMode;
+    cullMode = copy_src.cullMode;
+    frontFace = copy_src.frontFace;
+    depthBiasEnable = copy_src.depthBiasEnable;
+    depthBiasConstantFactor = copy_src.depthBiasConstantFactor;
+    depthBiasClamp = copy_src.depthBiasClamp;
+    depthBiasSlopeFactor = copy_src.depthBiasSlopeFactor;
+    lineWidth = copy_src.lineWidth;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPipelineRasterizationStateCreateInfo::~safe_VkPipelineRasterizationStateCreateInfo() { FreePnextChain(pNext); }
+
+void safe_VkPipelineRasterizationStateCreateInfo::initialize(const VkPipelineRasterizationStateCreateInfo* in_struct,
+                                                             [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    flags = in_struct->flags;
+    depthClampEnable = in_struct->depthClampEnable;
+    rasterizerDiscardEnable = in_struct->rasterizerDiscardEnable;
+    polygonMode = in_struct->polygonMode;
+    cullMode = in_struct->cullMode;
+    frontFace = in_struct->frontFace;
+    depthBiasEnable = in_struct->depthBiasEnable;
+    depthBiasConstantFactor = in_struct->depthBiasConstantFactor;
+    depthBiasClamp = in_struct->depthBiasClamp;
+    depthBiasSlopeFactor = in_struct->depthBiasSlopeFactor;
+    lineWidth = in_struct->lineWidth;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPipelineRasterizationStateCreateInfo::initialize(const safe_VkPipelineRasterizationStateCreateInfo* copy_src,
+                                                             [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    flags = copy_src->flags;
+    depthClampEnable = copy_src->depthClampEnable;
+    rasterizerDiscardEnable = copy_src->rasterizerDiscardEnable;
+    polygonMode = copy_src->polygonMode;
+    cullMode = copy_src->cullMode;
+    frontFace = copy_src->frontFace;
+    depthBiasEnable = copy_src->depthBiasEnable;
+    depthBiasConstantFactor = copy_src->depthBiasConstantFactor;
+    depthBiasClamp = copy_src->depthBiasClamp;
+    depthBiasSlopeFactor = copy_src->depthBiasSlopeFactor;
+    lineWidth = copy_src->lineWidth;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkPipelineTessellationStateCreateInfo::safe_VkPipelineTessellationStateCreateInfo(
+    const VkPipelineTessellationStateCreateInfo* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), flags(in_struct->flags), patchControlPoints(in_struct->patchControlPoints) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPipelineTessellationStateCreateInfo::safe_VkPipelineTessellationStateCreateInfo()
+    : sType(VK_STRUCTURE_TYPE_PIPELINE_TESSELLATION_STATE_CREATE_INFO), pNext(nullptr), flags(), patchControlPoints() {}
+
+safe_VkPipelineTessellationStateCreateInfo::safe_VkPipelineTessellationStateCreateInfo(
+    const safe_VkPipelineTessellationStateCreateInfo& copy_src) {
+    sType = copy_src.sType;
+    flags = copy_src.flags;
+    patchControlPoints = copy_src.patchControlPoints;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPipelineTessellationStateCreateInfo& safe_VkPipelineTessellationStateCreateInfo::operator=(
+    const safe_VkPipelineTessellationStateCreateInfo& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    flags = copy_src.flags;
+    patchControlPoints = copy_src.patchControlPoints;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPipelineTessellationStateCreateInfo::~safe_VkPipelineTessellationStateCreateInfo() { FreePnextChain(pNext); }
+
+void safe_VkPipelineTessellationStateCreateInfo::initialize(const VkPipelineTessellationStateCreateInfo* in_struct,
+                                                            [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    flags = in_struct->flags;
+    patchControlPoints = in_struct->patchControlPoints;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPipelineTessellationStateCreateInfo::initialize(const safe_VkPipelineTessellationStateCreateInfo* copy_src,
+                                                            [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    flags = copy_src->flags;
+    patchControlPoints = copy_src->patchControlPoints;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
 safe_VkPipelineVertexInputStateCreateInfo::safe_VkPipelineVertexInputStateCreateInfo(
     const VkPipelineVertexInputStateCreateInfo* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
     : sType(in_struct->sType),
@@ -4131,667 +4792,6 @@ void safe_VkPipelineVertexInputStateCreateInfo::initialize(const safe_VkPipeline
         pVertexAttributeDescriptions = new VkVertexInputAttributeDescription[copy_src->vertexAttributeDescriptionCount];
         memcpy((void*)pVertexAttributeDescriptions, (void*)copy_src->pVertexAttributeDescriptions,
                sizeof(VkVertexInputAttributeDescription) * copy_src->vertexAttributeDescriptionCount);
-    }
-}
-
-safe_VkPipelineInputAssemblyStateCreateInfo::safe_VkPipelineInputAssemblyStateCreateInfo(
-    const VkPipelineInputAssemblyStateCreateInfo* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
-    : sType(in_struct->sType),
-      flags(in_struct->flags),
-      topology(in_struct->topology),
-      primitiveRestartEnable(in_struct->primitiveRestartEnable) {
-    if (copy_pnext) {
-        pNext = SafePnextCopy(in_struct->pNext, copy_state);
-    }
-}
-
-safe_VkPipelineInputAssemblyStateCreateInfo::safe_VkPipelineInputAssemblyStateCreateInfo()
-    : sType(VK_STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO),
-      pNext(nullptr),
-      flags(),
-      topology(),
-      primitiveRestartEnable() {}
-
-safe_VkPipelineInputAssemblyStateCreateInfo::safe_VkPipelineInputAssemblyStateCreateInfo(
-    const safe_VkPipelineInputAssemblyStateCreateInfo& copy_src) {
-    sType = copy_src.sType;
-    flags = copy_src.flags;
-    topology = copy_src.topology;
-    primitiveRestartEnable = copy_src.primitiveRestartEnable;
-    pNext = SafePnextCopy(copy_src.pNext);
-}
-
-safe_VkPipelineInputAssemblyStateCreateInfo& safe_VkPipelineInputAssemblyStateCreateInfo::operator=(
-    const safe_VkPipelineInputAssemblyStateCreateInfo& copy_src) {
-    if (&copy_src == this) return *this;
-
-    FreePnextChain(pNext);
-
-    sType = copy_src.sType;
-    flags = copy_src.flags;
-    topology = copy_src.topology;
-    primitiveRestartEnable = copy_src.primitiveRestartEnable;
-    pNext = SafePnextCopy(copy_src.pNext);
-
-    return *this;
-}
-
-safe_VkPipelineInputAssemblyStateCreateInfo::~safe_VkPipelineInputAssemblyStateCreateInfo() { FreePnextChain(pNext); }
-
-void safe_VkPipelineInputAssemblyStateCreateInfo::initialize(const VkPipelineInputAssemblyStateCreateInfo* in_struct,
-                                                             [[maybe_unused]] PNextCopyState* copy_state) {
-    FreePnextChain(pNext);
-    sType = in_struct->sType;
-    flags = in_struct->flags;
-    topology = in_struct->topology;
-    primitiveRestartEnable = in_struct->primitiveRestartEnable;
-    pNext = SafePnextCopy(in_struct->pNext, copy_state);
-}
-
-void safe_VkPipelineInputAssemblyStateCreateInfo::initialize(const safe_VkPipelineInputAssemblyStateCreateInfo* copy_src,
-                                                             [[maybe_unused]] PNextCopyState* copy_state) {
-    sType = copy_src->sType;
-    flags = copy_src->flags;
-    topology = copy_src->topology;
-    primitiveRestartEnable = copy_src->primitiveRestartEnable;
-    pNext = SafePnextCopy(copy_src->pNext);
-}
-
-safe_VkPipelineTessellationStateCreateInfo::safe_VkPipelineTessellationStateCreateInfo(
-    const VkPipelineTessellationStateCreateInfo* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
-    : sType(in_struct->sType), flags(in_struct->flags), patchControlPoints(in_struct->patchControlPoints) {
-    if (copy_pnext) {
-        pNext = SafePnextCopy(in_struct->pNext, copy_state);
-    }
-}
-
-safe_VkPipelineTessellationStateCreateInfo::safe_VkPipelineTessellationStateCreateInfo()
-    : sType(VK_STRUCTURE_TYPE_PIPELINE_TESSELLATION_STATE_CREATE_INFO), pNext(nullptr), flags(), patchControlPoints() {}
-
-safe_VkPipelineTessellationStateCreateInfo::safe_VkPipelineTessellationStateCreateInfo(
-    const safe_VkPipelineTessellationStateCreateInfo& copy_src) {
-    sType = copy_src.sType;
-    flags = copy_src.flags;
-    patchControlPoints = copy_src.patchControlPoints;
-    pNext = SafePnextCopy(copy_src.pNext);
-}
-
-safe_VkPipelineTessellationStateCreateInfo& safe_VkPipelineTessellationStateCreateInfo::operator=(
-    const safe_VkPipelineTessellationStateCreateInfo& copy_src) {
-    if (&copy_src == this) return *this;
-
-    FreePnextChain(pNext);
-
-    sType = copy_src.sType;
-    flags = copy_src.flags;
-    patchControlPoints = copy_src.patchControlPoints;
-    pNext = SafePnextCopy(copy_src.pNext);
-
-    return *this;
-}
-
-safe_VkPipelineTessellationStateCreateInfo::~safe_VkPipelineTessellationStateCreateInfo() { FreePnextChain(pNext); }
-
-void safe_VkPipelineTessellationStateCreateInfo::initialize(const VkPipelineTessellationStateCreateInfo* in_struct,
-                                                            [[maybe_unused]] PNextCopyState* copy_state) {
-    FreePnextChain(pNext);
-    sType = in_struct->sType;
-    flags = in_struct->flags;
-    patchControlPoints = in_struct->patchControlPoints;
-    pNext = SafePnextCopy(in_struct->pNext, copy_state);
-}
-
-void safe_VkPipelineTessellationStateCreateInfo::initialize(const safe_VkPipelineTessellationStateCreateInfo* copy_src,
-                                                            [[maybe_unused]] PNextCopyState* copy_state) {
-    sType = copy_src->sType;
-    flags = copy_src->flags;
-    patchControlPoints = copy_src->patchControlPoints;
-    pNext = SafePnextCopy(copy_src->pNext);
-}
-
-safe_VkPipelineRasterizationStateCreateInfo::safe_VkPipelineRasterizationStateCreateInfo(
-    const VkPipelineRasterizationStateCreateInfo* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
-    : sType(in_struct->sType),
-      flags(in_struct->flags),
-      depthClampEnable(in_struct->depthClampEnable),
-      rasterizerDiscardEnable(in_struct->rasterizerDiscardEnable),
-      polygonMode(in_struct->polygonMode),
-      cullMode(in_struct->cullMode),
-      frontFace(in_struct->frontFace),
-      depthBiasEnable(in_struct->depthBiasEnable),
-      depthBiasConstantFactor(in_struct->depthBiasConstantFactor),
-      depthBiasClamp(in_struct->depthBiasClamp),
-      depthBiasSlopeFactor(in_struct->depthBiasSlopeFactor),
-      lineWidth(in_struct->lineWidth) {
-    if (copy_pnext) {
-        pNext = SafePnextCopy(in_struct->pNext, copy_state);
-    }
-}
-
-safe_VkPipelineRasterizationStateCreateInfo::safe_VkPipelineRasterizationStateCreateInfo()
-    : sType(VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_CREATE_INFO),
-      pNext(nullptr),
-      flags(),
-      depthClampEnable(),
-      rasterizerDiscardEnable(),
-      polygonMode(),
-      cullMode(),
-      frontFace(),
-      depthBiasEnable(),
-      depthBiasConstantFactor(),
-      depthBiasClamp(),
-      depthBiasSlopeFactor(),
-      lineWidth() {}
-
-safe_VkPipelineRasterizationStateCreateInfo::safe_VkPipelineRasterizationStateCreateInfo(
-    const safe_VkPipelineRasterizationStateCreateInfo& copy_src) {
-    sType = copy_src.sType;
-    flags = copy_src.flags;
-    depthClampEnable = copy_src.depthClampEnable;
-    rasterizerDiscardEnable = copy_src.rasterizerDiscardEnable;
-    polygonMode = copy_src.polygonMode;
-    cullMode = copy_src.cullMode;
-    frontFace = copy_src.frontFace;
-    depthBiasEnable = copy_src.depthBiasEnable;
-    depthBiasConstantFactor = copy_src.depthBiasConstantFactor;
-    depthBiasClamp = copy_src.depthBiasClamp;
-    depthBiasSlopeFactor = copy_src.depthBiasSlopeFactor;
-    lineWidth = copy_src.lineWidth;
-    pNext = SafePnextCopy(copy_src.pNext);
-}
-
-safe_VkPipelineRasterizationStateCreateInfo& safe_VkPipelineRasterizationStateCreateInfo::operator=(
-    const safe_VkPipelineRasterizationStateCreateInfo& copy_src) {
-    if (&copy_src == this) return *this;
-
-    FreePnextChain(pNext);
-
-    sType = copy_src.sType;
-    flags = copy_src.flags;
-    depthClampEnable = copy_src.depthClampEnable;
-    rasterizerDiscardEnable = copy_src.rasterizerDiscardEnable;
-    polygonMode = copy_src.polygonMode;
-    cullMode = copy_src.cullMode;
-    frontFace = copy_src.frontFace;
-    depthBiasEnable = copy_src.depthBiasEnable;
-    depthBiasConstantFactor = copy_src.depthBiasConstantFactor;
-    depthBiasClamp = copy_src.depthBiasClamp;
-    depthBiasSlopeFactor = copy_src.depthBiasSlopeFactor;
-    lineWidth = copy_src.lineWidth;
-    pNext = SafePnextCopy(copy_src.pNext);
-
-    return *this;
-}
-
-safe_VkPipelineRasterizationStateCreateInfo::~safe_VkPipelineRasterizationStateCreateInfo() { FreePnextChain(pNext); }
-
-void safe_VkPipelineRasterizationStateCreateInfo::initialize(const VkPipelineRasterizationStateCreateInfo* in_struct,
-                                                             [[maybe_unused]] PNextCopyState* copy_state) {
-    FreePnextChain(pNext);
-    sType = in_struct->sType;
-    flags = in_struct->flags;
-    depthClampEnable = in_struct->depthClampEnable;
-    rasterizerDiscardEnable = in_struct->rasterizerDiscardEnable;
-    polygonMode = in_struct->polygonMode;
-    cullMode = in_struct->cullMode;
-    frontFace = in_struct->frontFace;
-    depthBiasEnable = in_struct->depthBiasEnable;
-    depthBiasConstantFactor = in_struct->depthBiasConstantFactor;
-    depthBiasClamp = in_struct->depthBiasClamp;
-    depthBiasSlopeFactor = in_struct->depthBiasSlopeFactor;
-    lineWidth = in_struct->lineWidth;
-    pNext = SafePnextCopy(in_struct->pNext, copy_state);
-}
-
-void safe_VkPipelineRasterizationStateCreateInfo::initialize(const safe_VkPipelineRasterizationStateCreateInfo* copy_src,
-                                                             [[maybe_unused]] PNextCopyState* copy_state) {
-    sType = copy_src->sType;
-    flags = copy_src->flags;
-    depthClampEnable = copy_src->depthClampEnable;
-    rasterizerDiscardEnable = copy_src->rasterizerDiscardEnable;
-    polygonMode = copy_src->polygonMode;
-    cullMode = copy_src->cullMode;
-    frontFace = copy_src->frontFace;
-    depthBiasEnable = copy_src->depthBiasEnable;
-    depthBiasConstantFactor = copy_src->depthBiasConstantFactor;
-    depthBiasClamp = copy_src->depthBiasClamp;
-    depthBiasSlopeFactor = copy_src->depthBiasSlopeFactor;
-    lineWidth = copy_src->lineWidth;
-    pNext = SafePnextCopy(copy_src->pNext);
-}
-
-safe_VkPipelineMultisampleStateCreateInfo::safe_VkPipelineMultisampleStateCreateInfo(
-    const VkPipelineMultisampleStateCreateInfo* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
-    : sType(in_struct->sType),
-      flags(in_struct->flags),
-      rasterizationSamples(in_struct->rasterizationSamples),
-      sampleShadingEnable(in_struct->sampleShadingEnable),
-      minSampleShading(in_struct->minSampleShading),
-      pSampleMask(nullptr),
-      alphaToCoverageEnable(in_struct->alphaToCoverageEnable),
-      alphaToOneEnable(in_struct->alphaToOneEnable) {
-    if (copy_pnext) {
-        pNext = SafePnextCopy(in_struct->pNext, copy_state);
-    }
-    if (in_struct->pSampleMask) {
-        pSampleMask = new VkSampleMask(*in_struct->pSampleMask);
-    }
-}
-
-safe_VkPipelineMultisampleStateCreateInfo::safe_VkPipelineMultisampleStateCreateInfo()
-    : sType(VK_STRUCTURE_TYPE_PIPELINE_MULTISAMPLE_STATE_CREATE_INFO),
-      pNext(nullptr),
-      flags(),
-      rasterizationSamples(),
-      sampleShadingEnable(),
-      minSampleShading(),
-      pSampleMask(nullptr),
-      alphaToCoverageEnable(),
-      alphaToOneEnable() {}
-
-safe_VkPipelineMultisampleStateCreateInfo::safe_VkPipelineMultisampleStateCreateInfo(
-    const safe_VkPipelineMultisampleStateCreateInfo& copy_src) {
-    sType = copy_src.sType;
-    flags = copy_src.flags;
-    rasterizationSamples = copy_src.rasterizationSamples;
-    sampleShadingEnable = copy_src.sampleShadingEnable;
-    minSampleShading = copy_src.minSampleShading;
-    pSampleMask = nullptr;
-    alphaToCoverageEnable = copy_src.alphaToCoverageEnable;
-    alphaToOneEnable = copy_src.alphaToOneEnable;
-    pNext = SafePnextCopy(copy_src.pNext);
-
-    if (copy_src.pSampleMask) {
-        pSampleMask = new VkSampleMask(*copy_src.pSampleMask);
-    }
-}
-
-safe_VkPipelineMultisampleStateCreateInfo& safe_VkPipelineMultisampleStateCreateInfo::operator=(
-    const safe_VkPipelineMultisampleStateCreateInfo& copy_src) {
-    if (&copy_src == this) return *this;
-
-    if (pSampleMask) delete pSampleMask;
-    FreePnextChain(pNext);
-
-    sType = copy_src.sType;
-    flags = copy_src.flags;
-    rasterizationSamples = copy_src.rasterizationSamples;
-    sampleShadingEnable = copy_src.sampleShadingEnable;
-    minSampleShading = copy_src.minSampleShading;
-    pSampleMask = nullptr;
-    alphaToCoverageEnable = copy_src.alphaToCoverageEnable;
-    alphaToOneEnable = copy_src.alphaToOneEnable;
-    pNext = SafePnextCopy(copy_src.pNext);
-
-    if (copy_src.pSampleMask) {
-        pSampleMask = new VkSampleMask(*copy_src.pSampleMask);
-    }
-
-    return *this;
-}
-
-safe_VkPipelineMultisampleStateCreateInfo::~safe_VkPipelineMultisampleStateCreateInfo() {
-    if (pSampleMask) delete pSampleMask;
-    FreePnextChain(pNext);
-}
-
-void safe_VkPipelineMultisampleStateCreateInfo::initialize(const VkPipelineMultisampleStateCreateInfo* in_struct,
-                                                           [[maybe_unused]] PNextCopyState* copy_state) {
-    if (pSampleMask) delete pSampleMask;
-    FreePnextChain(pNext);
-    sType = in_struct->sType;
-    flags = in_struct->flags;
-    rasterizationSamples = in_struct->rasterizationSamples;
-    sampleShadingEnable = in_struct->sampleShadingEnable;
-    minSampleShading = in_struct->minSampleShading;
-    pSampleMask = nullptr;
-    alphaToCoverageEnable = in_struct->alphaToCoverageEnable;
-    alphaToOneEnable = in_struct->alphaToOneEnable;
-    pNext = SafePnextCopy(in_struct->pNext, copy_state);
-
-    if (in_struct->pSampleMask) {
-        pSampleMask = new VkSampleMask(*in_struct->pSampleMask);
-    }
-}
-
-void safe_VkPipelineMultisampleStateCreateInfo::initialize(const safe_VkPipelineMultisampleStateCreateInfo* copy_src,
-                                                           [[maybe_unused]] PNextCopyState* copy_state) {
-    sType = copy_src->sType;
-    flags = copy_src->flags;
-    rasterizationSamples = copy_src->rasterizationSamples;
-    sampleShadingEnable = copy_src->sampleShadingEnable;
-    minSampleShading = copy_src->minSampleShading;
-    pSampleMask = nullptr;
-    alphaToCoverageEnable = copy_src->alphaToCoverageEnable;
-    alphaToOneEnable = copy_src->alphaToOneEnable;
-    pNext = SafePnextCopy(copy_src->pNext);
-
-    if (copy_src->pSampleMask) {
-        pSampleMask = new VkSampleMask(*copy_src->pSampleMask);
-    }
-}
-
-safe_VkPipelineDepthStencilStateCreateInfo::safe_VkPipelineDepthStencilStateCreateInfo(
-    const VkPipelineDepthStencilStateCreateInfo* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
-    : sType(in_struct->sType),
-      flags(in_struct->flags),
-      depthTestEnable(in_struct->depthTestEnable),
-      depthWriteEnable(in_struct->depthWriteEnable),
-      depthCompareOp(in_struct->depthCompareOp),
-      depthBoundsTestEnable(in_struct->depthBoundsTestEnable),
-      stencilTestEnable(in_struct->stencilTestEnable),
-      front(in_struct->front),
-      back(in_struct->back),
-      minDepthBounds(in_struct->minDepthBounds),
-      maxDepthBounds(in_struct->maxDepthBounds) {
-    if (copy_pnext) {
-        pNext = SafePnextCopy(in_struct->pNext, copy_state);
-    }
-}
-
-safe_VkPipelineDepthStencilStateCreateInfo::safe_VkPipelineDepthStencilStateCreateInfo()
-    : sType(VK_STRUCTURE_TYPE_PIPELINE_DEPTH_STENCIL_STATE_CREATE_INFO),
-      pNext(nullptr),
-      flags(),
-      depthTestEnable(),
-      depthWriteEnable(),
-      depthCompareOp(),
-      depthBoundsTestEnable(),
-      stencilTestEnable(),
-      front(),
-      back(),
-      minDepthBounds(),
-      maxDepthBounds() {}
-
-safe_VkPipelineDepthStencilStateCreateInfo::safe_VkPipelineDepthStencilStateCreateInfo(
-    const safe_VkPipelineDepthStencilStateCreateInfo& copy_src) {
-    sType = copy_src.sType;
-    flags = copy_src.flags;
-    depthTestEnable = copy_src.depthTestEnable;
-    depthWriteEnable = copy_src.depthWriteEnable;
-    depthCompareOp = copy_src.depthCompareOp;
-    depthBoundsTestEnable = copy_src.depthBoundsTestEnable;
-    stencilTestEnable = copy_src.stencilTestEnable;
-    front = copy_src.front;
-    back = copy_src.back;
-    minDepthBounds = copy_src.minDepthBounds;
-    maxDepthBounds = copy_src.maxDepthBounds;
-    pNext = SafePnextCopy(copy_src.pNext);
-}
-
-safe_VkPipelineDepthStencilStateCreateInfo& safe_VkPipelineDepthStencilStateCreateInfo::operator=(
-    const safe_VkPipelineDepthStencilStateCreateInfo& copy_src) {
-    if (&copy_src == this) return *this;
-
-    FreePnextChain(pNext);
-
-    sType = copy_src.sType;
-    flags = copy_src.flags;
-    depthTestEnable = copy_src.depthTestEnable;
-    depthWriteEnable = copy_src.depthWriteEnable;
-    depthCompareOp = copy_src.depthCompareOp;
-    depthBoundsTestEnable = copy_src.depthBoundsTestEnable;
-    stencilTestEnable = copy_src.stencilTestEnable;
-    front = copy_src.front;
-    back = copy_src.back;
-    minDepthBounds = copy_src.minDepthBounds;
-    maxDepthBounds = copy_src.maxDepthBounds;
-    pNext = SafePnextCopy(copy_src.pNext);
-
-    return *this;
-}
-
-safe_VkPipelineDepthStencilStateCreateInfo::~safe_VkPipelineDepthStencilStateCreateInfo() { FreePnextChain(pNext); }
-
-void safe_VkPipelineDepthStencilStateCreateInfo::initialize(const VkPipelineDepthStencilStateCreateInfo* in_struct,
-                                                            [[maybe_unused]] PNextCopyState* copy_state) {
-    FreePnextChain(pNext);
-    sType = in_struct->sType;
-    flags = in_struct->flags;
-    depthTestEnable = in_struct->depthTestEnable;
-    depthWriteEnable = in_struct->depthWriteEnable;
-    depthCompareOp = in_struct->depthCompareOp;
-    depthBoundsTestEnable = in_struct->depthBoundsTestEnable;
-    stencilTestEnable = in_struct->stencilTestEnable;
-    front = in_struct->front;
-    back = in_struct->back;
-    minDepthBounds = in_struct->minDepthBounds;
-    maxDepthBounds = in_struct->maxDepthBounds;
-    pNext = SafePnextCopy(in_struct->pNext, copy_state);
-}
-
-void safe_VkPipelineDepthStencilStateCreateInfo::initialize(const safe_VkPipelineDepthStencilStateCreateInfo* copy_src,
-                                                            [[maybe_unused]] PNextCopyState* copy_state) {
-    sType = copy_src->sType;
-    flags = copy_src->flags;
-    depthTestEnable = copy_src->depthTestEnable;
-    depthWriteEnable = copy_src->depthWriteEnable;
-    depthCompareOp = copy_src->depthCompareOp;
-    depthBoundsTestEnable = copy_src->depthBoundsTestEnable;
-    stencilTestEnable = copy_src->stencilTestEnable;
-    front = copy_src->front;
-    back = copy_src->back;
-    minDepthBounds = copy_src->minDepthBounds;
-    maxDepthBounds = copy_src->maxDepthBounds;
-    pNext = SafePnextCopy(copy_src->pNext);
-}
-
-safe_VkPipelineColorBlendStateCreateInfo::safe_VkPipelineColorBlendStateCreateInfo(
-    const VkPipelineColorBlendStateCreateInfo* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
-    : sType(in_struct->sType),
-      flags(in_struct->flags),
-      logicOpEnable(in_struct->logicOpEnable),
-      logicOp(in_struct->logicOp),
-      attachmentCount(in_struct->attachmentCount),
-      pAttachments(nullptr) {
-    if (copy_pnext) {
-        pNext = SafePnextCopy(in_struct->pNext, copy_state);
-    }
-    if (in_struct->pAttachments) {
-        pAttachments = new VkPipelineColorBlendAttachmentState[in_struct->attachmentCount];
-        memcpy((void*)pAttachments, (void*)in_struct->pAttachments,
-               sizeof(VkPipelineColorBlendAttachmentState) * in_struct->attachmentCount);
-    }
-
-    for (uint32_t i = 0; i < 4; ++i) {
-        blendConstants[i] = in_struct->blendConstants[i];
-    }
-}
-
-safe_VkPipelineColorBlendStateCreateInfo::safe_VkPipelineColorBlendStateCreateInfo()
-    : sType(VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_STATE_CREATE_INFO),
-      pNext(nullptr),
-      flags(),
-      logicOpEnable(),
-      logicOp(),
-      attachmentCount(),
-      pAttachments(nullptr) {}
-
-safe_VkPipelineColorBlendStateCreateInfo::safe_VkPipelineColorBlendStateCreateInfo(
-    const safe_VkPipelineColorBlendStateCreateInfo& copy_src) {
-    sType = copy_src.sType;
-    flags = copy_src.flags;
-    logicOpEnable = copy_src.logicOpEnable;
-    logicOp = copy_src.logicOp;
-    attachmentCount = copy_src.attachmentCount;
-    pAttachments = nullptr;
-    pNext = SafePnextCopy(copy_src.pNext);
-
-    if (copy_src.pAttachments) {
-        pAttachments = new VkPipelineColorBlendAttachmentState[copy_src.attachmentCount];
-        memcpy((void*)pAttachments, (void*)copy_src.pAttachments,
-               sizeof(VkPipelineColorBlendAttachmentState) * copy_src.attachmentCount);
-    }
-
-    for (uint32_t i = 0; i < 4; ++i) {
-        blendConstants[i] = copy_src.blendConstants[i];
-    }
-}
-
-safe_VkPipelineColorBlendStateCreateInfo& safe_VkPipelineColorBlendStateCreateInfo::operator=(
-    const safe_VkPipelineColorBlendStateCreateInfo& copy_src) {
-    if (&copy_src == this) return *this;
-
-    if (pAttachments) delete[] pAttachments;
-    FreePnextChain(pNext);
-
-    sType = copy_src.sType;
-    flags = copy_src.flags;
-    logicOpEnable = copy_src.logicOpEnable;
-    logicOp = copy_src.logicOp;
-    attachmentCount = copy_src.attachmentCount;
-    pAttachments = nullptr;
-    pNext = SafePnextCopy(copy_src.pNext);
-
-    if (copy_src.pAttachments) {
-        pAttachments = new VkPipelineColorBlendAttachmentState[copy_src.attachmentCount];
-        memcpy((void*)pAttachments, (void*)copy_src.pAttachments,
-               sizeof(VkPipelineColorBlendAttachmentState) * copy_src.attachmentCount);
-    }
-
-    for (uint32_t i = 0; i < 4; ++i) {
-        blendConstants[i] = copy_src.blendConstants[i];
-    }
-
-    return *this;
-}
-
-safe_VkPipelineColorBlendStateCreateInfo::~safe_VkPipelineColorBlendStateCreateInfo() {
-    if (pAttachments) delete[] pAttachments;
-    FreePnextChain(pNext);
-}
-
-void safe_VkPipelineColorBlendStateCreateInfo::initialize(const VkPipelineColorBlendStateCreateInfo* in_struct,
-                                                          [[maybe_unused]] PNextCopyState* copy_state) {
-    if (pAttachments) delete[] pAttachments;
-    FreePnextChain(pNext);
-    sType = in_struct->sType;
-    flags = in_struct->flags;
-    logicOpEnable = in_struct->logicOpEnable;
-    logicOp = in_struct->logicOp;
-    attachmentCount = in_struct->attachmentCount;
-    pAttachments = nullptr;
-    pNext = SafePnextCopy(in_struct->pNext, copy_state);
-
-    if (in_struct->pAttachments) {
-        pAttachments = new VkPipelineColorBlendAttachmentState[in_struct->attachmentCount];
-        memcpy((void*)pAttachments, (void*)in_struct->pAttachments,
-               sizeof(VkPipelineColorBlendAttachmentState) * in_struct->attachmentCount);
-    }
-
-    for (uint32_t i = 0; i < 4; ++i) {
-        blendConstants[i] = in_struct->blendConstants[i];
-    }
-}
-
-void safe_VkPipelineColorBlendStateCreateInfo::initialize(const safe_VkPipelineColorBlendStateCreateInfo* copy_src,
-                                                          [[maybe_unused]] PNextCopyState* copy_state) {
-    sType = copy_src->sType;
-    flags = copy_src->flags;
-    logicOpEnable = copy_src->logicOpEnable;
-    logicOp = copy_src->logicOp;
-    attachmentCount = copy_src->attachmentCount;
-    pAttachments = nullptr;
-    pNext = SafePnextCopy(copy_src->pNext);
-
-    if (copy_src->pAttachments) {
-        pAttachments = new VkPipelineColorBlendAttachmentState[copy_src->attachmentCount];
-        memcpy((void*)pAttachments, (void*)copy_src->pAttachments,
-               sizeof(VkPipelineColorBlendAttachmentState) * copy_src->attachmentCount);
-    }
-
-    for (uint32_t i = 0; i < 4; ++i) {
-        blendConstants[i] = copy_src->blendConstants[i];
-    }
-}
-
-safe_VkPipelineDynamicStateCreateInfo::safe_VkPipelineDynamicStateCreateInfo(const VkPipelineDynamicStateCreateInfo* in_struct,
-                                                                             [[maybe_unused]] PNextCopyState* copy_state,
-                                                                             bool copy_pnext)
-    : sType(in_struct->sType), flags(in_struct->flags), dynamicStateCount(in_struct->dynamicStateCount), pDynamicStates(nullptr) {
-    if (copy_pnext) {
-        pNext = SafePnextCopy(in_struct->pNext, copy_state);
-    }
-    if (in_struct->pDynamicStates) {
-        pDynamicStates = new VkDynamicState[in_struct->dynamicStateCount];
-        memcpy((void*)pDynamicStates, (void*)in_struct->pDynamicStates, sizeof(VkDynamicState) * in_struct->dynamicStateCount);
-    }
-}
-
-safe_VkPipelineDynamicStateCreateInfo::safe_VkPipelineDynamicStateCreateInfo()
-    : sType(VK_STRUCTURE_TYPE_PIPELINE_DYNAMIC_STATE_CREATE_INFO),
-      pNext(nullptr),
-      flags(),
-      dynamicStateCount(),
-      pDynamicStates(nullptr) {}
-
-safe_VkPipelineDynamicStateCreateInfo::safe_VkPipelineDynamicStateCreateInfo(
-    const safe_VkPipelineDynamicStateCreateInfo& copy_src) {
-    sType = copy_src.sType;
-    flags = copy_src.flags;
-    dynamicStateCount = copy_src.dynamicStateCount;
-    pDynamicStates = nullptr;
-    pNext = SafePnextCopy(copy_src.pNext);
-
-    if (copy_src.pDynamicStates) {
-        pDynamicStates = new VkDynamicState[copy_src.dynamicStateCount];
-        memcpy((void*)pDynamicStates, (void*)copy_src.pDynamicStates, sizeof(VkDynamicState) * copy_src.dynamicStateCount);
-    }
-}
-
-safe_VkPipelineDynamicStateCreateInfo& safe_VkPipelineDynamicStateCreateInfo::operator=(
-    const safe_VkPipelineDynamicStateCreateInfo& copy_src) {
-    if (&copy_src == this) return *this;
-
-    if (pDynamicStates) delete[] pDynamicStates;
-    FreePnextChain(pNext);
-
-    sType = copy_src.sType;
-    flags = copy_src.flags;
-    dynamicStateCount = copy_src.dynamicStateCount;
-    pDynamicStates = nullptr;
-    pNext = SafePnextCopy(copy_src.pNext);
-
-    if (copy_src.pDynamicStates) {
-        pDynamicStates = new VkDynamicState[copy_src.dynamicStateCount];
-        memcpy((void*)pDynamicStates, (void*)copy_src.pDynamicStates, sizeof(VkDynamicState) * copy_src.dynamicStateCount);
-    }
-
-    return *this;
-}
-
-safe_VkPipelineDynamicStateCreateInfo::~safe_VkPipelineDynamicStateCreateInfo() {
-    if (pDynamicStates) delete[] pDynamicStates;
-    FreePnextChain(pNext);
-}
-
-void safe_VkPipelineDynamicStateCreateInfo::initialize(const VkPipelineDynamicStateCreateInfo* in_struct,
-                                                       [[maybe_unused]] PNextCopyState* copy_state) {
-    if (pDynamicStates) delete[] pDynamicStates;
-    FreePnextChain(pNext);
-    sType = in_struct->sType;
-    flags = in_struct->flags;
-    dynamicStateCount = in_struct->dynamicStateCount;
-    pDynamicStates = nullptr;
-    pNext = SafePnextCopy(in_struct->pNext, copy_state);
-
-    if (in_struct->pDynamicStates) {
-        pDynamicStates = new VkDynamicState[in_struct->dynamicStateCount];
-        memcpy((void*)pDynamicStates, (void*)in_struct->pDynamicStates, sizeof(VkDynamicState) * in_struct->dynamicStateCount);
-    }
-}
-
-void safe_VkPipelineDynamicStateCreateInfo::initialize(const safe_VkPipelineDynamicStateCreateInfo* copy_src,
-                                                       [[maybe_unused]] PNextCopyState* copy_state) {
-    sType = copy_src->sType;
-    flags = copy_src->flags;
-    dynamicStateCount = copy_src->dynamicStateCount;
-    pDynamicStates = nullptr;
-    pNext = SafePnextCopy(copy_src->pNext);
-
-    if (copy_src->pDynamicStates) {
-        pDynamicStates = new VkDynamicState[copy_src->dynamicStateCount];
-        memcpy((void*)pDynamicStates, (void*)copy_src->pDynamicStates, sizeof(VkDynamicState) * copy_src->dynamicStateCount);
     }
 }
 
@@ -9432,6 +9432,98 @@ void safe_VkPhysicalDeviceShaderDrawParametersFeatures::initialize(
     pNext = SafePnextCopy(copy_src->pNext);
 }
 
+safe_VkPhysicalDeviceDriverProperties::safe_VkPhysicalDeviceDriverProperties(const VkPhysicalDeviceDriverProperties* in_struct,
+                                                                             [[maybe_unused]] PNextCopyState* copy_state,
+                                                                             bool copy_pnext)
+    : sType(in_struct->sType), driverID(in_struct->driverID), conformanceVersion(in_struct->conformanceVersion) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+    for (uint32_t i = 0; i < VK_MAX_DRIVER_NAME_SIZE; ++i) {
+        driverName[i] = in_struct->driverName[i];
+    }
+
+    for (uint32_t i = 0; i < VK_MAX_DRIVER_INFO_SIZE; ++i) {
+        driverInfo[i] = in_struct->driverInfo[i];
+    }
+}
+
+safe_VkPhysicalDeviceDriverProperties::safe_VkPhysicalDeviceDriverProperties()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DRIVER_PROPERTIES), pNext(nullptr), driverID(), conformanceVersion() {}
+
+safe_VkPhysicalDeviceDriverProperties::safe_VkPhysicalDeviceDriverProperties(
+    const safe_VkPhysicalDeviceDriverProperties& copy_src) {
+    sType = copy_src.sType;
+    driverID = copy_src.driverID;
+    conformanceVersion = copy_src.conformanceVersion;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    for (uint32_t i = 0; i < VK_MAX_DRIVER_NAME_SIZE; ++i) {
+        driverName[i] = copy_src.driverName[i];
+    }
+
+    for (uint32_t i = 0; i < VK_MAX_DRIVER_INFO_SIZE; ++i) {
+        driverInfo[i] = copy_src.driverInfo[i];
+    }
+}
+
+safe_VkPhysicalDeviceDriverProperties& safe_VkPhysicalDeviceDriverProperties::operator=(
+    const safe_VkPhysicalDeviceDriverProperties& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    driverID = copy_src.driverID;
+    conformanceVersion = copy_src.conformanceVersion;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    for (uint32_t i = 0; i < VK_MAX_DRIVER_NAME_SIZE; ++i) {
+        driverName[i] = copy_src.driverName[i];
+    }
+
+    for (uint32_t i = 0; i < VK_MAX_DRIVER_INFO_SIZE; ++i) {
+        driverInfo[i] = copy_src.driverInfo[i];
+    }
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceDriverProperties::~safe_VkPhysicalDeviceDriverProperties() { FreePnextChain(pNext); }
+
+void safe_VkPhysicalDeviceDriverProperties::initialize(const VkPhysicalDeviceDriverProperties* in_struct,
+                                                       [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    driverID = in_struct->driverID;
+    conformanceVersion = in_struct->conformanceVersion;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+
+    for (uint32_t i = 0; i < VK_MAX_DRIVER_NAME_SIZE; ++i) {
+        driverName[i] = in_struct->driverName[i];
+    }
+
+    for (uint32_t i = 0; i < VK_MAX_DRIVER_INFO_SIZE; ++i) {
+        driverInfo[i] = in_struct->driverInfo[i];
+    }
+}
+
+void safe_VkPhysicalDeviceDriverProperties::initialize(const safe_VkPhysicalDeviceDriverProperties* copy_src,
+                                                       [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    driverID = copy_src->driverID;
+    conformanceVersion = copy_src->conformanceVersion;
+    pNext = SafePnextCopy(copy_src->pNext);
+
+    for (uint32_t i = 0; i < VK_MAX_DRIVER_NAME_SIZE; ++i) {
+        driverName[i] = copy_src->driverName[i];
+    }
+
+    for (uint32_t i = 0; i < VK_MAX_DRIVER_INFO_SIZE; ++i) {
+        driverInfo[i] = copy_src->driverInfo[i];
+    }
+}
+
 safe_VkPhysicalDeviceVulkan11Features::safe_VkPhysicalDeviceVulkan11Features(const VkPhysicalDeviceVulkan11Features* in_struct,
                                                                              [[maybe_unused]] PNextCopyState* copy_state,
                                                                              bool copy_pnext)
@@ -10514,98 +10606,6 @@ void safe_VkImageFormatListCreateInfo::initialize(const safe_VkImageFormatListCr
     if (copy_src->pViewFormats) {
         pViewFormats = new VkFormat[copy_src->viewFormatCount];
         memcpy((void*)pViewFormats, (void*)copy_src->pViewFormats, sizeof(VkFormat) * copy_src->viewFormatCount);
-    }
-}
-
-safe_VkPhysicalDeviceDriverProperties::safe_VkPhysicalDeviceDriverProperties(const VkPhysicalDeviceDriverProperties* in_struct,
-                                                                             [[maybe_unused]] PNextCopyState* copy_state,
-                                                                             bool copy_pnext)
-    : sType(in_struct->sType), driverID(in_struct->driverID), conformanceVersion(in_struct->conformanceVersion) {
-    if (copy_pnext) {
-        pNext = SafePnextCopy(in_struct->pNext, copy_state);
-    }
-    for (uint32_t i = 0; i < VK_MAX_DRIVER_NAME_SIZE; ++i) {
-        driverName[i] = in_struct->driverName[i];
-    }
-
-    for (uint32_t i = 0; i < VK_MAX_DRIVER_INFO_SIZE; ++i) {
-        driverInfo[i] = in_struct->driverInfo[i];
-    }
-}
-
-safe_VkPhysicalDeviceDriverProperties::safe_VkPhysicalDeviceDriverProperties()
-    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DRIVER_PROPERTIES), pNext(nullptr), driverID(), conformanceVersion() {}
-
-safe_VkPhysicalDeviceDriverProperties::safe_VkPhysicalDeviceDriverProperties(
-    const safe_VkPhysicalDeviceDriverProperties& copy_src) {
-    sType = copy_src.sType;
-    driverID = copy_src.driverID;
-    conformanceVersion = copy_src.conformanceVersion;
-    pNext = SafePnextCopy(copy_src.pNext);
-
-    for (uint32_t i = 0; i < VK_MAX_DRIVER_NAME_SIZE; ++i) {
-        driverName[i] = copy_src.driverName[i];
-    }
-
-    for (uint32_t i = 0; i < VK_MAX_DRIVER_INFO_SIZE; ++i) {
-        driverInfo[i] = copy_src.driverInfo[i];
-    }
-}
-
-safe_VkPhysicalDeviceDriverProperties& safe_VkPhysicalDeviceDriverProperties::operator=(
-    const safe_VkPhysicalDeviceDriverProperties& copy_src) {
-    if (&copy_src == this) return *this;
-
-    FreePnextChain(pNext);
-
-    sType = copy_src.sType;
-    driverID = copy_src.driverID;
-    conformanceVersion = copy_src.conformanceVersion;
-    pNext = SafePnextCopy(copy_src.pNext);
-
-    for (uint32_t i = 0; i < VK_MAX_DRIVER_NAME_SIZE; ++i) {
-        driverName[i] = copy_src.driverName[i];
-    }
-
-    for (uint32_t i = 0; i < VK_MAX_DRIVER_INFO_SIZE; ++i) {
-        driverInfo[i] = copy_src.driverInfo[i];
-    }
-
-    return *this;
-}
-
-safe_VkPhysicalDeviceDriverProperties::~safe_VkPhysicalDeviceDriverProperties() { FreePnextChain(pNext); }
-
-void safe_VkPhysicalDeviceDriverProperties::initialize(const VkPhysicalDeviceDriverProperties* in_struct,
-                                                       [[maybe_unused]] PNextCopyState* copy_state) {
-    FreePnextChain(pNext);
-    sType = in_struct->sType;
-    driverID = in_struct->driverID;
-    conformanceVersion = in_struct->conformanceVersion;
-    pNext = SafePnextCopy(in_struct->pNext, copy_state);
-
-    for (uint32_t i = 0; i < VK_MAX_DRIVER_NAME_SIZE; ++i) {
-        driverName[i] = in_struct->driverName[i];
-    }
-
-    for (uint32_t i = 0; i < VK_MAX_DRIVER_INFO_SIZE; ++i) {
-        driverInfo[i] = in_struct->driverInfo[i];
-    }
-}
-
-void safe_VkPhysicalDeviceDriverProperties::initialize(const safe_VkPhysicalDeviceDriverProperties* copy_src,
-                                                       [[maybe_unused]] PNextCopyState* copy_state) {
-    sType = copy_src->sType;
-    driverID = copy_src->driverID;
-    conformanceVersion = copy_src->conformanceVersion;
-    pNext = SafePnextCopy(copy_src->pNext);
-
-    for (uint32_t i = 0; i < VK_MAX_DRIVER_NAME_SIZE; ++i) {
-        driverName[i] = copy_src->driverName[i];
-    }
-
-    for (uint32_t i = 0; i < VK_MAX_DRIVER_INFO_SIZE; ++i) {
-        driverInfo[i] = copy_src->driverInfo[i];
     }
 }
 
@@ -13076,6 +13076,88 @@ void safe_VkSubpassDependency2::initialize(const safe_VkSubpassDependency2* copy
     pNext = SafePnextCopy(copy_src->pNext);
 }
 
+safe_VkSubpassBeginInfo::safe_VkSubpassBeginInfo(const VkSubpassBeginInfo* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
+                                                 bool copy_pnext)
+    : sType(in_struct->sType), contents(in_struct->contents) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkSubpassBeginInfo::safe_VkSubpassBeginInfo() : sType(VK_STRUCTURE_TYPE_SUBPASS_BEGIN_INFO), pNext(nullptr), contents() {}
+
+safe_VkSubpassBeginInfo::safe_VkSubpassBeginInfo(const safe_VkSubpassBeginInfo& copy_src) {
+    sType = copy_src.sType;
+    contents = copy_src.contents;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkSubpassBeginInfo& safe_VkSubpassBeginInfo::operator=(const safe_VkSubpassBeginInfo& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    contents = copy_src.contents;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkSubpassBeginInfo::~safe_VkSubpassBeginInfo() { FreePnextChain(pNext); }
+
+void safe_VkSubpassBeginInfo::initialize(const VkSubpassBeginInfo* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    contents = in_struct->contents;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkSubpassBeginInfo::initialize(const safe_VkSubpassBeginInfo* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    contents = copy_src->contents;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkSubpassEndInfo::safe_VkSubpassEndInfo(const VkSubpassEndInfo* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
+                                             bool copy_pnext)
+    : sType(in_struct->sType) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkSubpassEndInfo::safe_VkSubpassEndInfo() : sType(VK_STRUCTURE_TYPE_SUBPASS_END_INFO), pNext(nullptr) {}
+
+safe_VkSubpassEndInfo::safe_VkSubpassEndInfo(const safe_VkSubpassEndInfo& copy_src) {
+    sType = copy_src.sType;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkSubpassEndInfo& safe_VkSubpassEndInfo::operator=(const safe_VkSubpassEndInfo& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkSubpassEndInfo::~safe_VkSubpassEndInfo() { FreePnextChain(pNext); }
+
+void safe_VkSubpassEndInfo::initialize(const VkSubpassEndInfo* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkSubpassEndInfo::initialize(const safe_VkSubpassEndInfo* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
 safe_VkRenderPassCreateInfo2::safe_VkRenderPassCreateInfo2(const VkRenderPassCreateInfo2* in_struct,
                                                            [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
     : sType(in_struct->sType),
@@ -13305,88 +13387,6 @@ void safe_VkRenderPassCreateInfo2::initialize(const safe_VkRenderPassCreateInfo2
         memcpy((void*)pCorrelatedViewMasks, (void*)copy_src->pCorrelatedViewMasks,
                sizeof(uint32_t) * copy_src->correlatedViewMaskCount);
     }
-}
-
-safe_VkSubpassBeginInfo::safe_VkSubpassBeginInfo(const VkSubpassBeginInfo* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
-                                                 bool copy_pnext)
-    : sType(in_struct->sType), contents(in_struct->contents) {
-    if (copy_pnext) {
-        pNext = SafePnextCopy(in_struct->pNext, copy_state);
-    }
-}
-
-safe_VkSubpassBeginInfo::safe_VkSubpassBeginInfo() : sType(VK_STRUCTURE_TYPE_SUBPASS_BEGIN_INFO), pNext(nullptr), contents() {}
-
-safe_VkSubpassBeginInfo::safe_VkSubpassBeginInfo(const safe_VkSubpassBeginInfo& copy_src) {
-    sType = copy_src.sType;
-    contents = copy_src.contents;
-    pNext = SafePnextCopy(copy_src.pNext);
-}
-
-safe_VkSubpassBeginInfo& safe_VkSubpassBeginInfo::operator=(const safe_VkSubpassBeginInfo& copy_src) {
-    if (&copy_src == this) return *this;
-
-    FreePnextChain(pNext);
-
-    sType = copy_src.sType;
-    contents = copy_src.contents;
-    pNext = SafePnextCopy(copy_src.pNext);
-
-    return *this;
-}
-
-safe_VkSubpassBeginInfo::~safe_VkSubpassBeginInfo() { FreePnextChain(pNext); }
-
-void safe_VkSubpassBeginInfo::initialize(const VkSubpassBeginInfo* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
-    FreePnextChain(pNext);
-    sType = in_struct->sType;
-    contents = in_struct->contents;
-    pNext = SafePnextCopy(in_struct->pNext, copy_state);
-}
-
-void safe_VkSubpassBeginInfo::initialize(const safe_VkSubpassBeginInfo* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
-    sType = copy_src->sType;
-    contents = copy_src->contents;
-    pNext = SafePnextCopy(copy_src->pNext);
-}
-
-safe_VkSubpassEndInfo::safe_VkSubpassEndInfo(const VkSubpassEndInfo* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
-                                             bool copy_pnext)
-    : sType(in_struct->sType) {
-    if (copy_pnext) {
-        pNext = SafePnextCopy(in_struct->pNext, copy_state);
-    }
-}
-
-safe_VkSubpassEndInfo::safe_VkSubpassEndInfo() : sType(VK_STRUCTURE_TYPE_SUBPASS_END_INFO), pNext(nullptr) {}
-
-safe_VkSubpassEndInfo::safe_VkSubpassEndInfo(const safe_VkSubpassEndInfo& copy_src) {
-    sType = copy_src.sType;
-    pNext = SafePnextCopy(copy_src.pNext);
-}
-
-safe_VkSubpassEndInfo& safe_VkSubpassEndInfo::operator=(const safe_VkSubpassEndInfo& copy_src) {
-    if (&copy_src == this) return *this;
-
-    FreePnextChain(pNext);
-
-    sType = copy_src.sType;
-    pNext = SafePnextCopy(copy_src.pNext);
-
-    return *this;
-}
-
-safe_VkSubpassEndInfo::~safe_VkSubpassEndInfo() { FreePnextChain(pNext); }
-
-void safe_VkSubpassEndInfo::initialize(const VkSubpassEndInfo* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
-    FreePnextChain(pNext);
-    sType = in_struct->sType;
-    pNext = SafePnextCopy(in_struct->pNext, copy_state);
-}
-
-void safe_VkSubpassEndInfo::initialize(const safe_VkSubpassEndInfo* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
-    sType = copy_src->sType;
-    pNext = SafePnextCopy(copy_src->pNext);
 }
 
 safe_VkSubpassDescriptionDepthStencilResolve::safe_VkSubpassDescriptionDepthStencilResolve(
@@ -13748,6 +13748,93 @@ void safe_VkFramebufferAttachmentImageInfo::initialize(const safe_VkFramebufferA
     }
 }
 
+safe_VkRenderPassAttachmentBeginInfo::safe_VkRenderPassAttachmentBeginInfo(const VkRenderPassAttachmentBeginInfo* in_struct,
+                                                                           [[maybe_unused]] PNextCopyState* copy_state,
+                                                                           bool copy_pnext)
+    : sType(in_struct->sType), attachmentCount(in_struct->attachmentCount), pAttachments(nullptr) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+    if (attachmentCount && in_struct->pAttachments) {
+        pAttachments = new VkImageView[attachmentCount];
+        for (uint32_t i = 0; i < attachmentCount; ++i) {
+            pAttachments[i] = in_struct->pAttachments[i];
+        }
+    }
+}
+
+safe_VkRenderPassAttachmentBeginInfo::safe_VkRenderPassAttachmentBeginInfo()
+    : sType(VK_STRUCTURE_TYPE_RENDER_PASS_ATTACHMENT_BEGIN_INFO), pNext(nullptr), attachmentCount(), pAttachments(nullptr) {}
+
+safe_VkRenderPassAttachmentBeginInfo::safe_VkRenderPassAttachmentBeginInfo(const safe_VkRenderPassAttachmentBeginInfo& copy_src) {
+    sType = copy_src.sType;
+    attachmentCount = copy_src.attachmentCount;
+    pAttachments = nullptr;
+    pNext = SafePnextCopy(copy_src.pNext);
+    if (attachmentCount && copy_src.pAttachments) {
+        pAttachments = new VkImageView[attachmentCount];
+        for (uint32_t i = 0; i < attachmentCount; ++i) {
+            pAttachments[i] = copy_src.pAttachments[i];
+        }
+    }
+}
+
+safe_VkRenderPassAttachmentBeginInfo& safe_VkRenderPassAttachmentBeginInfo::operator=(
+    const safe_VkRenderPassAttachmentBeginInfo& copy_src) {
+    if (&copy_src == this) return *this;
+
+    if (pAttachments) delete[] pAttachments;
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    attachmentCount = copy_src.attachmentCount;
+    pAttachments = nullptr;
+    pNext = SafePnextCopy(copy_src.pNext);
+    if (attachmentCount && copy_src.pAttachments) {
+        pAttachments = new VkImageView[attachmentCount];
+        for (uint32_t i = 0; i < attachmentCount; ++i) {
+            pAttachments[i] = copy_src.pAttachments[i];
+        }
+    }
+
+    return *this;
+}
+
+safe_VkRenderPassAttachmentBeginInfo::~safe_VkRenderPassAttachmentBeginInfo() {
+    if (pAttachments) delete[] pAttachments;
+    FreePnextChain(pNext);
+}
+
+void safe_VkRenderPassAttachmentBeginInfo::initialize(const VkRenderPassAttachmentBeginInfo* in_struct,
+                                                      [[maybe_unused]] PNextCopyState* copy_state) {
+    if (pAttachments) delete[] pAttachments;
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    attachmentCount = in_struct->attachmentCount;
+    pAttachments = nullptr;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    if (attachmentCount && in_struct->pAttachments) {
+        pAttachments = new VkImageView[attachmentCount];
+        for (uint32_t i = 0; i < attachmentCount; ++i) {
+            pAttachments[i] = in_struct->pAttachments[i];
+        }
+    }
+}
+
+void safe_VkRenderPassAttachmentBeginInfo::initialize(const safe_VkRenderPassAttachmentBeginInfo* copy_src,
+                                                      [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    attachmentCount = copy_src->attachmentCount;
+    pAttachments = nullptr;
+    pNext = SafePnextCopy(copy_src->pNext);
+    if (attachmentCount && copy_src->pAttachments) {
+        pAttachments = new VkImageView[attachmentCount];
+        for (uint32_t i = 0; i < attachmentCount; ++i) {
+            pAttachments[i] = copy_src->pAttachments[i];
+        }
+    }
+}
+
 safe_VkFramebufferAttachmentsCreateInfo::safe_VkFramebufferAttachmentsCreateInfo(
     const VkFramebufferAttachmentsCreateInfo* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
     : sType(in_struct->sType), attachmentImageInfoCount(in_struct->attachmentImageInfoCount), pAttachmentImageInfos(nullptr) {
@@ -13834,93 +13921,6 @@ void safe_VkFramebufferAttachmentsCreateInfo::initialize(const safe_VkFramebuffe
         pAttachmentImageInfos = new safe_VkFramebufferAttachmentImageInfo[attachmentImageInfoCount];
         for (uint32_t i = 0; i < attachmentImageInfoCount; ++i) {
             pAttachmentImageInfos[i].initialize(&copy_src->pAttachmentImageInfos[i]);
-        }
-    }
-}
-
-safe_VkRenderPassAttachmentBeginInfo::safe_VkRenderPassAttachmentBeginInfo(const VkRenderPassAttachmentBeginInfo* in_struct,
-                                                                           [[maybe_unused]] PNextCopyState* copy_state,
-                                                                           bool copy_pnext)
-    : sType(in_struct->sType), attachmentCount(in_struct->attachmentCount), pAttachments(nullptr) {
-    if (copy_pnext) {
-        pNext = SafePnextCopy(in_struct->pNext, copy_state);
-    }
-    if (attachmentCount && in_struct->pAttachments) {
-        pAttachments = new VkImageView[attachmentCount];
-        for (uint32_t i = 0; i < attachmentCount; ++i) {
-            pAttachments[i] = in_struct->pAttachments[i];
-        }
-    }
-}
-
-safe_VkRenderPassAttachmentBeginInfo::safe_VkRenderPassAttachmentBeginInfo()
-    : sType(VK_STRUCTURE_TYPE_RENDER_PASS_ATTACHMENT_BEGIN_INFO), pNext(nullptr), attachmentCount(), pAttachments(nullptr) {}
-
-safe_VkRenderPassAttachmentBeginInfo::safe_VkRenderPassAttachmentBeginInfo(const safe_VkRenderPassAttachmentBeginInfo& copy_src) {
-    sType = copy_src.sType;
-    attachmentCount = copy_src.attachmentCount;
-    pAttachments = nullptr;
-    pNext = SafePnextCopy(copy_src.pNext);
-    if (attachmentCount && copy_src.pAttachments) {
-        pAttachments = new VkImageView[attachmentCount];
-        for (uint32_t i = 0; i < attachmentCount; ++i) {
-            pAttachments[i] = copy_src.pAttachments[i];
-        }
-    }
-}
-
-safe_VkRenderPassAttachmentBeginInfo& safe_VkRenderPassAttachmentBeginInfo::operator=(
-    const safe_VkRenderPassAttachmentBeginInfo& copy_src) {
-    if (&copy_src == this) return *this;
-
-    if (pAttachments) delete[] pAttachments;
-    FreePnextChain(pNext);
-
-    sType = copy_src.sType;
-    attachmentCount = copy_src.attachmentCount;
-    pAttachments = nullptr;
-    pNext = SafePnextCopy(copy_src.pNext);
-    if (attachmentCount && copy_src.pAttachments) {
-        pAttachments = new VkImageView[attachmentCount];
-        for (uint32_t i = 0; i < attachmentCount; ++i) {
-            pAttachments[i] = copy_src.pAttachments[i];
-        }
-    }
-
-    return *this;
-}
-
-safe_VkRenderPassAttachmentBeginInfo::~safe_VkRenderPassAttachmentBeginInfo() {
-    if (pAttachments) delete[] pAttachments;
-    FreePnextChain(pNext);
-}
-
-void safe_VkRenderPassAttachmentBeginInfo::initialize(const VkRenderPassAttachmentBeginInfo* in_struct,
-                                                      [[maybe_unused]] PNextCopyState* copy_state) {
-    if (pAttachments) delete[] pAttachments;
-    FreePnextChain(pNext);
-    sType = in_struct->sType;
-    attachmentCount = in_struct->attachmentCount;
-    pAttachments = nullptr;
-    pNext = SafePnextCopy(in_struct->pNext, copy_state);
-    if (attachmentCount && in_struct->pAttachments) {
-        pAttachments = new VkImageView[attachmentCount];
-        for (uint32_t i = 0; i < attachmentCount; ++i) {
-            pAttachments[i] = in_struct->pAttachments[i];
-        }
-    }
-}
-
-void safe_VkRenderPassAttachmentBeginInfo::initialize(const safe_VkRenderPassAttachmentBeginInfo* copy_src,
-                                                      [[maybe_unused]] PNextCopyState* copy_state) {
-    sType = copy_src->sType;
-    attachmentCount = copy_src->attachmentCount;
-    pAttachments = nullptr;
-    pNext = SafePnextCopy(copy_src->pNext);
-    if (attachmentCount && copy_src->pAttachments) {
-        pAttachments = new VkImageView[attachmentCount];
-        for (uint32_t i = 0; i < attachmentCount; ++i) {
-            pAttachments[i] = copy_src->pAttachments[i];
         }
     }
 }
@@ -19654,6 +19654,50 @@ void safe_VkPhysicalDeviceMaintenance5Properties::initialize(const safe_VkPhysic
     pNext = SafePnextCopy(copy_src->pNext);
 }
 
+safe_VkSubresourceLayout2::safe_VkSubresourceLayout2(const VkSubresourceLayout2* in_struct,
+                                                     [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), subresourceLayout(in_struct->subresourceLayout) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkSubresourceLayout2::safe_VkSubresourceLayout2()
+    : sType(VK_STRUCTURE_TYPE_SUBRESOURCE_LAYOUT_2), pNext(nullptr), subresourceLayout() {}
+
+safe_VkSubresourceLayout2::safe_VkSubresourceLayout2(const safe_VkSubresourceLayout2& copy_src) {
+    sType = copy_src.sType;
+    subresourceLayout = copy_src.subresourceLayout;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkSubresourceLayout2& safe_VkSubresourceLayout2::operator=(const safe_VkSubresourceLayout2& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    subresourceLayout = copy_src.subresourceLayout;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkSubresourceLayout2::~safe_VkSubresourceLayout2() { FreePnextChain(pNext); }
+
+void safe_VkSubresourceLayout2::initialize(const VkSubresourceLayout2* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    subresourceLayout = in_struct->subresourceLayout;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkSubresourceLayout2::initialize(const safe_VkSubresourceLayout2* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    subresourceLayout = copy_src->subresourceLayout;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
 safe_VkImageSubresource2::safe_VkImageSubresource2(const VkImageSubresource2* in_struct,
                                                    [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
     : sType(in_struct->sType), imageSubresource(in_struct->imageSubresource) {
@@ -19764,50 +19808,6 @@ void safe_VkDeviceImageSubresourceInfo::initialize(const safe_VkDeviceImageSubre
     pNext = SafePnextCopy(copy_src->pNext);
     if (copy_src->pCreateInfo) pCreateInfo = new safe_VkImageCreateInfo(*copy_src->pCreateInfo);
     if (copy_src->pSubresource) pSubresource = new safe_VkImageSubresource2(*copy_src->pSubresource);
-}
-
-safe_VkSubresourceLayout2::safe_VkSubresourceLayout2(const VkSubresourceLayout2* in_struct,
-                                                     [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
-    : sType(in_struct->sType), subresourceLayout(in_struct->subresourceLayout) {
-    if (copy_pnext) {
-        pNext = SafePnextCopy(in_struct->pNext, copy_state);
-    }
-}
-
-safe_VkSubresourceLayout2::safe_VkSubresourceLayout2()
-    : sType(VK_STRUCTURE_TYPE_SUBRESOURCE_LAYOUT_2), pNext(nullptr), subresourceLayout() {}
-
-safe_VkSubresourceLayout2::safe_VkSubresourceLayout2(const safe_VkSubresourceLayout2& copy_src) {
-    sType = copy_src.sType;
-    subresourceLayout = copy_src.subresourceLayout;
-    pNext = SafePnextCopy(copy_src.pNext);
-}
-
-safe_VkSubresourceLayout2& safe_VkSubresourceLayout2::operator=(const safe_VkSubresourceLayout2& copy_src) {
-    if (&copy_src == this) return *this;
-
-    FreePnextChain(pNext);
-
-    sType = copy_src.sType;
-    subresourceLayout = copy_src.subresourceLayout;
-    pNext = SafePnextCopy(copy_src.pNext);
-
-    return *this;
-}
-
-safe_VkSubresourceLayout2::~safe_VkSubresourceLayout2() { FreePnextChain(pNext); }
-
-void safe_VkSubresourceLayout2::initialize(const VkSubresourceLayout2* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
-    FreePnextChain(pNext);
-    sType = in_struct->sType;
-    subresourceLayout = in_struct->subresourceLayout;
-    pNext = SafePnextCopy(in_struct->pNext, copy_state);
-}
-
-void safe_VkSubresourceLayout2::initialize(const safe_VkSubresourceLayout2* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
-    sType = copy_src->sType;
-    subresourceLayout = copy_src->subresourceLayout;
-    pNext = SafePnextCopy(copy_src->pNext);
 }
 
 safe_VkBufferUsageFlags2CreateInfo::safe_VkBufferUsageFlags2CreateInfo(const VkBufferUsageFlags2CreateInfo* in_struct,
