@@ -171,6 +171,7 @@ typedef struct VkuInstanceDispatchTable_ {
 #endif  // VK_USE_PLATFORM_OHOS
     PFN_vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV GetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV;
     PFN_vkEnumeratePhysicalDeviceQueueFamilyPerformanceCountersByRegionARM EnumeratePhysicalDeviceQueueFamilyPerformanceCountersByRegionARM;
+    PFN_vkEnumeratePhysicalDeviceShaderInstrumentationMetricsARM EnumeratePhysicalDeviceShaderInstrumentationMetricsARM;
 #ifdef VK_USE_PLATFORM_UBM_SEC
     PFN_vkCreateUbmSurfaceSEC CreateUbmSurfaceSEC;
     PFN_vkGetPhysicalDeviceUbmPresentationSupportSEC GetPhysicalDeviceUbmPresentationSupportSEC;
@@ -844,6 +845,12 @@ typedef struct VkuDeviceDispatchTable_ {
     PFN_vkGetMemoryMetalHandleEXT GetMemoryMetalHandleEXT;
     PFN_vkGetMemoryMetalHandlePropertiesEXT GetMemoryMetalHandlePropertiesEXT;
 #endif  // VK_USE_PLATFORM_METAL_EXT
+    PFN_vkCreateShaderInstrumentationARM CreateShaderInstrumentationARM;
+    PFN_vkDestroyShaderInstrumentationARM DestroyShaderInstrumentationARM;
+    PFN_vkCmdBeginShaderInstrumentationARM CmdBeginShaderInstrumentationARM;
+    PFN_vkCmdEndShaderInstrumentationARM CmdEndShaderInstrumentationARM;
+    PFN_vkGetShaderInstrumentationValuesARM GetShaderInstrumentationValuesARM;
+    PFN_vkClearShaderInstrumentationMetricsARM ClearShaderInstrumentationMetricsARM;
     PFN_vkCmdEndRendering2EXT CmdEndRendering2EXT;
     PFN_vkCmdBeginCustomResolveEXT CmdBeginCustomResolveEXT;
     PFN_vkCmdSetComputeOccupancyPriorityNV CmdSetComputeOccupancyPriorityNV;
@@ -1542,6 +1549,12 @@ static inline void vkuInitDeviceDispatchTable(VkDevice device, VkuDeviceDispatch
     table->GetMemoryMetalHandleEXT = (PFN_vkGetMemoryMetalHandleEXT)gdpa(device, "vkGetMemoryMetalHandleEXT");
     table->GetMemoryMetalHandlePropertiesEXT = (PFN_vkGetMemoryMetalHandlePropertiesEXT)gdpa(device, "vkGetMemoryMetalHandlePropertiesEXT");
 #endif  // VK_USE_PLATFORM_METAL_EXT
+    table->CreateShaderInstrumentationARM = (PFN_vkCreateShaderInstrumentationARM)gdpa(device, "vkCreateShaderInstrumentationARM");
+    table->DestroyShaderInstrumentationARM = (PFN_vkDestroyShaderInstrumentationARM)gdpa(device, "vkDestroyShaderInstrumentationARM");
+    table->CmdBeginShaderInstrumentationARM = (PFN_vkCmdBeginShaderInstrumentationARM)gdpa(device, "vkCmdBeginShaderInstrumentationARM");
+    table->CmdEndShaderInstrumentationARM = (PFN_vkCmdEndShaderInstrumentationARM)gdpa(device, "vkCmdEndShaderInstrumentationARM");
+    table->GetShaderInstrumentationValuesARM = (PFN_vkGetShaderInstrumentationValuesARM)gdpa(device, "vkGetShaderInstrumentationValuesARM");
+    table->ClearShaderInstrumentationMetricsARM = (PFN_vkClearShaderInstrumentationMetricsARM)gdpa(device, "vkClearShaderInstrumentationMetricsARM");
     table->CmdEndRendering2EXT = (PFN_vkCmdEndRendering2EXT)gdpa(device, "vkCmdEndRendering2EXT");
     table->CmdBeginCustomResolveEXT = (PFN_vkCmdBeginCustomResolveEXT)gdpa(device, "vkCmdBeginCustomResolveEXT");
     table->CmdSetComputeOccupancyPriorityNV = (PFN_vkCmdSetComputeOccupancyPriorityNV)gdpa(device, "vkCmdSetComputeOccupancyPriorityNV");
@@ -1722,6 +1735,7 @@ static inline void vkuInitInstanceDispatchTable(VkInstance instance, VkuInstance
 #endif  // VK_USE_PLATFORM_OHOS
     table->GetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV = (PFN_vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV)gipa(instance, "vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV");
     table->EnumeratePhysicalDeviceQueueFamilyPerformanceCountersByRegionARM = (PFN_vkEnumeratePhysicalDeviceQueueFamilyPerformanceCountersByRegionARM)gipa(instance, "vkEnumeratePhysicalDeviceQueueFamilyPerformanceCountersByRegionARM");
+    table->EnumeratePhysicalDeviceShaderInstrumentationMetricsARM = (PFN_vkEnumeratePhysicalDeviceShaderInstrumentationMetricsARM)gipa(instance, "vkEnumeratePhysicalDeviceShaderInstrumentationMetricsARM");
 #ifdef VK_USE_PLATFORM_UBM_SEC
     table->CreateUbmSurfaceSEC = (PFN_vkCreateUbmSurfaceSEC)gipa(instance, "vkCreateUbmSurfaceSEC");
     table->GetPhysicalDeviceUbmPresentationSupportSEC = (PFN_vkGetPhysicalDeviceUbmPresentationSupportSEC)gipa(instance, "vkGetPhysicalDeviceUbmPresentationSupportSEC");

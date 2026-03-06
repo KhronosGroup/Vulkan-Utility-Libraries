@@ -2301,6 +2301,12 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
             case VK_STRUCTURE_TYPE_RENDER_PASS_PERFORMANCE_COUNTERS_BY_REGION_BEGIN_INFO_ARM:
                 safe_pNext = new safe_VkRenderPassPerformanceCountersByRegionBeginInfoARM(reinterpret_cast<const VkRenderPassPerformanceCountersByRegionBeginInfoARM *>(pNext), copy_state, false);
                 break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_INSTRUMENTATION_FEATURES_ARM:
+                safe_pNext = new safe_VkPhysicalDeviceShaderInstrumentationFeaturesARM(reinterpret_cast<const VkPhysicalDeviceShaderInstrumentationFeaturesARM *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_INSTRUMENTATION_PROPERTIES_ARM:
+                safe_pNext = new safe_VkPhysicalDeviceShaderInstrumentationPropertiesARM(reinterpret_cast<const VkPhysicalDeviceShaderInstrumentationPropertiesARM *>(pNext), copy_state, false);
+                break;
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_ROBUSTNESS_FEATURES_EXT:
                 safe_pNext = new safe_VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT(reinterpret_cast<const VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT *>(pNext), copy_state, false);
                 break;
@@ -4679,6 +4685,12 @@ void FreePnextChain(const void *pNext) {
             break;
         case VK_STRUCTURE_TYPE_RENDER_PASS_PERFORMANCE_COUNTERS_BY_REGION_BEGIN_INFO_ARM:
             delete reinterpret_cast<safe_VkRenderPassPerformanceCountersByRegionBeginInfoARM *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_INSTRUMENTATION_FEATURES_ARM:
+            delete reinterpret_cast<safe_VkPhysicalDeviceShaderInstrumentationFeaturesARM *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_INSTRUMENTATION_PROPERTIES_ARM:
+            delete reinterpret_cast<safe_VkPhysicalDeviceShaderInstrumentationPropertiesARM *>(header);
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_ROBUSTNESS_FEATURES_EXT:
             delete reinterpret_cast<safe_VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT *>(header);
