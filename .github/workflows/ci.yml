@@ -23,17 +23,6 @@ jobs:
         os: [ ubuntu-22.04, ubuntu-24.04, windows-latest, macos-latest ]
     steps:
       - uses: actions/checkout@v6
-      - name: Set up Python 3.8
-        if: matrix.os != 'macos-latest'
-        uses: actions/setup-python@v6
-        with:
-          python-version: '3.8'
-      # MacOS machine can run on arm64 and it doesn't support 3.8
-      - name: Set up Python 3.10.11
-        if: matrix.os == 'macos-latest'
-        uses: actions/setup-python@v6
-        with:
-          python-version: '3.10.11'
       - name: Test CMake Minimum
         if: matrix.os == 'ubuntu-22.04'
         uses: lukka/get-cmake@latest
@@ -115,6 +104,7 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: '3.10'
+      - run: python3 -m pip install pyparsing
       - name: Generate source
         run: |
           scripts/update_deps.py --dir external --no-build

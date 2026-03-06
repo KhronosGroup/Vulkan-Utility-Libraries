@@ -22752,11 +22752,14 @@ safe_VkRenderPassPerformanceCountersByRegionBeginInfoARM::safe_VkRenderPassPerfo
         pNext = SafePnextCopy(in_struct->pNext, copy_state);
     }
     if (in_struct->pCounterAddresses) {
-        pCounterAddresses = new VkDeviceAddress(*in_struct->pCounterAddresses);
+        pCounterAddresses = new VkDeviceAddress[in_struct->counterAddressCount];
+        memcpy((void*)pCounterAddresses, (void*)in_struct->pCounterAddresses,
+               sizeof(VkDeviceAddress) * in_struct->counterAddressCount);
     }
 
     if (in_struct->pCounterIndices) {
-        pCounterIndices = new uint32_t(*in_struct->pCounterIndices);
+        pCounterIndices = new uint32_t[in_struct->counterIndexCount];
+        memcpy((void*)pCounterIndices, (void*)in_struct->pCounterIndices, sizeof(uint32_t) * in_struct->counterIndexCount);
     }
 }
 
@@ -22780,11 +22783,13 @@ safe_VkRenderPassPerformanceCountersByRegionBeginInfoARM::safe_VkRenderPassPerfo
     pNext = SafePnextCopy(copy_src.pNext);
 
     if (copy_src.pCounterAddresses) {
-        pCounterAddresses = new VkDeviceAddress(*copy_src.pCounterAddresses);
+        pCounterAddresses = new VkDeviceAddress[copy_src.counterAddressCount];
+        memcpy((void*)pCounterAddresses, (void*)copy_src.pCounterAddresses, sizeof(VkDeviceAddress) * copy_src.counterAddressCount);
     }
 
     if (copy_src.pCounterIndices) {
-        pCounterIndices = new uint32_t(*copy_src.pCounterIndices);
+        pCounterIndices = new uint32_t[copy_src.counterIndexCount];
+        memcpy((void*)pCounterIndices, (void*)copy_src.pCounterIndices, sizeof(uint32_t) * copy_src.counterIndexCount);
     }
 }
 
@@ -22792,8 +22797,8 @@ safe_VkRenderPassPerformanceCountersByRegionBeginInfoARM& safe_VkRenderPassPerfo
     const safe_VkRenderPassPerformanceCountersByRegionBeginInfoARM& copy_src) {
     if (&copy_src == this) return *this;
 
-    if (pCounterAddresses) delete pCounterAddresses;
-    if (pCounterIndices) delete pCounterIndices;
+    if (pCounterAddresses) delete[] pCounterAddresses;
+    if (pCounterIndices) delete[] pCounterIndices;
     FreePnextChain(pNext);
 
     sType = copy_src.sType;
@@ -22805,26 +22810,28 @@ safe_VkRenderPassPerformanceCountersByRegionBeginInfoARM& safe_VkRenderPassPerfo
     pNext = SafePnextCopy(copy_src.pNext);
 
     if (copy_src.pCounterAddresses) {
-        pCounterAddresses = new VkDeviceAddress(*copy_src.pCounterAddresses);
+        pCounterAddresses = new VkDeviceAddress[copy_src.counterAddressCount];
+        memcpy((void*)pCounterAddresses, (void*)copy_src.pCounterAddresses, sizeof(VkDeviceAddress) * copy_src.counterAddressCount);
     }
 
     if (copy_src.pCounterIndices) {
-        pCounterIndices = new uint32_t(*copy_src.pCounterIndices);
+        pCounterIndices = new uint32_t[copy_src.counterIndexCount];
+        memcpy((void*)pCounterIndices, (void*)copy_src.pCounterIndices, sizeof(uint32_t) * copy_src.counterIndexCount);
     }
 
     return *this;
 }
 
 safe_VkRenderPassPerformanceCountersByRegionBeginInfoARM::~safe_VkRenderPassPerformanceCountersByRegionBeginInfoARM() {
-    if (pCounterAddresses) delete pCounterAddresses;
-    if (pCounterIndices) delete pCounterIndices;
+    if (pCounterAddresses) delete[] pCounterAddresses;
+    if (pCounterIndices) delete[] pCounterIndices;
     FreePnextChain(pNext);
 }
 
 void safe_VkRenderPassPerformanceCountersByRegionBeginInfoARM::initialize(
     const VkRenderPassPerformanceCountersByRegionBeginInfoARM* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
-    if (pCounterAddresses) delete pCounterAddresses;
-    if (pCounterIndices) delete pCounterIndices;
+    if (pCounterAddresses) delete[] pCounterAddresses;
+    if (pCounterIndices) delete[] pCounterIndices;
     FreePnextChain(pNext);
     sType = in_struct->sType;
     counterAddressCount = in_struct->counterAddressCount;
@@ -22835,11 +22842,14 @@ void safe_VkRenderPassPerformanceCountersByRegionBeginInfoARM::initialize(
     pNext = SafePnextCopy(in_struct->pNext, copy_state);
 
     if (in_struct->pCounterAddresses) {
-        pCounterAddresses = new VkDeviceAddress(*in_struct->pCounterAddresses);
+        pCounterAddresses = new VkDeviceAddress[in_struct->counterAddressCount];
+        memcpy((void*)pCounterAddresses, (void*)in_struct->pCounterAddresses,
+               sizeof(VkDeviceAddress) * in_struct->counterAddressCount);
     }
 
     if (in_struct->pCounterIndices) {
-        pCounterIndices = new uint32_t(*in_struct->pCounterIndices);
+        pCounterIndices = new uint32_t[in_struct->counterIndexCount];
+        memcpy((void*)pCounterIndices, (void*)in_struct->pCounterIndices, sizeof(uint32_t) * in_struct->counterIndexCount);
     }
 }
 
@@ -22854,11 +22864,249 @@ void safe_VkRenderPassPerformanceCountersByRegionBeginInfoARM::initialize(
     pNext = SafePnextCopy(copy_src->pNext);
 
     if (copy_src->pCounterAddresses) {
-        pCounterAddresses = new VkDeviceAddress(*copy_src->pCounterAddresses);
+        pCounterAddresses = new VkDeviceAddress[copy_src->counterAddressCount];
+        memcpy((void*)pCounterAddresses, (void*)copy_src->pCounterAddresses,
+               sizeof(VkDeviceAddress) * copy_src->counterAddressCount);
     }
 
     if (copy_src->pCounterIndices) {
-        pCounterIndices = new uint32_t(*copy_src->pCounterIndices);
+        pCounterIndices = new uint32_t[copy_src->counterIndexCount];
+        memcpy((void*)pCounterIndices, (void*)copy_src->pCounterIndices, sizeof(uint32_t) * copy_src->counterIndexCount);
+    }
+}
+
+safe_VkPhysicalDeviceShaderInstrumentationFeaturesARM::safe_VkPhysicalDeviceShaderInstrumentationFeaturesARM(
+    const VkPhysicalDeviceShaderInstrumentationFeaturesARM* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), shaderInstrumentation(in_struct->shaderInstrumentation) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceShaderInstrumentationFeaturesARM::safe_VkPhysicalDeviceShaderInstrumentationFeaturesARM()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_INSTRUMENTATION_FEATURES_ARM), pNext(nullptr), shaderInstrumentation() {}
+
+safe_VkPhysicalDeviceShaderInstrumentationFeaturesARM::safe_VkPhysicalDeviceShaderInstrumentationFeaturesARM(
+    const safe_VkPhysicalDeviceShaderInstrumentationFeaturesARM& copy_src) {
+    sType = copy_src.sType;
+    shaderInstrumentation = copy_src.shaderInstrumentation;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceShaderInstrumentationFeaturesARM& safe_VkPhysicalDeviceShaderInstrumentationFeaturesARM::operator=(
+    const safe_VkPhysicalDeviceShaderInstrumentationFeaturesARM& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    shaderInstrumentation = copy_src.shaderInstrumentation;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceShaderInstrumentationFeaturesARM::~safe_VkPhysicalDeviceShaderInstrumentationFeaturesARM() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkPhysicalDeviceShaderInstrumentationFeaturesARM::initialize(
+    const VkPhysicalDeviceShaderInstrumentationFeaturesARM* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    shaderInstrumentation = in_struct->shaderInstrumentation;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceShaderInstrumentationFeaturesARM::initialize(
+    const safe_VkPhysicalDeviceShaderInstrumentationFeaturesARM* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    shaderInstrumentation = copy_src->shaderInstrumentation;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkPhysicalDeviceShaderInstrumentationPropertiesARM::safe_VkPhysicalDeviceShaderInstrumentationPropertiesARM(
+    const VkPhysicalDeviceShaderInstrumentationPropertiesARM* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
+    bool copy_pnext)
+    : sType(in_struct->sType), numMetrics(in_struct->numMetrics), perBasicBlockGranularity(in_struct->perBasicBlockGranularity) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceShaderInstrumentationPropertiesARM::safe_VkPhysicalDeviceShaderInstrumentationPropertiesARM()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_INSTRUMENTATION_PROPERTIES_ARM),
+      pNext(nullptr),
+      numMetrics(),
+      perBasicBlockGranularity() {}
+
+safe_VkPhysicalDeviceShaderInstrumentationPropertiesARM::safe_VkPhysicalDeviceShaderInstrumentationPropertiesARM(
+    const safe_VkPhysicalDeviceShaderInstrumentationPropertiesARM& copy_src) {
+    sType = copy_src.sType;
+    numMetrics = copy_src.numMetrics;
+    perBasicBlockGranularity = copy_src.perBasicBlockGranularity;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceShaderInstrumentationPropertiesARM& safe_VkPhysicalDeviceShaderInstrumentationPropertiesARM::operator=(
+    const safe_VkPhysicalDeviceShaderInstrumentationPropertiesARM& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    numMetrics = copy_src.numMetrics;
+    perBasicBlockGranularity = copy_src.perBasicBlockGranularity;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceShaderInstrumentationPropertiesARM::~safe_VkPhysicalDeviceShaderInstrumentationPropertiesARM() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkPhysicalDeviceShaderInstrumentationPropertiesARM::initialize(
+    const VkPhysicalDeviceShaderInstrumentationPropertiesARM* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    numMetrics = in_struct->numMetrics;
+    perBasicBlockGranularity = in_struct->perBasicBlockGranularity;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceShaderInstrumentationPropertiesARM::initialize(
+    const safe_VkPhysicalDeviceShaderInstrumentationPropertiesARM* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    numMetrics = copy_src->numMetrics;
+    perBasicBlockGranularity = copy_src->perBasicBlockGranularity;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkShaderInstrumentationCreateInfoARM::safe_VkShaderInstrumentationCreateInfoARM(
+    const VkShaderInstrumentationCreateInfoARM* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkShaderInstrumentationCreateInfoARM::safe_VkShaderInstrumentationCreateInfoARM()
+    : sType(VK_STRUCTURE_TYPE_SHADER_INSTRUMENTATION_CREATE_INFO_ARM), pNext(nullptr) {}
+
+safe_VkShaderInstrumentationCreateInfoARM::safe_VkShaderInstrumentationCreateInfoARM(
+    const safe_VkShaderInstrumentationCreateInfoARM& copy_src) {
+    sType = copy_src.sType;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkShaderInstrumentationCreateInfoARM& safe_VkShaderInstrumentationCreateInfoARM::operator=(
+    const safe_VkShaderInstrumentationCreateInfoARM& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkShaderInstrumentationCreateInfoARM::~safe_VkShaderInstrumentationCreateInfoARM() { FreePnextChain(pNext); }
+
+void safe_VkShaderInstrumentationCreateInfoARM::initialize(const VkShaderInstrumentationCreateInfoARM* in_struct,
+                                                           [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkShaderInstrumentationCreateInfoARM::initialize(const safe_VkShaderInstrumentationCreateInfoARM* copy_src,
+                                                           [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkShaderInstrumentationMetricDescriptionARM::safe_VkShaderInstrumentationMetricDescriptionARM(
+    const VkShaderInstrumentationMetricDescriptionARM* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+    for (uint32_t i = 0; i < VK_MAX_DESCRIPTION_SIZE; ++i) {
+        name[i] = in_struct->name[i];
+    }
+
+    for (uint32_t i = 0; i < VK_MAX_DESCRIPTION_SIZE; ++i) {
+        description[i] = in_struct->description[i];
+    }
+}
+
+safe_VkShaderInstrumentationMetricDescriptionARM::safe_VkShaderInstrumentationMetricDescriptionARM()
+    : sType(VK_STRUCTURE_TYPE_SHADER_INSTRUMENTATION_METRIC_DESCRIPTION_ARM), pNext(nullptr) {}
+
+safe_VkShaderInstrumentationMetricDescriptionARM::safe_VkShaderInstrumentationMetricDescriptionARM(
+    const safe_VkShaderInstrumentationMetricDescriptionARM& copy_src) {
+    sType = copy_src.sType;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    for (uint32_t i = 0; i < VK_MAX_DESCRIPTION_SIZE; ++i) {
+        name[i] = copy_src.name[i];
+    }
+
+    for (uint32_t i = 0; i < VK_MAX_DESCRIPTION_SIZE; ++i) {
+        description[i] = copy_src.description[i];
+    }
+}
+
+safe_VkShaderInstrumentationMetricDescriptionARM& safe_VkShaderInstrumentationMetricDescriptionARM::operator=(
+    const safe_VkShaderInstrumentationMetricDescriptionARM& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    for (uint32_t i = 0; i < VK_MAX_DESCRIPTION_SIZE; ++i) {
+        name[i] = copy_src.name[i];
+    }
+
+    for (uint32_t i = 0; i < VK_MAX_DESCRIPTION_SIZE; ++i) {
+        description[i] = copy_src.description[i];
+    }
+
+    return *this;
+}
+
+safe_VkShaderInstrumentationMetricDescriptionARM::~safe_VkShaderInstrumentationMetricDescriptionARM() { FreePnextChain(pNext); }
+
+void safe_VkShaderInstrumentationMetricDescriptionARM::initialize(const VkShaderInstrumentationMetricDescriptionARM* in_struct,
+                                                                  [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+
+    for (uint32_t i = 0; i < VK_MAX_DESCRIPTION_SIZE; ++i) {
+        name[i] = in_struct->name[i];
+    }
+
+    for (uint32_t i = 0; i < VK_MAX_DESCRIPTION_SIZE; ++i) {
+        description[i] = in_struct->description[i];
+    }
+}
+
+void safe_VkShaderInstrumentationMetricDescriptionARM::initialize(const safe_VkShaderInstrumentationMetricDescriptionARM* copy_src,
+                                                                  [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    pNext = SafePnextCopy(copy_src->pNext);
+
+    for (uint32_t i = 0; i < VK_MAX_DESCRIPTION_SIZE; ++i) {
+        name[i] = copy_src->name[i];
+    }
+
+    for (uint32_t i = 0; i < VK_MAX_DESCRIPTION_SIZE; ++i) {
+        description[i] = copy_src->description[i];
     }
 }
 

@@ -1201,15 +1201,17 @@ template <> inline VkStructureType GetSType<VkPhysicalDevicePerformanceCountersB
 template <> inline VkStructureType GetSType<VkPerformanceCounterARM>() { return VK_STRUCTURE_TYPE_PERFORMANCE_COUNTER_ARM; }
 template <> inline VkStructureType GetSType<VkPerformanceCounterDescriptionARM>() { return VK_STRUCTURE_TYPE_PERFORMANCE_COUNTER_DESCRIPTION_ARM; }
 template <> inline VkStructureType GetSType<VkRenderPassPerformanceCountersByRegionBeginInfoARM>() { return VK_STRUCTURE_TYPE_RENDER_PASS_PERFORMANCE_COUNTERS_BY_REGION_BEGIN_INFO_ARM; }
+template <> inline VkStructureType GetSType<VkPhysicalDeviceShaderInstrumentationFeaturesARM>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_INSTRUMENTATION_FEATURES_ARM; }
+template <> inline VkStructureType GetSType<VkPhysicalDeviceShaderInstrumentationPropertiesARM>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_INSTRUMENTATION_PROPERTIES_ARM; }
+template <> inline VkStructureType GetSType<VkShaderInstrumentationCreateInfoARM>() { return VK_STRUCTURE_TYPE_SHADER_INSTRUMENTATION_CREATE_INFO_ARM; }
+template <> inline VkStructureType GetSType<VkShaderInstrumentationMetricDescriptionARM>() { return VK_STRUCTURE_TYPE_SHADER_INSTRUMENTATION_METRIC_DESCRIPTION_ARM; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_ROBUSTNESS_FEATURES_EXT; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceFormatPackFeaturesARM>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FORMAT_PACK_FEATURES_ARM; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceFragmentDensityMapLayeredFeaturesVALVE>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_LAYERED_FEATURES_VALVE; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceFragmentDensityMapLayeredPropertiesVALVE>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_LAYERED_PROPERTIES_VALVE; }
 template <> inline VkStructureType GetSType<VkPipelineFragmentDensityMapLayeredCreateInfoVALVE>() { return VK_STRUCTURE_TYPE_PIPELINE_FRAGMENT_DENSITY_MAP_LAYERED_CREATE_INFO_VALVE; }
-#ifdef VK_ENABLE_BETA_EXTENSIONS
 template <> inline VkStructureType GetSType<VkSetPresentConfigNV>() { return VK_STRUCTURE_TYPE_SET_PRESENT_CONFIG_NV; }
 template <> inline VkStructureType GetSType<VkPhysicalDevicePresentMeteringFeaturesNV>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_METERING_FEATURES_NV; }
-#endif  // VK_ENABLE_BETA_EXTENSIONS
 template <> inline VkStructureType GetSType<VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ZERO_INITIALIZE_DEVICE_MEMORY_FEATURES_EXT; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceShader64BitIndexingFeaturesEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_64_BIT_INDEXING_FEATURES_EXT; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceCustomResolveFeaturesEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUSTOM_RESOLVE_FEATURES_EXT; }
@@ -1384,6 +1386,7 @@ template<> inline VkObjectType GetObjectType<VkDataGraphPipelineSessionARM>() { 
 template<> inline VkObjectType GetObjectType<VkExternalComputeQueueNV>() { return VK_OBJECT_TYPE_EXTERNAL_COMPUTE_QUEUE_NV; }
 template<> inline VkObjectType GetObjectType<VkIndirectExecutionSetEXT>() { return VK_OBJECT_TYPE_INDIRECT_EXECUTION_SET_EXT; }
 template<> inline VkObjectType GetObjectType<VkIndirectCommandsLayoutEXT>() { return VK_OBJECT_TYPE_INDIRECT_COMMANDS_LAYOUT_EXT; }
+template<> inline VkObjectType GetObjectType<VkShaderInstrumentationARM>() { return VK_OBJECT_TYPE_SHADER_INSTRUMENTATION_ARM; }
 
 # else // 32 bit
 template<typename T> VkObjectType GetObjectType() {

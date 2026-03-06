@@ -23262,6 +23262,88 @@ struct safe_VkRenderPassPerformanceCountersByRegionBeginInfoARM {
         return reinterpret_cast<VkRenderPassPerformanceCountersByRegionBeginInfoARM const*>(this);
     }
 };
+struct safe_VkPhysicalDeviceShaderInstrumentationFeaturesARM {
+    VkStructureType sType;
+    void* pNext{};
+    VkBool32 shaderInstrumentation;
+
+    safe_VkPhysicalDeviceShaderInstrumentationFeaturesARM(const VkPhysicalDeviceShaderInstrumentationFeaturesARM* in_struct,
+                                                          PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkPhysicalDeviceShaderInstrumentationFeaturesARM(const safe_VkPhysicalDeviceShaderInstrumentationFeaturesARM& copy_src);
+    safe_VkPhysicalDeviceShaderInstrumentationFeaturesARM& operator=(
+        const safe_VkPhysicalDeviceShaderInstrumentationFeaturesARM& copy_src);
+    safe_VkPhysicalDeviceShaderInstrumentationFeaturesARM();
+    ~safe_VkPhysicalDeviceShaderInstrumentationFeaturesARM();
+    void initialize(const VkPhysicalDeviceShaderInstrumentationFeaturesARM* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceShaderInstrumentationFeaturesARM* copy_src, PNextCopyState* copy_state = {});
+    VkPhysicalDeviceShaderInstrumentationFeaturesARM* ptr() {
+        return reinterpret_cast<VkPhysicalDeviceShaderInstrumentationFeaturesARM*>(this);
+    }
+    VkPhysicalDeviceShaderInstrumentationFeaturesARM const* ptr() const {
+        return reinterpret_cast<VkPhysicalDeviceShaderInstrumentationFeaturesARM const*>(this);
+    }
+};
+struct safe_VkPhysicalDeviceShaderInstrumentationPropertiesARM {
+    VkStructureType sType;
+    void* pNext{};
+    uint32_t numMetrics;
+    VkBool32 perBasicBlockGranularity;
+
+    safe_VkPhysicalDeviceShaderInstrumentationPropertiesARM(const VkPhysicalDeviceShaderInstrumentationPropertiesARM* in_struct,
+                                                            PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkPhysicalDeviceShaderInstrumentationPropertiesARM(
+        const safe_VkPhysicalDeviceShaderInstrumentationPropertiesARM& copy_src);
+    safe_VkPhysicalDeviceShaderInstrumentationPropertiesARM& operator=(
+        const safe_VkPhysicalDeviceShaderInstrumentationPropertiesARM& copy_src);
+    safe_VkPhysicalDeviceShaderInstrumentationPropertiesARM();
+    ~safe_VkPhysicalDeviceShaderInstrumentationPropertiesARM();
+    void initialize(const VkPhysicalDeviceShaderInstrumentationPropertiesARM* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceShaderInstrumentationPropertiesARM* copy_src, PNextCopyState* copy_state = {});
+    VkPhysicalDeviceShaderInstrumentationPropertiesARM* ptr() {
+        return reinterpret_cast<VkPhysicalDeviceShaderInstrumentationPropertiesARM*>(this);
+    }
+    VkPhysicalDeviceShaderInstrumentationPropertiesARM const* ptr() const {
+        return reinterpret_cast<VkPhysicalDeviceShaderInstrumentationPropertiesARM const*>(this);
+    }
+};
+struct safe_VkShaderInstrumentationCreateInfoARM {
+    VkStructureType sType;
+    void* pNext{};
+
+    safe_VkShaderInstrumentationCreateInfoARM(const VkShaderInstrumentationCreateInfoARM* in_struct,
+                                              PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkShaderInstrumentationCreateInfoARM(const safe_VkShaderInstrumentationCreateInfoARM& copy_src);
+    safe_VkShaderInstrumentationCreateInfoARM& operator=(const safe_VkShaderInstrumentationCreateInfoARM& copy_src);
+    safe_VkShaderInstrumentationCreateInfoARM();
+    ~safe_VkShaderInstrumentationCreateInfoARM();
+    void initialize(const VkShaderInstrumentationCreateInfoARM* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkShaderInstrumentationCreateInfoARM* copy_src, PNextCopyState* copy_state = {});
+    VkShaderInstrumentationCreateInfoARM* ptr() { return reinterpret_cast<VkShaderInstrumentationCreateInfoARM*>(this); }
+    VkShaderInstrumentationCreateInfoARM const* ptr() const {
+        return reinterpret_cast<VkShaderInstrumentationCreateInfoARM const*>(this);
+    }
+};
+struct safe_VkShaderInstrumentationMetricDescriptionARM {
+    VkStructureType sType;
+    void* pNext{};
+    char name[VK_MAX_DESCRIPTION_SIZE];
+    char description[VK_MAX_DESCRIPTION_SIZE];
+
+    safe_VkShaderInstrumentationMetricDescriptionARM(const VkShaderInstrumentationMetricDescriptionARM* in_struct,
+                                                     PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkShaderInstrumentationMetricDescriptionARM(const safe_VkShaderInstrumentationMetricDescriptionARM& copy_src);
+    safe_VkShaderInstrumentationMetricDescriptionARM& operator=(const safe_VkShaderInstrumentationMetricDescriptionARM& copy_src);
+    safe_VkShaderInstrumentationMetricDescriptionARM();
+    ~safe_VkShaderInstrumentationMetricDescriptionARM();
+    void initialize(const VkShaderInstrumentationMetricDescriptionARM* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkShaderInstrumentationMetricDescriptionARM* copy_src, PNextCopyState* copy_state = {});
+    VkShaderInstrumentationMetricDescriptionARM* ptr() {
+        return reinterpret_cast<VkShaderInstrumentationMetricDescriptionARM*>(this);
+    }
+    VkShaderInstrumentationMetricDescriptionARM const* ptr() const {
+        return reinterpret_cast<VkShaderInstrumentationMetricDescriptionARM const*>(this);
+    }
+};
 struct safe_VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT {
     VkStructureType sType;
     void* pNext{};
