@@ -22,6 +22,67 @@
 
 namespace vku {
 
+safe_VkMemoryMarkerInfoAMD::safe_VkMemoryMarkerInfoAMD(const VkMemoryMarkerInfoAMD* in_struct,
+                                                       [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType),
+      stage(in_struct->stage),
+      dstRange(in_struct->dstRange),
+      dstFlags(in_struct->dstFlags),
+      marker(in_struct->marker) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkMemoryMarkerInfoAMD::safe_VkMemoryMarkerInfoAMD()
+    : sType(VK_STRUCTURE_TYPE_MEMORY_MARKER_INFO_AMD), pNext(nullptr), stage(), dstRange(), dstFlags(), marker() {}
+
+safe_VkMemoryMarkerInfoAMD::safe_VkMemoryMarkerInfoAMD(const safe_VkMemoryMarkerInfoAMD& copy_src) {
+    sType = copy_src.sType;
+    stage = copy_src.stage;
+    dstRange = copy_src.dstRange;
+    dstFlags = copy_src.dstFlags;
+    marker = copy_src.marker;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkMemoryMarkerInfoAMD& safe_VkMemoryMarkerInfoAMD::operator=(const safe_VkMemoryMarkerInfoAMD& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    stage = copy_src.stage;
+    dstRange = copy_src.dstRange;
+    dstFlags = copy_src.dstFlags;
+    marker = copy_src.marker;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkMemoryMarkerInfoAMD::~safe_VkMemoryMarkerInfoAMD() { FreePnextChain(pNext); }
+
+void safe_VkMemoryMarkerInfoAMD::initialize(const VkMemoryMarkerInfoAMD* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    stage = in_struct->stage;
+    dstRange = in_struct->dstRange;
+    dstFlags = in_struct->dstFlags;
+    marker = in_struct->marker;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkMemoryMarkerInfoAMD::initialize(const safe_VkMemoryMarkerInfoAMD* copy_src,
+                                            [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    stage = copy_src->stage;
+    dstRange = copy_src->dstRange;
+    dstFlags = copy_src->dstFlags;
+    marker = copy_src->marker;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
 safe_VkPipelineRasterizationStateRasterizationOrderAMD::safe_VkPipelineRasterizationStateRasterizationOrderAMD(
     const VkPipelineRasterizationStateRasterizationOrderAMD* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
     bool copy_pnext)
