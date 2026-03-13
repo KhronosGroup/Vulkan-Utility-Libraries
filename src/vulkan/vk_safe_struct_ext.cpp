@@ -22,6 +22,117 @@
 
 namespace vku {
 
+safe_VkConditionalRenderingBeginInfo2EXT::safe_VkConditionalRenderingBeginInfo2EXT(
+    const VkConditionalRenderingBeginInfo2EXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType),
+      addressRange(in_struct->addressRange),
+      addressFlags(in_struct->addressFlags),
+      flags(in_struct->flags) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkConditionalRenderingBeginInfo2EXT::safe_VkConditionalRenderingBeginInfo2EXT()
+    : sType(VK_STRUCTURE_TYPE_CONDITIONAL_RENDERING_BEGIN_INFO_2_EXT), pNext(nullptr), addressRange(), addressFlags(), flags() {}
+
+safe_VkConditionalRenderingBeginInfo2EXT::safe_VkConditionalRenderingBeginInfo2EXT(
+    const safe_VkConditionalRenderingBeginInfo2EXT& copy_src) {
+    sType = copy_src.sType;
+    addressRange = copy_src.addressRange;
+    addressFlags = copy_src.addressFlags;
+    flags = copy_src.flags;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkConditionalRenderingBeginInfo2EXT& safe_VkConditionalRenderingBeginInfo2EXT::operator=(
+    const safe_VkConditionalRenderingBeginInfo2EXT& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    addressRange = copy_src.addressRange;
+    addressFlags = copy_src.addressFlags;
+    flags = copy_src.flags;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkConditionalRenderingBeginInfo2EXT::~safe_VkConditionalRenderingBeginInfo2EXT() { FreePnextChain(pNext); }
+
+void safe_VkConditionalRenderingBeginInfo2EXT::initialize(const VkConditionalRenderingBeginInfo2EXT* in_struct,
+                                                          [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    addressRange = in_struct->addressRange;
+    addressFlags = in_struct->addressFlags;
+    flags = in_struct->flags;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkConditionalRenderingBeginInfo2EXT::initialize(const safe_VkConditionalRenderingBeginInfo2EXT* copy_src,
+                                                          [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    addressRange = copy_src->addressRange;
+    addressFlags = copy_src->addressFlags;
+    flags = copy_src->flags;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkBindTransformFeedbackBuffer2InfoEXT::safe_VkBindTransformFeedbackBuffer2InfoEXT(
+    const VkBindTransformFeedbackBuffer2InfoEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), addressRange(in_struct->addressRange), addressFlags(in_struct->addressFlags) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkBindTransformFeedbackBuffer2InfoEXT::safe_VkBindTransformFeedbackBuffer2InfoEXT()
+    : sType(VK_STRUCTURE_TYPE_BIND_TRANSFORM_FEEDBACK_BUFFER_2_INFO_EXT), pNext(nullptr), addressRange(), addressFlags() {}
+
+safe_VkBindTransformFeedbackBuffer2InfoEXT::safe_VkBindTransformFeedbackBuffer2InfoEXT(
+    const safe_VkBindTransformFeedbackBuffer2InfoEXT& copy_src) {
+    sType = copy_src.sType;
+    addressRange = copy_src.addressRange;
+    addressFlags = copy_src.addressFlags;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkBindTransformFeedbackBuffer2InfoEXT& safe_VkBindTransformFeedbackBuffer2InfoEXT::operator=(
+    const safe_VkBindTransformFeedbackBuffer2InfoEXT& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    addressRange = copy_src.addressRange;
+    addressFlags = copy_src.addressFlags;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkBindTransformFeedbackBuffer2InfoEXT::~safe_VkBindTransformFeedbackBuffer2InfoEXT() { FreePnextChain(pNext); }
+
+void safe_VkBindTransformFeedbackBuffer2InfoEXT::initialize(const VkBindTransformFeedbackBuffer2InfoEXT* in_struct,
+                                                            [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    addressRange = in_struct->addressRange;
+    addressFlags = in_struct->addressFlags;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkBindTransformFeedbackBuffer2InfoEXT::initialize(const safe_VkBindTransformFeedbackBuffer2InfoEXT* copy_src,
+                                                            [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    addressRange = copy_src->addressRange;
+    addressFlags = copy_src->addressFlags;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
 safe_VkAttachmentFeedbackLoopInfoEXT::safe_VkAttachmentFeedbackLoopInfoEXT(const VkAttachmentFeedbackLoopInfoEXT* in_struct,
                                                                            [[maybe_unused]] PNextCopyState* copy_state,
                                                                            bool copy_pnext)
