@@ -107,6 +107,8 @@ struct safe_VkDeviceCreateInfo {
     VkDeviceCreateFlags flags;
     uint32_t queueCreateInfoCount;
     safe_VkDeviceQueueCreateInfo* pQueueCreateInfos{};
+    uint32_t enabledLayerCount;
+    const char* const* ppEnabledLayerNames{};
     uint32_t enabledExtensionCount;
     const char* const* ppEnabledExtensionNames{};
     const VkPhysicalDeviceFeatures* pEnabledFeatures{};
