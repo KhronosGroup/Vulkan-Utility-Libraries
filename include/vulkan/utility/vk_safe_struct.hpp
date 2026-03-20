@@ -107,8 +107,6 @@ struct safe_VkDeviceCreateInfo {
     VkDeviceCreateFlags flags;
     uint32_t queueCreateInfoCount;
     safe_VkDeviceQueueCreateInfo* pQueueCreateInfos{};
-    uint32_t enabledLayerCount;
-    const char* const* ppEnabledLayerNames{};
     uint32_t enabledExtensionCount;
     const char* const* ppEnabledExtensionNames{};
     const VkPhysicalDeviceFeatures* pEnabledFeatures{};
@@ -7900,6 +7898,82 @@ struct safe_VkRenderingFragmentShadingRateAttachmentInfoKHR {
         return reinterpret_cast<VkRenderingFragmentShadingRateAttachmentInfoKHR const*>(this);
     }
 };
+struct safe_VkPhysicalDeviceShaderConstantDataFeaturesKHR {
+    VkStructureType sType;
+    void* pNext{};
+    VkBool32 shaderConstantData;
+
+    safe_VkPhysicalDeviceShaderConstantDataFeaturesKHR(const VkPhysicalDeviceShaderConstantDataFeaturesKHR* in_struct,
+                                                       PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkPhysicalDeviceShaderConstantDataFeaturesKHR(const safe_VkPhysicalDeviceShaderConstantDataFeaturesKHR& copy_src);
+    safe_VkPhysicalDeviceShaderConstantDataFeaturesKHR& operator=(
+        const safe_VkPhysicalDeviceShaderConstantDataFeaturesKHR& copy_src);
+    safe_VkPhysicalDeviceShaderConstantDataFeaturesKHR();
+    ~safe_VkPhysicalDeviceShaderConstantDataFeaturesKHR();
+    void initialize(const VkPhysicalDeviceShaderConstantDataFeaturesKHR* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceShaderConstantDataFeaturesKHR* copy_src, PNextCopyState* copy_state = {});
+    VkPhysicalDeviceShaderConstantDataFeaturesKHR* ptr() {
+        return reinterpret_cast<VkPhysicalDeviceShaderConstantDataFeaturesKHR*>(this);
+    }
+    VkPhysicalDeviceShaderConstantDataFeaturesKHR const* ptr() const {
+        return reinterpret_cast<VkPhysicalDeviceShaderConstantDataFeaturesKHR const*>(this);
+    }
+};
+struct safe_VkPhysicalDeviceShaderAbortFeaturesKHR {
+    VkStructureType sType;
+    void* pNext{};
+    VkBool32 shaderAbort;
+
+    safe_VkPhysicalDeviceShaderAbortFeaturesKHR(const VkPhysicalDeviceShaderAbortFeaturesKHR* in_struct,
+                                                PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkPhysicalDeviceShaderAbortFeaturesKHR(const safe_VkPhysicalDeviceShaderAbortFeaturesKHR& copy_src);
+    safe_VkPhysicalDeviceShaderAbortFeaturesKHR& operator=(const safe_VkPhysicalDeviceShaderAbortFeaturesKHR& copy_src);
+    safe_VkPhysicalDeviceShaderAbortFeaturesKHR();
+    ~safe_VkPhysicalDeviceShaderAbortFeaturesKHR();
+    void initialize(const VkPhysicalDeviceShaderAbortFeaturesKHR* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceShaderAbortFeaturesKHR* copy_src, PNextCopyState* copy_state = {});
+    VkPhysicalDeviceShaderAbortFeaturesKHR* ptr() { return reinterpret_cast<VkPhysicalDeviceShaderAbortFeaturesKHR*>(this); }
+    VkPhysicalDeviceShaderAbortFeaturesKHR const* ptr() const {
+        return reinterpret_cast<VkPhysicalDeviceShaderAbortFeaturesKHR const*>(this);
+    }
+};
+struct safe_VkDeviceFaultShaderAbortMessageInfoKHR {
+    VkStructureType sType;
+    void* pNext{};
+    uint64_t messageDataSize;
+    void* pMessageData{};
+
+    safe_VkDeviceFaultShaderAbortMessageInfoKHR(const VkDeviceFaultShaderAbortMessageInfoKHR* in_struct,
+                                                PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkDeviceFaultShaderAbortMessageInfoKHR(const safe_VkDeviceFaultShaderAbortMessageInfoKHR& copy_src);
+    safe_VkDeviceFaultShaderAbortMessageInfoKHR& operator=(const safe_VkDeviceFaultShaderAbortMessageInfoKHR& copy_src);
+    safe_VkDeviceFaultShaderAbortMessageInfoKHR();
+    ~safe_VkDeviceFaultShaderAbortMessageInfoKHR();
+    void initialize(const VkDeviceFaultShaderAbortMessageInfoKHR* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkDeviceFaultShaderAbortMessageInfoKHR* copy_src, PNextCopyState* copy_state = {});
+    VkDeviceFaultShaderAbortMessageInfoKHR* ptr() { return reinterpret_cast<VkDeviceFaultShaderAbortMessageInfoKHR*>(this); }
+    VkDeviceFaultShaderAbortMessageInfoKHR const* ptr() const {
+        return reinterpret_cast<VkDeviceFaultShaderAbortMessageInfoKHR const*>(this);
+    }
+};
+struct safe_VkPhysicalDeviceShaderAbortPropertiesKHR {
+    VkStructureType sType;
+    void* pNext{};
+    uint64_t maxShaderAbortMessageSize;
+
+    safe_VkPhysicalDeviceShaderAbortPropertiesKHR(const VkPhysicalDeviceShaderAbortPropertiesKHR* in_struct,
+                                                  PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkPhysicalDeviceShaderAbortPropertiesKHR(const safe_VkPhysicalDeviceShaderAbortPropertiesKHR& copy_src);
+    safe_VkPhysicalDeviceShaderAbortPropertiesKHR& operator=(const safe_VkPhysicalDeviceShaderAbortPropertiesKHR& copy_src);
+    safe_VkPhysicalDeviceShaderAbortPropertiesKHR();
+    ~safe_VkPhysicalDeviceShaderAbortPropertiesKHR();
+    void initialize(const VkPhysicalDeviceShaderAbortPropertiesKHR* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceShaderAbortPropertiesKHR* copy_src, PNextCopyState* copy_state = {});
+    VkPhysicalDeviceShaderAbortPropertiesKHR* ptr() { return reinterpret_cast<VkPhysicalDeviceShaderAbortPropertiesKHR*>(this); }
+    VkPhysicalDeviceShaderAbortPropertiesKHR const* ptr() const {
+        return reinterpret_cast<VkPhysicalDeviceShaderAbortPropertiesKHR const*>(this);
+    }
+};
 struct safe_VkPhysicalDeviceShaderQuadControlFeaturesKHR {
     VkStructureType sType;
     void* pNext{};
@@ -10525,6 +10599,80 @@ struct safe_VkPhysicalDeviceLayeredApiVulkanPropertiesKHR {
     VkPhysicalDeviceLayeredApiVulkanPropertiesKHR const* ptr() const {
         return reinterpret_cast<VkPhysicalDeviceLayeredApiVulkanPropertiesKHR const*>(this);
     }
+};
+struct safe_VkPhysicalDeviceFaultFeaturesKHR {
+    VkStructureType sType;
+    void* pNext{};
+    VkBool32 deviceFault;
+    VkBool32 deviceFaultVendorBinary;
+    VkBool32 deviceFaultReportMasked;
+    VkBool32 deviceFaultDeviceLostOnMasked;
+
+    safe_VkPhysicalDeviceFaultFeaturesKHR(const VkPhysicalDeviceFaultFeaturesKHR* in_struct, PNextCopyState* copy_state = {},
+                                          bool copy_pnext = true);
+    safe_VkPhysicalDeviceFaultFeaturesKHR(const safe_VkPhysicalDeviceFaultFeaturesKHR& copy_src);
+    safe_VkPhysicalDeviceFaultFeaturesKHR& operator=(const safe_VkPhysicalDeviceFaultFeaturesKHR& copy_src);
+    safe_VkPhysicalDeviceFaultFeaturesKHR();
+    ~safe_VkPhysicalDeviceFaultFeaturesKHR();
+    void initialize(const VkPhysicalDeviceFaultFeaturesKHR* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceFaultFeaturesKHR* copy_src, PNextCopyState* copy_state = {});
+    VkPhysicalDeviceFaultFeaturesKHR* ptr() { return reinterpret_cast<VkPhysicalDeviceFaultFeaturesKHR*>(this); }
+    VkPhysicalDeviceFaultFeaturesKHR const* ptr() const { return reinterpret_cast<VkPhysicalDeviceFaultFeaturesKHR const*>(this); }
+};
+struct safe_VkPhysicalDeviceFaultPropertiesKHR {
+    VkStructureType sType;
+    void* pNext{};
+    uint32_t maxDeviceFaultCount;
+
+    safe_VkPhysicalDeviceFaultPropertiesKHR(const VkPhysicalDeviceFaultPropertiesKHR* in_struct, PNextCopyState* copy_state = {},
+                                            bool copy_pnext = true);
+    safe_VkPhysicalDeviceFaultPropertiesKHR(const safe_VkPhysicalDeviceFaultPropertiesKHR& copy_src);
+    safe_VkPhysicalDeviceFaultPropertiesKHR& operator=(const safe_VkPhysicalDeviceFaultPropertiesKHR& copy_src);
+    safe_VkPhysicalDeviceFaultPropertiesKHR();
+    ~safe_VkPhysicalDeviceFaultPropertiesKHR();
+    void initialize(const VkPhysicalDeviceFaultPropertiesKHR* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceFaultPropertiesKHR* copy_src, PNextCopyState* copy_state = {});
+    VkPhysicalDeviceFaultPropertiesKHR* ptr() { return reinterpret_cast<VkPhysicalDeviceFaultPropertiesKHR*>(this); }
+    VkPhysicalDeviceFaultPropertiesKHR const* ptr() const {
+        return reinterpret_cast<VkPhysicalDeviceFaultPropertiesKHR const*>(this);
+    }
+};
+struct safe_VkDeviceFaultInfoKHR {
+    VkStructureType sType;
+    void* pNext{};
+    VkDeviceFaultFlagsKHR flags;
+    uint64_t groupId;
+    char description[VK_MAX_DESCRIPTION_SIZE];
+    VkDeviceFaultAddressInfoKHR faultAddressInfo;
+    VkDeviceFaultAddressInfoKHR instructionAddressInfo;
+    VkDeviceFaultVendorInfoKHR vendorInfo;
+
+    safe_VkDeviceFaultInfoKHR(const VkDeviceFaultInfoKHR* in_struct, PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkDeviceFaultInfoKHR(const safe_VkDeviceFaultInfoKHR& copy_src);
+    safe_VkDeviceFaultInfoKHR& operator=(const safe_VkDeviceFaultInfoKHR& copy_src);
+    safe_VkDeviceFaultInfoKHR();
+    ~safe_VkDeviceFaultInfoKHR();
+    void initialize(const VkDeviceFaultInfoKHR* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkDeviceFaultInfoKHR* copy_src, PNextCopyState* copy_state = {});
+    VkDeviceFaultInfoKHR* ptr() { return reinterpret_cast<VkDeviceFaultInfoKHR*>(this); }
+    VkDeviceFaultInfoKHR const* ptr() const { return reinterpret_cast<VkDeviceFaultInfoKHR const*>(this); }
+};
+struct safe_VkDeviceFaultDebugInfoKHR {
+    VkStructureType sType;
+    void* pNext{};
+    uint32_t vendorBinarySize;
+    void* pVendorBinaryData{};
+
+    safe_VkDeviceFaultDebugInfoKHR(const VkDeviceFaultDebugInfoKHR* in_struct, PNextCopyState* copy_state = {},
+                                   bool copy_pnext = true);
+    safe_VkDeviceFaultDebugInfoKHR(const safe_VkDeviceFaultDebugInfoKHR& copy_src);
+    safe_VkDeviceFaultDebugInfoKHR& operator=(const safe_VkDeviceFaultDebugInfoKHR& copy_src);
+    safe_VkDeviceFaultDebugInfoKHR();
+    ~safe_VkDeviceFaultDebugInfoKHR();
+    void initialize(const VkDeviceFaultDebugInfoKHR* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkDeviceFaultDebugInfoKHR* copy_src, PNextCopyState* copy_state = {});
+    VkDeviceFaultDebugInfoKHR* ptr() { return reinterpret_cast<VkDeviceFaultDebugInfoKHR*>(this); }
+    VkDeviceFaultDebugInfoKHR const* ptr() const { return reinterpret_cast<VkDeviceFaultDebugInfoKHR const*>(this); }
 };
 struct safe_VkMemoryBarrierAccessFlags3KHR {
     VkStructureType sType;
@@ -16957,8 +17105,8 @@ struct safe_VkDeviceFaultInfoEXT {
     VkStructureType sType;
     void* pNext{};
     char description[VK_MAX_DESCRIPTION_SIZE];
-    VkDeviceFaultAddressInfoEXT* pAddressInfos{};
-    VkDeviceFaultVendorInfoEXT* pVendorInfos{};
+    VkDeviceFaultAddressInfoKHR* pAddressInfos{};
+    VkDeviceFaultVendorInfoKHR* pVendorInfos{};
     void* pVendorBinaryData{};
 
     safe_VkDeviceFaultInfoEXT(const VkDeviceFaultInfoEXT* in_struct, PNextCopyState* copy_state = {}, bool copy_pnext = true);

@@ -84,6 +84,12 @@ class SafeStructOutputGenerator(BaseGenerator):
                 ', const bool is_host, const VkAccelerationStructureBuildRangeInfoKHR *build_range_info',
         }
 
+        # TODO: Hook this up to the member deprecation in the XML so it can be automatically updated
+        self.unused_params = {
+            'VkDeviceCreateInfo':
+                ['ppEnabledLayerNames', 'enabledLayerCount'],
+        }
+
     def isInPnextChain(self, struct: Struct) -> bool:
         # Can appear in VkPipelineCreateInfoKHR::pNext even though it isn't listed in the xml structextends attribute
         # VUID-VkPipelineCreateInfoKHR-pNext-09604
@@ -196,6 +202,8 @@ class SafeStructOutputGenerator(BaseGenerator):
             canInitialize = True
             copy_pnext = ', bool copy_pnext = true' if struct.sType is not None else ''
             for member in struct.members:
+                if member.name in self.unused_params.get(struct.name, []):
+                    continue
                 if member.type in self.vk.structs:
                     if self.needSafeStruct(self.vk.structs[member.type]):
                         safe_member_type = self.convertName(member.type)
@@ -574,6 +582,10 @@ void FreePnextChain(const void *pNext) {
             for member in struct.members:
                 m_type = member.type
                 m_type_safe = False
+
+                if member.name in self.unused_params.get(struct.name, []):
+                    continue
+                
                 if member.name == 'pNext':
                     copy_pnext = 'pNext = SafePnextCopy(in_struct->pNext, copy_state);\n'
                     copy_pnext_if = '''

@@ -1284,6 +1284,14 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_PROPERTIES_2_AMD";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COHERENT_MEMORY_FEATURES_AMD:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COHERENT_MEMORY_FEATURES_AMD";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CONSTANT_DATA_FEATURES_KHR:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CONSTANT_DATA_FEATURES_KHR";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ABORT_FEATURES_KHR:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ABORT_FEATURES_KHR";
+        case VK_STRUCTURE_TYPE_DEVICE_FAULT_SHADER_ABORT_MESSAGE_INFO_KHR:
+            return "VK_STRUCTURE_TYPE_DEVICE_FAULT_SHADER_ABORT_MESSAGE_INFO_KHR";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ABORT_PROPERTIES_KHR:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ABORT_PROPERTIES_KHR";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_IMAGE_ATOMIC_INT64_FEATURES_EXT:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_IMAGE_ATOMIC_INT64_FEATURES_EXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_QUAD_CONTROL_FEATURES_KHR:
@@ -2356,6 +2364,14 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_GENERATED_COMMANDS_PIPELINE_INFO_EXT";
         case VK_STRUCTURE_TYPE_GENERATED_COMMANDS_SHADER_INFO_EXT:
             return "VK_STRUCTURE_TYPE_GENERATED_COMMANDS_SHADER_INFO_EXT";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FAULT_FEATURES_KHR:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FAULT_FEATURES_KHR";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FAULT_PROPERTIES_KHR:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FAULT_PROPERTIES_KHR";
+        case VK_STRUCTURE_TYPE_DEVICE_FAULT_INFO_KHR:
+            return "VK_STRUCTURE_TYPE_DEVICE_FAULT_INFO_KHR";
+        case VK_STRUCTURE_TYPE_DEVICE_FAULT_DEBUG_INFO_KHR:
+            return "VK_STRUCTURE_TYPE_DEVICE_FAULT_DEBUG_INFO_KHR";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_8_FEATURES_KHR:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_8_FEATURES_KHR";
         case VK_STRUCTURE_TYPE_MEMORY_BARRIER_ACCESS_FLAGS_3_KHR:
@@ -4646,6 +4662,34 @@ static inline const char* string_VkPhysicalDeviceLayeredApiKHR(VkPhysicalDeviceL
             return "Unhandled VkPhysicalDeviceLayeredApiKHR";
     }
 }
+static inline const char* string_VkDeviceFaultAddressTypeKHR(VkDeviceFaultAddressTypeKHR input_value) {
+    switch (input_value) {
+        case VK_DEVICE_FAULT_ADDRESS_TYPE_NONE_KHR:
+            return "VK_DEVICE_FAULT_ADDRESS_TYPE_NONE_KHR";
+        case VK_DEVICE_FAULT_ADDRESS_TYPE_READ_INVALID_KHR:
+            return "VK_DEVICE_FAULT_ADDRESS_TYPE_READ_INVALID_KHR";
+        case VK_DEVICE_FAULT_ADDRESS_TYPE_WRITE_INVALID_KHR:
+            return "VK_DEVICE_FAULT_ADDRESS_TYPE_WRITE_INVALID_KHR";
+        case VK_DEVICE_FAULT_ADDRESS_TYPE_EXECUTE_INVALID_KHR:
+            return "VK_DEVICE_FAULT_ADDRESS_TYPE_EXECUTE_INVALID_KHR";
+        case VK_DEVICE_FAULT_ADDRESS_TYPE_INSTRUCTION_POINTER_UNKNOWN_KHR:
+            return "VK_DEVICE_FAULT_ADDRESS_TYPE_INSTRUCTION_POINTER_UNKNOWN_KHR";
+        case VK_DEVICE_FAULT_ADDRESS_TYPE_INSTRUCTION_POINTER_INVALID_KHR:
+            return "VK_DEVICE_FAULT_ADDRESS_TYPE_INSTRUCTION_POINTER_INVALID_KHR";
+        case VK_DEVICE_FAULT_ADDRESS_TYPE_INSTRUCTION_POINTER_FAULT_KHR:
+            return "VK_DEVICE_FAULT_ADDRESS_TYPE_INSTRUCTION_POINTER_FAULT_KHR";
+        default:
+            return "Unhandled VkDeviceFaultAddressTypeKHR";
+    }
+}
+static inline const char* string_VkDeviceFaultVendorBinaryHeaderVersionKHR(VkDeviceFaultVendorBinaryHeaderVersionKHR input_value) {
+    switch (input_value) {
+        case VK_DEVICE_FAULT_VENDOR_BINARY_HEADER_VERSION_ONE_KHR:
+            return "VK_DEVICE_FAULT_VENDOR_BINARY_HEADER_VERSION_ONE_KHR";
+        default:
+            return "Unhandled VkDeviceFaultVendorBinaryHeaderVersionKHR";
+    }
+}
 static inline const char* string_VkDefaultVertexAttributeValueKHR(VkDefaultVertexAttributeValueKHR input_value) {
     switch (input_value) {
         case VK_DEFAULT_VERTEX_ATTRIBUTE_VALUE_ZERO_ZERO_ZERO_ZERO_KHR:
@@ -5258,34 +5302,6 @@ static inline const char* string_VkAccelerationStructureMotionInstanceTypeNV(VkA
             return "VK_ACCELERATION_STRUCTURE_MOTION_INSTANCE_TYPE_SRT_MOTION_NV";
         default:
             return "Unhandled VkAccelerationStructureMotionInstanceTypeNV";
-    }
-}
-static inline const char* string_VkDeviceFaultAddressTypeEXT(VkDeviceFaultAddressTypeEXT input_value) {
-    switch (input_value) {
-        case VK_DEVICE_FAULT_ADDRESS_TYPE_NONE_EXT:
-            return "VK_DEVICE_FAULT_ADDRESS_TYPE_NONE_EXT";
-        case VK_DEVICE_FAULT_ADDRESS_TYPE_READ_INVALID_EXT:
-            return "VK_DEVICE_FAULT_ADDRESS_TYPE_READ_INVALID_EXT";
-        case VK_DEVICE_FAULT_ADDRESS_TYPE_WRITE_INVALID_EXT:
-            return "VK_DEVICE_FAULT_ADDRESS_TYPE_WRITE_INVALID_EXT";
-        case VK_DEVICE_FAULT_ADDRESS_TYPE_EXECUTE_INVALID_EXT:
-            return "VK_DEVICE_FAULT_ADDRESS_TYPE_EXECUTE_INVALID_EXT";
-        case VK_DEVICE_FAULT_ADDRESS_TYPE_INSTRUCTION_POINTER_UNKNOWN_EXT:
-            return "VK_DEVICE_FAULT_ADDRESS_TYPE_INSTRUCTION_POINTER_UNKNOWN_EXT";
-        case VK_DEVICE_FAULT_ADDRESS_TYPE_INSTRUCTION_POINTER_INVALID_EXT:
-            return "VK_DEVICE_FAULT_ADDRESS_TYPE_INSTRUCTION_POINTER_INVALID_EXT";
-        case VK_DEVICE_FAULT_ADDRESS_TYPE_INSTRUCTION_POINTER_FAULT_EXT:
-            return "VK_DEVICE_FAULT_ADDRESS_TYPE_INSTRUCTION_POINTER_FAULT_EXT";
-        default:
-            return "Unhandled VkDeviceFaultAddressTypeEXT";
-    }
-}
-static inline const char* string_VkDeviceFaultVendorBinaryHeaderVersionEXT(VkDeviceFaultVendorBinaryHeaderVersionEXT input_value) {
-    switch (input_value) {
-        case VK_DEVICE_FAULT_VENDOR_BINARY_HEADER_VERSION_ONE_EXT:
-            return "VK_DEVICE_FAULT_VENDOR_BINARY_HEADER_VERSION_ONE_EXT";
-        default:
-            return "Unhandled VkDeviceFaultVendorBinaryHeaderVersionEXT";
     }
 }
 static inline const char* string_VkDeviceAddressBindingTypeEXT(VkDeviceAddressBindingTypeEXT input_value) {
@@ -9986,6 +10002,41 @@ static inline std::string string_VkVideoEncodeIntraRefreshModeFlagsKHR(VkVideoEn
     return ret;
 }
 #endif // __cplusplus
+static inline const char* string_VkDeviceFaultFlagBitsKHR(VkDeviceFaultFlagBitsKHR input_value) {
+    switch (input_value) {
+        case VK_DEVICE_FAULT_FLAG_DEVICE_LOST_KHR:
+            return "VK_DEVICE_FAULT_FLAG_DEVICE_LOST_KHR";
+        case VK_DEVICE_FAULT_FLAG_MEMORY_ADDRESS_KHR:
+            return "VK_DEVICE_FAULT_FLAG_MEMORY_ADDRESS_KHR";
+        case VK_DEVICE_FAULT_FLAG_INSTRUCTION_ADDRESS_KHR:
+            return "VK_DEVICE_FAULT_FLAG_INSTRUCTION_ADDRESS_KHR";
+        case VK_DEVICE_FAULT_FLAG_VENDOR_KHR:
+            return "VK_DEVICE_FAULT_FLAG_VENDOR_KHR";
+        case VK_DEVICE_FAULT_FLAG_WATCHDOG_TIMEOUT_KHR:
+            return "VK_DEVICE_FAULT_FLAG_WATCHDOG_TIMEOUT_KHR";
+        case VK_DEVICE_FAULT_FLAG_OVERFLOW_KHR:
+            return "VK_DEVICE_FAULT_FLAG_OVERFLOW_KHR";
+        default:
+            return "Unhandled VkDeviceFaultFlagBitsKHR";
+    }
+}
+
+#ifdef __cplusplus
+static inline std::string string_VkDeviceFaultFlagsKHR(VkDeviceFaultFlagsKHR input_value) {
+    std::string ret;
+    int index = 0;
+    while(input_value) {
+        if (input_value & 1) {
+            if( !ret.empty()) ret.append("|");
+            ret.append(string_VkDeviceFaultFlagBitsKHR(static_cast<VkDeviceFaultFlagBitsKHR>(1U << index)));
+        }
+        ++index;
+        input_value >>= 1;
+    }
+    if (ret.empty()) ret.append("VkDeviceFaultFlagsKHR(0)");
+    return ret;
+}
+#endif // __cplusplus
 static inline const char* string_VkAccessFlagBits3KHR(uint64_t input_value) {
     if (input_value == VK_ACCESS_3_NONE_KHR) return "VK_ACCESS_3_NONE_KHR";
     return "Unhandled VkAccessFlagBits3KHR";
@@ -12299,6 +12350,14 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
             return "VkPhysicalDeviceFragmentShadingRateKHR";
         case VK_STRUCTURE_TYPE_RENDERING_FRAGMENT_SHADING_RATE_ATTACHMENT_INFO_KHR:
             return "VkRenderingFragmentShadingRateAttachmentInfoKHR";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CONSTANT_DATA_FEATURES_KHR:
+            return "VkPhysicalDeviceShaderConstantDataFeaturesKHR";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ABORT_FEATURES_KHR:
+            return "VkPhysicalDeviceShaderAbortFeaturesKHR";
+        case VK_STRUCTURE_TYPE_DEVICE_FAULT_SHADER_ABORT_MESSAGE_INFO_KHR:
+            return "VkDeviceFaultShaderAbortMessageInfoKHR";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ABORT_PROPERTIES_KHR:
+            return "VkPhysicalDeviceShaderAbortPropertiesKHR";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_QUAD_CONTROL_FEATURES_KHR:
             return "VkPhysicalDeviceShaderQuadControlFeaturesKHR";
         case VK_STRUCTURE_TYPE_SURFACE_PROTECTED_CAPABILITIES_KHR:
@@ -12559,6 +12618,14 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
             return "VkPhysicalDeviceLayeredApiPropertiesListKHR";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_API_VULKAN_PROPERTIES_KHR:
             return "VkPhysicalDeviceLayeredApiVulkanPropertiesKHR";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FAULT_FEATURES_KHR:
+            return "VkPhysicalDeviceFaultFeaturesKHR";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FAULT_PROPERTIES_KHR:
+            return "VkPhysicalDeviceFaultPropertiesKHR";
+        case VK_STRUCTURE_TYPE_DEVICE_FAULT_INFO_KHR:
+            return "VkDeviceFaultInfoKHR";
+        case VK_STRUCTURE_TYPE_DEVICE_FAULT_DEBUG_INFO_KHR:
+            return "VkDeviceFaultDebugInfoKHR";
         case VK_STRUCTURE_TYPE_MEMORY_BARRIER_ACCESS_FLAGS_3_KHR:
             return "VkMemoryBarrierAccessFlags3KHR";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_8_FEATURES_KHR:
