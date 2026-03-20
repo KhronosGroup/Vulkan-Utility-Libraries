@@ -43,7 +43,7 @@ Any layer project that uses this library will provide these three methods to con
 
 For each of these methods, it's possible for Vulkan application developers to generate environment variables scripts and C++ code from Vulkan Configurator, using either the GUI (using the context menu of each layers configuration) or the command line (using `vkconfig settings`). This generated files can either implement the default layer setting values of the values selected in the Vulkan Configurator GUI. 
 
-For more information, read the [Vulkan Layers whitepaper](https://github.com/KhronosGroup/Vulkan-Profiles/tree/main/doc/Configuring-Vulkan-Layers-Whitepaper.pdf).
+For more information, read the [Vulkan Layers whitepaper](https://github.com/KhronosGroup/Vulkan-Utility-Libraries/blob/main/docs/Configuring-Vulkan-Layers-Whitepaper.pdf).
 
 Guideline: Settings which are unknown by the layer will be ignored independently of the method. It's the responsibility of the layer developer to ensure backward compatibility with previous versions of the layer. This is to ensure the list of layer settings remain stable across versions and that the responsibility of handling layer backward compatibility doesn't fall on Vulkan application developers as this could quickly become untrackable..
 
