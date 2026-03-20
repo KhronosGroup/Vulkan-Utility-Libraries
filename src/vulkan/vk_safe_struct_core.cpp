@@ -428,6 +428,8 @@ safe_VkDeviceCreateInfo::safe_VkDeviceCreateInfo(const VkDeviceCreateInfo* in_st
       flags(in_struct->flags),
       queueCreateInfoCount(in_struct->queueCreateInfoCount),
       pQueueCreateInfos(nullptr),
+      enabledLayerCount(in_struct->enabledLayerCount),
+      ppEnabledLayerNames(in_struct->ppEnabledLayerNames),
       enabledExtensionCount(in_struct->enabledExtensionCount),
       pEnabledFeatures(nullptr) {
     if (copy_pnext) {
@@ -456,6 +458,8 @@ safe_VkDeviceCreateInfo::safe_VkDeviceCreateInfo()
       flags(),
       queueCreateInfoCount(),
       pQueueCreateInfos(nullptr),
+      enabledLayerCount(),
+      ppEnabledLayerNames(),
       enabledExtensionCount(),
       ppEnabledExtensionNames(nullptr),
       pEnabledFeatures(nullptr) {}
@@ -465,6 +469,8 @@ safe_VkDeviceCreateInfo::safe_VkDeviceCreateInfo(const safe_VkDeviceCreateInfo& 
     flags = copy_src.flags;
     queueCreateInfoCount = copy_src.queueCreateInfoCount;
     pQueueCreateInfos = nullptr;
+    enabledLayerCount = copy_src.enabledLayerCount;
+    ppEnabledLayerNames = copy_src.ppEnabledLayerNames;
     enabledExtensionCount = copy_src.enabledExtensionCount;
     pEnabledFeatures = nullptr;
     pNext = SafePnextCopy(copy_src.pNext);
@@ -504,6 +510,8 @@ safe_VkDeviceCreateInfo& safe_VkDeviceCreateInfo::operator=(const safe_VkDeviceC
     flags = copy_src.flags;
     queueCreateInfoCount = copy_src.queueCreateInfoCount;
     pQueueCreateInfos = nullptr;
+    enabledLayerCount = copy_src.enabledLayerCount;
+    ppEnabledLayerNames = copy_src.ppEnabledLayerNames;
     enabledExtensionCount = copy_src.enabledExtensionCount;
     pEnabledFeatures = nullptr;
     pNext = SafePnextCopy(copy_src.pNext);
@@ -555,6 +563,8 @@ void safe_VkDeviceCreateInfo::initialize(const VkDeviceCreateInfo* in_struct, [[
     flags = in_struct->flags;
     queueCreateInfoCount = in_struct->queueCreateInfoCount;
     pQueueCreateInfos = nullptr;
+    enabledLayerCount = in_struct->enabledLayerCount;
+    ppEnabledLayerNames = in_struct->ppEnabledLayerNames;
     enabledExtensionCount = in_struct->enabledExtensionCount;
     pEnabledFeatures = nullptr;
     pNext = SafePnextCopy(in_struct->pNext, copy_state);
@@ -581,6 +591,8 @@ void safe_VkDeviceCreateInfo::initialize(const safe_VkDeviceCreateInfo* copy_src
     flags = copy_src->flags;
     queueCreateInfoCount = copy_src->queueCreateInfoCount;
     pQueueCreateInfos = nullptr;
+    enabledLayerCount = copy_src->enabledLayerCount;
+    ppEnabledLayerNames = copy_src->ppEnabledLayerNames;
     enabledExtensionCount = copy_src->enabledExtensionCount;
     pEnabledFeatures = nullptr;
     pNext = SafePnextCopy(copy_src->pNext);

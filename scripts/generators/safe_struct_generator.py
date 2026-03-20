@@ -202,8 +202,6 @@ class SafeStructOutputGenerator(BaseGenerator):
             canInitialize = True
             copy_pnext = ', bool copy_pnext = true' if struct.sType is not None else ''
             for member in struct.members:
-                if member.name in self.unused_params.get(struct.name, []):
-                    continue
                 if member.type in self.vk.structs:
                     if self.needSafeStruct(self.vk.structs[member.type]):
                         safe_member_type = self.convertName(member.type)
@@ -582,9 +580,10 @@ void FreePnextChain(const void *pNext) {
             for member in struct.members:
                 m_type = member.type
                 m_type_safe = False
+                m_shallow_copy = False
 
-                if member.name in self.unused_params.get(struct.name, []):
-                    continue
+                if member.pointer and ('PFN_' in member.type or member.name in self.unused_params.get(struct.name, [])):
+                    m_shallow_copy = True
                 
                 if member.name == 'pNext':
                     copy_pnext = 'pNext = SafePnextCopy(in_struct->pNext, copy_state);\n'
@@ -596,7 +595,7 @@ void FreePnextChain(const void *pNext) {
                     m_type = self.convertName(member.type)
                     m_type_safe = True;
 
-                if member.pointer and not m_type_safe and 'PFN_' not in member.type and not self.typeContainsObjectHandle(member.type, False):
+                if member.pointer and not m_type_safe and not m_shallow_copy and not self.typeContainsObjectHandle(member.type, False):
                     # Ptr types w/o a safe_struct, for non-null case need to allocate new ptr and copy data in
                     if m_type in ['void', 'char']:
                         if member.name != 'pNext':
@@ -703,7 +702,7 @@ void FreePnextChain(const void *pNext) {
                             construct_txt += f'{member.name}[i] = {array_element};\n'
                         construct_txt += '}\n'
                         construct_txt += '}\n'
-                elif member.pointer and 'PFN_' not in member.type:
+                elif member.pointer and not m_shallow_copy:
                     default_init_list += f'\n{member.name}(nullptr),'
                     init_list += f'\n{member.name}(nullptr),'
                     init_func_txt += f'{member.name} = nullptr;\n'
