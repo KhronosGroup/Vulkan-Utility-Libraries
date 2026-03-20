@@ -9058,6 +9058,205 @@ void safe_VkRenderingFragmentShadingRateAttachmentInfoKHR::initialize(
     pNext = SafePnextCopy(copy_src->pNext);
 }
 
+safe_VkPhysicalDeviceShaderConstantDataFeaturesKHR::safe_VkPhysicalDeviceShaderConstantDataFeaturesKHR(
+    const VkPhysicalDeviceShaderConstantDataFeaturesKHR* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), shaderConstantData(in_struct->shaderConstantData) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceShaderConstantDataFeaturesKHR::safe_VkPhysicalDeviceShaderConstantDataFeaturesKHR()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CONSTANT_DATA_FEATURES_KHR), pNext(nullptr), shaderConstantData() {}
+
+safe_VkPhysicalDeviceShaderConstantDataFeaturesKHR::safe_VkPhysicalDeviceShaderConstantDataFeaturesKHR(
+    const safe_VkPhysicalDeviceShaderConstantDataFeaturesKHR& copy_src) {
+    sType = copy_src.sType;
+    shaderConstantData = copy_src.shaderConstantData;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceShaderConstantDataFeaturesKHR& safe_VkPhysicalDeviceShaderConstantDataFeaturesKHR::operator=(
+    const safe_VkPhysicalDeviceShaderConstantDataFeaturesKHR& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    shaderConstantData = copy_src.shaderConstantData;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceShaderConstantDataFeaturesKHR::~safe_VkPhysicalDeviceShaderConstantDataFeaturesKHR() { FreePnextChain(pNext); }
+
+void safe_VkPhysicalDeviceShaderConstantDataFeaturesKHR::initialize(const VkPhysicalDeviceShaderConstantDataFeaturesKHR* in_struct,
+                                                                    [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    shaderConstantData = in_struct->shaderConstantData;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceShaderConstantDataFeaturesKHR::initialize(
+    const safe_VkPhysicalDeviceShaderConstantDataFeaturesKHR* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    shaderConstantData = copy_src->shaderConstantData;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkPhysicalDeviceShaderAbortFeaturesKHR::safe_VkPhysicalDeviceShaderAbortFeaturesKHR(
+    const VkPhysicalDeviceShaderAbortFeaturesKHR* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), shaderAbort(in_struct->shaderAbort) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceShaderAbortFeaturesKHR::safe_VkPhysicalDeviceShaderAbortFeaturesKHR()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ABORT_FEATURES_KHR), pNext(nullptr), shaderAbort() {}
+
+safe_VkPhysicalDeviceShaderAbortFeaturesKHR::safe_VkPhysicalDeviceShaderAbortFeaturesKHR(
+    const safe_VkPhysicalDeviceShaderAbortFeaturesKHR& copy_src) {
+    sType = copy_src.sType;
+    shaderAbort = copy_src.shaderAbort;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceShaderAbortFeaturesKHR& safe_VkPhysicalDeviceShaderAbortFeaturesKHR::operator=(
+    const safe_VkPhysicalDeviceShaderAbortFeaturesKHR& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    shaderAbort = copy_src.shaderAbort;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceShaderAbortFeaturesKHR::~safe_VkPhysicalDeviceShaderAbortFeaturesKHR() { FreePnextChain(pNext); }
+
+void safe_VkPhysicalDeviceShaderAbortFeaturesKHR::initialize(const VkPhysicalDeviceShaderAbortFeaturesKHR* in_struct,
+                                                             [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    shaderAbort = in_struct->shaderAbort;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceShaderAbortFeaturesKHR::initialize(const safe_VkPhysicalDeviceShaderAbortFeaturesKHR* copy_src,
+                                                             [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    shaderAbort = copy_src->shaderAbort;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkDeviceFaultShaderAbortMessageInfoKHR::safe_VkDeviceFaultShaderAbortMessageInfoKHR(
+    const VkDeviceFaultShaderAbortMessageInfoKHR* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), messageDataSize(in_struct->messageDataSize), pMessageData(in_struct->pMessageData) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkDeviceFaultShaderAbortMessageInfoKHR::safe_VkDeviceFaultShaderAbortMessageInfoKHR()
+    : sType(VK_STRUCTURE_TYPE_DEVICE_FAULT_SHADER_ABORT_MESSAGE_INFO_KHR),
+      pNext(nullptr),
+      messageDataSize(),
+      pMessageData(nullptr) {}
+
+safe_VkDeviceFaultShaderAbortMessageInfoKHR::safe_VkDeviceFaultShaderAbortMessageInfoKHR(
+    const safe_VkDeviceFaultShaderAbortMessageInfoKHR& copy_src) {
+    sType = copy_src.sType;
+    messageDataSize = copy_src.messageDataSize;
+    pMessageData = copy_src.pMessageData;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkDeviceFaultShaderAbortMessageInfoKHR& safe_VkDeviceFaultShaderAbortMessageInfoKHR::operator=(
+    const safe_VkDeviceFaultShaderAbortMessageInfoKHR& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    messageDataSize = copy_src.messageDataSize;
+    pMessageData = copy_src.pMessageData;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkDeviceFaultShaderAbortMessageInfoKHR::~safe_VkDeviceFaultShaderAbortMessageInfoKHR() { FreePnextChain(pNext); }
+
+void safe_VkDeviceFaultShaderAbortMessageInfoKHR::initialize(const VkDeviceFaultShaderAbortMessageInfoKHR* in_struct,
+                                                             [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    messageDataSize = in_struct->messageDataSize;
+    pMessageData = in_struct->pMessageData;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkDeviceFaultShaderAbortMessageInfoKHR::initialize(const safe_VkDeviceFaultShaderAbortMessageInfoKHR* copy_src,
+                                                             [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    messageDataSize = copy_src->messageDataSize;
+    pMessageData = copy_src->pMessageData;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkPhysicalDeviceShaderAbortPropertiesKHR::safe_VkPhysicalDeviceShaderAbortPropertiesKHR(
+    const VkPhysicalDeviceShaderAbortPropertiesKHR* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), maxShaderAbortMessageSize(in_struct->maxShaderAbortMessageSize) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceShaderAbortPropertiesKHR::safe_VkPhysicalDeviceShaderAbortPropertiesKHR()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ABORT_PROPERTIES_KHR), pNext(nullptr), maxShaderAbortMessageSize() {}
+
+safe_VkPhysicalDeviceShaderAbortPropertiesKHR::safe_VkPhysicalDeviceShaderAbortPropertiesKHR(
+    const safe_VkPhysicalDeviceShaderAbortPropertiesKHR& copy_src) {
+    sType = copy_src.sType;
+    maxShaderAbortMessageSize = copy_src.maxShaderAbortMessageSize;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceShaderAbortPropertiesKHR& safe_VkPhysicalDeviceShaderAbortPropertiesKHR::operator=(
+    const safe_VkPhysicalDeviceShaderAbortPropertiesKHR& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    maxShaderAbortMessageSize = copy_src.maxShaderAbortMessageSize;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceShaderAbortPropertiesKHR::~safe_VkPhysicalDeviceShaderAbortPropertiesKHR() { FreePnextChain(pNext); }
+
+void safe_VkPhysicalDeviceShaderAbortPropertiesKHR::initialize(const VkPhysicalDeviceShaderAbortPropertiesKHR* in_struct,
+                                                               [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    maxShaderAbortMessageSize = in_struct->maxShaderAbortMessageSize;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceShaderAbortPropertiesKHR::initialize(const safe_VkPhysicalDeviceShaderAbortPropertiesKHR* copy_src,
+                                                               [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    maxShaderAbortMessageSize = copy_src->maxShaderAbortMessageSize;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
 safe_VkPhysicalDeviceShaderQuadControlFeaturesKHR::safe_VkPhysicalDeviceShaderQuadControlFeaturesKHR(
     const VkPhysicalDeviceShaderQuadControlFeaturesKHR* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
     : sType(in_struct->sType), shaderQuadControl(in_struct->shaderQuadControl) {
@@ -17616,6 +17815,264 @@ void safe_VkPhysicalDeviceLayeredApiVulkanPropertiesKHR::initialize(
     const safe_VkPhysicalDeviceLayeredApiVulkanPropertiesKHR* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
     sType = copy_src->sType;
     properties.initialize(&copy_src->properties);
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkPhysicalDeviceFaultFeaturesKHR::safe_VkPhysicalDeviceFaultFeaturesKHR(const VkPhysicalDeviceFaultFeaturesKHR* in_struct,
+                                                                             [[maybe_unused]] PNextCopyState* copy_state,
+                                                                             bool copy_pnext)
+    : sType(in_struct->sType),
+      deviceFault(in_struct->deviceFault),
+      deviceFaultVendorBinary(in_struct->deviceFaultVendorBinary),
+      deviceFaultReportMasked(in_struct->deviceFaultReportMasked),
+      deviceFaultDeviceLostOnMasked(in_struct->deviceFaultDeviceLostOnMasked) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceFaultFeaturesKHR::safe_VkPhysicalDeviceFaultFeaturesKHR()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FAULT_FEATURES_KHR),
+      pNext(nullptr),
+      deviceFault(),
+      deviceFaultVendorBinary(),
+      deviceFaultReportMasked(),
+      deviceFaultDeviceLostOnMasked() {}
+
+safe_VkPhysicalDeviceFaultFeaturesKHR::safe_VkPhysicalDeviceFaultFeaturesKHR(
+    const safe_VkPhysicalDeviceFaultFeaturesKHR& copy_src) {
+    sType = copy_src.sType;
+    deviceFault = copy_src.deviceFault;
+    deviceFaultVendorBinary = copy_src.deviceFaultVendorBinary;
+    deviceFaultReportMasked = copy_src.deviceFaultReportMasked;
+    deviceFaultDeviceLostOnMasked = copy_src.deviceFaultDeviceLostOnMasked;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceFaultFeaturesKHR& safe_VkPhysicalDeviceFaultFeaturesKHR::operator=(
+    const safe_VkPhysicalDeviceFaultFeaturesKHR& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    deviceFault = copy_src.deviceFault;
+    deviceFaultVendorBinary = copy_src.deviceFaultVendorBinary;
+    deviceFaultReportMasked = copy_src.deviceFaultReportMasked;
+    deviceFaultDeviceLostOnMasked = copy_src.deviceFaultDeviceLostOnMasked;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceFaultFeaturesKHR::~safe_VkPhysicalDeviceFaultFeaturesKHR() { FreePnextChain(pNext); }
+
+void safe_VkPhysicalDeviceFaultFeaturesKHR::initialize(const VkPhysicalDeviceFaultFeaturesKHR* in_struct,
+                                                       [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    deviceFault = in_struct->deviceFault;
+    deviceFaultVendorBinary = in_struct->deviceFaultVendorBinary;
+    deviceFaultReportMasked = in_struct->deviceFaultReportMasked;
+    deviceFaultDeviceLostOnMasked = in_struct->deviceFaultDeviceLostOnMasked;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceFaultFeaturesKHR::initialize(const safe_VkPhysicalDeviceFaultFeaturesKHR* copy_src,
+                                                       [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    deviceFault = copy_src->deviceFault;
+    deviceFaultVendorBinary = copy_src->deviceFaultVendorBinary;
+    deviceFaultReportMasked = copy_src->deviceFaultReportMasked;
+    deviceFaultDeviceLostOnMasked = copy_src->deviceFaultDeviceLostOnMasked;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkPhysicalDeviceFaultPropertiesKHR::safe_VkPhysicalDeviceFaultPropertiesKHR(
+    const VkPhysicalDeviceFaultPropertiesKHR* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), maxDeviceFaultCount(in_struct->maxDeviceFaultCount) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceFaultPropertiesKHR::safe_VkPhysicalDeviceFaultPropertiesKHR()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FAULT_PROPERTIES_KHR), pNext(nullptr), maxDeviceFaultCount() {}
+
+safe_VkPhysicalDeviceFaultPropertiesKHR::safe_VkPhysicalDeviceFaultPropertiesKHR(
+    const safe_VkPhysicalDeviceFaultPropertiesKHR& copy_src) {
+    sType = copy_src.sType;
+    maxDeviceFaultCount = copy_src.maxDeviceFaultCount;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceFaultPropertiesKHR& safe_VkPhysicalDeviceFaultPropertiesKHR::operator=(
+    const safe_VkPhysicalDeviceFaultPropertiesKHR& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    maxDeviceFaultCount = copy_src.maxDeviceFaultCount;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceFaultPropertiesKHR::~safe_VkPhysicalDeviceFaultPropertiesKHR() { FreePnextChain(pNext); }
+
+void safe_VkPhysicalDeviceFaultPropertiesKHR::initialize(const VkPhysicalDeviceFaultPropertiesKHR* in_struct,
+                                                         [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    maxDeviceFaultCount = in_struct->maxDeviceFaultCount;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceFaultPropertiesKHR::initialize(const safe_VkPhysicalDeviceFaultPropertiesKHR* copy_src,
+                                                         [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    maxDeviceFaultCount = copy_src->maxDeviceFaultCount;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkDeviceFaultInfoKHR::safe_VkDeviceFaultInfoKHR(const VkDeviceFaultInfoKHR* in_struct,
+                                                     [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType),
+      flags(in_struct->flags),
+      groupId(in_struct->groupId),
+      faultAddressInfo(in_struct->faultAddressInfo),
+      instructionAddressInfo(in_struct->instructionAddressInfo),
+      vendorInfo(in_struct->vendorInfo) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+    for (uint32_t i = 0; i < VK_MAX_DESCRIPTION_SIZE; ++i) {
+        description[i] = in_struct->description[i];
+    }
+}
+
+safe_VkDeviceFaultInfoKHR::safe_VkDeviceFaultInfoKHR()
+    : sType(VK_STRUCTURE_TYPE_DEVICE_FAULT_INFO_KHR),
+      pNext(nullptr),
+      flags(),
+      groupId(),
+      faultAddressInfo(),
+      instructionAddressInfo(),
+      vendorInfo() {}
+
+safe_VkDeviceFaultInfoKHR::safe_VkDeviceFaultInfoKHR(const safe_VkDeviceFaultInfoKHR& copy_src) {
+    sType = copy_src.sType;
+    flags = copy_src.flags;
+    groupId = copy_src.groupId;
+    faultAddressInfo = copy_src.faultAddressInfo;
+    instructionAddressInfo = copy_src.instructionAddressInfo;
+    vendorInfo = copy_src.vendorInfo;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    for (uint32_t i = 0; i < VK_MAX_DESCRIPTION_SIZE; ++i) {
+        description[i] = copy_src.description[i];
+    }
+}
+
+safe_VkDeviceFaultInfoKHR& safe_VkDeviceFaultInfoKHR::operator=(const safe_VkDeviceFaultInfoKHR& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    flags = copy_src.flags;
+    groupId = copy_src.groupId;
+    faultAddressInfo = copy_src.faultAddressInfo;
+    instructionAddressInfo = copy_src.instructionAddressInfo;
+    vendorInfo = copy_src.vendorInfo;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    for (uint32_t i = 0; i < VK_MAX_DESCRIPTION_SIZE; ++i) {
+        description[i] = copy_src.description[i];
+    }
+
+    return *this;
+}
+
+safe_VkDeviceFaultInfoKHR::~safe_VkDeviceFaultInfoKHR() { FreePnextChain(pNext); }
+
+void safe_VkDeviceFaultInfoKHR::initialize(const VkDeviceFaultInfoKHR* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    flags = in_struct->flags;
+    groupId = in_struct->groupId;
+    faultAddressInfo = in_struct->faultAddressInfo;
+    instructionAddressInfo = in_struct->instructionAddressInfo;
+    vendorInfo = in_struct->vendorInfo;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+
+    for (uint32_t i = 0; i < VK_MAX_DESCRIPTION_SIZE; ++i) {
+        description[i] = in_struct->description[i];
+    }
+}
+
+void safe_VkDeviceFaultInfoKHR::initialize(const safe_VkDeviceFaultInfoKHR* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    flags = copy_src->flags;
+    groupId = copy_src->groupId;
+    faultAddressInfo = copy_src->faultAddressInfo;
+    instructionAddressInfo = copy_src->instructionAddressInfo;
+    vendorInfo = copy_src->vendorInfo;
+    pNext = SafePnextCopy(copy_src->pNext);
+
+    for (uint32_t i = 0; i < VK_MAX_DESCRIPTION_SIZE; ++i) {
+        description[i] = copy_src->description[i];
+    }
+}
+
+safe_VkDeviceFaultDebugInfoKHR::safe_VkDeviceFaultDebugInfoKHR(const VkDeviceFaultDebugInfoKHR* in_struct,
+                                                               [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), vendorBinarySize(in_struct->vendorBinarySize), pVendorBinaryData(in_struct->pVendorBinaryData) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkDeviceFaultDebugInfoKHR::safe_VkDeviceFaultDebugInfoKHR()
+    : sType(VK_STRUCTURE_TYPE_DEVICE_FAULT_DEBUG_INFO_KHR), pNext(nullptr), vendorBinarySize(), pVendorBinaryData(nullptr) {}
+
+safe_VkDeviceFaultDebugInfoKHR::safe_VkDeviceFaultDebugInfoKHR(const safe_VkDeviceFaultDebugInfoKHR& copy_src) {
+    sType = copy_src.sType;
+    vendorBinarySize = copy_src.vendorBinarySize;
+    pVendorBinaryData = copy_src.pVendorBinaryData;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkDeviceFaultDebugInfoKHR& safe_VkDeviceFaultDebugInfoKHR::operator=(const safe_VkDeviceFaultDebugInfoKHR& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    vendorBinarySize = copy_src.vendorBinarySize;
+    pVendorBinaryData = copy_src.pVendorBinaryData;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkDeviceFaultDebugInfoKHR::~safe_VkDeviceFaultDebugInfoKHR() { FreePnextChain(pNext); }
+
+void safe_VkDeviceFaultDebugInfoKHR::initialize(const VkDeviceFaultDebugInfoKHR* in_struct,
+                                                [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    vendorBinarySize = in_struct->vendorBinarySize;
+    pVendorBinaryData = in_struct->pVendorBinaryData;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkDeviceFaultDebugInfoKHR::initialize(const safe_VkDeviceFaultDebugInfoKHR* copy_src,
+                                                [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    vendorBinarySize = copy_src->vendorBinarySize;
+    pVendorBinaryData = copy_src->pVendorBinaryData;
     pNext = SafePnextCopy(copy_src->pNext);
 }
 

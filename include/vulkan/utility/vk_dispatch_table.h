@@ -532,6 +532,8 @@ typedef struct VkuDeviceDispatchTable_ {
     PFN_vkCmdBindDescriptorBufferEmbeddedSamplers2EXT CmdBindDescriptorBufferEmbeddedSamplers2EXT;
     PFN_vkCmdCopyMemoryIndirectKHR CmdCopyMemoryIndirectKHR;
     PFN_vkCmdCopyMemoryToImageIndirectKHR CmdCopyMemoryToImageIndirectKHR;
+    PFN_vkGetDeviceFaultReportsKHR GetDeviceFaultReportsKHR;
+    PFN_vkGetDeviceFaultDebugInfoKHR GetDeviceFaultDebugInfoKHR;
     PFN_vkCmdEndRendering2KHR CmdEndRendering2KHR;
     PFN_vkDebugMarkerSetObjectTagEXT DebugMarkerSetObjectTagEXT;
     PFN_vkDebugMarkerSetObjectNameEXT DebugMarkerSetObjectNameEXT;
@@ -1258,6 +1260,8 @@ static inline void vkuInitDeviceDispatchTable(VkDevice device, VkuDeviceDispatch
     table->CmdBindDescriptorBufferEmbeddedSamplers2EXT = (PFN_vkCmdBindDescriptorBufferEmbeddedSamplers2EXT)gdpa(device, "vkCmdBindDescriptorBufferEmbeddedSamplers2EXT");
     table->CmdCopyMemoryIndirectKHR = (PFN_vkCmdCopyMemoryIndirectKHR)gdpa(device, "vkCmdCopyMemoryIndirectKHR");
     table->CmdCopyMemoryToImageIndirectKHR = (PFN_vkCmdCopyMemoryToImageIndirectKHR)gdpa(device, "vkCmdCopyMemoryToImageIndirectKHR");
+    table->GetDeviceFaultReportsKHR = (PFN_vkGetDeviceFaultReportsKHR)gdpa(device, "vkGetDeviceFaultReportsKHR");
+    table->GetDeviceFaultDebugInfoKHR = (PFN_vkGetDeviceFaultDebugInfoKHR)gdpa(device, "vkGetDeviceFaultDebugInfoKHR");
     table->CmdEndRendering2KHR = (PFN_vkCmdEndRendering2KHR)gdpa(device, "vkCmdEndRendering2KHR");
     table->DebugMarkerSetObjectTagEXT = (PFN_vkDebugMarkerSetObjectTagEXT)gdpa(device, "vkDebugMarkerSetObjectTagEXT");
     table->DebugMarkerSetObjectNameEXT = (PFN_vkDebugMarkerSetObjectNameEXT)gdpa(device, "vkDebugMarkerSetObjectNameEXT");

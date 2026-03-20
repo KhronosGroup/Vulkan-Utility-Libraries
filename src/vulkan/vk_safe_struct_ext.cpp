@@ -10946,11 +10946,11 @@ safe_VkDeviceFaultInfoEXT::safe_VkDeviceFaultInfoEXT(const VkDeviceFaultInfoEXT*
     }
 
     if (in_struct->pAddressInfos) {
-        pAddressInfos = new VkDeviceFaultAddressInfoEXT(*in_struct->pAddressInfos);
+        pAddressInfos = new VkDeviceFaultAddressInfoKHR(*in_struct->pAddressInfos);
     }
 
     if (in_struct->pVendorInfos) {
-        pVendorInfos = new VkDeviceFaultVendorInfoEXT(*in_struct->pVendorInfos);
+        pVendorInfos = new VkDeviceFaultVendorInfoKHR(*in_struct->pVendorInfos);
     }
 }
 
@@ -10973,11 +10973,11 @@ safe_VkDeviceFaultInfoEXT::safe_VkDeviceFaultInfoEXT(const safe_VkDeviceFaultInf
     }
 
     if (copy_src.pAddressInfos) {
-        pAddressInfos = new VkDeviceFaultAddressInfoEXT(*copy_src.pAddressInfos);
+        pAddressInfos = new VkDeviceFaultAddressInfoKHR(*copy_src.pAddressInfos);
     }
 
     if (copy_src.pVendorInfos) {
-        pVendorInfos = new VkDeviceFaultVendorInfoEXT(*copy_src.pVendorInfos);
+        pVendorInfos = new VkDeviceFaultVendorInfoKHR(*copy_src.pVendorInfos);
     }
 }
 
@@ -10999,11 +10999,11 @@ safe_VkDeviceFaultInfoEXT& safe_VkDeviceFaultInfoEXT::operator=(const safe_VkDev
     }
 
     if (copy_src.pAddressInfos) {
-        pAddressInfos = new VkDeviceFaultAddressInfoEXT(*copy_src.pAddressInfos);
+        pAddressInfos = new VkDeviceFaultAddressInfoKHR(*copy_src.pAddressInfos);
     }
 
     if (copy_src.pVendorInfos) {
-        pVendorInfos = new VkDeviceFaultVendorInfoEXT(*copy_src.pVendorInfos);
+        pVendorInfos = new VkDeviceFaultVendorInfoKHR(*copy_src.pVendorInfos);
     }
 
     return *this;
@@ -11030,11 +11030,11 @@ void safe_VkDeviceFaultInfoEXT::initialize(const VkDeviceFaultInfoEXT* in_struct
     }
 
     if (in_struct->pAddressInfos) {
-        pAddressInfos = new VkDeviceFaultAddressInfoEXT(*in_struct->pAddressInfos);
+        pAddressInfos = new VkDeviceFaultAddressInfoKHR(*in_struct->pAddressInfos);
     }
 
     if (in_struct->pVendorInfos) {
-        pVendorInfos = new VkDeviceFaultVendorInfoEXT(*in_struct->pVendorInfos);
+        pVendorInfos = new VkDeviceFaultVendorInfoKHR(*in_struct->pVendorInfos);
     }
 }
 
@@ -11050,11 +11050,11 @@ void safe_VkDeviceFaultInfoEXT::initialize(const safe_VkDeviceFaultInfoEXT* copy
     }
 
     if (copy_src->pAddressInfos) {
-        pAddressInfos = new VkDeviceFaultAddressInfoEXT(*copy_src->pAddressInfos);
+        pAddressInfos = new VkDeviceFaultAddressInfoKHR(*copy_src->pAddressInfos);
     }
 
     if (copy_src->pVendorInfos) {
-        pVendorInfos = new VkDeviceFaultVendorInfoEXT(*copy_src->pVendorInfos);
+        pVendorInfos = new VkDeviceFaultVendorInfoKHR(*copy_src->pVendorInfos);
     }
 }
 
