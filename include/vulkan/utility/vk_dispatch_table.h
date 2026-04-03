@@ -166,6 +166,7 @@ typedef struct VkuInstanceDispatchTable_ {
     PFN_vkGetPhysicalDeviceCooperativeVectorPropertiesNV GetPhysicalDeviceCooperativeVectorPropertiesNV;
     PFN_vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM GetPhysicalDeviceQueueFamilyDataGraphPropertiesARM;
     PFN_vkGetPhysicalDeviceQueueFamilyDataGraphProcessingEnginePropertiesARM GetPhysicalDeviceQueueFamilyDataGraphProcessingEnginePropertiesARM;
+    PFN_vkGetPhysicalDeviceQueueFamilyDataGraphEngineOperationPropertiesARM GetPhysicalDeviceQueueFamilyDataGraphEngineOperationPropertiesARM;
 #ifdef VK_USE_PLATFORM_OHOS
     PFN_vkCreateSurfaceOHOS CreateSurfaceOHOS;
 #endif  // VK_USE_PLATFORM_OHOS
@@ -689,6 +690,7 @@ typedef struct VkuDeviceDispatchTable_ {
     PFN_vkDestroyPrivateDataSlotEXT DestroyPrivateDataSlotEXT;
     PFN_vkSetPrivateDataEXT SetPrivateDataEXT;
     PFN_vkGetPrivateDataEXT GetPrivateDataEXT;
+    PFN_vkQueueSetPerfHintQCOM QueueSetPerfHintQCOM;
 #ifdef VK_ENABLE_BETA_EXTENSIONS
     PFN_vkCreateCudaModuleNV CreateCudaModuleNV;
     PFN_vkGetCudaModuleCacheNV GetCudaModuleCacheNV;
@@ -758,6 +760,7 @@ typedef struct VkuDeviceDispatchTable_ {
     PFN_vkCmdDrawClusterHUAWEI CmdDrawClusterHUAWEI;
     PFN_vkCmdDrawClusterIndirectHUAWEI CmdDrawClusterIndirectHUAWEI;
     PFN_vkSetDeviceMemoryPriorityEXT SetDeviceMemoryPriorityEXT;
+    PFN_vkCmdSetDispatchParametersARM CmdSetDispatchParametersARM;
     PFN_vkGetDescriptorSetLayoutHostMappingInfoVALVE GetDescriptorSetLayoutHostMappingInfoVALVE;
     PFN_vkGetDescriptorSetHostMappingVALVE GetDescriptorSetHostMappingVALVE;
     PFN_vkCmdCopyMemoryIndirectNV CmdCopyMemoryIndirectNV;
@@ -878,6 +881,7 @@ typedef struct VkuDeviceDispatchTable_ {
     PFN_vkCmdEndRendering2EXT CmdEndRendering2EXT;
     PFN_vkCmdBeginCustomResolveEXT CmdBeginCustomResolveEXT;
     PFN_vkCmdSetComputeOccupancyPriorityNV CmdSetComputeOccupancyPriorityNV;
+    PFN_vkCmdSetPrimitiveRestartIndexEXT CmdSetPrimitiveRestartIndexEXT;
     PFN_vkCreateAccelerationStructureKHR CreateAccelerationStructureKHR;
     PFN_vkDestroyAccelerationStructureKHR DestroyAccelerationStructureKHR;
     PFN_vkCmdBuildAccelerationStructuresKHR CmdBuildAccelerationStructuresKHR;
@@ -1417,6 +1421,7 @@ static inline void vkuInitDeviceDispatchTable(VkDevice device, VkuDeviceDispatch
     table->DestroyPrivateDataSlotEXT = (PFN_vkDestroyPrivateDataSlotEXT)gdpa(device, "vkDestroyPrivateDataSlotEXT");
     table->SetPrivateDataEXT = (PFN_vkSetPrivateDataEXT)gdpa(device, "vkSetPrivateDataEXT");
     table->GetPrivateDataEXT = (PFN_vkGetPrivateDataEXT)gdpa(device, "vkGetPrivateDataEXT");
+    table->QueueSetPerfHintQCOM = (PFN_vkQueueSetPerfHintQCOM)gdpa(device, "vkQueueSetPerfHintQCOM");
 #ifdef VK_ENABLE_BETA_EXTENSIONS
     table->CreateCudaModuleNV = (PFN_vkCreateCudaModuleNV)gdpa(device, "vkCreateCudaModuleNV");
     table->GetCudaModuleCacheNV = (PFN_vkGetCudaModuleCacheNV)gdpa(device, "vkGetCudaModuleCacheNV");
@@ -1486,6 +1491,7 @@ static inline void vkuInitDeviceDispatchTable(VkDevice device, VkuDeviceDispatch
     table->CmdDrawClusterHUAWEI = (PFN_vkCmdDrawClusterHUAWEI)gdpa(device, "vkCmdDrawClusterHUAWEI");
     table->CmdDrawClusterIndirectHUAWEI = (PFN_vkCmdDrawClusterIndirectHUAWEI)gdpa(device, "vkCmdDrawClusterIndirectHUAWEI");
     table->SetDeviceMemoryPriorityEXT = (PFN_vkSetDeviceMemoryPriorityEXT)gdpa(device, "vkSetDeviceMemoryPriorityEXT");
+    table->CmdSetDispatchParametersARM = (PFN_vkCmdSetDispatchParametersARM)gdpa(device, "vkCmdSetDispatchParametersARM");
     table->GetDescriptorSetLayoutHostMappingInfoVALVE = (PFN_vkGetDescriptorSetLayoutHostMappingInfoVALVE)gdpa(device, "vkGetDescriptorSetLayoutHostMappingInfoVALVE");
     table->GetDescriptorSetHostMappingVALVE = (PFN_vkGetDescriptorSetHostMappingVALVE)gdpa(device, "vkGetDescriptorSetHostMappingVALVE");
     table->CmdCopyMemoryIndirectNV = (PFN_vkCmdCopyMemoryIndirectNV)gdpa(device, "vkCmdCopyMemoryIndirectNV");
@@ -1606,6 +1612,7 @@ static inline void vkuInitDeviceDispatchTable(VkDevice device, VkuDeviceDispatch
     table->CmdEndRendering2EXT = (PFN_vkCmdEndRendering2EXT)gdpa(device, "vkCmdEndRendering2EXT");
     table->CmdBeginCustomResolveEXT = (PFN_vkCmdBeginCustomResolveEXT)gdpa(device, "vkCmdBeginCustomResolveEXT");
     table->CmdSetComputeOccupancyPriorityNV = (PFN_vkCmdSetComputeOccupancyPriorityNV)gdpa(device, "vkCmdSetComputeOccupancyPriorityNV");
+    table->CmdSetPrimitiveRestartIndexEXT = (PFN_vkCmdSetPrimitiveRestartIndexEXT)gdpa(device, "vkCmdSetPrimitiveRestartIndexEXT");
     table->CreateAccelerationStructureKHR = (PFN_vkCreateAccelerationStructureKHR)gdpa(device, "vkCreateAccelerationStructureKHR");
     table->DestroyAccelerationStructureKHR = (PFN_vkDestroyAccelerationStructureKHR)gdpa(device, "vkDestroyAccelerationStructureKHR");
     table->CmdBuildAccelerationStructuresKHR = (PFN_vkCmdBuildAccelerationStructuresKHR)gdpa(device, "vkCmdBuildAccelerationStructuresKHR");
@@ -1778,6 +1785,7 @@ static inline void vkuInitInstanceDispatchTable(VkInstance instance, VkuInstance
     table->GetPhysicalDeviceCooperativeVectorPropertiesNV = (PFN_vkGetPhysicalDeviceCooperativeVectorPropertiesNV)gipa(instance, "vkGetPhysicalDeviceCooperativeVectorPropertiesNV");
     table->GetPhysicalDeviceQueueFamilyDataGraphPropertiesARM = (PFN_vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM)gipa(instance, "vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM");
     table->GetPhysicalDeviceQueueFamilyDataGraphProcessingEnginePropertiesARM = (PFN_vkGetPhysicalDeviceQueueFamilyDataGraphProcessingEnginePropertiesARM)gipa(instance, "vkGetPhysicalDeviceQueueFamilyDataGraphProcessingEnginePropertiesARM");
+    table->GetPhysicalDeviceQueueFamilyDataGraphEngineOperationPropertiesARM = (PFN_vkGetPhysicalDeviceQueueFamilyDataGraphEngineOperationPropertiesARM)gipa(instance, "vkGetPhysicalDeviceQueueFamilyDataGraphEngineOperationPropertiesARM");
 #ifdef VK_USE_PLATFORM_OHOS
     table->CreateSurfaceOHOS = (PFN_vkCreateSurfaceOHOS)gipa(instance, "vkCreateSurfaceOHOS");
 #endif  // VK_USE_PLATFORM_OHOS
