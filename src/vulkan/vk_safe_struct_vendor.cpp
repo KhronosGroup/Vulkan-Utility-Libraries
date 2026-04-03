@@ -8196,6 +8196,150 @@ void safe_VkDeviceDiagnosticsConfigCreateInfoNV::initialize(const safe_VkDeviceD
     flags = copy_src->flags;
     pNext = SafePnextCopy(copy_src->pNext);
 }
+
+safe_VkPerfHintInfoQCOM::safe_VkPerfHintInfoQCOM(const VkPerfHintInfoQCOM* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
+                                                 bool copy_pnext)
+    : sType(in_struct->sType), type(in_struct->type), scale(in_struct->scale) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPerfHintInfoQCOM::safe_VkPerfHintInfoQCOM()
+    : sType(VK_STRUCTURE_TYPE_PERF_HINT_INFO_QCOM), pNext(nullptr), type(), scale() {}
+
+safe_VkPerfHintInfoQCOM::safe_VkPerfHintInfoQCOM(const safe_VkPerfHintInfoQCOM& copy_src) {
+    sType = copy_src.sType;
+    type = copy_src.type;
+    scale = copy_src.scale;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPerfHintInfoQCOM& safe_VkPerfHintInfoQCOM::operator=(const safe_VkPerfHintInfoQCOM& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    type = copy_src.type;
+    scale = copy_src.scale;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPerfHintInfoQCOM::~safe_VkPerfHintInfoQCOM() { FreePnextChain(pNext); }
+
+void safe_VkPerfHintInfoQCOM::initialize(const VkPerfHintInfoQCOM* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    type = in_struct->type;
+    scale = in_struct->scale;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPerfHintInfoQCOM::initialize(const safe_VkPerfHintInfoQCOM* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    type = copy_src->type;
+    scale = copy_src->scale;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkPhysicalDeviceQueuePerfHintFeaturesQCOM::safe_VkPhysicalDeviceQueuePerfHintFeaturesQCOM(
+    const VkPhysicalDeviceQueuePerfHintFeaturesQCOM* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), queuePerfHint(in_struct->queuePerfHint) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceQueuePerfHintFeaturesQCOM::safe_VkPhysicalDeviceQueuePerfHintFeaturesQCOM()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_QUEUE_PERF_HINT_FEATURES_QCOM), pNext(nullptr), queuePerfHint() {}
+
+safe_VkPhysicalDeviceQueuePerfHintFeaturesQCOM::safe_VkPhysicalDeviceQueuePerfHintFeaturesQCOM(
+    const safe_VkPhysicalDeviceQueuePerfHintFeaturesQCOM& copy_src) {
+    sType = copy_src.sType;
+    queuePerfHint = copy_src.queuePerfHint;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceQueuePerfHintFeaturesQCOM& safe_VkPhysicalDeviceQueuePerfHintFeaturesQCOM::operator=(
+    const safe_VkPhysicalDeviceQueuePerfHintFeaturesQCOM& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    queuePerfHint = copy_src.queuePerfHint;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceQueuePerfHintFeaturesQCOM::~safe_VkPhysicalDeviceQueuePerfHintFeaturesQCOM() { FreePnextChain(pNext); }
+
+void safe_VkPhysicalDeviceQueuePerfHintFeaturesQCOM::initialize(const VkPhysicalDeviceQueuePerfHintFeaturesQCOM* in_struct,
+                                                                [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    queuePerfHint = in_struct->queuePerfHint;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceQueuePerfHintFeaturesQCOM::initialize(const safe_VkPhysicalDeviceQueuePerfHintFeaturesQCOM* copy_src,
+                                                                [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    queuePerfHint = copy_src->queuePerfHint;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkPhysicalDeviceQueuePerfHintPropertiesQCOM::safe_VkPhysicalDeviceQueuePerfHintPropertiesQCOM(
+    const VkPhysicalDeviceQueuePerfHintPropertiesQCOM* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), supportedQueues(in_struct->supportedQueues) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceQueuePerfHintPropertiesQCOM::safe_VkPhysicalDeviceQueuePerfHintPropertiesQCOM()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_QUEUE_PERF_HINT_PROPERTIES_QCOM), pNext(nullptr), supportedQueues() {}
+
+safe_VkPhysicalDeviceQueuePerfHintPropertiesQCOM::safe_VkPhysicalDeviceQueuePerfHintPropertiesQCOM(
+    const safe_VkPhysicalDeviceQueuePerfHintPropertiesQCOM& copy_src) {
+    sType = copy_src.sType;
+    supportedQueues = copy_src.supportedQueues;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceQueuePerfHintPropertiesQCOM& safe_VkPhysicalDeviceQueuePerfHintPropertiesQCOM::operator=(
+    const safe_VkPhysicalDeviceQueuePerfHintPropertiesQCOM& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    supportedQueues = copy_src.supportedQueues;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceQueuePerfHintPropertiesQCOM::~safe_VkPhysicalDeviceQueuePerfHintPropertiesQCOM() { FreePnextChain(pNext); }
+
+void safe_VkPhysicalDeviceQueuePerfHintPropertiesQCOM::initialize(const VkPhysicalDeviceQueuePerfHintPropertiesQCOM* in_struct,
+                                                                  [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    supportedQueues = in_struct->supportedQueues;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceQueuePerfHintPropertiesQCOM::initialize(const safe_VkPhysicalDeviceQueuePerfHintPropertiesQCOM* copy_src,
+                                                                  [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    supportedQueues = copy_src->supportedQueues;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
 #ifdef VK_ENABLE_BETA_EXTENSIONS
 
 safe_VkCudaModuleCreateInfoNV::safe_VkCudaModuleCreateInfoNV(const VkCudaModuleCreateInfoNV* in_struct,
@@ -11539,6 +11683,140 @@ void safe_VkPhysicalDeviceSchedulingControlsPropertiesARM::initialize(
     pNext = SafePnextCopy(copy_src->pNext);
 }
 
+safe_VkDispatchParametersARM::safe_VkDispatchParametersARM(const VkDispatchParametersARM* in_struct,
+                                                           [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType),
+      workGroupBatchSize(in_struct->workGroupBatchSize),
+      maxQueuedWorkGroupBatches(in_struct->maxQueuedWorkGroupBatches),
+      maxWarpsPerShaderCore(in_struct->maxWarpsPerShaderCore) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkDispatchParametersARM::safe_VkDispatchParametersARM()
+    : sType(VK_STRUCTURE_TYPE_DISPATCH_PARAMETERS_ARM),
+      pNext(nullptr),
+      workGroupBatchSize(),
+      maxQueuedWorkGroupBatches(),
+      maxWarpsPerShaderCore() {}
+
+safe_VkDispatchParametersARM::safe_VkDispatchParametersARM(const safe_VkDispatchParametersARM& copy_src) {
+    sType = copy_src.sType;
+    workGroupBatchSize = copy_src.workGroupBatchSize;
+    maxQueuedWorkGroupBatches = copy_src.maxQueuedWorkGroupBatches;
+    maxWarpsPerShaderCore = copy_src.maxWarpsPerShaderCore;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkDispatchParametersARM& safe_VkDispatchParametersARM::operator=(const safe_VkDispatchParametersARM& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    workGroupBatchSize = copy_src.workGroupBatchSize;
+    maxQueuedWorkGroupBatches = copy_src.maxQueuedWorkGroupBatches;
+    maxWarpsPerShaderCore = copy_src.maxWarpsPerShaderCore;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkDispatchParametersARM::~safe_VkDispatchParametersARM() { FreePnextChain(pNext); }
+
+void safe_VkDispatchParametersARM::initialize(const VkDispatchParametersARM* in_struct,
+                                              [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    workGroupBatchSize = in_struct->workGroupBatchSize;
+    maxQueuedWorkGroupBatches = in_struct->maxQueuedWorkGroupBatches;
+    maxWarpsPerShaderCore = in_struct->maxWarpsPerShaderCore;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkDispatchParametersARM::initialize(const safe_VkDispatchParametersARM* copy_src,
+                                              [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    workGroupBatchSize = copy_src->workGroupBatchSize;
+    maxQueuedWorkGroupBatches = copy_src->maxQueuedWorkGroupBatches;
+    maxWarpsPerShaderCore = copy_src->maxWarpsPerShaderCore;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkPhysicalDeviceSchedulingControlsDispatchParametersPropertiesARM::
+    safe_VkPhysicalDeviceSchedulingControlsDispatchParametersPropertiesARM(
+        const VkPhysicalDeviceSchedulingControlsDispatchParametersPropertiesARM* in_struct,
+        [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType),
+      schedulingControlsMaxWarpsCount(in_struct->schedulingControlsMaxWarpsCount),
+      schedulingControlsMaxQueuedBatchesCount(in_struct->schedulingControlsMaxQueuedBatchesCount),
+      schedulingControlsMaxWorkGroupBatchSize(in_struct->schedulingControlsMaxWorkGroupBatchSize) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceSchedulingControlsDispatchParametersPropertiesARM::
+    safe_VkPhysicalDeviceSchedulingControlsDispatchParametersPropertiesARM()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_DISPATCH_PARAMETERS_PROPERTIES_ARM),
+      pNext(nullptr),
+      schedulingControlsMaxWarpsCount(),
+      schedulingControlsMaxQueuedBatchesCount(),
+      schedulingControlsMaxWorkGroupBatchSize() {}
+
+safe_VkPhysicalDeviceSchedulingControlsDispatchParametersPropertiesARM::
+    safe_VkPhysicalDeviceSchedulingControlsDispatchParametersPropertiesARM(
+        const safe_VkPhysicalDeviceSchedulingControlsDispatchParametersPropertiesARM& copy_src) {
+    sType = copy_src.sType;
+    schedulingControlsMaxWarpsCount = copy_src.schedulingControlsMaxWarpsCount;
+    schedulingControlsMaxQueuedBatchesCount = copy_src.schedulingControlsMaxQueuedBatchesCount;
+    schedulingControlsMaxWorkGroupBatchSize = copy_src.schedulingControlsMaxWorkGroupBatchSize;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceSchedulingControlsDispatchParametersPropertiesARM&
+safe_VkPhysicalDeviceSchedulingControlsDispatchParametersPropertiesARM::operator=(
+    const safe_VkPhysicalDeviceSchedulingControlsDispatchParametersPropertiesARM& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    schedulingControlsMaxWarpsCount = copy_src.schedulingControlsMaxWarpsCount;
+    schedulingControlsMaxQueuedBatchesCount = copy_src.schedulingControlsMaxQueuedBatchesCount;
+    schedulingControlsMaxWorkGroupBatchSize = copy_src.schedulingControlsMaxWorkGroupBatchSize;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceSchedulingControlsDispatchParametersPropertiesARM::
+    ~safe_VkPhysicalDeviceSchedulingControlsDispatchParametersPropertiesARM() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkPhysicalDeviceSchedulingControlsDispatchParametersPropertiesARM::initialize(
+    const VkPhysicalDeviceSchedulingControlsDispatchParametersPropertiesARM* in_struct,
+    [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    schedulingControlsMaxWarpsCount = in_struct->schedulingControlsMaxWarpsCount;
+    schedulingControlsMaxQueuedBatchesCount = in_struct->schedulingControlsMaxQueuedBatchesCount;
+    schedulingControlsMaxWorkGroupBatchSize = in_struct->schedulingControlsMaxWorkGroupBatchSize;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceSchedulingControlsDispatchParametersPropertiesARM::initialize(
+    const safe_VkPhysicalDeviceSchedulingControlsDispatchParametersPropertiesARM* copy_src,
+    [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    schedulingControlsMaxWarpsCount = copy_src->schedulingControlsMaxWarpsCount;
+    schedulingControlsMaxQueuedBatchesCount = copy_src->schedulingControlsMaxQueuedBatchesCount;
+    schedulingControlsMaxWorkGroupBatchSize = copy_src->schedulingControlsMaxWorkGroupBatchSize;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
 safe_VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE::safe_VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE(
     const VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
     bool copy_pnext)
@@ -13983,8 +14261,12 @@ safe_VkTensorDependencyInfoARM::safe_VkTensorDependencyInfoARM(const VkTensorDep
     if (copy_pnext) {
         pNext = SafePnextCopy(in_struct->pNext, copy_state);
     }
-    if (in_struct->pTensorMemoryBarriers)
-        pTensorMemoryBarriers = new safe_VkTensorMemoryBarrierARM(in_struct->pTensorMemoryBarriers);
+    if (tensorMemoryBarrierCount && in_struct->pTensorMemoryBarriers) {
+        pTensorMemoryBarriers = new safe_VkTensorMemoryBarrierARM[tensorMemoryBarrierCount];
+        for (uint32_t i = 0; i < tensorMemoryBarrierCount; ++i) {
+            pTensorMemoryBarriers[i].initialize(&in_struct->pTensorMemoryBarriers[i]);
+        }
+    }
 }
 
 safe_VkTensorDependencyInfoARM::safe_VkTensorDependencyInfoARM()
@@ -13998,39 +14280,53 @@ safe_VkTensorDependencyInfoARM::safe_VkTensorDependencyInfoARM(const safe_VkTens
     tensorMemoryBarrierCount = copy_src.tensorMemoryBarrierCount;
     pTensorMemoryBarriers = nullptr;
     pNext = SafePnextCopy(copy_src.pNext);
-    if (copy_src.pTensorMemoryBarriers) pTensorMemoryBarriers = new safe_VkTensorMemoryBarrierARM(*copy_src.pTensorMemoryBarriers);
+    if (tensorMemoryBarrierCount && copy_src.pTensorMemoryBarriers) {
+        pTensorMemoryBarriers = new safe_VkTensorMemoryBarrierARM[tensorMemoryBarrierCount];
+        for (uint32_t i = 0; i < tensorMemoryBarrierCount; ++i) {
+            pTensorMemoryBarriers[i].initialize(&copy_src.pTensorMemoryBarriers[i]);
+        }
+    }
 }
 
 safe_VkTensorDependencyInfoARM& safe_VkTensorDependencyInfoARM::operator=(const safe_VkTensorDependencyInfoARM& copy_src) {
     if (&copy_src == this) return *this;
 
-    if (pTensorMemoryBarriers) delete pTensorMemoryBarriers;
+    if (pTensorMemoryBarriers) delete[] pTensorMemoryBarriers;
     FreePnextChain(pNext);
 
     sType = copy_src.sType;
     tensorMemoryBarrierCount = copy_src.tensorMemoryBarrierCount;
     pTensorMemoryBarriers = nullptr;
     pNext = SafePnextCopy(copy_src.pNext);
-    if (copy_src.pTensorMemoryBarriers) pTensorMemoryBarriers = new safe_VkTensorMemoryBarrierARM(*copy_src.pTensorMemoryBarriers);
+    if (tensorMemoryBarrierCount && copy_src.pTensorMemoryBarriers) {
+        pTensorMemoryBarriers = new safe_VkTensorMemoryBarrierARM[tensorMemoryBarrierCount];
+        for (uint32_t i = 0; i < tensorMemoryBarrierCount; ++i) {
+            pTensorMemoryBarriers[i].initialize(&copy_src.pTensorMemoryBarriers[i]);
+        }
+    }
 
     return *this;
 }
 
 safe_VkTensorDependencyInfoARM::~safe_VkTensorDependencyInfoARM() {
-    if (pTensorMemoryBarriers) delete pTensorMemoryBarriers;
+    if (pTensorMemoryBarriers) delete[] pTensorMemoryBarriers;
     FreePnextChain(pNext);
 }
 
 void safe_VkTensorDependencyInfoARM::initialize(const VkTensorDependencyInfoARM* in_struct,
                                                 [[maybe_unused]] PNextCopyState* copy_state) {
-    if (pTensorMemoryBarriers) delete pTensorMemoryBarriers;
+    if (pTensorMemoryBarriers) delete[] pTensorMemoryBarriers;
     FreePnextChain(pNext);
     sType = in_struct->sType;
     tensorMemoryBarrierCount = in_struct->tensorMemoryBarrierCount;
     pTensorMemoryBarriers = nullptr;
     pNext = SafePnextCopy(in_struct->pNext, copy_state);
-    if (in_struct->pTensorMemoryBarriers)
-        pTensorMemoryBarriers = new safe_VkTensorMemoryBarrierARM(in_struct->pTensorMemoryBarriers);
+    if (tensorMemoryBarrierCount && in_struct->pTensorMemoryBarriers) {
+        pTensorMemoryBarriers = new safe_VkTensorMemoryBarrierARM[tensorMemoryBarrierCount];
+        for (uint32_t i = 0; i < tensorMemoryBarrierCount; ++i) {
+            pTensorMemoryBarriers[i].initialize(&in_struct->pTensorMemoryBarriers[i]);
+        }
+    }
 }
 
 void safe_VkTensorDependencyInfoARM::initialize(const safe_VkTensorDependencyInfoARM* copy_src,
@@ -14039,8 +14335,12 @@ void safe_VkTensorDependencyInfoARM::initialize(const safe_VkTensorDependencyInf
     tensorMemoryBarrierCount = copy_src->tensorMemoryBarrierCount;
     pTensorMemoryBarriers = nullptr;
     pNext = SafePnextCopy(copy_src->pNext);
-    if (copy_src->pTensorMemoryBarriers)
-        pTensorMemoryBarriers = new safe_VkTensorMemoryBarrierARM(*copy_src->pTensorMemoryBarriers);
+    if (tensorMemoryBarrierCount && copy_src->pTensorMemoryBarriers) {
+        pTensorMemoryBarriers = new safe_VkTensorMemoryBarrierARM[tensorMemoryBarrierCount];
+        for (uint32_t i = 0; i < tensorMemoryBarrierCount; ++i) {
+            pTensorMemoryBarriers[i].initialize(&copy_src->pTensorMemoryBarriers[i]);
+        }
+    }
 }
 
 safe_VkPhysicalDeviceTensorFeaturesARM::safe_VkPhysicalDeviceTensorFeaturesARM(const VkPhysicalDeviceTensorFeaturesARM* in_struct,
@@ -18879,6 +19179,140 @@ void safe_VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM::initia
     zeroCount = copy_src->zeroCount;
     groupSize = copy_src->groupSize;
     pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkQueueFamilyDataGraphTOSAPropertiesARM::safe_VkQueueFamilyDataGraphTOSAPropertiesARM(
+    const VkQueueFamilyDataGraphTOSAPropertiesARM* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType),
+      profileCount(in_struct->profileCount),
+      pProfiles(nullptr),
+      extensionCount(in_struct->extensionCount),
+      pExtensions(nullptr),
+      level(in_struct->level) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+    if (in_struct->pProfiles) {
+        pProfiles = new VkDataGraphTOSANameQualityARM[in_struct->profileCount];
+        memcpy((void*)pProfiles, (void*)in_struct->pProfiles, sizeof(VkDataGraphTOSANameQualityARM) * in_struct->profileCount);
+    }
+
+    if (in_struct->pExtensions) {
+        pExtensions = new VkDataGraphTOSANameQualityARM[in_struct->extensionCount];
+        memcpy((void*)pExtensions, (void*)in_struct->pExtensions,
+               sizeof(VkDataGraphTOSANameQualityARM) * in_struct->extensionCount);
+    }
+}
+
+safe_VkQueueFamilyDataGraphTOSAPropertiesARM::safe_VkQueueFamilyDataGraphTOSAPropertiesARM()
+    : sType(VK_STRUCTURE_TYPE_QUEUE_FAMILY_DATA_GRAPH_TOSA_PROPERTIES_ARM),
+      pNext(nullptr),
+      profileCount(),
+      pProfiles(nullptr),
+      extensionCount(),
+      pExtensions(nullptr),
+      level() {}
+
+safe_VkQueueFamilyDataGraphTOSAPropertiesARM::safe_VkQueueFamilyDataGraphTOSAPropertiesARM(
+    const safe_VkQueueFamilyDataGraphTOSAPropertiesARM& copy_src) {
+    sType = copy_src.sType;
+    profileCount = copy_src.profileCount;
+    pProfiles = nullptr;
+    extensionCount = copy_src.extensionCount;
+    pExtensions = nullptr;
+    level = copy_src.level;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    if (copy_src.pProfiles) {
+        pProfiles = new VkDataGraphTOSANameQualityARM[copy_src.profileCount];
+        memcpy((void*)pProfiles, (void*)copy_src.pProfiles, sizeof(VkDataGraphTOSANameQualityARM) * copy_src.profileCount);
+    }
+
+    if (copy_src.pExtensions) {
+        pExtensions = new VkDataGraphTOSANameQualityARM[copy_src.extensionCount];
+        memcpy((void*)pExtensions, (void*)copy_src.pExtensions, sizeof(VkDataGraphTOSANameQualityARM) * copy_src.extensionCount);
+    }
+}
+
+safe_VkQueueFamilyDataGraphTOSAPropertiesARM& safe_VkQueueFamilyDataGraphTOSAPropertiesARM::operator=(
+    const safe_VkQueueFamilyDataGraphTOSAPropertiesARM& copy_src) {
+    if (&copy_src == this) return *this;
+
+    if (pProfiles) delete[] pProfiles;
+    if (pExtensions) delete[] pExtensions;
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    profileCount = copy_src.profileCount;
+    pProfiles = nullptr;
+    extensionCount = copy_src.extensionCount;
+    pExtensions = nullptr;
+    level = copy_src.level;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    if (copy_src.pProfiles) {
+        pProfiles = new VkDataGraphTOSANameQualityARM[copy_src.profileCount];
+        memcpy((void*)pProfiles, (void*)copy_src.pProfiles, sizeof(VkDataGraphTOSANameQualityARM) * copy_src.profileCount);
+    }
+
+    if (copy_src.pExtensions) {
+        pExtensions = new VkDataGraphTOSANameQualityARM[copy_src.extensionCount];
+        memcpy((void*)pExtensions, (void*)copy_src.pExtensions, sizeof(VkDataGraphTOSANameQualityARM) * copy_src.extensionCount);
+    }
+
+    return *this;
+}
+
+safe_VkQueueFamilyDataGraphTOSAPropertiesARM::~safe_VkQueueFamilyDataGraphTOSAPropertiesARM() {
+    if (pProfiles) delete[] pProfiles;
+    if (pExtensions) delete[] pExtensions;
+    FreePnextChain(pNext);
+}
+
+void safe_VkQueueFamilyDataGraphTOSAPropertiesARM::initialize(const VkQueueFamilyDataGraphTOSAPropertiesARM* in_struct,
+                                                              [[maybe_unused]] PNextCopyState* copy_state) {
+    if (pProfiles) delete[] pProfiles;
+    if (pExtensions) delete[] pExtensions;
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    profileCount = in_struct->profileCount;
+    pProfiles = nullptr;
+    extensionCount = in_struct->extensionCount;
+    pExtensions = nullptr;
+    level = in_struct->level;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+
+    if (in_struct->pProfiles) {
+        pProfiles = new VkDataGraphTOSANameQualityARM[in_struct->profileCount];
+        memcpy((void*)pProfiles, (void*)in_struct->pProfiles, sizeof(VkDataGraphTOSANameQualityARM) * in_struct->profileCount);
+    }
+
+    if (in_struct->pExtensions) {
+        pExtensions = new VkDataGraphTOSANameQualityARM[in_struct->extensionCount];
+        memcpy((void*)pExtensions, (void*)in_struct->pExtensions,
+               sizeof(VkDataGraphTOSANameQualityARM) * in_struct->extensionCount);
+    }
+}
+
+void safe_VkQueueFamilyDataGraphTOSAPropertiesARM::initialize(const safe_VkQueueFamilyDataGraphTOSAPropertiesARM* copy_src,
+                                                              [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    profileCount = copy_src->profileCount;
+    pProfiles = nullptr;
+    extensionCount = copy_src->extensionCount;
+    pExtensions = nullptr;
+    level = copy_src->level;
+    pNext = SafePnextCopy(copy_src->pNext);
+
+    if (copy_src->pProfiles) {
+        pProfiles = new VkDataGraphTOSANameQualityARM[copy_src->profileCount];
+        memcpy((void*)pProfiles, (void*)copy_src->pProfiles, sizeof(VkDataGraphTOSANameQualityARM) * copy_src->profileCount);
+    }
+
+    if (copy_src->pExtensions) {
+        pExtensions = new VkDataGraphTOSANameQualityARM[copy_src->extensionCount];
+        memcpy((void*)pExtensions, (void*)copy_src->pExtensions, sizeof(VkDataGraphTOSANameQualityARM) * copy_src->extensionCount);
+    }
 }
 
 safe_VkPhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM::safe_VkPhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM(

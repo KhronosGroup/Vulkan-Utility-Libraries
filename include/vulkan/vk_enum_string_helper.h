@@ -1452,6 +1452,12 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DIAGNOSTICS_CONFIG_FEATURES_NV";
         case VK_STRUCTURE_TYPE_DEVICE_DIAGNOSTICS_CONFIG_CREATE_INFO_NV:
             return "VK_STRUCTURE_TYPE_DEVICE_DIAGNOSTICS_CONFIG_CREATE_INFO_NV";
+        case VK_STRUCTURE_TYPE_PERF_HINT_INFO_QCOM:
+            return "VK_STRUCTURE_TYPE_PERF_HINT_INFO_QCOM";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_QUEUE_PERF_HINT_FEATURES_QCOM:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_QUEUE_PERF_HINT_FEATURES_QCOM";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_QUEUE_PERF_HINT_PROPERTIES_QCOM:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_QUEUE_PERF_HINT_PROPERTIES_QCOM";
 #ifdef VK_ENABLE_BETA_EXTENSIONS
         case VK_STRUCTURE_TYPE_CUDA_MODULE_CREATE_INFO_NV:
             return "VK_STRUCTURE_TYPE_CUDA_MODULE_CREATE_INFO_NV";
@@ -1778,6 +1784,10 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_FEATURES_ARM";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_PROPERTIES_ARM:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_PROPERTIES_ARM";
+        case VK_STRUCTURE_TYPE_DISPATCH_PARAMETERS_ARM:
+            return "VK_STRUCTURE_TYPE_DISPATCH_PARAMETERS_ARM";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_DISPATCH_PARAMETERS_PROPERTIES_ARM:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_DISPATCH_PARAMETERS_PROPERTIES_ARM";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_SLICED_VIEW_OF_3D_FEATURES_EXT:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_SLICED_VIEW_OF_3D_FEATURES_EXT";
         case VK_STRUCTURE_TYPE_IMAGE_VIEW_SLICED_CREATE_INFO_EXT:
@@ -2120,6 +2130,8 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_QUEUE_FAMILY_DATA_GRAPH_PROCESSING_ENGINE_INFO_ARM";
         case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_CONSTANT_TENSOR_SEMI_STRUCTURED_SPARSITY_INFO_ARM:
             return "VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_CONSTANT_TENSOR_SEMI_STRUCTURED_SPARSITY_INFO_ARM";
+        case VK_STRUCTURE_TYPE_QUEUE_FAMILY_DATA_GRAPH_TOSA_PROPERTIES_ARM:
+            return "VK_STRUCTURE_TYPE_QUEUE_FAMILY_DATA_GRAPH_TOSA_PROPERTIES_ARM";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PER_VIEW_RENDER_AREAS_FEATURES_QCOM:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PER_VIEW_RENDER_AREAS_FEATURES_QCOM";
         case VK_STRUCTURE_TYPE_MULTIVIEW_PER_VIEW_RENDER_AREAS_RENDER_PASS_BEGIN_INFO_QCOM:
@@ -2520,6 +2532,8 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_UBM_SURFACE_CREATE_INFO_SEC";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_MIXED_FLOAT_DOT_PRODUCT_FEATURES_VALVE:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_MIXED_FLOAT_DOT_PRODUCT_FEATURES_VALVE";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRIMITIVE_RESTART_INDEX_FEATURES_EXT:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRIMITIVE_RESTART_INDEX_FEATURES_EXT";
         default:
             return "Unhandled VkStructureType";
     }
@@ -5252,6 +5266,20 @@ static inline const char* string_VkDeviceMemoryReportEventTypeEXT(VkDeviceMemory
             return "Unhandled VkDeviceMemoryReportEventTypeEXT";
     }
 }
+static inline const char* string_VkPerfHintTypeQCOM(VkPerfHintTypeQCOM input_value) {
+    switch (input_value) {
+        case VK_PERF_HINT_TYPE_DEFAULT_QCOM:
+            return "VK_PERF_HINT_TYPE_DEFAULT_QCOM";
+        case VK_PERF_HINT_TYPE_FREQUENCY_MIN_QCOM:
+            return "VK_PERF_HINT_TYPE_FREQUENCY_MIN_QCOM";
+        case VK_PERF_HINT_TYPE_FREQUENCY_MAX_QCOM:
+            return "VK_PERF_HINT_TYPE_FREQUENCY_MAX_QCOM";
+        case VK_PERF_HINT_TYPE_FREQUENCY_SCALED_QCOM:
+            return "VK_PERF_HINT_TYPE_FREQUENCY_SCALED_QCOM";
+        default:
+            return "Unhandled VkPerfHintTypeQCOM";
+    }
+}
 static inline const char* string_VkFragmentShadingRateTypeNV(VkFragmentShadingRateTypeNV input_value) {
     switch (input_value) {
         case VK_FRAGMENT_SHADING_RATE_TYPE_FRAGMENT_SIZE_NV:
@@ -5708,6 +5736,16 @@ static inline const char* string_VkPhysicalDeviceDataGraphOperationTypeARM(VkPhy
             return "VK_PHYSICAL_DEVICE_DATA_GRAPH_OPERATION_TYPE_BUILTIN_MODEL_QCOM";
         default:
             return "Unhandled VkPhysicalDeviceDataGraphOperationTypeARM";
+    }
+}
+static inline const char* string_VkDataGraphTOSALevelARM(VkDataGraphTOSALevelARM input_value) {
+    switch (input_value) {
+        case VK_DATA_GRAPH_TOSA_LEVEL_NONE_ARM:
+            return "VK_DATA_GRAPH_TOSA_LEVEL_NONE_ARM";
+        case VK_DATA_GRAPH_TOSA_LEVEL_8K_ARM:
+            return "VK_DATA_GRAPH_TOSA_LEVEL_8K_ARM";
+        default:
+            return "Unhandled VkDataGraphTOSALevelARM";
     }
 }
 static inline const char* string_VkBlockMatchWindowCompareModeQCOM(VkBlockMatchWindowCompareModeQCOM input_value) {
@@ -11067,6 +11105,7 @@ static inline std::string string_VkMicromapCreateFlagsEXT(VkMicromapCreateFlagsE
 #endif // __cplusplus
 static inline const char* string_VkPhysicalDeviceSchedulingControlsFlagBitsARM(uint64_t input_value) {
     if (input_value == VK_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_SHADER_CORE_COUNT_ARM) return "VK_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_SHADER_CORE_COUNT_ARM";
+    if (input_value == VK_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_DISPATCH_PARAMETERS_ARM) return "VK_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_DISPATCH_PARAMETERS_ARM";
     return "Unhandled VkPhysicalDeviceSchedulingControlsFlagBitsARM";
 }
 
@@ -11345,6 +11384,37 @@ static inline std::string string_VkDataGraphPipelineSessionCreateFlagsARM(VkData
         input_value >>= 1;
     }
     if (ret.empty()) ret.append("VkDataGraphPipelineSessionCreateFlagsARM(0)");
+    return ret;
+}
+#endif // __cplusplus
+static inline const char* string_VkDataGraphTOSAQualityFlagBitsARM(VkDataGraphTOSAQualityFlagBitsARM input_value) {
+    switch (input_value) {
+        case VK_DATA_GRAPH_TOSA_QUALITY_ACCELERATED_ARM:
+            return "VK_DATA_GRAPH_TOSA_QUALITY_ACCELERATED_ARM";
+        case VK_DATA_GRAPH_TOSA_QUALITY_CONFORMANT_ARM:
+            return "VK_DATA_GRAPH_TOSA_QUALITY_CONFORMANT_ARM";
+        case VK_DATA_GRAPH_TOSA_QUALITY_EXPERIMENTAL_ARM:
+            return "VK_DATA_GRAPH_TOSA_QUALITY_EXPERIMENTAL_ARM";
+        case VK_DATA_GRAPH_TOSA_QUALITY_DEPRECATED_ARM:
+            return "VK_DATA_GRAPH_TOSA_QUALITY_DEPRECATED_ARM";
+        default:
+            return "Unhandled VkDataGraphTOSAQualityFlagBitsARM";
+    }
+}
+
+#ifdef __cplusplus
+static inline std::string string_VkDataGraphTOSAQualityFlagsARM(VkDataGraphTOSAQualityFlagsARM input_value) {
+    std::string ret;
+    int index = 0;
+    while(input_value) {
+        if (input_value & 1) {
+            if( !ret.empty()) ret.append("|");
+            ret.append(string_VkDataGraphTOSAQualityFlagBitsARM(static_cast<VkDataGraphTOSAQualityFlagBitsARM>(1U << index)));
+        }
+        ++index;
+        input_value >>= 1;
+    }
+    if (ret.empty()) ret.append("VkDataGraphTOSAQualityFlagsARM(0)");
     return ret;
 }
 #endif // __cplusplus
@@ -13142,6 +13212,12 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
             return "VkPhysicalDeviceDiagnosticsConfigFeaturesNV";
         case VK_STRUCTURE_TYPE_DEVICE_DIAGNOSTICS_CONFIG_CREATE_INFO_NV:
             return "VkDeviceDiagnosticsConfigCreateInfoNV";
+        case VK_STRUCTURE_TYPE_PERF_HINT_INFO_QCOM:
+            return "VkPerfHintInfoQCOM";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_QUEUE_PERF_HINT_FEATURES_QCOM:
+            return "VkPhysicalDeviceQueuePerfHintFeaturesQCOM";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_QUEUE_PERF_HINT_PROPERTIES_QCOM:
+            return "VkPhysicalDeviceQueuePerfHintPropertiesQCOM";
 #ifdef VK_ENABLE_BETA_EXTENSIONS
         case VK_STRUCTURE_TYPE_CUDA_MODULE_CREATE_INFO_NV:
             return "VkCudaModuleCreateInfoNV";
@@ -13196,8 +13272,6 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
 #endif  // VK_USE_PLATFORM_METAL_EXT
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_BUFFER_PROPERTIES_EXT:
             return "VkPhysicalDeviceDescriptorBufferPropertiesEXT";
-        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_BUFFER_DENSITY_MAP_PROPERTIES_EXT:
-            return "VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_BUFFER_FEATURES_EXT:
             return "VkPhysicalDeviceDescriptorBufferFeaturesEXT";
         case VK_STRUCTURE_TYPE_DESCRIPTOR_ADDRESS_INFO_EXT:
@@ -13220,6 +13294,8 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
             return "VkOpaqueCaptureDescriptorDataCreateInfoEXT";
         case VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_CAPTURE_DESCRIPTOR_DATA_INFO_EXT:
             return "VkAccelerationStructureCaptureDescriptorDataInfoEXT";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_BUFFER_DENSITY_MAP_PROPERTIES_EXT:
+            return "VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GRAPHICS_PIPELINE_LIBRARY_FEATURES_EXT:
             return "VkPhysicalDeviceGraphicsPipelineLibraryFeaturesEXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GRAPHICS_PIPELINE_LIBRARY_PROPERTIES_EXT:
@@ -13434,6 +13510,10 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
             return "VkPhysicalDeviceSchedulingControlsFeaturesARM";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_PROPERTIES_ARM:
             return "VkPhysicalDeviceSchedulingControlsPropertiesARM";
+        case VK_STRUCTURE_TYPE_DISPATCH_PARAMETERS_ARM:
+            return "VkDispatchParametersARM";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SCHEDULING_CONTROLS_DISPATCH_PARAMETERS_PROPERTIES_ARM:
+            return "VkPhysicalDeviceSchedulingControlsDispatchParametersPropertiesARM";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_SLICED_VIEW_OF_3D_FEATURES_EXT:
             return "VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT";
         case VK_STRUCTURE_TYPE_IMAGE_VIEW_SLICED_CREATE_INFO_EXT:
@@ -13720,6 +13800,8 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
             return "VkQueueFamilyDataGraphProcessingEnginePropertiesARM";
         case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_CONSTANT_TENSOR_SEMI_STRUCTURED_SPARSITY_INFO_ARM:
             return "VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM";
+        case VK_STRUCTURE_TYPE_QUEUE_FAMILY_DATA_GRAPH_TOSA_PROPERTIES_ARM:
+            return "VkQueueFamilyDataGraphTOSAPropertiesARM";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PER_VIEW_RENDER_AREAS_FEATURES_QCOM:
             return "VkPhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM";
         case VK_STRUCTURE_TYPE_MULTIVIEW_PER_VIEW_RENDER_AREAS_RENDER_PASS_BEGIN_INFO_QCOM:
@@ -13966,6 +14048,8 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
 #endif  // VK_USE_PLATFORM_UBM_SEC
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_MIXED_FLOAT_DOT_PRODUCT_FEATURES_VALVE:
             return "VkPhysicalDeviceShaderMixedFloatDotProductFeaturesVALVE";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRIMITIVE_RESTART_INDEX_FEATURES_EXT:
+            return "VkPhysicalDevicePrimitiveRestartIndexFeaturesEXT";
         case VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_TRIANGLES_DATA_KHR:
             return "VkAccelerationStructureGeometryTrianglesDataKHR";
         case VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_AABBS_DATA_KHR:
