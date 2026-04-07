@@ -90,6 +90,8 @@ class SafeStructOutputGenerator(BaseGenerator):
                 ['ppEnabledLayerNames', 'enabledLayerCount'],
         }
 
+        self.extended_structs = set()
+
     def isInPnextChain(self, struct: Struct) -> bool:
         # Can appear in VkPipelineCreateInfoKHR::pNext even though it isn't listed in the xml structextends attribute
         # VUID-VkPipelineCreateInfoKHR-pNext-09604
@@ -163,6 +165,30 @@ class SafeStructOutputGenerator(BaseGenerator):
             ****************************************************************************/\n''')
         self.write('// NOLINTBEGIN') # Wrap for clang-tidy to ignore
 
+        # TODO - Remove when added to VulkanObject
+        from dataclasses import dataclass
+        @dataclass
+        class ExtendedFlag:
+            struct: str
+            member: Member
+
+        for member in (m for s in self.vk.structs.values() for m in s.members):
+                member.extendedFlag = None
+
+        buffer_usage2 = self.vk.structs['VkBufferUsageFlags2CreateInfo']
+        pipe_flags2 = self.vk.structs['VkPipelineCreateFlags2CreateInfo']
+        self.vk.structs['VkBufferCreateInfo'].members[4].extendedFlag = ExtendedFlag(struct=buffer_usage2.name, member=buffer_usage2.members[2])
+        self.vk.structs['VkPhysicalDeviceExternalBufferInfo'].members[3].extendedFlag = ExtendedFlag(struct=buffer_usage2.name, member=buffer_usage2.members[2])
+        self.vk.structs['VkDescriptorBufferBindingInfoEXT'].members[3].extendedFlag =ExtendedFlag(struct=buffer_usage2.name, member=buffer_usage2.members[2])
+        self.vk.structs['VkComputePipelineCreateInfo'].members[2].extendedFlag = ExtendedFlag(struct=pipe_flags2.name, member=pipe_flags2.members[2])
+        self.vk.structs['VkGraphicsPipelineCreateInfo'].members[2].extendedFlag = ExtendedFlag(struct=pipe_flags2.name, member=pipe_flags2.members[2])
+        self.vk.structs['VkRayTracingPipelineCreateInfoNV'].members[2].extendedFlag = ExtendedFlag(struct=pipe_flags2.name, member=pipe_flags2.members[2])
+        self.vk.structs['VkRayTracingPipelineCreateInfoKHR'].members[2].extendedFlag = ExtendedFlag(struct=pipe_flags2.name, member=pipe_flags2.members[2])
+        for member in (m for s in self.vk.structs.values() for m in s.members):
+            if member.extendedFlag:
+                self.extended_structs.add(member.extendedFlag.struct)
+        self.extended_structs = sorted(self.extended_structs)
+
         if self.filename == 'vk_safe_struct.hpp':
             self.generateHeader()
         elif self.filename == 'vk_safe_struct_utils.cpp':
@@ -220,6 +246,9 @@ class SafeStructOutputGenerator(BaseGenerator):
 
                 if member.length and self.containsObjectHandle(member) and not member.fixedSizeArray:
                     out.append(f'    {member.type}* {member.name}{initialize};\n')
+                elif member.extendedFlag:
+                    out.append(f'// Can be extended from {member.extendedFlag.struct} found in the pNext chain\n')
+                    out.append(f'{member.extendedFlag.member.cDeclaration}{initialize};\n')
                 else:
                     out.append(f'{member.cDeclaration}{initialize};\n')
 
@@ -294,6 +323,23 @@ class SafeStructOutputGenerator(BaseGenerator):
             }
 
             ''')
+
+        for extended_struct in self.extended_structs:
+            struct = self.vk.structs[extended_struct]
+            out.append(f'''
+                // contains an extended flag
+                const {struct.name} *Find{struct.name}(const void *next) {{
+                    const VkBaseOutStructure *current = reinterpret_cast<const VkBaseOutStructure *>(next);
+                    while (current) {{
+                        if ({struct.sType} == current->sType) {{
+                            return reinterpret_cast<const {struct.name}*>(current);
+                        }}
+                        current = current->pNext;
+                    }}
+                    return nullptr;
+                }}
+            ''')
+
         out.append('''
 // clang-format off
 void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
@@ -584,7 +630,7 @@ void FreePnextChain(const void *pNext) {
 
                 if member.pointer and ('PFN_' in member.type or member.name in self.unused_params.get(struct.name, [])):
                     m_shallow_copy = True
-                
+
                 if member.name == 'pNext':
                     copy_pnext = 'pNext = SafePnextCopy(in_struct->pNext, copy_state);\n'
                     copy_pnext_if = '''
@@ -729,6 +775,11 @@ void FreePnextChain(const void *pNext) {
                             default_init_list += f'\n{member.name}(),'
             if '' != init_list:
                 init_list = init_list[:-1] # hack off final comma
+
+            for member in (x for x in struct.members if x.extendedFlag):
+                construct_txt += f"if (auto extended_flag = Find{member.extendedFlag.struct}(pNext)) {{\n"
+                construct_txt += f"    {member.name} = extended_flag->{member.extendedFlag.member.name};"
+                construct_txt += "}\n"
 
             if struct.name in custom_construct_txt:
                 construct_txt = custom_construct_txt[struct.name]

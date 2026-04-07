@@ -20364,6 +20364,9 @@ safe_VkRayTracingPipelineCreateInfoKHR::safe_VkRayTracingPipelineCreateInfoKHR(c
     if (in_struct->pLibraryInterface)
         pLibraryInterface = new safe_VkRayTracingPipelineInterfaceCreateInfoKHR(in_struct->pLibraryInterface);
     if (in_struct->pDynamicState) pDynamicState = new safe_VkPipelineDynamicStateCreateInfo(in_struct->pDynamicState);
+    if (auto extended_flag = FindVkPipelineCreateFlags2CreateInfo(pNext)) {
+        flags = extended_flag->flags;
+    }
 }
 
 safe_VkRayTracingPipelineCreateInfoKHR::safe_VkRayTracingPipelineCreateInfoKHR()
@@ -20414,6 +20417,9 @@ safe_VkRayTracingPipelineCreateInfoKHR::safe_VkRayTracingPipelineCreateInfoKHR(
     if (copy_src.pLibraryInterface)
         pLibraryInterface = new safe_VkRayTracingPipelineInterfaceCreateInfoKHR(*copy_src.pLibraryInterface);
     if (copy_src.pDynamicState) pDynamicState = new safe_VkPipelineDynamicStateCreateInfo(*copy_src.pDynamicState);
+    if (auto extended_flag = FindVkPipelineCreateFlags2CreateInfo(pNext)) {
+        flags = extended_flag->flags;
+    }
 }
 
 safe_VkRayTracingPipelineCreateInfoKHR& safe_VkRayTracingPipelineCreateInfoKHR::operator=(
@@ -20457,6 +20463,9 @@ safe_VkRayTracingPipelineCreateInfoKHR& safe_VkRayTracingPipelineCreateInfoKHR::
     if (copy_src.pLibraryInterface)
         pLibraryInterface = new safe_VkRayTracingPipelineInterfaceCreateInfoKHR(*copy_src.pLibraryInterface);
     if (copy_src.pDynamicState) pDynamicState = new safe_VkPipelineDynamicStateCreateInfo(*copy_src.pDynamicState);
+    if (auto extended_flag = FindVkPipelineCreateFlags2CreateInfo(pNext)) {
+        flags = extended_flag->flags;
+    }
 
     return *this;
 }
@@ -20508,6 +20517,9 @@ void safe_VkRayTracingPipelineCreateInfoKHR::initialize(const VkRayTracingPipeli
     if (in_struct->pLibraryInterface)
         pLibraryInterface = new safe_VkRayTracingPipelineInterfaceCreateInfoKHR(in_struct->pLibraryInterface);
     if (in_struct->pDynamicState) pDynamicState = new safe_VkPipelineDynamicStateCreateInfo(in_struct->pDynamicState);
+    if (auto extended_flag = FindVkPipelineCreateFlags2CreateInfo(pNext)) {
+        flags = extended_flag->flags;
+    }
 }
 
 void safe_VkRayTracingPipelineCreateInfoKHR::initialize(const safe_VkRayTracingPipelineCreateInfoKHR* copy_src,
@@ -20542,6 +20554,9 @@ void safe_VkRayTracingPipelineCreateInfoKHR::initialize(const safe_VkRayTracingP
     if (copy_src->pLibraryInterface)
         pLibraryInterface = new safe_VkRayTracingPipelineInterfaceCreateInfoKHR(*copy_src->pLibraryInterface);
     if (copy_src->pDynamicState) pDynamicState = new safe_VkPipelineDynamicStateCreateInfo(*copy_src->pDynamicState);
+    if (auto extended_flag = FindVkPipelineCreateFlags2CreateInfo(pNext)) {
+        flags = extended_flag->flags;
+    }
 }
 
 safe_VkPhysicalDeviceRayTracingPipelineFeaturesKHR::safe_VkPhysicalDeviceRayTracingPipelineFeaturesKHR(

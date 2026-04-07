@@ -355,6 +355,10 @@ void safe_VkRayTracingPipelineCreateInfoCommon::initialize(const VkRayTracingPip
             pGroups[i].pShaderGroupCaptureReplayHandle = nullptr;
         }
     }
+
+    if (auto extended_flag = FindVkPipelineCreateFlags2CreateInfo(pNext)) {
+        flags = extended_flag->flags;
+    }
 }
 
 void safe_VkRayTracingPipelineCreateInfoCommon::initialize(const VkRayTracingPipelineCreateInfoKHR* pCreateInfo) {
@@ -386,6 +390,11 @@ safe_VkGraphicsPipelineCreateInfo::safe_VkGraphicsPipelineCreateInfo(const VkGra
     if (copy_pnext) {
         pNext = SafePnextCopy(in_struct->pNext, copy_state);
     }
+
+    if (auto extended_flag = FindVkPipelineCreateFlags2CreateInfo(pNext)) {
+        flags = extended_flag->flags;
+    }
+
     const bool is_graphics_library =
         vku::FindStructInPNextChain<VkGraphicsPipelineLibraryCreateInfoEXT>(in_struct->pNext) != nullptr;
     if (stageCount && in_struct->pStages) {
@@ -502,6 +511,11 @@ safe_VkGraphicsPipelineCreateInfo::safe_VkGraphicsPipelineCreateInfo(const safe_
     basePipelineIndex = copy_src.basePipelineIndex;
 
     pNext = SafePnextCopy(copy_src.pNext);
+
+    if (auto extended_flag = FindVkPipelineCreateFlags2CreateInfo(pNext)) {
+        flags = extended_flag->flags;
+    }
+
     const bool is_graphics_library = vku::FindStructInPNextChain<VkGraphicsPipelineLibraryCreateInfoEXT>(copy_src.pNext);
     if (stageCount && copy_src.pStages) {
         pStages = new safe_VkPipelineShaderStageCreateInfo[stageCount];
@@ -597,6 +611,11 @@ safe_VkGraphicsPipelineCreateInfo& safe_VkGraphicsPipelineCreateInfo::operator=(
     basePipelineIndex = copy_src.basePipelineIndex;
 
     pNext = SafePnextCopy(copy_src.pNext);
+
+    if (auto extended_flag = FindVkPipelineCreateFlags2CreateInfo(pNext)) {
+        flags = extended_flag->flags;
+    }
+
     const bool is_graphics_library = vku::FindStructInPNextChain<VkGraphicsPipelineLibraryCreateInfoEXT>(copy_src.pNext);
     if (stageCount && copy_src.pStages) {
         pStages = new safe_VkPipelineShaderStageCreateInfo[stageCount];
@@ -707,6 +726,10 @@ void safe_VkGraphicsPipelineCreateInfo::initialize(const VkGraphicsPipelineCreat
     basePipelineIndex = in_struct->basePipelineIndex;
     pNext = SafePnextCopy(in_struct->pNext, copy_state);
 
+    if (auto extended_flag = FindVkPipelineCreateFlags2CreateInfo(pNext)) {
+        flags = extended_flag->flags;
+    }
+
     const bool is_graphics_library =
         vku::FindStructInPNextChain<VkGraphicsPipelineLibraryCreateInfoEXT>(in_struct->pNext) != nullptr;
     if (stageCount && in_struct->pStages) {
@@ -803,6 +826,11 @@ void safe_VkGraphicsPipelineCreateInfo::initialize(const safe_VkGraphicsPipeline
     basePipelineIndex = copy_src->basePipelineIndex;
 
     pNext = SafePnextCopy(copy_src->pNext);
+
+    if (auto extended_flag = FindVkPipelineCreateFlags2CreateInfo(pNext)) {
+        flags = extended_flag->flags;
+    }
+
     const bool is_graphics_library = vku::FindStructInPNextChain<VkGraphicsPipelineLibraryCreateInfoEXT>(copy_src->pNext);
     if (stageCount && copy_src->pStages) {
         pStages = new safe_VkPipelineShaderStageCreateInfo[stageCount];

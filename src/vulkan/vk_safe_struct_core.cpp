@@ -1586,6 +1586,9 @@ safe_VkBufferCreateInfo::safe_VkBufferCreateInfo(const VkBufferCreateInfo* in_st
     } else {
         queueFamilyIndexCount = 0;
     }
+    if (auto extended_flag = FindVkBufferUsageFlags2CreateInfo(pNext)) {
+        usage = extended_flag->usage;
+    }
 }
 
 safe_VkBufferCreateInfo::safe_VkBufferCreateInfo()
@@ -1614,6 +1617,9 @@ safe_VkBufferCreateInfo::safe_VkBufferCreateInfo(const safe_VkBufferCreateInfo& 
     } else {
         queueFamilyIndexCount = 0;
     }
+    if (auto extended_flag = FindVkBufferUsageFlags2CreateInfo(pNext)) {
+        usage = extended_flag->usage;
+    }
 }
 
 safe_VkBufferCreateInfo& safe_VkBufferCreateInfo::operator=(const safe_VkBufferCreateInfo& copy_src) {
@@ -1636,6 +1642,9 @@ safe_VkBufferCreateInfo& safe_VkBufferCreateInfo::operator=(const safe_VkBufferC
         queueFamilyIndexCount = copy_src.queueFamilyIndexCount;
     } else {
         queueFamilyIndexCount = 0;
+    }
+    if (auto extended_flag = FindVkBufferUsageFlags2CreateInfo(pNext)) {
+        usage = extended_flag->usage;
     }
 
     return *this;
@@ -1665,6 +1674,9 @@ void safe_VkBufferCreateInfo::initialize(const VkBufferCreateInfo* in_struct, [[
     } else {
         queueFamilyIndexCount = 0;
     }
+    if (auto extended_flag = FindVkBufferUsageFlags2CreateInfo(pNext)) {
+        usage = extended_flag->usage;
+    }
 }
 
 void safe_VkBufferCreateInfo::initialize(const safe_VkBufferCreateInfo* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
@@ -1683,6 +1695,9 @@ void safe_VkBufferCreateInfo::initialize(const safe_VkBufferCreateInfo* copy_src
         queueFamilyIndexCount = copy_src->queueFamilyIndexCount;
     } else {
         queueFamilyIndexCount = 0;
+    }
+    if (auto extended_flag = FindVkBufferUsageFlags2CreateInfo(pNext)) {
+        usage = extended_flag->usage;
     }
 }
 
@@ -2854,6 +2869,9 @@ safe_VkComputePipelineCreateInfo::safe_VkComputePipelineCreateInfo(const VkCompu
     if (copy_pnext) {
         pNext = SafePnextCopy(in_struct->pNext, copy_state);
     }
+    if (auto extended_flag = FindVkPipelineCreateFlags2CreateInfo(pNext)) {
+        flags = extended_flag->flags;
+    }
 }
 
 safe_VkComputePipelineCreateInfo::safe_VkComputePipelineCreateInfo()
@@ -2872,6 +2890,9 @@ safe_VkComputePipelineCreateInfo::safe_VkComputePipelineCreateInfo(const safe_Vk
     basePipelineHandle = copy_src.basePipelineHandle;
     basePipelineIndex = copy_src.basePipelineIndex;
     pNext = SafePnextCopy(copy_src.pNext);
+    if (auto extended_flag = FindVkPipelineCreateFlags2CreateInfo(pNext)) {
+        flags = extended_flag->flags;
+    }
 }
 
 safe_VkComputePipelineCreateInfo& safe_VkComputePipelineCreateInfo::operator=(const safe_VkComputePipelineCreateInfo& copy_src) {
@@ -2886,6 +2907,9 @@ safe_VkComputePipelineCreateInfo& safe_VkComputePipelineCreateInfo::operator=(co
     basePipelineHandle = copy_src.basePipelineHandle;
     basePipelineIndex = copy_src.basePipelineIndex;
     pNext = SafePnextCopy(copy_src.pNext);
+    if (auto extended_flag = FindVkPipelineCreateFlags2CreateInfo(pNext)) {
+        flags = extended_flag->flags;
+    }
 
     return *this;
 }
@@ -2902,6 +2926,9 @@ void safe_VkComputePipelineCreateInfo::initialize(const VkComputePipelineCreateI
     basePipelineHandle = in_struct->basePipelineHandle;
     basePipelineIndex = in_struct->basePipelineIndex;
     pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    if (auto extended_flag = FindVkPipelineCreateFlags2CreateInfo(pNext)) {
+        flags = extended_flag->flags;
+    }
 }
 
 void safe_VkComputePipelineCreateInfo::initialize(const safe_VkComputePipelineCreateInfo* copy_src,
@@ -2913,6 +2940,9 @@ void safe_VkComputePipelineCreateInfo::initialize(const safe_VkComputePipelineCr
     basePipelineHandle = copy_src->basePipelineHandle;
     basePipelineIndex = copy_src->basePipelineIndex;
     pNext = SafePnextCopy(copy_src->pNext);
+    if (auto extended_flag = FindVkPipelineCreateFlags2CreateInfo(pNext)) {
+        flags = extended_flag->flags;
+    }
 }
 
 safe_VkPipelineLayoutCreateInfo::safe_VkPipelineLayoutCreateInfo(const VkPipelineLayoutCreateInfo* in_struct,
@@ -7452,6 +7482,9 @@ safe_VkPhysicalDeviceExternalBufferInfo::safe_VkPhysicalDeviceExternalBufferInfo
     if (copy_pnext) {
         pNext = SafePnextCopy(in_struct->pNext, copy_state);
     }
+    if (auto extended_flag = FindVkBufferUsageFlags2CreateInfo(pNext)) {
+        usage = extended_flag->usage;
+    }
 }
 
 safe_VkPhysicalDeviceExternalBufferInfo::safe_VkPhysicalDeviceExternalBufferInfo()
@@ -7464,6 +7497,9 @@ safe_VkPhysicalDeviceExternalBufferInfo::safe_VkPhysicalDeviceExternalBufferInfo
     usage = copy_src.usage;
     handleType = copy_src.handleType;
     pNext = SafePnextCopy(copy_src.pNext);
+    if (auto extended_flag = FindVkBufferUsageFlags2CreateInfo(pNext)) {
+        usage = extended_flag->usage;
+    }
 }
 
 safe_VkPhysicalDeviceExternalBufferInfo& safe_VkPhysicalDeviceExternalBufferInfo::operator=(
@@ -7477,6 +7513,9 @@ safe_VkPhysicalDeviceExternalBufferInfo& safe_VkPhysicalDeviceExternalBufferInfo
     usage = copy_src.usage;
     handleType = copy_src.handleType;
     pNext = SafePnextCopy(copy_src.pNext);
+    if (auto extended_flag = FindVkBufferUsageFlags2CreateInfo(pNext)) {
+        usage = extended_flag->usage;
+    }
 
     return *this;
 }
@@ -7491,6 +7530,9 @@ void safe_VkPhysicalDeviceExternalBufferInfo::initialize(const VkPhysicalDeviceE
     usage = in_struct->usage;
     handleType = in_struct->handleType;
     pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    if (auto extended_flag = FindVkBufferUsageFlags2CreateInfo(pNext)) {
+        usage = extended_flag->usage;
+    }
 }
 
 void safe_VkPhysicalDeviceExternalBufferInfo::initialize(const safe_VkPhysicalDeviceExternalBufferInfo* copy_src,
@@ -7500,6 +7542,9 @@ void safe_VkPhysicalDeviceExternalBufferInfo::initialize(const safe_VkPhysicalDe
     usage = copy_src->usage;
     handleType = copy_src->handleType;
     pNext = SafePnextCopy(copy_src->pNext);
+    if (auto extended_flag = FindVkBufferUsageFlags2CreateInfo(pNext)) {
+        usage = extended_flag->usage;
+    }
 }
 
 safe_VkExternalBufferProperties::safe_VkExternalBufferProperties(const VkExternalBufferProperties* in_struct,

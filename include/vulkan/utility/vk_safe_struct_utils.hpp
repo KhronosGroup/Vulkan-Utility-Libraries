@@ -29,6 +29,10 @@ void* SafePnextCopy(const void* pNext, PNextCopyState* copy_state = {});
 void FreePnextChain(const void* pNext);
 char* SafeStringCopy(const char* in_string);
 
+// Not ideal, these are manually added, should be rare enough though
+const VkBufferUsageFlags2CreateInfo* FindVkBufferUsageFlags2CreateInfo(const void* next);
+const VkPipelineCreateFlags2CreateInfo* FindVkPipelineCreateFlags2CreateInfo(const void* next);
+
 template <typename Base, typename T>
 bool AddToPnext(Base& base, const T& data) {
     assert(base.ptr());  // All safe struct have a ptr() method. Prevent use with non-safe structs.

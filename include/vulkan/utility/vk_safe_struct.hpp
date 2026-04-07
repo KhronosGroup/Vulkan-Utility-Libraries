@@ -301,7 +301,8 @@ struct safe_VkBufferCreateInfo {
     const void* pNext{};
     VkBufferCreateFlags flags;
     VkDeviceSize size;
-    VkBufferUsageFlags usage;
+    // Can be extended from VkBufferUsageFlags2CreateInfo found in the pNext chain
+    VkBufferUsageFlags2 usage;
     VkSharingMode sharingMode;
     uint32_t queueFamilyIndexCount;
     const uint32_t* pQueueFamilyIndices{};
@@ -612,7 +613,8 @@ struct safe_VkPipelineShaderStageCreateInfo {
 struct safe_VkComputePipelineCreateInfo {
     VkStructureType sType;
     const void* pNext{};
-    VkPipelineCreateFlags flags;
+    // Can be extended from VkPipelineCreateFlags2CreateInfo found in the pNext chain
+    VkPipelineCreateFlags2 flags;
     safe_VkPipelineShaderStageCreateInfo stage;
     VkPipelineLayout layout;
     VkPipeline basePipelineHandle;
@@ -1001,7 +1003,8 @@ struct safe_VkPipelineViewportStateCreateInfo {
 struct safe_VkGraphicsPipelineCreateInfo {
     VkStructureType sType;
     const void* pNext{};
-    VkPipelineCreateFlags flags;
+    // Can be extended from VkPipelineCreateFlags2CreateInfo found in the pNext chain
+    VkPipelineCreateFlags2 flags;
     uint32_t stageCount;
     safe_VkPipelineShaderStageCreateInfo* pStages{};
     safe_VkPipelineVertexInputStateCreateInfo* pVertexInputState{};
@@ -1720,7 +1723,8 @@ struct safe_VkPhysicalDeviceExternalBufferInfo {
     VkStructureType sType;
     const void* pNext{};
     VkBufferCreateFlags flags;
-    VkBufferUsageFlags usage;
+    // Can be extended from VkBufferUsageFlags2CreateInfo found in the pNext chain
+    VkBufferUsageFlags2 usage;
     VkExternalMemoryHandleTypeFlagBits handleType;
 
     safe_VkPhysicalDeviceExternalBufferInfo(const VkPhysicalDeviceExternalBufferInfo* in_struct, PNextCopyState* copy_state = {},
@@ -13531,7 +13535,8 @@ struct safe_VkRayTracingShaderGroupCreateInfoNV {
 struct safe_VkRayTracingPipelineCreateInfoNV {
     VkStructureType sType;
     const void* pNext{};
-    VkPipelineCreateFlags flags;
+    // Can be extended from VkPipelineCreateFlags2CreateInfo found in the pNext chain
+    VkPipelineCreateFlags2 flags;
     uint32_t stageCount;
     safe_VkPipelineShaderStageCreateInfo* pStages{};
     uint32_t groupCount;
@@ -16518,7 +16523,8 @@ struct safe_VkDescriptorBufferBindingInfoEXT {
     VkStructureType sType;
     const void* pNext{};
     VkDeviceAddress address;
-    VkBufferUsageFlags usage;
+    // Can be extended from VkBufferUsageFlags2CreateInfo found in the pNext chain
+    VkBufferUsageFlags2 usage;
 
     safe_VkDescriptorBufferBindingInfoEXT(const VkDescriptorBufferBindingInfoEXT* in_struct, PNextCopyState* copy_state = {},
                                           bool copy_pnext = true);
@@ -24788,7 +24794,8 @@ struct safe_VkRayTracingPipelineInterfaceCreateInfoKHR {
 struct safe_VkRayTracingPipelineCreateInfoKHR {
     VkStructureType sType;
     const void* pNext{};
-    VkPipelineCreateFlags flags;
+    // Can be extended from VkPipelineCreateFlags2CreateInfo found in the pNext chain
+    VkPipelineCreateFlags2 flags;
     uint32_t stageCount;
     safe_VkPipelineShaderStageCreateInfo* pStages{};
     uint32_t groupCount;

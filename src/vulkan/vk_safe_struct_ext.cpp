@@ -9682,6 +9682,9 @@ safe_VkDescriptorBufferBindingInfoEXT::safe_VkDescriptorBufferBindingInfoEXT(con
     if (copy_pnext) {
         pNext = SafePnextCopy(in_struct->pNext, copy_state);
     }
+    if (auto extended_flag = FindVkBufferUsageFlags2CreateInfo(pNext)) {
+        usage = extended_flag->usage;
+    }
 }
 
 safe_VkDescriptorBufferBindingInfoEXT::safe_VkDescriptorBufferBindingInfoEXT()
@@ -9693,6 +9696,9 @@ safe_VkDescriptorBufferBindingInfoEXT::safe_VkDescriptorBufferBindingInfoEXT(
     address = copy_src.address;
     usage = copy_src.usage;
     pNext = SafePnextCopy(copy_src.pNext);
+    if (auto extended_flag = FindVkBufferUsageFlags2CreateInfo(pNext)) {
+        usage = extended_flag->usage;
+    }
 }
 
 safe_VkDescriptorBufferBindingInfoEXT& safe_VkDescriptorBufferBindingInfoEXT::operator=(
@@ -9705,6 +9711,9 @@ safe_VkDescriptorBufferBindingInfoEXT& safe_VkDescriptorBufferBindingInfoEXT::op
     address = copy_src.address;
     usage = copy_src.usage;
     pNext = SafePnextCopy(copy_src.pNext);
+    if (auto extended_flag = FindVkBufferUsageFlags2CreateInfo(pNext)) {
+        usage = extended_flag->usage;
+    }
 
     return *this;
 }
@@ -9718,6 +9727,9 @@ void safe_VkDescriptorBufferBindingInfoEXT::initialize(const VkDescriptorBufferB
     address = in_struct->address;
     usage = in_struct->usage;
     pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    if (auto extended_flag = FindVkBufferUsageFlags2CreateInfo(pNext)) {
+        usage = extended_flag->usage;
+    }
 }
 
 void safe_VkDescriptorBufferBindingInfoEXT::initialize(const safe_VkDescriptorBufferBindingInfoEXT* copy_src,
@@ -9726,6 +9738,9 @@ void safe_VkDescriptorBufferBindingInfoEXT::initialize(const safe_VkDescriptorBu
     address = copy_src->address;
     usage = copy_src->usage;
     pNext = SafePnextCopy(copy_src->pNext);
+    if (auto extended_flag = FindVkBufferUsageFlags2CreateInfo(pNext)) {
+        usage = extended_flag->usage;
+    }
 }
 
 safe_VkDescriptorBufferBindingPushDescriptorBufferHandleEXT::safe_VkDescriptorBufferBindingPushDescriptorBufferHandleEXT(

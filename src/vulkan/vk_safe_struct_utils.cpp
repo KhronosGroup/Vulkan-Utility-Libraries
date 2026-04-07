@@ -30,6 +30,30 @@ char *SafeStringCopy(const char *in_string) {
     return dest;
 }
 
+// contains an extended flag
+const VkBufferUsageFlags2CreateInfo *FindVkBufferUsageFlags2CreateInfo(const void *next) {
+    const VkBaseOutStructure *current = reinterpret_cast<const VkBaseOutStructure *>(next);
+    while (current) {
+        if (VK_STRUCTURE_TYPE_BUFFER_USAGE_FLAGS_2_CREATE_INFO == current->sType) {
+            return reinterpret_cast<const VkBufferUsageFlags2CreateInfo *>(current);
+        }
+        current = current->pNext;
+    }
+    return nullptr;
+}
+
+// contains an extended flag
+const VkPipelineCreateFlags2CreateInfo *FindVkPipelineCreateFlags2CreateInfo(const void *next) {
+    const VkBaseOutStructure *current = reinterpret_cast<const VkBaseOutStructure *>(next);
+    while (current) {
+        if (VK_STRUCTURE_TYPE_PIPELINE_CREATE_FLAGS_2_CREATE_INFO == current->sType) {
+            return reinterpret_cast<const VkPipelineCreateFlags2CreateInfo *>(current);
+        }
+        current = current->pNext;
+    }
+    return nullptr;
+}
+
 // clang-format off
 void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
     void *first_pNext{};

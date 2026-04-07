@@ -3789,6 +3789,9 @@ safe_VkRayTracingPipelineCreateInfoNV::safe_VkRayTracingPipelineCreateInfoNV(con
             pGroups[i].initialize(&in_struct->pGroups[i]);
         }
     }
+    if (auto extended_flag = FindVkPipelineCreateFlags2CreateInfo(pNext)) {
+        flags = extended_flag->flags;
+    }
 }
 
 safe_VkRayTracingPipelineCreateInfoNV::safe_VkRayTracingPipelineCreateInfoNV()
@@ -3829,6 +3832,9 @@ safe_VkRayTracingPipelineCreateInfoNV::safe_VkRayTracingPipelineCreateInfoNV(
             pGroups[i].initialize(&copy_src.pGroups[i]);
         }
     }
+    if (auto extended_flag = FindVkPipelineCreateFlags2CreateInfo(pNext)) {
+        flags = extended_flag->flags;
+    }
 }
 
 safe_VkRayTracingPipelineCreateInfoNV& safe_VkRayTracingPipelineCreateInfoNV::operator=(
@@ -3861,6 +3867,9 @@ safe_VkRayTracingPipelineCreateInfoNV& safe_VkRayTracingPipelineCreateInfoNV::op
         for (uint32_t i = 0; i < groupCount; ++i) {
             pGroups[i].initialize(&copy_src.pGroups[i]);
         }
+    }
+    if (auto extended_flag = FindVkPipelineCreateFlags2CreateInfo(pNext)) {
+        flags = extended_flag->flags;
     }
 
     return *this;
@@ -3900,6 +3909,9 @@ void safe_VkRayTracingPipelineCreateInfoNV::initialize(const VkRayTracingPipelin
             pGroups[i].initialize(&in_struct->pGroups[i]);
         }
     }
+    if (auto extended_flag = FindVkPipelineCreateFlags2CreateInfo(pNext)) {
+        flags = extended_flag->flags;
+    }
 }
 
 void safe_VkRayTracingPipelineCreateInfoNV::initialize(const safe_VkRayTracingPipelineCreateInfoNV* copy_src,
@@ -3926,6 +3938,9 @@ void safe_VkRayTracingPipelineCreateInfoNV::initialize(const safe_VkRayTracingPi
         for (uint32_t i = 0; i < groupCount; ++i) {
             pGroups[i].initialize(&copy_src->pGroups[i]);
         }
+    }
+    if (auto extended_flag = FindVkPipelineCreateFlags2CreateInfo(pNext)) {
+        flags = extended_flag->flags;
     }
 }
 
