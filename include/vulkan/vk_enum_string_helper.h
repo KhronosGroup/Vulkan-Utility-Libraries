@@ -2514,6 +2514,24 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_RENDERING_END_INFO_KHR";
         case VK_STRUCTURE_TYPE_RESOLVE_IMAGE_MODE_INFO_KHR:
             return "VK_STRUCTURE_TYPE_RESOLVE_IMAGE_MODE_INFO_KHR";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DATA_GRAPH_OPTICAL_FLOW_FEATURES_ARM:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DATA_GRAPH_OPTICAL_FLOW_FEATURES_ARM";
+        case VK_STRUCTURE_TYPE_QUEUE_FAMILY_DATA_GRAPH_OPTICAL_FLOW_PROPERTIES_ARM:
+            return "VK_STRUCTURE_TYPE_QUEUE_FAMILY_DATA_GRAPH_OPTICAL_FLOW_PROPERTIES_ARM";
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_OPTICAL_FLOW_IMAGE_FORMAT_INFO_ARM:
+            return "VK_STRUCTURE_TYPE_DATA_GRAPH_OPTICAL_FLOW_IMAGE_FORMAT_INFO_ARM";
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_OPTICAL_FLOW_IMAGE_FORMAT_PROPERTIES_ARM:
+            return "VK_STRUCTURE_TYPE_DATA_GRAPH_OPTICAL_FLOW_IMAGE_FORMAT_PROPERTIES_ARM";
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_OPTICAL_FLOW_DISPATCH_INFO_ARM:
+            return "VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_OPTICAL_FLOW_DISPATCH_INFO_ARM";
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_OPTICAL_FLOW_CREATE_INFO_ARM:
+            return "VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_OPTICAL_FLOW_CREATE_INFO_ARM";
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_RESOURCE_INFO_IMAGE_LAYOUT_ARM:
+            return "VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_RESOURCE_INFO_IMAGE_LAYOUT_ARM";
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SINGLE_NODE_CREATE_INFO_ARM:
+            return "VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SINGLE_NODE_CREATE_INFO_ARM";
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SINGLE_NODE_CONNECTION_ARM:
+            return "VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SINGLE_NODE_CONNECTION_ARM";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_LONG_VECTOR_FEATURES_EXT:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_LONG_VECTOR_FEATURES_EXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_LONG_VECTOR_PROPERTIES_EXT:
@@ -5692,6 +5710,8 @@ static inline const char* string_VkDataGraphPipelineSessionBindPointARM(VkDataGr
     switch (input_value) {
         case VK_DATA_GRAPH_PIPELINE_SESSION_BIND_POINT_TRANSIENT_ARM:
             return "VK_DATA_GRAPH_PIPELINE_SESSION_BIND_POINT_TRANSIENT_ARM";
+        case VK_DATA_GRAPH_PIPELINE_SESSION_BIND_POINT_OPTICAL_FLOW_CACHE_ARM:
+            return "VK_DATA_GRAPH_PIPELINE_SESSION_BIND_POINT_OPTICAL_FLOW_CACHE_ARM";
         default:
             return "Unhandled VkDataGraphPipelineSessionBindPointARM";
     }
@@ -5734,6 +5754,8 @@ static inline const char* string_VkPhysicalDeviceDataGraphOperationTypeARM(VkPhy
             return "VK_PHYSICAL_DEVICE_DATA_GRAPH_OPERATION_TYPE_NEURAL_MODEL_QCOM";
         case VK_PHYSICAL_DEVICE_DATA_GRAPH_OPERATION_TYPE_BUILTIN_MODEL_QCOM:
             return "VK_PHYSICAL_DEVICE_DATA_GRAPH_OPERATION_TYPE_BUILTIN_MODEL_QCOM";
+        case VK_PHYSICAL_DEVICE_DATA_GRAPH_OPERATION_TYPE_OPTICAL_FLOW_ARM:
+            return "VK_PHYSICAL_DEVICE_DATA_GRAPH_OPERATION_TYPE_OPTICAL_FLOW_ARM";
         default:
             return "Unhandled VkPhysicalDeviceDataGraphOperationTypeARM";
     }
@@ -5906,6 +5928,44 @@ static inline const char* string_VkDataGraphModelCacheTypeQCOM(VkDataGraphModelC
             return "VK_DATA_GRAPH_MODEL_CACHE_TYPE_GENERIC_BINARY_QCOM";
         default:
             return "Unhandled VkDataGraphModelCacheTypeQCOM";
+    }
+}
+static inline const char* string_VkDataGraphOpticalFlowPerformanceLevelARM(VkDataGraphOpticalFlowPerformanceLevelARM input_value) {
+    switch (input_value) {
+        case VK_DATA_GRAPH_OPTICAL_FLOW_PERFORMANCE_LEVEL_UNKNOWN_ARM:
+            return "VK_DATA_GRAPH_OPTICAL_FLOW_PERFORMANCE_LEVEL_UNKNOWN_ARM";
+        case VK_DATA_GRAPH_OPTICAL_FLOW_PERFORMANCE_LEVEL_SLOW_ARM:
+            return "VK_DATA_GRAPH_OPTICAL_FLOW_PERFORMANCE_LEVEL_SLOW_ARM";
+        case VK_DATA_GRAPH_OPTICAL_FLOW_PERFORMANCE_LEVEL_MEDIUM_ARM:
+            return "VK_DATA_GRAPH_OPTICAL_FLOW_PERFORMANCE_LEVEL_MEDIUM_ARM";
+        case VK_DATA_GRAPH_OPTICAL_FLOW_PERFORMANCE_LEVEL_FAST_ARM:
+            return "VK_DATA_GRAPH_OPTICAL_FLOW_PERFORMANCE_LEVEL_FAST_ARM";
+        default:
+            return "Unhandled VkDataGraphOpticalFlowPerformanceLevelARM";
+    }
+}
+static inline const char* string_VkDataGraphPipelineNodeTypeARM(VkDataGraphPipelineNodeTypeARM input_value) {
+    switch (input_value) {
+        case VK_DATA_GRAPH_PIPELINE_NODE_TYPE_OPTICAL_FLOW_ARM:
+            return "VK_DATA_GRAPH_PIPELINE_NODE_TYPE_OPTICAL_FLOW_ARM";
+        default:
+            return "Unhandled VkDataGraphPipelineNodeTypeARM";
+    }
+}
+static inline const char* string_VkDataGraphPipelineNodeConnectionTypeARM(VkDataGraphPipelineNodeConnectionTypeARM input_value) {
+    switch (input_value) {
+        case VK_DATA_GRAPH_PIPELINE_NODE_CONNECTION_TYPE_OPTICAL_FLOW_INPUT_ARM:
+            return "VK_DATA_GRAPH_PIPELINE_NODE_CONNECTION_TYPE_OPTICAL_FLOW_INPUT_ARM";
+        case VK_DATA_GRAPH_PIPELINE_NODE_CONNECTION_TYPE_OPTICAL_FLOW_REFERENCE_ARM:
+            return "VK_DATA_GRAPH_PIPELINE_NODE_CONNECTION_TYPE_OPTICAL_FLOW_REFERENCE_ARM";
+        case VK_DATA_GRAPH_PIPELINE_NODE_CONNECTION_TYPE_OPTICAL_FLOW_HINT_ARM:
+            return "VK_DATA_GRAPH_PIPELINE_NODE_CONNECTION_TYPE_OPTICAL_FLOW_HINT_ARM";
+        case VK_DATA_GRAPH_PIPELINE_NODE_CONNECTION_TYPE_OPTICAL_FLOW_FLOW_VECTOR_ARM:
+            return "VK_DATA_GRAPH_PIPELINE_NODE_CONNECTION_TYPE_OPTICAL_FLOW_FLOW_VECTOR_ARM";
+        case VK_DATA_GRAPH_PIPELINE_NODE_CONNECTION_TYPE_OPTICAL_FLOW_COST_ARM:
+            return "VK_DATA_GRAPH_PIPELINE_NODE_CONNECTION_TYPE_OPTICAL_FLOW_COST_ARM";
+        default:
+            return "Unhandled VkDataGraphPipelineNodeConnectionTypeARM";
     }
 }
 static inline const char* string_VkBuildAccelerationStructureModeKHR(VkBuildAccelerationStructureModeKHR input_value) {
@@ -8413,6 +8473,9 @@ static inline const char* string_VkFormatFeatureFlagBits2(uint64_t input_value) 
     if (input_value == VK_FORMAT_FEATURE_2_DEPTH_COPY_ON_TRANSFER_QUEUE_BIT_KHR) return "VK_FORMAT_FEATURE_2_DEPTH_COPY_ON_TRANSFER_QUEUE_BIT_KHR";
     if (input_value == VK_FORMAT_FEATURE_2_STENCIL_COPY_ON_COMPUTE_QUEUE_BIT_KHR) return "VK_FORMAT_FEATURE_2_STENCIL_COPY_ON_COMPUTE_QUEUE_BIT_KHR";
     if (input_value == VK_FORMAT_FEATURE_2_STENCIL_COPY_ON_TRANSFER_QUEUE_BIT_KHR) return "VK_FORMAT_FEATURE_2_STENCIL_COPY_ON_TRANSFER_QUEUE_BIT_KHR";
+    if (input_value == VK_FORMAT_FEATURE_2_DATA_GRAPH_OPTICAL_FLOW_IMAGE_BIT_ARM) return "VK_FORMAT_FEATURE_2_DATA_GRAPH_OPTICAL_FLOW_IMAGE_BIT_ARM";
+    if (input_value == VK_FORMAT_FEATURE_2_DATA_GRAPH_OPTICAL_FLOW_VECTOR_BIT_ARM) return "VK_FORMAT_FEATURE_2_DATA_GRAPH_OPTICAL_FLOW_VECTOR_BIT_ARM";
+    if (input_value == VK_FORMAT_FEATURE_2_DATA_GRAPH_OPTICAL_FLOW_COST_BIT_ARM) return "VK_FORMAT_FEATURE_2_DATA_GRAPH_OPTICAL_FLOW_COST_BIT_ARM";
     return "Unhandled VkFormatFeatureFlagBits2";
 }
 
@@ -11368,6 +11431,7 @@ static inline std::string string_VkShaderCreateFlagsEXT(VkShaderCreateFlagsEXT i
 #endif // __cplusplus
 static inline const char* string_VkDataGraphPipelineSessionCreateFlagBitsARM(uint64_t input_value) {
     if (input_value == VK_DATA_GRAPH_PIPELINE_SESSION_CREATE_PROTECTED_BIT_ARM) return "VK_DATA_GRAPH_PIPELINE_SESSION_CREATE_PROTECTED_BIT_ARM";
+    if (input_value == VK_DATA_GRAPH_PIPELINE_SESSION_CREATE_OPTICAL_FLOW_CACHE_BIT_ARM) return "VK_DATA_GRAPH_PIPELINE_SESSION_CREATE_OPTICAL_FLOW_CACHE_BIT_ARM";
     return "Unhandled VkDataGraphPipelineSessionCreateFlagBitsARM";
 }
 
@@ -11622,6 +11686,134 @@ static inline std::string string_VkIndirectCommandsLayoutUsageFlagsEXT(VkIndirec
         input_value >>= 1;
     }
     if (ret.empty()) ret.append("VkIndirectCommandsLayoutUsageFlagsEXT(0)");
+    return ret;
+}
+#endif // __cplusplus
+static inline const char* string_VkDataGraphOpticalFlowGridSizeFlagBitsARM(VkDataGraphOpticalFlowGridSizeFlagBitsARM input_value) {
+    switch (input_value) {
+        case VK_DATA_GRAPH_OPTICAL_FLOW_GRID_SIZE_UNKNOWN_ARM:
+            return "VK_DATA_GRAPH_OPTICAL_FLOW_GRID_SIZE_UNKNOWN_ARM";
+        case VK_DATA_GRAPH_OPTICAL_FLOW_GRID_SIZE_1X1_BIT_ARM:
+            return "VK_DATA_GRAPH_OPTICAL_FLOW_GRID_SIZE_1X1_BIT_ARM";
+        case VK_DATA_GRAPH_OPTICAL_FLOW_GRID_SIZE_2X2_BIT_ARM:
+            return "VK_DATA_GRAPH_OPTICAL_FLOW_GRID_SIZE_2X2_BIT_ARM";
+        case VK_DATA_GRAPH_OPTICAL_FLOW_GRID_SIZE_4X4_BIT_ARM:
+            return "VK_DATA_GRAPH_OPTICAL_FLOW_GRID_SIZE_4X4_BIT_ARM";
+        case VK_DATA_GRAPH_OPTICAL_FLOW_GRID_SIZE_8X8_BIT_ARM:
+            return "VK_DATA_GRAPH_OPTICAL_FLOW_GRID_SIZE_8X8_BIT_ARM";
+        default:
+            return "Unhandled VkDataGraphOpticalFlowGridSizeFlagBitsARM";
+    }
+}
+
+#ifdef __cplusplus
+static inline std::string string_VkDataGraphOpticalFlowGridSizeFlagsARM(VkDataGraphOpticalFlowGridSizeFlagsARM input_value) {
+    std::string ret;
+    int index = 0;
+    while(input_value) {
+        if (input_value & 1) {
+            if( !ret.empty()) ret.append("|");
+            ret.append(string_VkDataGraphOpticalFlowGridSizeFlagBitsARM(static_cast<VkDataGraphOpticalFlowGridSizeFlagBitsARM>(1U << index)));
+        }
+        ++index;
+        input_value >>= 1;
+    }
+    if (ret.empty()) ret.append("VkDataGraphOpticalFlowGridSizeFlagsARM(0)");
+    return ret;
+}
+#endif // __cplusplus
+static inline const char* string_VkDataGraphOpticalFlowCreateFlagBitsARM(VkDataGraphOpticalFlowCreateFlagBitsARM input_value) {
+    switch (input_value) {
+        case VK_DATA_GRAPH_OPTICAL_FLOW_CREATE_ENABLE_HINT_BIT_ARM:
+            return "VK_DATA_GRAPH_OPTICAL_FLOW_CREATE_ENABLE_HINT_BIT_ARM";
+        case VK_DATA_GRAPH_OPTICAL_FLOW_CREATE_ENABLE_COST_BIT_ARM:
+            return "VK_DATA_GRAPH_OPTICAL_FLOW_CREATE_ENABLE_COST_BIT_ARM";
+        case VK_DATA_GRAPH_OPTICAL_FLOW_CREATE_RESERVED_30_BIT_ARM:
+            return "VK_DATA_GRAPH_OPTICAL_FLOW_CREATE_RESERVED_30_BIT_ARM";
+        default:
+            return "Unhandled VkDataGraphOpticalFlowCreateFlagBitsARM";
+    }
+}
+
+#ifdef __cplusplus
+static inline std::string string_VkDataGraphOpticalFlowCreateFlagsARM(VkDataGraphOpticalFlowCreateFlagsARM input_value) {
+    std::string ret;
+    int index = 0;
+    while(input_value) {
+        if (input_value & 1) {
+            if( !ret.empty()) ret.append("|");
+            ret.append(string_VkDataGraphOpticalFlowCreateFlagBitsARM(static_cast<VkDataGraphOpticalFlowCreateFlagBitsARM>(1U << index)));
+        }
+        ++index;
+        input_value >>= 1;
+    }
+    if (ret.empty()) ret.append("VkDataGraphOpticalFlowCreateFlagsARM(0)");
+    return ret;
+}
+#endif // __cplusplus
+static inline const char* string_VkDataGraphOpticalFlowImageUsageFlagBitsARM(VkDataGraphOpticalFlowImageUsageFlagBitsARM input_value) {
+    switch (input_value) {
+        case VK_DATA_GRAPH_OPTICAL_FLOW_IMAGE_USAGE_UNKNOWN_ARM:
+            return "VK_DATA_GRAPH_OPTICAL_FLOW_IMAGE_USAGE_UNKNOWN_ARM";
+        case VK_DATA_GRAPH_OPTICAL_FLOW_IMAGE_USAGE_INPUT_BIT_ARM:
+            return "VK_DATA_GRAPH_OPTICAL_FLOW_IMAGE_USAGE_INPUT_BIT_ARM";
+        case VK_DATA_GRAPH_OPTICAL_FLOW_IMAGE_USAGE_OUTPUT_BIT_ARM:
+            return "VK_DATA_GRAPH_OPTICAL_FLOW_IMAGE_USAGE_OUTPUT_BIT_ARM";
+        case VK_DATA_GRAPH_OPTICAL_FLOW_IMAGE_USAGE_HINT_BIT_ARM:
+            return "VK_DATA_GRAPH_OPTICAL_FLOW_IMAGE_USAGE_HINT_BIT_ARM";
+        case VK_DATA_GRAPH_OPTICAL_FLOW_IMAGE_USAGE_COST_BIT_ARM:
+            return "VK_DATA_GRAPH_OPTICAL_FLOW_IMAGE_USAGE_COST_BIT_ARM";
+        default:
+            return "Unhandled VkDataGraphOpticalFlowImageUsageFlagBitsARM";
+    }
+}
+
+#ifdef __cplusplus
+static inline std::string string_VkDataGraphOpticalFlowImageUsageFlagsARM(VkDataGraphOpticalFlowImageUsageFlagsARM input_value) {
+    std::string ret;
+    int index = 0;
+    while(input_value) {
+        if (input_value & 1) {
+            if( !ret.empty()) ret.append("|");
+            ret.append(string_VkDataGraphOpticalFlowImageUsageFlagBitsARM(static_cast<VkDataGraphOpticalFlowImageUsageFlagBitsARM>(1U << index)));
+        }
+        ++index;
+        input_value >>= 1;
+    }
+    if (ret.empty()) ret.append("VkDataGraphOpticalFlowImageUsageFlagsARM(0)");
+    return ret;
+}
+#endif // __cplusplus
+static inline const char* string_VkDataGraphOpticalFlowExecuteFlagBitsARM(VkDataGraphOpticalFlowExecuteFlagBitsARM input_value) {
+    switch (input_value) {
+        case VK_DATA_GRAPH_OPTICAL_FLOW_EXECUTE_DISABLE_TEMPORAL_HINTS_BIT_ARM:
+            return "VK_DATA_GRAPH_OPTICAL_FLOW_EXECUTE_DISABLE_TEMPORAL_HINTS_BIT_ARM";
+        case VK_DATA_GRAPH_OPTICAL_FLOW_EXECUTE_INPUT_UNCHANGED_BIT_ARM:
+            return "VK_DATA_GRAPH_OPTICAL_FLOW_EXECUTE_INPUT_UNCHANGED_BIT_ARM";
+        case VK_DATA_GRAPH_OPTICAL_FLOW_EXECUTE_REFERENCE_UNCHANGED_BIT_ARM:
+            return "VK_DATA_GRAPH_OPTICAL_FLOW_EXECUTE_REFERENCE_UNCHANGED_BIT_ARM";
+        case VK_DATA_GRAPH_OPTICAL_FLOW_EXECUTE_INPUT_IS_PREVIOUS_REFERENCE_BIT_ARM:
+            return "VK_DATA_GRAPH_OPTICAL_FLOW_EXECUTE_INPUT_IS_PREVIOUS_REFERENCE_BIT_ARM";
+        case VK_DATA_GRAPH_OPTICAL_FLOW_EXECUTE_REFERENCE_IS_PREVIOUS_INPUT_BIT_ARM:
+            return "VK_DATA_GRAPH_OPTICAL_FLOW_EXECUTE_REFERENCE_IS_PREVIOUS_INPUT_BIT_ARM";
+        default:
+            return "Unhandled VkDataGraphOpticalFlowExecuteFlagBitsARM";
+    }
+}
+
+#ifdef __cplusplus
+static inline std::string string_VkDataGraphOpticalFlowExecuteFlagsARM(VkDataGraphOpticalFlowExecuteFlagsARM input_value) {
+    std::string ret;
+    int index = 0;
+    while(input_value) {
+        if (input_value & 1) {
+            if( !ret.empty()) ret.append("|");
+            ret.append(string_VkDataGraphOpticalFlowExecuteFlagBitsARM(static_cast<VkDataGraphOpticalFlowExecuteFlagBitsARM>(1U << index)));
+        }
+        ++index;
+        input_value >>= 1;
+    }
+    if (ret.empty()) ret.append("VkDataGraphOpticalFlowExecuteFlagsARM(0)");
     return ret;
 }
 #endif // __cplusplus
@@ -14028,6 +14220,24 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
             return "VkDataGraphPipelineBuiltinModelCreateInfoQCOM";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DATA_GRAPH_MODEL_FEATURES_QCOM:
             return "VkPhysicalDeviceDataGraphModelFeaturesQCOM";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DATA_GRAPH_OPTICAL_FLOW_FEATURES_ARM:
+            return "VkPhysicalDeviceDataGraphOpticalFlowFeaturesARM";
+        case VK_STRUCTURE_TYPE_QUEUE_FAMILY_DATA_GRAPH_OPTICAL_FLOW_PROPERTIES_ARM:
+            return "VkQueueFamilyDataGraphOpticalFlowPropertiesARM";
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_OPTICAL_FLOW_CREATE_INFO_ARM:
+            return "VkDataGraphPipelineOpticalFlowCreateInfoARM";
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_OPTICAL_FLOW_IMAGE_FORMAT_PROPERTIES_ARM:
+            return "VkDataGraphOpticalFlowImageFormatPropertiesARM";
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_OPTICAL_FLOW_IMAGE_FORMAT_INFO_ARM:
+            return "VkDataGraphOpticalFlowImageFormatInfoARM";
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_OPTICAL_FLOW_DISPATCH_INFO_ARM:
+            return "VkDataGraphPipelineOpticalFlowDispatchInfoARM";
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_RESOURCE_INFO_IMAGE_LAYOUT_ARM:
+            return "VkDataGraphPipelineResourceInfoImageLayoutARM";
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SINGLE_NODE_CONNECTION_ARM:
+            return "VkDataGraphPipelineSingleNodeConnectionARM";
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SINGLE_NODE_CREATE_INFO_ARM:
+            return "VkDataGraphPipelineSingleNodeCreateInfoARM";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_LONG_VECTOR_FEATURES_EXT:
             return "VkPhysicalDeviceShaderLongVectorFeaturesEXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_LONG_VECTOR_PROPERTIES_EXT:

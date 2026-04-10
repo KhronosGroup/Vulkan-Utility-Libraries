@@ -24200,6 +24200,209 @@ struct safe_VkPhysicalDeviceDataGraphModelFeaturesQCOM {
         return reinterpret_cast<VkPhysicalDeviceDataGraphModelFeaturesQCOM const*>(this);
     }
 };
+struct safe_VkPhysicalDeviceDataGraphOpticalFlowFeaturesARM {
+    VkStructureType sType;
+    void* pNext{};
+    VkBool32 dataGraphOpticalFlow;
+
+    safe_VkPhysicalDeviceDataGraphOpticalFlowFeaturesARM(const VkPhysicalDeviceDataGraphOpticalFlowFeaturesARM* in_struct,
+                                                         PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkPhysicalDeviceDataGraphOpticalFlowFeaturesARM(const safe_VkPhysicalDeviceDataGraphOpticalFlowFeaturesARM& copy_src);
+    safe_VkPhysicalDeviceDataGraphOpticalFlowFeaturesARM& operator=(
+        const safe_VkPhysicalDeviceDataGraphOpticalFlowFeaturesARM& copy_src);
+    safe_VkPhysicalDeviceDataGraphOpticalFlowFeaturesARM();
+    ~safe_VkPhysicalDeviceDataGraphOpticalFlowFeaturesARM();
+    void initialize(const VkPhysicalDeviceDataGraphOpticalFlowFeaturesARM* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceDataGraphOpticalFlowFeaturesARM* copy_src, PNextCopyState* copy_state = {});
+    VkPhysicalDeviceDataGraphOpticalFlowFeaturesARM* ptr() {
+        return reinterpret_cast<VkPhysicalDeviceDataGraphOpticalFlowFeaturesARM*>(this);
+    }
+    VkPhysicalDeviceDataGraphOpticalFlowFeaturesARM const* ptr() const {
+        return reinterpret_cast<VkPhysicalDeviceDataGraphOpticalFlowFeaturesARM const*>(this);
+    }
+};
+struct safe_VkQueueFamilyDataGraphOpticalFlowPropertiesARM {
+    VkStructureType sType;
+    void* pNext{};
+    VkDataGraphOpticalFlowGridSizeFlagsARM supportedOutputGridSizes;
+    VkDataGraphOpticalFlowGridSizeFlagsARM supportedHintGridSizes;
+    VkBool32 hintSupported;
+    VkBool32 costSupported;
+    uint32_t minWidth;
+    uint32_t minHeight;
+    uint32_t maxWidth;
+    uint32_t maxHeight;
+
+    safe_VkQueueFamilyDataGraphOpticalFlowPropertiesARM(const VkQueueFamilyDataGraphOpticalFlowPropertiesARM* in_struct,
+                                                        PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkQueueFamilyDataGraphOpticalFlowPropertiesARM(const safe_VkQueueFamilyDataGraphOpticalFlowPropertiesARM& copy_src);
+    safe_VkQueueFamilyDataGraphOpticalFlowPropertiesARM& operator=(
+        const safe_VkQueueFamilyDataGraphOpticalFlowPropertiesARM& copy_src);
+    safe_VkQueueFamilyDataGraphOpticalFlowPropertiesARM();
+    ~safe_VkQueueFamilyDataGraphOpticalFlowPropertiesARM();
+    void initialize(const VkQueueFamilyDataGraphOpticalFlowPropertiesARM* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkQueueFamilyDataGraphOpticalFlowPropertiesARM* copy_src, PNextCopyState* copy_state = {});
+    VkQueueFamilyDataGraphOpticalFlowPropertiesARM* ptr() {
+        return reinterpret_cast<VkQueueFamilyDataGraphOpticalFlowPropertiesARM*>(this);
+    }
+    VkQueueFamilyDataGraphOpticalFlowPropertiesARM const* ptr() const {
+        return reinterpret_cast<VkQueueFamilyDataGraphOpticalFlowPropertiesARM const*>(this);
+    }
+};
+struct safe_VkDataGraphPipelineOpticalFlowCreateInfoARM {
+    VkStructureType sType;
+    void* pNext{};
+    uint32_t width;
+    uint32_t height;
+    VkFormat imageFormat;
+    VkFormat flowVectorFormat;
+    VkFormat costFormat;
+    VkDataGraphOpticalFlowGridSizeFlagsARM outputGridSize;
+    VkDataGraphOpticalFlowGridSizeFlagsARM hintGridSize;
+    VkDataGraphOpticalFlowPerformanceLevelARM performanceLevel;
+    VkDataGraphOpticalFlowCreateFlagsARM flags;
+
+    safe_VkDataGraphPipelineOpticalFlowCreateInfoARM(const VkDataGraphPipelineOpticalFlowCreateInfoARM* in_struct,
+                                                     PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkDataGraphPipelineOpticalFlowCreateInfoARM(const safe_VkDataGraphPipelineOpticalFlowCreateInfoARM& copy_src);
+    safe_VkDataGraphPipelineOpticalFlowCreateInfoARM& operator=(const safe_VkDataGraphPipelineOpticalFlowCreateInfoARM& copy_src);
+    safe_VkDataGraphPipelineOpticalFlowCreateInfoARM();
+    ~safe_VkDataGraphPipelineOpticalFlowCreateInfoARM();
+    void initialize(const VkDataGraphPipelineOpticalFlowCreateInfoARM* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkDataGraphPipelineOpticalFlowCreateInfoARM* copy_src, PNextCopyState* copy_state = {});
+    VkDataGraphPipelineOpticalFlowCreateInfoARM* ptr() {
+        return reinterpret_cast<VkDataGraphPipelineOpticalFlowCreateInfoARM*>(this);
+    }
+    VkDataGraphPipelineOpticalFlowCreateInfoARM const* ptr() const {
+        return reinterpret_cast<VkDataGraphPipelineOpticalFlowCreateInfoARM const*>(this);
+    }
+};
+struct safe_VkDataGraphOpticalFlowImageFormatPropertiesARM {
+    VkStructureType sType;
+    void* pNext{};
+    VkFormat format;
+
+    safe_VkDataGraphOpticalFlowImageFormatPropertiesARM(const VkDataGraphOpticalFlowImageFormatPropertiesARM* in_struct,
+                                                        PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkDataGraphOpticalFlowImageFormatPropertiesARM(const safe_VkDataGraphOpticalFlowImageFormatPropertiesARM& copy_src);
+    safe_VkDataGraphOpticalFlowImageFormatPropertiesARM& operator=(
+        const safe_VkDataGraphOpticalFlowImageFormatPropertiesARM& copy_src);
+    safe_VkDataGraphOpticalFlowImageFormatPropertiesARM();
+    ~safe_VkDataGraphOpticalFlowImageFormatPropertiesARM();
+    void initialize(const VkDataGraphOpticalFlowImageFormatPropertiesARM* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkDataGraphOpticalFlowImageFormatPropertiesARM* copy_src, PNextCopyState* copy_state = {});
+    VkDataGraphOpticalFlowImageFormatPropertiesARM* ptr() {
+        return reinterpret_cast<VkDataGraphOpticalFlowImageFormatPropertiesARM*>(this);
+    }
+    VkDataGraphOpticalFlowImageFormatPropertiesARM const* ptr() const {
+        return reinterpret_cast<VkDataGraphOpticalFlowImageFormatPropertiesARM const*>(this);
+    }
+};
+struct safe_VkDataGraphOpticalFlowImageFormatInfoARM {
+    VkStructureType sType;
+    const void* pNext{};
+    VkDataGraphOpticalFlowImageUsageFlagsARM usage;
+
+    safe_VkDataGraphOpticalFlowImageFormatInfoARM(const VkDataGraphOpticalFlowImageFormatInfoARM* in_struct,
+                                                  PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkDataGraphOpticalFlowImageFormatInfoARM(const safe_VkDataGraphOpticalFlowImageFormatInfoARM& copy_src);
+    safe_VkDataGraphOpticalFlowImageFormatInfoARM& operator=(const safe_VkDataGraphOpticalFlowImageFormatInfoARM& copy_src);
+    safe_VkDataGraphOpticalFlowImageFormatInfoARM();
+    ~safe_VkDataGraphOpticalFlowImageFormatInfoARM();
+    void initialize(const VkDataGraphOpticalFlowImageFormatInfoARM* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkDataGraphOpticalFlowImageFormatInfoARM* copy_src, PNextCopyState* copy_state = {});
+    VkDataGraphOpticalFlowImageFormatInfoARM* ptr() { return reinterpret_cast<VkDataGraphOpticalFlowImageFormatInfoARM*>(this); }
+    VkDataGraphOpticalFlowImageFormatInfoARM const* ptr() const {
+        return reinterpret_cast<VkDataGraphOpticalFlowImageFormatInfoARM const*>(this);
+    }
+};
+struct safe_VkDataGraphPipelineOpticalFlowDispatchInfoARM {
+    VkStructureType sType;
+    void* pNext{};
+    VkDataGraphOpticalFlowExecuteFlagsARM flags;
+    uint32_t meanFlowL1NormHint;
+
+    safe_VkDataGraphPipelineOpticalFlowDispatchInfoARM(const VkDataGraphPipelineOpticalFlowDispatchInfoARM* in_struct,
+                                                       PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkDataGraphPipelineOpticalFlowDispatchInfoARM(const safe_VkDataGraphPipelineOpticalFlowDispatchInfoARM& copy_src);
+    safe_VkDataGraphPipelineOpticalFlowDispatchInfoARM& operator=(
+        const safe_VkDataGraphPipelineOpticalFlowDispatchInfoARM& copy_src);
+    safe_VkDataGraphPipelineOpticalFlowDispatchInfoARM();
+    ~safe_VkDataGraphPipelineOpticalFlowDispatchInfoARM();
+    void initialize(const VkDataGraphPipelineOpticalFlowDispatchInfoARM* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkDataGraphPipelineOpticalFlowDispatchInfoARM* copy_src, PNextCopyState* copy_state = {});
+    VkDataGraphPipelineOpticalFlowDispatchInfoARM* ptr() {
+        return reinterpret_cast<VkDataGraphPipelineOpticalFlowDispatchInfoARM*>(this);
+    }
+    VkDataGraphPipelineOpticalFlowDispatchInfoARM const* ptr() const {
+        return reinterpret_cast<VkDataGraphPipelineOpticalFlowDispatchInfoARM const*>(this);
+    }
+};
+struct safe_VkDataGraphPipelineResourceInfoImageLayoutARM {
+    VkStructureType sType;
+    const void* pNext{};
+    VkImageLayout layout;
+
+    safe_VkDataGraphPipelineResourceInfoImageLayoutARM(const VkDataGraphPipelineResourceInfoImageLayoutARM* in_struct,
+                                                       PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkDataGraphPipelineResourceInfoImageLayoutARM(const safe_VkDataGraphPipelineResourceInfoImageLayoutARM& copy_src);
+    safe_VkDataGraphPipelineResourceInfoImageLayoutARM& operator=(
+        const safe_VkDataGraphPipelineResourceInfoImageLayoutARM& copy_src);
+    safe_VkDataGraphPipelineResourceInfoImageLayoutARM();
+    ~safe_VkDataGraphPipelineResourceInfoImageLayoutARM();
+    void initialize(const VkDataGraphPipelineResourceInfoImageLayoutARM* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkDataGraphPipelineResourceInfoImageLayoutARM* copy_src, PNextCopyState* copy_state = {});
+    VkDataGraphPipelineResourceInfoImageLayoutARM* ptr() {
+        return reinterpret_cast<VkDataGraphPipelineResourceInfoImageLayoutARM*>(this);
+    }
+    VkDataGraphPipelineResourceInfoImageLayoutARM const* ptr() const {
+        return reinterpret_cast<VkDataGraphPipelineResourceInfoImageLayoutARM const*>(this);
+    }
+};
+struct safe_VkDataGraphPipelineSingleNodeConnectionARM {
+    VkStructureType sType;
+    void* pNext{};
+    uint32_t set;
+    uint32_t binding;
+    VkDataGraphPipelineNodeConnectionTypeARM connection;
+
+    safe_VkDataGraphPipelineSingleNodeConnectionARM(const VkDataGraphPipelineSingleNodeConnectionARM* in_struct,
+                                                    PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkDataGraphPipelineSingleNodeConnectionARM(const safe_VkDataGraphPipelineSingleNodeConnectionARM& copy_src);
+    safe_VkDataGraphPipelineSingleNodeConnectionARM& operator=(const safe_VkDataGraphPipelineSingleNodeConnectionARM& copy_src);
+    safe_VkDataGraphPipelineSingleNodeConnectionARM();
+    ~safe_VkDataGraphPipelineSingleNodeConnectionARM();
+    void initialize(const VkDataGraphPipelineSingleNodeConnectionARM* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkDataGraphPipelineSingleNodeConnectionARM* copy_src, PNextCopyState* copy_state = {});
+    VkDataGraphPipelineSingleNodeConnectionARM* ptr() {
+        return reinterpret_cast<VkDataGraphPipelineSingleNodeConnectionARM*>(this);
+    }
+    VkDataGraphPipelineSingleNodeConnectionARM const* ptr() const {
+        return reinterpret_cast<VkDataGraphPipelineSingleNodeConnectionARM const*>(this);
+    }
+};
+struct safe_VkDataGraphPipelineSingleNodeCreateInfoARM {
+    VkStructureType sType;
+    void* pNext{};
+    VkDataGraphPipelineNodeTypeARM nodeType;
+    uint32_t connectionCount;
+    safe_VkDataGraphPipelineSingleNodeConnectionARM* pConnections{};
+
+    safe_VkDataGraphPipelineSingleNodeCreateInfoARM(const VkDataGraphPipelineSingleNodeCreateInfoARM* in_struct,
+                                                    PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkDataGraphPipelineSingleNodeCreateInfoARM(const safe_VkDataGraphPipelineSingleNodeCreateInfoARM& copy_src);
+    safe_VkDataGraphPipelineSingleNodeCreateInfoARM& operator=(const safe_VkDataGraphPipelineSingleNodeCreateInfoARM& copy_src);
+    safe_VkDataGraphPipelineSingleNodeCreateInfoARM();
+    ~safe_VkDataGraphPipelineSingleNodeCreateInfoARM();
+    void initialize(const VkDataGraphPipelineSingleNodeCreateInfoARM* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkDataGraphPipelineSingleNodeCreateInfoARM* copy_src, PNextCopyState* copy_state = {});
+    VkDataGraphPipelineSingleNodeCreateInfoARM* ptr() {
+        return reinterpret_cast<VkDataGraphPipelineSingleNodeCreateInfoARM*>(this);
+    }
+    VkDataGraphPipelineSingleNodeCreateInfoARM const* ptr() const {
+        return reinterpret_cast<VkDataGraphPipelineSingleNodeCreateInfoARM const*>(this);
+    }
+};
 struct safe_VkPhysicalDeviceShaderLongVectorFeaturesEXT {
     VkStructureType sType;
     void* pNext{};

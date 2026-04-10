@@ -2381,6 +2381,24 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DATA_GRAPH_MODEL_FEATURES_QCOM:
                 safe_pNext = new safe_VkPhysicalDeviceDataGraphModelFeaturesQCOM(reinterpret_cast<const VkPhysicalDeviceDataGraphModelFeaturesQCOM *>(pNext), copy_state, false);
                 break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DATA_GRAPH_OPTICAL_FLOW_FEATURES_ARM:
+                safe_pNext = new safe_VkPhysicalDeviceDataGraphOpticalFlowFeaturesARM(reinterpret_cast<const VkPhysicalDeviceDataGraphOpticalFlowFeaturesARM *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_OPTICAL_FLOW_CREATE_INFO_ARM:
+                safe_pNext = new safe_VkDataGraphPipelineOpticalFlowCreateInfoARM(reinterpret_cast<const VkDataGraphPipelineOpticalFlowCreateInfoARM *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_DATA_GRAPH_OPTICAL_FLOW_IMAGE_FORMAT_INFO_ARM:
+                safe_pNext = new safe_VkDataGraphOpticalFlowImageFormatInfoARM(reinterpret_cast<const VkDataGraphOpticalFlowImageFormatInfoARM *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_OPTICAL_FLOW_DISPATCH_INFO_ARM:
+                safe_pNext = new safe_VkDataGraphPipelineOpticalFlowDispatchInfoARM(reinterpret_cast<const VkDataGraphPipelineOpticalFlowDispatchInfoARM *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_RESOURCE_INFO_IMAGE_LAYOUT_ARM:
+                safe_pNext = new safe_VkDataGraphPipelineResourceInfoImageLayoutARM(reinterpret_cast<const VkDataGraphPipelineResourceInfoImageLayoutARM *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SINGLE_NODE_CREATE_INFO_ARM:
+                safe_pNext = new safe_VkDataGraphPipelineSingleNodeCreateInfoARM(reinterpret_cast<const VkDataGraphPipelineSingleNodeCreateInfoARM *>(pNext), copy_state, false);
+                break;
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_LONG_VECTOR_FEATURES_EXT:
                 safe_pNext = new safe_VkPhysicalDeviceShaderLongVectorFeaturesEXT(reinterpret_cast<const VkPhysicalDeviceShaderLongVectorFeaturesEXT *>(pNext), copy_state, false);
                 break;
@@ -4801,6 +4819,24 @@ void FreePnextChain(const void *pNext) {
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DATA_GRAPH_MODEL_FEATURES_QCOM:
             delete reinterpret_cast<safe_VkPhysicalDeviceDataGraphModelFeaturesQCOM *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DATA_GRAPH_OPTICAL_FLOW_FEATURES_ARM:
+            delete reinterpret_cast<safe_VkPhysicalDeviceDataGraphOpticalFlowFeaturesARM *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_OPTICAL_FLOW_CREATE_INFO_ARM:
+            delete reinterpret_cast<safe_VkDataGraphPipelineOpticalFlowCreateInfoARM *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_OPTICAL_FLOW_IMAGE_FORMAT_INFO_ARM:
+            delete reinterpret_cast<safe_VkDataGraphOpticalFlowImageFormatInfoARM *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_OPTICAL_FLOW_DISPATCH_INFO_ARM:
+            delete reinterpret_cast<safe_VkDataGraphPipelineOpticalFlowDispatchInfoARM *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_RESOURCE_INFO_IMAGE_LAYOUT_ARM:
+            delete reinterpret_cast<safe_VkDataGraphPipelineResourceInfoImageLayoutARM *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SINGLE_NODE_CREATE_INFO_ARM:
+            delete reinterpret_cast<safe_VkDataGraphPipelineSingleNodeCreateInfoARM *>(header);
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_LONG_VECTOR_FEATURES_EXT:
             delete reinterpret_cast<safe_VkPhysicalDeviceShaderLongVectorFeaturesEXT *>(header);
