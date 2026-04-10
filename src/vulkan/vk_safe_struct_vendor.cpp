@@ -24033,6 +24033,599 @@ void safe_VkPhysicalDeviceDataGraphModelFeaturesQCOM::initialize(const safe_VkPh
     pNext = SafePnextCopy(copy_src->pNext);
 }
 
+safe_VkPhysicalDeviceDataGraphOpticalFlowFeaturesARM::safe_VkPhysicalDeviceDataGraphOpticalFlowFeaturesARM(
+    const VkPhysicalDeviceDataGraphOpticalFlowFeaturesARM* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), dataGraphOpticalFlow(in_struct->dataGraphOpticalFlow) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceDataGraphOpticalFlowFeaturesARM::safe_VkPhysicalDeviceDataGraphOpticalFlowFeaturesARM()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DATA_GRAPH_OPTICAL_FLOW_FEATURES_ARM), pNext(nullptr), dataGraphOpticalFlow() {}
+
+safe_VkPhysicalDeviceDataGraphOpticalFlowFeaturesARM::safe_VkPhysicalDeviceDataGraphOpticalFlowFeaturesARM(
+    const safe_VkPhysicalDeviceDataGraphOpticalFlowFeaturesARM& copy_src) {
+    sType = copy_src.sType;
+    dataGraphOpticalFlow = copy_src.dataGraphOpticalFlow;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceDataGraphOpticalFlowFeaturesARM& safe_VkPhysicalDeviceDataGraphOpticalFlowFeaturesARM::operator=(
+    const safe_VkPhysicalDeviceDataGraphOpticalFlowFeaturesARM& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    dataGraphOpticalFlow = copy_src.dataGraphOpticalFlow;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceDataGraphOpticalFlowFeaturesARM::~safe_VkPhysicalDeviceDataGraphOpticalFlowFeaturesARM() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkPhysicalDeviceDataGraphOpticalFlowFeaturesARM::initialize(
+    const VkPhysicalDeviceDataGraphOpticalFlowFeaturesARM* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    dataGraphOpticalFlow = in_struct->dataGraphOpticalFlow;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceDataGraphOpticalFlowFeaturesARM::initialize(
+    const safe_VkPhysicalDeviceDataGraphOpticalFlowFeaturesARM* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    dataGraphOpticalFlow = copy_src->dataGraphOpticalFlow;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkQueueFamilyDataGraphOpticalFlowPropertiesARM::safe_VkQueueFamilyDataGraphOpticalFlowPropertiesARM(
+    const VkQueueFamilyDataGraphOpticalFlowPropertiesARM* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType),
+      supportedOutputGridSizes(in_struct->supportedOutputGridSizes),
+      supportedHintGridSizes(in_struct->supportedHintGridSizes),
+      hintSupported(in_struct->hintSupported),
+      costSupported(in_struct->costSupported),
+      minWidth(in_struct->minWidth),
+      minHeight(in_struct->minHeight),
+      maxWidth(in_struct->maxWidth),
+      maxHeight(in_struct->maxHeight) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkQueueFamilyDataGraphOpticalFlowPropertiesARM::safe_VkQueueFamilyDataGraphOpticalFlowPropertiesARM()
+    : sType(VK_STRUCTURE_TYPE_QUEUE_FAMILY_DATA_GRAPH_OPTICAL_FLOW_PROPERTIES_ARM),
+      pNext(nullptr),
+      supportedOutputGridSizes(),
+      supportedHintGridSizes(),
+      hintSupported(),
+      costSupported(),
+      minWidth(),
+      minHeight(),
+      maxWidth(),
+      maxHeight() {}
+
+safe_VkQueueFamilyDataGraphOpticalFlowPropertiesARM::safe_VkQueueFamilyDataGraphOpticalFlowPropertiesARM(
+    const safe_VkQueueFamilyDataGraphOpticalFlowPropertiesARM& copy_src) {
+    sType = copy_src.sType;
+    supportedOutputGridSizes = copy_src.supportedOutputGridSizes;
+    supportedHintGridSizes = copy_src.supportedHintGridSizes;
+    hintSupported = copy_src.hintSupported;
+    costSupported = copy_src.costSupported;
+    minWidth = copy_src.minWidth;
+    minHeight = copy_src.minHeight;
+    maxWidth = copy_src.maxWidth;
+    maxHeight = copy_src.maxHeight;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkQueueFamilyDataGraphOpticalFlowPropertiesARM& safe_VkQueueFamilyDataGraphOpticalFlowPropertiesARM::operator=(
+    const safe_VkQueueFamilyDataGraphOpticalFlowPropertiesARM& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    supportedOutputGridSizes = copy_src.supportedOutputGridSizes;
+    supportedHintGridSizes = copy_src.supportedHintGridSizes;
+    hintSupported = copy_src.hintSupported;
+    costSupported = copy_src.costSupported;
+    minWidth = copy_src.minWidth;
+    minHeight = copy_src.minHeight;
+    maxWidth = copy_src.maxWidth;
+    maxHeight = copy_src.maxHeight;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkQueueFamilyDataGraphOpticalFlowPropertiesARM::~safe_VkQueueFamilyDataGraphOpticalFlowPropertiesARM() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkQueueFamilyDataGraphOpticalFlowPropertiesARM::initialize(
+    const VkQueueFamilyDataGraphOpticalFlowPropertiesARM* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    supportedOutputGridSizes = in_struct->supportedOutputGridSizes;
+    supportedHintGridSizes = in_struct->supportedHintGridSizes;
+    hintSupported = in_struct->hintSupported;
+    costSupported = in_struct->costSupported;
+    minWidth = in_struct->minWidth;
+    minHeight = in_struct->minHeight;
+    maxWidth = in_struct->maxWidth;
+    maxHeight = in_struct->maxHeight;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkQueueFamilyDataGraphOpticalFlowPropertiesARM::initialize(
+    const safe_VkQueueFamilyDataGraphOpticalFlowPropertiesARM* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    supportedOutputGridSizes = copy_src->supportedOutputGridSizes;
+    supportedHintGridSizes = copy_src->supportedHintGridSizes;
+    hintSupported = copy_src->hintSupported;
+    costSupported = copy_src->costSupported;
+    minWidth = copy_src->minWidth;
+    minHeight = copy_src->minHeight;
+    maxWidth = copy_src->maxWidth;
+    maxHeight = copy_src->maxHeight;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkDataGraphPipelineOpticalFlowCreateInfoARM::safe_VkDataGraphPipelineOpticalFlowCreateInfoARM(
+    const VkDataGraphPipelineOpticalFlowCreateInfoARM* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType),
+      width(in_struct->width),
+      height(in_struct->height),
+      imageFormat(in_struct->imageFormat),
+      flowVectorFormat(in_struct->flowVectorFormat),
+      costFormat(in_struct->costFormat),
+      outputGridSize(in_struct->outputGridSize),
+      hintGridSize(in_struct->hintGridSize),
+      performanceLevel(in_struct->performanceLevel),
+      flags(in_struct->flags) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkDataGraphPipelineOpticalFlowCreateInfoARM::safe_VkDataGraphPipelineOpticalFlowCreateInfoARM()
+    : sType(VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_OPTICAL_FLOW_CREATE_INFO_ARM),
+      pNext(nullptr),
+      width(),
+      height(),
+      imageFormat(),
+      flowVectorFormat(),
+      costFormat(),
+      outputGridSize(),
+      hintGridSize(),
+      performanceLevel(),
+      flags() {}
+
+safe_VkDataGraphPipelineOpticalFlowCreateInfoARM::safe_VkDataGraphPipelineOpticalFlowCreateInfoARM(
+    const safe_VkDataGraphPipelineOpticalFlowCreateInfoARM& copy_src) {
+    sType = copy_src.sType;
+    width = copy_src.width;
+    height = copy_src.height;
+    imageFormat = copy_src.imageFormat;
+    flowVectorFormat = copy_src.flowVectorFormat;
+    costFormat = copy_src.costFormat;
+    outputGridSize = copy_src.outputGridSize;
+    hintGridSize = copy_src.hintGridSize;
+    performanceLevel = copy_src.performanceLevel;
+    flags = copy_src.flags;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkDataGraphPipelineOpticalFlowCreateInfoARM& safe_VkDataGraphPipelineOpticalFlowCreateInfoARM::operator=(
+    const safe_VkDataGraphPipelineOpticalFlowCreateInfoARM& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    width = copy_src.width;
+    height = copy_src.height;
+    imageFormat = copy_src.imageFormat;
+    flowVectorFormat = copy_src.flowVectorFormat;
+    costFormat = copy_src.costFormat;
+    outputGridSize = copy_src.outputGridSize;
+    hintGridSize = copy_src.hintGridSize;
+    performanceLevel = copy_src.performanceLevel;
+    flags = copy_src.flags;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkDataGraphPipelineOpticalFlowCreateInfoARM::~safe_VkDataGraphPipelineOpticalFlowCreateInfoARM() { FreePnextChain(pNext); }
+
+void safe_VkDataGraphPipelineOpticalFlowCreateInfoARM::initialize(const VkDataGraphPipelineOpticalFlowCreateInfoARM* in_struct,
+                                                                  [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    width = in_struct->width;
+    height = in_struct->height;
+    imageFormat = in_struct->imageFormat;
+    flowVectorFormat = in_struct->flowVectorFormat;
+    costFormat = in_struct->costFormat;
+    outputGridSize = in_struct->outputGridSize;
+    hintGridSize = in_struct->hintGridSize;
+    performanceLevel = in_struct->performanceLevel;
+    flags = in_struct->flags;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkDataGraphPipelineOpticalFlowCreateInfoARM::initialize(const safe_VkDataGraphPipelineOpticalFlowCreateInfoARM* copy_src,
+                                                                  [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    width = copy_src->width;
+    height = copy_src->height;
+    imageFormat = copy_src->imageFormat;
+    flowVectorFormat = copy_src->flowVectorFormat;
+    costFormat = copy_src->costFormat;
+    outputGridSize = copy_src->outputGridSize;
+    hintGridSize = copy_src->hintGridSize;
+    performanceLevel = copy_src->performanceLevel;
+    flags = copy_src->flags;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkDataGraphOpticalFlowImageFormatPropertiesARM::safe_VkDataGraphOpticalFlowImageFormatPropertiesARM(
+    const VkDataGraphOpticalFlowImageFormatPropertiesARM* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), format(in_struct->format) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkDataGraphOpticalFlowImageFormatPropertiesARM::safe_VkDataGraphOpticalFlowImageFormatPropertiesARM()
+    : sType(VK_STRUCTURE_TYPE_DATA_GRAPH_OPTICAL_FLOW_IMAGE_FORMAT_PROPERTIES_ARM), pNext(nullptr), format() {}
+
+safe_VkDataGraphOpticalFlowImageFormatPropertiesARM::safe_VkDataGraphOpticalFlowImageFormatPropertiesARM(
+    const safe_VkDataGraphOpticalFlowImageFormatPropertiesARM& copy_src) {
+    sType = copy_src.sType;
+    format = copy_src.format;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkDataGraphOpticalFlowImageFormatPropertiesARM& safe_VkDataGraphOpticalFlowImageFormatPropertiesARM::operator=(
+    const safe_VkDataGraphOpticalFlowImageFormatPropertiesARM& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    format = copy_src.format;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkDataGraphOpticalFlowImageFormatPropertiesARM::~safe_VkDataGraphOpticalFlowImageFormatPropertiesARM() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkDataGraphOpticalFlowImageFormatPropertiesARM::initialize(
+    const VkDataGraphOpticalFlowImageFormatPropertiesARM* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    format = in_struct->format;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkDataGraphOpticalFlowImageFormatPropertiesARM::initialize(
+    const safe_VkDataGraphOpticalFlowImageFormatPropertiesARM* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    format = copy_src->format;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkDataGraphOpticalFlowImageFormatInfoARM::safe_VkDataGraphOpticalFlowImageFormatInfoARM(
+    const VkDataGraphOpticalFlowImageFormatInfoARM* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), usage(in_struct->usage) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkDataGraphOpticalFlowImageFormatInfoARM::safe_VkDataGraphOpticalFlowImageFormatInfoARM()
+    : sType(VK_STRUCTURE_TYPE_DATA_GRAPH_OPTICAL_FLOW_IMAGE_FORMAT_INFO_ARM), pNext(nullptr), usage() {}
+
+safe_VkDataGraphOpticalFlowImageFormatInfoARM::safe_VkDataGraphOpticalFlowImageFormatInfoARM(
+    const safe_VkDataGraphOpticalFlowImageFormatInfoARM& copy_src) {
+    sType = copy_src.sType;
+    usage = copy_src.usage;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkDataGraphOpticalFlowImageFormatInfoARM& safe_VkDataGraphOpticalFlowImageFormatInfoARM::operator=(
+    const safe_VkDataGraphOpticalFlowImageFormatInfoARM& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    usage = copy_src.usage;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkDataGraphOpticalFlowImageFormatInfoARM::~safe_VkDataGraphOpticalFlowImageFormatInfoARM() { FreePnextChain(pNext); }
+
+void safe_VkDataGraphOpticalFlowImageFormatInfoARM::initialize(const VkDataGraphOpticalFlowImageFormatInfoARM* in_struct,
+                                                               [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    usage = in_struct->usage;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkDataGraphOpticalFlowImageFormatInfoARM::initialize(const safe_VkDataGraphOpticalFlowImageFormatInfoARM* copy_src,
+                                                               [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    usage = copy_src->usage;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkDataGraphPipelineOpticalFlowDispatchInfoARM::safe_VkDataGraphPipelineOpticalFlowDispatchInfoARM(
+    const VkDataGraphPipelineOpticalFlowDispatchInfoARM* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), flags(in_struct->flags), meanFlowL1NormHint(in_struct->meanFlowL1NormHint) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkDataGraphPipelineOpticalFlowDispatchInfoARM::safe_VkDataGraphPipelineOpticalFlowDispatchInfoARM()
+    : sType(VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_OPTICAL_FLOW_DISPATCH_INFO_ARM), pNext(nullptr), flags(), meanFlowL1NormHint() {}
+
+safe_VkDataGraphPipelineOpticalFlowDispatchInfoARM::safe_VkDataGraphPipelineOpticalFlowDispatchInfoARM(
+    const safe_VkDataGraphPipelineOpticalFlowDispatchInfoARM& copy_src) {
+    sType = copy_src.sType;
+    flags = copy_src.flags;
+    meanFlowL1NormHint = copy_src.meanFlowL1NormHint;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkDataGraphPipelineOpticalFlowDispatchInfoARM& safe_VkDataGraphPipelineOpticalFlowDispatchInfoARM::operator=(
+    const safe_VkDataGraphPipelineOpticalFlowDispatchInfoARM& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    flags = copy_src.flags;
+    meanFlowL1NormHint = copy_src.meanFlowL1NormHint;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkDataGraphPipelineOpticalFlowDispatchInfoARM::~safe_VkDataGraphPipelineOpticalFlowDispatchInfoARM() { FreePnextChain(pNext); }
+
+void safe_VkDataGraphPipelineOpticalFlowDispatchInfoARM::initialize(const VkDataGraphPipelineOpticalFlowDispatchInfoARM* in_struct,
+                                                                    [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    flags = in_struct->flags;
+    meanFlowL1NormHint = in_struct->meanFlowL1NormHint;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkDataGraphPipelineOpticalFlowDispatchInfoARM::initialize(
+    const safe_VkDataGraphPipelineOpticalFlowDispatchInfoARM* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    flags = copy_src->flags;
+    meanFlowL1NormHint = copy_src->meanFlowL1NormHint;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkDataGraphPipelineResourceInfoImageLayoutARM::safe_VkDataGraphPipelineResourceInfoImageLayoutARM(
+    const VkDataGraphPipelineResourceInfoImageLayoutARM* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), layout(in_struct->layout) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkDataGraphPipelineResourceInfoImageLayoutARM::safe_VkDataGraphPipelineResourceInfoImageLayoutARM()
+    : sType(VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_RESOURCE_INFO_IMAGE_LAYOUT_ARM), pNext(nullptr), layout() {}
+
+safe_VkDataGraphPipelineResourceInfoImageLayoutARM::safe_VkDataGraphPipelineResourceInfoImageLayoutARM(
+    const safe_VkDataGraphPipelineResourceInfoImageLayoutARM& copy_src) {
+    sType = copy_src.sType;
+    layout = copy_src.layout;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkDataGraphPipelineResourceInfoImageLayoutARM& safe_VkDataGraphPipelineResourceInfoImageLayoutARM::operator=(
+    const safe_VkDataGraphPipelineResourceInfoImageLayoutARM& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    layout = copy_src.layout;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkDataGraphPipelineResourceInfoImageLayoutARM::~safe_VkDataGraphPipelineResourceInfoImageLayoutARM() { FreePnextChain(pNext); }
+
+void safe_VkDataGraphPipelineResourceInfoImageLayoutARM::initialize(const VkDataGraphPipelineResourceInfoImageLayoutARM* in_struct,
+                                                                    [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    layout = in_struct->layout;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkDataGraphPipelineResourceInfoImageLayoutARM::initialize(
+    const safe_VkDataGraphPipelineResourceInfoImageLayoutARM* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    layout = copy_src->layout;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkDataGraphPipelineSingleNodeConnectionARM::safe_VkDataGraphPipelineSingleNodeConnectionARM(
+    const VkDataGraphPipelineSingleNodeConnectionARM* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), set(in_struct->set), binding(in_struct->binding), connection(in_struct->connection) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkDataGraphPipelineSingleNodeConnectionARM::safe_VkDataGraphPipelineSingleNodeConnectionARM()
+    : sType(VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SINGLE_NODE_CONNECTION_ARM), pNext(nullptr), set(), binding(), connection() {}
+
+safe_VkDataGraphPipelineSingleNodeConnectionARM::safe_VkDataGraphPipelineSingleNodeConnectionARM(
+    const safe_VkDataGraphPipelineSingleNodeConnectionARM& copy_src) {
+    sType = copy_src.sType;
+    set = copy_src.set;
+    binding = copy_src.binding;
+    connection = copy_src.connection;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkDataGraphPipelineSingleNodeConnectionARM& safe_VkDataGraphPipelineSingleNodeConnectionARM::operator=(
+    const safe_VkDataGraphPipelineSingleNodeConnectionARM& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    set = copy_src.set;
+    binding = copy_src.binding;
+    connection = copy_src.connection;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkDataGraphPipelineSingleNodeConnectionARM::~safe_VkDataGraphPipelineSingleNodeConnectionARM() { FreePnextChain(pNext); }
+
+void safe_VkDataGraphPipelineSingleNodeConnectionARM::initialize(const VkDataGraphPipelineSingleNodeConnectionARM* in_struct,
+                                                                 [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    set = in_struct->set;
+    binding = in_struct->binding;
+    connection = in_struct->connection;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkDataGraphPipelineSingleNodeConnectionARM::initialize(const safe_VkDataGraphPipelineSingleNodeConnectionARM* copy_src,
+                                                                 [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    set = copy_src->set;
+    binding = copy_src->binding;
+    connection = copy_src->connection;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkDataGraphPipelineSingleNodeCreateInfoARM::safe_VkDataGraphPipelineSingleNodeCreateInfoARM(
+    const VkDataGraphPipelineSingleNodeCreateInfoARM* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), nodeType(in_struct->nodeType), connectionCount(in_struct->connectionCount), pConnections(nullptr) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+    if (connectionCount && in_struct->pConnections) {
+        pConnections = new safe_VkDataGraphPipelineSingleNodeConnectionARM[connectionCount];
+        for (uint32_t i = 0; i < connectionCount; ++i) {
+            pConnections[i].initialize(&in_struct->pConnections[i]);
+        }
+    }
+}
+
+safe_VkDataGraphPipelineSingleNodeCreateInfoARM::safe_VkDataGraphPipelineSingleNodeCreateInfoARM()
+    : sType(VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SINGLE_NODE_CREATE_INFO_ARM),
+      pNext(nullptr),
+      nodeType(),
+      connectionCount(),
+      pConnections(nullptr) {}
+
+safe_VkDataGraphPipelineSingleNodeCreateInfoARM::safe_VkDataGraphPipelineSingleNodeCreateInfoARM(
+    const safe_VkDataGraphPipelineSingleNodeCreateInfoARM& copy_src) {
+    sType = copy_src.sType;
+    nodeType = copy_src.nodeType;
+    connectionCount = copy_src.connectionCount;
+    pConnections = nullptr;
+    pNext = SafePnextCopy(copy_src.pNext);
+    if (connectionCount && copy_src.pConnections) {
+        pConnections = new safe_VkDataGraphPipelineSingleNodeConnectionARM[connectionCount];
+        for (uint32_t i = 0; i < connectionCount; ++i) {
+            pConnections[i].initialize(&copy_src.pConnections[i]);
+        }
+    }
+}
+
+safe_VkDataGraphPipelineSingleNodeCreateInfoARM& safe_VkDataGraphPipelineSingleNodeCreateInfoARM::operator=(
+    const safe_VkDataGraphPipelineSingleNodeCreateInfoARM& copy_src) {
+    if (&copy_src == this) return *this;
+
+    if (pConnections) delete[] pConnections;
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    nodeType = copy_src.nodeType;
+    connectionCount = copy_src.connectionCount;
+    pConnections = nullptr;
+    pNext = SafePnextCopy(copy_src.pNext);
+    if (connectionCount && copy_src.pConnections) {
+        pConnections = new safe_VkDataGraphPipelineSingleNodeConnectionARM[connectionCount];
+        for (uint32_t i = 0; i < connectionCount; ++i) {
+            pConnections[i].initialize(&copy_src.pConnections[i]);
+        }
+    }
+
+    return *this;
+}
+
+safe_VkDataGraphPipelineSingleNodeCreateInfoARM::~safe_VkDataGraphPipelineSingleNodeCreateInfoARM() {
+    if (pConnections) delete[] pConnections;
+    FreePnextChain(pNext);
+}
+
+void safe_VkDataGraphPipelineSingleNodeCreateInfoARM::initialize(const VkDataGraphPipelineSingleNodeCreateInfoARM* in_struct,
+                                                                 [[maybe_unused]] PNextCopyState* copy_state) {
+    if (pConnections) delete[] pConnections;
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    nodeType = in_struct->nodeType;
+    connectionCount = in_struct->connectionCount;
+    pConnections = nullptr;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    if (connectionCount && in_struct->pConnections) {
+        pConnections = new safe_VkDataGraphPipelineSingleNodeConnectionARM[connectionCount];
+        for (uint32_t i = 0; i < connectionCount; ++i) {
+            pConnections[i].initialize(&in_struct->pConnections[i]);
+        }
+    }
+}
+
+void safe_VkDataGraphPipelineSingleNodeCreateInfoARM::initialize(const safe_VkDataGraphPipelineSingleNodeCreateInfoARM* copy_src,
+                                                                 [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    nodeType = copy_src->nodeType;
+    connectionCount = copy_src->connectionCount;
+    pConnections = nullptr;
+    pNext = SafePnextCopy(copy_src->pNext);
+    if (connectionCount && copy_src->pConnections) {
+        pConnections = new safe_VkDataGraphPipelineSingleNodeConnectionARM[connectionCount];
+        for (uint32_t i = 0; i < connectionCount; ++i) {
+            pConnections[i].initialize(&copy_src->pConnections[i]);
+        }
+    }
+}
+
 safe_VkPhysicalDevicePipelineCacheIncrementalModeFeaturesSEC::safe_VkPhysicalDevicePipelineCacheIncrementalModeFeaturesSEC(
     const VkPhysicalDevicePipelineCacheIncrementalModeFeaturesSEC* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
     bool copy_pnext)

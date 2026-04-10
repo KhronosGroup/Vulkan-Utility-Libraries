@@ -1249,6 +1249,15 @@ template <> inline VkStructureType GetSType<VkBeginCustomResolveInfoEXT>() { ret
 template <> inline VkStructureType GetSType<VkCustomResolveCreateInfoEXT>() { return VK_STRUCTURE_TYPE_CUSTOM_RESOLVE_CREATE_INFO_EXT; }
 template <> inline VkStructureType GetSType<VkDataGraphPipelineBuiltinModelCreateInfoQCOM>() { return VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_BUILTIN_MODEL_CREATE_INFO_QCOM; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceDataGraphModelFeaturesQCOM>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DATA_GRAPH_MODEL_FEATURES_QCOM; }
+template <> inline VkStructureType GetSType<VkPhysicalDeviceDataGraphOpticalFlowFeaturesARM>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DATA_GRAPH_OPTICAL_FLOW_FEATURES_ARM; }
+template <> inline VkStructureType GetSType<VkQueueFamilyDataGraphOpticalFlowPropertiesARM>() { return VK_STRUCTURE_TYPE_QUEUE_FAMILY_DATA_GRAPH_OPTICAL_FLOW_PROPERTIES_ARM; }
+template <> inline VkStructureType GetSType<VkDataGraphPipelineOpticalFlowCreateInfoARM>() { return VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_OPTICAL_FLOW_CREATE_INFO_ARM; }
+template <> inline VkStructureType GetSType<VkDataGraphOpticalFlowImageFormatPropertiesARM>() { return VK_STRUCTURE_TYPE_DATA_GRAPH_OPTICAL_FLOW_IMAGE_FORMAT_PROPERTIES_ARM; }
+template <> inline VkStructureType GetSType<VkDataGraphOpticalFlowImageFormatInfoARM>() { return VK_STRUCTURE_TYPE_DATA_GRAPH_OPTICAL_FLOW_IMAGE_FORMAT_INFO_ARM; }
+template <> inline VkStructureType GetSType<VkDataGraphPipelineOpticalFlowDispatchInfoARM>() { return VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_OPTICAL_FLOW_DISPATCH_INFO_ARM; }
+template <> inline VkStructureType GetSType<VkDataGraphPipelineResourceInfoImageLayoutARM>() { return VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_RESOURCE_INFO_IMAGE_LAYOUT_ARM; }
+template <> inline VkStructureType GetSType<VkDataGraphPipelineSingleNodeConnectionARM>() { return VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SINGLE_NODE_CONNECTION_ARM; }
+template <> inline VkStructureType GetSType<VkDataGraphPipelineSingleNodeCreateInfoARM>() { return VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SINGLE_NODE_CREATE_INFO_ARM; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceShaderLongVectorFeaturesEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_LONG_VECTOR_FEATURES_EXT; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceShaderLongVectorPropertiesEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_LONG_VECTOR_PROPERTIES_EXT; }
 template <> inline VkStructureType GetSType<VkPhysicalDevicePipelineCacheIncrementalModeFeaturesSEC>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_CACHE_INCREMENTAL_MODE_FEATURES_SEC; }
