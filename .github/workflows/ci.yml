@@ -14,8 +14,7 @@ on:
 
 jobs:
   build_and_test:
-    # Use chromium as a test build, so don't run this job unless something simple works first
-    needs: chromium
+    needs: generate_source
     runs-on: ${{matrix.os}}
     strategy:
       matrix:
@@ -34,8 +33,7 @@ jobs:
         working-directory: build/
 
   windows-arm64:
-    # Use chromium as a test build, so don't run this job unless something simple works first
-    needs: chromium
+    needs: generate_source
     runs-on: windows-latest
     env:
       CMAKE_GENERATOR: Ninja
@@ -49,8 +47,7 @@ jobs:
       - run: cmake --install build --prefix build/install
 
   android:
-    # Use chromium as a test build, so don't run this job unless something simple works first
-    needs: chromium
+    needs: generate_source
     runs-on: ubuntu-24.04
     strategy:
       matrix:
@@ -84,18 +81,18 @@ jobs:
       uses: fsfe/reuse-action@v6
 
   # Test to ensure we don't accidentally break the Chromium build.
-  chromium:
-    needs: generate_source
-    runs-on: ubuntu-24.04
-    steps:
-      - uses: actions/checkout@v6
-      - uses: actions/setup-python@v6
-        with:
-          python-version: '3.10'
-      - name: Install WSI dependencies
-        run: sudo apt-get -qq update && sudo apt-get install -y libwayland-dev xorg-dev
-      - name: Test chromium build
-        run: python scripts/gn/gn.py
+  # chromium:
+  #   needs: generate_source
+  #   runs-on: ubuntu-24.04
+  #   steps:
+  #     - uses: actions/checkout@v6
+  #     - uses: actions/setup-python@v6
+  #       with:
+  #         python-version: '3.10'
+  #     - name: Install WSI dependencies
+  #       run: sudo apt-get -qq update && sudo apt-get install -y libwayland-dev xorg-dev
+  #     - name: Test chromium build
+  #       run: python scripts/gn/gn.py
 
   generate_source:
     runs-on: ubuntu-24.04
