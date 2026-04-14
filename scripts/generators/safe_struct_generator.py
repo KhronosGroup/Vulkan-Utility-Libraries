@@ -182,8 +182,6 @@ class SafeStructOutputGenerator(BaseGenerator):
         out.append('''
             #pragma once
             #include <vulkan/vulkan.h>
-            #include <algorithm>
-
             #include <vulkan/utility/vk_safe_struct_utils.hpp>
 
             namespace vku {
@@ -280,7 +278,6 @@ class SafeStructOutputGenerator(BaseGenerator):
             #include <vulkan/vk_layer.h>
             #include <vulkan/utility/vk_safe_struct.hpp>
 
-            #include <vector>
             #include <cstring>
 
             namespace vku {
@@ -584,7 +581,7 @@ void FreePnextChain(const void *pNext) {
 
                 if member.pointer and ('PFN_' in member.type or member.name in self.unused_params.get(struct.name, [])):
                     m_shallow_copy = True
-                
+
                 if member.name == 'pNext':
                     copy_pnext = 'pNext = SafePnextCopy(in_struct->pNext, copy_state);\n'
                     copy_pnext_if = '''

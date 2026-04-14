@@ -15,7 +15,6 @@
 #include <cstdlib>
 #include <cstring>
 #include <functional>
-#include <vector>
 
 namespace vku {
 

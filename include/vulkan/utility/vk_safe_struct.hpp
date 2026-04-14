@@ -16,8 +16,6 @@
 
 #pragma once
 #include <vulkan/vulkan.h>
-#include <algorithm>
-
 #include <vulkan/utility/vk_safe_struct_utils.hpp>
 
 namespace vku {

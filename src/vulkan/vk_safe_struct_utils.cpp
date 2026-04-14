@@ -17,7 +17,6 @@
 #include <vulkan/vk_layer.h>
 #include <vulkan/utility/vk_safe_struct.hpp>
 
-#include <vector>
 #include <cstring>
 
 namespace vku {
