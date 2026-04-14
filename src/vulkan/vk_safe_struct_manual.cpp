@@ -18,11 +18,6 @@
 
 namespace vku {
 
-std::vector<std::pair<uint32_t, uint32_t>>& GetCustomStypeInfo() {
-    static std::vector<std::pair<uint32_t, uint32_t>> custom_stype_info{};
-    return custom_stype_info;
-}
-
 struct ASGeomKHRExtraData {
     ASGeomKHRExtraData(uint8_t* alloc, uint32_t primOffset, uint32_t primCount)
         : ptr(alloc), primitiveOffset(primOffset), primitiveCount(primCount) {}

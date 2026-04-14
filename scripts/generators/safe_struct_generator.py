@@ -187,10 +187,6 @@ class SafeStructOutputGenerator(BaseGenerator):
             #include <vulkan/utility/vk_safe_struct_utils.hpp>
 
             namespace vku {
-
-            // Mapping of unknown stype codes to structure lengths. This should be set up by the application
-            // before vkCreateInstance() and not modified afterwards.
-            std::vector<std::pair<uint32_t, uint32_t>>& GetCustomStypeInfo();
             \n''')
 
         guard_helper = PlatformGuardHelper()
@@ -333,14 +329,7 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
         out.extend(guard_helper.add_guard(None))
 
         out.append('''
-            default: // Encountered an unknown sType -- skip (do not copy) this entry in the chain
-                // If sType is in custom list, construct blind copy
-                for (auto item : GetCustomStypeInfo()) {
-                    if (item.first == static_cast<uint32_t>(header->sType)) {
-                        safe_pNext = malloc(item.second);
-                        memcpy(safe_pNext, header, item.second);
-                    }
-                }
+            default:
                 break;
         }
         if (!first_pNext) {
@@ -389,14 +378,7 @@ void FreePnextChain(const void *pNext) {
         out.extend(guard_helper.add_guard(None))
 
         out.append('''
-        default: // Encountered an unknown sType
-            // If sType is in custom list, free custom struct memory and clean up
-            for (auto item : GetCustomStypeInfo()   ) {
-                if (item.first == static_cast<uint32_t>(header->sType)) {
-                    free(current);
-                    break;
-                }
-            }
+        default:
             break;
         }
         current = next;
@@ -584,7 +566,7 @@ void FreePnextChain(const void *pNext) {
 
                 if member.pointer and ('PFN_' in member.type or member.name in self.unused_params.get(struct.name, [])):
                     m_shallow_copy = True
-                
+
                 if member.name == 'pNext':
                     copy_pnext = 'pNext = SafePnextCopy(in_struct->pNext, copy_state);\n'
                     copy_pnext_if = '''
