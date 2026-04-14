@@ -2451,14 +2451,7 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
                 safe_pNext = new safe_VkPhysicalDeviceMeshShaderPropertiesEXT(reinterpret_cast<const VkPhysicalDeviceMeshShaderPropertiesEXT *>(pNext), copy_state, false);
                 break;
 
-            default: // Encountered an unknown sType -- skip (do not copy) this entry in the chain
-                // If sType is in custom list, construct blind copy
-                for (auto item : GetCustomStypeInfo()) {
-                    if (item.first == static_cast<uint32_t>(header->sType)) {
-                        safe_pNext = malloc(item.second);
-                        memcpy(safe_pNext, header, item.second);
-                    }
-                }
+            default:
                 break;
         }
         if (!first_pNext) {
@@ -4890,14 +4883,7 @@ void FreePnextChain(const void *pNext) {
             delete reinterpret_cast<safe_VkPhysicalDeviceMeshShaderPropertiesEXT *>(header);
             break;
 
-        default: // Encountered an unknown sType
-            // If sType is in custom list, free custom struct memory and clean up
-            for (auto item : GetCustomStypeInfo()   ) {
-                if (item.first == static_cast<uint32_t>(header->sType)) {
-                    free(current);
-                    break;
-                }
-            }
+        default:
             break;
         }
         current = next;
