@@ -326,7 +326,9 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
             first_pNext = safe_pNext;
         }
         pNext = header->pNext;
-        if (prev_pNext && safe_pNext) {
+        // need to make sure pass through a private struct
+        // https://github.com/KhronosGroup/Vulkan-Utility-Libraries/pull/385#issuecomment-4490691826
+        if (prev_pNext) {
             prev_pNext->pNext = (VkBaseOutStructure*)safe_pNext;
         }
         if (safe_pNext) {
