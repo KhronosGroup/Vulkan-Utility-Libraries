@@ -37,10 +37,6 @@ class SafeStructOutputGenerator(BaseGenerator):
             # This needs to know if we're doing a host or device build, logic becomes complex and very specialized
             'VkAccelerationStructureBuildGeometryInfoKHR',
             'VkAccelerationStructureGeometryKHR',
-            # Have a pUsageCounts and ppUsageCounts that is not currently handled in the generated code
-            'VkMicromapBuildInfoEXT',
-            'VkAccelerationStructureTrianglesOpacityMicromapEXT',
-            'VkAccelerationStructureTrianglesDisplacementMicromapNV',
              # Special case because its pointers may be non-null but ignored
             'VkGraphicsPipelineCreateInfo',
             # Special case because it has custom construct parameters
@@ -623,6 +619,31 @@ void FreePnextChain(const void *pNext) {
                                     init_list += f'\n{member.name}(in_struct->{member.name}),'
                                     init_func_txt += f'{member.name} = in_struct->{member.name};\n'
                         default_init_list += f'\n{member.name}(nullptr),'
+                    elif member.name == 'ppUsageCounts':
+                        # This is the same issue above, but instead of void/char* we have custom Vulkan types
+                        # Currently just search for 'ppUsageCounts' until something that isn't also needs this, then make it more general
+                        default_init_list += f'\n{member.name}(nullptr),'
+                        init_list += f'\n{member.name}(nullptr),'
+                        init_func_txt += f'{member.name} = nullptr;\n'
+
+                        construct_txt += f'''
+                                    if (in_struct->{member.name}) {{
+                                        {m_type}** pointer_array = new {m_type}*[in_struct->usageCountsCount];
+                                        for (uint32_t i = 0; i < in_struct->usageCountsCount; ++i) {{
+                                            pointer_array[i] = new {m_type}(*in_struct->{member.name}[i]);
+                                        }}
+                                        {member.name} = pointer_array;
+                                    }}
+                                    '''
+
+                        destruct_txt += f'''
+                                    if ({member.name}) {{
+                                        for (uint32_t i = 0; i < usageCountsCount; ++i) {{
+                                            delete {member.name}[i];
+                                        }}
+                                        delete[] {member.name};
+                                    }}
+                                    '''
                     else:
                         default_init_list += f'\n{member.name}(nullptr),'
                         init_list += f'\n{member.name}(nullptr),'
