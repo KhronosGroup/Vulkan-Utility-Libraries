@@ -25192,6 +25192,261 @@ void safe_VkPhysicalDeviceShaderMixedFloatDotProductFeaturesVALVE::initialize(
     pNext = SafePnextCopy(copy_src->pNext);
 }
 
+safe_VkThrottleHintSubmitInfoSEC::safe_VkThrottleHintSubmitInfoSEC(const VkThrottleHintSubmitInfoSEC* in_struct,
+                                                                   [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), throttleHint(in_struct->throttleHint) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkThrottleHintSubmitInfoSEC::safe_VkThrottleHintSubmitInfoSEC()
+    : sType(VK_STRUCTURE_TYPE_THROTTLE_HINT_SUBMIT_INFO_SEC), pNext(nullptr), throttleHint() {}
+
+safe_VkThrottleHintSubmitInfoSEC::safe_VkThrottleHintSubmitInfoSEC(const safe_VkThrottleHintSubmitInfoSEC& copy_src) {
+    sType = copy_src.sType;
+    throttleHint = copy_src.throttleHint;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkThrottleHintSubmitInfoSEC& safe_VkThrottleHintSubmitInfoSEC::operator=(const safe_VkThrottleHintSubmitInfoSEC& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    throttleHint = copy_src.throttleHint;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkThrottleHintSubmitInfoSEC::~safe_VkThrottleHintSubmitInfoSEC() { FreePnextChain(pNext); }
+
+void safe_VkThrottleHintSubmitInfoSEC::initialize(const VkThrottleHintSubmitInfoSEC* in_struct,
+                                                  [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    throttleHint = in_struct->throttleHint;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkThrottleHintSubmitInfoSEC::initialize(const safe_VkThrottleHintSubmitInfoSEC* copy_src,
+                                                  [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    throttleHint = copy_src->throttleHint;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkPhysicalDeviceThrottleHintFeaturesSEC::safe_VkPhysicalDeviceThrottleHintFeaturesSEC(
+    const VkPhysicalDeviceThrottleHintFeaturesSEC* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), throttleHint(in_struct->throttleHint) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceThrottleHintFeaturesSEC::safe_VkPhysicalDeviceThrottleHintFeaturesSEC()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_THROTTLE_HINT_FEATURES_SEC), pNext(nullptr), throttleHint() {}
+
+safe_VkPhysicalDeviceThrottleHintFeaturesSEC::safe_VkPhysicalDeviceThrottleHintFeaturesSEC(
+    const safe_VkPhysicalDeviceThrottleHintFeaturesSEC& copy_src) {
+    sType = copy_src.sType;
+    throttleHint = copy_src.throttleHint;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceThrottleHintFeaturesSEC& safe_VkPhysicalDeviceThrottleHintFeaturesSEC::operator=(
+    const safe_VkPhysicalDeviceThrottleHintFeaturesSEC& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    throttleHint = copy_src.throttleHint;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceThrottleHintFeaturesSEC::~safe_VkPhysicalDeviceThrottleHintFeaturesSEC() { FreePnextChain(pNext); }
+
+void safe_VkPhysicalDeviceThrottleHintFeaturesSEC::initialize(const VkPhysicalDeviceThrottleHintFeaturesSEC* in_struct,
+                                                              [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    throttleHint = in_struct->throttleHint;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceThrottleHintFeaturesSEC::initialize(const safe_VkPhysicalDeviceThrottleHintFeaturesSEC* copy_src,
+                                                              [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    throttleHint = copy_src->throttleHint;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkPhysicalDeviceDataGraphNeuralAcceleratorStatisticsFeaturesARM::
+    safe_VkPhysicalDeviceDataGraphNeuralAcceleratorStatisticsFeaturesARM(
+        const VkPhysicalDeviceDataGraphNeuralAcceleratorStatisticsFeaturesARM* in_struct,
+        [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), dataGraphNeuralAcceleratorStatistics(in_struct->dataGraphNeuralAcceleratorStatistics) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceDataGraphNeuralAcceleratorStatisticsFeaturesARM::
+    safe_VkPhysicalDeviceDataGraphNeuralAcceleratorStatisticsFeaturesARM()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DATA_GRAPH_NEURAL_ACCELERATOR_STATISTICS_FEATURES_ARM),
+      pNext(nullptr),
+      dataGraphNeuralAcceleratorStatistics() {}
+
+safe_VkPhysicalDeviceDataGraphNeuralAcceleratorStatisticsFeaturesARM::
+    safe_VkPhysicalDeviceDataGraphNeuralAcceleratorStatisticsFeaturesARM(
+        const safe_VkPhysicalDeviceDataGraphNeuralAcceleratorStatisticsFeaturesARM& copy_src) {
+    sType = copy_src.sType;
+    dataGraphNeuralAcceleratorStatistics = copy_src.dataGraphNeuralAcceleratorStatistics;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceDataGraphNeuralAcceleratorStatisticsFeaturesARM&
+safe_VkPhysicalDeviceDataGraphNeuralAcceleratorStatisticsFeaturesARM::operator=(
+    const safe_VkPhysicalDeviceDataGraphNeuralAcceleratorStatisticsFeaturesARM& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    dataGraphNeuralAcceleratorStatistics = copy_src.dataGraphNeuralAcceleratorStatistics;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceDataGraphNeuralAcceleratorStatisticsFeaturesARM::
+    ~safe_VkPhysicalDeviceDataGraphNeuralAcceleratorStatisticsFeaturesARM() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkPhysicalDeviceDataGraphNeuralAcceleratorStatisticsFeaturesARM::initialize(
+    const VkPhysicalDeviceDataGraphNeuralAcceleratorStatisticsFeaturesARM* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    dataGraphNeuralAcceleratorStatistics = in_struct->dataGraphNeuralAcceleratorStatistics;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceDataGraphNeuralAcceleratorStatisticsFeaturesARM::initialize(
+    const safe_VkPhysicalDeviceDataGraphNeuralAcceleratorStatisticsFeaturesARM* copy_src,
+    [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    dataGraphNeuralAcceleratorStatistics = copy_src->dataGraphNeuralAcceleratorStatistics;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkDataGraphPipelineNeuralStatisticsCreateInfoARM::safe_VkDataGraphPipelineNeuralStatisticsCreateInfoARM(
+    const VkDataGraphPipelineNeuralStatisticsCreateInfoARM* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), allowNeuralStatistics(in_struct->allowNeuralStatistics) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkDataGraphPipelineNeuralStatisticsCreateInfoARM::safe_VkDataGraphPipelineNeuralStatisticsCreateInfoARM()
+    : sType(VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_NEURAL_STATISTICS_CREATE_INFO_ARM), pNext(nullptr), allowNeuralStatistics() {}
+
+safe_VkDataGraphPipelineNeuralStatisticsCreateInfoARM::safe_VkDataGraphPipelineNeuralStatisticsCreateInfoARM(
+    const safe_VkDataGraphPipelineNeuralStatisticsCreateInfoARM& copy_src) {
+    sType = copy_src.sType;
+    allowNeuralStatistics = copy_src.allowNeuralStatistics;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkDataGraphPipelineNeuralStatisticsCreateInfoARM& safe_VkDataGraphPipelineNeuralStatisticsCreateInfoARM::operator=(
+    const safe_VkDataGraphPipelineNeuralStatisticsCreateInfoARM& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    allowNeuralStatistics = copy_src.allowNeuralStatistics;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkDataGraphPipelineNeuralStatisticsCreateInfoARM::~safe_VkDataGraphPipelineNeuralStatisticsCreateInfoARM() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkDataGraphPipelineNeuralStatisticsCreateInfoARM::initialize(
+    const VkDataGraphPipelineNeuralStatisticsCreateInfoARM* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    allowNeuralStatistics = in_struct->allowNeuralStatistics;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkDataGraphPipelineNeuralStatisticsCreateInfoARM::initialize(
+    const safe_VkDataGraphPipelineNeuralStatisticsCreateInfoARM* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    allowNeuralStatistics = copy_src->allowNeuralStatistics;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkDataGraphPipelineSessionNeuralStatisticsCreateInfoARM::safe_VkDataGraphPipelineSessionNeuralStatisticsCreateInfoARM(
+    const VkDataGraphPipelineSessionNeuralStatisticsCreateInfoARM* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
+    bool copy_pnext)
+    : sType(in_struct->sType), mode(in_struct->mode) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkDataGraphPipelineSessionNeuralStatisticsCreateInfoARM::safe_VkDataGraphPipelineSessionNeuralStatisticsCreateInfoARM()
+    : sType(VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SESSION_NEURAL_STATISTICS_CREATE_INFO_ARM), pNext(nullptr), mode() {}
+
+safe_VkDataGraphPipelineSessionNeuralStatisticsCreateInfoARM::safe_VkDataGraphPipelineSessionNeuralStatisticsCreateInfoARM(
+    const safe_VkDataGraphPipelineSessionNeuralStatisticsCreateInfoARM& copy_src) {
+    sType = copy_src.sType;
+    mode = copy_src.mode;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkDataGraphPipelineSessionNeuralStatisticsCreateInfoARM&
+safe_VkDataGraphPipelineSessionNeuralStatisticsCreateInfoARM::operator=(
+    const safe_VkDataGraphPipelineSessionNeuralStatisticsCreateInfoARM& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    mode = copy_src.mode;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkDataGraphPipelineSessionNeuralStatisticsCreateInfoARM::~safe_VkDataGraphPipelineSessionNeuralStatisticsCreateInfoARM() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkDataGraphPipelineSessionNeuralStatisticsCreateInfoARM::initialize(
+    const VkDataGraphPipelineSessionNeuralStatisticsCreateInfoARM* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    mode = in_struct->mode;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkDataGraphPipelineSessionNeuralStatisticsCreateInfoARM::initialize(
+    const safe_VkDataGraphPipelineSessionNeuralStatisticsCreateInfoARM* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    mode = copy_src->mode;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
 }  // namespace vku
 
 // NOLINTEND

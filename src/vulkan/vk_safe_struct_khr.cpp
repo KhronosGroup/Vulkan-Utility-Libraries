@@ -19224,6 +19224,108 @@ void safe_VkResolveImageModeInfoKHR::initialize(const safe_VkResolveImageModeInf
     pNext = SafePnextCopy(copy_src->pNext);
 }
 
+safe_VkPhysicalDeviceMaintenance11FeaturesKHR::safe_VkPhysicalDeviceMaintenance11FeaturesKHR(
+    const VkPhysicalDeviceMaintenance11FeaturesKHR* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), maintenance11(in_struct->maintenance11) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceMaintenance11FeaturesKHR::safe_VkPhysicalDeviceMaintenance11FeaturesKHR()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_11_FEATURES_KHR), pNext(nullptr), maintenance11() {}
+
+safe_VkPhysicalDeviceMaintenance11FeaturesKHR::safe_VkPhysicalDeviceMaintenance11FeaturesKHR(
+    const safe_VkPhysicalDeviceMaintenance11FeaturesKHR& copy_src) {
+    sType = copy_src.sType;
+    maintenance11 = copy_src.maintenance11;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceMaintenance11FeaturesKHR& safe_VkPhysicalDeviceMaintenance11FeaturesKHR::operator=(
+    const safe_VkPhysicalDeviceMaintenance11FeaturesKHR& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    maintenance11 = copy_src.maintenance11;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceMaintenance11FeaturesKHR::~safe_VkPhysicalDeviceMaintenance11FeaturesKHR() { FreePnextChain(pNext); }
+
+void safe_VkPhysicalDeviceMaintenance11FeaturesKHR::initialize(const VkPhysicalDeviceMaintenance11FeaturesKHR* in_struct,
+                                                               [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    maintenance11 = in_struct->maintenance11;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceMaintenance11FeaturesKHR::initialize(const safe_VkPhysicalDeviceMaintenance11FeaturesKHR* copy_src,
+                                                               [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    maintenance11 = copy_src->maintenance11;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkQueueFamilyOptimalImageTransferGranularityPropertiesKHR::safe_VkQueueFamilyOptimalImageTransferGranularityPropertiesKHR(
+    const VkQueueFamilyOptimalImageTransferGranularityPropertiesKHR* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
+    bool copy_pnext)
+    : sType(in_struct->sType), optimalImageTransferGranularity(in_struct->optimalImageTransferGranularity) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkQueueFamilyOptimalImageTransferGranularityPropertiesKHR::safe_VkQueueFamilyOptimalImageTransferGranularityPropertiesKHR()
+    : sType(VK_STRUCTURE_TYPE_QUEUE_FAMILY_OPTIMAL_IMAGE_TRANSFER_GRANULARITY_PROPERTIES_KHR),
+      pNext(nullptr),
+      optimalImageTransferGranularity() {}
+
+safe_VkQueueFamilyOptimalImageTransferGranularityPropertiesKHR::safe_VkQueueFamilyOptimalImageTransferGranularityPropertiesKHR(
+    const safe_VkQueueFamilyOptimalImageTransferGranularityPropertiesKHR& copy_src) {
+    sType = copy_src.sType;
+    optimalImageTransferGranularity = copy_src.optimalImageTransferGranularity;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkQueueFamilyOptimalImageTransferGranularityPropertiesKHR&
+safe_VkQueueFamilyOptimalImageTransferGranularityPropertiesKHR::operator=(
+    const safe_VkQueueFamilyOptimalImageTransferGranularityPropertiesKHR& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    optimalImageTransferGranularity = copy_src.optimalImageTransferGranularity;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkQueueFamilyOptimalImageTransferGranularityPropertiesKHR::~safe_VkQueueFamilyOptimalImageTransferGranularityPropertiesKHR() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkQueueFamilyOptimalImageTransferGranularityPropertiesKHR::initialize(
+    const VkQueueFamilyOptimalImageTransferGranularityPropertiesKHR* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    optimalImageTransferGranularity = in_struct->optimalImageTransferGranularity;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkQueueFamilyOptimalImageTransferGranularityPropertiesKHR::initialize(
+    const safe_VkQueueFamilyOptimalImageTransferGranularityPropertiesKHR* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    optimalImageTransferGranularity = copy_src->optimalImageTransferGranularity;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
 safe_VkDeviceOrHostAddressConstKHR::safe_VkDeviceOrHostAddressConstKHR(const VkDeviceOrHostAddressConstKHR* in_struct,
                                                                        PNextCopyState*) {
     initialize(in_struct);

@@ -2544,12 +2544,26 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_COMPUTE_OCCUPANCY_PRIORITY_PARAMETERS_NV";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMPUTE_OCCUPANCY_PRIORITY_FEATURES_NV:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMPUTE_OCCUPANCY_PRIORITY_FEATURES_NV";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_11_FEATURES_KHR:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_11_FEATURES_KHR";
+        case VK_STRUCTURE_TYPE_QUEUE_FAMILY_OPTIMAL_IMAGE_TRANSFER_GRANULARITY_PROPERTIES_KHR:
+            return "VK_STRUCTURE_TYPE_QUEUE_FAMILY_OPTIMAL_IMAGE_TRANSFER_GRANULARITY_PROPERTIES_KHR";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SUBGROUP_PARTITIONED_FEATURES_EXT:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SUBGROUP_PARTITIONED_FEATURES_EXT";
         case VK_STRUCTURE_TYPE_UBM_SURFACE_CREATE_INFO_SEC:
             return "VK_STRUCTURE_TYPE_UBM_SURFACE_CREATE_INFO_SEC";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_MIXED_FLOAT_DOT_PRODUCT_FEATURES_VALVE:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_MIXED_FLOAT_DOT_PRODUCT_FEATURES_VALVE";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_THROTTLE_HINT_FEATURES_SEC:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_THROTTLE_HINT_FEATURES_SEC";
+        case VK_STRUCTURE_TYPE_THROTTLE_HINT_SUBMIT_INFO_SEC:
+            return "VK_STRUCTURE_TYPE_THROTTLE_HINT_SUBMIT_INFO_SEC";
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_NEURAL_STATISTICS_CREATE_INFO_ARM:
+            return "VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_NEURAL_STATISTICS_CREATE_INFO_ARM";
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SESSION_NEURAL_STATISTICS_CREATE_INFO_ARM:
+            return "VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SESSION_NEURAL_STATISTICS_CREATE_INFO_ARM";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DATA_GRAPH_NEURAL_ACCELERATOR_STATISTICS_FEATURES_ARM:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DATA_GRAPH_NEURAL_ACCELERATOR_STATISTICS_FEATURES_ARM";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRIMITIVE_RESTART_INDEX_FEATURES_EXT:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRIMITIVE_RESTART_INDEX_FEATURES_EXT";
         default:
@@ -5712,6 +5726,8 @@ static inline const char* string_VkDataGraphPipelineSessionBindPointARM(VkDataGr
             return "VK_DATA_GRAPH_PIPELINE_SESSION_BIND_POINT_TRANSIENT_ARM";
         case VK_DATA_GRAPH_PIPELINE_SESSION_BIND_POINT_OPTICAL_FLOW_CACHE_ARM:
             return "VK_DATA_GRAPH_PIPELINE_SESSION_BIND_POINT_OPTICAL_FLOW_CACHE_ARM";
+        case VK_DATA_GRAPH_PIPELINE_SESSION_BIND_POINT_NEURAL_ACCELERATOR_STATISTICS_ARM:
+            return "VK_DATA_GRAPH_PIPELINE_SESSION_BIND_POINT_NEURAL_ACCELERATOR_STATISTICS_ARM";
         default:
             return "Unhandled VkDataGraphPipelineSessionBindPointARM";
     }
@@ -5730,6 +5746,10 @@ static inline const char* string_VkDataGraphPipelinePropertyARM(VkDataGraphPipel
             return "VK_DATA_GRAPH_PIPELINE_PROPERTY_CREATION_LOG_ARM";
         case VK_DATA_GRAPH_PIPELINE_PROPERTY_IDENTIFIER_ARM:
             return "VK_DATA_GRAPH_PIPELINE_PROPERTY_IDENTIFIER_ARM";
+        case VK_DATA_GRAPH_PIPELINE_PROPERTY_NEURAL_ACCELERATOR_DEBUG_DATABASE_ARM:
+            return "VK_DATA_GRAPH_PIPELINE_PROPERTY_NEURAL_ACCELERATOR_DEBUG_DATABASE_ARM";
+        case VK_DATA_GRAPH_PIPELINE_PROPERTY_NEURAL_ACCELERATOR_STATISTICS_INFO_ARM:
+            return "VK_DATA_GRAPH_PIPELINE_PROPERTY_NEURAL_ACCELERATOR_STATISTICS_INFO_ARM";
         default:
             return "Unhandled VkDataGraphPipelinePropertyARM";
     }
@@ -5968,6 +5988,30 @@ static inline const char* string_VkDataGraphPipelineNodeConnectionTypeARM(VkData
             return "Unhandled VkDataGraphPipelineNodeConnectionTypeARM";
     }
 }
+static inline const char* string_VkThrottleHintTypeSEC(VkThrottleHintTypeSEC input_value) {
+    switch (input_value) {
+        case VK_THROTTLE_HINT_TYPE_DEFAULT_SEC:
+            return "VK_THROTTLE_HINT_TYPE_DEFAULT_SEC";
+        case VK_THROTTLE_HINT_TYPE_LOW_SEC:
+            return "VK_THROTTLE_HINT_TYPE_LOW_SEC";
+        case VK_THROTTLE_HINT_TYPE_HIGH_SEC:
+            return "VK_THROTTLE_HINT_TYPE_HIGH_SEC";
+        default:
+            return "Unhandled VkThrottleHintTypeSEC";
+    }
+}
+static inline const char* string_VkNeuralAcceleratorStatisticsModeARM(VkNeuralAcceleratorStatisticsModeARM input_value) {
+    switch (input_value) {
+        case VK_NEURAL_ACCELERATOR_STATISTICS_MODE_DISABLED_ARM:
+            return "VK_NEURAL_ACCELERATOR_STATISTICS_MODE_DISABLED_ARM";
+        case VK_NEURAL_ACCELERATOR_STATISTICS_MODE_STATISTICS0_ARM:
+            return "VK_NEURAL_ACCELERATOR_STATISTICS_MODE_STATISTICS0_ARM";
+        case VK_NEURAL_ACCELERATOR_STATISTICS_MODE_STATISTICS1_ARM:
+            return "VK_NEURAL_ACCELERATOR_STATISTICS_MODE_STATISTICS1_ARM";
+        default:
+            return "Unhandled VkNeuralAcceleratorStatisticsModeARM";
+    }
+}
 static inline const char* string_VkBuildAccelerationStructureModeKHR(VkBuildAccelerationStructureModeKHR input_value) {
     switch (input_value) {
         case VK_BUILD_ACCELERATION_STRUCTURE_MODE_BUILD_KHR:
@@ -6120,6 +6164,8 @@ static inline const char* string_VkImageCreateFlagBits(VkImageCreateFlagBits inp
             return "VK_IMAGE_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR";
         case VK_IMAGE_CREATE_FRAGMENT_DENSITY_MAP_OFFSET_BIT_EXT:
             return "VK_IMAGE_CREATE_FRAGMENT_DENSITY_MAP_OFFSET_BIT_EXT";
+        case VK_IMAGE_CREATE_ALIAS_SINGLE_LAYER_DESCRIPTOR_BIT_KHR:
+            return "VK_IMAGE_CREATE_ALIAS_SINGLE_LAYER_DESCRIPTOR_BIT_KHR";
         default:
             return "Unhandled VkImageCreateFlagBits";
     }
@@ -7347,6 +7393,8 @@ static inline const char* string_VkPipelineLayoutCreateFlagBits(VkPipelineLayout
     switch (input_value) {
         case VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT:
             return "VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT";
+        case VK_PIPELINE_LAYOUT_CREATE_NO_TASK_SHADER_BIT_KHR:
+            return "VK_PIPELINE_LAYOUT_CREATE_NO_TASK_SHADER_BIT_KHR";
         default:
             return "Unhandled VkPipelineLayoutCreateFlagBits";
     }
@@ -11408,6 +11456,8 @@ static inline const char* string_VkShaderCreateFlagBitsEXT(VkShaderCreateFlagBit
             return "VK_SHADER_CREATE_INDIRECT_BINDABLE_BIT_EXT";
         case VK_SHADER_CREATE_64_BIT_INDEXING_BIT_EXT:
             return "VK_SHADER_CREATE_64_BIT_INDEXING_BIT_EXT";
+        case VK_SHADER_CREATE_INDEPENDENT_SETS_BIT_KHR:
+            return "VK_SHADER_CREATE_INDEPENDENT_SETS_BIT_KHR";
         default:
             return "Unhandled VkShaderCreateFlagBitsEXT";
     }
@@ -12926,6 +12976,10 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
             return "VkRenderingAttachmentFlagsInfoKHR";
         case VK_STRUCTURE_TYPE_RESOLVE_IMAGE_MODE_INFO_KHR:
             return "VkResolveImageModeInfoKHR";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_11_FEATURES_KHR:
+            return "VkPhysicalDeviceMaintenance11FeaturesKHR";
+        case VK_STRUCTURE_TYPE_QUEUE_FAMILY_OPTIMAL_IMAGE_TRANSFER_GRANULARITY_PROPERTIES_KHR:
+            return "VkQueueFamilyOptimalImageTransferGranularityPropertiesKHR";
         case VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT:
             return "VkDebugReportCallbackCreateInfoEXT";
         case VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_RASTERIZATION_ORDER_AMD:
@@ -14258,6 +14312,16 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
 #endif  // VK_USE_PLATFORM_UBM_SEC
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_MIXED_FLOAT_DOT_PRODUCT_FEATURES_VALVE:
             return "VkPhysicalDeviceShaderMixedFloatDotProductFeaturesVALVE";
+        case VK_STRUCTURE_TYPE_THROTTLE_HINT_SUBMIT_INFO_SEC:
+            return "VkThrottleHintSubmitInfoSEC";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_THROTTLE_HINT_FEATURES_SEC:
+            return "VkPhysicalDeviceThrottleHintFeaturesSEC";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DATA_GRAPH_NEURAL_ACCELERATOR_STATISTICS_FEATURES_ARM:
+            return "VkPhysicalDeviceDataGraphNeuralAcceleratorStatisticsFeaturesARM";
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_NEURAL_STATISTICS_CREATE_INFO_ARM:
+            return "VkDataGraphPipelineNeuralStatisticsCreateInfoARM";
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SESSION_NEURAL_STATISTICS_CREATE_INFO_ARM:
+            return "VkDataGraphPipelineSessionNeuralStatisticsCreateInfoARM";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRIMITIVE_RESTART_INDEX_FEATURES_EXT:
             return "VkPhysicalDevicePrimitiveRestartIndexFeaturesEXT";
         case VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_TRIANGLES_DATA_KHR:

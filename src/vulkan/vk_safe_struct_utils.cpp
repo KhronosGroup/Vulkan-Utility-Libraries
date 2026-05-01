@@ -1052,6 +1052,12 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
             case VK_STRUCTURE_TYPE_RESOLVE_IMAGE_MODE_INFO_KHR:
                 safe_pNext = new safe_VkResolveImageModeInfoKHR(reinterpret_cast<const VkResolveImageModeInfoKHR *>(pNext), copy_state, false);
                 break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_11_FEATURES_KHR:
+                safe_pNext = new safe_VkPhysicalDeviceMaintenance11FeaturesKHR(reinterpret_cast<const VkPhysicalDeviceMaintenance11FeaturesKHR *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_QUEUE_FAMILY_OPTIMAL_IMAGE_TRANSFER_GRANULARITY_PROPERTIES_KHR:
+                safe_pNext = new safe_VkQueueFamilyOptimalImageTransferGranularityPropertiesKHR(reinterpret_cast<const VkQueueFamilyOptimalImageTransferGranularityPropertiesKHR *>(pNext), copy_state, false);
+                break;
             case VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT:
                 safe_pNext = new safe_VkDebugReportCallbackCreateInfoEXT(reinterpret_cast<const VkDebugReportCallbackCreateInfoEXT *>(pNext), copy_state, false);
                 break;
@@ -2420,6 +2426,21 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_MIXED_FLOAT_DOT_PRODUCT_FEATURES_VALVE:
                 safe_pNext = new safe_VkPhysicalDeviceShaderMixedFloatDotProductFeaturesVALVE(reinterpret_cast<const VkPhysicalDeviceShaderMixedFloatDotProductFeaturesVALVE *>(pNext), copy_state, false);
                 break;
+            case VK_STRUCTURE_TYPE_THROTTLE_HINT_SUBMIT_INFO_SEC:
+                safe_pNext = new safe_VkThrottleHintSubmitInfoSEC(reinterpret_cast<const VkThrottleHintSubmitInfoSEC *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_THROTTLE_HINT_FEATURES_SEC:
+                safe_pNext = new safe_VkPhysicalDeviceThrottleHintFeaturesSEC(reinterpret_cast<const VkPhysicalDeviceThrottleHintFeaturesSEC *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DATA_GRAPH_NEURAL_ACCELERATOR_STATISTICS_FEATURES_ARM:
+                safe_pNext = new safe_VkPhysicalDeviceDataGraphNeuralAcceleratorStatisticsFeaturesARM(reinterpret_cast<const VkPhysicalDeviceDataGraphNeuralAcceleratorStatisticsFeaturesARM *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_NEURAL_STATISTICS_CREATE_INFO_ARM:
+                safe_pNext = new safe_VkDataGraphPipelineNeuralStatisticsCreateInfoARM(reinterpret_cast<const VkDataGraphPipelineNeuralStatisticsCreateInfoARM *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SESSION_NEURAL_STATISTICS_CREATE_INFO_ARM:
+                safe_pNext = new safe_VkDataGraphPipelineSessionNeuralStatisticsCreateInfoARM(reinterpret_cast<const VkDataGraphPipelineSessionNeuralStatisticsCreateInfoARM *>(pNext), copy_state, false);
+                break;
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRIMITIVE_RESTART_INDEX_FEATURES_EXT:
                 safe_pNext = new safe_VkPhysicalDevicePrimitiveRestartIndexFeaturesEXT(reinterpret_cast<const VkPhysicalDevicePrimitiveRestartIndexFeaturesEXT *>(pNext), copy_state, false);
                 break;
@@ -3483,6 +3504,12 @@ void FreePnextChain(const void *pNext) {
             break;
         case VK_STRUCTURE_TYPE_RESOLVE_IMAGE_MODE_INFO_KHR:
             delete reinterpret_cast<safe_VkResolveImageModeInfoKHR *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_11_FEATURES_KHR:
+            delete reinterpret_cast<safe_VkPhysicalDeviceMaintenance11FeaturesKHR *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_QUEUE_FAMILY_OPTIMAL_IMAGE_TRANSFER_GRANULARITY_PROPERTIES_KHR:
+            delete reinterpret_cast<safe_VkQueueFamilyOptimalImageTransferGranularityPropertiesKHR *>(header);
             break;
         case VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT:
             delete reinterpret_cast<safe_VkDebugReportCallbackCreateInfoEXT *>(header);
@@ -4851,6 +4878,21 @@ void FreePnextChain(const void *pNext) {
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_MIXED_FLOAT_DOT_PRODUCT_FEATURES_VALVE:
             delete reinterpret_cast<safe_VkPhysicalDeviceShaderMixedFloatDotProductFeaturesVALVE *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_THROTTLE_HINT_SUBMIT_INFO_SEC:
+            delete reinterpret_cast<safe_VkThrottleHintSubmitInfoSEC *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_THROTTLE_HINT_FEATURES_SEC:
+            delete reinterpret_cast<safe_VkPhysicalDeviceThrottleHintFeaturesSEC *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DATA_GRAPH_NEURAL_ACCELERATOR_STATISTICS_FEATURES_ARM:
+            delete reinterpret_cast<safe_VkPhysicalDeviceDataGraphNeuralAcceleratorStatisticsFeaturesARM *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_NEURAL_STATISTICS_CREATE_INFO_ARM:
+            delete reinterpret_cast<safe_VkDataGraphPipelineNeuralStatisticsCreateInfoARM *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SESSION_NEURAL_STATISTICS_CREATE_INFO_ARM:
+            delete reinterpret_cast<safe_VkDataGraphPipelineSessionNeuralStatisticsCreateInfoARM *>(header);
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRIMITIVE_RESTART_INDEX_FEATURES_EXT:
             delete reinterpret_cast<safe_VkPhysicalDevicePrimitiveRestartIndexFeaturesEXT *>(header);

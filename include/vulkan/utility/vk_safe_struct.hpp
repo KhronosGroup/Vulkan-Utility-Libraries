@@ -11042,6 +11042,48 @@ struct safe_VkResolveImageModeInfoKHR {
     VkResolveImageModeInfoKHR* ptr() { return reinterpret_cast<VkResolveImageModeInfoKHR*>(this); }
     VkResolveImageModeInfoKHR const* ptr() const { return reinterpret_cast<VkResolveImageModeInfoKHR const*>(this); }
 };
+struct safe_VkPhysicalDeviceMaintenance11FeaturesKHR {
+    VkStructureType sType;
+    void* pNext{};
+    VkBool32 maintenance11;
+
+    safe_VkPhysicalDeviceMaintenance11FeaturesKHR(const VkPhysicalDeviceMaintenance11FeaturesKHR* in_struct,
+                                                  PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkPhysicalDeviceMaintenance11FeaturesKHR(const safe_VkPhysicalDeviceMaintenance11FeaturesKHR& copy_src);
+    safe_VkPhysicalDeviceMaintenance11FeaturesKHR& operator=(const safe_VkPhysicalDeviceMaintenance11FeaturesKHR& copy_src);
+    safe_VkPhysicalDeviceMaintenance11FeaturesKHR();
+    ~safe_VkPhysicalDeviceMaintenance11FeaturesKHR();
+    void initialize(const VkPhysicalDeviceMaintenance11FeaturesKHR* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceMaintenance11FeaturesKHR* copy_src, PNextCopyState* copy_state = {});
+    VkPhysicalDeviceMaintenance11FeaturesKHR* ptr() { return reinterpret_cast<VkPhysicalDeviceMaintenance11FeaturesKHR*>(this); }
+    VkPhysicalDeviceMaintenance11FeaturesKHR const* ptr() const {
+        return reinterpret_cast<VkPhysicalDeviceMaintenance11FeaturesKHR const*>(this);
+    }
+};
+struct safe_VkQueueFamilyOptimalImageTransferGranularityPropertiesKHR {
+    VkStructureType sType;
+    void* pNext{};
+    VkExtent3D optimalImageTransferGranularity;
+
+    safe_VkQueueFamilyOptimalImageTransferGranularityPropertiesKHR(
+        const VkQueueFamilyOptimalImageTransferGranularityPropertiesKHR* in_struct, PNextCopyState* copy_state = {},
+        bool copy_pnext = true);
+    safe_VkQueueFamilyOptimalImageTransferGranularityPropertiesKHR(
+        const safe_VkQueueFamilyOptimalImageTransferGranularityPropertiesKHR& copy_src);
+    safe_VkQueueFamilyOptimalImageTransferGranularityPropertiesKHR& operator=(
+        const safe_VkQueueFamilyOptimalImageTransferGranularityPropertiesKHR& copy_src);
+    safe_VkQueueFamilyOptimalImageTransferGranularityPropertiesKHR();
+    ~safe_VkQueueFamilyOptimalImageTransferGranularityPropertiesKHR();
+    void initialize(const VkQueueFamilyOptimalImageTransferGranularityPropertiesKHR* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkQueueFamilyOptimalImageTransferGranularityPropertiesKHR* copy_src,
+                    PNextCopyState* copy_state = {});
+    VkQueueFamilyOptimalImageTransferGranularityPropertiesKHR* ptr() {
+        return reinterpret_cast<VkQueueFamilyOptimalImageTransferGranularityPropertiesKHR*>(this);
+    }
+    VkQueueFamilyOptimalImageTransferGranularityPropertiesKHR const* ptr() const {
+        return reinterpret_cast<VkQueueFamilyOptimalImageTransferGranularityPropertiesKHR const*>(this);
+    }
+};
 struct safe_VkDebugReportCallbackCreateInfoEXT {
     VkStructureType sType;
     const void* pNext{};
@@ -24594,6 +24636,109 @@ struct safe_VkPhysicalDeviceShaderMixedFloatDotProductFeaturesVALVE {
     }
     VkPhysicalDeviceShaderMixedFloatDotProductFeaturesVALVE const* ptr() const {
         return reinterpret_cast<VkPhysicalDeviceShaderMixedFloatDotProductFeaturesVALVE const*>(this);
+    }
+};
+struct safe_VkThrottleHintSubmitInfoSEC {
+    VkStructureType sType;
+    const void* pNext{};
+    VkThrottleHintTypeSEC throttleHint;
+
+    safe_VkThrottleHintSubmitInfoSEC(const VkThrottleHintSubmitInfoSEC* in_struct, PNextCopyState* copy_state = {},
+                                     bool copy_pnext = true);
+    safe_VkThrottleHintSubmitInfoSEC(const safe_VkThrottleHintSubmitInfoSEC& copy_src);
+    safe_VkThrottleHintSubmitInfoSEC& operator=(const safe_VkThrottleHintSubmitInfoSEC& copy_src);
+    safe_VkThrottleHintSubmitInfoSEC();
+    ~safe_VkThrottleHintSubmitInfoSEC();
+    void initialize(const VkThrottleHintSubmitInfoSEC* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkThrottleHintSubmitInfoSEC* copy_src, PNextCopyState* copy_state = {});
+    VkThrottleHintSubmitInfoSEC* ptr() { return reinterpret_cast<VkThrottleHintSubmitInfoSEC*>(this); }
+    VkThrottleHintSubmitInfoSEC const* ptr() const { return reinterpret_cast<VkThrottleHintSubmitInfoSEC const*>(this); }
+};
+struct safe_VkPhysicalDeviceThrottleHintFeaturesSEC {
+    VkStructureType sType;
+    void* pNext{};
+    VkBool32 throttleHint;
+
+    safe_VkPhysicalDeviceThrottleHintFeaturesSEC(const VkPhysicalDeviceThrottleHintFeaturesSEC* in_struct,
+                                                 PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkPhysicalDeviceThrottleHintFeaturesSEC(const safe_VkPhysicalDeviceThrottleHintFeaturesSEC& copy_src);
+    safe_VkPhysicalDeviceThrottleHintFeaturesSEC& operator=(const safe_VkPhysicalDeviceThrottleHintFeaturesSEC& copy_src);
+    safe_VkPhysicalDeviceThrottleHintFeaturesSEC();
+    ~safe_VkPhysicalDeviceThrottleHintFeaturesSEC();
+    void initialize(const VkPhysicalDeviceThrottleHintFeaturesSEC* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceThrottleHintFeaturesSEC* copy_src, PNextCopyState* copy_state = {});
+    VkPhysicalDeviceThrottleHintFeaturesSEC* ptr() { return reinterpret_cast<VkPhysicalDeviceThrottleHintFeaturesSEC*>(this); }
+    VkPhysicalDeviceThrottleHintFeaturesSEC const* ptr() const {
+        return reinterpret_cast<VkPhysicalDeviceThrottleHintFeaturesSEC const*>(this);
+    }
+};
+struct safe_VkPhysicalDeviceDataGraphNeuralAcceleratorStatisticsFeaturesARM {
+    VkStructureType sType;
+    void* pNext{};
+    VkBool32 dataGraphNeuralAcceleratorStatistics;
+
+    safe_VkPhysicalDeviceDataGraphNeuralAcceleratorStatisticsFeaturesARM(
+        const VkPhysicalDeviceDataGraphNeuralAcceleratorStatisticsFeaturesARM* in_struct, PNextCopyState* copy_state = {},
+        bool copy_pnext = true);
+    safe_VkPhysicalDeviceDataGraphNeuralAcceleratorStatisticsFeaturesARM(
+        const safe_VkPhysicalDeviceDataGraphNeuralAcceleratorStatisticsFeaturesARM& copy_src);
+    safe_VkPhysicalDeviceDataGraphNeuralAcceleratorStatisticsFeaturesARM& operator=(
+        const safe_VkPhysicalDeviceDataGraphNeuralAcceleratorStatisticsFeaturesARM& copy_src);
+    safe_VkPhysicalDeviceDataGraphNeuralAcceleratorStatisticsFeaturesARM();
+    ~safe_VkPhysicalDeviceDataGraphNeuralAcceleratorStatisticsFeaturesARM();
+    void initialize(const VkPhysicalDeviceDataGraphNeuralAcceleratorStatisticsFeaturesARM* in_struct,
+                    PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceDataGraphNeuralAcceleratorStatisticsFeaturesARM* copy_src,
+                    PNextCopyState* copy_state = {});
+    VkPhysicalDeviceDataGraphNeuralAcceleratorStatisticsFeaturesARM* ptr() {
+        return reinterpret_cast<VkPhysicalDeviceDataGraphNeuralAcceleratorStatisticsFeaturesARM*>(this);
+    }
+    VkPhysicalDeviceDataGraphNeuralAcceleratorStatisticsFeaturesARM const* ptr() const {
+        return reinterpret_cast<VkPhysicalDeviceDataGraphNeuralAcceleratorStatisticsFeaturesARM const*>(this);
+    }
+};
+struct safe_VkDataGraphPipelineNeuralStatisticsCreateInfoARM {
+    VkStructureType sType;
+    const void* pNext{};
+    VkBool32 allowNeuralStatistics;
+
+    safe_VkDataGraphPipelineNeuralStatisticsCreateInfoARM(const VkDataGraphPipelineNeuralStatisticsCreateInfoARM* in_struct,
+                                                          PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkDataGraphPipelineNeuralStatisticsCreateInfoARM(const safe_VkDataGraphPipelineNeuralStatisticsCreateInfoARM& copy_src);
+    safe_VkDataGraphPipelineNeuralStatisticsCreateInfoARM& operator=(
+        const safe_VkDataGraphPipelineNeuralStatisticsCreateInfoARM& copy_src);
+    safe_VkDataGraphPipelineNeuralStatisticsCreateInfoARM();
+    ~safe_VkDataGraphPipelineNeuralStatisticsCreateInfoARM();
+    void initialize(const VkDataGraphPipelineNeuralStatisticsCreateInfoARM* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkDataGraphPipelineNeuralStatisticsCreateInfoARM* copy_src, PNextCopyState* copy_state = {});
+    VkDataGraphPipelineNeuralStatisticsCreateInfoARM* ptr() {
+        return reinterpret_cast<VkDataGraphPipelineNeuralStatisticsCreateInfoARM*>(this);
+    }
+    VkDataGraphPipelineNeuralStatisticsCreateInfoARM const* ptr() const {
+        return reinterpret_cast<VkDataGraphPipelineNeuralStatisticsCreateInfoARM const*>(this);
+    }
+};
+struct safe_VkDataGraphPipelineSessionNeuralStatisticsCreateInfoARM {
+    VkStructureType sType;
+    const void* pNext{};
+    VkNeuralAcceleratorStatisticsModeARM mode;
+
+    safe_VkDataGraphPipelineSessionNeuralStatisticsCreateInfoARM(
+        const VkDataGraphPipelineSessionNeuralStatisticsCreateInfoARM* in_struct, PNextCopyState* copy_state = {},
+        bool copy_pnext = true);
+    safe_VkDataGraphPipelineSessionNeuralStatisticsCreateInfoARM(
+        const safe_VkDataGraphPipelineSessionNeuralStatisticsCreateInfoARM& copy_src);
+    safe_VkDataGraphPipelineSessionNeuralStatisticsCreateInfoARM& operator=(
+        const safe_VkDataGraphPipelineSessionNeuralStatisticsCreateInfoARM& copy_src);
+    safe_VkDataGraphPipelineSessionNeuralStatisticsCreateInfoARM();
+    ~safe_VkDataGraphPipelineSessionNeuralStatisticsCreateInfoARM();
+    void initialize(const VkDataGraphPipelineSessionNeuralStatisticsCreateInfoARM* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkDataGraphPipelineSessionNeuralStatisticsCreateInfoARM* copy_src, PNextCopyState* copy_state = {});
+    VkDataGraphPipelineSessionNeuralStatisticsCreateInfoARM* ptr() {
+        return reinterpret_cast<VkDataGraphPipelineSessionNeuralStatisticsCreateInfoARM*>(this);
+    }
+    VkDataGraphPipelineSessionNeuralStatisticsCreateInfoARM const* ptr() const {
+        return reinterpret_cast<VkDataGraphPipelineSessionNeuralStatisticsCreateInfoARM const*>(this);
     }
 };
 struct safe_VkPhysicalDevicePrimitiveRestartIndexFeaturesEXT {
