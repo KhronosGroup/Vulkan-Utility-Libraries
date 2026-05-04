@@ -575,11 +575,16 @@ void FreePnextChain(const void *pNext) {
                                 # Create deep copies of strings
                                 if member.length:
                                     copy_strings += f'''
-                                        char **tmp_{member.name} = new char *[in_struct->{member.length}];
-                                        for (uint32_t i = 0; i < {member.length}; ++i) {{
-                                            tmp_{member.name}[i] = SafeStringCopy(in_struct->{member.name}[i]);
+                                        if (in_struct->{member.length} > 0) {{ 
+                                            char **tmp_{member.name} = new char *[in_struct->{member.length}];
+                                            for (uint32_t i = 0; i < {member.length}; ++i) {{
+                                                tmp_{member.name}[i] = SafeStringCopy(in_struct->{member.name}[i]);
+                                            }}
+                                            {member.name} = tmp_{member.name};
+                                        }} else {{
+                                            {member.name} = nullptr;
                                         }}
-                                        {member.name} = tmp_{member.name};'''
+                                        '''
 
                                     destruct_txt += f'''
                                         if ({member.name}) {{
