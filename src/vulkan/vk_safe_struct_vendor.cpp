@@ -2233,6 +2233,559 @@ void safe_VkAndroidHardwareBufferFormatProperties2ANDROID::initialize(
     pNext = SafePnextCopy(copy_src->pNext);
 }
 #endif  // VK_USE_PLATFORM_ANDROID_KHR
+
+safe_VkPhysicalDeviceGpaFeaturesAMD::safe_VkPhysicalDeviceGpaFeaturesAMD(const VkPhysicalDeviceGpaFeaturesAMD* in_struct,
+                                                                         [[maybe_unused]] PNextCopyState* copy_state,
+                                                                         bool copy_pnext)
+    : sType(in_struct->sType),
+      perfCounters(in_struct->perfCounters),
+      streamingPerfCounters(in_struct->streamingPerfCounters),
+      sqThreadTracing(in_struct->sqThreadTracing),
+      clockModes(in_struct->clockModes) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceGpaFeaturesAMD::safe_VkPhysicalDeviceGpaFeaturesAMD()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GPA_FEATURES_AMD),
+      pNext(nullptr),
+      perfCounters(),
+      streamingPerfCounters(),
+      sqThreadTracing(),
+      clockModes() {}
+
+safe_VkPhysicalDeviceGpaFeaturesAMD::safe_VkPhysicalDeviceGpaFeaturesAMD(const safe_VkPhysicalDeviceGpaFeaturesAMD& copy_src) {
+    sType = copy_src.sType;
+    perfCounters = copy_src.perfCounters;
+    streamingPerfCounters = copy_src.streamingPerfCounters;
+    sqThreadTracing = copy_src.sqThreadTracing;
+    clockModes = copy_src.clockModes;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceGpaFeaturesAMD& safe_VkPhysicalDeviceGpaFeaturesAMD::operator=(
+    const safe_VkPhysicalDeviceGpaFeaturesAMD& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    perfCounters = copy_src.perfCounters;
+    streamingPerfCounters = copy_src.streamingPerfCounters;
+    sqThreadTracing = copy_src.sqThreadTracing;
+    clockModes = copy_src.clockModes;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceGpaFeaturesAMD::~safe_VkPhysicalDeviceGpaFeaturesAMD() { FreePnextChain(pNext); }
+
+void safe_VkPhysicalDeviceGpaFeaturesAMD::initialize(const VkPhysicalDeviceGpaFeaturesAMD* in_struct,
+                                                     [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    perfCounters = in_struct->perfCounters;
+    streamingPerfCounters = in_struct->streamingPerfCounters;
+    sqThreadTracing = in_struct->sqThreadTracing;
+    clockModes = in_struct->clockModes;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceGpaFeaturesAMD::initialize(const safe_VkPhysicalDeviceGpaFeaturesAMD* copy_src,
+                                                     [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    perfCounters = copy_src->perfCounters;
+    streamingPerfCounters = copy_src->streamingPerfCounters;
+    sqThreadTracing = copy_src->sqThreadTracing;
+    clockModes = copy_src->clockModes;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkPhysicalDeviceGpaPropertiesAMD::safe_VkPhysicalDeviceGpaPropertiesAMD(const VkPhysicalDeviceGpaPropertiesAMD* in_struct,
+                                                                             [[maybe_unused]] PNextCopyState* copy_state,
+                                                                             bool copy_pnext)
+    : sType(in_struct->sType),
+      flags(in_struct->flags),
+      maxSqttSeBufferSize(in_struct->maxSqttSeBufferSize),
+      shaderEngineCount(in_struct->shaderEngineCount),
+      perfBlockCount(in_struct->perfBlockCount),
+      pPerfBlocks(nullptr) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+    if (in_struct->pPerfBlocks) {
+        pPerfBlocks = new VkGpaPerfBlockPropertiesAMD[in_struct->perfBlockCount];
+        memcpy((void*)pPerfBlocks, (void*)in_struct->pPerfBlocks, sizeof(VkGpaPerfBlockPropertiesAMD) * in_struct->perfBlockCount);
+    }
+}
+
+safe_VkPhysicalDeviceGpaPropertiesAMD::safe_VkPhysicalDeviceGpaPropertiesAMD()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GPA_PROPERTIES_AMD),
+      pNext(nullptr),
+      flags(),
+      maxSqttSeBufferSize(),
+      shaderEngineCount(),
+      perfBlockCount(),
+      pPerfBlocks(nullptr) {}
+
+safe_VkPhysicalDeviceGpaPropertiesAMD::safe_VkPhysicalDeviceGpaPropertiesAMD(
+    const safe_VkPhysicalDeviceGpaPropertiesAMD& copy_src) {
+    sType = copy_src.sType;
+    flags = copy_src.flags;
+    maxSqttSeBufferSize = copy_src.maxSqttSeBufferSize;
+    shaderEngineCount = copy_src.shaderEngineCount;
+    perfBlockCount = copy_src.perfBlockCount;
+    pPerfBlocks = nullptr;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    if (copy_src.pPerfBlocks) {
+        pPerfBlocks = new VkGpaPerfBlockPropertiesAMD[copy_src.perfBlockCount];
+        memcpy((void*)pPerfBlocks, (void*)copy_src.pPerfBlocks, sizeof(VkGpaPerfBlockPropertiesAMD) * copy_src.perfBlockCount);
+    }
+}
+
+safe_VkPhysicalDeviceGpaPropertiesAMD& safe_VkPhysicalDeviceGpaPropertiesAMD::operator=(
+    const safe_VkPhysicalDeviceGpaPropertiesAMD& copy_src) {
+    if (&copy_src == this) return *this;
+
+    if (pPerfBlocks) delete[] pPerfBlocks;
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    flags = copy_src.flags;
+    maxSqttSeBufferSize = copy_src.maxSqttSeBufferSize;
+    shaderEngineCount = copy_src.shaderEngineCount;
+    perfBlockCount = copy_src.perfBlockCount;
+    pPerfBlocks = nullptr;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    if (copy_src.pPerfBlocks) {
+        pPerfBlocks = new VkGpaPerfBlockPropertiesAMD[copy_src.perfBlockCount];
+        memcpy((void*)pPerfBlocks, (void*)copy_src.pPerfBlocks, sizeof(VkGpaPerfBlockPropertiesAMD) * copy_src.perfBlockCount);
+    }
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceGpaPropertiesAMD::~safe_VkPhysicalDeviceGpaPropertiesAMD() {
+    if (pPerfBlocks) delete[] pPerfBlocks;
+    FreePnextChain(pNext);
+}
+
+void safe_VkPhysicalDeviceGpaPropertiesAMD::initialize(const VkPhysicalDeviceGpaPropertiesAMD* in_struct,
+                                                       [[maybe_unused]] PNextCopyState* copy_state) {
+    if (pPerfBlocks) delete[] pPerfBlocks;
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    flags = in_struct->flags;
+    maxSqttSeBufferSize = in_struct->maxSqttSeBufferSize;
+    shaderEngineCount = in_struct->shaderEngineCount;
+    perfBlockCount = in_struct->perfBlockCount;
+    pPerfBlocks = nullptr;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+
+    if (in_struct->pPerfBlocks) {
+        pPerfBlocks = new VkGpaPerfBlockPropertiesAMD[in_struct->perfBlockCount];
+        memcpy((void*)pPerfBlocks, (void*)in_struct->pPerfBlocks, sizeof(VkGpaPerfBlockPropertiesAMD) * in_struct->perfBlockCount);
+    }
+}
+
+void safe_VkPhysicalDeviceGpaPropertiesAMD::initialize(const safe_VkPhysicalDeviceGpaPropertiesAMD* copy_src,
+                                                       [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    flags = copy_src->flags;
+    maxSqttSeBufferSize = copy_src->maxSqttSeBufferSize;
+    shaderEngineCount = copy_src->shaderEngineCount;
+    perfBlockCount = copy_src->perfBlockCount;
+    pPerfBlocks = nullptr;
+    pNext = SafePnextCopy(copy_src->pNext);
+
+    if (copy_src->pPerfBlocks) {
+        pPerfBlocks = new VkGpaPerfBlockPropertiesAMD[copy_src->perfBlockCount];
+        memcpy((void*)pPerfBlocks, (void*)copy_src->pPerfBlocks, sizeof(VkGpaPerfBlockPropertiesAMD) * copy_src->perfBlockCount);
+    }
+}
+
+safe_VkPhysicalDeviceGpaProperties2AMD::safe_VkPhysicalDeviceGpaProperties2AMD(const VkPhysicalDeviceGpaProperties2AMD* in_struct,
+                                                                               [[maybe_unused]] PNextCopyState* copy_state,
+                                                                               bool copy_pnext)
+    : sType(in_struct->sType), revisionId(in_struct->revisionId) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceGpaProperties2AMD::safe_VkPhysicalDeviceGpaProperties2AMD()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GPA_PROPERTIES_2_AMD), pNext(nullptr), revisionId() {}
+
+safe_VkPhysicalDeviceGpaProperties2AMD::safe_VkPhysicalDeviceGpaProperties2AMD(
+    const safe_VkPhysicalDeviceGpaProperties2AMD& copy_src) {
+    sType = copy_src.sType;
+    revisionId = copy_src.revisionId;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceGpaProperties2AMD& safe_VkPhysicalDeviceGpaProperties2AMD::operator=(
+    const safe_VkPhysicalDeviceGpaProperties2AMD& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    revisionId = copy_src.revisionId;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceGpaProperties2AMD::~safe_VkPhysicalDeviceGpaProperties2AMD() { FreePnextChain(pNext); }
+
+void safe_VkPhysicalDeviceGpaProperties2AMD::initialize(const VkPhysicalDeviceGpaProperties2AMD* in_struct,
+                                                        [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    revisionId = in_struct->revisionId;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceGpaProperties2AMD::initialize(const safe_VkPhysicalDeviceGpaProperties2AMD* copy_src,
+                                                        [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    revisionId = copy_src->revisionId;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkGpaSampleBeginInfoAMD::safe_VkGpaSampleBeginInfoAMD(const VkGpaSampleBeginInfoAMD* in_struct,
+                                                           [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType),
+      sampleType(in_struct->sampleType),
+      sampleInternalOperations(in_struct->sampleInternalOperations),
+      cacheFlushOnCounterCollection(in_struct->cacheFlushOnCounterCollection),
+      sqShaderMaskEnable(in_struct->sqShaderMaskEnable),
+      sqShaderMask(in_struct->sqShaderMask),
+      perfCounterCount(in_struct->perfCounterCount),
+      pPerfCounters(nullptr),
+      streamingPerfTraceSampleInterval(in_struct->streamingPerfTraceSampleInterval),
+      perfCounterDeviceMemoryLimit(in_struct->perfCounterDeviceMemoryLimit),
+      sqThreadTraceEnable(in_struct->sqThreadTraceEnable),
+      sqThreadTraceSuppressInstructionTokens(in_struct->sqThreadTraceSuppressInstructionTokens),
+      sqThreadTraceDeviceMemoryLimit(in_struct->sqThreadTraceDeviceMemoryLimit),
+      timingPreSample(in_struct->timingPreSample),
+      timingPostSample(in_struct->timingPostSample) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+    if (in_struct->pPerfCounters) {
+        pPerfCounters = new VkGpaPerfCounterAMD[in_struct->perfCounterCount];
+        memcpy((void*)pPerfCounters, (void*)in_struct->pPerfCounters, sizeof(VkGpaPerfCounterAMD) * in_struct->perfCounterCount);
+    }
+}
+
+safe_VkGpaSampleBeginInfoAMD::safe_VkGpaSampleBeginInfoAMD()
+    : sType(VK_STRUCTURE_TYPE_GPA_SAMPLE_BEGIN_INFO_AMD),
+      pNext(nullptr),
+      sampleType(),
+      sampleInternalOperations(),
+      cacheFlushOnCounterCollection(),
+      sqShaderMaskEnable(),
+      sqShaderMask(),
+      perfCounterCount(),
+      pPerfCounters(nullptr),
+      streamingPerfTraceSampleInterval(),
+      perfCounterDeviceMemoryLimit(),
+      sqThreadTraceEnable(),
+      sqThreadTraceSuppressInstructionTokens(),
+      sqThreadTraceDeviceMemoryLimit(),
+      timingPreSample(),
+      timingPostSample() {}
+
+safe_VkGpaSampleBeginInfoAMD::safe_VkGpaSampleBeginInfoAMD(const safe_VkGpaSampleBeginInfoAMD& copy_src) {
+    sType = copy_src.sType;
+    sampleType = copy_src.sampleType;
+    sampleInternalOperations = copy_src.sampleInternalOperations;
+    cacheFlushOnCounterCollection = copy_src.cacheFlushOnCounterCollection;
+    sqShaderMaskEnable = copy_src.sqShaderMaskEnable;
+    sqShaderMask = copy_src.sqShaderMask;
+    perfCounterCount = copy_src.perfCounterCount;
+    pPerfCounters = nullptr;
+    streamingPerfTraceSampleInterval = copy_src.streamingPerfTraceSampleInterval;
+    perfCounterDeviceMemoryLimit = copy_src.perfCounterDeviceMemoryLimit;
+    sqThreadTraceEnable = copy_src.sqThreadTraceEnable;
+    sqThreadTraceSuppressInstructionTokens = copy_src.sqThreadTraceSuppressInstructionTokens;
+    sqThreadTraceDeviceMemoryLimit = copy_src.sqThreadTraceDeviceMemoryLimit;
+    timingPreSample = copy_src.timingPreSample;
+    timingPostSample = copy_src.timingPostSample;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    if (copy_src.pPerfCounters) {
+        pPerfCounters = new VkGpaPerfCounterAMD[copy_src.perfCounterCount];
+        memcpy((void*)pPerfCounters, (void*)copy_src.pPerfCounters, sizeof(VkGpaPerfCounterAMD) * copy_src.perfCounterCount);
+    }
+}
+
+safe_VkGpaSampleBeginInfoAMD& safe_VkGpaSampleBeginInfoAMD::operator=(const safe_VkGpaSampleBeginInfoAMD& copy_src) {
+    if (&copy_src == this) return *this;
+
+    if (pPerfCounters) delete[] pPerfCounters;
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    sampleType = copy_src.sampleType;
+    sampleInternalOperations = copy_src.sampleInternalOperations;
+    cacheFlushOnCounterCollection = copy_src.cacheFlushOnCounterCollection;
+    sqShaderMaskEnable = copy_src.sqShaderMaskEnable;
+    sqShaderMask = copy_src.sqShaderMask;
+    perfCounterCount = copy_src.perfCounterCount;
+    pPerfCounters = nullptr;
+    streamingPerfTraceSampleInterval = copy_src.streamingPerfTraceSampleInterval;
+    perfCounterDeviceMemoryLimit = copy_src.perfCounterDeviceMemoryLimit;
+    sqThreadTraceEnable = copy_src.sqThreadTraceEnable;
+    sqThreadTraceSuppressInstructionTokens = copy_src.sqThreadTraceSuppressInstructionTokens;
+    sqThreadTraceDeviceMemoryLimit = copy_src.sqThreadTraceDeviceMemoryLimit;
+    timingPreSample = copy_src.timingPreSample;
+    timingPostSample = copy_src.timingPostSample;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    if (copy_src.pPerfCounters) {
+        pPerfCounters = new VkGpaPerfCounterAMD[copy_src.perfCounterCount];
+        memcpy((void*)pPerfCounters, (void*)copy_src.pPerfCounters, sizeof(VkGpaPerfCounterAMD) * copy_src.perfCounterCount);
+    }
+
+    return *this;
+}
+
+safe_VkGpaSampleBeginInfoAMD::~safe_VkGpaSampleBeginInfoAMD() {
+    if (pPerfCounters) delete[] pPerfCounters;
+    FreePnextChain(pNext);
+}
+
+void safe_VkGpaSampleBeginInfoAMD::initialize(const VkGpaSampleBeginInfoAMD* in_struct,
+                                              [[maybe_unused]] PNextCopyState* copy_state) {
+    if (pPerfCounters) delete[] pPerfCounters;
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    sampleType = in_struct->sampleType;
+    sampleInternalOperations = in_struct->sampleInternalOperations;
+    cacheFlushOnCounterCollection = in_struct->cacheFlushOnCounterCollection;
+    sqShaderMaskEnable = in_struct->sqShaderMaskEnable;
+    sqShaderMask = in_struct->sqShaderMask;
+    perfCounterCount = in_struct->perfCounterCount;
+    pPerfCounters = nullptr;
+    streamingPerfTraceSampleInterval = in_struct->streamingPerfTraceSampleInterval;
+    perfCounterDeviceMemoryLimit = in_struct->perfCounterDeviceMemoryLimit;
+    sqThreadTraceEnable = in_struct->sqThreadTraceEnable;
+    sqThreadTraceSuppressInstructionTokens = in_struct->sqThreadTraceSuppressInstructionTokens;
+    sqThreadTraceDeviceMemoryLimit = in_struct->sqThreadTraceDeviceMemoryLimit;
+    timingPreSample = in_struct->timingPreSample;
+    timingPostSample = in_struct->timingPostSample;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+
+    if (in_struct->pPerfCounters) {
+        pPerfCounters = new VkGpaPerfCounterAMD[in_struct->perfCounterCount];
+        memcpy((void*)pPerfCounters, (void*)in_struct->pPerfCounters, sizeof(VkGpaPerfCounterAMD) * in_struct->perfCounterCount);
+    }
+}
+
+void safe_VkGpaSampleBeginInfoAMD::initialize(const safe_VkGpaSampleBeginInfoAMD* copy_src,
+                                              [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    sampleType = copy_src->sampleType;
+    sampleInternalOperations = copy_src->sampleInternalOperations;
+    cacheFlushOnCounterCollection = copy_src->cacheFlushOnCounterCollection;
+    sqShaderMaskEnable = copy_src->sqShaderMaskEnable;
+    sqShaderMask = copy_src->sqShaderMask;
+    perfCounterCount = copy_src->perfCounterCount;
+    pPerfCounters = nullptr;
+    streamingPerfTraceSampleInterval = copy_src->streamingPerfTraceSampleInterval;
+    perfCounterDeviceMemoryLimit = copy_src->perfCounterDeviceMemoryLimit;
+    sqThreadTraceEnable = copy_src->sqThreadTraceEnable;
+    sqThreadTraceSuppressInstructionTokens = copy_src->sqThreadTraceSuppressInstructionTokens;
+    sqThreadTraceDeviceMemoryLimit = copy_src->sqThreadTraceDeviceMemoryLimit;
+    timingPreSample = copy_src->timingPreSample;
+    timingPostSample = copy_src->timingPostSample;
+    pNext = SafePnextCopy(copy_src->pNext);
+
+    if (copy_src->pPerfCounters) {
+        pPerfCounters = new VkGpaPerfCounterAMD[copy_src->perfCounterCount];
+        memcpy((void*)pPerfCounters, (void*)copy_src->pPerfCounters, sizeof(VkGpaPerfCounterAMD) * copy_src->perfCounterCount);
+    }
+}
+
+safe_VkGpaDeviceClockModeInfoAMD::safe_VkGpaDeviceClockModeInfoAMD(const VkGpaDeviceClockModeInfoAMD* in_struct,
+                                                                   [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType),
+      clockMode(in_struct->clockMode),
+      memoryClockRatioToPeak(in_struct->memoryClockRatioToPeak),
+      engineClockRatioToPeak(in_struct->engineClockRatioToPeak) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkGpaDeviceClockModeInfoAMD::safe_VkGpaDeviceClockModeInfoAMD()
+    : sType(VK_STRUCTURE_TYPE_GPA_DEVICE_CLOCK_MODE_INFO_AMD),
+      pNext(nullptr),
+      clockMode(),
+      memoryClockRatioToPeak(),
+      engineClockRatioToPeak() {}
+
+safe_VkGpaDeviceClockModeInfoAMD::safe_VkGpaDeviceClockModeInfoAMD(const safe_VkGpaDeviceClockModeInfoAMD& copy_src) {
+    sType = copy_src.sType;
+    clockMode = copy_src.clockMode;
+    memoryClockRatioToPeak = copy_src.memoryClockRatioToPeak;
+    engineClockRatioToPeak = copy_src.engineClockRatioToPeak;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkGpaDeviceClockModeInfoAMD& safe_VkGpaDeviceClockModeInfoAMD::operator=(const safe_VkGpaDeviceClockModeInfoAMD& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    clockMode = copy_src.clockMode;
+    memoryClockRatioToPeak = copy_src.memoryClockRatioToPeak;
+    engineClockRatioToPeak = copy_src.engineClockRatioToPeak;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkGpaDeviceClockModeInfoAMD::~safe_VkGpaDeviceClockModeInfoAMD() { FreePnextChain(pNext); }
+
+void safe_VkGpaDeviceClockModeInfoAMD::initialize(const VkGpaDeviceClockModeInfoAMD* in_struct,
+                                                  [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    clockMode = in_struct->clockMode;
+    memoryClockRatioToPeak = in_struct->memoryClockRatioToPeak;
+    engineClockRatioToPeak = in_struct->engineClockRatioToPeak;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkGpaDeviceClockModeInfoAMD::initialize(const safe_VkGpaDeviceClockModeInfoAMD* copy_src,
+                                                  [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    clockMode = copy_src->clockMode;
+    memoryClockRatioToPeak = copy_src->memoryClockRatioToPeak;
+    engineClockRatioToPeak = copy_src->engineClockRatioToPeak;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkGpaDeviceGetClockInfoAMD::safe_VkGpaDeviceGetClockInfoAMD(const VkGpaDeviceGetClockInfoAMD* in_struct,
+                                                                 [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType),
+      memoryClockRatioToPeak(in_struct->memoryClockRatioToPeak),
+      engineClockRatioToPeak(in_struct->engineClockRatioToPeak),
+      memoryClockFrequency(in_struct->memoryClockFrequency),
+      engineClockFrequency(in_struct->engineClockFrequency) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkGpaDeviceGetClockInfoAMD::safe_VkGpaDeviceGetClockInfoAMD()
+    : sType(VK_STRUCTURE_TYPE_GPA_DEVICE_GET_CLOCK_INFO_AMD),
+      pNext(nullptr),
+      memoryClockRatioToPeak(),
+      engineClockRatioToPeak(),
+      memoryClockFrequency(),
+      engineClockFrequency() {}
+
+safe_VkGpaDeviceGetClockInfoAMD::safe_VkGpaDeviceGetClockInfoAMD(const safe_VkGpaDeviceGetClockInfoAMD& copy_src) {
+    sType = copy_src.sType;
+    memoryClockRatioToPeak = copy_src.memoryClockRatioToPeak;
+    engineClockRatioToPeak = copy_src.engineClockRatioToPeak;
+    memoryClockFrequency = copy_src.memoryClockFrequency;
+    engineClockFrequency = copy_src.engineClockFrequency;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkGpaDeviceGetClockInfoAMD& safe_VkGpaDeviceGetClockInfoAMD::operator=(const safe_VkGpaDeviceGetClockInfoAMD& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    memoryClockRatioToPeak = copy_src.memoryClockRatioToPeak;
+    engineClockRatioToPeak = copy_src.engineClockRatioToPeak;
+    memoryClockFrequency = copy_src.memoryClockFrequency;
+    engineClockFrequency = copy_src.engineClockFrequency;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkGpaDeviceGetClockInfoAMD::~safe_VkGpaDeviceGetClockInfoAMD() { FreePnextChain(pNext); }
+
+void safe_VkGpaDeviceGetClockInfoAMD::initialize(const VkGpaDeviceGetClockInfoAMD* in_struct,
+                                                 [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    memoryClockRatioToPeak = in_struct->memoryClockRatioToPeak;
+    engineClockRatioToPeak = in_struct->engineClockRatioToPeak;
+    memoryClockFrequency = in_struct->memoryClockFrequency;
+    engineClockFrequency = in_struct->engineClockFrequency;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkGpaDeviceGetClockInfoAMD::initialize(const safe_VkGpaDeviceGetClockInfoAMD* copy_src,
+                                                 [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    memoryClockRatioToPeak = copy_src->memoryClockRatioToPeak;
+    engineClockRatioToPeak = copy_src->engineClockRatioToPeak;
+    memoryClockFrequency = copy_src->memoryClockFrequency;
+    engineClockFrequency = copy_src->engineClockFrequency;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkGpaSessionCreateInfoAMD::safe_VkGpaSessionCreateInfoAMD(const VkGpaSessionCreateInfoAMD* in_struct,
+                                                               [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), secondaryCopySource(in_struct->secondaryCopySource) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkGpaSessionCreateInfoAMD::safe_VkGpaSessionCreateInfoAMD()
+    : sType(VK_STRUCTURE_TYPE_GPA_SESSION_CREATE_INFO_AMD), pNext(nullptr), secondaryCopySource() {}
+
+safe_VkGpaSessionCreateInfoAMD::safe_VkGpaSessionCreateInfoAMD(const safe_VkGpaSessionCreateInfoAMD& copy_src) {
+    sType = copy_src.sType;
+    secondaryCopySource = copy_src.secondaryCopySource;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkGpaSessionCreateInfoAMD& safe_VkGpaSessionCreateInfoAMD::operator=(const safe_VkGpaSessionCreateInfoAMD& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    secondaryCopySource = copy_src.secondaryCopySource;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkGpaSessionCreateInfoAMD::~safe_VkGpaSessionCreateInfoAMD() { FreePnextChain(pNext); }
+
+void safe_VkGpaSessionCreateInfoAMD::initialize(const VkGpaSessionCreateInfoAMD* in_struct,
+                                                [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    secondaryCopySource = in_struct->secondaryCopySource;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkGpaSessionCreateInfoAMD::initialize(const safe_VkGpaSessionCreateInfoAMD* copy_src,
+                                                [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    secondaryCopySource = copy_src->secondaryCopySource;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
 #ifdef VK_ENABLE_BETA_EXTENSIONS
 
 safe_VkPhysicalDeviceShaderEnqueueFeaturesAMDX::safe_VkPhysicalDeviceShaderEnqueueFeaturesAMDX(
@@ -4810,6 +5363,54 @@ void safe_VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM::initialize(
     const safe_VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
     sType = copy_src->sType;
     cooperativeMatrixConversion = copy_src->cooperativeMatrixConversion;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkPhysicalDeviceElapsedTimerQueryFeaturesQCOM::safe_VkPhysicalDeviceElapsedTimerQueryFeaturesQCOM(
+    const VkPhysicalDeviceElapsedTimerQueryFeaturesQCOM* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), elapsedTimerQuery(in_struct->elapsedTimerQuery) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceElapsedTimerQueryFeaturesQCOM::safe_VkPhysicalDeviceElapsedTimerQueryFeaturesQCOM()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ELAPSED_TIMER_QUERY_FEATURES_QCOM), pNext(nullptr), elapsedTimerQuery() {}
+
+safe_VkPhysicalDeviceElapsedTimerQueryFeaturesQCOM::safe_VkPhysicalDeviceElapsedTimerQueryFeaturesQCOM(
+    const safe_VkPhysicalDeviceElapsedTimerQueryFeaturesQCOM& copy_src) {
+    sType = copy_src.sType;
+    elapsedTimerQuery = copy_src.elapsedTimerQuery;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceElapsedTimerQueryFeaturesQCOM& safe_VkPhysicalDeviceElapsedTimerQueryFeaturesQCOM::operator=(
+    const safe_VkPhysicalDeviceElapsedTimerQueryFeaturesQCOM& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    elapsedTimerQuery = copy_src.elapsedTimerQuery;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceElapsedTimerQueryFeaturesQCOM::~safe_VkPhysicalDeviceElapsedTimerQueryFeaturesQCOM() { FreePnextChain(pNext); }
+
+void safe_VkPhysicalDeviceElapsedTimerQueryFeaturesQCOM::initialize(const VkPhysicalDeviceElapsedTimerQueryFeaturesQCOM* in_struct,
+                                                                    [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    elapsedTimerQuery = in_struct->elapsedTimerQuery;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceElapsedTimerQueryFeaturesQCOM::initialize(
+    const safe_VkPhysicalDeviceElapsedTimerQueryFeaturesQCOM* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    elapsedTimerQuery = copy_src->elapsedTimerQuery;
     pNext = SafePnextCopy(copy_src->pNext);
 }
 
@@ -8338,6 +8939,173 @@ void safe_VkPhysicalDeviceQueuePerfHintPropertiesQCOM::initialize(const safe_VkP
                                                                   [[maybe_unused]] PNextCopyState* copy_state) {
     sType = copy_src->sType;
     supportedQueues = copy_src->supportedQueues;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkPhysicalDeviceImageProcessing3FeaturesQCOM::safe_VkPhysicalDeviceImageProcessing3FeaturesQCOM(
+    const VkPhysicalDeviceImageProcessing3FeaturesQCOM* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType),
+      imageGatherLinear(in_struct->imageGatherLinear),
+      imageGatherExtendedModes(in_struct->imageGatherExtendedModes),
+      blockMatchExtendedClampToEdge(in_struct->blockMatchExtendedClampToEdge) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceImageProcessing3FeaturesQCOM::safe_VkPhysicalDeviceImageProcessing3FeaturesQCOM()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_PROCESSING_3_FEATURES_QCOM),
+      pNext(nullptr),
+      imageGatherLinear(),
+      imageGatherExtendedModes(),
+      blockMatchExtendedClampToEdge() {}
+
+safe_VkPhysicalDeviceImageProcessing3FeaturesQCOM::safe_VkPhysicalDeviceImageProcessing3FeaturesQCOM(
+    const safe_VkPhysicalDeviceImageProcessing3FeaturesQCOM& copy_src) {
+    sType = copy_src.sType;
+    imageGatherLinear = copy_src.imageGatherLinear;
+    imageGatherExtendedModes = copy_src.imageGatherExtendedModes;
+    blockMatchExtendedClampToEdge = copy_src.blockMatchExtendedClampToEdge;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceImageProcessing3FeaturesQCOM& safe_VkPhysicalDeviceImageProcessing3FeaturesQCOM::operator=(
+    const safe_VkPhysicalDeviceImageProcessing3FeaturesQCOM& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    imageGatherLinear = copy_src.imageGatherLinear;
+    imageGatherExtendedModes = copy_src.imageGatherExtendedModes;
+    blockMatchExtendedClampToEdge = copy_src.blockMatchExtendedClampToEdge;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceImageProcessing3FeaturesQCOM::~safe_VkPhysicalDeviceImageProcessing3FeaturesQCOM() { FreePnextChain(pNext); }
+
+void safe_VkPhysicalDeviceImageProcessing3FeaturesQCOM::initialize(const VkPhysicalDeviceImageProcessing3FeaturesQCOM* in_struct,
+                                                                   [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    imageGatherLinear = in_struct->imageGatherLinear;
+    imageGatherExtendedModes = in_struct->imageGatherExtendedModes;
+    blockMatchExtendedClampToEdge = in_struct->blockMatchExtendedClampToEdge;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceImageProcessing3FeaturesQCOM::initialize(
+    const safe_VkPhysicalDeviceImageProcessing3FeaturesQCOM* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    imageGatherLinear = copy_src->imageGatherLinear;
+    imageGatherExtendedModes = copy_src->imageGatherExtendedModes;
+    blockMatchExtendedClampToEdge = copy_src->blockMatchExtendedClampToEdge;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkPhysicalDeviceShaderMultipleWaitQueuesFeaturesQCOM::safe_VkPhysicalDeviceShaderMultipleWaitQueuesFeaturesQCOM(
+    const VkPhysicalDeviceShaderMultipleWaitQueuesFeaturesQCOM* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
+    bool copy_pnext)
+    : sType(in_struct->sType), shaderMultipleWaitQueues(in_struct->shaderMultipleWaitQueues) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceShaderMultipleWaitQueuesFeaturesQCOM::safe_VkPhysicalDeviceShaderMultipleWaitQueuesFeaturesQCOM()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_MULTIPLE_WAIT_QUEUES_FEATURES_QCOM),
+      pNext(nullptr),
+      shaderMultipleWaitQueues() {}
+
+safe_VkPhysicalDeviceShaderMultipleWaitQueuesFeaturesQCOM::safe_VkPhysicalDeviceShaderMultipleWaitQueuesFeaturesQCOM(
+    const safe_VkPhysicalDeviceShaderMultipleWaitQueuesFeaturesQCOM& copy_src) {
+    sType = copy_src.sType;
+    shaderMultipleWaitQueues = copy_src.shaderMultipleWaitQueues;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceShaderMultipleWaitQueuesFeaturesQCOM& safe_VkPhysicalDeviceShaderMultipleWaitQueuesFeaturesQCOM::operator=(
+    const safe_VkPhysicalDeviceShaderMultipleWaitQueuesFeaturesQCOM& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    shaderMultipleWaitQueues = copy_src.shaderMultipleWaitQueues;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceShaderMultipleWaitQueuesFeaturesQCOM::~safe_VkPhysicalDeviceShaderMultipleWaitQueuesFeaturesQCOM() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkPhysicalDeviceShaderMultipleWaitQueuesFeaturesQCOM::initialize(
+    const VkPhysicalDeviceShaderMultipleWaitQueuesFeaturesQCOM* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    shaderMultipleWaitQueues = in_struct->shaderMultipleWaitQueues;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceShaderMultipleWaitQueuesFeaturesQCOM::initialize(
+    const safe_VkPhysicalDeviceShaderMultipleWaitQueuesFeaturesQCOM* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    shaderMultipleWaitQueues = copy_src->shaderMultipleWaitQueues;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkPhysicalDeviceShaderMultipleWaitQueuesPropertiesQCOM::safe_VkPhysicalDeviceShaderMultipleWaitQueuesPropertiesQCOM(
+    const VkPhysicalDeviceShaderMultipleWaitQueuesPropertiesQCOM* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
+    bool copy_pnext)
+    : sType(in_struct->sType), maxShaderWaitQueues(in_struct->maxShaderWaitQueues) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceShaderMultipleWaitQueuesPropertiesQCOM::safe_VkPhysicalDeviceShaderMultipleWaitQueuesPropertiesQCOM()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_MULTIPLE_WAIT_QUEUES_PROPERTIES_QCOM), pNext(nullptr), maxShaderWaitQueues() {}
+
+safe_VkPhysicalDeviceShaderMultipleWaitQueuesPropertiesQCOM::safe_VkPhysicalDeviceShaderMultipleWaitQueuesPropertiesQCOM(
+    const safe_VkPhysicalDeviceShaderMultipleWaitQueuesPropertiesQCOM& copy_src) {
+    sType = copy_src.sType;
+    maxShaderWaitQueues = copy_src.maxShaderWaitQueues;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceShaderMultipleWaitQueuesPropertiesQCOM& safe_VkPhysicalDeviceShaderMultipleWaitQueuesPropertiesQCOM::operator=(
+    const safe_VkPhysicalDeviceShaderMultipleWaitQueuesPropertiesQCOM& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    maxShaderWaitQueues = copy_src.maxShaderWaitQueues;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceShaderMultipleWaitQueuesPropertiesQCOM::~safe_VkPhysicalDeviceShaderMultipleWaitQueuesPropertiesQCOM() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkPhysicalDeviceShaderMultipleWaitQueuesPropertiesQCOM::initialize(
+    const VkPhysicalDeviceShaderMultipleWaitQueuesPropertiesQCOM* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    maxShaderWaitQueues = in_struct->maxShaderWaitQueues;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceShaderMultipleWaitQueuesPropertiesQCOM::initialize(
+    const safe_VkPhysicalDeviceShaderMultipleWaitQueuesPropertiesQCOM* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    maxShaderWaitQueues = copy_src->maxShaderWaitQueues;
     pNext = SafePnextCopy(copy_src->pNext);
 }
 #ifdef VK_ENABLE_BETA_EXTENSIONS

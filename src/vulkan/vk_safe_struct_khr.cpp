@@ -18967,6 +18967,372 @@ void safe_VkPhysicalDevicePresentModeFifoLatestReadyFeaturesKHR::initialize(
     pNext = SafePnextCopy(copy_src->pNext);
 }
 
+safe_VkAccelerationStructureGeometryMicromapDataKHR::safe_VkAccelerationStructureGeometryMicromapDataKHR(
+    const VkAccelerationStructureGeometryMicromapDataKHR* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType),
+      usageCountsCount(in_struct->usageCountsCount),
+      pUsageCounts(nullptr),
+      ppUsageCounts(nullptr),
+      data(in_struct->data),
+      triangleArray(in_struct->triangleArray),
+      triangleArrayStride(in_struct->triangleArrayStride) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+    if (in_struct->pUsageCounts) {
+        pUsageCounts = new VkMicromapUsageKHR[in_struct->usageCountsCount];
+        memcpy((void*)pUsageCounts, (void*)in_struct->pUsageCounts, sizeof(VkMicromapUsageKHR) * in_struct->usageCountsCount);
+    }
+
+    if (in_struct->ppUsageCounts) {
+        VkMicromapUsageKHR** pointer_array = new VkMicromapUsageKHR*[in_struct->usageCountsCount];
+        for (uint32_t i = 0; i < in_struct->usageCountsCount; ++i) {
+            pointer_array[i] = new VkMicromapUsageKHR(*in_struct->ppUsageCounts[i]);
+        }
+        ppUsageCounts = pointer_array;
+    }
+}
+
+safe_VkAccelerationStructureGeometryMicromapDataKHR::safe_VkAccelerationStructureGeometryMicromapDataKHR()
+    : sType(VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_MICROMAP_DATA_KHR),
+      pNext(nullptr),
+      usageCountsCount(),
+      pUsageCounts(nullptr),
+      ppUsageCounts(nullptr),
+      data(),
+      triangleArray(),
+      triangleArrayStride() {}
+
+safe_VkAccelerationStructureGeometryMicromapDataKHR::safe_VkAccelerationStructureGeometryMicromapDataKHR(
+    const safe_VkAccelerationStructureGeometryMicromapDataKHR& copy_src) {
+    sType = copy_src.sType;
+    usageCountsCount = copy_src.usageCountsCount;
+    pUsageCounts = nullptr;
+    ppUsageCounts = nullptr;
+    data = copy_src.data;
+    triangleArray = copy_src.triangleArray;
+    triangleArrayStride = copy_src.triangleArrayStride;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    if (copy_src.pUsageCounts) {
+        pUsageCounts = new VkMicromapUsageKHR[copy_src.usageCountsCount];
+        memcpy((void*)pUsageCounts, (void*)copy_src.pUsageCounts, sizeof(VkMicromapUsageKHR) * copy_src.usageCountsCount);
+    }
+
+    if (copy_src.ppUsageCounts) {
+        VkMicromapUsageKHR** pointer_array = new VkMicromapUsageKHR*[copy_src.usageCountsCount];
+        for (uint32_t i = 0; i < copy_src.usageCountsCount; ++i) {
+            pointer_array[i] = new VkMicromapUsageKHR(*copy_src.ppUsageCounts[i]);
+        }
+        ppUsageCounts = pointer_array;
+    }
+}
+
+safe_VkAccelerationStructureGeometryMicromapDataKHR& safe_VkAccelerationStructureGeometryMicromapDataKHR::operator=(
+    const safe_VkAccelerationStructureGeometryMicromapDataKHR& copy_src) {
+    if (&copy_src == this) return *this;
+
+    if (pUsageCounts) delete[] pUsageCounts;
+
+    if (ppUsageCounts) {
+        for (uint32_t i = 0; i < usageCountsCount; ++i) {
+            delete ppUsageCounts[i];
+        }
+        delete[] ppUsageCounts;
+    }
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    usageCountsCount = copy_src.usageCountsCount;
+    pUsageCounts = nullptr;
+    ppUsageCounts = nullptr;
+    data = copy_src.data;
+    triangleArray = copy_src.triangleArray;
+    triangleArrayStride = copy_src.triangleArrayStride;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    if (copy_src.pUsageCounts) {
+        pUsageCounts = new VkMicromapUsageKHR[copy_src.usageCountsCount];
+        memcpy((void*)pUsageCounts, (void*)copy_src.pUsageCounts, sizeof(VkMicromapUsageKHR) * copy_src.usageCountsCount);
+    }
+
+    if (copy_src.ppUsageCounts) {
+        VkMicromapUsageKHR** pointer_array = new VkMicromapUsageKHR*[copy_src.usageCountsCount];
+        for (uint32_t i = 0; i < copy_src.usageCountsCount; ++i) {
+            pointer_array[i] = new VkMicromapUsageKHR(*copy_src.ppUsageCounts[i]);
+        }
+        ppUsageCounts = pointer_array;
+    }
+
+    return *this;
+}
+
+safe_VkAccelerationStructureGeometryMicromapDataKHR::~safe_VkAccelerationStructureGeometryMicromapDataKHR() {
+    if (pUsageCounts) delete[] pUsageCounts;
+
+    if (ppUsageCounts) {
+        for (uint32_t i = 0; i < usageCountsCount; ++i) {
+            delete ppUsageCounts[i];
+        }
+        delete[] ppUsageCounts;
+    }
+    FreePnextChain(pNext);
+}
+
+void safe_VkAccelerationStructureGeometryMicromapDataKHR::initialize(
+    const VkAccelerationStructureGeometryMicromapDataKHR* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    if (pUsageCounts) delete[] pUsageCounts;
+
+    if (ppUsageCounts) {
+        for (uint32_t i = 0; i < usageCountsCount; ++i) {
+            delete ppUsageCounts[i];
+        }
+        delete[] ppUsageCounts;
+    }
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    usageCountsCount = in_struct->usageCountsCount;
+    pUsageCounts = nullptr;
+    ppUsageCounts = nullptr;
+    data = in_struct->data;
+    triangleArray = in_struct->triangleArray;
+    triangleArrayStride = in_struct->triangleArrayStride;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+
+    if (in_struct->pUsageCounts) {
+        pUsageCounts = new VkMicromapUsageKHR[in_struct->usageCountsCount];
+        memcpy((void*)pUsageCounts, (void*)in_struct->pUsageCounts, sizeof(VkMicromapUsageKHR) * in_struct->usageCountsCount);
+    }
+
+    if (in_struct->ppUsageCounts) {
+        VkMicromapUsageKHR** pointer_array = new VkMicromapUsageKHR*[in_struct->usageCountsCount];
+        for (uint32_t i = 0; i < in_struct->usageCountsCount; ++i) {
+            pointer_array[i] = new VkMicromapUsageKHR(*in_struct->ppUsageCounts[i]);
+        }
+        ppUsageCounts = pointer_array;
+    }
+}
+
+void safe_VkAccelerationStructureGeometryMicromapDataKHR::initialize(
+    const safe_VkAccelerationStructureGeometryMicromapDataKHR* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    usageCountsCount = copy_src->usageCountsCount;
+    pUsageCounts = nullptr;
+    ppUsageCounts = nullptr;
+    data = copy_src->data;
+    triangleArray = copy_src->triangleArray;
+    triangleArrayStride = copy_src->triangleArrayStride;
+    pNext = SafePnextCopy(copy_src->pNext);
+
+    if (copy_src->pUsageCounts) {
+        pUsageCounts = new VkMicromapUsageKHR[copy_src->usageCountsCount];
+        memcpy((void*)pUsageCounts, (void*)copy_src->pUsageCounts, sizeof(VkMicromapUsageKHR) * copy_src->usageCountsCount);
+    }
+
+    if (copy_src->ppUsageCounts) {
+        VkMicromapUsageKHR** pointer_array = new VkMicromapUsageKHR*[copy_src->usageCountsCount];
+        for (uint32_t i = 0; i < copy_src->usageCountsCount; ++i) {
+            pointer_array[i] = new VkMicromapUsageKHR(*copy_src->ppUsageCounts[i]);
+        }
+        ppUsageCounts = pointer_array;
+    }
+}
+
+safe_VkPhysicalDeviceOpacityMicromapFeaturesKHR::safe_VkPhysicalDeviceOpacityMicromapFeaturesKHR(
+    const VkPhysicalDeviceOpacityMicromapFeaturesKHR* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), micromap(in_struct->micromap) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceOpacityMicromapFeaturesKHR::safe_VkPhysicalDeviceOpacityMicromapFeaturesKHR()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_OPACITY_MICROMAP_FEATURES_KHR), pNext(nullptr), micromap() {}
+
+safe_VkPhysicalDeviceOpacityMicromapFeaturesKHR::safe_VkPhysicalDeviceOpacityMicromapFeaturesKHR(
+    const safe_VkPhysicalDeviceOpacityMicromapFeaturesKHR& copy_src) {
+    sType = copy_src.sType;
+    micromap = copy_src.micromap;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceOpacityMicromapFeaturesKHR& safe_VkPhysicalDeviceOpacityMicromapFeaturesKHR::operator=(
+    const safe_VkPhysicalDeviceOpacityMicromapFeaturesKHR& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    micromap = copy_src.micromap;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceOpacityMicromapFeaturesKHR::~safe_VkPhysicalDeviceOpacityMicromapFeaturesKHR() { FreePnextChain(pNext); }
+
+void safe_VkPhysicalDeviceOpacityMicromapFeaturesKHR::initialize(const VkPhysicalDeviceOpacityMicromapFeaturesKHR* in_struct,
+                                                                 [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    micromap = in_struct->micromap;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceOpacityMicromapFeaturesKHR::initialize(const safe_VkPhysicalDeviceOpacityMicromapFeaturesKHR* copy_src,
+                                                                 [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    micromap = copy_src->micromap;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkPhysicalDeviceOpacityMicromapPropertiesKHR::safe_VkPhysicalDeviceOpacityMicromapPropertiesKHR(
+    const VkPhysicalDeviceOpacityMicromapPropertiesKHR* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType),
+      maxOpacity2StateSubdivisionLevel(in_struct->maxOpacity2StateSubdivisionLevel),
+      maxOpacity4StateSubdivisionLevel(in_struct->maxOpacity4StateSubdivisionLevel),
+      maxOpacityLossy4StateSubdivisionLevel(in_struct->maxOpacityLossy4StateSubdivisionLevel),
+      maxMicromapTriangles(in_struct->maxMicromapTriangles) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceOpacityMicromapPropertiesKHR::safe_VkPhysicalDeviceOpacityMicromapPropertiesKHR()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_OPACITY_MICROMAP_PROPERTIES_KHR),
+      pNext(nullptr),
+      maxOpacity2StateSubdivisionLevel(),
+      maxOpacity4StateSubdivisionLevel(),
+      maxOpacityLossy4StateSubdivisionLevel(),
+      maxMicromapTriangles() {}
+
+safe_VkPhysicalDeviceOpacityMicromapPropertiesKHR::safe_VkPhysicalDeviceOpacityMicromapPropertiesKHR(
+    const safe_VkPhysicalDeviceOpacityMicromapPropertiesKHR& copy_src) {
+    sType = copy_src.sType;
+    maxOpacity2StateSubdivisionLevel = copy_src.maxOpacity2StateSubdivisionLevel;
+    maxOpacity4StateSubdivisionLevel = copy_src.maxOpacity4StateSubdivisionLevel;
+    maxOpacityLossy4StateSubdivisionLevel = copy_src.maxOpacityLossy4StateSubdivisionLevel;
+    maxMicromapTriangles = copy_src.maxMicromapTriangles;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceOpacityMicromapPropertiesKHR& safe_VkPhysicalDeviceOpacityMicromapPropertiesKHR::operator=(
+    const safe_VkPhysicalDeviceOpacityMicromapPropertiesKHR& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    maxOpacity2StateSubdivisionLevel = copy_src.maxOpacity2StateSubdivisionLevel;
+    maxOpacity4StateSubdivisionLevel = copy_src.maxOpacity4StateSubdivisionLevel;
+    maxOpacityLossy4StateSubdivisionLevel = copy_src.maxOpacityLossy4StateSubdivisionLevel;
+    maxMicromapTriangles = copy_src.maxMicromapTriangles;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceOpacityMicromapPropertiesKHR::~safe_VkPhysicalDeviceOpacityMicromapPropertiesKHR() { FreePnextChain(pNext); }
+
+void safe_VkPhysicalDeviceOpacityMicromapPropertiesKHR::initialize(const VkPhysicalDeviceOpacityMicromapPropertiesKHR* in_struct,
+                                                                   [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    maxOpacity2StateSubdivisionLevel = in_struct->maxOpacity2StateSubdivisionLevel;
+    maxOpacity4StateSubdivisionLevel = in_struct->maxOpacity4StateSubdivisionLevel;
+    maxOpacityLossy4StateSubdivisionLevel = in_struct->maxOpacityLossy4StateSubdivisionLevel;
+    maxMicromapTriangles = in_struct->maxMicromapTriangles;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceOpacityMicromapPropertiesKHR::initialize(
+    const safe_VkPhysicalDeviceOpacityMicromapPropertiesKHR* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    maxOpacity2StateSubdivisionLevel = copy_src->maxOpacity2StateSubdivisionLevel;
+    maxOpacity4StateSubdivisionLevel = copy_src->maxOpacity4StateSubdivisionLevel;
+    maxOpacityLossy4StateSubdivisionLevel = copy_src->maxOpacityLossy4StateSubdivisionLevel;
+    maxMicromapTriangles = copy_src->maxMicromapTriangles;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkAccelerationStructureTrianglesOpacityMicromapKHR::safe_VkAccelerationStructureTrianglesOpacityMicromapKHR(
+    const VkAccelerationStructureTrianglesOpacityMicromapKHR* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
+    bool copy_pnext)
+    : sType(in_struct->sType),
+      indexType(in_struct->indexType),
+      indexBuffer(in_struct->indexBuffer),
+      indexStride(in_struct->indexStride),
+      baseTriangle(in_struct->baseTriangle),
+      micromap(in_struct->micromap) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkAccelerationStructureTrianglesOpacityMicromapKHR::safe_VkAccelerationStructureTrianglesOpacityMicromapKHR()
+    : sType(VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_TRIANGLES_OPACITY_MICROMAP_KHR),
+      pNext(nullptr),
+      indexType(),
+      indexBuffer(),
+      indexStride(),
+      baseTriangle(),
+      micromap() {}
+
+safe_VkAccelerationStructureTrianglesOpacityMicromapKHR::safe_VkAccelerationStructureTrianglesOpacityMicromapKHR(
+    const safe_VkAccelerationStructureTrianglesOpacityMicromapKHR& copy_src) {
+    sType = copy_src.sType;
+    indexType = copy_src.indexType;
+    indexBuffer = copy_src.indexBuffer;
+    indexStride = copy_src.indexStride;
+    baseTriangle = copy_src.baseTriangle;
+    micromap = copy_src.micromap;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkAccelerationStructureTrianglesOpacityMicromapKHR& safe_VkAccelerationStructureTrianglesOpacityMicromapKHR::operator=(
+    const safe_VkAccelerationStructureTrianglesOpacityMicromapKHR& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    indexType = copy_src.indexType;
+    indexBuffer = copy_src.indexBuffer;
+    indexStride = copy_src.indexStride;
+    baseTriangle = copy_src.baseTriangle;
+    micromap = copy_src.micromap;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkAccelerationStructureTrianglesOpacityMicromapKHR::~safe_VkAccelerationStructureTrianglesOpacityMicromapKHR() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkAccelerationStructureTrianglesOpacityMicromapKHR::initialize(
+    const VkAccelerationStructureTrianglesOpacityMicromapKHR* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    indexType = in_struct->indexType;
+    indexBuffer = in_struct->indexBuffer;
+    indexStride = in_struct->indexStride;
+    baseTriangle = in_struct->baseTriangle;
+    micromap = in_struct->micromap;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkAccelerationStructureTrianglesOpacityMicromapKHR::initialize(
+    const safe_VkAccelerationStructureTrianglesOpacityMicromapKHR* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    indexType = copy_src->indexType;
+    indexBuffer = copy_src->indexBuffer;
+    indexStride = copy_src->indexStride;
+    baseTriangle = copy_src->baseTriangle;
+    micromap = copy_src->micromap;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
 safe_VkPhysicalDeviceMaintenance10FeaturesKHR::safe_VkPhysicalDeviceMaintenance10FeaturesKHR(
     const VkPhysicalDeviceMaintenance10FeaturesKHR* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
     : sType(in_struct->sType), maintenance10(in_struct->maintenance10) {

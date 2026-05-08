@@ -994,6 +994,20 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_EXTERNAL_FORMAT_ANDROID";
         case VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_FORMAT_PROPERTIES_2_ANDROID:
             return "VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_FORMAT_PROPERTIES_2_ANDROID";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GPA_FEATURES_AMD:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GPA_FEATURES_AMD";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GPA_PROPERTIES_AMD:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GPA_PROPERTIES_AMD";
+        case VK_STRUCTURE_TYPE_GPA_SAMPLE_BEGIN_INFO_AMD:
+            return "VK_STRUCTURE_TYPE_GPA_SAMPLE_BEGIN_INFO_AMD";
+        case VK_STRUCTURE_TYPE_GPA_SESSION_CREATE_INFO_AMD:
+            return "VK_STRUCTURE_TYPE_GPA_SESSION_CREATE_INFO_AMD";
+        case VK_STRUCTURE_TYPE_GPA_DEVICE_CLOCK_MODE_INFO_AMD:
+            return "VK_STRUCTURE_TYPE_GPA_DEVICE_CLOCK_MODE_INFO_AMD";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GPA_PROPERTIES_2_AMD:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GPA_PROPERTIES_2_AMD";
+        case VK_STRUCTURE_TYPE_GPA_DEVICE_GET_CLOCK_INFO_AMD:
+            return "VK_STRUCTURE_TYPE_GPA_DEVICE_GET_CLOCK_INFO_AMD";
 #ifdef VK_ENABLE_BETA_EXTENSIONS
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ENQUEUE_FEATURES_AMDX:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ENQUEUE_FEATURES_AMDX";
@@ -1168,6 +1182,8 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_FILTER_CUBIC_IMAGE_VIEW_IMAGE_FORMAT_PROPERTIES_EXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_CONVERSION_FEATURES_QCOM:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_CONVERSION_FEATURES_QCOM";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ELAPSED_TIMER_QUERY_FEATURES_QCOM:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ELAPSED_TIMER_QUERY_FEATURES_QCOM";
         case VK_STRUCTURE_TYPE_IMPORT_MEMORY_HOST_POINTER_INFO_EXT:
             return "VK_STRUCTURE_TYPE_IMPORT_MEMORY_HOST_POINTER_INFO_EXT";
         case VK_STRUCTURE_TYPE_MEMORY_HOST_POINTER_PROPERTIES_EXT:
@@ -1458,6 +1474,16 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_QUEUE_PERF_HINT_FEATURES_QCOM";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_QUEUE_PERF_HINT_PROPERTIES_QCOM:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_QUEUE_PERF_HINT_PROPERTIES_QCOM";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_PROCESSING_3_FEATURES_QCOM:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_PROCESSING_3_FEATURES_QCOM";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_MULTIPLE_WAIT_QUEUES_FEATURES_QCOM:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_MULTIPLE_WAIT_QUEUES_FEATURES_QCOM";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_MULTIPLE_WAIT_QUEUES_PROPERTIES_QCOM:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_MULTIPLE_WAIT_QUEUES_PROPERTIES_QCOM";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SPLIT_BARRIER_FEATURES_EXT:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SPLIT_BARRIER_FEATURES_EXT";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SPLIT_BARRIER_PROPERTIES_EXT:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SPLIT_BARRIER_PROPERTIES_EXT";
 #ifdef VK_ENABLE_BETA_EXTENSIONS
         case VK_STRUCTURE_TYPE_CUDA_MODULE_CREATE_INFO_NV:
             return "VK_STRUCTURE_TYPE_CUDA_MODULE_CREATE_INFO_NV";
@@ -2492,6 +2518,14 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ZERO_INITIALIZE_DEVICE_MEMORY_FEATURES_EXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_MODE_FIFO_LATEST_READY_FEATURES_KHR:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_MODE_FIFO_LATEST_READY_FEATURES_KHR";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_OPACITY_MICROMAP_FEATURES_KHR:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_OPACITY_MICROMAP_FEATURES_KHR";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_OPACITY_MICROMAP_PROPERTIES_KHR:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_OPACITY_MICROMAP_PROPERTIES_KHR";
+        case VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_MICROMAP_DATA_KHR:
+            return "VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_MICROMAP_DATA_KHR";
+        case VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_TRIANGLES_OPACITY_MICROMAP_KHR:
+            return "VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_TRIANGLES_OPACITY_MICROMAP_KHR";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_64_BIT_INDEXING_FEATURES_EXT:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_64_BIT_INDEXING_FEATURES_EXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUSTOM_RESOLVE_FEATURES_EXT:
@@ -2650,6 +2684,8 @@ static inline const char* string_VkObjectType(VkObjectType input_value) {
             return "VK_OBJECT_TYPE_CU_FUNCTION_NVX";
         case VK_OBJECT_TYPE_DEBUG_UTILS_MESSENGER_EXT:
             return "VK_OBJECT_TYPE_DEBUG_UTILS_MESSENGER_EXT";
+        case VK_OBJECT_TYPE_GPA_SESSION_AMD:
+            return "VK_OBJECT_TYPE_GPA_SESSION_AMD";
         case VK_OBJECT_TYPE_ACCELERATION_STRUCTURE_KHR:
             return "VK_OBJECT_TYPE_ACCELERATION_STRUCTURE_KHR";
         case VK_OBJECT_TYPE_VALIDATION_CACHE_EXT:
@@ -3404,6 +3440,8 @@ static inline const char* string_VkQueryType(VkQueryType input_value) {
             return "VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_SIZE_KHR";
         case VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_NV:
             return "VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_NV";
+        case VK_QUERY_TYPE_TIME_ELAPSED_QCOM:
+            return "VK_QUERY_TYPE_TIME_ELAPSED_QCOM";
         case VK_QUERY_TYPE_PERFORMANCE_QUERY_INTEL:
             return "VK_QUERY_TYPE_PERFORMANCE_QUERY_INTEL";
         case VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR:
@@ -4592,6 +4630,8 @@ static inline const char* string_VkAccelerationStructureTypeKHR(VkAccelerationSt
             return "VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_KHR";
         case VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR:
             return "VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR";
+        case VK_ACCELERATION_STRUCTURE_TYPE_OPACITY_MICROMAP_KHR:
+            return "VK_ACCELERATION_STRUCTURE_TYPE_OPACITY_MICROMAP_KHR";
         default:
             return "Unhandled VkAccelerationStructureTypeKHR";
     }
@@ -4744,6 +4784,40 @@ static inline const char* string_VkDefaultVertexAttributeValueKHR(VkDefaultVerte
             return "VK_DEFAULT_VERTEX_ATTRIBUTE_VALUE_ZERO_ZERO_ZERO_ONE_KHR";
         default:
             return "Unhandled VkDefaultVertexAttributeValueKHR";
+    }
+}
+static inline const char* string_VkOpacityMicromapFormatKHR(VkOpacityMicromapFormatKHR input_value) {
+    switch (input_value) {
+        case VK_OPACITY_MICROMAP_FORMAT_2_STATE_KHR:
+            return "VK_OPACITY_MICROMAP_FORMAT_2_STATE_KHR";
+        case VK_OPACITY_MICROMAP_FORMAT_4_STATE_KHR:
+            return "VK_OPACITY_MICROMAP_FORMAT_4_STATE_KHR";
+        default:
+            return "Unhandled VkOpacityMicromapFormatKHR";
+    }
+}
+static inline const char* string_VkOpacityMicromapSpecialIndexKHR(VkOpacityMicromapSpecialIndexKHR input_value) {
+    switch (input_value) {
+        case VK_OPACITY_MICROMAP_SPECIAL_INDEX_FULLY_TRANSPARENT_KHR:
+            return "VK_OPACITY_MICROMAP_SPECIAL_INDEX_FULLY_TRANSPARENT_KHR";
+        case VK_OPACITY_MICROMAP_SPECIAL_INDEX_FULLY_OPAQUE_KHR:
+            return "VK_OPACITY_MICROMAP_SPECIAL_INDEX_FULLY_OPAQUE_KHR";
+        case VK_OPACITY_MICROMAP_SPECIAL_INDEX_FULLY_UNKNOWN_TRANSPARENT_KHR:
+            return "VK_OPACITY_MICROMAP_SPECIAL_INDEX_FULLY_UNKNOWN_TRANSPARENT_KHR";
+        case VK_OPACITY_MICROMAP_SPECIAL_INDEX_FULLY_UNKNOWN_OPAQUE_KHR:
+            return "VK_OPACITY_MICROMAP_SPECIAL_INDEX_FULLY_UNKNOWN_OPAQUE_KHR";
+        case VK_OPACITY_MICROMAP_SPECIAL_INDEX_CLUSTER_GEOMETRY_DISABLE_OPACITY_MICROMAP_NV:
+            return "VK_OPACITY_MICROMAP_SPECIAL_INDEX_CLUSTER_GEOMETRY_DISABLE_OPACITY_MICROMAP_NV";
+        default:
+            return "Unhandled VkOpacityMicromapSpecialIndexKHR";
+    }
+}
+static inline const char* string_VkAccelerationStructureSerializedBlockTypeKHR(VkAccelerationStructureSerializedBlockTypeKHR input_value) {
+    switch (input_value) {
+        case VK_ACCELERATION_STRUCTURE_SERIALIZED_BLOCK_TYPE_OPACITY_MICROMAP_KHR:
+            return "VK_ACCELERATION_STRUCTURE_SERIALIZED_BLOCK_TYPE_OPACITY_MICROMAP_KHR";
+        default:
+            return "Unhandled VkAccelerationStructureSerializedBlockTypeKHR";
     }
 }
 static inline const char* string_VkDebugReportObjectTypeEXT(VkDebugReportObjectTypeEXT input_value) {
@@ -4938,6 +5012,156 @@ static inline const char* string_VkConservativeRasterizationModeEXT(VkConservati
             return "Unhandled VkConservativeRasterizationModeEXT";
     }
 }
+static inline const char* string_VkGpaPerfBlockAMD(VkGpaPerfBlockAMD input_value) {
+    switch (input_value) {
+        case VK_GPA_PERF_BLOCK_CPF_AMD:
+            return "VK_GPA_PERF_BLOCK_CPF_AMD";
+        case VK_GPA_PERF_BLOCK_IA_AMD:
+            return "VK_GPA_PERF_BLOCK_IA_AMD";
+        case VK_GPA_PERF_BLOCK_VGT_AMD:
+            return "VK_GPA_PERF_BLOCK_VGT_AMD";
+        case VK_GPA_PERF_BLOCK_PA_AMD:
+            return "VK_GPA_PERF_BLOCK_PA_AMD";
+        case VK_GPA_PERF_BLOCK_SC_AMD:
+            return "VK_GPA_PERF_BLOCK_SC_AMD";
+        case VK_GPA_PERF_BLOCK_SPI_AMD:
+            return "VK_GPA_PERF_BLOCK_SPI_AMD";
+        case VK_GPA_PERF_BLOCK_SQ_AMD:
+            return "VK_GPA_PERF_BLOCK_SQ_AMD";
+        case VK_GPA_PERF_BLOCK_SX_AMD:
+            return "VK_GPA_PERF_BLOCK_SX_AMD";
+        case VK_GPA_PERF_BLOCK_TA_AMD:
+            return "VK_GPA_PERF_BLOCK_TA_AMD";
+        case VK_GPA_PERF_BLOCK_TD_AMD:
+            return "VK_GPA_PERF_BLOCK_TD_AMD";
+        case VK_GPA_PERF_BLOCK_TCP_AMD:
+            return "VK_GPA_PERF_BLOCK_TCP_AMD";
+        case VK_GPA_PERF_BLOCK_TCC_AMD:
+            return "VK_GPA_PERF_BLOCK_TCC_AMD";
+        case VK_GPA_PERF_BLOCK_TCA_AMD:
+            return "VK_GPA_PERF_BLOCK_TCA_AMD";
+        case VK_GPA_PERF_BLOCK_DB_AMD:
+            return "VK_GPA_PERF_BLOCK_DB_AMD";
+        case VK_GPA_PERF_BLOCK_CB_AMD:
+            return "VK_GPA_PERF_BLOCK_CB_AMD";
+        case VK_GPA_PERF_BLOCK_GDS_AMD:
+            return "VK_GPA_PERF_BLOCK_GDS_AMD";
+        case VK_GPA_PERF_BLOCK_SRBM_AMD:
+            return "VK_GPA_PERF_BLOCK_SRBM_AMD";
+        case VK_GPA_PERF_BLOCK_GRBM_AMD:
+            return "VK_GPA_PERF_BLOCK_GRBM_AMD";
+        case VK_GPA_PERF_BLOCK_GRBM_SE_AMD:
+            return "VK_GPA_PERF_BLOCK_GRBM_SE_AMD";
+        case VK_GPA_PERF_BLOCK_RLC_AMD:
+            return "VK_GPA_PERF_BLOCK_RLC_AMD";
+        case VK_GPA_PERF_BLOCK_DMA_AMD:
+            return "VK_GPA_PERF_BLOCK_DMA_AMD";
+        case VK_GPA_PERF_BLOCK_MC_AMD:
+            return "VK_GPA_PERF_BLOCK_MC_AMD";
+        case VK_GPA_PERF_BLOCK_CPG_AMD:
+            return "VK_GPA_PERF_BLOCK_CPG_AMD";
+        case VK_GPA_PERF_BLOCK_CPC_AMD:
+            return "VK_GPA_PERF_BLOCK_CPC_AMD";
+        case VK_GPA_PERF_BLOCK_WD_AMD:
+            return "VK_GPA_PERF_BLOCK_WD_AMD";
+        case VK_GPA_PERF_BLOCK_TCS_AMD:
+            return "VK_GPA_PERF_BLOCK_TCS_AMD";
+        case VK_GPA_PERF_BLOCK_ATC_AMD:
+            return "VK_GPA_PERF_BLOCK_ATC_AMD";
+        case VK_GPA_PERF_BLOCK_ATC_L2_AMD:
+            return "VK_GPA_PERF_BLOCK_ATC_L2_AMD";
+        case VK_GPA_PERF_BLOCK_MC_VM_L2_AMD:
+            return "VK_GPA_PERF_BLOCK_MC_VM_L2_AMD";
+        case VK_GPA_PERF_BLOCK_EA_AMD:
+            return "VK_GPA_PERF_BLOCK_EA_AMD";
+        case VK_GPA_PERF_BLOCK_RPB_AMD:
+            return "VK_GPA_PERF_BLOCK_RPB_AMD";
+        case VK_GPA_PERF_BLOCK_RMI_AMD:
+            return "VK_GPA_PERF_BLOCK_RMI_AMD";
+        case VK_GPA_PERF_BLOCK_UMCCH_AMD:
+            return "VK_GPA_PERF_BLOCK_UMCCH_AMD";
+        case VK_GPA_PERF_BLOCK_GE_AMD:
+            return "VK_GPA_PERF_BLOCK_GE_AMD";
+        case VK_GPA_PERF_BLOCK_GL1A_AMD:
+            return "VK_GPA_PERF_BLOCK_GL1A_AMD";
+        case VK_GPA_PERF_BLOCK_GL1C_AMD:
+            return "VK_GPA_PERF_BLOCK_GL1C_AMD";
+        case VK_GPA_PERF_BLOCK_GL1CG_AMD:
+            return "VK_GPA_PERF_BLOCK_GL1CG_AMD";
+        case VK_GPA_PERF_BLOCK_GL2A_AMD:
+            return "VK_GPA_PERF_BLOCK_GL2A_AMD";
+        case VK_GPA_PERF_BLOCK_GL2C_AMD:
+            return "VK_GPA_PERF_BLOCK_GL2C_AMD";
+        case VK_GPA_PERF_BLOCK_CHA_AMD:
+            return "VK_GPA_PERF_BLOCK_CHA_AMD";
+        case VK_GPA_PERF_BLOCK_CHC_AMD:
+            return "VK_GPA_PERF_BLOCK_CHC_AMD";
+        case VK_GPA_PERF_BLOCK_CHCG_AMD:
+            return "VK_GPA_PERF_BLOCK_CHCG_AMD";
+        case VK_GPA_PERF_BLOCK_GUS_AMD:
+            return "VK_GPA_PERF_BLOCK_GUS_AMD";
+        case VK_GPA_PERF_BLOCK_GCR_AMD:
+            return "VK_GPA_PERF_BLOCK_GCR_AMD";
+        case VK_GPA_PERF_BLOCK_PH_AMD:
+            return "VK_GPA_PERF_BLOCK_PH_AMD";
+        case VK_GPA_PERF_BLOCK_UTCL1_AMD:
+            return "VK_GPA_PERF_BLOCK_UTCL1_AMD";
+        case VK_GPA_PERF_BLOCK_GE_DIST_AMD:
+            return "VK_GPA_PERF_BLOCK_GE_DIST_AMD";
+        case VK_GPA_PERF_BLOCK_GE_SE_AMD:
+            return "VK_GPA_PERF_BLOCK_GE_SE_AMD";
+        case VK_GPA_PERF_BLOCK_DF_MALL_AMD:
+            return "VK_GPA_PERF_BLOCK_DF_MALL_AMD";
+        case VK_GPA_PERF_BLOCK_SQ_WGP_AMD:
+            return "VK_GPA_PERF_BLOCK_SQ_WGP_AMD";
+        case VK_GPA_PERF_BLOCK_PC_AMD:
+            return "VK_GPA_PERF_BLOCK_PC_AMD";
+        case VK_GPA_PERF_BLOCK_GL1XA_AMD:
+            return "VK_GPA_PERF_BLOCK_GL1XA_AMD";
+        case VK_GPA_PERF_BLOCK_GL1XC_AMD:
+            return "VK_GPA_PERF_BLOCK_GL1XC_AMD";
+        case VK_GPA_PERF_BLOCK_WGS_AMD:
+            return "VK_GPA_PERF_BLOCK_WGS_AMD";
+        case VK_GPA_PERF_BLOCK_EACPWD_AMD:
+            return "VK_GPA_PERF_BLOCK_EACPWD_AMD";
+        case VK_GPA_PERF_BLOCK_EASE_AMD:
+            return "VK_GPA_PERF_BLOCK_EASE_AMD";
+        case VK_GPA_PERF_BLOCK_RLCUSER_AMD:
+            return "VK_GPA_PERF_BLOCK_RLCUSER_AMD";
+        default:
+            return "Unhandled VkGpaPerfBlockAMD";
+    }
+}
+static inline const char* string_VkGpaSampleTypeAMD(VkGpaSampleTypeAMD input_value) {
+    switch (input_value) {
+        case VK_GPA_SAMPLE_TYPE_CUMULATIVE_AMD:
+            return "VK_GPA_SAMPLE_TYPE_CUMULATIVE_AMD";
+        case VK_GPA_SAMPLE_TYPE_TRACE_AMD:
+            return "VK_GPA_SAMPLE_TYPE_TRACE_AMD";
+        case VK_GPA_SAMPLE_TYPE_TIMING_AMD:
+            return "VK_GPA_SAMPLE_TYPE_TIMING_AMD";
+        default:
+            return "Unhandled VkGpaSampleTypeAMD";
+    }
+}
+static inline const char* string_VkGpaDeviceClockModeAMD(VkGpaDeviceClockModeAMD input_value) {
+    switch (input_value) {
+        case VK_GPA_DEVICE_CLOCK_MODE_DEFAULT_AMD:
+            return "VK_GPA_DEVICE_CLOCK_MODE_DEFAULT_AMD";
+        case VK_GPA_DEVICE_CLOCK_MODE_QUERY_AMD:
+            return "VK_GPA_DEVICE_CLOCK_MODE_QUERY_AMD";
+        case VK_GPA_DEVICE_CLOCK_MODE_PROFILING_AMD:
+            return "VK_GPA_DEVICE_CLOCK_MODE_PROFILING_AMD";
+        case VK_GPA_DEVICE_CLOCK_MODE_MIN_MEMORY_AMD:
+            return "VK_GPA_DEVICE_CLOCK_MODE_MIN_MEMORY_AMD";
+        case VK_GPA_DEVICE_CLOCK_MODE_MIN_ENGINE_AMD:
+            return "VK_GPA_DEVICE_CLOCK_MODE_MIN_ENGINE_AMD";
+        case VK_GPA_DEVICE_CLOCK_MODE_PEAK_AMD:
+            return "VK_GPA_DEVICE_CLOCK_MODE_PEAK_AMD";
+        default:
+            return "Unhandled VkGpaDeviceClockModeAMD";
+    }
+}
 static inline const char* string_VkDescriptorMappingSourceEXT(VkDescriptorMappingSourceEXT input_value) {
     switch (input_value) {
         case VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_CONSTANT_OFFSET_EXT:
@@ -5072,6 +5296,8 @@ static inline const char* string_VkGeometryTypeKHR(VkGeometryTypeKHR input_value
         case VK_GEOMETRY_TYPE_DENSE_GEOMETRY_FORMAT_TRIANGLES_AMDX:
             return "VK_GEOMETRY_TYPE_DENSE_GEOMETRY_FORMAT_TRIANGLES_AMDX";
 #endif  // VK_ENABLE_BETA_EXTENSIONS
+        case VK_GEOMETRY_TYPE_MICROMAP_KHR:
+            return "VK_GEOMETRY_TYPE_MICROMAP_KHR";
         default:
             return "Unhandled VkGeometryTypeKHR";
     }
@@ -5406,32 +5632,6 @@ static inline const char* string_VkCopyMicromapModeEXT(VkCopyMicromapModeEXT inp
             return "VK_COPY_MICROMAP_MODE_COMPACT_EXT";
         default:
             return "Unhandled VkCopyMicromapModeEXT";
-    }
-}
-static inline const char* string_VkOpacityMicromapFormatEXT(VkOpacityMicromapFormatEXT input_value) {
-    switch (input_value) {
-        case VK_OPACITY_MICROMAP_FORMAT_2_STATE_EXT:
-            return "VK_OPACITY_MICROMAP_FORMAT_2_STATE_EXT";
-        case VK_OPACITY_MICROMAP_FORMAT_4_STATE_EXT:
-            return "VK_OPACITY_MICROMAP_FORMAT_4_STATE_EXT";
-        default:
-            return "Unhandled VkOpacityMicromapFormatEXT";
-    }
-}
-static inline const char* string_VkOpacityMicromapSpecialIndexEXT(VkOpacityMicromapSpecialIndexEXT input_value) {
-    switch (input_value) {
-        case VK_OPACITY_MICROMAP_SPECIAL_INDEX_FULLY_TRANSPARENT_EXT:
-            return "VK_OPACITY_MICROMAP_SPECIAL_INDEX_FULLY_TRANSPARENT_EXT";
-        case VK_OPACITY_MICROMAP_SPECIAL_INDEX_FULLY_OPAQUE_EXT:
-            return "VK_OPACITY_MICROMAP_SPECIAL_INDEX_FULLY_OPAQUE_EXT";
-        case VK_OPACITY_MICROMAP_SPECIAL_INDEX_FULLY_UNKNOWN_TRANSPARENT_EXT:
-            return "VK_OPACITY_MICROMAP_SPECIAL_INDEX_FULLY_UNKNOWN_TRANSPARENT_EXT";
-        case VK_OPACITY_MICROMAP_SPECIAL_INDEX_FULLY_UNKNOWN_OPAQUE_EXT:
-            return "VK_OPACITY_MICROMAP_SPECIAL_INDEX_FULLY_UNKNOWN_OPAQUE_EXT";
-        case VK_OPACITY_MICROMAP_SPECIAL_INDEX_CLUSTER_GEOMETRY_DISABLE_OPACITY_MICROMAP_NV:
-            return "VK_OPACITY_MICROMAP_SPECIAL_INDEX_CLUSTER_GEOMETRY_DISABLE_OPACITY_MICROMAP_NV";
-        default:
-            return "Unhandled VkOpacityMicromapSpecialIndexEXT";
     }
 }
 static inline const char* string_VkAccelerationStructureCompatibilityKHR(VkAccelerationStructureCompatibilityKHR input_value) {
@@ -7362,12 +7562,12 @@ static inline const char* string_VkPipelineCreateFlagBits(VkPipelineCreateFlagBi
             return "VK_PIPELINE_CREATE_COLOR_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT";
         case VK_PIPELINE_CREATE_DEPTH_STENCIL_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT:
             return "VK_PIPELINE_CREATE_DEPTH_STENCIL_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT";
-        case VK_PIPELINE_CREATE_RAY_TRACING_OPACITY_MICROMAP_BIT_EXT:
-            return "VK_PIPELINE_CREATE_RAY_TRACING_OPACITY_MICROMAP_BIT_EXT";
 #ifdef VK_ENABLE_BETA_EXTENSIONS
         case VK_PIPELINE_CREATE_RAY_TRACING_DISPLACEMENT_MICROMAP_BIT_NV:
             return "VK_PIPELINE_CREATE_RAY_TRACING_DISPLACEMENT_MICROMAP_BIT_NV";
 #endif  // VK_ENABLE_BETA_EXTENSIONS
+        case VK_PIPELINE_CREATE_RAY_TRACING_OPACITY_MICROMAP_BIT_KHR:
+            return "VK_PIPELINE_CREATE_RAY_TRACING_OPACITY_MICROMAP_BIT_KHR";
         default:
             return "Unhandled VkPipelineCreateFlagBits";
     }
@@ -8502,6 +8702,7 @@ static inline const char* string_VkFormatFeatureFlagBits2(uint64_t input_value) 
     if (input_value == VK_FORMAT_FEATURE_2_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR) return "VK_FORMAT_FEATURE_2_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR";
     if (input_value == VK_FORMAT_FEATURE_2_VIDEO_ENCODE_INPUT_BIT_KHR) return "VK_FORMAT_FEATURE_2_VIDEO_ENCODE_INPUT_BIT_KHR";
     if (input_value == VK_FORMAT_FEATURE_2_VIDEO_ENCODE_DPB_BIT_KHR) return "VK_FORMAT_FEATURE_2_VIDEO_ENCODE_DPB_BIT_KHR";
+    if (input_value == VK_FORMAT_FEATURE_2_BLOCK_MATCHING_SXD_BIT_QCOM) return "VK_FORMAT_FEATURE_2_BLOCK_MATCHING_SXD_BIT_QCOM";
     if (input_value == VK_FORMAT_FEATURE_2_ACCELERATION_STRUCTURE_RADIUS_BUFFER_BIT_NV) return "VK_FORMAT_FEATURE_2_ACCELERATION_STRUCTURE_RADIUS_BUFFER_BIT_NV";
     if (input_value == VK_FORMAT_FEATURE_2_LINEAR_COLOR_ATTACHMENT_BIT_NV) return "VK_FORMAT_FEATURE_2_LINEAR_COLOR_ATTACHMENT_BIT_NV";
     if (input_value == VK_FORMAT_FEATURE_2_WEIGHT_IMAGE_BIT_QCOM) return "VK_FORMAT_FEATURE_2_WEIGHT_IMAGE_BIT_QCOM";
@@ -8653,6 +8854,8 @@ static inline const char* string_VkBufferUsageFlagBits2(uint64_t input_value) {
     if (input_value == VK_BUFFER_USAGE_2_EXECUTION_GRAPH_SCRATCH_BIT_AMDX) return "VK_BUFFER_USAGE_2_EXECUTION_GRAPH_SCRATCH_BIT_AMDX";
 #endif  // VK_ENABLE_BETA_EXTENSIONS
     if (input_value == VK_BUFFER_USAGE_2_DESCRIPTOR_HEAP_BIT_EXT) return "VK_BUFFER_USAGE_2_DESCRIPTOR_HEAP_BIT_EXT";
+    if (input_value == VK_BUFFER_USAGE_2_MICROMAP_BUILD_INPUT_READ_ONLY_BIT_EXT) return "VK_BUFFER_USAGE_2_MICROMAP_BUILD_INPUT_READ_ONLY_BIT_EXT";
+    if (input_value == VK_BUFFER_USAGE_2_MICROMAP_STORAGE_BIT_EXT) return "VK_BUFFER_USAGE_2_MICROMAP_STORAGE_BIT_EXT";
     if (input_value == VK_BUFFER_USAGE_2_CONDITIONAL_RENDERING_BIT_EXT) return "VK_BUFFER_USAGE_2_CONDITIONAL_RENDERING_BIT_EXT";
     if (input_value == VK_BUFFER_USAGE_2_SHADER_BINDING_TABLE_BIT_KHR) return "VK_BUFFER_USAGE_2_SHADER_BINDING_TABLE_BIT_KHR";
     if (input_value == VK_BUFFER_USAGE_2_TRANSFORM_FEEDBACK_BUFFER_BIT_EXT) return "VK_BUFFER_USAGE_2_TRANSFORM_FEEDBACK_BUFFER_BIT_EXT";
@@ -8666,8 +8869,6 @@ static inline const char* string_VkBufferUsageFlagBits2(uint64_t input_value) {
     if (input_value == VK_BUFFER_USAGE_2_SAMPLER_DESCRIPTOR_BUFFER_BIT_EXT) return "VK_BUFFER_USAGE_2_SAMPLER_DESCRIPTOR_BUFFER_BIT_EXT";
     if (input_value == VK_BUFFER_USAGE_2_RESOURCE_DESCRIPTOR_BUFFER_BIT_EXT) return "VK_BUFFER_USAGE_2_RESOURCE_DESCRIPTOR_BUFFER_BIT_EXT";
     if (input_value == VK_BUFFER_USAGE_2_PUSH_DESCRIPTORS_DESCRIPTOR_BUFFER_BIT_EXT) return "VK_BUFFER_USAGE_2_PUSH_DESCRIPTORS_DESCRIPTOR_BUFFER_BIT_EXT";
-    if (input_value == VK_BUFFER_USAGE_2_MICROMAP_BUILD_INPUT_READ_ONLY_BIT_EXT) return "VK_BUFFER_USAGE_2_MICROMAP_BUILD_INPUT_READ_ONLY_BIT_EXT";
-    if (input_value == VK_BUFFER_USAGE_2_MICROMAP_STORAGE_BIT_EXT) return "VK_BUFFER_USAGE_2_MICROMAP_STORAGE_BIT_EXT";
 #ifdef VK_ENABLE_BETA_EXTENSIONS
     if (input_value == VK_BUFFER_USAGE_2_COMPRESSED_DATA_DGF1_BIT_AMDX) return "VK_BUFFER_USAGE_2_COMPRESSED_DATA_DGF1_BIT_AMDX";
 #endif  // VK_ENABLE_BETA_EXTENSIONS
@@ -8752,7 +8953,6 @@ static inline const char* string_VkPipelineCreateFlagBits2(uint64_t input_value)
     if (input_value == VK_PIPELINE_CREATE_2_RAY_TRACING_ALLOW_MOTION_BIT_NV) return "VK_PIPELINE_CREATE_2_RAY_TRACING_ALLOW_MOTION_BIT_NV";
     if (input_value == VK_PIPELINE_CREATE_2_RENDERING_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR) return "VK_PIPELINE_CREATE_2_RENDERING_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR";
     if (input_value == VK_PIPELINE_CREATE_2_RENDERING_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT) return "VK_PIPELINE_CREATE_2_RENDERING_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT";
-    if (input_value == VK_PIPELINE_CREATE_2_RAY_TRACING_OPACITY_MICROMAP_BIT_EXT) return "VK_PIPELINE_CREATE_2_RAY_TRACING_OPACITY_MICROMAP_BIT_EXT";
     if (input_value == VK_PIPELINE_CREATE_2_COLOR_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT) return "VK_PIPELINE_CREATE_2_COLOR_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT";
     if (input_value == VK_PIPELINE_CREATE_2_DEPTH_STENCIL_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT) return "VK_PIPELINE_CREATE_2_DEPTH_STENCIL_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT";
 #ifdef VK_ENABLE_BETA_EXTENSIONS
@@ -8764,6 +8964,8 @@ static inline const char* string_VkPipelineCreateFlagBits2(uint64_t input_value)
     if (input_value == VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR) return "VK_PIPELINE_CREATE_2_CAPTURE_DATA_BIT_KHR";
     if (input_value == VK_PIPELINE_CREATE_2_INDIRECT_BINDABLE_BIT_EXT) return "VK_PIPELINE_CREATE_2_INDIRECT_BINDABLE_BIT_EXT";
     if (input_value == VK_PIPELINE_CREATE_2_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE) return "VK_PIPELINE_CREATE_2_PER_LAYER_FRAGMENT_DENSITY_BIT_VALVE";
+    if (input_value == VK_PIPELINE_CREATE_2_RAY_TRACING_OPACITY_MICROMAP_BIT_KHR) return "VK_PIPELINE_CREATE_2_RAY_TRACING_OPACITY_MICROMAP_BIT_KHR";
+    if (input_value == VK_PIPELINE_CREATE_2_OPACITY_MICROMAP_DISALLOW_MIXED_SPECIAL_INDEX_BIT_KHR) return "VK_PIPELINE_CREATE_2_OPACITY_MICROMAP_DISALLOW_MIXED_SPECIAL_INDEX_BIT_KHR";
     if (input_value == VK_PIPELINE_CREATE_2_64_BIT_INDEXING_BIT_EXT) return "VK_PIPELINE_CREATE_2_64_BIT_INDEXING_BIT_EXT";
     return "Unhandled VkPipelineCreateFlagBits2";
 }
@@ -10443,6 +10645,43 @@ static inline std::string string_VkDebugUtilsMessageTypeFlagsEXT(VkDebugUtilsMes
     return ret;
 }
 #endif // __cplusplus
+static inline const char* string_VkGpaSqShaderStageFlagBitsAMD(VkGpaSqShaderStageFlagBitsAMD input_value) {
+    switch (input_value) {
+        case VK_GPA_SQ_SHADER_STAGE_PS_BIT_AMD:
+            return "VK_GPA_SQ_SHADER_STAGE_PS_BIT_AMD";
+        case VK_GPA_SQ_SHADER_STAGE_VS_BIT_AMD:
+            return "VK_GPA_SQ_SHADER_STAGE_VS_BIT_AMD";
+        case VK_GPA_SQ_SHADER_STAGE_GS_BIT_AMD:
+            return "VK_GPA_SQ_SHADER_STAGE_GS_BIT_AMD";
+        case VK_GPA_SQ_SHADER_STAGE_ES_BIT_AMD:
+            return "VK_GPA_SQ_SHADER_STAGE_ES_BIT_AMD";
+        case VK_GPA_SQ_SHADER_STAGE_HS_BIT_AMD:
+            return "VK_GPA_SQ_SHADER_STAGE_HS_BIT_AMD";
+        case VK_GPA_SQ_SHADER_STAGE_LS_BIT_AMD:
+            return "VK_GPA_SQ_SHADER_STAGE_LS_BIT_AMD";
+        case VK_GPA_SQ_SHADER_STAGE_CS_BIT_AMD:
+            return "VK_GPA_SQ_SHADER_STAGE_CS_BIT_AMD";
+        default:
+            return "Unhandled VkGpaSqShaderStageFlagBitsAMD";
+    }
+}
+
+#ifdef __cplusplus
+static inline std::string string_VkGpaSqShaderStageFlagsAMD(VkGpaSqShaderStageFlagsAMD input_value) {
+    std::string ret;
+    int index = 0;
+    while(input_value) {
+        if (input_value & 1) {
+            if( !ret.empty()) ret.append("|");
+            ret.append(string_VkGpaSqShaderStageFlagBitsAMD(static_cast<VkGpaSqShaderStageFlagBitsAMD>(1U << index)));
+        }
+        ++index;
+        input_value >>= 1;
+    }
+    if (ret.empty()) ret.append("VkGpaSqShaderStageFlagsAMD(0)");
+    return ret;
+}
+#endif // __cplusplus
 static inline const char* string_VkTensorViewCreateFlagBitsARM(uint64_t input_value) {
     if (input_value == VK_TENSOR_VIEW_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_ARM) return "VK_TENSOR_VIEW_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_ARM";
     return "Unhandled VkTensorViewCreateFlagBitsARM";
@@ -10545,10 +10784,10 @@ static inline const char* string_VkGeometryInstanceFlagBitsKHR(VkGeometryInstanc
             return "VK_GEOMETRY_INSTANCE_FORCE_OPAQUE_BIT_KHR";
         case VK_GEOMETRY_INSTANCE_FORCE_NO_OPAQUE_BIT_KHR:
             return "VK_GEOMETRY_INSTANCE_FORCE_NO_OPAQUE_BIT_KHR";
-        case VK_GEOMETRY_INSTANCE_FORCE_OPACITY_MICROMAP_2_STATE_BIT_EXT:
-            return "VK_GEOMETRY_INSTANCE_FORCE_OPACITY_MICROMAP_2_STATE_BIT_EXT";
-        case VK_GEOMETRY_INSTANCE_DISABLE_OPACITY_MICROMAPS_BIT_EXT:
-            return "VK_GEOMETRY_INSTANCE_DISABLE_OPACITY_MICROMAPS_BIT_EXT";
+        case VK_GEOMETRY_INSTANCE_FORCE_OPACITY_MICROMAP_2_STATE_BIT_KHR:
+            return "VK_GEOMETRY_INSTANCE_FORCE_OPACITY_MICROMAP_2_STATE_BIT_KHR";
+        case VK_GEOMETRY_INSTANCE_DISABLE_OPACITY_MICROMAPS_BIT_KHR:
+            return "VK_GEOMETRY_INSTANCE_DISABLE_OPACITY_MICROMAPS_BIT_KHR";
         default:
             return "Unhandled VkGeometryInstanceFlagBitsKHR";
     }
@@ -10584,10 +10823,6 @@ static inline const char* string_VkBuildAccelerationStructureFlagBitsKHR(VkBuild
             return "VK_BUILD_ACCELERATION_STRUCTURE_LOW_MEMORY_BIT_KHR";
         case VK_BUILD_ACCELERATION_STRUCTURE_MOTION_BIT_NV:
             return "VK_BUILD_ACCELERATION_STRUCTURE_MOTION_BIT_NV";
-        case VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_OPACITY_MICROMAP_UPDATE_BIT_EXT:
-            return "VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_OPACITY_MICROMAP_UPDATE_BIT_EXT";
-        case VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_DISABLE_OPACITY_MICROMAPS_BIT_EXT:
-            return "VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_DISABLE_OPACITY_MICROMAPS_BIT_EXT";
         case VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_OPACITY_MICROMAP_DATA_UPDATE_BIT_EXT:
             return "VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_OPACITY_MICROMAP_DATA_UPDATE_BIT_EXT";
 #ifdef VK_ENABLE_BETA_EXTENSIONS
@@ -10598,6 +10833,12 @@ static inline const char* string_VkBuildAccelerationStructureFlagBitsKHR(VkBuild
             return "VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_DATA_ACCESS_BIT_KHR";
         case VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_CLUSTER_OPACITY_MICROMAPS_BIT_NV:
             return "VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_CLUSTER_OPACITY_MICROMAPS_BIT_NV";
+        case VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_OPACITY_MICROMAP_UPDATE_BIT_KHR:
+            return "VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_OPACITY_MICROMAP_UPDATE_BIT_KHR";
+        case VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_DISABLE_OPACITY_MICROMAPS_BIT_KHR:
+            return "VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_DISABLE_OPACITY_MICROMAPS_BIT_KHR";
+        case VK_BUILD_ACCELERATION_STRUCTURE_MICROMAP_LOSSY_BIT_KHR:
+            return "VK_BUILD_ACCELERATION_STRUCTURE_MICROMAP_LOSSY_BIT_KHR";
         default:
             return "Unhandled VkBuildAccelerationStructureFlagBitsKHR";
     }
@@ -11454,6 +11695,8 @@ static inline const char* string_VkShaderCreateFlagBitsEXT(VkShaderCreateFlagBit
             return "VK_SHADER_CREATE_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT";
         case VK_SHADER_CREATE_INDIRECT_BINDABLE_BIT_EXT:
             return "VK_SHADER_CREATE_INDIRECT_BINDABLE_BIT_EXT";
+        case VK_SHADER_CREATE_OPACITY_MICROMAP_DISALLOW_MIXED_SPECIAL_INDEX_BIT_EXT:
+            return "VK_SHADER_CREATE_OPACITY_MICROMAP_DISALLOW_MIXED_SPECIAL_INDEX_BIT_EXT";
         case VK_SHADER_CREATE_64_BIT_INDEXING_BIT_EXT:
             return "VK_SHADER_CREATE_64_BIT_INDEXING_BIT_EXT";
         case VK_SHADER_CREATE_INDEPENDENT_SETS_BIT_KHR:
@@ -12966,6 +13209,14 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
             return "VkPhysicalDeviceRobustness2PropertiesKHR";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_MODE_FIFO_LATEST_READY_FEATURES_KHR:
             return "VkPhysicalDevicePresentModeFifoLatestReadyFeaturesKHR";
+        case VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_MICROMAP_DATA_KHR:
+            return "VkAccelerationStructureGeometryMicromapDataKHR";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_OPACITY_MICROMAP_FEATURES_KHR:
+            return "VkPhysicalDeviceOpacityMicromapFeaturesKHR";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_OPACITY_MICROMAP_PROPERTIES_KHR:
+            return "VkPhysicalDeviceOpacityMicromapPropertiesKHR";
+        case VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_TRIANGLES_OPACITY_MICROMAP_KHR:
+            return "VkAccelerationStructureTrianglesOpacityMicromapKHR";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_10_FEATURES_KHR:
             return "VkPhysicalDeviceMaintenance10FeaturesKHR";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_10_PROPERTIES_KHR:
@@ -13120,6 +13371,20 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
         case VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_FORMAT_PROPERTIES_2_ANDROID:
             return "VkAndroidHardwareBufferFormatProperties2ANDROID";
 #endif  // VK_USE_PLATFORM_ANDROID_KHR
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GPA_FEATURES_AMD:
+            return "VkPhysicalDeviceGpaFeaturesAMD";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GPA_PROPERTIES_AMD:
+            return "VkPhysicalDeviceGpaPropertiesAMD";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GPA_PROPERTIES_2_AMD:
+            return "VkPhysicalDeviceGpaProperties2AMD";
+        case VK_STRUCTURE_TYPE_GPA_SAMPLE_BEGIN_INFO_AMD:
+            return "VkGpaSampleBeginInfoAMD";
+        case VK_STRUCTURE_TYPE_GPA_DEVICE_CLOCK_MODE_INFO_AMD:
+            return "VkGpaDeviceClockModeInfoAMD";
+        case VK_STRUCTURE_TYPE_GPA_DEVICE_GET_CLOCK_INFO_AMD:
+            return "VkGpaDeviceGetClockInfoAMD";
+        case VK_STRUCTURE_TYPE_GPA_SESSION_CREATE_INFO_AMD:
+            return "VkGpaSessionCreateInfoAMD";
 #ifdef VK_ENABLE_BETA_EXTENSIONS
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ENQUEUE_FEATURES_AMDX:
             return "VkPhysicalDeviceShaderEnqueueFeaturesAMDX";
@@ -13248,6 +13513,8 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
             return "VkFilterCubicImageViewImageFormatPropertiesEXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_CONVERSION_FEATURES_QCOM:
             return "VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ELAPSED_TIMER_QUERY_FEATURES_QCOM:
+            return "VkPhysicalDeviceElapsedTimerQueryFeaturesQCOM";
         case VK_STRUCTURE_TYPE_IMPORT_MEMORY_HOST_POINTER_INFO_EXT:
             return "VkImportMemoryHostPointerInfoEXT";
         case VK_STRUCTURE_TYPE_MEMORY_HOST_POINTER_PROPERTIES_EXT:
@@ -13464,6 +13731,16 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
             return "VkPhysicalDeviceQueuePerfHintFeaturesQCOM";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_QUEUE_PERF_HINT_PROPERTIES_QCOM:
             return "VkPhysicalDeviceQueuePerfHintPropertiesQCOM";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_PROCESSING_3_FEATURES_QCOM:
+            return "VkPhysicalDeviceImageProcessing3FeaturesQCOM";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_MULTIPLE_WAIT_QUEUES_FEATURES_QCOM:
+            return "VkPhysicalDeviceShaderMultipleWaitQueuesFeaturesQCOM";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_MULTIPLE_WAIT_QUEUES_PROPERTIES_QCOM:
+            return "VkPhysicalDeviceShaderMultipleWaitQueuesPropertiesQCOM";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SPLIT_BARRIER_FEATURES_EXT:
+            return "VkPhysicalDeviceShaderSplitBarrierFeaturesEXT";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SPLIT_BARRIER_PROPERTIES_EXT:
+            return "VkPhysicalDeviceShaderSplitBarrierPropertiesEXT";
 #ifdef VK_ENABLE_BETA_EXTENSIONS
         case VK_STRUCTURE_TYPE_CUDA_MODULE_CREATE_INFO_NV:
             return "VkCudaModuleCreateInfoNV";
