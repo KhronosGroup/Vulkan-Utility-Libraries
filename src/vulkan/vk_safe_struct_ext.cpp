@@ -8695,6 +8695,106 @@ void safe_VkPhysicalDeviceTextureCompressionASTC3DFeaturesEXT::initialize(
     textureCompressionASTC_3D = copy_src->textureCompressionASTC_3D;
     pNext = SafePnextCopy(copy_src->pNext);
 }
+
+safe_VkPhysicalDeviceShaderSplitBarrierFeaturesEXT::safe_VkPhysicalDeviceShaderSplitBarrierFeaturesEXT(
+    const VkPhysicalDeviceShaderSplitBarrierFeaturesEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), shaderSplitBarrier(in_struct->shaderSplitBarrier) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceShaderSplitBarrierFeaturesEXT::safe_VkPhysicalDeviceShaderSplitBarrierFeaturesEXT()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SPLIT_BARRIER_FEATURES_EXT), pNext(nullptr), shaderSplitBarrier() {}
+
+safe_VkPhysicalDeviceShaderSplitBarrierFeaturesEXT::safe_VkPhysicalDeviceShaderSplitBarrierFeaturesEXT(
+    const safe_VkPhysicalDeviceShaderSplitBarrierFeaturesEXT& copy_src) {
+    sType = copy_src.sType;
+    shaderSplitBarrier = copy_src.shaderSplitBarrier;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceShaderSplitBarrierFeaturesEXT& safe_VkPhysicalDeviceShaderSplitBarrierFeaturesEXT::operator=(
+    const safe_VkPhysicalDeviceShaderSplitBarrierFeaturesEXT& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    shaderSplitBarrier = copy_src.shaderSplitBarrier;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceShaderSplitBarrierFeaturesEXT::~safe_VkPhysicalDeviceShaderSplitBarrierFeaturesEXT() { FreePnextChain(pNext); }
+
+void safe_VkPhysicalDeviceShaderSplitBarrierFeaturesEXT::initialize(const VkPhysicalDeviceShaderSplitBarrierFeaturesEXT* in_struct,
+                                                                    [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    shaderSplitBarrier = in_struct->shaderSplitBarrier;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceShaderSplitBarrierFeaturesEXT::initialize(
+    const safe_VkPhysicalDeviceShaderSplitBarrierFeaturesEXT* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    shaderSplitBarrier = copy_src->shaderSplitBarrier;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkPhysicalDeviceShaderSplitBarrierPropertiesEXT::safe_VkPhysicalDeviceShaderSplitBarrierPropertiesEXT(
+    const VkPhysicalDeviceShaderSplitBarrierPropertiesEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), splitBarrierReservedSharedMemory(in_struct->splitBarrierReservedSharedMemory) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceShaderSplitBarrierPropertiesEXT::safe_VkPhysicalDeviceShaderSplitBarrierPropertiesEXT()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SPLIT_BARRIER_PROPERTIES_EXT),
+      pNext(nullptr),
+      splitBarrierReservedSharedMemory() {}
+
+safe_VkPhysicalDeviceShaderSplitBarrierPropertiesEXT::safe_VkPhysicalDeviceShaderSplitBarrierPropertiesEXT(
+    const safe_VkPhysicalDeviceShaderSplitBarrierPropertiesEXT& copy_src) {
+    sType = copy_src.sType;
+    splitBarrierReservedSharedMemory = copy_src.splitBarrierReservedSharedMemory;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceShaderSplitBarrierPropertiesEXT& safe_VkPhysicalDeviceShaderSplitBarrierPropertiesEXT::operator=(
+    const safe_VkPhysicalDeviceShaderSplitBarrierPropertiesEXT& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    splitBarrierReservedSharedMemory = copy_src.splitBarrierReservedSharedMemory;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceShaderSplitBarrierPropertiesEXT::~safe_VkPhysicalDeviceShaderSplitBarrierPropertiesEXT() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkPhysicalDeviceShaderSplitBarrierPropertiesEXT::initialize(
+    const VkPhysicalDeviceShaderSplitBarrierPropertiesEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    splitBarrierReservedSharedMemory = in_struct->splitBarrierReservedSharedMemory;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceShaderSplitBarrierPropertiesEXT::initialize(
+    const safe_VkPhysicalDeviceShaderSplitBarrierPropertiesEXT* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    splitBarrierReservedSharedMemory = copy_src->splitBarrierReservedSharedMemory;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
 #ifdef VK_USE_PLATFORM_METAL_EXT
 
 safe_VkExportMetalObjectCreateInfoEXT::safe_VkExportMetalObjectCreateInfoEXT(const VkExportMetalObjectCreateInfoEXT* in_struct,

@@ -574,6 +574,10 @@ template <> inline VkStructureType GetSType<VkPhysicalDeviceDepthClampZeroOneFea
 template <> inline VkStructureType GetSType<VkPhysicalDeviceRobustness2FeaturesKHR>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ROBUSTNESS_2_FEATURES_KHR; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceRobustness2PropertiesKHR>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ROBUSTNESS_2_PROPERTIES_KHR; }
 template <> inline VkStructureType GetSType<VkPhysicalDevicePresentModeFifoLatestReadyFeaturesKHR>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_MODE_FIFO_LATEST_READY_FEATURES_KHR; }
+template <> inline VkStructureType GetSType<VkAccelerationStructureGeometryMicromapDataKHR>() { return VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_MICROMAP_DATA_KHR; }
+template <> inline VkStructureType GetSType<VkPhysicalDeviceOpacityMicromapFeaturesKHR>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_OPACITY_MICROMAP_FEATURES_KHR; }
+template <> inline VkStructureType GetSType<VkPhysicalDeviceOpacityMicromapPropertiesKHR>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_OPACITY_MICROMAP_PROPERTIES_KHR; }
+template <> inline VkStructureType GetSType<VkAccelerationStructureTrianglesOpacityMicromapKHR>() { return VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_TRIANGLES_OPACITY_MICROMAP_KHR; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceMaintenance10FeaturesKHR>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_10_FEATURES_KHR; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceMaintenance10PropertiesKHR>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_10_PROPERTIES_KHR; }
 template <> inline VkStructureType GetSType<VkRenderingEndInfoKHR>() { return VK_STRUCTURE_TYPE_RENDERING_END_INFO_KHR; }
@@ -657,6 +661,13 @@ template <> inline VkStructureType GetSType<VkMemoryGetAndroidHardwareBufferInfo
 template <> inline VkStructureType GetSType<VkExternalFormatANDROID>() { return VK_STRUCTURE_TYPE_EXTERNAL_FORMAT_ANDROID; }
 template <> inline VkStructureType GetSType<VkAndroidHardwareBufferFormatProperties2ANDROID>() { return VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_FORMAT_PROPERTIES_2_ANDROID; }
 #endif  // VK_USE_PLATFORM_ANDROID_KHR
+template <> inline VkStructureType GetSType<VkPhysicalDeviceGpaFeaturesAMD>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GPA_FEATURES_AMD; }
+template <> inline VkStructureType GetSType<VkPhysicalDeviceGpaPropertiesAMD>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GPA_PROPERTIES_AMD; }
+template <> inline VkStructureType GetSType<VkPhysicalDeviceGpaProperties2AMD>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GPA_PROPERTIES_2_AMD; }
+template <> inline VkStructureType GetSType<VkGpaSampleBeginInfoAMD>() { return VK_STRUCTURE_TYPE_GPA_SAMPLE_BEGIN_INFO_AMD; }
+template <> inline VkStructureType GetSType<VkGpaDeviceClockModeInfoAMD>() { return VK_STRUCTURE_TYPE_GPA_DEVICE_CLOCK_MODE_INFO_AMD; }
+template <> inline VkStructureType GetSType<VkGpaDeviceGetClockInfoAMD>() { return VK_STRUCTURE_TYPE_GPA_DEVICE_GET_CLOCK_INFO_AMD; }
+template <> inline VkStructureType GetSType<VkGpaSessionCreateInfoAMD>() { return VK_STRUCTURE_TYPE_GPA_SESSION_CREATE_INFO_AMD; }
 #ifdef VK_ENABLE_BETA_EXTENSIONS
 template <> inline VkStructureType GetSType<VkPhysicalDeviceShaderEnqueueFeaturesAMDX>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ENQUEUE_FEATURES_AMDX; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceShaderEnqueuePropertiesAMDX>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ENQUEUE_PROPERTIES_AMDX; }
@@ -722,6 +733,7 @@ template <> inline VkStructureType GetSType<VkPipelineRepresentativeFragmentTest
 template <> inline VkStructureType GetSType<VkPhysicalDeviceImageViewImageFormatInfoEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_VIEW_IMAGE_FORMAT_INFO_EXT; }
 template <> inline VkStructureType GetSType<VkFilterCubicImageViewImageFormatPropertiesEXT>() { return VK_STRUCTURE_TYPE_FILTER_CUBIC_IMAGE_VIEW_IMAGE_FORMAT_PROPERTIES_EXT; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceCooperativeMatrixConversionFeaturesQCOM>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_CONVERSION_FEATURES_QCOM; }
+template <> inline VkStructureType GetSType<VkPhysicalDeviceElapsedTimerQueryFeaturesQCOM>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ELAPSED_TIMER_QUERY_FEATURES_QCOM; }
 template <> inline VkStructureType GetSType<VkImportMemoryHostPointerInfoEXT>() { return VK_STRUCTURE_TYPE_IMPORT_MEMORY_HOST_POINTER_INFO_EXT; }
 template <> inline VkStructureType GetSType<VkMemoryHostPointerPropertiesEXT>() { return VK_STRUCTURE_TYPE_MEMORY_HOST_POINTER_PROPERTIES_EXT; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceExternalMemoryHostPropertiesEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_MEMORY_HOST_PROPERTIES_EXT; }
@@ -834,6 +846,11 @@ template <> inline VkStructureType GetSType<VkDeviceDiagnosticsConfigCreateInfoN
 template <> inline VkStructureType GetSType<VkPerfHintInfoQCOM>() { return VK_STRUCTURE_TYPE_PERF_HINT_INFO_QCOM; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceQueuePerfHintFeaturesQCOM>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_QUEUE_PERF_HINT_FEATURES_QCOM; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceQueuePerfHintPropertiesQCOM>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_QUEUE_PERF_HINT_PROPERTIES_QCOM; }
+template <> inline VkStructureType GetSType<VkPhysicalDeviceImageProcessing3FeaturesQCOM>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_PROCESSING_3_FEATURES_QCOM; }
+template <> inline VkStructureType GetSType<VkPhysicalDeviceShaderMultipleWaitQueuesFeaturesQCOM>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_MULTIPLE_WAIT_QUEUES_FEATURES_QCOM; }
+template <> inline VkStructureType GetSType<VkPhysicalDeviceShaderMultipleWaitQueuesPropertiesQCOM>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_MULTIPLE_WAIT_QUEUES_PROPERTIES_QCOM; }
+template <> inline VkStructureType GetSType<VkPhysicalDeviceShaderSplitBarrierFeaturesEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SPLIT_BARRIER_FEATURES_EXT; }
+template <> inline VkStructureType GetSType<VkPhysicalDeviceShaderSplitBarrierPropertiesEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SPLIT_BARRIER_PROPERTIES_EXT; }
 #ifdef VK_ENABLE_BETA_EXTENSIONS
 template <> inline VkStructureType GetSType<VkCudaModuleCreateInfoNV>() { return VK_STRUCTURE_TYPE_CUDA_MODULE_CREATE_INFO_NV; }
 template <> inline VkStructureType GetSType<VkCudaFunctionCreateInfoNV>() { return VK_STRUCTURE_TYPE_CUDA_FUNCTION_CREATE_INFO_NV; }
@@ -1413,6 +1430,7 @@ template<> inline VkObjectType GetObjectType<VkDebugReportCallbackEXT>() { retur
 template<> inline VkObjectType GetObjectType<VkCuModuleNVX>() { return VK_OBJECT_TYPE_CU_MODULE_NVX; }
 template<> inline VkObjectType GetObjectType<VkCuFunctionNVX>() { return VK_OBJECT_TYPE_CU_FUNCTION_NVX; }
 template<> inline VkObjectType GetObjectType<VkDebugUtilsMessengerEXT>() { return VK_OBJECT_TYPE_DEBUG_UTILS_MESSENGER_EXT; }
+template<> inline VkObjectType GetObjectType<VkGpaSessionAMD>() { return VK_OBJECT_TYPE_GPA_SESSION_AMD; }
 template<> inline VkObjectType GetObjectType<VkTensorARM>() { return VK_OBJECT_TYPE_TENSOR_ARM; }
 template<> inline VkObjectType GetObjectType<VkValidationCacheEXT>() { return VK_OBJECT_TYPE_VALIDATION_CACHE_EXT; }
 template<> inline VkObjectType GetObjectType<VkAccelerationStructureNV>() { return VK_OBJECT_TYPE_ACCELERATION_STRUCTURE_NV; }
