@@ -1294,6 +1294,7 @@ template <> inline VkStructureType GetSType<VkPhysicalDeviceDataGraphNeuralAccel
 template <> inline VkStructureType GetSType<VkDataGraphPipelineNeuralStatisticsCreateInfoARM>() { return VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_NEURAL_STATISTICS_CREATE_INFO_ARM; }
 template <> inline VkStructureType GetSType<VkDataGraphPipelineSessionNeuralStatisticsCreateInfoARM>() { return VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SESSION_NEURAL_STATISTICS_CREATE_INFO_ARM; }
 template <> inline VkStructureType GetSType<VkPhysicalDevicePrimitiveRestartIndexFeaturesEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRIMITIVE_RESTART_INDEX_FEATURES_EXT; }
+template <> inline VkStructureType GetSType<VkPhysicalDeviceCooperativeMatrixDecodeVectorFeaturesNV>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_DECODE_VECTOR_FEATURES_NV; }
 template <> inline VkStructureType GetSType<VkAccelerationStructureGeometryTrianglesDataKHR>() { return VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_TRIANGLES_DATA_KHR; }
 template <> inline VkStructureType GetSType<VkAccelerationStructureGeometryAabbsDataKHR>() { return VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_AABBS_DATA_KHR; }
 template <> inline VkStructureType GetSType<VkAccelerationStructureGeometryInstancesDataKHR>() { return VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_INSTANCES_DATA_KHR; }

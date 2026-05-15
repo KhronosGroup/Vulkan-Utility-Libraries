@@ -2600,6 +2600,8 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DATA_GRAPH_NEURAL_ACCELERATOR_STATISTICS_FEATURES_ARM";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRIMITIVE_RESTART_INDEX_FEATURES_EXT:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRIMITIVE_RESTART_INDEX_FEATURES_EXT";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_DECODE_VECTOR_FEATURES_NV:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_DECODE_VECTOR_FEATURES_NV";
         default:
             return "Unhandled VkStructureType";
     }
@@ -4350,6 +4352,8 @@ static inline const char* string_VkDriverId(VkDriverId input_value) {
             return "VK_DRIVER_ID_VULKAN_SC_EMULATION_ON_VULKAN";
         case VK_DRIVER_ID_MESA_KOSMICKRISP:
             return "VK_DRIVER_ID_MESA_KOSMICKRISP";
+        case VK_DRIVER_ID_MESA_GFXSTREAM:
+            return "VK_DRIVER_ID_MESA_GFXSTREAM";
         default:
             return "Unhandled VkDriverId";
     }
@@ -14601,6 +14605,8 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
             return "VkDataGraphPipelineSessionNeuralStatisticsCreateInfoARM";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRIMITIVE_RESTART_INDEX_FEATURES_EXT:
             return "VkPhysicalDevicePrimitiveRestartIndexFeaturesEXT";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_DECODE_VECTOR_FEATURES_NV:
+            return "VkPhysicalDeviceCooperativeMatrixDecodeVectorFeaturesNV";
         case VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_TRIANGLES_DATA_KHR:
             return "VkAccelerationStructureGeometryTrianglesDataKHR";
         case VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_AABBS_DATA_KHR:

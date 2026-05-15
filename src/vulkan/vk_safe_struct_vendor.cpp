@@ -26215,6 +26215,60 @@ void safe_VkDataGraphPipelineSessionNeuralStatisticsCreateInfoARM::initialize(
     pNext = SafePnextCopy(copy_src->pNext);
 }
 
+safe_VkPhysicalDeviceCooperativeMatrixDecodeVectorFeaturesNV::safe_VkPhysicalDeviceCooperativeMatrixDecodeVectorFeaturesNV(
+    const VkPhysicalDeviceCooperativeMatrixDecodeVectorFeaturesNV* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
+    bool copy_pnext)
+    : sType(in_struct->sType), cooperativeMatrixDecodeVector(in_struct->cooperativeMatrixDecodeVector) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceCooperativeMatrixDecodeVectorFeaturesNV::safe_VkPhysicalDeviceCooperativeMatrixDecodeVectorFeaturesNV()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_DECODE_VECTOR_FEATURES_NV),
+      pNext(nullptr),
+      cooperativeMatrixDecodeVector() {}
+
+safe_VkPhysicalDeviceCooperativeMatrixDecodeVectorFeaturesNV::safe_VkPhysicalDeviceCooperativeMatrixDecodeVectorFeaturesNV(
+    const safe_VkPhysicalDeviceCooperativeMatrixDecodeVectorFeaturesNV& copy_src) {
+    sType = copy_src.sType;
+    cooperativeMatrixDecodeVector = copy_src.cooperativeMatrixDecodeVector;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceCooperativeMatrixDecodeVectorFeaturesNV&
+safe_VkPhysicalDeviceCooperativeMatrixDecodeVectorFeaturesNV::operator=(
+    const safe_VkPhysicalDeviceCooperativeMatrixDecodeVectorFeaturesNV& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    cooperativeMatrixDecodeVector = copy_src.cooperativeMatrixDecodeVector;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceCooperativeMatrixDecodeVectorFeaturesNV::~safe_VkPhysicalDeviceCooperativeMatrixDecodeVectorFeaturesNV() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkPhysicalDeviceCooperativeMatrixDecodeVectorFeaturesNV::initialize(
+    const VkPhysicalDeviceCooperativeMatrixDecodeVectorFeaturesNV* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    cooperativeMatrixDecodeVector = in_struct->cooperativeMatrixDecodeVector;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceCooperativeMatrixDecodeVectorFeaturesNV::initialize(
+    const safe_VkPhysicalDeviceCooperativeMatrixDecodeVectorFeaturesNV* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    cooperativeMatrixDecodeVector = copy_src->cooperativeMatrixDecodeVector;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
 }  // namespace vku
 
 // NOLINTEND
