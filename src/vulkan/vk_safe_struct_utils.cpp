@@ -2483,6 +2483,9 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRIMITIVE_RESTART_INDEX_FEATURES_EXT:
                 safe_pNext = new safe_VkPhysicalDevicePrimitiveRestartIndexFeaturesEXT(reinterpret_cast<const VkPhysicalDevicePrimitiveRestartIndexFeaturesEXT *>(pNext), copy_state, false);
                 break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_DECODE_VECTOR_FEATURES_NV:
+                safe_pNext = new safe_VkPhysicalDeviceCooperativeMatrixDecodeVectorFeaturesNV(reinterpret_cast<const VkPhysicalDeviceCooperativeMatrixDecodeVectorFeaturesNV *>(pNext), copy_state, false);
+                break;
             case VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_ACCELERATION_STRUCTURE_KHR:
                 safe_pNext = new safe_VkWriteDescriptorSetAccelerationStructureKHR(reinterpret_cast<const VkWriteDescriptorSetAccelerationStructureKHR *>(pNext), copy_state, false);
                 break;
@@ -4974,6 +4977,9 @@ void FreePnextChain(const void *pNext) {
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRIMITIVE_RESTART_INDEX_FEATURES_EXT:
             delete reinterpret_cast<safe_VkPhysicalDevicePrimitiveRestartIndexFeaturesEXT *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_DECODE_VECTOR_FEATURES_NV:
+            delete reinterpret_cast<safe_VkPhysicalDeviceCooperativeMatrixDecodeVectorFeaturesNV *>(header);
             break;
         case VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_ACCELERATION_STRUCTURE_KHR:
             delete reinterpret_cast<safe_VkWriteDescriptorSetAccelerationStructureKHR *>(header);

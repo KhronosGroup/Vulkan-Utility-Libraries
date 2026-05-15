@@ -25125,6 +25125,29 @@ struct safe_VkPhysicalDevicePrimitiveRestartIndexFeaturesEXT {
         return reinterpret_cast<VkPhysicalDevicePrimitiveRestartIndexFeaturesEXT const*>(this);
     }
 };
+struct safe_VkPhysicalDeviceCooperativeMatrixDecodeVectorFeaturesNV {
+    VkStructureType sType;
+    void* pNext{};
+    VkBool32 cooperativeMatrixDecodeVector;
+
+    safe_VkPhysicalDeviceCooperativeMatrixDecodeVectorFeaturesNV(
+        const VkPhysicalDeviceCooperativeMatrixDecodeVectorFeaturesNV* in_struct, PNextCopyState* copy_state = {},
+        bool copy_pnext = true);
+    safe_VkPhysicalDeviceCooperativeMatrixDecodeVectorFeaturesNV(
+        const safe_VkPhysicalDeviceCooperativeMatrixDecodeVectorFeaturesNV& copy_src);
+    safe_VkPhysicalDeviceCooperativeMatrixDecodeVectorFeaturesNV& operator=(
+        const safe_VkPhysicalDeviceCooperativeMatrixDecodeVectorFeaturesNV& copy_src);
+    safe_VkPhysicalDeviceCooperativeMatrixDecodeVectorFeaturesNV();
+    ~safe_VkPhysicalDeviceCooperativeMatrixDecodeVectorFeaturesNV();
+    void initialize(const VkPhysicalDeviceCooperativeMatrixDecodeVectorFeaturesNV* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceCooperativeMatrixDecodeVectorFeaturesNV* copy_src, PNextCopyState* copy_state = {});
+    VkPhysicalDeviceCooperativeMatrixDecodeVectorFeaturesNV* ptr() {
+        return reinterpret_cast<VkPhysicalDeviceCooperativeMatrixDecodeVectorFeaturesNV*>(this);
+    }
+    VkPhysicalDeviceCooperativeMatrixDecodeVectorFeaturesNV const* ptr() const {
+        return reinterpret_cast<VkPhysicalDeviceCooperativeMatrixDecodeVectorFeaturesNV const*>(this);
+    }
+};
 struct safe_VkAccelerationStructureGeometryTrianglesDataKHR {
     VkStructureType sType;
     const void* pNext{};
