@@ -18746,6 +18746,174 @@ void safe_VkVideoDecodeAV1InlineSessionParametersInfoKHR::initialize(
     }
 }
 
+safe_VkPhysicalDeviceVideoEncodeFeedback2FeaturesKHR::safe_VkPhysicalDeviceVideoEncodeFeedback2FeaturesKHR(
+    const VkPhysicalDeviceVideoEncodeFeedback2FeaturesKHR* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), videoEncodeFeedback2(in_struct->videoEncodeFeedback2) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceVideoEncodeFeedback2FeaturesKHR::safe_VkPhysicalDeviceVideoEncodeFeedback2FeaturesKHR()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VIDEO_ENCODE_FEEDBACK_2_FEATURES_KHR), pNext(nullptr), videoEncodeFeedback2() {}
+
+safe_VkPhysicalDeviceVideoEncodeFeedback2FeaturesKHR::safe_VkPhysicalDeviceVideoEncodeFeedback2FeaturesKHR(
+    const safe_VkPhysicalDeviceVideoEncodeFeedback2FeaturesKHR& copy_src) {
+    sType = copy_src.sType;
+    videoEncodeFeedback2 = copy_src.videoEncodeFeedback2;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceVideoEncodeFeedback2FeaturesKHR& safe_VkPhysicalDeviceVideoEncodeFeedback2FeaturesKHR::operator=(
+    const safe_VkPhysicalDeviceVideoEncodeFeedback2FeaturesKHR& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    videoEncodeFeedback2 = copy_src.videoEncodeFeedback2;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceVideoEncodeFeedback2FeaturesKHR::~safe_VkPhysicalDeviceVideoEncodeFeedback2FeaturesKHR() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkPhysicalDeviceVideoEncodeFeedback2FeaturesKHR::initialize(
+    const VkPhysicalDeviceVideoEncodeFeedback2FeaturesKHR* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    videoEncodeFeedback2 = in_struct->videoEncodeFeedback2;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceVideoEncodeFeedback2FeaturesKHR::initialize(
+    const safe_VkPhysicalDeviceVideoEncodeFeedback2FeaturesKHR* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    videoEncodeFeedback2 = copy_src->videoEncodeFeedback2;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkVideoEncodeFeedback2CapabilitiesKHR::safe_VkVideoEncodeFeedback2CapabilitiesKHR(
+    const VkVideoEncodeFeedback2CapabilitiesKHR* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType),
+      maxPerPartitionFeedbackEntries(in_struct->maxPerPartitionFeedbackEntries),
+      supportedPerPartitionEncodeFeedbackFlags(in_struct->supportedPerPartitionEncodeFeedbackFlags) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkVideoEncodeFeedback2CapabilitiesKHR::safe_VkVideoEncodeFeedback2CapabilitiesKHR()
+    : sType(VK_STRUCTURE_TYPE_VIDEO_ENCODE_FEEDBACK_2_CAPABILITIES_KHR),
+      pNext(nullptr),
+      maxPerPartitionFeedbackEntries(),
+      supportedPerPartitionEncodeFeedbackFlags() {}
+
+safe_VkVideoEncodeFeedback2CapabilitiesKHR::safe_VkVideoEncodeFeedback2CapabilitiesKHR(
+    const safe_VkVideoEncodeFeedback2CapabilitiesKHR& copy_src) {
+    sType = copy_src.sType;
+    maxPerPartitionFeedbackEntries = copy_src.maxPerPartitionFeedbackEntries;
+    supportedPerPartitionEncodeFeedbackFlags = copy_src.supportedPerPartitionEncodeFeedbackFlags;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkVideoEncodeFeedback2CapabilitiesKHR& safe_VkVideoEncodeFeedback2CapabilitiesKHR::operator=(
+    const safe_VkVideoEncodeFeedback2CapabilitiesKHR& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    maxPerPartitionFeedbackEntries = copy_src.maxPerPartitionFeedbackEntries;
+    supportedPerPartitionEncodeFeedbackFlags = copy_src.supportedPerPartitionEncodeFeedbackFlags;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkVideoEncodeFeedback2CapabilitiesKHR::~safe_VkVideoEncodeFeedback2CapabilitiesKHR() { FreePnextChain(pNext); }
+
+void safe_VkVideoEncodeFeedback2CapabilitiesKHR::initialize(const VkVideoEncodeFeedback2CapabilitiesKHR* in_struct,
+                                                            [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    maxPerPartitionFeedbackEntries = in_struct->maxPerPartitionFeedbackEntries;
+    supportedPerPartitionEncodeFeedbackFlags = in_struct->supportedPerPartitionEncodeFeedbackFlags;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkVideoEncodeFeedback2CapabilitiesKHR::initialize(const safe_VkVideoEncodeFeedback2CapabilitiesKHR* copy_src,
+                                                            [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    maxPerPartitionFeedbackEntries = copy_src->maxPerPartitionFeedbackEntries;
+    supportedPerPartitionEncodeFeedbackFlags = copy_src->supportedPerPartitionEncodeFeedbackFlags;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkQueryPoolVideoEncodePerPartitionFeedbackCreateInfoKHR::safe_VkQueryPoolVideoEncodePerPartitionFeedbackCreateInfoKHR(
+    const VkQueryPoolVideoEncodePerPartitionFeedbackCreateInfoKHR* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
+    bool copy_pnext)
+    : sType(in_struct->sType),
+      maxPerPartitionFeedbackEntries(in_struct->maxPerPartitionFeedbackEntries),
+      perPartitionEncodeFeedbackFlags(in_struct->perPartitionEncodeFeedbackFlags) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkQueryPoolVideoEncodePerPartitionFeedbackCreateInfoKHR::safe_VkQueryPoolVideoEncodePerPartitionFeedbackCreateInfoKHR()
+    : sType(VK_STRUCTURE_TYPE_QUERY_POOL_VIDEO_ENCODE_PER_PARTITION_FEEDBACK_CREATE_INFO_KHR),
+      pNext(nullptr),
+      maxPerPartitionFeedbackEntries(),
+      perPartitionEncodeFeedbackFlags() {}
+
+safe_VkQueryPoolVideoEncodePerPartitionFeedbackCreateInfoKHR::safe_VkQueryPoolVideoEncodePerPartitionFeedbackCreateInfoKHR(
+    const safe_VkQueryPoolVideoEncodePerPartitionFeedbackCreateInfoKHR& copy_src) {
+    sType = copy_src.sType;
+    maxPerPartitionFeedbackEntries = copy_src.maxPerPartitionFeedbackEntries;
+    perPartitionEncodeFeedbackFlags = copy_src.perPartitionEncodeFeedbackFlags;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkQueryPoolVideoEncodePerPartitionFeedbackCreateInfoKHR&
+safe_VkQueryPoolVideoEncodePerPartitionFeedbackCreateInfoKHR::operator=(
+    const safe_VkQueryPoolVideoEncodePerPartitionFeedbackCreateInfoKHR& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    maxPerPartitionFeedbackEntries = copy_src.maxPerPartitionFeedbackEntries;
+    perPartitionEncodeFeedbackFlags = copy_src.perPartitionEncodeFeedbackFlags;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkQueryPoolVideoEncodePerPartitionFeedbackCreateInfoKHR::~safe_VkQueryPoolVideoEncodePerPartitionFeedbackCreateInfoKHR() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkQueryPoolVideoEncodePerPartitionFeedbackCreateInfoKHR::initialize(
+    const VkQueryPoolVideoEncodePerPartitionFeedbackCreateInfoKHR* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    maxPerPartitionFeedbackEntries = in_struct->maxPerPartitionFeedbackEntries;
+    perPartitionEncodeFeedbackFlags = in_struct->perPartitionEncodeFeedbackFlags;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkQueryPoolVideoEncodePerPartitionFeedbackCreateInfoKHR::initialize(
+    const safe_VkQueryPoolVideoEncodePerPartitionFeedbackCreateInfoKHR* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    maxPerPartitionFeedbackEntries = copy_src->maxPerPartitionFeedbackEntries;
+    perPartitionEncodeFeedbackFlags = copy_src->perPartitionEncodeFeedbackFlags;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
 safe_VkPhysicalDeviceDepthClampZeroOneFeaturesKHR::safe_VkPhysicalDeviceDepthClampZeroOneFeaturesKHR(
     const VkPhysicalDeviceDepthClampZeroOneFeaturesKHR* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
     : sType(in_struct->sType), depthClampZeroOne(in_struct->depthClampZeroOne) {
@@ -19689,6 +19857,356 @@ void safe_VkQueueFamilyOptimalImageTransferGranularityPropertiesKHR::initialize(
     const safe_VkQueueFamilyOptimalImageTransferGranularityPropertiesKHR* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
     sType = copy_src->sType;
     optimalImageTransferGranularity = copy_src->optimalImageTransferGranularity;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkFormatProperties4KHR::safe_VkFormatProperties4KHR(const VkFormatProperties4KHR* in_struct,
+                                                         [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType),
+      linearTilingFeatures(in_struct->linearTilingFeatures),
+      optimalTilingFeatures(in_struct->optimalTilingFeatures),
+      bufferFeatures(in_struct->bufferFeatures) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkFormatProperties4KHR::safe_VkFormatProperties4KHR()
+    : sType(VK_STRUCTURE_TYPE_FORMAT_PROPERTIES_4_KHR),
+      pNext(nullptr),
+      linearTilingFeatures(),
+      optimalTilingFeatures(),
+      bufferFeatures() {}
+
+safe_VkFormatProperties4KHR::safe_VkFormatProperties4KHR(const safe_VkFormatProperties4KHR& copy_src) {
+    sType = copy_src.sType;
+    linearTilingFeatures = copy_src.linearTilingFeatures;
+    optimalTilingFeatures = copy_src.optimalTilingFeatures;
+    bufferFeatures = copy_src.bufferFeatures;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkFormatProperties4KHR& safe_VkFormatProperties4KHR::operator=(const safe_VkFormatProperties4KHR& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    linearTilingFeatures = copy_src.linearTilingFeatures;
+    optimalTilingFeatures = copy_src.optimalTilingFeatures;
+    bufferFeatures = copy_src.bufferFeatures;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkFormatProperties4KHR::~safe_VkFormatProperties4KHR() { FreePnextChain(pNext); }
+
+void safe_VkFormatProperties4KHR::initialize(const VkFormatProperties4KHR* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    linearTilingFeatures = in_struct->linearTilingFeatures;
+    optimalTilingFeatures = in_struct->optimalTilingFeatures;
+    bufferFeatures = in_struct->bufferFeatures;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkFormatProperties4KHR::initialize(const safe_VkFormatProperties4KHR* copy_src,
+                                             [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    linearTilingFeatures = copy_src->linearTilingFeatures;
+    optimalTilingFeatures = copy_src->optimalTilingFeatures;
+    bufferFeatures = copy_src->bufferFeatures;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkImageUsageFlags2CreateInfoKHR::safe_VkImageUsageFlags2CreateInfoKHR(const VkImageUsageFlags2CreateInfoKHR* in_struct,
+                                                                           [[maybe_unused]] PNextCopyState* copy_state,
+                                                                           bool copy_pnext)
+    : sType(in_struct->sType), usage(in_struct->usage) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkImageUsageFlags2CreateInfoKHR::safe_VkImageUsageFlags2CreateInfoKHR()
+    : sType(VK_STRUCTURE_TYPE_IMAGE_USAGE_FLAGS_2_CREATE_INFO_KHR), pNext(nullptr), usage() {}
+
+safe_VkImageUsageFlags2CreateInfoKHR::safe_VkImageUsageFlags2CreateInfoKHR(const safe_VkImageUsageFlags2CreateInfoKHR& copy_src) {
+    sType = copy_src.sType;
+    usage = copy_src.usage;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkImageUsageFlags2CreateInfoKHR& safe_VkImageUsageFlags2CreateInfoKHR::operator=(
+    const safe_VkImageUsageFlags2CreateInfoKHR& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    usage = copy_src.usage;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkImageUsageFlags2CreateInfoKHR::~safe_VkImageUsageFlags2CreateInfoKHR() { FreePnextChain(pNext); }
+
+void safe_VkImageUsageFlags2CreateInfoKHR::initialize(const VkImageUsageFlags2CreateInfoKHR* in_struct,
+                                                      [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    usage = in_struct->usage;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkImageUsageFlags2CreateInfoKHR::initialize(const safe_VkImageUsageFlags2CreateInfoKHR* copy_src,
+                                                      [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    usage = copy_src->usage;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkImageCreateFlags2CreateInfoKHR::safe_VkImageCreateFlags2CreateInfoKHR(const VkImageCreateFlags2CreateInfoKHR* in_struct,
+                                                                             [[maybe_unused]] PNextCopyState* copy_state,
+                                                                             bool copy_pnext)
+    : sType(in_struct->sType), flags(in_struct->flags) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkImageCreateFlags2CreateInfoKHR::safe_VkImageCreateFlags2CreateInfoKHR()
+    : sType(VK_STRUCTURE_TYPE_IMAGE_CREATE_FLAGS_2_CREATE_INFO_KHR), pNext(nullptr), flags() {}
+
+safe_VkImageCreateFlags2CreateInfoKHR::safe_VkImageCreateFlags2CreateInfoKHR(
+    const safe_VkImageCreateFlags2CreateInfoKHR& copy_src) {
+    sType = copy_src.sType;
+    flags = copy_src.flags;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkImageCreateFlags2CreateInfoKHR& safe_VkImageCreateFlags2CreateInfoKHR::operator=(
+    const safe_VkImageCreateFlags2CreateInfoKHR& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    flags = copy_src.flags;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkImageCreateFlags2CreateInfoKHR::~safe_VkImageCreateFlags2CreateInfoKHR() { FreePnextChain(pNext); }
+
+void safe_VkImageCreateFlags2CreateInfoKHR::initialize(const VkImageCreateFlags2CreateInfoKHR* in_struct,
+                                                       [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    flags = in_struct->flags;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkImageCreateFlags2CreateInfoKHR::initialize(const safe_VkImageCreateFlags2CreateInfoKHR* copy_src,
+                                                       [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    flags = copy_src->flags;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkImageViewUsage2CreateInfoKHR::safe_VkImageViewUsage2CreateInfoKHR(const VkImageViewUsage2CreateInfoKHR* in_struct,
+                                                                         [[maybe_unused]] PNextCopyState* copy_state,
+                                                                         bool copy_pnext)
+    : sType(in_struct->sType), usage(in_struct->usage) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkImageViewUsage2CreateInfoKHR::safe_VkImageViewUsage2CreateInfoKHR()
+    : sType(VK_STRUCTURE_TYPE_IMAGE_VIEW_USAGE_2_CREATE_INFO_KHR), pNext(nullptr), usage() {}
+
+safe_VkImageViewUsage2CreateInfoKHR::safe_VkImageViewUsage2CreateInfoKHR(const safe_VkImageViewUsage2CreateInfoKHR& copy_src) {
+    sType = copy_src.sType;
+    usage = copy_src.usage;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkImageViewUsage2CreateInfoKHR& safe_VkImageViewUsage2CreateInfoKHR::operator=(
+    const safe_VkImageViewUsage2CreateInfoKHR& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    usage = copy_src.usage;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkImageViewUsage2CreateInfoKHR::~safe_VkImageViewUsage2CreateInfoKHR() { FreePnextChain(pNext); }
+
+void safe_VkImageViewUsage2CreateInfoKHR::initialize(const VkImageViewUsage2CreateInfoKHR* in_struct,
+                                                     [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    usage = in_struct->usage;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkImageViewUsage2CreateInfoKHR::initialize(const safe_VkImageViewUsage2CreateInfoKHR* copy_src,
+                                                     [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    usage = copy_src->usage;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkPhysicalDeviceExtendedFlagsFeaturesKHR::safe_VkPhysicalDeviceExtendedFlagsFeaturesKHR(
+    const VkPhysicalDeviceExtendedFlagsFeaturesKHR* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), extendedFlags(in_struct->extendedFlags) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceExtendedFlagsFeaturesKHR::safe_VkPhysicalDeviceExtendedFlagsFeaturesKHR()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_FLAGS_FEATURES_KHR), pNext(nullptr), extendedFlags() {}
+
+safe_VkPhysicalDeviceExtendedFlagsFeaturesKHR::safe_VkPhysicalDeviceExtendedFlagsFeaturesKHR(
+    const safe_VkPhysicalDeviceExtendedFlagsFeaturesKHR& copy_src) {
+    sType = copy_src.sType;
+    extendedFlags = copy_src.extendedFlags;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceExtendedFlagsFeaturesKHR& safe_VkPhysicalDeviceExtendedFlagsFeaturesKHR::operator=(
+    const safe_VkPhysicalDeviceExtendedFlagsFeaturesKHR& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    extendedFlags = copy_src.extendedFlags;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceExtendedFlagsFeaturesKHR::~safe_VkPhysicalDeviceExtendedFlagsFeaturesKHR() { FreePnextChain(pNext); }
+
+void safe_VkPhysicalDeviceExtendedFlagsFeaturesKHR::initialize(const VkPhysicalDeviceExtendedFlagsFeaturesKHR* in_struct,
+                                                               [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    extendedFlags = in_struct->extendedFlags;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceExtendedFlagsFeaturesKHR::initialize(const safe_VkPhysicalDeviceExtendedFlagsFeaturesKHR* copy_src,
+                                                               [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    extendedFlags = copy_src->extendedFlags;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkImageStencilUsage2CreateInfoKHR::safe_VkImageStencilUsage2CreateInfoKHR(const VkImageStencilUsage2CreateInfoKHR* in_struct,
+                                                                               [[maybe_unused]] PNextCopyState* copy_state,
+                                                                               bool copy_pnext)
+    : sType(in_struct->sType), stencilUsage(in_struct->stencilUsage) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkImageStencilUsage2CreateInfoKHR::safe_VkImageStencilUsage2CreateInfoKHR()
+    : sType(VK_STRUCTURE_TYPE_IMAGE_STENCIL_USAGE_2_CREATE_INFO_KHR), pNext(nullptr), stencilUsage() {}
+
+safe_VkImageStencilUsage2CreateInfoKHR::safe_VkImageStencilUsage2CreateInfoKHR(
+    const safe_VkImageStencilUsage2CreateInfoKHR& copy_src) {
+    sType = copy_src.sType;
+    stencilUsage = copy_src.stencilUsage;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkImageStencilUsage2CreateInfoKHR& safe_VkImageStencilUsage2CreateInfoKHR::operator=(
+    const safe_VkImageStencilUsage2CreateInfoKHR& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    stencilUsage = copy_src.stencilUsage;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkImageStencilUsage2CreateInfoKHR::~safe_VkImageStencilUsage2CreateInfoKHR() { FreePnextChain(pNext); }
+
+void safe_VkImageStencilUsage2CreateInfoKHR::initialize(const VkImageStencilUsage2CreateInfoKHR* in_struct,
+                                                        [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    stencilUsage = in_struct->stencilUsage;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkImageStencilUsage2CreateInfoKHR::initialize(const safe_VkImageStencilUsage2CreateInfoKHR* copy_src,
+                                                        [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    stencilUsage = copy_src->stencilUsage;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkSharedPresentSurfaceCapabilities2KHR::safe_VkSharedPresentSurfaceCapabilities2KHR(
+    const VkSharedPresentSurfaceCapabilities2KHR* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), sharedPresentSupportedUsageFlags(in_struct->sharedPresentSupportedUsageFlags) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkSharedPresentSurfaceCapabilities2KHR::safe_VkSharedPresentSurfaceCapabilities2KHR()
+    : sType(VK_STRUCTURE_TYPE_SHARED_PRESENT_SURFACE_CAPABILITIES_2_KHR), pNext(nullptr), sharedPresentSupportedUsageFlags() {}
+
+safe_VkSharedPresentSurfaceCapabilities2KHR::safe_VkSharedPresentSurfaceCapabilities2KHR(
+    const safe_VkSharedPresentSurfaceCapabilities2KHR& copy_src) {
+    sType = copy_src.sType;
+    sharedPresentSupportedUsageFlags = copy_src.sharedPresentSupportedUsageFlags;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkSharedPresentSurfaceCapabilities2KHR& safe_VkSharedPresentSurfaceCapabilities2KHR::operator=(
+    const safe_VkSharedPresentSurfaceCapabilities2KHR& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    sharedPresentSupportedUsageFlags = copy_src.sharedPresentSupportedUsageFlags;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkSharedPresentSurfaceCapabilities2KHR::~safe_VkSharedPresentSurfaceCapabilities2KHR() { FreePnextChain(pNext); }
+
+void safe_VkSharedPresentSurfaceCapabilities2KHR::initialize(const VkSharedPresentSurfaceCapabilities2KHR* in_struct,
+                                                             [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    sharedPresentSupportedUsageFlags = in_struct->sharedPresentSupportedUsageFlags;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkSharedPresentSurfaceCapabilities2KHR::initialize(const safe_VkSharedPresentSurfaceCapabilities2KHR* copy_src,
+                                                             [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    sharedPresentSupportedUsageFlags = copy_src->sharedPresentSupportedUsageFlags;
     pNext = SafePnextCopy(copy_src->pNext);
 }
 
