@@ -18333,6 +18333,108 @@ void safe_VkPhysicalDeviceVertexAttributeRobustnessFeaturesEXT::initialize(
     pNext = SafePnextCopy(copy_src->pNext);
 }
 
+safe_VkPhysicalDeviceMultisampledRenderToSwapchainFeaturesEXT::safe_VkPhysicalDeviceMultisampledRenderToSwapchainFeaturesEXT(
+    const VkPhysicalDeviceMultisampledRenderToSwapchainFeaturesEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
+    bool copy_pnext)
+    : sType(in_struct->sType), multisampledRenderToSwapchain(in_struct->multisampledRenderToSwapchain) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceMultisampledRenderToSwapchainFeaturesEXT::safe_VkPhysicalDeviceMultisampledRenderToSwapchainFeaturesEXT()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTISAMPLED_RENDER_TO_SWAPCHAIN_FEATURES_EXT),
+      pNext(nullptr),
+      multisampledRenderToSwapchain() {}
+
+safe_VkPhysicalDeviceMultisampledRenderToSwapchainFeaturesEXT::safe_VkPhysicalDeviceMultisampledRenderToSwapchainFeaturesEXT(
+    const safe_VkPhysicalDeviceMultisampledRenderToSwapchainFeaturesEXT& copy_src) {
+    sType = copy_src.sType;
+    multisampledRenderToSwapchain = copy_src.multisampledRenderToSwapchain;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceMultisampledRenderToSwapchainFeaturesEXT&
+safe_VkPhysicalDeviceMultisampledRenderToSwapchainFeaturesEXT::operator=(
+    const safe_VkPhysicalDeviceMultisampledRenderToSwapchainFeaturesEXT& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    multisampledRenderToSwapchain = copy_src.multisampledRenderToSwapchain;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceMultisampledRenderToSwapchainFeaturesEXT::~safe_VkPhysicalDeviceMultisampledRenderToSwapchainFeaturesEXT() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkPhysicalDeviceMultisampledRenderToSwapchainFeaturesEXT::initialize(
+    const VkPhysicalDeviceMultisampledRenderToSwapchainFeaturesEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    multisampledRenderToSwapchain = in_struct->multisampledRenderToSwapchain;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceMultisampledRenderToSwapchainFeaturesEXT::initialize(
+    const safe_VkPhysicalDeviceMultisampledRenderToSwapchainFeaturesEXT* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    multisampledRenderToSwapchain = copy_src->multisampledRenderToSwapchain;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkSwapchainFlagsSurfaceCapabilitiesEXT::safe_VkSwapchainFlagsSurfaceCapabilitiesEXT(
+    const VkSwapchainFlagsSurfaceCapabilitiesEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), swapchainSupportedFlags(in_struct->swapchainSupportedFlags) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkSwapchainFlagsSurfaceCapabilitiesEXT::safe_VkSwapchainFlagsSurfaceCapabilitiesEXT()
+    : sType(VK_STRUCTURE_TYPE_SWAPCHAIN_FLAGS_SURFACE_CAPABILITIES_EXT), pNext(nullptr), swapchainSupportedFlags() {}
+
+safe_VkSwapchainFlagsSurfaceCapabilitiesEXT::safe_VkSwapchainFlagsSurfaceCapabilitiesEXT(
+    const safe_VkSwapchainFlagsSurfaceCapabilitiesEXT& copy_src) {
+    sType = copy_src.sType;
+    swapchainSupportedFlags = copy_src.swapchainSupportedFlags;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkSwapchainFlagsSurfaceCapabilitiesEXT& safe_VkSwapchainFlagsSurfaceCapabilitiesEXT::operator=(
+    const safe_VkSwapchainFlagsSurfaceCapabilitiesEXT& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    swapchainSupportedFlags = copy_src.swapchainSupportedFlags;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkSwapchainFlagsSurfaceCapabilitiesEXT::~safe_VkSwapchainFlagsSurfaceCapabilitiesEXT() { FreePnextChain(pNext); }
+
+void safe_VkSwapchainFlagsSurfaceCapabilitiesEXT::initialize(const VkSwapchainFlagsSurfaceCapabilitiesEXT* in_struct,
+                                                             [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    swapchainSupportedFlags = in_struct->swapchainSupportedFlags;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkSwapchainFlagsSurfaceCapabilitiesEXT::initialize(const safe_VkSwapchainFlagsSurfaceCapabilitiesEXT* copy_src,
+                                                             [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    swapchainSupportedFlags = copy_src->swapchainSupportedFlags;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
 safe_VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesEXT::safe_VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesEXT(
     const VkPhysicalDeviceZeroInitializeDeviceMemoryFeaturesEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
     bool copy_pnext)
