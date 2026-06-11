@@ -62,7 +62,7 @@ class unordered_map {
     void insert_or_assign(const Key &key, Args &&...args) {
         uint32_t h = ConcurrentMapHashObject(key);
         WriteLockGuard lock(locks[h].lock);
-        maps[h].insert_or_assign(key, {std::forward<Args>(args)...});
+        maps[h][key] = {std::forward<Args>(args)...};
     }
 
     template <typename... Args>
