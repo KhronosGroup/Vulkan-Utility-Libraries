@@ -2776,6 +2776,8 @@ static inline const char* string_VkVendorId(VkVendorId input_value) {
             return "VK_VENDOR_ID_POCL";
         case VK_VENDOR_ID_MOBILEYE:
             return "VK_VENDOR_ID_MOBILEYE";
+        case VK_VENDOR_ID_APE:
+            return "VK_VENDOR_ID_APE";
         default:
             return "Unhandled VkVendorId";
     }
@@ -4378,6 +4380,8 @@ static inline const char* string_VkDriverId(VkDriverId input_value) {
             return "VK_DRIVER_ID_MESA_KOSMICKRISP";
         case VK_DRIVER_ID_MESA_GFXSTREAM:
             return "VK_DRIVER_ID_MESA_GFXSTREAM";
+        case VK_DRIVER_ID_APE_SOFT:
+            return "VK_DRIVER_ID_APE_SOFT";
         default:
             return "Unhandled VkDriverId";
     }
@@ -8746,6 +8750,7 @@ static inline const char* string_VkFormatFeatureFlagBits2(uint64_t input_value) 
     if (input_value == VK_FORMAT_FEATURE_2_COPY_IMAGE_INDIRECT_DST_BIT_KHR) return "VK_FORMAT_FEATURE_2_COPY_IMAGE_INDIRECT_DST_BIT_KHR";
     if (input_value == VK_FORMAT_FEATURE_2_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR) return "VK_FORMAT_FEATURE_2_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR";
     if (input_value == VK_FORMAT_FEATURE_2_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR) return "VK_FORMAT_FEATURE_2_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR";
+    if (input_value == VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_FILTER_LINEAR_2D_BIT_IMG) return "VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_FILTER_LINEAR_2D_BIT_IMG";
     if (input_value == VK_FORMAT_FEATURE_2_DEPTH_COPY_ON_COMPUTE_QUEUE_BIT_KHR) return "VK_FORMAT_FEATURE_2_DEPTH_COPY_ON_COMPUTE_QUEUE_BIT_KHR";
     if (input_value == VK_FORMAT_FEATURE_2_DEPTH_COPY_ON_TRANSFER_QUEUE_BIT_KHR) return "VK_FORMAT_FEATURE_2_DEPTH_COPY_ON_TRANSFER_QUEUE_BIT_KHR";
     if (input_value == VK_FORMAT_FEATURE_2_STENCIL_COPY_ON_COMPUTE_QUEUE_BIT_KHR) return "VK_FORMAT_FEATURE_2_STENCIL_COPY_ON_COMPUTE_QUEUE_BIT_KHR";
