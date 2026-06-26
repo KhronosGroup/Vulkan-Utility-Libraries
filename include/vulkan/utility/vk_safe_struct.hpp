@@ -23175,6 +23175,46 @@ struct safe_VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT {
         return reinterpret_cast<VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT const*>(this);
     }
 };
+struct safe_VkTensorRollingBackingCreateInfoARM {
+    VkStructureType sType;
+    const void* pNext{};
+    uint32_t wraps[VK_MAX_TENSOR_CREATE_INFO_ROLLING_BACKING_WRAP_COUNT_ARM];
+
+    safe_VkTensorRollingBackingCreateInfoARM(const VkTensorRollingBackingCreateInfoARM* in_struct, PNextCopyState* copy_state = {},
+                                             bool copy_pnext = true);
+    safe_VkTensorRollingBackingCreateInfoARM(const safe_VkTensorRollingBackingCreateInfoARM& copy_src);
+    safe_VkTensorRollingBackingCreateInfoARM& operator=(const safe_VkTensorRollingBackingCreateInfoARM& copy_src);
+    safe_VkTensorRollingBackingCreateInfoARM();
+    ~safe_VkTensorRollingBackingCreateInfoARM();
+    void initialize(const VkTensorRollingBackingCreateInfoARM* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkTensorRollingBackingCreateInfoARM* copy_src, PNextCopyState* copy_state = {});
+    VkTensorRollingBackingCreateInfoARM* ptr() { return reinterpret_cast<VkTensorRollingBackingCreateInfoARM*>(this); }
+    VkTensorRollingBackingCreateInfoARM const* ptr() const {
+        return reinterpret_cast<VkTensorRollingBackingCreateInfoARM const*>(this);
+    }
+};
+struct safe_VkTensorExplicitTilingFormatPropertiesARM {
+    VkStructureType sType;
+    void* pNext{};
+    VkFormatFeatureFlags2 brick16TilingTensorFeatures;
+    VkFormatFeatureFlags2 brick8TilingTensorFeatures;
+    VkFormatFeatureFlags2 brick4TilingTensorFeatures;
+    VkFormatFeatureFlags2 blockUTilingTensorFeatures;
+    VkFormatFeatureFlags2 blockU64kTilingTensorFeatures;
+
+    safe_VkTensorExplicitTilingFormatPropertiesARM(const VkTensorExplicitTilingFormatPropertiesARM* in_struct,
+                                                   PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkTensorExplicitTilingFormatPropertiesARM(const safe_VkTensorExplicitTilingFormatPropertiesARM& copy_src);
+    safe_VkTensorExplicitTilingFormatPropertiesARM& operator=(const safe_VkTensorExplicitTilingFormatPropertiesARM& copy_src);
+    safe_VkTensorExplicitTilingFormatPropertiesARM();
+    ~safe_VkTensorExplicitTilingFormatPropertiesARM();
+    void initialize(const VkTensorExplicitTilingFormatPropertiesARM* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkTensorExplicitTilingFormatPropertiesARM* copy_src, PNextCopyState* copy_state = {});
+    VkTensorExplicitTilingFormatPropertiesARM* ptr() { return reinterpret_cast<VkTensorExplicitTilingFormatPropertiesARM*>(this); }
+    VkTensorExplicitTilingFormatPropertiesARM const* ptr() const {
+        return reinterpret_cast<VkTensorExplicitTilingFormatPropertiesARM const*>(this);
+    }
+};
 struct safe_VkPhysicalDeviceShaderFloat8FeaturesEXT {
     VkStructureType sType;
     void* pNext{};

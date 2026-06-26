@@ -22051,6 +22051,144 @@ void safe_VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV::initialize(
     pNext = SafePnextCopy(copy_src->pNext);
 }
 
+safe_VkTensorRollingBackingCreateInfoARM::safe_VkTensorRollingBackingCreateInfoARM(
+    const VkTensorRollingBackingCreateInfoARM* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+    for (uint32_t i = 0; i < VK_MAX_TENSOR_CREATE_INFO_ROLLING_BACKING_WRAP_COUNT_ARM; ++i) {
+        wraps[i] = in_struct->wraps[i];
+    }
+}
+
+safe_VkTensorRollingBackingCreateInfoARM::safe_VkTensorRollingBackingCreateInfoARM()
+    : sType(VK_STRUCTURE_TYPE_TENSOR_ROLLING_BACKING_CREATE_INFO_ARM), pNext(nullptr) {}
+
+safe_VkTensorRollingBackingCreateInfoARM::safe_VkTensorRollingBackingCreateInfoARM(
+    const safe_VkTensorRollingBackingCreateInfoARM& copy_src) {
+    sType = copy_src.sType;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    for (uint32_t i = 0; i < VK_MAX_TENSOR_CREATE_INFO_ROLLING_BACKING_WRAP_COUNT_ARM; ++i) {
+        wraps[i] = copy_src.wraps[i];
+    }
+}
+
+safe_VkTensorRollingBackingCreateInfoARM& safe_VkTensorRollingBackingCreateInfoARM::operator=(
+    const safe_VkTensorRollingBackingCreateInfoARM& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    for (uint32_t i = 0; i < VK_MAX_TENSOR_CREATE_INFO_ROLLING_BACKING_WRAP_COUNT_ARM; ++i) {
+        wraps[i] = copy_src.wraps[i];
+    }
+
+    return *this;
+}
+
+safe_VkTensorRollingBackingCreateInfoARM::~safe_VkTensorRollingBackingCreateInfoARM() { FreePnextChain(pNext); }
+
+void safe_VkTensorRollingBackingCreateInfoARM::initialize(const VkTensorRollingBackingCreateInfoARM* in_struct,
+                                                          [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+
+    for (uint32_t i = 0; i < VK_MAX_TENSOR_CREATE_INFO_ROLLING_BACKING_WRAP_COUNT_ARM; ++i) {
+        wraps[i] = in_struct->wraps[i];
+    }
+}
+
+void safe_VkTensorRollingBackingCreateInfoARM::initialize(const safe_VkTensorRollingBackingCreateInfoARM* copy_src,
+                                                          [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    pNext = SafePnextCopy(copy_src->pNext);
+
+    for (uint32_t i = 0; i < VK_MAX_TENSOR_CREATE_INFO_ROLLING_BACKING_WRAP_COUNT_ARM; ++i) {
+        wraps[i] = copy_src->wraps[i];
+    }
+}
+
+safe_VkTensorExplicitTilingFormatPropertiesARM::safe_VkTensorExplicitTilingFormatPropertiesARM(
+    const VkTensorExplicitTilingFormatPropertiesARM* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType),
+      brick16TilingTensorFeatures(in_struct->brick16TilingTensorFeatures),
+      brick8TilingTensorFeatures(in_struct->brick8TilingTensorFeatures),
+      brick4TilingTensorFeatures(in_struct->brick4TilingTensorFeatures),
+      blockUTilingTensorFeatures(in_struct->blockUTilingTensorFeatures),
+      blockU64kTilingTensorFeatures(in_struct->blockU64kTilingTensorFeatures) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkTensorExplicitTilingFormatPropertiesARM::safe_VkTensorExplicitTilingFormatPropertiesARM()
+    : sType(VK_STRUCTURE_TYPE_TENSOR_EXPLICIT_TILING_FORMAT_PROPERTIES_ARM),
+      pNext(nullptr),
+      brick16TilingTensorFeatures(),
+      brick8TilingTensorFeatures(),
+      brick4TilingTensorFeatures(),
+      blockUTilingTensorFeatures(),
+      blockU64kTilingTensorFeatures() {}
+
+safe_VkTensorExplicitTilingFormatPropertiesARM::safe_VkTensorExplicitTilingFormatPropertiesARM(
+    const safe_VkTensorExplicitTilingFormatPropertiesARM& copy_src) {
+    sType = copy_src.sType;
+    brick16TilingTensorFeatures = copy_src.brick16TilingTensorFeatures;
+    brick8TilingTensorFeatures = copy_src.brick8TilingTensorFeatures;
+    brick4TilingTensorFeatures = copy_src.brick4TilingTensorFeatures;
+    blockUTilingTensorFeatures = copy_src.blockUTilingTensorFeatures;
+    blockU64kTilingTensorFeatures = copy_src.blockU64kTilingTensorFeatures;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkTensorExplicitTilingFormatPropertiesARM& safe_VkTensorExplicitTilingFormatPropertiesARM::operator=(
+    const safe_VkTensorExplicitTilingFormatPropertiesARM& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    brick16TilingTensorFeatures = copy_src.brick16TilingTensorFeatures;
+    brick8TilingTensorFeatures = copy_src.brick8TilingTensorFeatures;
+    brick4TilingTensorFeatures = copy_src.brick4TilingTensorFeatures;
+    blockUTilingTensorFeatures = copy_src.blockUTilingTensorFeatures;
+    blockU64kTilingTensorFeatures = copy_src.blockU64kTilingTensorFeatures;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkTensorExplicitTilingFormatPropertiesARM::~safe_VkTensorExplicitTilingFormatPropertiesARM() { FreePnextChain(pNext); }
+
+void safe_VkTensorExplicitTilingFormatPropertiesARM::initialize(const VkTensorExplicitTilingFormatPropertiesARM* in_struct,
+                                                                [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    brick16TilingTensorFeatures = in_struct->brick16TilingTensorFeatures;
+    brick8TilingTensorFeatures = in_struct->brick8TilingTensorFeatures;
+    brick4TilingTensorFeatures = in_struct->brick4TilingTensorFeatures;
+    blockUTilingTensorFeatures = in_struct->blockUTilingTensorFeatures;
+    blockU64kTilingTensorFeatures = in_struct->blockU64kTilingTensorFeatures;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkTensorExplicitTilingFormatPropertiesARM::initialize(const safe_VkTensorExplicitTilingFormatPropertiesARM* copy_src,
+                                                                [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    brick16TilingTensorFeatures = copy_src->brick16TilingTensorFeatures;
+    brick8TilingTensorFeatures = copy_src->brick8TilingTensorFeatures;
+    brick4TilingTensorFeatures = copy_src->brick4TilingTensorFeatures;
+    blockUTilingTensorFeatures = copy_src->blockUTilingTensorFeatures;
+    blockU64kTilingTensorFeatures = copy_src->blockU64kTilingTensorFeatures;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
 safe_VkPhysicalDeviceRayTracingValidationFeaturesNV::safe_VkPhysicalDeviceRayTracingValidationFeaturesNV(
     const VkPhysicalDeviceRayTracingValidationFeaturesNV* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
     : sType(in_struct->sType), rayTracingValidation(in_struct->rayTracingValidation) {
