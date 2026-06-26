@@ -2342,6 +2342,10 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ATOMIC_FLOAT16_VECTOR_FEATURES_NV";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_REPLICATED_COMPOSITES_FEATURES_EXT:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_REPLICATED_COMPOSITES_FEATURES_EXT";
+        case VK_STRUCTURE_TYPE_TENSOR_EXPLICIT_TILING_FORMAT_PROPERTIES_ARM:
+            return "VK_STRUCTURE_TYPE_TENSOR_EXPLICIT_TILING_FORMAT_PROPERTIES_ARM";
+        case VK_STRUCTURE_TYPE_TENSOR_ROLLING_BACKING_CREATE_INFO_ARM:
+            return "VK_STRUCTURE_TYPE_TENSOR_ROLLING_BACKING_CREATE_INFO_ARM";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_FLOAT8_FEATURES_EXT:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_FLOAT8_FEATURES_EXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_VALIDATION_FEATURES_NV:
@@ -5772,6 +5776,16 @@ static inline const char* string_VkTensorTilingARM(VkTensorTilingARM input_value
             return "VK_TENSOR_TILING_OPTIMAL_ARM";
         case VK_TENSOR_TILING_LINEAR_ARM:
             return "VK_TENSOR_TILING_LINEAR_ARM";
+        case VK_TENSOR_TILING_BRICK_16_WIDE_ARM:
+            return "VK_TENSOR_TILING_BRICK_16_WIDE_ARM";
+        case VK_TENSOR_TILING_BRICK_8_WIDE_ARM:
+            return "VK_TENSOR_TILING_BRICK_8_WIDE_ARM";
+        case VK_TENSOR_TILING_BRICK_4_WIDE_ARM:
+            return "VK_TENSOR_TILING_BRICK_4_WIDE_ARM";
+        case VK_TENSOR_TILING_BLOCK_U_INTERLEAVED_ARM:
+            return "VK_TENSOR_TILING_BLOCK_U_INTERLEAVED_ARM";
+        case VK_TENSOR_TILING_BLOCK_U_INTERLEAVED_64K_ARM:
+            return "VK_TENSOR_TILING_BLOCK_U_INTERLEAVED_64K_ARM";
         default:
             return "Unhandled VkTensorTilingARM";
     }
@@ -14583,6 +14597,10 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
             return "VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_REPLICATED_COMPOSITES_FEATURES_EXT:
             return "VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT";
+        case VK_STRUCTURE_TYPE_TENSOR_ROLLING_BACKING_CREATE_INFO_ARM:
+            return "VkTensorRollingBackingCreateInfoARM";
+        case VK_STRUCTURE_TYPE_TENSOR_EXPLICIT_TILING_FORMAT_PROPERTIES_ARM:
+            return "VkTensorExplicitTilingFormatPropertiesARM";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_FLOAT8_FEATURES_EXT:
             return "VkPhysicalDeviceShaderFloat8FeaturesEXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_VALIDATION_FEATURES_NV:

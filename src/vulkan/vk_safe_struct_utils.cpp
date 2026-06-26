@@ -2311,6 +2311,12 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_REPLICATED_COMPOSITES_FEATURES_EXT:
                 safe_pNext = new safe_VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT(reinterpret_cast<const VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT *>(pNext), copy_state, false);
                 break;
+            case VK_STRUCTURE_TYPE_TENSOR_ROLLING_BACKING_CREATE_INFO_ARM:
+                safe_pNext = new safe_VkTensorRollingBackingCreateInfoARM(reinterpret_cast<const VkTensorRollingBackingCreateInfoARM *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_TENSOR_EXPLICIT_TILING_FORMAT_PROPERTIES_ARM:
+                safe_pNext = new safe_VkTensorExplicitTilingFormatPropertiesARM(reinterpret_cast<const VkTensorExplicitTilingFormatPropertiesARM *>(pNext), copy_state, false);
+                break;
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_FLOAT8_FEATURES_EXT:
                 safe_pNext = new safe_VkPhysicalDeviceShaderFloat8FeaturesEXT(reinterpret_cast<const VkPhysicalDeviceShaderFloat8FeaturesEXT *>(pNext), copy_state, false);
                 break;
@@ -4843,6 +4849,12 @@ void FreePnextChain(const void *pNext) {
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_REPLICATED_COMPOSITES_FEATURES_EXT:
             delete reinterpret_cast<safe_VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_TENSOR_ROLLING_BACKING_CREATE_INFO_ARM:
+            delete reinterpret_cast<safe_VkTensorRollingBackingCreateInfoARM *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_TENSOR_EXPLICIT_TILING_FORMAT_PROPERTIES_ARM:
+            delete reinterpret_cast<safe_VkTensorExplicitTilingFormatPropertiesARM *>(header);
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_FLOAT8_FEATURES_EXT:
             delete reinterpret_cast<safe_VkPhysicalDeviceShaderFloat8FeaturesEXT *>(header);
