@@ -1301,6 +1301,7 @@ template <> inline VkStructureType GetSType<VkPhysicalDeviceShaderSubgroupPartit
 #ifdef VK_USE_PLATFORM_UBM_SEC
 template <> inline VkStructureType GetSType<VkUbmSurfaceCreateInfoSEC>() { return VK_STRUCTURE_TYPE_UBM_SURFACE_CREATE_INFO_SEC; }
 #endif  // VK_USE_PLATFORM_UBM_SEC
+template <> inline VkStructureType GetSType<VkPhysicalDeviceShaderOCPMicroscalingTypesFeaturesEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_OCP_MICROSCALING_TYPES_FEATURES_EXT; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceShaderMixedFloatDotProductFeaturesVALVE>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_MIXED_FLOAT_DOT_PRODUCT_FEATURES_VALVE; }
 template <> inline VkStructureType GetSType<VkThrottleHintSubmitInfoSEC>() { return VK_STRUCTURE_TYPE_THROTTLE_HINT_SUBMIT_INFO_SEC; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceThrottleHintFeaturesSEC>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_THROTTLE_HINT_FEATURES_SEC; }
