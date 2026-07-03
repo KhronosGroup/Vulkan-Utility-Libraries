@@ -18939,6 +18939,78 @@ void safe_VkPhysicalDeviceShaderSubgroupPartitionedFeaturesEXT::initialize(
     pNext = SafePnextCopy(copy_src->pNext);
 }
 
+safe_VkPhysicalDeviceShaderOCPMicroscalingTypesFeaturesEXT::safe_VkPhysicalDeviceShaderOCPMicroscalingTypesFeaturesEXT(
+    const VkPhysicalDeviceShaderOCPMicroscalingTypesFeaturesEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
+    bool copy_pnext)
+    : sType(in_struct->sType),
+      shaderFloat4(in_struct->shaderFloat4),
+      shaderFloat6(in_struct->shaderFloat6),
+      shaderFloat8UnsignedE8M0(in_struct->shaderFloat8UnsignedE8M0),
+      shaderMXInt8(in_struct->shaderMXInt8) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceShaderOCPMicroscalingTypesFeaturesEXT::safe_VkPhysicalDeviceShaderOCPMicroscalingTypesFeaturesEXT()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_OCP_MICROSCALING_TYPES_FEATURES_EXT),
+      pNext(nullptr),
+      shaderFloat4(),
+      shaderFloat6(),
+      shaderFloat8UnsignedE8M0(),
+      shaderMXInt8() {}
+
+safe_VkPhysicalDeviceShaderOCPMicroscalingTypesFeaturesEXT::safe_VkPhysicalDeviceShaderOCPMicroscalingTypesFeaturesEXT(
+    const safe_VkPhysicalDeviceShaderOCPMicroscalingTypesFeaturesEXT& copy_src) {
+    sType = copy_src.sType;
+    shaderFloat4 = copy_src.shaderFloat4;
+    shaderFloat6 = copy_src.shaderFloat6;
+    shaderFloat8UnsignedE8M0 = copy_src.shaderFloat8UnsignedE8M0;
+    shaderMXInt8 = copy_src.shaderMXInt8;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceShaderOCPMicroscalingTypesFeaturesEXT& safe_VkPhysicalDeviceShaderOCPMicroscalingTypesFeaturesEXT::operator=(
+    const safe_VkPhysicalDeviceShaderOCPMicroscalingTypesFeaturesEXT& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    shaderFloat4 = copy_src.shaderFloat4;
+    shaderFloat6 = copy_src.shaderFloat6;
+    shaderFloat8UnsignedE8M0 = copy_src.shaderFloat8UnsignedE8M0;
+    shaderMXInt8 = copy_src.shaderMXInt8;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceShaderOCPMicroscalingTypesFeaturesEXT::~safe_VkPhysicalDeviceShaderOCPMicroscalingTypesFeaturesEXT() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkPhysicalDeviceShaderOCPMicroscalingTypesFeaturesEXT::initialize(
+    const VkPhysicalDeviceShaderOCPMicroscalingTypesFeaturesEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    shaderFloat4 = in_struct->shaderFloat4;
+    shaderFloat6 = in_struct->shaderFloat6;
+    shaderFloat8UnsignedE8M0 = in_struct->shaderFloat8UnsignedE8M0;
+    shaderMXInt8 = in_struct->shaderMXInt8;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceShaderOCPMicroscalingTypesFeaturesEXT::initialize(
+    const safe_VkPhysicalDeviceShaderOCPMicroscalingTypesFeaturesEXT* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    shaderFloat4 = copy_src->shaderFloat4;
+    shaderFloat6 = copy_src->shaderFloat6;
+    shaderFloat8UnsignedE8M0 = copy_src->shaderFloat8UnsignedE8M0;
+    shaderMXInt8 = copy_src->shaderMXInt8;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
 safe_VkPhysicalDevicePrimitiveRestartIndexFeaturesEXT::safe_VkPhysicalDevicePrimitiveRestartIndexFeaturesEXT(
     const VkPhysicalDevicePrimitiveRestartIndexFeaturesEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
     : sType(in_struct->sType), primitiveRestartIndex(in_struct->primitiveRestartIndex) {

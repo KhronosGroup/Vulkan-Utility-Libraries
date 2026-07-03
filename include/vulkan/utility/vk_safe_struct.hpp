@@ -25239,6 +25239,32 @@ struct safe_VkUbmSurfaceCreateInfoSEC {
     VkUbmSurfaceCreateInfoSEC const* ptr() const { return reinterpret_cast<VkUbmSurfaceCreateInfoSEC const*>(this); }
 };
 #endif  // VK_USE_PLATFORM_UBM_SEC
+struct safe_VkPhysicalDeviceShaderOCPMicroscalingTypesFeaturesEXT {
+    VkStructureType sType;
+    void* pNext{};
+    VkBool32 shaderFloat4;
+    VkBool32 shaderFloat6;
+    VkBool32 shaderFloat8UnsignedE8M0;
+    VkBool32 shaderMXInt8;
+
+    safe_VkPhysicalDeviceShaderOCPMicroscalingTypesFeaturesEXT(
+        const VkPhysicalDeviceShaderOCPMicroscalingTypesFeaturesEXT* in_struct, PNextCopyState* copy_state = {},
+        bool copy_pnext = true);
+    safe_VkPhysicalDeviceShaderOCPMicroscalingTypesFeaturesEXT(
+        const safe_VkPhysicalDeviceShaderOCPMicroscalingTypesFeaturesEXT& copy_src);
+    safe_VkPhysicalDeviceShaderOCPMicroscalingTypesFeaturesEXT& operator=(
+        const safe_VkPhysicalDeviceShaderOCPMicroscalingTypesFeaturesEXT& copy_src);
+    safe_VkPhysicalDeviceShaderOCPMicroscalingTypesFeaturesEXT();
+    ~safe_VkPhysicalDeviceShaderOCPMicroscalingTypesFeaturesEXT();
+    void initialize(const VkPhysicalDeviceShaderOCPMicroscalingTypesFeaturesEXT* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceShaderOCPMicroscalingTypesFeaturesEXT* copy_src, PNextCopyState* copy_state = {});
+    VkPhysicalDeviceShaderOCPMicroscalingTypesFeaturesEXT* ptr() {
+        return reinterpret_cast<VkPhysicalDeviceShaderOCPMicroscalingTypesFeaturesEXT*>(this);
+    }
+    VkPhysicalDeviceShaderOCPMicroscalingTypesFeaturesEXT const* ptr() const {
+        return reinterpret_cast<VkPhysicalDeviceShaderOCPMicroscalingTypesFeaturesEXT const*>(this);
+    }
+};
 struct safe_VkPhysicalDeviceShaderMixedFloatDotProductFeaturesVALVE {
     VkStructureType sType;
     void* pNext{};

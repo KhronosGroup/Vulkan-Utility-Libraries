@@ -2614,6 +2614,8 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_IMAGE_STENCIL_USAGE_2_CREATE_INFO_KHR";
         case VK_STRUCTURE_TYPE_SHARED_PRESENT_SURFACE_CAPABILITIES_2_KHR:
             return "VK_STRUCTURE_TYPE_SHARED_PRESENT_SURFACE_CAPABILITIES_2_KHR";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_OCP_MICROSCALING_TYPES_FEATURES_EXT:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_OCP_MICROSCALING_TYPES_FEATURES_EXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_MIXED_FLOAT_DOT_PRODUCT_FEATURES_VALVE:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_MIXED_FLOAT_DOT_PRODUCT_FEATURES_VALVE";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_THROTTLE_HINT_FEATURES_SEC:
@@ -4706,6 +4708,16 @@ static inline const char* string_VkComponentTypeKHR(VkComponentTypeKHR input_val
             return "VK_COMPONENT_TYPE_FLOAT8_E4M3_EXT";
         case VK_COMPONENT_TYPE_FLOAT8_E5M2_EXT:
             return "VK_COMPONENT_TYPE_FLOAT8_E5M2_EXT";
+        case VK_COMPONENT_TYPE_FLOAT6_E2M3_EXT:
+            return "VK_COMPONENT_TYPE_FLOAT6_E2M3_EXT";
+        case VK_COMPONENT_TYPE_FLOAT6_E3M2_EXT:
+            return "VK_COMPONENT_TYPE_FLOAT6_E3M2_EXT";
+        case VK_COMPONENT_TYPE_FLOAT4_E2M1_EXT:
+            return "VK_COMPONENT_TYPE_FLOAT4_E2M1_EXT";
+        case VK_COMPONENT_TYPE_FLOAT8_UNSIGNED_E8M0_EXT:
+            return "VK_COMPONENT_TYPE_FLOAT8_UNSIGNED_E8M0_EXT";
+        case VK_COMPONENT_TYPE_MXINT8_EXT:
+            return "VK_COMPONENT_TYPE_MXINT8_EXT";
         default:
             return "Unhandled VkComponentTypeKHR";
     }
@@ -14793,6 +14805,8 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
         case VK_STRUCTURE_TYPE_UBM_SURFACE_CREATE_INFO_SEC:
             return "VkUbmSurfaceCreateInfoSEC";
 #endif  // VK_USE_PLATFORM_UBM_SEC
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_OCP_MICROSCALING_TYPES_FEATURES_EXT:
+            return "VkPhysicalDeviceShaderOCPMicroscalingTypesFeaturesEXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_MIXED_FLOAT_DOT_PRODUCT_FEATURES_VALVE:
             return "VkPhysicalDeviceShaderMixedFloatDotProductFeaturesVALVE";
         case VK_STRUCTURE_TYPE_THROTTLE_HINT_SUBMIT_INFO_SEC:
