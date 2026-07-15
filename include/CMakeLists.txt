@@ -22,18 +22,15 @@ set(CMAKE_FOLDER "${CMAKE_FOLDER}/VulkanUtilityHeaders")
 add_library(VulkanUtilityHeaders INTERFACE)
 add_library(Vulkan::UtilityHeaders ALIAS VulkanUtilityHeaders)
 
-# https://cmake.org/cmake/help/latest/release/3.19.html#other
-if (CMAKE_VERSION VERSION_GREATER_EQUAL "3.19")
-    target_sources(VulkanUtilityHeaders PRIVATE
-        vulkan/vk_enum_string_helper.h
-        vulkan/utility/vk_concurrent_unordered_map.hpp
-        vulkan/utility/vk_dispatch_table.h
-        vulkan/utility/vk_format_utils.h
-        vulkan/utility/vk_small_containers.hpp
-        vulkan/utility/vk_sparse_range_map.hpp
-        vulkan/utility/vk_struct_helper.hpp
-    )
-endif()
+target_sources(VulkanUtilityHeaders PRIVATE
+    vulkan/vk_enum_string_helper.h
+    vulkan/utility/vk_concurrent_unordered_map.hpp
+    vulkan/utility/vk_dispatch_table.h
+    vulkan/utility/vk_format_utils.h
+    vulkan/utility/vk_small_containers.hpp
+    vulkan/utility/vk_sparse_range_map.hpp
+    vulkan/utility/vk_struct_helper.hpp
+)
 
 target_link_libraries(VulkanUtilityHeaders INTERFACE Vulkan::Headers)
 
