@@ -3,7 +3,7 @@
 # Copyright 2023 LunarG, Inc.
 #
 # SPDX-License-Identifier: Apache-2.0
-cmake_minimum_required(VERSION 3.22.1)
+cmake_minimum_required(VERSION 3.28.3)
 
 # The VERSION field is generated with the "--generated-version" flag in the generate_source.py script
 project(VUL VERSION 1.4.359 LANGUAGES CXX)
@@ -27,7 +27,7 @@ add_subdirectory(scripts)
 find_package(VulkanHeaders ${PROJECT_VERSION} CONFIG)
 
 # Workaround AppleClang using the wrong headers when there are headers in /usr/local/include
-if (CMAKE_CXX_COMPILER_ID STREQUAL AppleClang AND TARGET Vulkan::Headers AND CMAKE_VERSION VERSION_GREATER_EQUAL 3.25)
+if (CMAKE_CXX_COMPILER_ID STREQUAL AppleClang AND TARGET Vulkan::Headers)
     set_target_properties(Vulkan::Headers PROPERTIES SYSTEM OFF)
 endif()
 
