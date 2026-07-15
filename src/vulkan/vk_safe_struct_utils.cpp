@@ -21,6 +21,7 @@
 #include <cstring>
 
 namespace vku {
+// clang-format off
 char *SafeStringCopy(const char *in_string) {
     if (nullptr == in_string) return nullptr;
     size_t len = std::strlen(in_string);
@@ -30,7 +31,6 @@ char *SafeStringCopy(const char *in_string) {
     return dest;
 }
 
-// clang-format off
 void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
     void *first_pNext{};
     VkBaseOutStructure *prev_pNext{};
