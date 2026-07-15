@@ -263,25 +263,23 @@ class SafeStructOutputGenerator(BaseGenerator):
     def generateUtil(self):
         out = []
         out.append('''
-            #include <vulkan/vk_layer.h>
-            #include <vulkan/utility/vk_safe_struct.hpp>
+#include <vulkan/vk_layer.h>
+#include <vulkan/utility/vk_safe_struct.hpp>
 
-            #include <vector>
-            #include <cstring>
+#include <vector>
+#include <cstring>
 
-            namespace vku {
-            char *SafeStringCopy(const char *in_string) {
-                if (nullptr == in_string) return nullptr;
-                size_t len = std::strlen(in_string);
-                char* dest = new char[len + 1];
-                dest[len] = '\\0';
-                std::memcpy(dest, in_string, len);
-                return dest;
-            }
-
-            ''')
-        out.append('''
+namespace vku {
 // clang-format off
+char *SafeStringCopy(const char *in_string) {
+    if (nullptr == in_string) return nullptr;
+    size_t len = std::strlen(in_string);
+    char *dest = new char[len + 1];
+    dest[len] = '\\0';
+    std::memcpy(dest, in_string, len);
+    return dest;
+}
+
 void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
     void *first_pNext{};
     VkBaseOutStructure *prev_pNext{};
