@@ -81,18 +81,18 @@ jobs:
       uses: fsfe/reuse-action@v6
 
   # Test to ensure we don't accidentally break the Chromium build.
-  # chromium:
-  #   needs: generate_source
-  #   runs-on: ubuntu-24.04
-  #   steps:
-  #     - uses: actions/checkout@v7
-  #     - uses: actions/setup-python@v6
-  #       with:
-  #         python-version: '3.10'
-  #     - name: Install WSI dependencies
-  #       run: sudo apt-get -qq update && sudo apt-get install -y libwayland-dev xorg-dev
-  #     - name: Test chromium build
-  #       run: python scripts/gn/gn.py
+  chromium:
+    needs: generate_source
+    runs-on: ubuntu-26.04
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.10'
+      - name: Install WSI dependencies
+        run: sudo apt-get -qq update && sudo apt-get install -y libwayland-dev xorg-dev
+      - name: Test chromium build
+        run: python scripts/gn/gn.py
 
   generate_source:
     runs-on: ubuntu-24.04
