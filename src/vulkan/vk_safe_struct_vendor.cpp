@@ -3134,7 +3134,8 @@ void safe_VkExecutionGraphPipelineCreateInfoAMDX::initialize(const safe_VkExecut
 }
 
 safe_VkDeviceOrHostAddressConstAMDX::safe_VkDeviceOrHostAddressConstAMDX(const VkDeviceOrHostAddressConstAMDX* in_struct,
-                                                                         PNextCopyState*) {
+                                                                         PNextCopyState*)
+    : hostAddress(nullptr) {
     initialize(in_struct);
 }
 
@@ -6318,7 +6319,8 @@ void safe_VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL::initialize(
     pNext = SafePnextCopy(copy_src->pNext);
 }
 
-safe_VkPerformanceValueDataINTEL::safe_VkPerformanceValueDataINTEL(const VkPerformanceValueDataINTEL* in_struct, PNextCopyState*) {
+safe_VkPerformanceValueDataINTEL::safe_VkPerformanceValueDataINTEL(const VkPerformanceValueDataINTEL* in_struct, PNextCopyState*)
+    : valueString(nullptr) {
     initialize(in_struct);
 }
 
@@ -22612,7 +22614,8 @@ void safe_VkClusterAccelerationStructureMoveObjectsInputNV::initialize(
 }
 
 safe_VkClusterAccelerationStructureOpInputNV::safe_VkClusterAccelerationStructureOpInputNV(
-    const VkClusterAccelerationStructureOpInputNV* in_struct, PNextCopyState*) {
+    const VkClusterAccelerationStructureOpInputNV* in_struct, PNextCopyState*)
+    : pClustersBottomLevel(nullptr) {
     initialize(in_struct);
 }
 

@@ -20211,7 +20211,8 @@ void safe_VkSharedPresentSurfaceCapabilities2KHR::initialize(const safe_VkShared
 }
 
 safe_VkDeviceOrHostAddressConstKHR::safe_VkDeviceOrHostAddressConstKHR(const VkDeviceOrHostAddressConstKHR* in_struct,
-                                                                       PNextCopyState*) {
+                                                                       PNextCopyState*)
+    : hostAddress(nullptr) {
     initialize(in_struct);
 }
 
@@ -20246,7 +20247,8 @@ void safe_VkDeviceOrHostAddressConstKHR::initialize(const safe_VkDeviceOrHostAdd
     hostAddress = copy_src->hostAddress;
 }
 
-safe_VkDeviceOrHostAddressKHR::safe_VkDeviceOrHostAddressKHR(const VkDeviceOrHostAddressKHR* in_struct, PNextCopyState*) {
+safe_VkDeviceOrHostAddressKHR::safe_VkDeviceOrHostAddressKHR(const VkDeviceOrHostAddressKHR* in_struct, PNextCopyState*)
+    : hostAddress(nullptr) {
     initialize(in_struct);
 }
 

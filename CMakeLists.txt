@@ -3,7 +3,7 @@
 # Copyright 2023 LunarG, Inc.
 #
 # SPDX-License-Identifier: Apache-2.0
-cmake_minimum_required(VERSION 3.22.1)
+cmake_minimum_required(VERSION 3.28.3)
 
 # The VERSION field is generated with the "--generated-version" flag in the generate_source.py script
 project(VUL VERSION 1.4.357 LANGUAGES CXX)

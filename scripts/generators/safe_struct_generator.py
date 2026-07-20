@@ -263,25 +263,23 @@ class SafeStructOutputGenerator(BaseGenerator):
     def generateUtil(self):
         out = []
         out.append('''
-            #include <vulkan/vk_layer.h>
-            #include <vulkan/utility/vk_safe_struct.hpp>
+#include <vulkan/vk_layer.h>
+#include <vulkan/utility/vk_safe_struct.hpp>
 
-            #include <vector>
-            #include <cstring>
+#include <vector>
+#include <cstring>
 
-            namespace vku {
-            char *SafeStringCopy(const char *in_string) {
-                if (nullptr == in_string) return nullptr;
-                size_t len = std::strlen(in_string);
-                char* dest = new char[len + 1];
-                dest[len] = '\\0';
-                std::memcpy(dest, in_string, len);
-                return dest;
-            }
-
-            ''')
-        out.append('''
+namespace vku {
 // clang-format off
+char *SafeStringCopy(const char *in_string) {
+    if (nullptr == in_string) return nullptr;
+    size_t len = std::strlen(in_string);
+    char *dest = new char[len + 1];
+    dest[len] = '\\0';
+    std::memcpy(dest, in_string, len);
+    return dest;
+}
+
 void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
     void *first_pNext{};
     VkBaseOutStructure *prev_pNext{};
@@ -541,8 +539,8 @@ void FreePnextChain(const void *pNext) {
         for struct in [x for x in self.vk.structs.values() if self.needSafeStruct(x) and x.name not in self.manual_source and re.match(splitRegex, x.name)]:
             out.extend(guard_helper.add_guard(struct.protect))
 
-            init_list = ''          # list of members in struct constructor initializer
-            default_init_list = ''  # Default constructor just inits ptrs to nullptr in initializer
+            init_list = []          # list of members in struct constructor initializer
+            default_init_list = []  # Default constructor just inits ptrs to nullptr in initializer
             init_func_txt = ''      # Txt for initialize() function that takes struct ptr and inits members
             construct_txt = ''      # Body of constuctor as well as body of initialize() func following init_func_txt
             destruct_txt = ''
@@ -577,7 +575,7 @@ void FreePnextChain(const void *pNext) {
                                 # Create deep copies of strings
                                 if member.length:
                                     copy_strings += f'''
-                                        if (in_struct->{member.length} > 0) {{ 
+                                        if (in_struct->{member.length} > 0) {{
                                             char **tmp_{member.name} = new char *[in_struct->{member.length}];
                                             for (uint32_t i = 0; i < {member.length}; ++i) {{
                                                 tmp_{member.name}[i] = SafeStringCopy(in_struct->{member.name}[i]);
@@ -601,7 +599,7 @@ void FreePnextChain(const void *pNext) {
                             else:
                                 # We need a deep copy of pData / dataSize combos
                                 if member.name == 'pData':
-                                    init_list += f'\n    {member.name}(nullptr),'
+                                    init_list.append(f'{member.name}(nullptr)')
                                     construct_txt += '''
                                         if (in_struct->pData != nullptr) {
                                             auto temp = new std::byte[in_struct->dataSize];
@@ -617,14 +615,14 @@ void FreePnextChain(const void *pNext) {
                                         }
                                         '''
                                 else:
-                                    init_list += f'\n{member.name}(in_struct->{member.name}),'
+                                    init_list.append(f'{member.name}(in_struct->{member.name})')
                                     init_func_txt += f'{member.name} = in_struct->{member.name};\n'
-                        default_init_list += f'\n{member.name}(nullptr),'
+                        default_init_list.append(f'\n{member.name}(nullptr)')
                     elif member.name == 'ppUsageCounts':
                         # This is the same issue above, but instead of void/char* we have custom Vulkan types
                         # Currently just search for 'ppUsageCounts' until something that isn't also needs this, then make it more general
-                        default_init_list += f'\n{member.name}(nullptr),'
-                        init_list += f'\n{member.name}(nullptr),'
+                        default_init_list.append(f'\n{member.name}(nullptr)')
+                        init_list.append(f'{member.name}(nullptr)')
                         init_func_txt += f'{member.name} = nullptr;\n'
 
                         construct_txt += f'''
@@ -646,8 +644,8 @@ void FreePnextChain(const void *pNext) {
                                     }}
                                     '''
                     else:
-                        default_init_list += f'\n{member.name}(nullptr),'
-                        init_list += f'\n{member.name}(nullptr),'
+                        default_init_list.append(f'\n{member.name}(nullptr)')
+                        init_list.append(f'{member.name}(nullptr)')
                         if m_type in self.abstract_types:
                             construct_txt += f'{member.name} = in_struct->{member.name};\n'
                         else:
@@ -689,8 +687,8 @@ void FreePnextChain(const void *pNext) {
                             '''
                     else:
                         # Init array ptr to NULL
-                        default_init_list += f'\n{member.name}(nullptr),'
-                        init_list += f'\n{member.name}(nullptr),'
+                        default_init_list.append(f'\n{member.name}(nullptr)')
+                        init_list.append(f'{member.name}(nullptr)')
                         init_func_txt += f'{member.name} = nullptr;\n'
                         array_element = f'in_struct->{member.name}[i]'
                         if member.type in self.vk.structs and self.needSafeStruct(self.vk.structs[member.type]):
@@ -707,32 +705,31 @@ void FreePnextChain(const void *pNext) {
                         construct_txt += '}\n'
                         construct_txt += '}\n'
                 elif member.pointer and not m_shallow_copy:
-                    default_init_list += f'\n{member.name}(nullptr),'
-                    init_list += f'\n{member.name}(nullptr),'
+                    default_init_list.append(f'\n{member.name}(nullptr)')
+                    init_list.append(f'{member.name}(nullptr)')
                     init_func_txt += f'{member.name} = nullptr;\n'
                     construct_txt += f'if (in_struct->{member.name})\n'
                     construct_txt += f'    {member.name} = new {m_type}(in_struct->{member.name});\n'
                     destruct_txt += f'if ({member.name})\n'
                     destruct_txt += f'    delete {member.name};\n'
                 elif m_type_safe and member.type in self.union_of_pointers:
-                    init_list += f'\n{member.name}(&in_struct->{member.name}, in_struct->type),'
+                    init_list.append(f'{member.name}(&in_struct->{member.name}, in_struct->type)')
                     init_func_txt += f'{member.name}.initialize(&in_struct->{member.name}, in_struct->type);\n'
                 elif m_type_safe:
-                    init_list += f'\n{member.name}(&in_struct->{member.name}),'
+                    init_list.append(f'{member.name}(&in_struct->{member.name})')
                     init_func_txt += f'{member.name}.initialize(&in_struct->{member.name});\n'
                 else:
                     try:
-                        init_list += f'\n{member_init_transforms[member.name](member)},'
+                        init_list.append(f'{member_init_transforms[member.name](member)}')
                     except:
-                        init_list += f'\n{member.name}(in_struct->{member.name}),'
+                        init_list.append(f'{member.name}(in_struct->{member.name})')
                         init_func_txt += f'{member.name} = in_struct->{member.name};\n'
                     if not struct.union:
                         if member.name == 'sType' and struct.sType:
-                            default_init_list += f'\n{member.name}({struct.sType}),'
+                            default_init_list.append(f'\n{member.name}({struct.sType})')
                         else:
-                            default_init_list += f'\n{member.name}(),'
-            if '' != init_list:
-                init_list = init_list[:-1] # hack off final comma
+                            default_init_list.append(f'\n{member.name}()')
+
 
             if struct.name in custom_construct_txt:
                 construct_txt = custom_construct_txt[struct.name]
@@ -747,30 +744,32 @@ void FreePnextChain(const void *pNext) {
                 copy_pnext_param = ', bool copy_pnext'
                 destruct_txt += '    FreePnextChain(pNext);\n'
 
+            default_init = ''
+            if len(default_init_list) > 0:
+                # truncate union initializer list to first element
+                if struct.union:
+                    default_init_list = [default_init_list[0]]
+                default_init = ':' + ','.join(default_init_list)
+
             safe_name = self.convertName(struct.name)
             if struct.union:
                 # Unions don't allow multiple members in the initialization list, so just call initialize
                 out.append(f'''
-                    {safe_name}::{safe_name}(const {struct.name}* in_struct{self.custom_construct_params.get(struct.name, '')}, PNextCopyState*)
+                    {safe_name}::{safe_name}(const {struct.name}* in_struct{self.custom_construct_params.get(struct.name, '')}, PNextCopyState*){default_init}
                     {{
                         initialize(in_struct);
                     }}
                     ''')
             else:
                 out.append(f'''
-                    {safe_name}::{safe_name}(const {struct.name}* in_struct{self.custom_construct_params.get(struct.name, '')}, [[maybe_unused]] PNextCopyState* copy_state{copy_pnext_param}) :{init_list}
+                    {safe_name}::{safe_name}(const {struct.name}* in_struct{self.custom_construct_params.get(struct.name, '')}, [[maybe_unused]] PNextCopyState* copy_state{copy_pnext_param}) :{",".join(init_list)}
                     {{
                     {copy_pnext_if + construct_txt}}}
                     ''')
-            if '' != default_init_list:
-                # trim trailing comma from initializer list
-                default_init_list = f' :{default_init_list[:-1]}'
-                # truncate union initializer list to first element
-                if struct.union:
-                    default_init_list = default_init_list.split(',')[0]
+
             default_init_body = '\n' + custom_defeault_construct_txt[struct.name] if struct.name in custom_defeault_construct_txt else ''
             out.append(f'''
-                {safe_name}::{safe_name}(){default_init_list}
+                {safe_name}::{safe_name}(){default_init}
                 {{{default_init_body}}}
                 ''')
             # Create slight variation of init and construct txt for copy constructor that takes a copy_src object reference vs. struct ptr
