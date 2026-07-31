@@ -2630,6 +2630,10 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DATA_GRAPH_NEURAL_ACCELERATOR_STATISTICS_FEATURES_ARM";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRIMITIVE_RESTART_INDEX_FEATURES_EXT:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRIMITIVE_RESTART_INDEX_FEATURES_EXT";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_TILING_CONTROL_FEATURES_EXT:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_TILING_CONTROL_FEATURES_EXT";
+        case VK_STRUCTURE_TYPE_IMAGE_TILING_CONTROL_CREATE_INFO_EXT:
+            return "VK_STRUCTURE_TYPE_IMAGE_TILING_CONTROL_CREATE_INFO_EXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_DECODE_VECTOR_FEATURES_NV:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_DECODE_VECTOR_FEATURES_NV";
         default:
@@ -6268,6 +6272,18 @@ static inline const char* string_VkNeuralAcceleratorStatisticsModeARM(VkNeuralAc
             return "VK_NEURAL_ACCELERATOR_STATISTICS_MODE_STATISTICS1_ARM";
         default:
             return "Unhandled VkNeuralAcceleratorStatisticsModeARM";
+    }
+}
+static inline const char* string_VkImageTilingControlEXT(VkImageTilingControlEXT input_value) {
+    switch (input_value) {
+        case VK_IMAGE_TILING_CONTROL_DEFAULT_EXT:
+            return "VK_IMAGE_TILING_CONTROL_DEFAULT_EXT";
+        case VK_IMAGE_TILING_CONTROL_MIN_SIZE_EXT:
+            return "VK_IMAGE_TILING_CONTROL_MIN_SIZE_EXT";
+        case VK_IMAGE_TILING_CONTROL_MAX_PERFORMANCE_EXT:
+            return "VK_IMAGE_TILING_CONTROL_MAX_PERFORMANCE_EXT";
+        default:
+            return "Unhandled VkImageTilingControlEXT";
     }
 }
 static inline const char* string_VkBuildAccelerationStructureModeKHR(VkBuildAccelerationStructureModeKHR input_value) {
@@ -14821,6 +14837,10 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
             return "VkDataGraphPipelineSessionNeuralStatisticsCreateInfoARM";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRIMITIVE_RESTART_INDEX_FEATURES_EXT:
             return "VkPhysicalDevicePrimitiveRestartIndexFeaturesEXT";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_TILING_CONTROL_FEATURES_EXT:
+            return "VkPhysicalDeviceImageTilingControlFeaturesEXT";
+        case VK_STRUCTURE_TYPE_IMAGE_TILING_CONTROL_CREATE_INFO_EXT:
+            return "VkImageTilingControlCreateInfoEXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_DECODE_VECTOR_FEATURES_NV:
             return "VkPhysicalDeviceCooperativeMatrixDecodeVectorFeaturesNV";
         case VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_TRIANGLES_DATA_KHR:

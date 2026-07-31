@@ -25415,6 +25415,45 @@ struct safe_VkPhysicalDevicePrimitiveRestartIndexFeaturesEXT {
         return reinterpret_cast<VkPhysicalDevicePrimitiveRestartIndexFeaturesEXT const*>(this);
     }
 };
+struct safe_VkPhysicalDeviceImageTilingControlFeaturesEXT {
+    VkStructureType sType;
+    void* pNext{};
+    VkBool32 imageTilingControl;
+
+    safe_VkPhysicalDeviceImageTilingControlFeaturesEXT(const VkPhysicalDeviceImageTilingControlFeaturesEXT* in_struct,
+                                                       PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkPhysicalDeviceImageTilingControlFeaturesEXT(const safe_VkPhysicalDeviceImageTilingControlFeaturesEXT& copy_src);
+    safe_VkPhysicalDeviceImageTilingControlFeaturesEXT& operator=(
+        const safe_VkPhysicalDeviceImageTilingControlFeaturesEXT& copy_src);
+    safe_VkPhysicalDeviceImageTilingControlFeaturesEXT();
+    ~safe_VkPhysicalDeviceImageTilingControlFeaturesEXT();
+    void initialize(const VkPhysicalDeviceImageTilingControlFeaturesEXT* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceImageTilingControlFeaturesEXT* copy_src, PNextCopyState* copy_state = {});
+    VkPhysicalDeviceImageTilingControlFeaturesEXT* ptr() {
+        return reinterpret_cast<VkPhysicalDeviceImageTilingControlFeaturesEXT*>(this);
+    }
+    VkPhysicalDeviceImageTilingControlFeaturesEXT const* ptr() const {
+        return reinterpret_cast<VkPhysicalDeviceImageTilingControlFeaturesEXT const*>(this);
+    }
+};
+struct safe_VkImageTilingControlCreateInfoEXT {
+    VkStructureType sType;
+    const void* pNext{};
+    VkImageTilingControlEXT tilingControl;
+
+    safe_VkImageTilingControlCreateInfoEXT(const VkImageTilingControlCreateInfoEXT* in_struct, PNextCopyState* copy_state = {},
+                                           bool copy_pnext = true);
+    safe_VkImageTilingControlCreateInfoEXT(const safe_VkImageTilingControlCreateInfoEXT& copy_src);
+    safe_VkImageTilingControlCreateInfoEXT& operator=(const safe_VkImageTilingControlCreateInfoEXT& copy_src);
+    safe_VkImageTilingControlCreateInfoEXT();
+    ~safe_VkImageTilingControlCreateInfoEXT();
+    void initialize(const VkImageTilingControlCreateInfoEXT* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkImageTilingControlCreateInfoEXT* copy_src, PNextCopyState* copy_state = {});
+    VkImageTilingControlCreateInfoEXT* ptr() { return reinterpret_cast<VkImageTilingControlCreateInfoEXT*>(this); }
+    VkImageTilingControlCreateInfoEXT const* ptr() const {
+        return reinterpret_cast<VkImageTilingControlCreateInfoEXT const*>(this);
+    }
+};
 struct safe_VkPhysicalDeviceCooperativeMatrixDecodeVectorFeaturesNV {
     VkStructureType sType;
     void* pNext{};

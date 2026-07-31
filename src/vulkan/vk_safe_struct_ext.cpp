@@ -19061,6 +19061,103 @@ void safe_VkPhysicalDevicePrimitiveRestartIndexFeaturesEXT::initialize(
     pNext = SafePnextCopy(copy_src->pNext);
 }
 
+safe_VkPhysicalDeviceImageTilingControlFeaturesEXT::safe_VkPhysicalDeviceImageTilingControlFeaturesEXT(
+    const VkPhysicalDeviceImageTilingControlFeaturesEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), imageTilingControl(in_struct->imageTilingControl) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceImageTilingControlFeaturesEXT::safe_VkPhysicalDeviceImageTilingControlFeaturesEXT()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_TILING_CONTROL_FEATURES_EXT), pNext(nullptr), imageTilingControl() {}
+
+safe_VkPhysicalDeviceImageTilingControlFeaturesEXT::safe_VkPhysicalDeviceImageTilingControlFeaturesEXT(
+    const safe_VkPhysicalDeviceImageTilingControlFeaturesEXT& copy_src) {
+    sType = copy_src.sType;
+    imageTilingControl = copy_src.imageTilingControl;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceImageTilingControlFeaturesEXT& safe_VkPhysicalDeviceImageTilingControlFeaturesEXT::operator=(
+    const safe_VkPhysicalDeviceImageTilingControlFeaturesEXT& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    imageTilingControl = copy_src.imageTilingControl;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceImageTilingControlFeaturesEXT::~safe_VkPhysicalDeviceImageTilingControlFeaturesEXT() { FreePnextChain(pNext); }
+
+void safe_VkPhysicalDeviceImageTilingControlFeaturesEXT::initialize(const VkPhysicalDeviceImageTilingControlFeaturesEXT* in_struct,
+                                                                    [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    imageTilingControl = in_struct->imageTilingControl;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceImageTilingControlFeaturesEXT::initialize(
+    const safe_VkPhysicalDeviceImageTilingControlFeaturesEXT* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    imageTilingControl = copy_src->imageTilingControl;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkImageTilingControlCreateInfoEXT::safe_VkImageTilingControlCreateInfoEXT(const VkImageTilingControlCreateInfoEXT* in_struct,
+                                                                               [[maybe_unused]] PNextCopyState* copy_state,
+                                                                               bool copy_pnext)
+    : sType(in_struct->sType), tilingControl(in_struct->tilingControl) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkImageTilingControlCreateInfoEXT::safe_VkImageTilingControlCreateInfoEXT()
+    : sType(VK_STRUCTURE_TYPE_IMAGE_TILING_CONTROL_CREATE_INFO_EXT), pNext(nullptr), tilingControl() {}
+
+safe_VkImageTilingControlCreateInfoEXT::safe_VkImageTilingControlCreateInfoEXT(
+    const safe_VkImageTilingControlCreateInfoEXT& copy_src) {
+    sType = copy_src.sType;
+    tilingControl = copy_src.tilingControl;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkImageTilingControlCreateInfoEXT& safe_VkImageTilingControlCreateInfoEXT::operator=(
+    const safe_VkImageTilingControlCreateInfoEXT& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    tilingControl = copy_src.tilingControl;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkImageTilingControlCreateInfoEXT::~safe_VkImageTilingControlCreateInfoEXT() { FreePnextChain(pNext); }
+
+void safe_VkImageTilingControlCreateInfoEXT::initialize(const VkImageTilingControlCreateInfoEXT* in_struct,
+                                                        [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    tilingControl = in_struct->tilingControl;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkImageTilingControlCreateInfoEXT::initialize(const safe_VkImageTilingControlCreateInfoEXT* copy_src,
+                                                        [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    tilingControl = copy_src->tilingControl;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
 safe_VkPhysicalDeviceMeshShaderFeaturesEXT::safe_VkPhysicalDeviceMeshShaderFeaturesEXT(
     const VkPhysicalDeviceMeshShaderFeaturesEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
     : sType(in_struct->sType),
