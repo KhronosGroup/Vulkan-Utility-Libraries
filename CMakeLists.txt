@@ -26,6 +26,11 @@ add_subdirectory(scripts)
 
 find_package(VulkanHeaders ${PROJECT_VERSION} CONFIG)
 
+# Workaround AppleClang using the wrong headers when there are headers in /usr/local/include
+if (CMAKE_CXX_COMPILER_ID STREQUAL AppleClang AND TARGET Vulkan::Headers AND CMAKE_VERSION VERSION_GREATER_EQUAL 3.25)
+    set_target_properties(Vulkan::Headers PROPERTIES SYSTEM OFF)
+endif()
+
 option(VUL_ENABLE_ASAN "Use address sanitization")
 if (VUL_ENABLE_ASAN)
     add_compile_options(-fsanitize=address)
