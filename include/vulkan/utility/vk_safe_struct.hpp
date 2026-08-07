@@ -25197,6 +25197,78 @@ struct safe_VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV {
         return reinterpret_cast<VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV const*>(this);
     }
 };
+struct safe_VkCooperativeMatrixProperties2EXT {
+    VkStructureType sType;
+    void* pNext{};
+    uint32_t MGranularity;
+    uint32_t NGranularity;
+    uint32_t KGranularity;
+    VkComponentTypeKHR AType;
+    VkComponentTypeKHR BType;
+    VkComponentTypeKHR CType;
+    VkComponentTypeKHR ResultType;
+
+    safe_VkCooperativeMatrixProperties2EXT(const VkCooperativeMatrixProperties2EXT* in_struct, PNextCopyState* copy_state = {},
+                                           bool copy_pnext = true);
+    safe_VkCooperativeMatrixProperties2EXT(const safe_VkCooperativeMatrixProperties2EXT& copy_src);
+    safe_VkCooperativeMatrixProperties2EXT& operator=(const safe_VkCooperativeMatrixProperties2EXT& copy_src);
+    safe_VkCooperativeMatrixProperties2EXT();
+    ~safe_VkCooperativeMatrixProperties2EXT();
+    void initialize(const VkCooperativeMatrixProperties2EXT* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkCooperativeMatrixProperties2EXT* copy_src, PNextCopyState* copy_state = {});
+    VkCooperativeMatrixProperties2EXT* ptr() { return reinterpret_cast<VkCooperativeMatrixProperties2EXT*>(this); }
+    VkCooperativeMatrixProperties2EXT const* ptr() const {
+        return reinterpret_cast<VkCooperativeMatrixProperties2EXT const*>(this);
+    }
+};
+struct safe_VkPhysicalDeviceCooperativeMatrixInfo2EXT {
+    VkStructureType sType;
+    const void* pNext{};
+    VkScopeKHR scope;
+    uint32_t invocations;
+    uint32_t subgroupSize;
+    VkCooperativeMatrixFlagsEXT flags;
+
+    safe_VkPhysicalDeviceCooperativeMatrixInfo2EXT(const VkPhysicalDeviceCooperativeMatrixInfo2EXT* in_struct,
+                                                   PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkPhysicalDeviceCooperativeMatrixInfo2EXT(const safe_VkPhysicalDeviceCooperativeMatrixInfo2EXT& copy_src);
+    safe_VkPhysicalDeviceCooperativeMatrixInfo2EXT& operator=(const safe_VkPhysicalDeviceCooperativeMatrixInfo2EXT& copy_src);
+    safe_VkPhysicalDeviceCooperativeMatrixInfo2EXT();
+    ~safe_VkPhysicalDeviceCooperativeMatrixInfo2EXT();
+    void initialize(const VkPhysicalDeviceCooperativeMatrixInfo2EXT* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceCooperativeMatrixInfo2EXT* copy_src, PNextCopyState* copy_state = {});
+    VkPhysicalDeviceCooperativeMatrixInfo2EXT* ptr() { return reinterpret_cast<VkPhysicalDeviceCooperativeMatrixInfo2EXT*>(this); }
+    VkPhysicalDeviceCooperativeMatrixInfo2EXT const* ptr() const {
+        return reinterpret_cast<VkPhysicalDeviceCooperativeMatrixInfo2EXT const*>(this);
+    }
+};
+struct safe_VkPhysicalDeviceCooperativeMatrixMaintenance1FeaturesEXT {
+    VkStructureType sType;
+    void* pNext{};
+    VkBool32 cooperativeMatrixProperties2;
+    VkBool32 cooperativeMatrixReductions;
+    VkBool32 cooperativeMatrixConversions;
+    VkBool32 cooperativeMatrixPerElementOperations;
+    VkBool32 cooperativeMatrixGetCoordinate;
+
+    safe_VkPhysicalDeviceCooperativeMatrixMaintenance1FeaturesEXT(
+        const VkPhysicalDeviceCooperativeMatrixMaintenance1FeaturesEXT* in_struct, PNextCopyState* copy_state = {},
+        bool copy_pnext = true);
+    safe_VkPhysicalDeviceCooperativeMatrixMaintenance1FeaturesEXT(
+        const safe_VkPhysicalDeviceCooperativeMatrixMaintenance1FeaturesEXT& copy_src);
+    safe_VkPhysicalDeviceCooperativeMatrixMaintenance1FeaturesEXT& operator=(
+        const safe_VkPhysicalDeviceCooperativeMatrixMaintenance1FeaturesEXT& copy_src);
+    safe_VkPhysicalDeviceCooperativeMatrixMaintenance1FeaturesEXT();
+    ~safe_VkPhysicalDeviceCooperativeMatrixMaintenance1FeaturesEXT();
+    void initialize(const VkPhysicalDeviceCooperativeMatrixMaintenance1FeaturesEXT* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceCooperativeMatrixMaintenance1FeaturesEXT* copy_src, PNextCopyState* copy_state = {});
+    VkPhysicalDeviceCooperativeMatrixMaintenance1FeaturesEXT* ptr() {
+        return reinterpret_cast<VkPhysicalDeviceCooperativeMatrixMaintenance1FeaturesEXT*>(this);
+    }
+    VkPhysicalDeviceCooperativeMatrixMaintenance1FeaturesEXT const* ptr() const {
+        return reinterpret_cast<VkPhysicalDeviceCooperativeMatrixMaintenance1FeaturesEXT const*>(this);
+    }
+};
 struct safe_VkPhysicalDeviceShaderSubgroupPartitionedFeaturesEXT {
     VkStructureType sType;
     void* pNext{};
