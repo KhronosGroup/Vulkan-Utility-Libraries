@@ -2596,6 +2596,12 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_11_FEATURES_KHR";
         case VK_STRUCTURE_TYPE_QUEUE_FAMILY_OPTIMAL_IMAGE_TRANSFER_GRANULARITY_PROPERTIES_KHR:
             return "VK_STRUCTURE_TYPE_QUEUE_FAMILY_OPTIMAL_IMAGE_TRANSFER_GRANULARITY_PROPERTIES_KHR";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_MAINTENANCE_1_FEATURES_EXT:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_MAINTENANCE_1_FEATURES_EXT";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_INFO_2_EXT:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_INFO_2_EXT";
+        case VK_STRUCTURE_TYPE_COOPERATIVE_MATRIX_PROPERTIES_2_EXT:
+            return "VK_STRUCTURE_TYPE_COOPERATIVE_MATRIX_PROPERTIES_2_EXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SUBGROUP_PARTITIONED_FEATURES_EXT:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SUBGROUP_PARTITIONED_FEATURES_EXT";
         case VK_STRUCTURE_TYPE_UBM_SURFACE_CREATE_INFO_SEC:
@@ -4392,6 +4398,8 @@ static inline const char* string_VkDriverId(VkDriverId input_value) {
             return "VK_DRIVER_ID_MESA_GFXSTREAM";
         case VK_DRIVER_ID_APE_SOFT:
             return "VK_DRIVER_ID_APE_SOFT";
+        case VK_DRIVER_ID_RESERVED_31:
+            return "VK_DRIVER_ID_RESERVED_31";
         default:
             return "Unhandled VkDriverId";
     }
@@ -12316,6 +12324,31 @@ static inline std::string string_VkDataGraphOpticalFlowExecuteFlagsARM(VkDataGra
     return ret;
 }
 #endif // __cplusplus
+static inline const char* string_VkCooperativeMatrixFlagBitsEXT(VkCooperativeMatrixFlagBitsEXT input_value) {
+    switch (input_value) {
+        case VK_COOPERATIVE_MATRIX_SATURATING_ACCUMULATION_BIT_EXT:
+            return "VK_COOPERATIVE_MATRIX_SATURATING_ACCUMULATION_BIT_EXT";
+        default:
+            return "Unhandled VkCooperativeMatrixFlagBitsEXT";
+    }
+}
+
+#ifdef __cplusplus
+static inline std::string string_VkCooperativeMatrixFlagsEXT(VkCooperativeMatrixFlagsEXT input_value) {
+    std::string ret;
+    int index = 0;
+    while(input_value) {
+        if (input_value & 1) {
+            if( !ret.empty()) ret.append("|");
+            ret.append(string_VkCooperativeMatrixFlagBitsEXT(static_cast<VkCooperativeMatrixFlagBitsEXT>(1U << index)));
+        }
+        ++index;
+        input_value >>= 1;
+    }
+    if (ret.empty()) ret.append("VkCooperativeMatrixFlagsEXT(0)");
+    return ret;
+}
+#endif // __cplusplus
 // clang-format on
 
 // Same thing as string_VkStructureType, but prints out the API name
@@ -14815,6 +14848,12 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
             return "VkComputeOccupancyPriorityParametersNV";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMPUTE_OCCUPANCY_PRIORITY_FEATURES_NV:
             return "VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV";
+        case VK_STRUCTURE_TYPE_COOPERATIVE_MATRIX_PROPERTIES_2_EXT:
+            return "VkCooperativeMatrixProperties2EXT";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_INFO_2_EXT:
+            return "VkPhysicalDeviceCooperativeMatrixInfo2EXT";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_MAINTENANCE_1_FEATURES_EXT:
+            return "VkPhysicalDeviceCooperativeMatrixMaintenance1FeaturesEXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SUBGROUP_PARTITIONED_FEATURES_EXT:
             return "VkPhysicalDeviceShaderSubgroupPartitionedFeaturesEXT";
 #ifdef VK_USE_PLATFORM_UBM_SEC

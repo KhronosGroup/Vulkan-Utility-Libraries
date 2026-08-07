@@ -1297,6 +1297,9 @@ template <> inline VkStructureType GetSType<VkPhysicalDevicePipelineCacheIncreme
 template <> inline VkStructureType GetSType<VkPhysicalDeviceShaderUniformBufferUnsizedArrayFeaturesEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_UNIFORM_BUFFER_UNSIZED_ARRAY_FEATURES_EXT; }
 template <> inline VkStructureType GetSType<VkComputeOccupancyPriorityParametersNV>() { return VK_STRUCTURE_TYPE_COMPUTE_OCCUPANCY_PRIORITY_PARAMETERS_NV; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMPUTE_OCCUPANCY_PRIORITY_FEATURES_NV; }
+template <> inline VkStructureType GetSType<VkCooperativeMatrixProperties2EXT>() { return VK_STRUCTURE_TYPE_COOPERATIVE_MATRIX_PROPERTIES_2_EXT; }
+template <> inline VkStructureType GetSType<VkPhysicalDeviceCooperativeMatrixInfo2EXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_INFO_2_EXT; }
+template <> inline VkStructureType GetSType<VkPhysicalDeviceCooperativeMatrixMaintenance1FeaturesEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_MAINTENANCE_1_FEATURES_EXT; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceShaderSubgroupPartitionedFeaturesEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SUBGROUP_PARTITIONED_FEATURES_EXT; }
 #ifdef VK_USE_PLATFORM_UBM_SEC
 template <> inline VkStructureType GetSType<VkUbmSurfaceCreateInfoSEC>() { return VK_STRUCTURE_TYPE_UBM_SURFACE_CREATE_INFO_SEC; }
