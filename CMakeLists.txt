@@ -28,7 +28,10 @@ find_package(VulkanHeaders ${PROJECT_VERSION} CONFIG)
 
 # Workaround AppleClang using the wrong headers when there are headers in /usr/local/include
 if (CMAKE_CXX_COMPILER_ID STREQUAL AppleClang AND TARGET Vulkan::Headers AND CMAKE_VERSION VERSION_GREATER_EQUAL 3.25)
-    set_target_properties(Vulkan::Headers PROPERTIES SYSTEM OFF)
+    get_target_property(vulkan_headers_aliased Vulkan::Headers ALIASED_TARGET)
+    if (NOT vulkan_headers_aliased)
+        set_target_properties(Vulkan::Headers PROPERTIES SYSTEM OFF)
+    endif()
 endif()
 
 option(VUL_ENABLE_ASAN "Use address sanitization")
