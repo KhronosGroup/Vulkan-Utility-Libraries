@@ -2642,6 +2642,8 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_IMAGE_TILING_CONTROL_CREATE_INFO_EXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_DECODE_VECTOR_FEATURES_NV:
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_DECODE_VECTOR_FEATURES_NV";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRIVATE_DATA_BASE_HANDLE_FEATURES_NV:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRIVATE_DATA_BASE_HANDLE_FEATURES_NV";
         default:
             return "Unhandled VkStructureType";
     }
@@ -8583,6 +8585,31 @@ static inline std::string string_VkToolPurposeFlags(VkToolPurposeFlags input_val
         input_value >>= 1;
     }
     if (ret.empty()) ret.append("VkToolPurposeFlags(0)");
+    return ret;
+}
+#endif // __cplusplus
+static inline const char* string_VkPrivateDataSlotCreateFlagBits(VkPrivateDataSlotCreateFlagBits input_value) {
+    switch (input_value) {
+        case VK_PRIVATE_DATA_SLOT_CREATE_BASE_OBJECT_HANDLE_BIT_NV:
+            return "VK_PRIVATE_DATA_SLOT_CREATE_BASE_OBJECT_HANDLE_BIT_NV";
+        default:
+            return "Unhandled VkPrivateDataSlotCreateFlagBits";
+    }
+}
+
+#ifdef __cplusplus
+static inline std::string string_VkPrivateDataSlotCreateFlags(VkPrivateDataSlotCreateFlags input_value) {
+    std::string ret;
+    int index = 0;
+    while(input_value) {
+        if (input_value & 1) {
+            if( !ret.empty()) ret.append("|");
+            ret.append(string_VkPrivateDataSlotCreateFlagBits(static_cast<VkPrivateDataSlotCreateFlagBits>(1U << index)));
+        }
+        ++index;
+        input_value >>= 1;
+    }
+    if (ret.empty()) ret.append("VkPrivateDataSlotCreateFlags(0)");
     return ret;
 }
 #endif // __cplusplus
@@ -14882,6 +14909,8 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
             return "VkImageTilingControlCreateInfoEXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_DECODE_VECTOR_FEATURES_NV:
             return "VkPhysicalDeviceCooperativeMatrixDecodeVectorFeaturesNV";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRIVATE_DATA_BASE_HANDLE_FEATURES_NV:
+            return "VkPhysicalDevicePrivateDataBaseHandleFeaturesNV";
         case VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_TRIANGLES_DATA_KHR:
             return "VkAccelerationStructureGeometryTrianglesDataKHR";
         case VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_AABBS_DATA_KHR:

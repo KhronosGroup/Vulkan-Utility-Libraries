@@ -26407,6 +26407,56 @@ void safe_VkPhysicalDeviceCooperativeMatrixDecodeVectorFeaturesNV::initialize(
     pNext = SafePnextCopy(copy_src->pNext);
 }
 
+safe_VkPhysicalDevicePrivateDataBaseHandleFeaturesNV::safe_VkPhysicalDevicePrivateDataBaseHandleFeaturesNV(
+    const VkPhysicalDevicePrivateDataBaseHandleFeaturesNV* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), privateDataBaseHandle(in_struct->privateDataBaseHandle) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDevicePrivateDataBaseHandleFeaturesNV::safe_VkPhysicalDevicePrivateDataBaseHandleFeaturesNV()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRIVATE_DATA_BASE_HANDLE_FEATURES_NV), pNext(nullptr), privateDataBaseHandle() {}
+
+safe_VkPhysicalDevicePrivateDataBaseHandleFeaturesNV::safe_VkPhysicalDevicePrivateDataBaseHandleFeaturesNV(
+    const safe_VkPhysicalDevicePrivateDataBaseHandleFeaturesNV& copy_src) {
+    sType = copy_src.sType;
+    privateDataBaseHandle = copy_src.privateDataBaseHandle;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDevicePrivateDataBaseHandleFeaturesNV& safe_VkPhysicalDevicePrivateDataBaseHandleFeaturesNV::operator=(
+    const safe_VkPhysicalDevicePrivateDataBaseHandleFeaturesNV& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    privateDataBaseHandle = copy_src.privateDataBaseHandle;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDevicePrivateDataBaseHandleFeaturesNV::~safe_VkPhysicalDevicePrivateDataBaseHandleFeaturesNV() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkPhysicalDevicePrivateDataBaseHandleFeaturesNV::initialize(
+    const VkPhysicalDevicePrivateDataBaseHandleFeaturesNV* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    privateDataBaseHandle = in_struct->privateDataBaseHandle;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDevicePrivateDataBaseHandleFeaturesNV::initialize(
+    const safe_VkPhysicalDevicePrivateDataBaseHandleFeaturesNV* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    privateDataBaseHandle = copy_src->privateDataBaseHandle;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
 }  // namespace vku
 
 // NOLINTEND

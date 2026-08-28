@@ -25549,6 +25549,27 @@ struct safe_VkPhysicalDeviceCooperativeMatrixDecodeVectorFeaturesNV {
         return reinterpret_cast<VkPhysicalDeviceCooperativeMatrixDecodeVectorFeaturesNV const*>(this);
     }
 };
+struct safe_VkPhysicalDevicePrivateDataBaseHandleFeaturesNV {
+    VkStructureType sType;
+    void* pNext{};
+    VkBool32 privateDataBaseHandle;
+
+    safe_VkPhysicalDevicePrivateDataBaseHandleFeaturesNV(const VkPhysicalDevicePrivateDataBaseHandleFeaturesNV* in_struct,
+                                                         PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkPhysicalDevicePrivateDataBaseHandleFeaturesNV(const safe_VkPhysicalDevicePrivateDataBaseHandleFeaturesNV& copy_src);
+    safe_VkPhysicalDevicePrivateDataBaseHandleFeaturesNV& operator=(
+        const safe_VkPhysicalDevicePrivateDataBaseHandleFeaturesNV& copy_src);
+    safe_VkPhysicalDevicePrivateDataBaseHandleFeaturesNV();
+    ~safe_VkPhysicalDevicePrivateDataBaseHandleFeaturesNV();
+    void initialize(const VkPhysicalDevicePrivateDataBaseHandleFeaturesNV* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDevicePrivateDataBaseHandleFeaturesNV* copy_src, PNextCopyState* copy_state = {});
+    VkPhysicalDevicePrivateDataBaseHandleFeaturesNV* ptr() {
+        return reinterpret_cast<VkPhysicalDevicePrivateDataBaseHandleFeaturesNV*>(this);
+    }
+    VkPhysicalDevicePrivateDataBaseHandleFeaturesNV const* ptr() const {
+        return reinterpret_cast<VkPhysicalDevicePrivateDataBaseHandleFeaturesNV const*>(this);
+    }
+};
 struct safe_VkAccelerationStructureGeometryTrianglesDataKHR {
     VkStructureType sType;
     const void* pNext{};

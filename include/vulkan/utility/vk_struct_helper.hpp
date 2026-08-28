@@ -1315,6 +1315,7 @@ template <> inline VkStructureType GetSType<VkPhysicalDevicePrimitiveRestartInde
 template <> inline VkStructureType GetSType<VkPhysicalDeviceImageTilingControlFeaturesEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_TILING_CONTROL_FEATURES_EXT; }
 template <> inline VkStructureType GetSType<VkImageTilingControlCreateInfoEXT>() { return VK_STRUCTURE_TYPE_IMAGE_TILING_CONTROL_CREATE_INFO_EXT; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceCooperativeMatrixDecodeVectorFeaturesNV>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_DECODE_VECTOR_FEATURES_NV; }
+template <> inline VkStructureType GetSType<VkPhysicalDevicePrivateDataBaseHandleFeaturesNV>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRIVATE_DATA_BASE_HANDLE_FEATURES_NV; }
 template <> inline VkStructureType GetSType<VkAccelerationStructureGeometryTrianglesDataKHR>() { return VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_TRIANGLES_DATA_KHR; }
 template <> inline VkStructureType GetSType<VkAccelerationStructureGeometryAabbsDataKHR>() { return VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_AABBS_DATA_KHR; }
 template <> inline VkStructureType GetSType<VkAccelerationStructureGeometryInstancesDataKHR>() { return VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_INSTANCES_DATA_KHR; }
