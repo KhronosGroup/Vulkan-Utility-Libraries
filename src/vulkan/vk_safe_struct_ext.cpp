@@ -16372,59 +16372,6 @@ void safe_VkLayerSettingsCreateInfoEXT::initialize(const safe_VkLayerSettingsCre
     }
 }
 
-safe_VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT::safe_VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT(
-    const VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
-    bool copy_pnext)
-    : sType(in_struct->sType), pipelineLibraryGroupHandles(in_struct->pipelineLibraryGroupHandles) {
-    if (copy_pnext) {
-        pNext = SafePnextCopy(in_struct->pNext, copy_state);
-    }
-}
-
-safe_VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT::safe_VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT()
-    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_LIBRARY_GROUP_HANDLES_FEATURES_EXT),
-      pNext(nullptr),
-      pipelineLibraryGroupHandles() {}
-
-safe_VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT::safe_VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT(
-    const safe_VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT& copy_src) {
-    sType = copy_src.sType;
-    pipelineLibraryGroupHandles = copy_src.pipelineLibraryGroupHandles;
-    pNext = SafePnextCopy(copy_src.pNext);
-}
-
-safe_VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT& safe_VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT::operator=(
-    const safe_VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT& copy_src) {
-    if (&copy_src == this) return *this;
-
-    FreePnextChain(pNext);
-
-    sType = copy_src.sType;
-    pipelineLibraryGroupHandles = copy_src.pipelineLibraryGroupHandles;
-    pNext = SafePnextCopy(copy_src.pNext);
-
-    return *this;
-}
-
-safe_VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT::~safe_VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT() {
-    FreePnextChain(pNext);
-}
-
-void safe_VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT::initialize(
-    const VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
-    FreePnextChain(pNext);
-    sType = in_struct->sType;
-    pipelineLibraryGroupHandles = in_struct->pipelineLibraryGroupHandles;
-    pNext = SafePnextCopy(in_struct->pNext, copy_state);
-}
-
-void safe_VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT::initialize(
-    const safe_VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
-    sType = copy_src->sType;
-    pipelineLibraryGroupHandles = copy_src->pipelineLibraryGroupHandles;
-    pNext = SafePnextCopy(copy_src->pNext);
-}
-
 safe_VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT::
     safe_VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT(
         const VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state,

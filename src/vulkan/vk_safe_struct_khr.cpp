@@ -19758,6 +19758,59 @@ void safe_VkResolveImageModeInfoKHR::initialize(const safe_VkResolveImageModeInf
     pNext = SafePnextCopy(copy_src->pNext);
 }
 
+safe_VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesKHR::safe_VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesKHR(
+    const VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesKHR* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
+    bool copy_pnext)
+    : sType(in_struct->sType), pipelineLibraryGroupHandles(in_struct->pipelineLibraryGroupHandles) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesKHR::safe_VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesKHR()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_LIBRARY_GROUP_HANDLES_FEATURES_KHR),
+      pNext(nullptr),
+      pipelineLibraryGroupHandles() {}
+
+safe_VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesKHR::safe_VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesKHR(
+    const safe_VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesKHR& copy_src) {
+    sType = copy_src.sType;
+    pipelineLibraryGroupHandles = copy_src.pipelineLibraryGroupHandles;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesKHR& safe_VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesKHR::operator=(
+    const safe_VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesKHR& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    pipelineLibraryGroupHandles = copy_src.pipelineLibraryGroupHandles;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesKHR::~safe_VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesKHR() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesKHR::initialize(
+    const VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesKHR* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    pipelineLibraryGroupHandles = in_struct->pipelineLibraryGroupHandles;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesKHR::initialize(
+    const safe_VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesKHR* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    pipelineLibraryGroupHandles = copy_src->pipelineLibraryGroupHandles;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
 safe_VkPhysicalDeviceMaintenance11FeaturesKHR::safe_VkPhysicalDeviceMaintenance11FeaturesKHR(
     const VkPhysicalDeviceMaintenance11FeaturesKHR* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
     : sType(in_struct->sType), maintenance11(in_struct->maintenance11) {

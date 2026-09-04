@@ -26457,6 +26457,176 @@ void safe_VkPhysicalDevicePrivateDataBaseHandleFeaturesNV::initialize(
     pNext = SafePnextCopy(copy_src->pNext);
 }
 
+safe_VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentFeaturesVALVE::
+    safe_VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentFeaturesVALVE(
+        const VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentFeaturesVALVE* in_struct,
+        [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), bufferDeviceAddressAllocationAlignment(in_struct->bufferDeviceAddressAllocationAlignment) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentFeaturesVALVE::
+    safe_VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentFeaturesVALVE()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BUFFER_DEVICE_ADDRESS_ALLOCATION_ALIGNMENT_FEATURES_VALVE),
+      pNext(nullptr),
+      bufferDeviceAddressAllocationAlignment() {}
+
+safe_VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentFeaturesVALVE::
+    safe_VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentFeaturesVALVE(
+        const safe_VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentFeaturesVALVE& copy_src) {
+    sType = copy_src.sType;
+    bufferDeviceAddressAllocationAlignment = copy_src.bufferDeviceAddressAllocationAlignment;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentFeaturesVALVE&
+safe_VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentFeaturesVALVE::operator=(
+    const safe_VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentFeaturesVALVE& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    bufferDeviceAddressAllocationAlignment = copy_src.bufferDeviceAddressAllocationAlignment;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentFeaturesVALVE::
+    ~safe_VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentFeaturesVALVE() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentFeaturesVALVE::initialize(
+    const VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentFeaturesVALVE* in_struct,
+    [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    bufferDeviceAddressAllocationAlignment = in_struct->bufferDeviceAddressAllocationAlignment;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentFeaturesVALVE::initialize(
+    const safe_VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentFeaturesVALVE* copy_src,
+    [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    bufferDeviceAddressAllocationAlignment = copy_src->bufferDeviceAddressAllocationAlignment;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentPropertiesVALVE::
+    safe_VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentPropertiesVALVE(
+        const VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentPropertiesVALVE* in_struct,
+        [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), maxBufferDeviceAddressAllocationAlignment(in_struct->maxBufferDeviceAddressAllocationAlignment) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentPropertiesVALVE::
+    safe_VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentPropertiesVALVE()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BUFFER_DEVICE_ADDRESS_ALLOCATION_ALIGNMENT_PROPERTIES_VALVE),
+      pNext(nullptr),
+      maxBufferDeviceAddressAllocationAlignment() {}
+
+safe_VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentPropertiesVALVE::
+    safe_VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentPropertiesVALVE(
+        const safe_VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentPropertiesVALVE& copy_src) {
+    sType = copy_src.sType;
+    maxBufferDeviceAddressAllocationAlignment = copy_src.maxBufferDeviceAddressAllocationAlignment;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentPropertiesVALVE&
+safe_VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentPropertiesVALVE::operator=(
+    const safe_VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentPropertiesVALVE& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    maxBufferDeviceAddressAllocationAlignment = copy_src.maxBufferDeviceAddressAllocationAlignment;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentPropertiesVALVE::
+    ~safe_VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentPropertiesVALVE() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentPropertiesVALVE::initialize(
+    const VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentPropertiesVALVE* in_struct,
+    [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    maxBufferDeviceAddressAllocationAlignment = in_struct->maxBufferDeviceAddressAllocationAlignment;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentPropertiesVALVE::initialize(
+    const safe_VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentPropertiesVALVE* copy_src,
+    [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    maxBufferDeviceAddressAllocationAlignment = copy_src->maxBufferDeviceAddressAllocationAlignment;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkBufferDeviceAddressAlignmentAllocateInfoVALVE::safe_VkBufferDeviceAddressAlignmentAllocateInfoVALVE(
+    const VkBufferDeviceAddressAlignmentAllocateInfoVALVE* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), alignment(in_struct->alignment) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkBufferDeviceAddressAlignmentAllocateInfoVALVE::safe_VkBufferDeviceAddressAlignmentAllocateInfoVALVE()
+    : sType(VK_STRUCTURE_TYPE_BUFFER_DEVICE_ADDRESS_ALIGNMENT_ALLOCATE_INFO_VALVE), pNext(nullptr), alignment() {}
+
+safe_VkBufferDeviceAddressAlignmentAllocateInfoVALVE::safe_VkBufferDeviceAddressAlignmentAllocateInfoVALVE(
+    const safe_VkBufferDeviceAddressAlignmentAllocateInfoVALVE& copy_src) {
+    sType = copy_src.sType;
+    alignment = copy_src.alignment;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkBufferDeviceAddressAlignmentAllocateInfoVALVE& safe_VkBufferDeviceAddressAlignmentAllocateInfoVALVE::operator=(
+    const safe_VkBufferDeviceAddressAlignmentAllocateInfoVALVE& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    alignment = copy_src.alignment;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkBufferDeviceAddressAlignmentAllocateInfoVALVE::~safe_VkBufferDeviceAddressAlignmentAllocateInfoVALVE() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkBufferDeviceAddressAlignmentAllocateInfoVALVE::initialize(
+    const VkBufferDeviceAddressAlignmentAllocateInfoVALVE* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    alignment = in_struct->alignment;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkBufferDeviceAddressAlignmentAllocateInfoVALVE::initialize(
+    const safe_VkBufferDeviceAddressAlignmentAllocateInfoVALVE* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    alignment = copy_src->alignment;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
 }  // namespace vku
 
 // NOLINTEND

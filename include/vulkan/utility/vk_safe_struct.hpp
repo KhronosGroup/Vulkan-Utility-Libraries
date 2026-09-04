@@ -11201,6 +11201,29 @@ struct safe_VkResolveImageModeInfoKHR {
     VkResolveImageModeInfoKHR* ptr() { return reinterpret_cast<VkResolveImageModeInfoKHR*>(this); }
     VkResolveImageModeInfoKHR const* ptr() const { return reinterpret_cast<VkResolveImageModeInfoKHR const*>(this); }
 };
+struct safe_VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesKHR {
+    VkStructureType sType;
+    void* pNext{};
+    VkBool32 pipelineLibraryGroupHandles;
+
+    safe_VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesKHR(
+        const VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesKHR* in_struct, PNextCopyState* copy_state = {},
+        bool copy_pnext = true);
+    safe_VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesKHR(
+        const safe_VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesKHR& copy_src);
+    safe_VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesKHR& operator=(
+        const safe_VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesKHR& copy_src);
+    safe_VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesKHR();
+    ~safe_VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesKHR();
+    void initialize(const VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesKHR* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesKHR* copy_src, PNextCopyState* copy_state = {});
+    VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesKHR* ptr() {
+        return reinterpret_cast<VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesKHR*>(this);
+    }
+    VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesKHR const* ptr() const {
+        return reinterpret_cast<VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesKHR const*>(this);
+    }
+};
 struct safe_VkPhysicalDeviceMaintenance11FeaturesKHR {
     VkStructureType sType;
     void* pNext{};
@@ -21810,29 +21833,6 @@ struct safe_VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM {
         return reinterpret_cast<VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM const*>(this);
     }
 };
-struct safe_VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT {
-    VkStructureType sType;
-    void* pNext{};
-    VkBool32 pipelineLibraryGroupHandles;
-
-    safe_VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT(
-        const VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT* in_struct, PNextCopyState* copy_state = {},
-        bool copy_pnext = true);
-    safe_VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT(
-        const safe_VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT& copy_src);
-    safe_VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT& operator=(
-        const safe_VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT& copy_src);
-    safe_VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT();
-    ~safe_VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT();
-    void initialize(const VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT* in_struct, PNextCopyState* copy_state = {});
-    void initialize(const safe_VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT* copy_src, PNextCopyState* copy_state = {});
-    VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT* ptr() {
-        return reinterpret_cast<VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT*>(this);
-    }
-    VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT const* ptr() const {
-        return reinterpret_cast<VkPhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT const*>(this);
-    }
-};
 struct safe_VkPhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT {
     VkStructureType sType;
     void* pNext{};
@@ -25568,6 +25568,77 @@ struct safe_VkPhysicalDevicePrivateDataBaseHandleFeaturesNV {
     }
     VkPhysicalDevicePrivateDataBaseHandleFeaturesNV const* ptr() const {
         return reinterpret_cast<VkPhysicalDevicePrivateDataBaseHandleFeaturesNV const*>(this);
+    }
+};
+struct safe_VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentFeaturesVALVE {
+    VkStructureType sType;
+    void* pNext{};
+    VkBool32 bufferDeviceAddressAllocationAlignment;
+
+    safe_VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentFeaturesVALVE(
+        const VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentFeaturesVALVE* in_struct, PNextCopyState* copy_state = {},
+        bool copy_pnext = true);
+    safe_VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentFeaturesVALVE(
+        const safe_VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentFeaturesVALVE& copy_src);
+    safe_VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentFeaturesVALVE& operator=(
+        const safe_VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentFeaturesVALVE& copy_src);
+    safe_VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentFeaturesVALVE();
+    ~safe_VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentFeaturesVALVE();
+    void initialize(const VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentFeaturesVALVE* in_struct,
+                    PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentFeaturesVALVE* copy_src,
+                    PNextCopyState* copy_state = {});
+    VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentFeaturesVALVE* ptr() {
+        return reinterpret_cast<VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentFeaturesVALVE*>(this);
+    }
+    VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentFeaturesVALVE const* ptr() const {
+        return reinterpret_cast<VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentFeaturesVALVE const*>(this);
+    }
+};
+struct safe_VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentPropertiesVALVE {
+    VkStructureType sType;
+    void* pNext{};
+    uint32_t maxBufferDeviceAddressAllocationAlignment;
+
+    safe_VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentPropertiesVALVE(
+        const VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentPropertiesVALVE* in_struct, PNextCopyState* copy_state = {},
+        bool copy_pnext = true);
+    safe_VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentPropertiesVALVE(
+        const safe_VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentPropertiesVALVE& copy_src);
+    safe_VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentPropertiesVALVE& operator=(
+        const safe_VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentPropertiesVALVE& copy_src);
+    safe_VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentPropertiesVALVE();
+    ~safe_VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentPropertiesVALVE();
+    void initialize(const VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentPropertiesVALVE* in_struct,
+                    PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentPropertiesVALVE* copy_src,
+                    PNextCopyState* copy_state = {});
+    VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentPropertiesVALVE* ptr() {
+        return reinterpret_cast<VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentPropertiesVALVE*>(this);
+    }
+    VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentPropertiesVALVE const* ptr() const {
+        return reinterpret_cast<VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentPropertiesVALVE const*>(this);
+    }
+};
+struct safe_VkBufferDeviceAddressAlignmentAllocateInfoVALVE {
+    VkStructureType sType;
+    void* pNext{};
+    uint32_t alignment;
+
+    safe_VkBufferDeviceAddressAlignmentAllocateInfoVALVE(const VkBufferDeviceAddressAlignmentAllocateInfoVALVE* in_struct,
+                                                         PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkBufferDeviceAddressAlignmentAllocateInfoVALVE(const safe_VkBufferDeviceAddressAlignmentAllocateInfoVALVE& copy_src);
+    safe_VkBufferDeviceAddressAlignmentAllocateInfoVALVE& operator=(
+        const safe_VkBufferDeviceAddressAlignmentAllocateInfoVALVE& copy_src);
+    safe_VkBufferDeviceAddressAlignmentAllocateInfoVALVE();
+    ~safe_VkBufferDeviceAddressAlignmentAllocateInfoVALVE();
+    void initialize(const VkBufferDeviceAddressAlignmentAllocateInfoVALVE* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkBufferDeviceAddressAlignmentAllocateInfoVALVE* copy_src, PNextCopyState* copy_state = {});
+    VkBufferDeviceAddressAlignmentAllocateInfoVALVE* ptr() {
+        return reinterpret_cast<VkBufferDeviceAddressAlignmentAllocateInfoVALVE*>(this);
+    }
+    VkBufferDeviceAddressAlignmentAllocateInfoVALVE const* ptr() const {
+        return reinterpret_cast<VkBufferDeviceAddressAlignmentAllocateInfoVALVE const*>(this);
     }
 };
 struct safe_VkAccelerationStructureGeometryTrianglesDataKHR {
