@@ -41,6 +41,8 @@ class SafeStructOutputGenerator(BaseGenerator):
             'VkGraphicsPipelineCreateInfo',
             # Special case because it has custom construct parameters
             'VkPipelineViewportStateCreateInfo',
+            # There is a VkSamplerCreateInfo pointer determined by the sourceData union
+            'VkDescriptorSetAndBindingMappingEXT',
         ]
 
         # For abstract types just want to save the pointer away
@@ -577,7 +579,7 @@ void FreePnextChain(const void *pNext) {
                                 # Create deep copies of strings
                                 if member.length:
                                     copy_strings += f'''
-                                        if (in_struct->{member.length} > 0) {{ 
+                                        if (in_struct->{member.length} > 0) {{
                                             char **tmp_{member.name} = new char *[in_struct->{member.length}];
                                             for (uint32_t i = 0; i < {member.length}; ++i) {{
                                                 tmp_{member.name}[i] = SafeStringCopy(in_struct->{member.name}[i]);

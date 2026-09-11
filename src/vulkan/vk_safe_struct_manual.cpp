@@ -1195,4 +1195,133 @@ void safe_VkAccelerationStructureBuildGeometryInfoKHR::initialize(const safe_VkA
         }
     }
 }
+
+static const VkSamplerCreateInfo** GetEmbeddedSamplerSlot(VkDescriptorMappingSourceEXT source,
+                                                          VkDescriptorMappingSourceDataEXT& source_data) {
+    switch (source) {
+        case VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_CONSTANT_OFFSET_EXT:
+            return &source_data.constantOffset.pEmbeddedSampler;
+        case VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_PUSH_INDEX_EXT:
+            return &source_data.pushIndex.pEmbeddedSampler;
+        case VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_EXT:
+            return &source_data.indirectIndex.pEmbeddedSampler;
+        case VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_INDIRECT_INDEX_ARRAY_EXT:
+            return &source_data.indirectIndexArray.pEmbeddedSampler;
+        case VK_DESCRIPTOR_MAPPING_SOURCE_HEAP_WITH_SHADER_RECORD_INDEX_EXT:
+            return &source_data.shaderRecordIndex.pEmbeddedSampler;
+        default:
+            return nullptr;
+    }
+}
+
+// safe_VkSamplerCreateInfo is layout compatible with VkSamplerCreateInfo, so the union can keep holding the plain
+// Vulkan type while we own the memory behind it, same idea as safe_VkSamplerCreateInfo::ptr()
+static void CopyEmbeddedSampler(VkDescriptorMappingSourceEXT source, VkDescriptorMappingSourceDataEXT& dst_data,
+                                const VkDescriptorMappingSourceDataEXT& src_data, PNextCopyState* copy_state) {
+    const VkSamplerCreateInfo** dst_slot = GetEmbeddedSamplerSlot(source, dst_data);
+    if (dst_slot) {
+        const VkSamplerCreateInfo* src_sampler =
+            *GetEmbeddedSamplerSlot(source, const_cast<VkDescriptorMappingSourceDataEXT&>(src_data));
+        *dst_slot = src_sampler ? (new safe_VkSamplerCreateInfo(src_sampler, copy_state))->ptr() : nullptr;
+    }
+}
+
+static void FreeEmbeddedSampler(VkDescriptorMappingSourceEXT source, VkDescriptorMappingSourceDataEXT& source_data) {
+    const VkSamplerCreateInfo** slot = GetEmbeddedSamplerSlot(source, source_data);
+    if (slot && *slot) {
+        delete reinterpret_cast<safe_VkSamplerCreateInfo*>(const_cast<VkSamplerCreateInfo*>(*slot));
+        *slot = nullptr;
+    }
+}
+
+safe_VkDescriptorSetAndBindingMappingEXT::safe_VkDescriptorSetAndBindingMappingEXT(
+    const VkDescriptorSetAndBindingMappingEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType),
+      descriptorSet(in_struct->descriptorSet),
+      firstBinding(in_struct->firstBinding),
+      bindingCount(in_struct->bindingCount),
+      resourceMask(in_struct->resourceMask),
+      source(in_struct->source),
+      sourceData(in_struct->sourceData) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+    CopyEmbeddedSampler(source, sourceData, in_struct->sourceData, copy_state);
+}
+
+safe_VkDescriptorSetAndBindingMappingEXT::safe_VkDescriptorSetAndBindingMappingEXT()
+    : sType(VK_STRUCTURE_TYPE_DESCRIPTOR_SET_AND_BINDING_MAPPING_EXT),
+      pNext(nullptr),
+      descriptorSet(),
+      firstBinding(),
+      bindingCount(),
+      resourceMask(),
+      source(),
+      sourceData() {}
+
+safe_VkDescriptorSetAndBindingMappingEXT::safe_VkDescriptorSetAndBindingMappingEXT(
+    const safe_VkDescriptorSetAndBindingMappingEXT& copy_src) {
+    sType = copy_src.sType;
+    descriptorSet = copy_src.descriptorSet;
+    firstBinding = copy_src.firstBinding;
+    bindingCount = copy_src.bindingCount;
+    resourceMask = copy_src.resourceMask;
+    source = copy_src.source;
+    sourceData = copy_src.sourceData;
+    pNext = SafePnextCopy(copy_src.pNext);
+    CopyEmbeddedSampler(source, sourceData, copy_src.sourceData, nullptr);
+}
+
+safe_VkDescriptorSetAndBindingMappingEXT& safe_VkDescriptorSetAndBindingMappingEXT::operator=(
+    const safe_VkDescriptorSetAndBindingMappingEXT& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreeEmbeddedSampler(source, sourceData);
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    descriptorSet = copy_src.descriptorSet;
+    firstBinding = copy_src.firstBinding;
+    bindingCount = copy_src.bindingCount;
+    resourceMask = copy_src.resourceMask;
+    source = copy_src.source;
+    sourceData = copy_src.sourceData;
+    pNext = SafePnextCopy(copy_src.pNext);
+    CopyEmbeddedSampler(source, sourceData, copy_src.sourceData, nullptr);
+
+    return *this;
+}
+
+safe_VkDescriptorSetAndBindingMappingEXT::~safe_VkDescriptorSetAndBindingMappingEXT() {
+    FreeEmbeddedSampler(source, sourceData);
+    FreePnextChain(pNext);
+}
+
+void safe_VkDescriptorSetAndBindingMappingEXT::initialize(const VkDescriptorSetAndBindingMappingEXT* in_struct,
+                                                          [[maybe_unused]] PNextCopyState* copy_state) {
+    FreeEmbeddedSampler(source, sourceData);
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    descriptorSet = in_struct->descriptorSet;
+    firstBinding = in_struct->firstBinding;
+    bindingCount = in_struct->bindingCount;
+    resourceMask = in_struct->resourceMask;
+    source = in_struct->source;
+    sourceData = in_struct->sourceData;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    CopyEmbeddedSampler(source, sourceData, in_struct->sourceData, copy_state);
+}
+
+void safe_VkDescriptorSetAndBindingMappingEXT::initialize(const safe_VkDescriptorSetAndBindingMappingEXT* copy_src,
+                                                          [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    descriptorSet = copy_src->descriptorSet;
+    firstBinding = copy_src->firstBinding;
+    bindingCount = copy_src->bindingCount;
+    resourceMask = copy_src->resourceMask;
+    source = copy_src->source;
+    sourceData = copy_src->sourceData;
+    pNext = SafePnextCopy(copy_src->pNext);
+    CopyEmbeddedSampler(source, sourceData, copy_src->sourceData, copy_state);
+}
 }  // namespace vku
