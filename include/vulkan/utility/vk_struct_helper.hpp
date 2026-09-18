@@ -1316,6 +1316,7 @@ template <> inline VkStructureType GetSType<VkPhysicalDeviceImageTilingControlFe
 template <> inline VkStructureType GetSType<VkImageTilingControlCreateInfoEXT>() { return VK_STRUCTURE_TYPE_IMAGE_TILING_CONTROL_CREATE_INFO_EXT; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceCooperativeMatrixDecodeVectorFeaturesNV>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_DECODE_VECTOR_FEATURES_NV; }
 template <> inline VkStructureType GetSType<VkPhysicalDevicePrivateDataBaseHandleFeaturesNV>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRIVATE_DATA_BASE_HANDLE_FEATURES_NV; }
+template <> inline VkStructureType GetSType<VkPhysicalDeviceInfoPropertiesINTEL>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INFO_PROPERTIES_INTEL; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentFeaturesVALVE>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BUFFER_DEVICE_ADDRESS_ALLOCATION_ALIGNMENT_FEATURES_VALVE; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentPropertiesVALVE>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BUFFER_DEVICE_ADDRESS_ALLOCATION_ALIGNMENT_PROPERTIES_VALVE; }
 template <> inline VkStructureType GetSType<VkBufferDeviceAddressAlignmentAllocateInfoVALVE>() { return VK_STRUCTURE_TYPE_BUFFER_DEVICE_ADDRESS_ALIGNMENT_ALLOCATE_INFO_VALVE; }

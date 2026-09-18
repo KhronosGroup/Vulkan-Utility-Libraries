@@ -26457,6 +26457,69 @@ void safe_VkPhysicalDevicePrivateDataBaseHandleFeaturesNV::initialize(
     pNext = SafePnextCopy(copy_src->pNext);
 }
 
+safe_VkPhysicalDeviceInfoPropertiesINTEL::safe_VkPhysicalDeviceInfoPropertiesINTEL(
+    const VkPhysicalDeviceInfoPropertiesINTEL* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType),
+      deviceIpVersionArch(in_struct->deviceIpVersionArch),
+      deviceIpVersionRelease(in_struct->deviceIpVersionRelease),
+      deviceIpVersionRevision(in_struct->deviceIpVersionRevision) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceInfoPropertiesINTEL::safe_VkPhysicalDeviceInfoPropertiesINTEL()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INFO_PROPERTIES_INTEL),
+      pNext(nullptr),
+      deviceIpVersionArch(),
+      deviceIpVersionRelease(),
+      deviceIpVersionRevision() {}
+
+safe_VkPhysicalDeviceInfoPropertiesINTEL::safe_VkPhysicalDeviceInfoPropertiesINTEL(
+    const safe_VkPhysicalDeviceInfoPropertiesINTEL& copy_src) {
+    sType = copy_src.sType;
+    deviceIpVersionArch = copy_src.deviceIpVersionArch;
+    deviceIpVersionRelease = copy_src.deviceIpVersionRelease;
+    deviceIpVersionRevision = copy_src.deviceIpVersionRevision;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceInfoPropertiesINTEL& safe_VkPhysicalDeviceInfoPropertiesINTEL::operator=(
+    const safe_VkPhysicalDeviceInfoPropertiesINTEL& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    deviceIpVersionArch = copy_src.deviceIpVersionArch;
+    deviceIpVersionRelease = copy_src.deviceIpVersionRelease;
+    deviceIpVersionRevision = copy_src.deviceIpVersionRevision;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceInfoPropertiesINTEL::~safe_VkPhysicalDeviceInfoPropertiesINTEL() { FreePnextChain(pNext); }
+
+void safe_VkPhysicalDeviceInfoPropertiesINTEL::initialize(const VkPhysicalDeviceInfoPropertiesINTEL* in_struct,
+                                                          [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    deviceIpVersionArch = in_struct->deviceIpVersionArch;
+    deviceIpVersionRelease = in_struct->deviceIpVersionRelease;
+    deviceIpVersionRevision = in_struct->deviceIpVersionRevision;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceInfoPropertiesINTEL::initialize(const safe_VkPhysicalDeviceInfoPropertiesINTEL* copy_src,
+                                                          [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    deviceIpVersionArch = copy_src->deviceIpVersionArch;
+    deviceIpVersionRelease = copy_src->deviceIpVersionRelease;
+    deviceIpVersionRevision = copy_src->deviceIpVersionRevision;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
 safe_VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentFeaturesVALVE::
     safe_VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentFeaturesVALVE(
         const VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentFeaturesVALVE* in_struct,

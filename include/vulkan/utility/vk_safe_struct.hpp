@@ -25570,6 +25570,26 @@ struct safe_VkPhysicalDevicePrivateDataBaseHandleFeaturesNV {
         return reinterpret_cast<VkPhysicalDevicePrivateDataBaseHandleFeaturesNV const*>(this);
     }
 };
+struct safe_VkPhysicalDeviceInfoPropertiesINTEL {
+    VkStructureType sType;
+    void* pNext{};
+    uint32_t deviceIpVersionArch;
+    uint32_t deviceIpVersionRelease;
+    uint32_t deviceIpVersionRevision;
+
+    safe_VkPhysicalDeviceInfoPropertiesINTEL(const VkPhysicalDeviceInfoPropertiesINTEL* in_struct, PNextCopyState* copy_state = {},
+                                             bool copy_pnext = true);
+    safe_VkPhysicalDeviceInfoPropertiesINTEL(const safe_VkPhysicalDeviceInfoPropertiesINTEL& copy_src);
+    safe_VkPhysicalDeviceInfoPropertiesINTEL& operator=(const safe_VkPhysicalDeviceInfoPropertiesINTEL& copy_src);
+    safe_VkPhysicalDeviceInfoPropertiesINTEL();
+    ~safe_VkPhysicalDeviceInfoPropertiesINTEL();
+    void initialize(const VkPhysicalDeviceInfoPropertiesINTEL* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceInfoPropertiesINTEL* copy_src, PNextCopyState* copy_state = {});
+    VkPhysicalDeviceInfoPropertiesINTEL* ptr() { return reinterpret_cast<VkPhysicalDeviceInfoPropertiesINTEL*>(this); }
+    VkPhysicalDeviceInfoPropertiesINTEL const* ptr() const {
+        return reinterpret_cast<VkPhysicalDeviceInfoPropertiesINTEL const*>(this);
+    }
+};
 struct safe_VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentFeaturesVALVE {
     VkStructureType sType;
     void* pNext{};
