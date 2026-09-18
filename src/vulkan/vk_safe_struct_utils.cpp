@@ -2543,6 +2543,9 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRIVATE_DATA_BASE_HANDLE_FEATURES_NV:
                 safe_pNext = new safe_VkPhysicalDevicePrivateDataBaseHandleFeaturesNV(reinterpret_cast<const VkPhysicalDevicePrivateDataBaseHandleFeaturesNV *>(pNext), copy_state, false);
                 break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INFO_PROPERTIES_INTEL:
+                safe_pNext = new safe_VkPhysicalDeviceInfoPropertiesINTEL(reinterpret_cast<const VkPhysicalDeviceInfoPropertiesINTEL *>(pNext), copy_state, false);
+                break;
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BUFFER_DEVICE_ADDRESS_ALLOCATION_ALIGNMENT_FEATURES_VALVE:
                 safe_pNext = new safe_VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentFeaturesVALVE(reinterpret_cast<const VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentFeaturesVALVE *>(pNext), copy_state, false);
                 break;
@@ -5105,6 +5108,9 @@ void FreePnextChain(const void *pNext) {
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRIVATE_DATA_BASE_HANDLE_FEATURES_NV:
             delete reinterpret_cast<safe_VkPhysicalDevicePrivateDataBaseHandleFeaturesNV *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INFO_PROPERTIES_INTEL:
+            delete reinterpret_cast<safe_VkPhysicalDeviceInfoPropertiesINTEL *>(header);
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BUFFER_DEVICE_ADDRESS_ALLOCATION_ALIGNMENT_FEATURES_VALVE:
             delete reinterpret_cast<safe_VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentFeaturesVALVE *>(header);
