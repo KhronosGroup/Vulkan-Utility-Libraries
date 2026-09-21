@@ -18,6 +18,17 @@
 
 namespace vku {
 
+// safe_VkGraphicsPipelineCreateInfo is core, but the struct deciding whether it is a
+// library comes from an extension. Absent that, no pNext chain can carry it.
+static bool IsGraphicsPipelineLibrary([[maybe_unused]] const void* pNext) {
+#ifdef VK_EXT_graphics_pipeline_library
+    return vku::FindStructInPNextChain<VkGraphicsPipelineLibraryCreateInfoEXT>(pNext) != nullptr;
+#else
+    return false;
+#endif
+}
+
+#ifdef VK_KHR_acceleration_structure
 struct ASGeomKHRExtraData {
     ASGeomKHRExtraData(uint8_t* alloc, uint32_t primOffset, uint32_t primCount)
         : ptr(alloc), primitiveOffset(primOffset), primitiveCount(primCount) {}
@@ -313,6 +324,9 @@ void safe_VkAccelerationStructureGeometryKHR::initialize(const safe_VkAccelerati
     }
 }
 
+#endif  // VK_KHR_acceleration_structure
+
+#if defined(VK_KHR_ray_tracing_pipeline) && defined(VK_NV_ray_tracing)
 void safe_VkRayTracingPipelineCreateInfoCommon::initialize(const VkRayTracingPipelineCreateInfoNV* pCreateInfo) {
     safe_VkRayTracingPipelineCreateInfoNV nvStruct;
     nvStruct.initialize(pCreateInfo);
@@ -355,6 +369,7 @@ void safe_VkRayTracingPipelineCreateInfoCommon::initialize(const VkRayTracingPip
 void safe_VkRayTracingPipelineCreateInfoCommon::initialize(const VkRayTracingPipelineCreateInfoKHR* pCreateInfo) {
     safe_VkRayTracingPipelineCreateInfoKHR::initialize(pCreateInfo);
 }
+#endif  // defined(VK_KHR_ray_tracing_pipeline) && defined(VK_NV_ray_tracing)
 
 safe_VkGraphicsPipelineCreateInfo::safe_VkGraphicsPipelineCreateInfo(const VkGraphicsPipelineCreateInfo* in_struct,
                                                                      const bool uses_color_attachment,
@@ -381,8 +396,7 @@ safe_VkGraphicsPipelineCreateInfo::safe_VkGraphicsPipelineCreateInfo(const VkGra
     if (copy_pnext) {
         pNext = SafePnextCopy(in_struct->pNext, copy_state);
     }
-    const bool is_graphics_library =
-        vku::FindStructInPNextChain<VkGraphicsPipelineLibraryCreateInfoEXT>(in_struct->pNext) != nullptr;
+    const bool is_graphics_library = IsGraphicsPipelineLibrary(in_struct->pNext);
     if (stageCount && in_struct->pStages) {
         pStages = new safe_VkPipelineShaderStageCreateInfo[stageCount];
         for (uint32_t i = 0; i < stageCount; ++i) {
@@ -497,7 +511,7 @@ safe_VkGraphicsPipelineCreateInfo::safe_VkGraphicsPipelineCreateInfo(const safe_
     basePipelineIndex = copy_src.basePipelineIndex;
 
     pNext = SafePnextCopy(copy_src.pNext);
-    const bool is_graphics_library = vku::FindStructInPNextChain<VkGraphicsPipelineLibraryCreateInfoEXT>(copy_src.pNext);
+    const bool is_graphics_library = IsGraphicsPipelineLibrary(copy_src.pNext);
     if (stageCount && copy_src.pStages) {
         pStages = new safe_VkPipelineShaderStageCreateInfo[stageCount];
         for (uint32_t i = 0; i < stageCount; ++i) {
@@ -592,7 +606,7 @@ safe_VkGraphicsPipelineCreateInfo& safe_VkGraphicsPipelineCreateInfo::operator=(
     basePipelineIndex = copy_src.basePipelineIndex;
 
     pNext = SafePnextCopy(copy_src.pNext);
-    const bool is_graphics_library = vku::FindStructInPNextChain<VkGraphicsPipelineLibraryCreateInfoEXT>(copy_src.pNext);
+    const bool is_graphics_library = IsGraphicsPipelineLibrary(copy_src.pNext);
     if (stageCount && copy_src.pStages) {
         pStages = new safe_VkPipelineShaderStageCreateInfo[stageCount];
         for (uint32_t i = 0; i < stageCount; ++i) {
@@ -702,8 +716,7 @@ void safe_VkGraphicsPipelineCreateInfo::initialize(const VkGraphicsPipelineCreat
     basePipelineIndex = in_struct->basePipelineIndex;
     pNext = SafePnextCopy(in_struct->pNext, copy_state);
 
-    const bool is_graphics_library =
-        vku::FindStructInPNextChain<VkGraphicsPipelineLibraryCreateInfoEXT>(in_struct->pNext) != nullptr;
+    const bool is_graphics_library = IsGraphicsPipelineLibrary(in_struct->pNext);
     if (stageCount && in_struct->pStages) {
         pStages = new safe_VkPipelineShaderStageCreateInfo[stageCount];
         for (uint32_t i = 0; i < stageCount; ++i) {
@@ -798,7 +811,7 @@ void safe_VkGraphicsPipelineCreateInfo::initialize(const safe_VkGraphicsPipeline
     basePipelineIndex = copy_src->basePipelineIndex;
 
     pNext = SafePnextCopy(copy_src->pNext);
-    const bool is_graphics_library = vku::FindStructInPNextChain<VkGraphicsPipelineLibraryCreateInfoEXT>(copy_src->pNext);
+    const bool is_graphics_library = IsGraphicsPipelineLibrary(copy_src->pNext);
     if (stageCount && copy_src->pStages) {
         pStages = new safe_VkPipelineShaderStageCreateInfo[stageCount];
         for (uint32_t i = 0; i < stageCount; ++i) {
@@ -999,6 +1012,7 @@ void safe_VkPipelineViewportStateCreateInfo::initialize(const safe_VkPipelineVie
         pScissors = nullptr;
 }
 
+#ifdef VK_KHR_acceleration_structure
 safe_VkAccelerationStructureBuildGeometryInfoKHR::safe_VkAccelerationStructureBuildGeometryInfoKHR(
     const VkAccelerationStructureBuildGeometryInfoKHR* in_struct, const bool is_host,
     const VkAccelerationStructureBuildRangeInfoKHR* build_range_infos, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
@@ -1196,6 +1210,9 @@ void safe_VkAccelerationStructureBuildGeometryInfoKHR::initialize(const safe_VkA
     }
 }
 
+#endif  // VK_KHR_acceleration_structure
+
+#ifdef VK_EXT_descriptor_heap
 static const VkSamplerCreateInfo** GetEmbeddedSamplerSlot(VkDescriptorMappingSourceEXT source,
                                                           VkDescriptorMappingSourceDataEXT& source_data) {
     switch (source) {
@@ -1324,4 +1341,5 @@ void safe_VkDescriptorSetAndBindingMappingEXT::initialize(const safe_VkDescripto
     pNext = SafePnextCopy(copy_src->pNext);
     CopyEmbeddedSampler(source, sourceData, copy_src->sourceData, copy_state);
 }
+#endif  // VK_EXT_descriptor_heap
 }  // namespace vku

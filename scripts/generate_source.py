@@ -13,7 +13,36 @@ import shutil
 import common_ci
 from xml.etree import ElementTree
 
-def RunGenerators(api: str, registry: str, targetFilter: str) -> None:
+def GetApiVersions(tree, api: str) -> str:
+    """Return a regex matching the core versions making up `api`, or None for base Vulkan.
+
+    vk.xml tags core versions newer than the one a variant derives from as belonging
+    to it anyway: VK_VERSION_1_4 is api="vulkan,vulkansc,vulkanbase" though
+    VKSC_VERSION_1_0 depends on VK_VERSION_1_2. Walk `depends` from the variant's own
+    feature to recover the versions it is really built on.
+    """
+    features = {f.get('name'): f for f in tree.getroot().findall('feature')
+                if api in f.get('api', '').split(',')}
+
+    roots = [name for name, feature in features.items()
+             if feature.get('apitype') != 'internal'
+             and 'vulkan' not in feature.get('api', '').split(',')]
+    if not roots:
+        return None
+
+    needed = set()
+    pending = list(roots)
+    while pending:
+        name = pending.pop()
+        if name in needed or name not in features:
+            continue
+        needed.add(name)
+        # 'depends' is a boolean expression; only the feature names in it matter.
+        pending.extend(re.split(r'[^A-Za-z0-9_]+', features[name].get('depends', '')))
+
+    return '|'.join(sorted(needed))
+
+def RunGenerators(api: str, registry: str, targetFilter: str, merge: bool = True) -> None:
 
     has_clang_format = shutil.which('clang-format') is not None
     if not has_clang_format:
@@ -120,8 +149,10 @@ def RunGenerators(api: str, registry: str, targetFilter: str) -> None:
         # users to generate code with all Vulkan APIs merged into the target API variant
         # (e.g. Vulkan SC) when needed. The constructed apiList is also used to filter
         # out non-applicable extensions later below.
+        # --no-merge suppresses the merge, for consumers compiling against the
+        # variant's own headers where base Vulkan tokens do not exist.
         apiList = [api]
-        if api != 'vulkan' and generators[target]['genCombined']:
+        if merge and api != 'vulkan' and generators[target]['genCombined']:
             SetMergedApiNames('vulkan')
             apiList.append('vulkan')
         else:
@@ -132,12 +163,19 @@ def RunGenerators(api: str, registry: str, targetFilter: str) -> None:
             customFileName  = target,
             customDirectory = outDirectory)
 
+        # Parse the specified registry XML into an ElementTree object
+        tree = ElementTree.parse(registry)
+
+        # Output scoped to the target API needs its core versions scoped to match.
+        if not merge:
+            versions = GetApiVersions(tree, api)
+            if versions:
+                options.versions = versions
+                options.emitversions = versions
+
         # Create the registry object with the specified generator and generator
         # options. The options are set before XML loading as they may affect it.
         reg = Registry(gen, options)
-
-        # Parse the specified registry XML into an ElementTree object
-        tree = ElementTree.parse(registry)
 
         # Load the XML tree into the registry object
         reg.loadElementTree(tree)
@@ -157,8 +195,13 @@ def main(argv):
     parser = argparse.ArgumentParser(description='Generate source code for this repository')
     parser.add_argument('--api',
                         default='vulkan',
-                        choices=['vulkan'],
+                        choices=['vulkan', 'vulkansc'],
                         help='Specify API name to generate')
+    parser.add_argument('--no-merge',
+                        dest='merge',
+                        action='store_false',
+                        help='Do not merge the base Vulkan API into the target API variant; '
+                             'generate output scoped strictly to --api. Has no effect for --api vulkan.')
     parser.add_argument('registry', metavar='REGISTRY_PATH', help='path to the Vulkan-Headers registry directory')
     parser.add_argument('--generated-version', help='sets the header version used to generate the repo')
     group = parser.add_mutually_exclusive_group()
@@ -172,7 +215,7 @@ def main(argv):
             print(f'cannot find vk.xml in {args.registry}')
             return -1
 
-    RunGenerators(args.api, registry, args.target)
+    RunGenerators(args.api, registry, args.target, args.merge)
 
     # write out the header version used to generate the code to a checked in CMake file
     if args.generated_version:

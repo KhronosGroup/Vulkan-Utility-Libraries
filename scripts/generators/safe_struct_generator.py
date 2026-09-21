@@ -239,6 +239,7 @@ class SafeStructOutputGenerator(BaseGenerator):
         out.extend(guard_helper.add_guard(None))
 
         out.append('''
+                #if defined(VK_KHR_ray_tracing_pipeline) && defined(VK_NV_ray_tracing)
                 // Safe struct that spans NV and KHR VkRayTracingPipelineCreateInfo structures.
                 // It is a VkRayTracingPipelineCreateInfoKHR and supports construction from
                 // a VkRayTracingPipelineCreateInfoNV.
@@ -256,6 +257,7 @@ class SafeStructOutputGenerator(BaseGenerator):
                     void initialize(const VkRayTracingPipelineCreateInfoKHR *pCreateInfo);
                     uint32_t maxRecursionDepth = 0;  // NV specific
                 };
+                #endif  // defined(VK_KHR_ray_tracing_pipeline) && defined(VK_NV_ray_tracing)
                 ''')
         out.append('''
             } // namespace vku
@@ -407,8 +409,10 @@ void FreePnextChain(const void *pNext) {
                         case VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE:
                         case VK_DESCRIPTOR_TYPE_STORAGE_IMAGE:
                         case VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT:
+                        #ifdef VK_QCOM_image_processing
                         case VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM:
                         case VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM:
+                        #endif
                         if (descriptorCount && in_struct->pImageInfo) {
                             pImageInfo = new VkDescriptorImageInfo[descriptorCount];
                             for (uint32_t i = 0; i < descriptorCount; ++i) {

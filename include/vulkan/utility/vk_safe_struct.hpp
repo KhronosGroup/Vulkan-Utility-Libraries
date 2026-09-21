@@ -26196,6 +26196,7 @@ struct safe_VkPhysicalDeviceMeshShaderPropertiesEXT {
     }
 };
 
+#if defined(VK_KHR_ray_tracing_pipeline) && defined(VK_NV_ray_tracing)
 // Safe struct that spans NV and KHR VkRayTracingPipelineCreateInfo structures.
 // It is a VkRayTracingPipelineCreateInfoKHR and supports construction from
 // a VkRayTracingPipelineCreateInfoNV.
@@ -26213,6 +26214,7 @@ class safe_VkRayTracingPipelineCreateInfoCommon : public safe_VkRayTracingPipeli
     void initialize(const VkRayTracingPipelineCreateInfoKHR* pCreateInfo);
     uint32_t maxRecursionDepth = 0;  // NV specific
 };
+#endif  // defined(VK_KHR_ray_tracing_pipeline) && defined(VK_NV_ray_tracing)
 
 }  // namespace vku
 
