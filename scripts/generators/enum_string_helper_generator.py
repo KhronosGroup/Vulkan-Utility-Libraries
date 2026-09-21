@@ -123,6 +123,7 @@ static inline std::string string_{bitmask.flagName}({bitmask.flagName} input_val
             out.extend(struct_guard_helper.add_guard(struct.protect))
             out.append(f'        case {struct.sType}:\n')
             out.append(f'            return "{struct.name}";\n')
+        out.extend(struct_guard_helper.add_guard(None))
         out.append('''    default:
                             return "Unhandled VkStructureType";
                         }
