@@ -57,6 +57,11 @@ class FormatUtilsOutputGenerator(BaseGenerator):
     #
     # Called at beginning of processing as file is opened
     def generate(self):
+        # The <formats> catalog is not API-scoped, the VkFormat enum is.
+        # Make sure we skip any not present in the current API.
+        enabledFormats = set(x.name for x in self.vk.enums['VkFormat'].fields)
+        self.vk.formats = {name: format for name, format in self.vk.formats.items() if name in enabledFormats}
+
         self.maxPlaneCount = max([len(format.planes) for format in self.vk.formats.values()])
         self.maxComponentCount = max([len(format.components) for format in self.vk.formats.values()])
 
