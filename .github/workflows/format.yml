@@ -21,16 +21,12 @@ jobs:
 
     env:
       CLANG_FORMAT_VERSION: 18
-      CLANG_FORMAT_FILES: "*.c *.h *.cpp *.hpp"
 
     steps:
     - uses: actions/checkout@v7
     - name: Check formatting
       run: |
-        clang-format-${CLANG_FORMAT_VERSION} --version
-        for f in $(git ls-files -- ${CLANG_FORMAT_FILES}); do
-          echo "Checking $f"
-          clang-format-${CLANG_FORMAT_VERSION} -i --Werror "$f"
-        done
-
-        git diff --exit-code
+        # Quoted so the shell leaves the patterns for git to match. --Werror is what
+        # turns a violation into a nonzero exit.
+        git ls-files -z -- '*.c' '*.h' '*.cpp' '*.hpp' |
+          xargs -0 -r clang-format-${CLANG_FORMAT_VERSION} --dry-run --Werror
