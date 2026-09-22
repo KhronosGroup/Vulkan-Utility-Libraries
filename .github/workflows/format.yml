@@ -20,13 +20,15 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      CLANG_FORMAT_VERSION: 18
+      CLANG_FORMAT_VERSION: 22.1.8
 
     steps:
     - uses: actions/checkout@v7
+    - name: Install the pinned clang-format
+      run: python3 -m pip install clang-format==${{ env.CLANG_FORMAT_VERSION }}
     - name: Check formatting
       run: |
         # Quoted so the shell leaves the patterns for git to match. --Werror is what
         # turns a violation into a nonzero exit.
         git ls-files -z -- '*.c' '*.h' '*.cpp' '*.hpp' |
-          xargs -0 -r clang-format-${CLANG_FORMAT_VERSION} --dry-run --Werror
+          xargs -0 -r clang-format --dry-run --Werror
