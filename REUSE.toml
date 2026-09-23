@@ -13,6 +13,15 @@ SPDX-FileCopyrightText = [
 SPDX-License-Identifier = "Apache-2.0"
 
 [[annotations]]
+path = "docs/layers_settings_schema.json"
+precedence = "closest"
+SPDX-FileCopyrightText = [
+    "The Khronos Group Inc.",
+    "LunarG, Inc.",
+]
+SPDX-License-Identifier = "Apache-2.0"
+
+[[annotations]]
 path = "scripts/known_good.json"
 precedence = "closest"
 SPDX-FileCopyrightText = [
