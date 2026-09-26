@@ -199,7 +199,7 @@ class vector {
             // args may refer to an element of this vector, which reserve() moves from and destroys, so construct the new
             // element before reallocating.
             value_type new_value(std::forward<Args>(args)...);
-            reserve(size_ + 1);
+            reserve(GrowthCapacity());
             new (GetWorkingStore() + size_) value_type(std::move(new_value));
         } else {
             new (GetWorkingStore() + size_) value_type(std::forward<Args>(args)...);
@@ -362,6 +362,11 @@ class vector {
 #endif
 
   private:
+    // Capacity to grow to when full, geometric so that repeated emplace_back is amortized constant time
+    size_type GrowthCapacity() const {
+        return (capacity_ > kMaxCapacity / 2) ? kMaxCapacity : static_cast<size_type>(capacity_ * 2);
+    }
+
     void MoveLargeStore(vector &other) {
         assert(other.large_store_);
         assert(other.capacity_ > kSmallCapacity);
