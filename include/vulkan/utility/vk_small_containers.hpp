@@ -8,10 +8,17 @@
 
 #pragma once
 
+#include <algorithm>
 #include <cassert>
+#include <cstddef>
+#include <cstdint>
+#include <initializer_list>
+#include <limits>
 #include <memory>
+#include <type_traits>
 #include <unordered_map>
 #include <unordered_set>
+#include <utility>
 
 namespace vku {
 namespace small {

@@ -5,11 +5,13 @@
 // SPDX-License-Identifier: Apache-2.0
 //
 
+// Include the header under test first to check that it is self-contained
+#include <vulkan/utility/vk_small_containers.hpp>
+
 #include <gtest/gtest.h>
 #include <array>
 #include <limits>
 #include <vector>
-#include <vulkan/utility/vk_small_containers.hpp>
 
 template <typename T, typename U>
 bool HaveSameElementsUpTo(const T& l1, const U& l2, size_t n) {
