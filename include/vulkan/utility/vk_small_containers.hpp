@@ -52,7 +52,8 @@ class vector {
 
     vector(const vector &other) : size_(0), capacity_(N), working_store_(GetSmallStore()) { PushBackFrom(other); }
 
-    vector(vector &&other) : size_(0), capacity_(N), working_store_(GetSmallStore()) {
+    vector(vector &&other) noexcept(std::is_nothrow_move_constructible_v<T>)
+        : size_(0), capacity_(N), working_store_(GetSmallStore()) {
         if (other.large_store_) {
             MoveLargeStore(other);
         } else {
@@ -122,7 +123,7 @@ class vector {
         return *this;
     }
 
-    vector &operator=(vector &&other) {
+    vector &operator=(vector &&other) noexcept(std::is_nothrow_move_constructible_v<T> && std::is_nothrow_move_assignable_v<T>) {
         if (this != &other) {
             // Note: move assign doesn't require other to become empty (as does move construction)
             //       so we'll leave other alone except in the large store case, while moving the object

@@ -13,6 +13,7 @@
 #include <limits>
 #include <memory>
 #include <string>
+#include <type_traits>
 #include <vector>
 
 template <typename T, typename U>
@@ -581,4 +582,32 @@ TEST(small_vector, push_back_from) {
     v.PushBackFrom(std::move(std_src));
     ref = {a, b, a, b, a, b};
     ASSERT_TRUE(HaveSameElements(v, ref));
+}
+
+TEST(small_vector, nothrow_move) {
+    // Lets std::vector and friends move small vectors when reallocating, instead of copying them
+    static_assert(std::is_nothrow_move_constructible_v<vku::small::vector<int, 2>>);
+    static_assert(std::is_nothrow_move_assignable_v<vku::small::vector<int, 2>>);
+    static_assert(std::is_nothrow_move_constructible_v<vku::small::vector<std::string, 2>>);
+    static_assert(std::is_nothrow_move_assignable_v<vku::small::vector<std::string, 2>>);
+
+    struct ThrowingMove {
+        ThrowingMove() = default;
+        ThrowingMove(const ThrowingMove&) = default;
+        ThrowingMove(ThrowingMove&&) noexcept(false) {}
+        ThrowingMove& operator=(const ThrowingMove&) = default;
+        ThrowingMove& operator=(ThrowingMove&&) noexcept(false) { return *this; }
+    };
+    static_assert(!std::is_nothrow_move_constructible_v<vku::small::vector<ThrowingMove, 2>>);
+    static_assert(!std::is_nothrow_move_assignable_v<vku::small::vector<ThrowingMove, 2>>);
+
+    std::vector<vku::small::vector<std::string, 1>> outer;
+    for (int i = 0; i < 32; ++i) {
+        outer.emplace_back();
+        outer.back().emplace_back(64, 'a');
+    }
+    for (const auto& inner : outer) {
+        ASSERT_EQ(inner.size(), 1u);
+        ASSERT_EQ(inner[0], std::string(64, 'a'));
+    }
 }
