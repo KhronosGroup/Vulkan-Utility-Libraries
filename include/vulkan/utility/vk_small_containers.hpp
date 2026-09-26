@@ -223,9 +223,11 @@ class vector {
         size_ = new_size;
     }
 
-    template <typename Container>
+    // Only for rvalues, as a forwarding reference would otherwise also bind to (and move from) non-const lvalues
+    template <typename Container, typename = std::enable_if_t<!std::is_lvalue_reference_v<Container>>>
     void PushBackFrom(Container &&from) {
-        assert(from.size() < kMaxCapacity);
+        assert(from.size() <= kMaxCapacity);
+        assert(size_ <= kMaxCapacity - from.size());
         const size_type new_size = size_ + static_cast<size_type>(from.size());
         reserve(new_size);
 
