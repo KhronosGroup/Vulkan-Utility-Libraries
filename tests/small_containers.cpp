@@ -539,3 +539,25 @@ TEST(small_vector, shrink_to_fit_non_trivial) {
     ref.resize(1);
     ASSERT_TRUE(HaveSameElements(v, ref));
 }
+
+TEST(small_vector, shrink_to_fit_small_capacity) {
+    // Shrinking to exactly the small capacity must use the small store
+    vku::small::vector<int, 4> v;
+    for (int i = 0; i < 8; ++i) {
+        v.emplace_back(i);
+    }
+    v.resize(4);
+    v.shrink_to_fit();
+    ASSERT_EQ(v.capacity(), 4u);
+    const auto* object_begin = reinterpret_cast<const uint8_t*>(&v);
+    const auto* data = reinterpret_cast<const uint8_t*>(v.data());
+    ASSERT_TRUE(data >= object_begin && data < object_begin + sizeof(v));
+
+    // Moving must see a consistent small vector
+    vku::small::vector<int, 4> moved(std::move(v));
+    std::vector<int> ref = {0, 1, 2, 3};
+    ASSERT_TRUE(HaveSameElements(moved, ref));
+    vku::small::vector<int, 4> move_assigned;
+    move_assigned = std::move(moved);
+    ASSERT_TRUE(HaveSameElements(move_assigned, ref));
+}
