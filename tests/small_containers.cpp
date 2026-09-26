@@ -561,3 +561,24 @@ TEST(small_vector, shrink_to_fit_small_capacity) {
     move_assigned = std::move(moved);
     ASSERT_TRUE(HaveSameElements(move_assigned, ref));
 }
+
+TEST(small_vector, push_back_from) {
+    const std::string a(64, 'a');
+    const std::string b(64, 'b');
+
+    // Non-const lvalue sources must be copied, not moved from
+    std::vector<std::string> std_src = {a, b};
+    vku::small::vector<std::string, 4> small_src = {a, b};
+    vku::small::vector<std::string, 4> v;
+    v.PushBackFrom(std_src);
+    v.PushBackFrom(small_src);
+    std::vector<std::string> ref = {a, b, a, b};
+    ASSERT_TRUE(HaveSameElements(v, ref));
+    ASSERT_EQ(std_src[0], a);
+    ASSERT_EQ(small_src[0], a);
+
+    // Rvalue sources may be moved from
+    v.PushBackFrom(std::move(std_src));
+    ref = {a, b, a, b, a, b};
+    ASSERT_TRUE(HaveSameElements(v, ref));
+}
