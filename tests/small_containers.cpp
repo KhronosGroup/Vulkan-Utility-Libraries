@@ -514,3 +514,28 @@ TEST(small_vector, resize_self_reference) {
         ASSERT_EQ(v[i], b);
     }
 }
+
+TEST(small_vector, shrink_to_fit_non_trivial) {
+    std::vector<std::string> ref;
+    for (char c = 'a'; c < 'i'; ++c) {
+        ref.emplace_back(64, c);  // Long enough to defeat the small string optimization
+    }
+
+    // Shrink to a smaller large store
+    vku::small::vector<std::string, 2> v;
+    for (const auto& str : ref) {
+        v.emplace_back(str);
+    }
+    v.resize(5);
+    v.shrink_to_fit();
+    ASSERT_EQ(v.capacity(), 5u);
+    ref.resize(5);
+    ASSERT_TRUE(HaveSameElements(v, ref));
+
+    // Shrink into the small store
+    v.resize(1);
+    v.shrink_to_fit();
+    ASSERT_EQ(v.capacity(), 2u);
+    ref.resize(1);
+    ASSERT_TRUE(HaveSameElements(v, ref));
+}

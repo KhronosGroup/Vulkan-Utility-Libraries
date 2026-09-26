@@ -296,7 +296,7 @@ class vector {
             UpdateWorkingStore();
             auto dest = GetWorkingStore();
             for (size_type i = 0; i < size_; i++) {
-                dest[i] = std::move(source[i]);
+                new (dest + i) value_type(std::move(source[i]));
                 source[i].~value_type();
             }
         }
