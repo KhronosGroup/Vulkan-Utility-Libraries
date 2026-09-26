@@ -646,6 +646,8 @@ class container_base {
         for (int i = 0; i < N; ++i) {
             if (small_data_allocated[i] && helper.compare_equal(small_data[i], key)) {
                 small_data_allocated[i] = false;
+                // Release any resources held by the erased element
+                helper.assign(small_data[i], value_type());
                 return 1;
             }
         }
@@ -673,7 +675,11 @@ class container_base {
 
     void clear() {
         for (int i = 0; i < N; ++i) {
-            small_data_allocated[i] = false;
+            if (small_data_allocated[i]) {
+                small_data_allocated[i] = false;
+                // Release any resources held by the erased element
+                helper.assign(small_data[i], value_type());
+            }
         }
         inner_cont.clear();
     }

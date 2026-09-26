@@ -611,3 +611,28 @@ TEST(small_vector, nothrow_move) {
         ASSERT_EQ(inner[0], std::string(64, 'a'));
     }
 }
+
+TEST(small_unordered_map, erase_releases_value) {
+    auto p = std::make_shared<int>(1);
+
+    vku::small::unordered_map<int, std::shared_ptr<int>, 2> map;
+    map[1] = p;
+    map[2] = p;
+    map[3] = p;  // Stored in the inner map
+    ASSERT_EQ(p.use_count(), 4);
+    map.erase(1);
+    ASSERT_EQ(p.use_count(), 3);
+    ASSERT_FALSE(map.contains(1));
+    map.clear();
+    ASSERT_EQ(p.use_count(), 1);
+    ASSERT_TRUE(map.empty());
+
+    vku::small::unordered_set<std::shared_ptr<int>, 2> set;
+    set.insert(p);
+    ASSERT_EQ(p.use_count(), 2);
+    set.erase(p);
+    ASSERT_EQ(p.use_count(), 1);
+    set.insert(p);
+    set.clear();
+    ASSERT_EQ(p.use_count(), 1);
+}
