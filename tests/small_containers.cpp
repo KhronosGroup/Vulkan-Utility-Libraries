@@ -465,3 +465,31 @@ TEST(small_vector, emplace_back_self_reference) {
     ASSERT_EQ(v.back(), a);
     ASSERT_EQ(v[0], a);
 }
+
+TEST(small_vector, emplace_back_growth) {
+    // emplace_back must grow geometrically, not one element at a time
+    vku::small::vector<int, 4> v;
+    uint32_t reallocations = 0;
+    const int* data = v.data();
+    for (int i = 0; i < 10000; ++i) {
+        v.emplace_back(i);
+        if (v.data() != data) {
+            ++reallocations;
+            data = v.data();
+        }
+    }
+    ASSERT_LE(reallocations, 20u);
+    ASSERT_GE(v.capacity(), v.size());
+    for (int i = 0; i < 10000; ++i) {
+        ASSERT_EQ(v[i], i);
+    }
+
+    // Growth saturates at the size_type maximum
+    vku::small::vector<uint8_t, 2, uint8_t> small_size;
+    for (int i = 0; i < 255; ++i) {
+        small_size.emplace_back(static_cast<uint8_t>(i));
+    }
+    ASSERT_EQ(small_size.size(), 255u);
+    ASSERT_EQ(small_size.capacity(), 255u);
+    ASSERT_EQ(small_size[254], 254u);
+}
