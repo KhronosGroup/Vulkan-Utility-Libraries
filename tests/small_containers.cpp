@@ -493,3 +493,24 @@ TEST(small_vector, emplace_back_growth) {
     ASSERT_EQ(small_size.capacity(), 255u);
     ASSERT_EQ(small_size[254], 254u);
 }
+
+TEST(small_vector, resize_self_reference) {
+    // Long enough to defeat the small string optimization
+    const std::string a(64, 'a');
+    const std::string b(64, 'b');
+
+    // Growing from the small store to the large store
+    vku::small::vector<std::string, 2> v = {a, b};
+    v.resize(4, v[0]);
+    ASSERT_EQ(v.size(), 4u);
+    for (uint32_t i = 2; i < v.size(); ++i) {
+        ASSERT_EQ(v[i], a);
+    }
+
+    // Growing a large store
+    v.resize(v.capacity() + 4, v[1]);
+    ASSERT_EQ(v[1], b);
+    for (uint32_t i = 4; i < v.size(); ++i) {
+        ASSERT_EQ(v[i], b);
+    }
+}
