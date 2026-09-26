@@ -195,8 +195,15 @@ class vector {
     template <class... Args>
     void emplace_back(Args &&...args) {
         assert(size_ < kMaxCapacity);
-        reserve(size_ + 1);
-        new (GetWorkingStore() + size_) value_type(std::forward<Args>(args)...);
+        if (size_ == capacity_) {
+            // args may refer to an element of this vector, which reserve() moves from and destroys, so construct the new
+            // element before reallocating.
+            value_type new_value(std::forward<Args>(args)...);
+            reserve(size_ + 1);
+            new (GetWorkingStore() + size_) value_type(std::move(new_value));
+        } else {
+            new (GetWorkingStore() + size_) value_type(std::forward<Args>(args)...);
+        }
         size_++;
     }
 

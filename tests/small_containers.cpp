@@ -12,6 +12,7 @@
 #include <array>
 #include <limits>
 #include <memory>
+#include <string>
 #include <vector>
 
 template <typename T, typename U>
@@ -442,4 +443,25 @@ TEST(small_vector, emplace_back_forwards_arguments) {
     CopyCounter counter(&copies);
     c.emplace_back(std::move(counter));
     ASSERT_EQ(copies, 0);
+}
+
+TEST(small_vector, emplace_back_self_reference) {
+    // Long enough to defeat the small string optimization
+    const std::string a(64, 'a');
+    const std::string b(64, 'b');
+
+    // Growing from the small store to the large store
+    vku::small::vector<std::string, 2> v = {a, b};
+    ASSERT_EQ(v.size(), v.capacity());
+    v.emplace_back(v[0]);
+    ASSERT_EQ(v.size(), 3u);
+    ASSERT_EQ(v[2], a);
+
+    // Growing a large store
+    while (v.size() < v.capacity()) {
+        v.emplace_back(b);
+    }
+    v.emplace_back(v[0]);
+    ASSERT_EQ(v.back(), a);
+    ASSERT_EQ(v[0], a);
 }
