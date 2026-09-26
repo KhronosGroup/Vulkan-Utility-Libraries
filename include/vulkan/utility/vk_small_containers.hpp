@@ -391,12 +391,21 @@ class vector {
             }
             size_ = new_size;
         } else if (new_size > size_) {
+            if constexpr (std::is_same_v<T2, T>) {
+                if (new_size > capacity_) {
+                    // value may refer to an element of this vector, which reserve() moves from and destroys
+                    const value_type value_copy(value);
+                    reserve(new_size);
+                    Resize(new_size, value_copy);
+                    return;
+                }
+            }
             reserve(new_size);
             // if T2 != T and T is not DefaultInsertable, new values will be undefined
             if constexpr (std::is_same_v<T2, T> || std::is_default_constructible_v<T>) {
                 for (size_type i = size_; i < new_size; ++i) {
                     if constexpr (std::is_same_v<T2, T>) {
-                        emplace_back(value_type(value));
+                        emplace_back(value);
                     } else if constexpr (std::is_default_constructible_v<T>) {
                         emplace_back(value_type());
                     }
