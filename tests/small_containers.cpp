@@ -11,6 +11,7 @@
 #include <gtest/gtest.h>
 #include <array>
 #include <limits>
+#include <memory>
 #include <vector>
 
 template <typename T, typename U>
@@ -414,4 +415,31 @@ TEST(small_vector, assign) {
     v_dst = std::move(v_src);
     ASSERT_TRUE(v_src.empty());
     ASSERT_TRUE(HaveSameElements(ref_xxl, v_dst));
+}
+
+TEST(small_vector, emplace_back_forwards_arguments) {
+    // Move-only types must be usable with emplace_back
+    vku::small::vector<std::unique_ptr<int>, 2> v;
+    for (int i = 0; i < 4; ++i) {
+        v.emplace_back(std::make_unique<int>(i));
+    }
+    ASSERT_EQ(v.size(), 4u);
+    for (int i = 0; i < 4; ++i) {
+        ASSERT_EQ(*v[i], i);
+    }
+
+    // Rvalue arguments are moved, not copied
+    struct CopyCounter {
+        int* copies;
+        explicit CopyCounter(int* c) : copies(c) {}
+        CopyCounter(const CopyCounter& other) : copies(other.copies) { ++*copies; }
+        CopyCounter(CopyCounter&& other) noexcept : copies(other.copies) {}
+        CopyCounter& operator=(const CopyCounter&) = default;
+        CopyCounter& operator=(CopyCounter&&) = default;
+    };
+    int copies = 0;
+    vku::small::vector<CopyCounter, 2> c;
+    CopyCounter counter(&copies);
+    c.emplace_back(std::move(counter));
+    ASSERT_EQ(copies, 0);
 }
