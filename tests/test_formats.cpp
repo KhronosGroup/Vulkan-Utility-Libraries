@@ -140,6 +140,25 @@ TEST(format_utils, vkuFormatIsUSCALED) {
         }
     }
 }
+// From the "Interpretation of Numeric Format" table
+TEST(format_utils, vkuFormatIsSampledInt) {
+    EXPECT_TRUE(vkuFormatIsSampledInt(VK_FORMAT_R8_UINT));
+    EXPECT_TRUE(vkuFormatIsSampledInt(VK_FORMAT_R32G32_SINT));
+    EXPECT_TRUE(vkuFormatIsSampledInt(VK_FORMAT_R16G16_SFIXED5_NV));
+    EXPECT_FALSE(vkuFormatIsSampledInt(VK_FORMAT_R8_UNORM));
+    EXPECT_FALSE(vkuFormatIsSampledInt(VK_FORMAT_R8_BOOL_ARM));
+    EXPECT_FALSE(vkuFormatIsSampledInt(VK_FORMAT_D16_UNORM_S8_UINT));
+}
+
+TEST(format_utils, vkuFormatIsSampledFloat) {
+    EXPECT_TRUE(vkuFormatIsSampledFloat(VK_FORMAT_R8_UNORM));
+    EXPECT_TRUE(vkuFormatIsSampledFloat(VK_FORMAT_R8G8B8A8_SRGB));
+    EXPECT_TRUE(vkuFormatIsSampledFloat(VK_FORMAT_B10G11R11_UFLOAT_PACK32));
+    EXPECT_FALSE(vkuFormatIsSampledFloat(VK_FORMAT_R8_UINT));
+    EXPECT_FALSE(vkuFormatIsSampledFloat(VK_FORMAT_R16G16_SFIXED5_NV));
+    EXPECT_FALSE(vkuFormatIsSampledFloat(VK_FORMAT_R8_BOOL_ARM));
+}
+
 TEST(format_utils, vkuFormatIsCompressed_ASTC_HDR) {
     for (auto [format, format_str] : magic_enum::enum_entries<VkFormat>()) {
         // contains ASTC and SFLOAT in the enum
@@ -588,6 +607,16 @@ void check_for_letter(char letter, bool (*func)(VkFormat)) {
         }
     }
 }
+// The unused entries of VKU_FORMAT_INFO::components are zero filled and must not match
+TEST(format_utils, vkuFormatHasComponent_unused_components) {
+    EXPECT_FALSE(vkuFormatHasComponentSize(VK_FORMAT_R8_UNORM, 0));
+    EXPECT_FALSE(vkuFormatHasComponentSize(VK_FORMAT_UNDEFINED, 0));
+    EXPECT_TRUE(vkuFormatHasComponentSize(VK_FORMAT_R8_UNORM, 8));
+    EXPECT_FALSE(vkuFormatHasComponentType(VK_FORMAT_R8_UNORM, VKU_FORMAT_COMPONENT_TYPE_NONE));
+    EXPECT_FALSE(vkuFormatHasComponentType(VK_FORMAT_UNDEFINED, VKU_FORMAT_COMPONENT_TYPE_NONE));
+    EXPECT_TRUE(vkuFormatHasComponentType(VK_FORMAT_R8_UNORM, VKU_FORMAT_COMPONENT_TYPE_R));
+}
+
 TEST(format_utils, vkuFormatHasRed) { check_for_letter('R', vkuFormatHasRed); }
 TEST(format_utils, vkuFormatHasGreen) { check_for_letter('G', vkuFormatHasGreen); }
 TEST(format_utils, vkuFormatHasBlue) { check_for_letter('B', vkuFormatHasBlue); }
