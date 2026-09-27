@@ -6739,6 +6739,10 @@ static inline const char* string_VkShaderStageFlagBits(VkShaderStageFlagBits inp
             return "VK_SHADER_STAGE_FRAGMENT_BIT";
         case VK_SHADER_STAGE_COMPUTE_BIT:
             return "VK_SHADER_STAGE_COMPUTE_BIT";
+        case VK_SHADER_STAGE_ALL_GRAPHICS:
+            return "VK_SHADER_STAGE_ALL_GRAPHICS";
+        case VK_SHADER_STAGE_ALL:
+            return "VK_SHADER_STAGE_ALL";
         case VK_SHADER_STAGE_RAYGEN_BIT_KHR:
             return "VK_SHADER_STAGE_RAYGEN_BIT_KHR";
         case VK_SHADER_STAGE_ANY_HIT_BIT_KHR:
@@ -7877,6 +7881,8 @@ static inline const char* string_VkCullModeFlagBits(VkCullModeFlagBits input_val
             return "VK_CULL_MODE_FRONT_BIT";
         case VK_CULL_MODE_BACK_BIT:
             return "VK_CULL_MODE_BACK_BIT";
+        case VK_CULL_MODE_FRONT_AND_BACK:
+            return "VK_CULL_MODE_FRONT_AND_BACK";
         default:
             return "Unhandled VkCullModeFlagBits";
     }
@@ -8079,6 +8085,8 @@ static inline const char* string_VkStencilFaceFlagBits(VkStencilFaceFlagBits inp
             return "VK_STENCIL_FACE_FRONT_BIT";
         case VK_STENCIL_FACE_BACK_BIT:
             return "VK_STENCIL_FACE_BACK_BIT";
+        case VK_STENCIL_FACE_FRONT_AND_BACK:
+            return "VK_STENCIL_FACE_FRONT_AND_BACK";
         default:
             return "Unhandled VkStencilFaceFlagBits";
     }
@@ -10954,6 +10962,8 @@ static inline std::string string_VkTensorViewCreateFlagsARM(VkTensorViewCreateFl
 #endif // __cplusplus
 static inline const char* string_VkSpirvResourceTypeFlagBitsEXT(VkSpirvResourceTypeFlagBitsEXT input_value) {
     switch (input_value) {
+        case VK_SPIRV_RESOURCE_TYPE_ALL_EXT:
+            return "VK_SPIRV_RESOURCE_TYPE_ALL_EXT";
         case VK_SPIRV_RESOURCE_TYPE_SAMPLER_BIT_EXT:
             return "VK_SPIRV_RESOURCE_TYPE_SAMPLER_BIT_EXT";
         case VK_SPIRV_RESOURCE_TYPE_SAMPLED_IMAGE_BIT_EXT:
@@ -12939,26 +12949,16 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
             return "VkDisplaySurfaceCreateInfoKHR";
         case VK_STRUCTURE_TYPE_DISPLAY_PRESENT_INFO_KHR:
             return "VkDisplayPresentInfoKHR";
-#ifdef VK_USE_PLATFORM_XLIB_KHR
         case VK_STRUCTURE_TYPE_XLIB_SURFACE_CREATE_INFO_KHR:
             return "VkXlibSurfaceCreateInfoKHR";
-#endif  // VK_USE_PLATFORM_XLIB_KHR
-#ifdef VK_USE_PLATFORM_XCB_KHR
         case VK_STRUCTURE_TYPE_XCB_SURFACE_CREATE_INFO_KHR:
             return "VkXcbSurfaceCreateInfoKHR";
-#endif  // VK_USE_PLATFORM_XCB_KHR
-#ifdef VK_USE_PLATFORM_WAYLAND_KHR
         case VK_STRUCTURE_TYPE_WAYLAND_SURFACE_CREATE_INFO_KHR:
             return "VkWaylandSurfaceCreateInfoKHR";
-#endif  // VK_USE_PLATFORM_WAYLAND_KHR
-#ifdef VK_USE_PLATFORM_ANDROID_KHR
         case VK_STRUCTURE_TYPE_ANDROID_SURFACE_CREATE_INFO_KHR:
             return "VkAndroidSurfaceCreateInfoKHR";
-#endif  // VK_USE_PLATFORM_ANDROID_KHR
-#ifdef VK_USE_PLATFORM_WIN32_KHR
         case VK_STRUCTURE_TYPE_WIN32_SURFACE_CREATE_INFO_KHR:
             return "VkWin32SurfaceCreateInfoKHR";
-#endif  // VK_USE_PLATFORM_WIN32_KHR
         case VK_STRUCTURE_TYPE_QUEUE_FAMILY_QUERY_RESULT_STATUS_PROPERTIES_KHR:
             return "VkQueueFamilyQueryResultStatusPropertiesKHR";
         case VK_STRUCTURE_TYPE_QUEUE_FAMILY_VIDEO_PROPERTIES_KHR:
@@ -13067,7 +13067,6 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
             return "VkVideoDecodeH264PictureInfoKHR";
         case VK_STRUCTURE_TYPE_VIDEO_DECODE_H264_DPB_SLOT_INFO_KHR:
             return "VkVideoDecodeH264DpbSlotInfoKHR";
-#ifdef VK_USE_PLATFORM_WIN32_KHR
         case VK_STRUCTURE_TYPE_IMPORT_MEMORY_WIN32_HANDLE_INFO_KHR:
             return "VkImportMemoryWin32HandleInfoKHR";
         case VK_STRUCTURE_TYPE_EXPORT_MEMORY_WIN32_HANDLE_INFO_KHR:
@@ -13076,14 +13075,12 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
             return "VkMemoryWin32HandlePropertiesKHR";
         case VK_STRUCTURE_TYPE_MEMORY_GET_WIN32_HANDLE_INFO_KHR:
             return "VkMemoryGetWin32HandleInfoKHR";
-#endif  // VK_USE_PLATFORM_WIN32_KHR
         case VK_STRUCTURE_TYPE_IMPORT_MEMORY_FD_INFO_KHR:
             return "VkImportMemoryFdInfoKHR";
         case VK_STRUCTURE_TYPE_MEMORY_FD_PROPERTIES_KHR:
             return "VkMemoryFdPropertiesKHR";
         case VK_STRUCTURE_TYPE_MEMORY_GET_FD_INFO_KHR:
             return "VkMemoryGetFdInfoKHR";
-#ifdef VK_USE_PLATFORM_WIN32_KHR
         case VK_STRUCTURE_TYPE_WIN32_KEYED_MUTEX_ACQUIRE_RELEASE_INFO_KHR:
             return "VkWin32KeyedMutexAcquireReleaseInfoKHR";
         case VK_STRUCTURE_TYPE_IMPORT_SEMAPHORE_WIN32_HANDLE_INFO_KHR:
@@ -13094,7 +13091,6 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
             return "VkD3D12FenceSubmitInfoKHR";
         case VK_STRUCTURE_TYPE_SEMAPHORE_GET_WIN32_HANDLE_INFO_KHR:
             return "VkSemaphoreGetWin32HandleInfoKHR";
-#endif  // VK_USE_PLATFORM_WIN32_KHR
         case VK_STRUCTURE_TYPE_IMPORT_SEMAPHORE_FD_INFO_KHR:
             return "VkImportSemaphoreFdInfoKHR";
         case VK_STRUCTURE_TYPE_SEMAPHORE_GET_FD_INFO_KHR:
@@ -13103,14 +13099,12 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
             return "VkPresentRegionsKHR";
         case VK_STRUCTURE_TYPE_SHARED_PRESENT_SURFACE_CAPABILITIES_KHR:
             return "VkSharedPresentSurfaceCapabilitiesKHR";
-#ifdef VK_USE_PLATFORM_WIN32_KHR
         case VK_STRUCTURE_TYPE_IMPORT_FENCE_WIN32_HANDLE_INFO_KHR:
             return "VkImportFenceWin32HandleInfoKHR";
         case VK_STRUCTURE_TYPE_EXPORT_FENCE_WIN32_HANDLE_INFO_KHR:
             return "VkExportFenceWin32HandleInfoKHR";
         case VK_STRUCTURE_TYPE_FENCE_GET_WIN32_HANDLE_INFO_KHR:
             return "VkFenceGetWin32HandleInfoKHR";
-#endif  // VK_USE_PLATFORM_WIN32_KHR
         case VK_STRUCTURE_TYPE_IMPORT_FENCE_FD_INFO_KHR:
             return "VkImportFenceFdInfoKHR";
         case VK_STRUCTURE_TYPE_FENCE_GET_FD_INFO_KHR:
@@ -13563,30 +13557,24 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
             return "VkImageViewAddressPropertiesNVX";
         case VK_STRUCTURE_TYPE_TEXTURE_LOD_GATHER_FORMAT_PROPERTIES_AMD:
             return "VkTextureLODGatherFormatPropertiesAMD";
-#ifdef VK_USE_PLATFORM_GGP
         case VK_STRUCTURE_TYPE_STREAM_DESCRIPTOR_SURFACE_CREATE_INFO_GGP:
             return "VkStreamDescriptorSurfaceCreateInfoGGP";
-#endif  // VK_USE_PLATFORM_GGP
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CORNER_SAMPLED_IMAGE_FEATURES_NV:
             return "VkPhysicalDeviceCornerSampledImageFeaturesNV";
         case VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_IMAGE_CREATE_INFO_NV:
             return "VkExternalMemoryImageCreateInfoNV";
         case VK_STRUCTURE_TYPE_EXPORT_MEMORY_ALLOCATE_INFO_NV:
             return "VkExportMemoryAllocateInfoNV";
-#ifdef VK_USE_PLATFORM_WIN32_KHR
         case VK_STRUCTURE_TYPE_IMPORT_MEMORY_WIN32_HANDLE_INFO_NV:
             return "VkImportMemoryWin32HandleInfoNV";
         case VK_STRUCTURE_TYPE_EXPORT_MEMORY_WIN32_HANDLE_INFO_NV:
             return "VkExportMemoryWin32HandleInfoNV";
         case VK_STRUCTURE_TYPE_WIN32_KEYED_MUTEX_ACQUIRE_RELEASE_INFO_NV:
             return "VkWin32KeyedMutexAcquireReleaseInfoNV";
-#endif  // VK_USE_PLATFORM_WIN32_KHR
         case VK_STRUCTURE_TYPE_VALIDATION_FLAGS_EXT:
             return "VkValidationFlagsEXT";
-#ifdef VK_USE_PLATFORM_VI_NN
         case VK_STRUCTURE_TYPE_VI_SURFACE_CREATE_INFO_NN:
             return "VkViSurfaceCreateInfoNN";
-#endif  // VK_USE_PLATFORM_VI_NN
         case VK_STRUCTURE_TYPE_IMAGE_VIEW_ASTC_DECODE_MODE_EXT:
             return "VkImageViewASTCDecodeModeEXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ASTC_DECODE_FEATURES_EXT:
@@ -13633,14 +13621,10 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
             return "VkHdrMetadataEXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RELAXED_LINE_RASTERIZATION_FEATURES_IMG:
             return "VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG";
-#ifdef VK_USE_PLATFORM_IOS_MVK
         case VK_STRUCTURE_TYPE_IOS_SURFACE_CREATE_INFO_MVK:
             return "VkIOSSurfaceCreateInfoMVK";
-#endif  // VK_USE_PLATFORM_IOS_MVK
-#ifdef VK_USE_PLATFORM_MACOS_MVK
         case VK_STRUCTURE_TYPE_MACOS_SURFACE_CREATE_INFO_MVK:
             return "VkMacOSSurfaceCreateInfoMVK";
-#endif  // VK_USE_PLATFORM_MACOS_MVK
         case VK_STRUCTURE_TYPE_DEBUG_UTILS_LABEL_EXT:
             return "VkDebugUtilsLabelEXT";
         case VK_STRUCTURE_TYPE_DEBUG_UTILS_OBJECT_NAME_INFO_EXT:
@@ -13651,7 +13635,6 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
             return "VkDebugUtilsMessengerCreateInfoEXT";
         case VK_STRUCTURE_TYPE_DEBUG_UTILS_OBJECT_TAG_INFO_EXT:
             return "VkDebugUtilsObjectTagInfoEXT";
-#ifdef VK_USE_PLATFORM_ANDROID_KHR
         case VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_USAGE_ANDROID:
             return "VkAndroidHardwareBufferUsageANDROID";
         case VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_PROPERTIES_ANDROID:
@@ -13666,7 +13649,6 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
             return "VkExternalFormatANDROID";
         case VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_FORMAT_PROPERTIES_2_ANDROID:
             return "VkAndroidHardwareBufferFormatProperties2ANDROID";
-#endif  // VK_USE_PLATFORM_ANDROID_KHR
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GPA_FEATURES_AMD:
             return "VkPhysicalDeviceGpaFeaturesAMD";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GPA_PROPERTIES_AMD:
@@ -13825,10 +13807,8 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
             return "VkDeviceMemoryOverallocationCreateInfoAMD";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_PROPERTIES_EXT:
             return "VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT";
-#ifdef VK_USE_PLATFORM_GGP
         case VK_STRUCTURE_TYPE_PRESENT_FRAME_TOKEN_GGP:
             return "VkPresentFrameTokenGGP";
-#endif  // VK_USE_PLATFORM_GGP
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_FEATURES_NV:
             return "VkPhysicalDeviceMeshShaderFeaturesNV";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_PROPERTIES_NV:
@@ -13887,14 +13867,10 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
             return "VkDisplayNativeHdrSurfaceCapabilitiesAMD";
         case VK_STRUCTURE_TYPE_SWAPCHAIN_DISPLAY_NATIVE_HDR_CREATE_INFO_AMD:
             return "VkSwapchainDisplayNativeHdrCreateInfoAMD";
-#ifdef VK_USE_PLATFORM_FUCHSIA
         case VK_STRUCTURE_TYPE_IMAGEPIPE_SURFACE_CREATE_INFO_FUCHSIA:
             return "VkImagePipeSurfaceCreateInfoFUCHSIA";
-#endif  // VK_USE_PLATFORM_FUCHSIA
-#ifdef VK_USE_PLATFORM_METAL_EXT
         case VK_STRUCTURE_TYPE_METAL_SURFACE_CREATE_INFO_EXT:
             return "VkMetalSurfaceCreateInfoEXT";
-#endif  // VK_USE_PLATFORM_METAL_EXT
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_FEATURES_EXT:
             return "VkPhysicalDeviceFragmentDensityMapFeaturesEXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_PROPERTIES_EXT:
@@ -13945,14 +13921,12 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
             return "VkPhysicalDeviceProvokingVertexPropertiesEXT";
         case VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_PROVOKING_VERTEX_STATE_CREATE_INFO_EXT:
             return "VkPipelineRasterizationProvokingVertexStateCreateInfoEXT";
-#ifdef VK_USE_PLATFORM_WIN32_KHR
         case VK_STRUCTURE_TYPE_SURFACE_FULL_SCREEN_EXCLUSIVE_INFO_EXT:
             return "VkSurfaceFullScreenExclusiveInfoEXT";
         case VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_FULL_SCREEN_EXCLUSIVE_EXT:
             return "VkSurfaceCapabilitiesFullScreenExclusiveEXT";
         case VK_STRUCTURE_TYPE_SURFACE_FULL_SCREEN_EXCLUSIVE_WIN32_INFO_EXT:
             return "VkSurfaceFullScreenExclusiveWin32InfoEXT";
-#endif  // VK_USE_PLATFORM_WIN32_KHR
         case VK_STRUCTURE_TYPE_HEADLESS_SURFACE_CREATE_INFO_EXT:
             return "VkHeadlessSurfaceCreateInfoEXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ATOMIC_FLOAT_FEATURES_EXT:
@@ -14063,7 +14037,6 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
             return "VkDispatchTileInfoQCOM";
         case VK_STRUCTURE_TYPE_QUERY_LOW_LATENCY_SUPPORT_NV:
             return "VkQueryLowLatencySupportNV";
-#ifdef VK_USE_PLATFORM_METAL_EXT
         case VK_STRUCTURE_TYPE_EXPORT_METAL_OBJECT_CREATE_INFO_EXT:
             return "VkExportMetalObjectCreateInfoEXT";
         case VK_STRUCTURE_TYPE_EXPORT_METAL_OBJECTS_INFO_EXT:
@@ -14088,7 +14061,6 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
             return "VkExportMetalSharedEventInfoEXT";
         case VK_STRUCTURE_TYPE_IMPORT_METAL_SHARED_EVENT_INFO_EXT:
             return "VkImportMetalSharedEventInfoEXT";
-#endif  // VK_USE_PLATFORM_METAL_EXT
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_BUFFER_PROPERTIES_EXT:
             return "VkPhysicalDeviceDescriptorBufferPropertiesEXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_BUFFER_FEATURES_EXT:
@@ -14163,10 +14135,8 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
             return "VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RGBA10X6_FORMATS_FEATURES_EXT:
             return "VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT";
-#ifdef VK_USE_PLATFORM_DIRECTFB_EXT
         case VK_STRUCTURE_TYPE_DIRECTFB_SURFACE_CREATE_INFO_EXT:
             return "VkDirectFBSurfaceCreateInfoEXT";
-#endif  // VK_USE_PLATFORM_DIRECTFB_EXT
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MUTABLE_DESCRIPTOR_TYPE_FEATURES_EXT:
             return "VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT";
         case VK_STRUCTURE_TYPE_MUTABLE_DESCRIPTOR_TYPE_CREATE_INFO_EXT:
@@ -14189,7 +14159,6 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
             return "VkPipelineViewportDepthClipControlCreateInfoEXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRIMITIVE_TOPOLOGY_LIST_RESTART_FEATURES_EXT:
             return "VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT";
-#ifdef VK_USE_PLATFORM_FUCHSIA
         case VK_STRUCTURE_TYPE_IMPORT_MEMORY_ZIRCON_HANDLE_INFO_FUCHSIA:
             return "VkImportMemoryZirconHandleInfoFUCHSIA";
         case VK_STRUCTURE_TYPE_MEMORY_ZIRCON_HANDLE_PROPERTIES_FUCHSIA:
@@ -14220,7 +14189,6 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
             return "VkImageFormatConstraintsInfoFUCHSIA";
         case VK_STRUCTURE_TYPE_IMAGE_CONSTRAINTS_INFO_FUCHSIA:
             return "VkImageConstraintsInfoFUCHSIA";
-#endif  // VK_USE_PLATFORM_FUCHSIA
         case VK_STRUCTURE_TYPE_SUBPASS_SHADING_PIPELINE_CREATE_INFO_HUAWEI:
             return "VkSubpassShadingPipelineCreateInfoHUAWEI";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBPASS_SHADING_FEATURES_HUAWEI:
@@ -14249,10 +14217,8 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
             return "VkMultisampledRenderToSingleSampledInfoEXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_DYNAMIC_STATE_2_FEATURES_EXT:
             return "VkPhysicalDeviceExtendedDynamicState2FeaturesEXT";
-#ifdef VK_USE_PLATFORM_SCREEN_QNX
         case VK_STRUCTURE_TYPE_SCREEN_SURFACE_CREATE_INFO_QNX:
             return "VkScreenSurfaceCreateInfoQNX";
-#endif  // VK_USE_PLATFORM_SCREEN_QNX
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COLOR_WRITE_ENABLE_FEATURES_EXT:
             return "VkPhysicalDeviceColorWriteEnableFeaturesEXT";
         case VK_STRUCTURE_TYPE_PIPELINE_COLOR_WRITE_CREATE_INFO_EXT:
@@ -14393,7 +14359,6 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
             return "VkPhysicalDeviceNestedCommandBufferFeaturesEXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_NESTED_COMMAND_BUFFER_PROPERTIES_EXT:
             return "VkPhysicalDeviceNestedCommandBufferPropertiesEXT";
-#ifdef VK_USE_PLATFORM_OHOS
         case VK_STRUCTURE_TYPE_NATIVE_BUFFER_USAGE_OHOS:
             return "VkNativeBufferUsageOHOS";
         case VK_STRUCTURE_TYPE_NATIVE_BUFFER_PROPERTIES_OHOS:
@@ -14406,7 +14371,6 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
             return "VkMemoryGetNativeBufferInfoOHOS";
         case VK_STRUCTURE_TYPE_EXTERNAL_FORMAT_OHOS:
             return "VkExternalFormatOHOS";
-#endif  // VK_USE_PLATFORM_OHOS
         case VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_ACQUIRE_UNMODIFIED_EXT:
             return "VkExternalMemoryAcquireUnmodifiedEXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_DYNAMIC_STATE_3_FEATURES_EXT:
@@ -14495,14 +14459,12 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
             return "VkOpticalFlowExecuteInfoNV";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LEGACY_DITHERING_FEATURES_EXT:
             return "VkPhysicalDeviceLegacyDitheringFeaturesEXT";
-#ifdef VK_USE_PLATFORM_ANDROID_KHR
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_FORMAT_RESOLVE_FEATURES_ANDROID:
             return "VkPhysicalDeviceExternalFormatResolveFeaturesANDROID";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_FORMAT_RESOLVE_PROPERTIES_ANDROID:
             return "VkPhysicalDeviceExternalFormatResolvePropertiesANDROID";
         case VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_FORMAT_RESOLVE_PROPERTIES_ANDROID:
             return "VkAndroidHardwareBufferFormatResolvePropertiesANDROID";
-#endif  // VK_USE_PLATFORM_ANDROID_KHR
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ANTI_LAG_FEATURES_AMD:
             return "VkPhysicalDeviceAntiLagFeaturesAMD";
         case VK_STRUCTURE_TYPE_ANTI_LAG_PRESENTATION_INFO_AMD:
@@ -14645,7 +14607,6 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
             return "VkPhysicalDeviceCubicClampFeaturesQCOM";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ATTACHMENT_FEEDBACK_LOOP_DYNAMIC_STATE_FEATURES_EXT:
             return "VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT";
-#ifdef VK_USE_PLATFORM_SCREEN_QNX
         case VK_STRUCTURE_TYPE_SCREEN_BUFFER_PROPERTIES_QNX:
             return "VkScreenBufferPropertiesQNX";
         case VK_STRUCTURE_TYPE_SCREEN_BUFFER_FORMAT_PROPERTIES_QNX:
@@ -14656,7 +14617,6 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
             return "VkExternalFormatQNX";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_MEMORY_SCREEN_BUFFER_FEATURES_QNX:
             return "VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX";
-#endif  // VK_USE_PLATFORM_SCREEN_QNX
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LAYERED_DRIVER_PROPERTIES_MSFT:
             return "VkPhysicalDeviceLayeredDriverPropertiesMSFT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_POOL_OVERALLOCATION_FEATURES_NV:
@@ -14779,10 +14739,8 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
             return "VkPhysicalDeviceDepthClampControlFeaturesEXT";
         case VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_DEPTH_CLAMP_CONTROL_CREATE_INFO_EXT:
             return "VkPipelineViewportDepthClampControlCreateInfoEXT";
-#ifdef VK_USE_PLATFORM_OHOS
         case VK_STRUCTURE_TYPE_SURFACE_CREATE_INFO_OHOS:
             return "VkSurfaceCreateInfoOHOS";
-#endif  // VK_USE_PLATFORM_OHOS
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HDR_VIVID_FEATURES_HUAWEI:
             return "VkPhysicalDeviceHdrVividFeaturesHUAWEI";
         case VK_STRUCTURE_TYPE_HDR_VIVID_DYNAMIC_METADATA_HUAWEI:
@@ -14795,14 +14753,12 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
             return "VkPhysicalDeviceCooperativeMatrix2PropertiesNV";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_OPACITY_MICROMAP_FEATURES_ARM:
             return "VkPhysicalDevicePipelineOpacityMicromapFeaturesARM";
-#ifdef VK_USE_PLATFORM_METAL_EXT
         case VK_STRUCTURE_TYPE_IMPORT_MEMORY_METAL_HANDLE_INFO_EXT:
             return "VkImportMemoryMetalHandleInfoEXT";
         case VK_STRUCTURE_TYPE_MEMORY_METAL_HANDLE_PROPERTIES_EXT:
             return "VkMemoryMetalHandlePropertiesEXT";
         case VK_STRUCTURE_TYPE_MEMORY_GET_METAL_HANDLE_INFO_EXT:
             return "VkMemoryGetMetalHandleInfoEXT";
-#endif  // VK_USE_PLATFORM_METAL_EXT
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PERFORMANCE_COUNTERS_BY_REGION_FEATURES_ARM:
             return "VkPhysicalDevicePerformanceCountersByRegionFeaturesARM";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PERFORMANCE_COUNTERS_BY_REGION_PROPERTIES_ARM:
@@ -14891,10 +14847,8 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
             return "VkPhysicalDeviceCooperativeMatrixMaintenance1FeaturesEXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SUBGROUP_PARTITIONED_FEATURES_EXT:
             return "VkPhysicalDeviceShaderSubgroupPartitionedFeaturesEXT";
-#ifdef VK_USE_PLATFORM_UBM_SEC
         case VK_STRUCTURE_TYPE_UBM_SURFACE_CREATE_INFO_SEC:
             return "VkUbmSurfaceCreateInfoSEC";
-#endif  // VK_USE_PLATFORM_UBM_SEC
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_OCP_MICROSCALING_TYPES_FEATURES_EXT:
             return "VkPhysicalDeviceShaderOCPMicroscalingTypesFeaturesEXT";
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_MIXED_FLOAT_DOT_PRODUCT_FEATURES_VALVE:
