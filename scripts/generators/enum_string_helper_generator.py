@@ -71,7 +71,7 @@ class EnumStringHelperOutputGenerator(BaseGenerator):
             bitmask_field_guard_helper = PlatformGuardHelper()
             if use_switch_statement:
                 out.append('    switch (input_value) {\n')
-                for flag in [x for x in bitmask.flags if not x.multiBit]:
+                for flag in bitmask.flags:
                     out.extend(bitmask_field_guard_helper.add_guard(flag.protect))
                     out.append(f'        case {flag.name}:\n')
                     out.append(f'            return "{flag.name}";\n')
@@ -81,22 +81,22 @@ class EnumStringHelperOutputGenerator(BaseGenerator):
                 out.append('    }\n')
             else:
                 # We need to use if statements
-                for flag in [x for x in bitmask.flags if not x.multiBit]:
+                for flag in bitmask.flags:
                     out.extend(bitmask_field_guard_helper.add_guard(flag.protect))
                     out.append(f'    if (input_value == {flag.name}) return "{flag.name}";\n')
                 out.extend(bitmask_field_guard_helper.add_guard(None))
                 out.append(f'    return "Unhandled {bitmask.name}";\n')
             out.append('}\n')
 
-            mulitBitChecks = ''
+            multiBitChecks = ''
             for flag in [x for x in bitmask.flags if x.multiBit]:
-                mulitBitChecks += f'    if (input_value == {flag.name}) {{ return "{flag.name}"; }}\n'
+                multiBitChecks += f'    if (input_value == {flag.name}) {{ return "{flag.name}"; }}\n'
             intSuffix = 'U' if bitmask.bitWidth == 32 else 'ULL'
 
             out.append('\n#ifdef __cplusplus')
             out.append(f'''
 static inline std::string string_{bitmask.flagName}({bitmask.flagName} input_value) {{
-{mulitBitChecks}    std::string ret;
+{multiBitChecks}    std::string ret;
     int index = 0;
     while(input_value) {{
         if (input_value & 1) {{
@@ -119,10 +119,12 @@ static inline std::string string_{bitmask.flagName}({bitmask.flagName} input_val
                    static inline const char* string_VkStructureName(VkStructureType input_value) {
                         switch (input_value) {\n''')
         struct_guard_helper = PlatformGuardHelper()
+        stype_protect = {x.name: x.protect for x in self.vk.enums['VkStructureType'].fields}
         for struct in [x for x in self.vk.structs.values() if x.sType]:
-            out.extend(struct_guard_helper.add_guard(struct.protect))
+            out.extend(struct_guard_helper.add_guard(stype_protect.get(struct.sType, struct.protect)))
             out.append(f'        case {struct.sType}:\n')
             out.append(f'            return "{struct.name}";\n')
+        out.extend(struct_guard_helper.add_guard(None))
         out.append('''    default:
                             return "Unhandled VkStructureType";
                         }
