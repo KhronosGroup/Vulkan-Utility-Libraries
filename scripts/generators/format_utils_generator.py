@@ -28,9 +28,9 @@ def formatHasEqualBitsize(format: Format, bitsize: str) -> bool:
 def formatHasNumericFormat(format: Format, numericFormat: str) -> bool:
     if numericFormat == 'SRGB':
         # For SRGB, the Alpha will be UNORM, but it is still considered an SRGB format
-        if format.name == 'VK_FORMAT_A8_UNORM':
-            return False
-        return all(x.type == 'A' or x.numericFormat == numericFormat for x in format.components)
+        # An alpha only format (VK_FORMAT_A8_UNORM) has no SRGB component, so it isn't.
+        return (any(x.numericFormat == numericFormat for x in format.components) and
+                all(x.type == 'A' or x.numericFormat == numericFormat for x in format.components))
     else:
         return all(x.numericFormat == numericFormat for x in format.components)
 
@@ -194,7 +194,7 @@ static inline bool vkuFormatIsXChromaSubsampled(VkFormat format);
 // This corresponds to formats with _420 in their name
 static inline bool vkuFormatIsYChromaSubsampled(VkFormat format);
 
-// Returns whether a VkFormat is Multiplane
+// Returns whether a VkFormat is a single-plane "_422" format
 // Single-plane "_422" formats are treated as 2x1 compressed (for copies)
 static inline bool vkuFormatIsSinglePlane_422(VkFormat format);
 
@@ -386,7 +386,7 @@ struct VKU_FORMAT_MULTIPLANE_COMPATIBILITY {
         out.append('        default: {\n')
         out.append('            struct VKU_FORMAT_MULTIPLANE_COMPATIBILITY out = {{{1, 1, VK_FORMAT_UNDEFINED}, {1, 1, VK_FORMAT_UNDEFINED}, {1, 1, VK_FORMAT_UNDEFINED}}};\n')
         out.append('            return out; }\n')
-        out.append('    };\n')
+        out.append('    }\n')
         out.append('}\n')
 
         for numericFormat in sorted(self.numericFormats):
@@ -397,7 +397,9 @@ struct VKU_FORMAT_MULTIPLANE_COMPATIBILITY {
             out.append(self.commonBoolSwitch)
 
         out.append('''
-static inline bool vkuFormatIsSampledInt(VkFormat format) { return (vkuFormatIsSINT(format) || vkuFormatIsUINT(format)); }
+static inline bool vkuFormatIsSampledInt(VkFormat format) {
+    return (vkuFormatIsSINT(format) || vkuFormatIsUINT(format) || vkuFormatIsSFIXED5(format));
+}
 static inline bool vkuFormatIsSampledFloat(VkFormat format) {
     return (vkuFormatIsUNORM(format) || vkuFormatIsSNORM(format) ||
             vkuFormatIsUSCALED(format) || vkuFormatIsSSCALED(format) ||
@@ -637,7 +639,8 @@ static inline uint32_t vkuFormatTexelBlockSize(VkFormat format) { return vkuGetF
 static inline bool vkuFormatHasComponentSize(VkFormat format, uint32_t size) {
     const struct VKU_FORMAT_INFO format_info = vkuGetFormatInfo(format);
     bool equal_component_size = false;
-    for (size_t i = 0; i < VKU_FORMAT_MAX_COMPONENTS; i++) {
+    // Only look at the components the format has, the rest of the array is zero filled padding
+    for (uint32_t i = 0; i < format_info.component_count; i++) {
         equal_component_size |= format_info.components[i].size == size;
     }
     return equal_component_size;
@@ -646,7 +649,8 @@ static inline bool vkuFormatHasComponentSize(VkFormat format, uint32_t size) {
 static inline bool vkuFormatHasComponentType(VkFormat format, enum VKU_FORMAT_COMPONENT_TYPE component) {
     const struct VKU_FORMAT_INFO format_info = vkuGetFormatInfo(format);
     bool equal_component_type = false;
-    for (size_t i = 0; i < VKU_FORMAT_MAX_COMPONENTS; i++) {
+    // Only look at the components the format has, the rest of the array is zero filled padding
+    for (uint32_t i = 0; i < format_info.component_count; i++) {
         equal_component_type |= format_info.components[i].type == component;
     }
     return equal_component_type;
