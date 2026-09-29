@@ -684,11 +684,22 @@ void FreePnextChain(const void *pNext) {
                                 destruct_txt += f'    delete[] {member.name};\n'
                 elif member.fixedSizeArray or member.length is not None:
                     if member.fixedSizeArray:
-                        construct_txt += f'''
-                            for (uint32_t i = 0; i < {member.fixedSizeArray[0]}; ++i) {{
-                                    {member.name}[i] = in_struct->{member.name}[i];
-                                }}
-                            '''
+                        if len(member.fixedSizeArray) > 1:
+                            depth = len(member.fixedSizeArray)
+                            construct_txt += '\n'
+                            indent = '    '
+                            for dim_index in range(depth):
+                                construct_txt += f'{indent * dim_index}for (uint32_t i{dim_index} = 0; i{dim_index} < {member.fixedSizeArray[dim_index]}; ++i{dim_index}) {{\n'
+                            src_idx = ''.join(f'[i{d}]' for d in range(depth))
+                            construct_txt += f'{indent * depth}{member.name}{src_idx} = in_struct->{member.name}{src_idx};\n'
+                            for dim_index in reversed(range(depth)):
+                                construct_txt += f'{indent * dim_index}}}\n'
+                        else:
+                            construct_txt += f'''
+                                for (uint32_t i = 0; i < {member.fixedSizeArray[0]}; ++i) {{
+                                        {member.name}[i] = in_struct->{member.name}[i];
+                                    }}
+                                '''
                     else:
                         # Init array ptr to NULL
                         default_init_list += f'\n{member.name}(nullptr),'
