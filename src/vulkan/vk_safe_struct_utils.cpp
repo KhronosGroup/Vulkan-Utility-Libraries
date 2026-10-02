@@ -2507,6 +2507,9 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SUBGROUP_PARTITIONED_FEATURES_EXT:
                 safe_pNext = new safe_VkPhysicalDeviceShaderSubgroupPartitionedFeaturesEXT(reinterpret_cast<const VkPhysicalDeviceShaderSubgroupPartitionedFeaturesEXT *>(pNext), copy_state, false);
                 break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_LAYOUTS_FEATURES_ARM:
+                safe_pNext = new safe_VkPhysicalDeviceCooperativeMatrixLayoutsFeaturesARM(reinterpret_cast<const VkPhysicalDeviceCooperativeMatrixLayoutsFeaturesARM *>(pNext), copy_state, false);
+                break;
             case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_OCP_MICROSCALING_TYPES_FEATURES_EXT:
                 safe_pNext = new safe_VkPhysicalDeviceShaderOCPMicroscalingTypesFeaturesEXT(reinterpret_cast<const VkPhysicalDeviceShaderOCPMicroscalingTypesFeaturesEXT *>(pNext), copy_state, false);
                 break;
@@ -5072,6 +5075,9 @@ void FreePnextChain(const void *pNext) {
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SUBGROUP_PARTITIONED_FEATURES_EXT:
             delete reinterpret_cast<safe_VkPhysicalDeviceShaderSubgroupPartitionedFeaturesEXT *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_LAYOUTS_FEATURES_ARM:
+            delete reinterpret_cast<safe_VkPhysicalDeviceCooperativeMatrixLayoutsFeaturesARM *>(header);
             break;
         case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_OCP_MICROSCALING_TYPES_FEATURES_EXT:
             delete reinterpret_cast<safe_VkPhysicalDeviceShaderOCPMicroscalingTypesFeaturesEXT *>(header);
