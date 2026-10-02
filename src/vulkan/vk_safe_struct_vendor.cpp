@@ -26025,6 +26025,59 @@ void safe_VkUbmSurfaceCreateInfoSEC::initialize(const safe_VkUbmSurfaceCreateInf
 }
 #endif  // VK_USE_PLATFORM_UBM_SEC
 
+safe_VkPhysicalDeviceCooperativeMatrixLayoutsFeaturesARM::safe_VkPhysicalDeviceCooperativeMatrixLayoutsFeaturesARM(
+    const VkPhysicalDeviceCooperativeMatrixLayoutsFeaturesARM* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
+    bool copy_pnext)
+    : sType(in_struct->sType), cooperativeMatrixArmLayouts(in_struct->cooperativeMatrixArmLayouts) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceCooperativeMatrixLayoutsFeaturesARM::safe_VkPhysicalDeviceCooperativeMatrixLayoutsFeaturesARM()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_LAYOUTS_FEATURES_ARM),
+      pNext(nullptr),
+      cooperativeMatrixArmLayouts() {}
+
+safe_VkPhysicalDeviceCooperativeMatrixLayoutsFeaturesARM::safe_VkPhysicalDeviceCooperativeMatrixLayoutsFeaturesARM(
+    const safe_VkPhysicalDeviceCooperativeMatrixLayoutsFeaturesARM& copy_src) {
+    sType = copy_src.sType;
+    cooperativeMatrixArmLayouts = copy_src.cooperativeMatrixArmLayouts;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceCooperativeMatrixLayoutsFeaturesARM& safe_VkPhysicalDeviceCooperativeMatrixLayoutsFeaturesARM::operator=(
+    const safe_VkPhysicalDeviceCooperativeMatrixLayoutsFeaturesARM& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    cooperativeMatrixArmLayouts = copy_src.cooperativeMatrixArmLayouts;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceCooperativeMatrixLayoutsFeaturesARM::~safe_VkPhysicalDeviceCooperativeMatrixLayoutsFeaturesARM() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkPhysicalDeviceCooperativeMatrixLayoutsFeaturesARM::initialize(
+    const VkPhysicalDeviceCooperativeMatrixLayoutsFeaturesARM* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    cooperativeMatrixArmLayouts = in_struct->cooperativeMatrixArmLayouts;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceCooperativeMatrixLayoutsFeaturesARM::initialize(
+    const safe_VkPhysicalDeviceCooperativeMatrixLayoutsFeaturesARM* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    cooperativeMatrixArmLayouts = copy_src->cooperativeMatrixArmLayouts;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
 safe_VkPhysicalDeviceShaderMixedFloatDotProductFeaturesVALVE::safe_VkPhysicalDeviceShaderMixedFloatDotProductFeaturesVALVE(
     const VkPhysicalDeviceShaderMixedFloatDotProductFeaturesVALVE* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
     bool copy_pnext)
