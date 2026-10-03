@@ -49,6 +49,15 @@ safe_VkAccelerationStructureGeometryKHR::safe_VkAccelerationStructureGeometryKHR
         } else if (geometryType == VK_GEOMETRY_TYPE_AABBS_KHR) {
             geometry.aabbs.pNext = SafePnextCopy(in_struct->geometry.aabbs.pNext, copy_state);
         }
+    } else {
+        // geometry was shallow copied, don't keep (and later free) the application's pNext chain
+        if (geometryType == VK_GEOMETRY_TYPE_INSTANCES_KHR) {
+            geometry.instances.pNext = nullptr;
+        } else if (geometryType == VK_GEOMETRY_TYPE_TRIANGLES_KHR) {
+            geometry.triangles.pNext = nullptr;
+        } else if (geometryType == VK_GEOMETRY_TYPE_AABBS_KHR) {
+            geometry.aabbs.pNext = nullptr;
+        }
     }
     if (is_host && geometryType == VK_GEOMETRY_TYPE_INSTANCES_KHR) {
         if (geometry.instances.arrayOfPointers) {
@@ -232,6 +241,13 @@ void safe_VkAccelerationStructureGeometryKHR::initialize(const VkAccelerationStr
     geometry = in_struct->geometry;
     flags = in_struct->flags;
     pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    if (geometryType == VK_GEOMETRY_TYPE_INSTANCES_KHR) {
+        geometry.instances.pNext = SafePnextCopy(in_struct->geometry.instances.pNext, copy_state);
+    } else if (geometryType == VK_GEOMETRY_TYPE_TRIANGLES_KHR) {
+        geometry.triangles.pNext = SafePnextCopy(in_struct->geometry.triangles.pNext, copy_state);
+    } else if (geometryType == VK_GEOMETRY_TYPE_AABBS_KHR) {
+        geometry.aabbs.pNext = SafePnextCopy(in_struct->geometry.aabbs.pNext, copy_state);
+    }
 
     if (is_host && geometryType == VK_GEOMETRY_TYPE_INSTANCES_KHR) {
         if (geometry.instances.arrayOfPointers) {
@@ -269,6 +285,22 @@ void safe_VkAccelerationStructureGeometryKHR::initialize(const VkAccelerationStr
 
 void safe_VkAccelerationStructureGeometryKHR::initialize(const safe_VkAccelerationStructureGeometryKHR* copy_src,
                                                          [[maybe_unused]] PNextCopyState* copy_state) {
+    if (copy_src == this) return;
+
+    // The host allocation map doesn't overwrite existing entries, so the old one has to be removed first
+    auto iter = GetAccelStructGeomHostAllocMap().pop(this);
+    if (iter != GetAccelStructGeomHostAllocMap().end()) {
+        delete iter->second;
+    }
+    FreePnextChain(pNext);
+    if (geometryType == VK_GEOMETRY_TYPE_INSTANCES_KHR) {
+        FreePnextChain(geometry.instances.pNext);
+    } else if (geometryType == VK_GEOMETRY_TYPE_TRIANGLES_KHR) {
+        FreePnextChain(geometry.triangles.pNext);
+    } else if (geometryType == VK_GEOMETRY_TYPE_AABBS_KHR) {
+        FreePnextChain(geometry.aabbs.pNext);
+    }
+
     sType = copy_src->sType;
     geometryType = copy_src->geometryType;
     geometry = copy_src->geometry;
@@ -341,11 +373,11 @@ void safe_VkRayTracingPipelineCreateInfoCommon::initialize(const VkRayTracingPip
         for (uint32_t i = 0; i < groupCount; ++i) {
             pGroups[i].sType = nvStruct.pGroups[i].sType;
             pGroups[i].pNext = nvStruct.pGroups[i].pNext;
+            nvStruct.pGroups[i].pNext = nullptr;
             pGroups[i].type = nvStruct.pGroups[i].type;
             pGroups[i].generalShader = nvStruct.pGroups[i].generalShader;
             pGroups[i].closestHitShader = nvStruct.pGroups[i].closestHitShader;
             pGroups[i].anyHitShader = nvStruct.pGroups[i].anyHitShader;
-            pGroups[i].intersectionShader = nvStruct.pGroups[i].intersectionShader;
             pGroups[i].intersectionShader = nvStruct.pGroups[i].intersectionShader;
             pGroups[i].pShaderGroupCaptureReplayHandle = nullptr;
         }
@@ -354,6 +386,7 @@ void safe_VkRayTracingPipelineCreateInfoCommon::initialize(const VkRayTracingPip
 
 void safe_VkRayTracingPipelineCreateInfoCommon::initialize(const VkRayTracingPipelineCreateInfoKHR* pCreateInfo) {
     safe_VkRayTracingPipelineCreateInfoKHR::initialize(pCreateInfo);
+    maxRecursionDepth = 0;  // NV specific
 }
 
 safe_VkGraphicsPipelineCreateInfo::safe_VkGraphicsPipelineCreateInfo(const VkGraphicsPipelineCreateInfo* in_struct,
@@ -1056,6 +1089,7 @@ safe_VkAccelerationStructureBuildGeometryInfoKHR::safe_VkAccelerationStructureBu
     pGeometries = nullptr;
     ppGeometries = nullptr;
     scratchData.initialize(&copy_src.scratchData);
+    pNext = SafePnextCopy(copy_src.pNext);
 
     if (geometryCount) {
         if (copy_src.ppGeometries) {
@@ -1096,6 +1130,7 @@ safe_VkAccelerationStructureBuildGeometryInfoKHR& safe_VkAccelerationStructureBu
     pGeometries = nullptr;
     ppGeometries = nullptr;
     scratchData.initialize(&copy_src.scratchData);
+    pNext = SafePnextCopy(copy_src.pNext);
 
     if (geometryCount) {
         if (copy_src.ppGeometries) {
@@ -1180,6 +1215,7 @@ void safe_VkAccelerationStructureBuildGeometryInfoKHR::initialize(const safe_VkA
     pGeometries = nullptr;
     ppGeometries = nullptr;
     scratchData.initialize(&copy_src->scratchData);
+    pNext = SafePnextCopy(copy_src->pNext);
 
     if (geometryCount) {
         if (copy_src->ppGeometries) {
