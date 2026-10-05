@@ -347,8 +347,8 @@ std::string LayerSettings::GetEnvSetting(const char *pSettingName) {
 std::string LayerSettings::GetFileSetting(const char *pSettingName) {
     const std::string file_setting_name = vl::GetFileSettingName(this->layer_name.c_str(), pSettingName);
 
-    std::map<std::string, std::string>::const_iterator it;
-    if ((it = this->setting_file_values.find(file_setting_name)) == this->setting_file_values.end()) {
+    const std::map<std::string, std::string>::const_iterator it = this->setting_file_values.find(file_setting_name);
+    if (it == this->setting_file_values.end()) {
         return "";
     } else {
         return it->second;
