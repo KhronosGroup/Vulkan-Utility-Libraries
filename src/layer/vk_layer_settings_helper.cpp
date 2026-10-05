@@ -25,7 +25,7 @@ static std::string Merge(const std::vector<std::string> &strings) {
 
 VkResult vkuGetLayerSettingValue(VkuLayerSettingSet layerSettingSet, const char *pSettingName, bool &settingValue) {
     uint32_t value_count = 1;
-    VkBool32 pValues;
+    VkBool32 pValues = settingValue ? VK_TRUE : VK_FALSE;
     VkResult result =
         vkuGetLayerSettingValues(layerSettingSet, pSettingName, VKU_LAYER_SETTING_TYPE_BOOL32, &value_count, &pValues);
     settingValue = pValues == VK_TRUE;
