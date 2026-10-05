@@ -193,7 +193,8 @@ VkResult vkuGetLayerSettingValues(VkuLayerSettingSet layerSettingSet, const char
 
     if (value_count > 0) {
         std::vector<const char *> values(value_count);
-        result = vkuGetLayerSettingValues(layerSettingSet, pSettingName, VKU_LAYER_SETTING_TYPE_STRING, &value_count, &values[0]);
+        result = vkuGetLayerSettingValues(layerSettingSet, pSettingName, VKU_LAYER_SETTING_TYPE_STRING, &value_count,
+                                          static_cast<void *>(&values[0]));
         settingValues.assign(values.begin(), values.end());
     }
     return result;
