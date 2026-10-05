@@ -86,6 +86,7 @@ struct range {
     bool strictly_greater(const index_type &index) const { return index < begin; }
 
     range &operator=(const range &rhs) {
+        if (this == &rhs) return *this;
         begin = rhs.begin;
         end = rhs.end;
         return *this;
@@ -462,6 +463,7 @@ class range_map {
         iterator_impl(const iterator_impl &other) : pos_(other.pos_) {}
 
         iterator_impl &operator=(const iterator_impl &rhs) {
+            if (this == &rhs) return *this;
             pos_ = rhs.pos_;
             return *this;
         }
@@ -498,6 +500,7 @@ class range_map {
 
       public:
         const_iterator &operator=(const const_iterator &other) {
+            if (&other == this) return *this;
             Base::operator=(other);
             return *this;
         }
@@ -775,6 +778,7 @@ class small_range_map {
             return *this;
         }
         IteratorImpl &operator=(const IteratorImpl &other) {
+            if (&other == this) return *this;
             map_ = other.map_;
             pos_ = other.pos_;
             return *this;
