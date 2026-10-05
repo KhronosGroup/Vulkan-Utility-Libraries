@@ -226,14 +226,23 @@ class SafeStructOutputGenerator(BaseGenerator):
 
             if struct.name == 'VkShaderModuleCreateInfo':
                 out.append('''
-                    // Primarily intended for use by GPUAV when replacing shader module code with instrumented code
-                    template<typename Container>
-                    void SetCode(const Container &code) {
-                        delete[] pCode;
-                        codeSize = static_cast<uint32_t>(code.size() * sizeof(uint32_t));
-                        pCode = new uint32_t[code.size()];
-                        std::copy(&code.front(), &code.back() + 1, const_cast<uint32_t*>(pCode));
+                    // Primarily intended for use by GPU-AV when replacing shader module code with instrumented code.
+                    // pCode points at the caller's memory instead of a copy of it, so the caller must keep it alive
+                    // (and not move it) until pCode is replaced or this struct is destroyed.
+                    // Copying this struct still makes an owned deep copy.
+                    // https://github.com/KhronosGroup/Vulkan-ValidationLayers/issues/9242
+                    void SetCodeNoCopy(const uint32_t *code, size_t code_size) {
+                        if (owns_code) {
+                            delete[] reinterpret_cast<const uint8_t *>(pCode);
+                        }
+                        owns_code = false;
+                        codeSize = code_size;
+                        pCode = code;
                     }
+
+                    // Not part of VkShaderModuleCreateInfo, so it goes after the members ptr() reinterprets
+                    // Will be |false| only after SetCodeNoCopy()
+                    bool owns_code{true};
                     ''')
             out.append('};\n')
         out.extend(guard_helper.add_guard(None))
@@ -441,6 +450,7 @@ void FreePnextChain(const void *pNext) {
                     }
                 ''',
                 'VkShaderModuleCreateInfo' : '''
+                    owns_code = true;
                     if (in_struct->pCode) {
                         pCode = reinterpret_cast<uint32_t *>(new uint8_t[codeSize]);
                         memcpy((void *)pCode, (void *)in_struct->pCode, codeSize);
@@ -504,7 +514,7 @@ void FreePnextChain(const void *pNext) {
 
         custom_destruct_txt = {
                 'VkShaderModuleCreateInfo' : '''
-                    if (pCode)
+                    if (owns_code && pCode)
                         delete[] reinterpret_cast<const uint8_t *>(pCode);
                 ''',
             }
