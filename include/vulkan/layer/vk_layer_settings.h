@@ -71,7 +71,7 @@ const VkLayerSettingsCreateInfoEXT *vkuNextLayerSettingsCreateInfo(const VkLayer
 
 // Return the list of Unknown setting in VkLayerSettingsCreateInfoEXT
 VkResult vkuGetUnknownSettings(VkuLayerSettingSet layerSettingSet, uint32_t layerSettingsCount, const char **pLayerSettings,
-                               const VkLayerSettingsCreateInfoEXT *pFirstCreateInfo, uint32_t *pUnknownSettingCount,
+                               const VkLayerSettingsCreateInfoEXT *pCreateInfo, uint32_t *pUnknownSettingCount,
                                const char **pUnknownSettings);
 
 #ifdef __cplusplus
