@@ -521,7 +521,8 @@ TEST(test_layer_setting_api, vkuGetLayerSettingValues_Frameset) {
 TEST(test_layer_setting_api, vkuGetLayerSettingValues_String) {
     std::vector<const char*> input_values{"VALUE_A", "VALUE_B"};
     std::vector<VkLayerSettingEXT> settings{{"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_STRING_EXT,
-                                             static_cast<uint32_t>(input_values.size()), &input_values[0]}};
+                                             static_cast<uint32_t>(input_values.size()),
+                                             static_cast<const void*>(&input_values[0])}};
 
     VkLayerSettingsCreateInfoEXT layer_settings_create_info{VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT, nullptr,
                                                             static_cast<uint32_t>(settings.size()), &settings[0]};
@@ -540,16 +541,16 @@ TEST(test_layer_setting_api, vkuGetLayerSettingValues_String) {
     std::vector<const char*> values(value_count);
 
     value_count = 1;
-    VkResult result_incomplete =
-        vkuGetLayerSettingValues(layerSettingSet, "my_setting", VKU_LAYER_SETTING_TYPE_STRING, &value_count, &values[0]);
+    VkResult result_incomplete = vkuGetLayerSettingValues(layerSettingSet, "my_setting", VKU_LAYER_SETTING_TYPE_STRING,
+                                                          &value_count, static_cast<void*>(&values[0]));
     EXPECT_EQ(VK_INCOMPLETE, result_incomplete);
     EXPECT_STREQ("VALUE_A", values[0]);
     EXPECT_STREQ(nullptr, values[1]);
     EXPECT_EQ(1u, value_count);
 
     value_count = 2;
-    VkResult result_complete =
-        vkuGetLayerSettingValues(layerSettingSet, "my_setting", VKU_LAYER_SETTING_TYPE_STRING, &value_count, &values[0]);
+    VkResult result_complete = vkuGetLayerSettingValues(layerSettingSet, "my_setting", VKU_LAYER_SETTING_TYPE_STRING, &value_count,
+                                                        static_cast<void*>(&values[0]));
     EXPECT_EQ(VK_SUCCESS, result_complete);
     EXPECT_STREQ("VALUE_A", values[0]);
     EXPECT_STREQ("VALUE_B", values[1]);

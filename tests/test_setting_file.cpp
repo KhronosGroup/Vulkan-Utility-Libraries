@@ -313,16 +313,16 @@ TEST(test_layer_setting_file, vkuGetLayerSettingValues_String) {
     std::vector<const char *> values(value_count);
 
     value_count = 1;
-    VkResult result_incomplete =
-        vkuGetLayerSettingValues(layerSettingSet, "my_setting", VKU_LAYER_SETTING_TYPE_STRING, &value_count, &values[0]);
+    VkResult result_incomplete = vkuGetLayerSettingValues(layerSettingSet, "my_setting", VKU_LAYER_SETTING_TYPE_STRING,
+                                                          &value_count, static_cast<void *>(&values[0]));
     EXPECT_EQ(VK_INCOMPLETE, result_incomplete);
     EXPECT_STREQ("VALUE_A", values[0]);
     EXPECT_STREQ(nullptr, values[1]);
     EXPECT_EQ(1u, value_count);
 
     value_count = 2;
-    VkResult result_complete =
-        vkuGetLayerSettingValues(layerSettingSet, "my_setting", VKU_LAYER_SETTING_TYPE_STRING, &value_count, &values[0]);
+    VkResult result_complete = vkuGetLayerSettingValues(layerSettingSet, "my_setting", VKU_LAYER_SETTING_TYPE_STRING, &value_count,
+                                                        static_cast<void *>(&values[0]));
     EXPECT_EQ(VK_SUCCESS, result_complete);
     EXPECT_STREQ("VALUE_A", values[0]);
     EXPECT_STREQ("VALUE_B", values[1]);
