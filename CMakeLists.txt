@@ -88,6 +88,16 @@ if (VUL_ENABLE_INSTALL)
         NAMESPACE Vulkan::
     )
 
+    # Create layer settings manifest validation files
+    install(
+        PROGRAMS "scripts/validate_json_schema.py"
+        DESTINATION "${CMAKE_INSTALL_DATADIR}/vulkan"
+    )
+    install(
+        FILES "docs/layers_settings_schema.json"
+        DESTINATION "${CMAKE_INSTALL_DATADIR}/vulkan"
+    )
+
     # Create VulkanUtilityLibrariesConfig.cmake
     set(VUL_EXPORT_TARGETS ${CMAKE_INSTALL_LIBDIR}/cmake/VulkanUtilityLibraries/VulkanUtilityLibraries-targets.cmake)
     file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/VulkanUtilityLibrariesConfig.cmake.in" [=[
