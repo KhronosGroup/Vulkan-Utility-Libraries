@@ -97,14 +97,14 @@ class EnumStringHelperOutputGenerator(BaseGenerator):
             out.append(f'''
 static inline std::string string_{bitmask.flagName}({bitmask.flagName} input_value) {{
 {multiBitChecks}    std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {{
-        if (input_value & 1) {{
+        if (input_value & 1u) {{
             if( !ret.empty()) ret.append("|");
             ret.append(string_{bitmask.name}(static_cast<{groupType}>(1{intSuffix} << index)));
         }}
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }}
     if (ret.empty()) ret.append("{bitmask.flagName}(0)");
     return ret;
