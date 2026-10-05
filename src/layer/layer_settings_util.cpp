@@ -107,7 +107,8 @@ char GetEnvDelimiter() {
 char FindDelimiter(const std::string &s) {
     if (s.find(',') != std::string::npos) {
         return ',';
-    } else if (s.find(GetEnvDelimiter()) != std::string::npos) {
+    }
+    if (s.find(GetEnvDelimiter()) != std::string::npos) {
         return GetEnvDelimiter();
     } else {
         return ',';
@@ -214,12 +215,15 @@ VkuFrameset ToFrameSet(const std::string &s) {
 
     const std::vector<std::string> &frameset_split = vl::Split(s, '-');
     if (frameset_split.size() >= 1) {
+        // NOLINTNEXTLINE(bugprone-unchecked-string-to-number-conversion,cert-err34-c)
         frameset.first = static_cast<std::uint32_t>(std::atoll(frameset_split[0].c_str()));
     }
     if (frameset_split.size() >= 2) {
+        // NOLINTNEXTLINE(bugprone-unchecked-string-to-number-conversion,cert-err34-c)
         frameset.count = static_cast<std::uint32_t>(std::atoll(frameset_split[1].c_str()));
     }
     if (frameset_split.size() >= 3) {
+        // NOLINTNEXTLINE(bugprone-unchecked-string-to-number-conversion,cert-err34-c)
         frameset.step = static_cast<std::uint32_t>(std::atoll(frameset_split[2].c_str()));
     }
 
@@ -256,7 +260,7 @@ bool IsFloat(const std::string &s) {
     return std::regex_search(s, FRAME_REGEX);
 }
 
-std::string FormatString(const char *message, ...) {
+std::string FormatString(const char *message, ...) {  // NOLINT(cert-dcl50-cpp)
     std::size_t const STRING_BUFFER(4096);
 
     assert(message != nullptr);
@@ -266,7 +270,7 @@ std::string FormatString(const char *message, ...) {
     va_list list;
 
     va_start(list, message);
-    vsnprintf(buffer, STRING_BUFFER, message, list);
+    vsnprintf(buffer, STRING_BUFFER, message, list);  // NOLINT(cert-err33-c)
     va_end(list);
 
     return buffer;

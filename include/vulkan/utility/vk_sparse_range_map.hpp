@@ -71,9 +71,7 @@ struct range {
             // all invalid < valid, allows map/set validity check by looking at begin()->first
             // all invalid are equal, thus only equal if this is invalid and rhs is valid
             result = rhs.valid();
-        } else if (begin < rhs.begin) {
-            result = true;
-        } else if ((begin == rhs.begin) && (end < rhs.end)) {
+        } else if ((begin < rhs.begin) || ((begin == rhs.begin) && (end < rhs.end))) {
             result = true;  // Simple common case -- boundary case require equality check for correctness.
         }
         return result;
@@ -1604,7 +1602,7 @@ const MappedType &evaluate(const CachedLowerBound &clb, const MappedType &defaul
     if (clb->valid) {
         return clb->lower_bound->second;
     }
-    return default_value;
+    return default_value;  // NOLINT(bugprone-return-const-ref-from-parameter)
 }
 
 // Split a range into pieces bound by the intersection of the iterator's range and the supplied range

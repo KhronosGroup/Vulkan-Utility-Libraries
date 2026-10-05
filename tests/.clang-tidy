@@ -1,0 +1,9 @@
+# Copyright 2026 The Khronos Group Inc.
+# Copyright 2026 Valve Corporation
+# Copyright 2026 LunarG, Inc.
+
+# SPDX-License-Identifier: Apache-2.0
+
+---
+InheritParentConfig: true
+Checks:   -misc-const-correctness

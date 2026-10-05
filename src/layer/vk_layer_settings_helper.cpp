@@ -15,7 +15,7 @@ static std::string Merge(const std::vector<std::string> &strings) {
 
     for (std::size_t i = 0, n = strings.size(); i < n; ++i) {
         if (!result.empty()) {
-            result += ",";
+            result += ',';
         }
         result += strings[i];
     }
