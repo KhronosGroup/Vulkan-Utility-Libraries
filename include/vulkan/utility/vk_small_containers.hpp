@@ -55,7 +55,8 @@ class vector {
         other.clear();
     }
 
-    vector(size_type size, const value_type &value = value_type()) : size_(0), capacity_(N), working_store_(GetSmallStore()) {
+    explicit vector(size_type size, const value_type &value = value_type()) noexcept
+        : size_(0), capacity_(N), working_store_(GetSmallStore()) {
         reserve(size);
         auto dest = GetWorkingStore();
         for (size_type i = 0; i < size; i++) {

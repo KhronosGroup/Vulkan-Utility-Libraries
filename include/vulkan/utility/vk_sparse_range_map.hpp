@@ -120,12 +120,12 @@ class range_view {
         }
         const index_type &operator*() const { return current; }
         bool operator!=(const iterator &rhs) const { return current != rhs.current; }
-        iterator(index_type value) : current(value) {}
+        explicit iterator(index_type value) : current(value) {}
 
       private:
         index_type current;
     };
-    range_view(const Range &range) : range_(range) {}
+    explicit range_view(const Range &range) : range_(range) {}
     const iterator begin() const { return iterator(range_.begin); }
     const iterator end() const { return iterator(range_.end); }
 
@@ -456,7 +456,7 @@ class range_map {
         WrappedIterator pos_;
 
         // Create an iterator at a specific internal state -- only from the parent container
-        iterator_impl(const WrappedIterator &pos) : pos_(pos) {}
+        explicit iterator_impl(const WrappedIterator &pos) : pos_(pos) {}
 
       public:
         iterator_impl() : iterator_impl(WrappedIterator()) {}
@@ -505,11 +505,11 @@ class range_map {
             return *this;
         }
         const_iterator(const const_iterator &other) : Base(other) {}
-        const_iterator(const iterator &it) : Base(ImplConstIterator(it.get_pos())) {}
+        explicit const_iterator(const iterator &it) : Base(ImplConstIterator(it.get_pos())) {}
         const_iterator() : Base() {}
 
       private:
-        const_iterator(const ImplConstIterator &pos) : Base(pos) {}
+        explicit const_iterator(const ImplConstIterator &pos) : Base(pos) {}
     };
 
   protected:
@@ -816,7 +816,7 @@ class small_range_map {
         friend small_range_map;
 
       public:
-        const_iterator(const iterator &it) : Base(it.get_map(), it.get_pos()) {}
+        explicit const_iterator(const iterator &it) : Base(it.get_map(), it.get_pos()) {}
         const_iterator() : Base() {}
 
       private:
@@ -1104,7 +1104,7 @@ class small_range_map {
     iterator upper_bound(const key_type &key) { return iterator(this, upper_bound_impl(this, key)); }
     const_iterator upper_bound(const key_type &key) const { return const_iterator(this, upper_bound_impl(this, key)); }
 
-    small_range_map(index_type limit = N) : size_(0), limit_(static_cast<SmallIndex>(limit)) {
+    explicit small_range_map(index_type limit = N) : size_(0), limit_(static_cast<SmallIndex>(limit)) {
         assert(limit <= std::numeric_limits<SmallIndex>::max());
         init_range();
     }
