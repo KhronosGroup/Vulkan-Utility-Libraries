@@ -238,3 +238,37 @@ TEST(safe_struct, pnext_add_remove) {
     ASSERT_NE(nullptr, vku::FindStructInPNextChain<VkPhysicalDeviceMeshShaderFeaturesEXT>(sf.pNext));
     ASSERT_NE(nullptr, vku::FindStructInPNextChain<VkPhysicalDeviceRayQueryFeaturesKHR>(sf.pNext));
 }
+
+TEST(safe_struct, shader_module_set_code_no_copy) {
+    const std::array<uint32_t, 3> code = {0x07230203, 0x00010000, 0x12345678};
+    VkShaderModuleCreateInfo module_ci = vku::InitStructHelper();
+    module_ci.codeSize = sizeof(code);
+    module_ci.pCode = code.data();
+
+    const std::array<uint32_t, 2> new_code = {0x07230203, 0x00010600};
+    {
+        vku::safe_VkShaderModuleCreateInfo safe_module_ci(&module_ci);
+        safe_module_ci.SetCodeNoCopy(new_code.data(), sizeof(new_code));
+        ASSERT_FALSE(safe_module_ci.owns_code);
+        ASSERT_EQ(sizeof(new_code), safe_module_ci.codeSize);
+        ASSERT_EQ(new_code.data(), safe_module_ci.pCode);
+
+        vku::safe_VkShaderModuleCreateInfo copy_ci(safe_module_ci);
+        ASSERT_TRUE(copy_ci.owns_code);
+        ASSERT_NE(new_code.data(), copy_ci.pCode);
+        ASSERT_EQ(new_code[1], copy_ci.pCode[1]);
+
+        vku::safe_VkShaderModuleCreateInfo assigned_ci;
+        assigned_ci = safe_module_ci;
+        ASSERT_TRUE(assigned_ci.owns_code);
+        ASSERT_NE(new_code.data(), assigned_ci.pCode);
+    }
+    {
+        vku::safe_VkShaderModuleCreateInfo safe_module_ci(&module_ci);
+        safe_module_ci.SetCodeNoCopy(new_code.data(), sizeof(new_code));
+        safe_module_ci.initialize(&module_ci);
+        ASSERT_TRUE(safe_module_ci.owns_code);
+        ASSERT_NE(code.data(), safe_module_ci.pCode);
+        ASSERT_EQ(code[2], safe_module_ci.pCode[2]);
+    }
+}

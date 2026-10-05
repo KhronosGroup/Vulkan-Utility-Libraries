@@ -2638,6 +2638,7 @@ safe_VkShaderModuleCreateInfo::safe_VkShaderModuleCreateInfo(const VkShaderModul
     if (copy_pnext) {
         pNext = SafePnextCopy(in_struct->pNext, copy_state);
     }
+    owns_code = true;
     if (in_struct->pCode) {
         pCode = reinterpret_cast<uint32_t*>(new uint8_t[codeSize]);
         memcpy((void*)pCode, (void*)in_struct->pCode, codeSize);
@@ -2654,6 +2655,7 @@ safe_VkShaderModuleCreateInfo::safe_VkShaderModuleCreateInfo(const safe_VkShader
     pCode = nullptr;
     pNext = SafePnextCopy(copy_src.pNext);
 
+    owns_code = true;
     if (copy_src.pCode) {
         pCode = reinterpret_cast<uint32_t*>(new uint8_t[codeSize]);
         memcpy((void*)pCode, (void*)copy_src.pCode, codeSize);
@@ -2663,7 +2665,7 @@ safe_VkShaderModuleCreateInfo::safe_VkShaderModuleCreateInfo(const safe_VkShader
 safe_VkShaderModuleCreateInfo& safe_VkShaderModuleCreateInfo::operator=(const safe_VkShaderModuleCreateInfo& copy_src) {
     if (&copy_src == this) return *this;
 
-    if (pCode) delete[] reinterpret_cast<const uint8_t*>(pCode);
+    if (owns_code && pCode) delete[] reinterpret_cast<const uint8_t*>(pCode);
     FreePnextChain(pNext);
 
     sType = copy_src.sType;
@@ -2672,6 +2674,7 @@ safe_VkShaderModuleCreateInfo& safe_VkShaderModuleCreateInfo::operator=(const sa
     pCode = nullptr;
     pNext = SafePnextCopy(copy_src.pNext);
 
+    owns_code = true;
     if (copy_src.pCode) {
         pCode = reinterpret_cast<uint32_t*>(new uint8_t[codeSize]);
         memcpy((void*)pCode, (void*)copy_src.pCode, codeSize);
@@ -2681,13 +2684,13 @@ safe_VkShaderModuleCreateInfo& safe_VkShaderModuleCreateInfo::operator=(const sa
 }
 
 safe_VkShaderModuleCreateInfo::~safe_VkShaderModuleCreateInfo() {
-    if (pCode) delete[] reinterpret_cast<const uint8_t*>(pCode);
+    if (owns_code && pCode) delete[] reinterpret_cast<const uint8_t*>(pCode);
     FreePnextChain(pNext);
 }
 
 void safe_VkShaderModuleCreateInfo::initialize(const VkShaderModuleCreateInfo* in_struct,
                                                [[maybe_unused]] PNextCopyState* copy_state) {
-    if (pCode) delete[] reinterpret_cast<const uint8_t*>(pCode);
+    if (owns_code && pCode) delete[] reinterpret_cast<const uint8_t*>(pCode);
     FreePnextChain(pNext);
     sType = in_struct->sType;
     flags = in_struct->flags;
@@ -2695,6 +2698,7 @@ void safe_VkShaderModuleCreateInfo::initialize(const VkShaderModuleCreateInfo* i
     pCode = nullptr;
     pNext = SafePnextCopy(in_struct->pNext, copy_state);
 
+    owns_code = true;
     if (in_struct->pCode) {
         pCode = reinterpret_cast<uint32_t*>(new uint8_t[codeSize]);
         memcpy((void*)pCode, (void*)in_struct->pCode, codeSize);
@@ -2709,6 +2713,7 @@ void safe_VkShaderModuleCreateInfo::initialize(const safe_VkShaderModuleCreateIn
     pCode = nullptr;
     pNext = SafePnextCopy(copy_src->pNext);
 
+    owns_code = true;
     if (copy_src->pCode) {
         pCode = reinterpret_cast<uint32_t*>(new uint8_t[codeSize]);
         memcpy((void*)pCode, (void*)copy_src->pCode, codeSize);
