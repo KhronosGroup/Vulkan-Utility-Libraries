@@ -18,9 +18,7 @@
 #include <cstdlib>
 #include <cstring>
 #include <cstring>
-#include <memory>
 #include <system_error>
-#include <unordered_map>
 
 // This is used only for unit tests in test_layer_setting_file
 void test_helper_SetLayerSetting(VkuLayerSettingSet layerSettingSet, const char *pSettingName, const char *pValue) {

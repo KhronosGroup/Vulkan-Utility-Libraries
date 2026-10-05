@@ -9,7 +9,6 @@
 #define MAGIC_ENUM_RANGE_MIN 0
 #define MAGIC_ENUM_RANGE_MAX 512
 #include <magic_enum.hpp>
-#include <magic_enum_flags.hpp>
 #include <vulkan/utility/vk_format_utils.h>
 
 #include <string_view>
