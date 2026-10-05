@@ -45,7 +45,7 @@ VkResult vkuCreateLayerSettingSet(const char *pLayerName, const VkLayerSettingsC
 void vkuDestroyLayerSettingSet(VkuLayerSettingSet layerSettingSet, const VkAllocationCallbacks *pAllocator) {
     (void)pAllocator;
 
-    vl::LayerSettings *layer_setting_set = (vl::LayerSettings *)layerSettingSet;
+    const vl::LayerSettings *layer_setting_set = (vl::LayerSettings *)layerSettingSet;
     delete layer_setting_set;
 }
 
@@ -678,7 +678,7 @@ const VkLayerSettingsCreateInfoEXT *vkuNextLayerSettingsCreateInfo(const VkLayer
     return found;
 }
 
-static bool vkuHasSetting(uint32_t settingsCount, const char **pSettings, const char *searchedSettings) {
+static bool vkuHasSetting(uint32_t settingsCount, const char *const *pSettings, const char *searchedSettings) {
     for (uint32_t setting_index = 0; setting_index < settingsCount; ++setting_index) {
         if (std::strcmp(pSettings[setting_index], searchedSettings) == 0) {
             return true;
@@ -697,7 +697,7 @@ VkResult vkuGetUnknownSettings(VkuLayerSettingSet layerSettingSet, uint32_t laye
         return VK_ERROR_INITIALIZATION_FAILED;
     }
 
-    vl::LayerSettings *layer_setting_set = (vl::LayerSettings *)layerSettingSet;
+    const vl::LayerSettings *layer_setting_set = (vl::LayerSettings *)layerSettingSet;
 
     const VkLayerSettingsCreateInfoEXT *current_create_info = pCreateInfo;
 
