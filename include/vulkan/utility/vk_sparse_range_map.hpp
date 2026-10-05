@@ -590,7 +590,7 @@ class range_map {
     const_iterator find(const key_type &key) const { return const_iterator(impl_map_.find(key)); }
 
     iterator find(const index_type &index) {
-        auto lower = lower_bound(range<index_type>(index, index + 1));
+        const auto lower = lower_bound(range<index_type>(index, index + 1));
         if (!at_end(lower) && lower->first.includes(index)) {
             return lower;
         }
@@ -629,12 +629,12 @@ class range_map {
 
         // Look for range conflicts (and an insertion point, which makes the lower_bound *not* wasted work)
         // we don't have to check upper if just check that lower doesn't intersect (which it would if lower != upper)
-        auto lower = lower_bound_impl(key);
+        const auto lower = lower_bound_impl(key);
         if (at_impl_end(lower) || !lower->first.intersects(key)) {
             // range is not even partially overlapped, and lower is strictly > than key
-            auto impl_insert = impl_map_.emplace_hint(lower, value);
+            const auto impl_insert = impl_map_.emplace_hint(lower, value);
             // auto impl_insert = impl_map_.emplace(value);
-            iterator wrap_it(impl_insert);
+            const iterator wrap_it(impl_insert);
             return std::make_pair(wrap_it, true);
         }
         // We don't replace
@@ -2027,8 +2027,8 @@ void consolidate(RangeMap &map) {
 
 // Returns the intersection of the ranges [x, x + x_size) and [y, y + y_size)
 static inline range<int64_t> GetRangeIntersection(int64_t x, uint64_t x_size, int64_t y, uint64_t y_size) {
-    int64_t intersection_min = std::max(x, y);
-    int64_t intersection_max = std::min(x + static_cast<int64_t>(x_size), y + static_cast<int64_t>(y_size));
+    const int64_t intersection_min = std::max(x, y);
+    const int64_t intersection_max = std::min(x + static_cast<int64_t>(x_size), y + static_cast<int64_t>(y_size));
 
     return {intersection_min, intersection_max};
 }

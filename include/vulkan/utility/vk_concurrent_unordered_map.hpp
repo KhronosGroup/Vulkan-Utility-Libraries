@@ -67,9 +67,9 @@ class unordered_map {
 
     template <typename... Args>
     bool insert(const Key &key, Args &&...args) {
-        uint32_t h = ConcurrentMapHashObject(key);
-        WriteLockGuard lock(locks[h].lock);
-        auto ret = maps[h].emplace(key, std::forward<Args>(args)...);
+        const uint32_t h = ConcurrentMapHashObject(key);
+        const WriteLockGuard lock(locks[h].lock);
+        const auto ret = maps[h].emplace(key, std::forward<Args>(args)...);
         return ret.second;
     }
 
@@ -115,10 +115,10 @@ class unordered_map {
     FindResult cend() const { return end(); }
 
     FindResult find(const Key &key) const {
-        uint32_t h = ConcurrentMapHashObject(key);
-        ReadLockGuard lock(locks[h].lock);
+        const uint32_t h = ConcurrentMapHashObject(key);
+        const ReadLockGuard lock(locks[h].lock);
 
-        auto itr = maps[h].find(key);
+        const auto itr = maps[h].find(key);
         const bool found = itr != maps[h].end();
 
         if (found) {
@@ -129,10 +129,10 @@ class unordered_map {
     }
 
     FindResult pop(const Key &key) {
-        uint32_t h = ConcurrentMapHashObject(key);
-        WriteLockGuard lock(locks[h].lock);
+        const uint32_t h = ConcurrentMapHashObject(key);
+        const WriteLockGuard lock(locks[h].lock);
 
-        auto itr = maps[h].find(key);
+        const auto itr = maps[h].find(key);
         const bool found = itr != maps[h].end();
 
         if (found) {
@@ -192,7 +192,7 @@ class unordered_map {
     mutable std::array<AlignedSharedMutex, BUCKETS> locks;
 
     uint32_t ConcurrentMapHashObject(const Key &object) const {
-        uint64_t u64 = (uint64_t)(uintptr_t)object;
+        const uint64_t u64 = (uint64_t)(uintptr_t)object;
         uint32_t hash = (uint32_t)(u64 >> 32) + (uint32_t)u64;
         hash ^= (hash >> BUCKETSLOG2) ^ (hash >> (2 * BUCKETSLOG2));
         hash &= (BUCKETS - 1);

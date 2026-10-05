@@ -271,7 +271,7 @@ class vector {
         } else if ((capacity_ > kSmallCapacity) && (capacity_ > size_)) {
             auto source = GetWorkingStore();
             // Keep the source from disappearing until the end of the function
-            auto old_store = std::unique_ptr<BackingStore[]>(std::move(large_store_));
+            const auto old_store = std::unique_ptr<BackingStore[]>(std::move(large_store_));
             assert(!large_store_);
             if (size_ < kSmallCapacity) {
                 capacity_ = kSmallCapacity;

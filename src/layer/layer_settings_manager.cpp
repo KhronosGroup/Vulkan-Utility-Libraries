@@ -133,7 +133,7 @@ LayerSettings::LayerSettings(const char *pLayerName, const VkLayerSettingsCreate
     (void)pAllocator;
     assert(pLayerName != nullptr);
 
-    std::filesystem::path settings_file = this->FindSettingsFile();
+    const std::filesystem::path settings_file = this->FindSettingsFile();
     this->ParseSettingsFile(settings_file);
 }
 
@@ -304,7 +304,7 @@ bool LayerSettings::HasEnvSetting(const char *pSettingName) {
 bool LayerSettings::HasFileSetting(const char *pSettingName) {
     assert(pSettingName != nullptr);
 
-    std::string file_setting_name = vl::GetFileSettingName(this->layer_name.c_str(), pSettingName);
+    const std::string file_setting_name = vl::GetFileSettingName(this->layer_name.c_str(), pSettingName);
 
     return setting_file_values.find(file_setting_name) != setting_file_values.end();
 }
