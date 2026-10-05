@@ -15,7 +15,6 @@
 #include <cstdlib>
 #include <cstring>
 #include <functional>
-#include <vector>
 
 namespace vku {
 
@@ -77,14 +76,15 @@ uint32_t FindExtension(CreateInfo& ci, const char* extension_name) {
 template <typename CreateInfo>
 bool AddExtension(CreateInfo& ci, const char* extension_name) {
     assert(ci.ptr());  // All safe struct have a ptr() method. Prevent use with non-safe structs.
-    uint32_t pos = FindExtension(ci, extension_name);
+    const uint32_t pos = FindExtension(ci, extension_name);
     if (pos < ci.enabledExtensionCount) {
         // already present
         return false;
     }
     char** exts = new char*[ci.enabledExtensionCount + 1];
     if (ci.ppEnabledExtensionNames) {
-        memcpy(exts, ci.ppEnabledExtensionNames, sizeof(char*) * ci.enabledExtensionCount);
+        memcpy(static_cast<void*>(exts), static_cast<const void*>(ci.ppEnabledExtensionNames),
+               sizeof(char*) * ci.enabledExtensionCount);
     }
     exts[ci.enabledExtensionCount] = SafeStringCopy(extension_name);
     delete[] ci.ppEnabledExtensionNames;
@@ -96,7 +96,7 @@ bool AddExtension(CreateInfo& ci, const char* extension_name) {
 template <typename CreateInfo>
 bool RemoveExtension(CreateInfo& ci, const char* extension_name) {
     assert(ci.ptr());  // All safe struct have a ptr() method. Prevent use with non-safe structs.
-    uint32_t pos = FindExtension(ci, extension_name);
+    const uint32_t pos = FindExtension(ci, extension_name);
     if (pos >= ci.enabledExtensionCount) {
         // not present
         return false;
