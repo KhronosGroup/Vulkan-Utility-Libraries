@@ -49,7 +49,7 @@ constexpr std::size_t get_hardware_destructive_interference_size() { return 64; 
 //
 // snapshot: Return an array of elements (key, value pairs) that satisfy an optional
 // predicate. This can be used as a substitute for iterators in exceptional cases.
-template <typename Key, typename T, int BUCKETSLOG2 = 2, typename Map = std::unordered_map<Key, T>>
+template <typename Key, typename T, unsigned int BUCKETSLOG2 = 2, typename Map = std::unordered_map<Key, T>>
 class unordered_map {
     // Aliases to avoid excessive typing. We can't easily auto these away because
     // there are virtual methods in ValidationObject which return lock guards
@@ -183,7 +183,7 @@ class unordered_map {
     }
 
   private:
-    static const int BUCKETS = (1 << BUCKETSLOG2);
+    static const int BUCKETS = (1u << BUCKETSLOG2);
 
     Map maps[BUCKETS];
     struct alignas(get_hardware_destructive_interference_size()) AlignedSharedMutex {
@@ -193,9 +193,9 @@ class unordered_map {
 
     uint32_t ConcurrentMapHashObject(const Key &object) const {
         const uint64_t u64 = (uint64_t)(uintptr_t)object;
-        uint32_t hash = (uint32_t)(u64 >> 32) + (uint32_t)u64;
+        uint32_t hash = (uint32_t)(u64 >> 32u) + (uint32_t)u64;
         hash ^= (hash >> BUCKETSLOG2) ^ (hash >> (2 * BUCKETSLOG2));
-        hash &= (BUCKETS - 1);
+        hash &= (BUCKETS - 1u);
         return hash;
     }
 };
