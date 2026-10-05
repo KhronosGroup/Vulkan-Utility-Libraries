@@ -297,6 +297,7 @@ TEST(test_layer_setting_cast, vkuGetLayerSettingValues_Frameset) {
     value_count = 0;
     result_complete =
         vkuGetLayerSettingValues(layerSettingSet, "my_setting", VKU_LAYER_SETTING_TYPE_FRAMESET_STRING, &value_count, nullptr);
+    EXPECT_EQ(VK_SUCCESS, result_complete);
     EXPECT_EQ(2u, value_count);
 
     std::vector<const char*> string_values(input_values.size());

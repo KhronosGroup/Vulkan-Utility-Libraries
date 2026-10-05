@@ -76,7 +76,9 @@ struct SomeVkTypes {
     VkImageViewUsageCreateInfo t0{};
     VkImageDrmFormatModifierExplicitCreateInfoEXT t1 = vku::InitStructHelper();
     VkBufferCreateInfo t2 = vku::InitStruct<VkBufferCreateInfo>();
+    // NOLINTNEXTLINE(bugprone-throwing-static-initialization,cert-err58-cpp)
     inline static const auto t3 = vku::InitStruct<VkInstanceCreateInfo>();
+    // NOLINTNEXTLINE(bugprone-throwing-static-initialization,cert-err58-cpp)
     inline static const VkDeviceCreateInfo t4 = vku::InitStructHelper();
 };
 

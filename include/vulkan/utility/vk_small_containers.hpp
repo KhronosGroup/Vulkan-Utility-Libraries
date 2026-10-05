@@ -48,11 +48,11 @@ class vector {
     vector(vector &&other) noexcept : size_(0), capacity_(N), working_store_(GetSmallStore()) {
         if (other.large_store_) {
             MoveLargeStore(other);
+            // Per the spec, when constructing from other, other is guaranteed to be empty after the constructor runs
+            other.clear();
         } else {
             PushBackFrom(std::move(other));
         }
-        // Per the spec, when constructing from other, other is guaranteed to be empty after the constructor runs
-        other.clear();
     }
 
     explicit vector(size_type size, const value_type &value = value_type()) noexcept

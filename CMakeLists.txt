@@ -50,6 +50,16 @@ if (VUL_ENABLE_UBSAN)
     endif()
 endif()
 
+option(USE_CLANG_TIDY "Run clang-tidy on the loader sources as part of the build")
+if (USE_CLANG_TIDY)
+    if (CMAKE_VERSION VERSION_LESS "3.27")
+        message(FATAL_ERROR "USE_CLANG_TIDY requires CMake 3.27 or newer (for the SKIP_LINTING source property)")
+    endif()
+    find_program(CLANG_TIDY_EXE NAMES clang-tidy REQUIRED)
+    set(CMAKE_C_CLANG_TIDY "${CLANG_TIDY_EXE}")
+    set(CMAKE_CXX_CLANG_TIDY "${CLANG_TIDY_EXE}")
+endif()
+
 add_subdirectory(src)
 add_subdirectory(include)
 

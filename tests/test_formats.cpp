@@ -482,7 +482,7 @@ TEST(format_utils, vkuFormatTexelBlockExtent) {
             EXPECT_EQ(extent.depth, 1u);
         }
     }
-    auto extent = vkuFormatTexelBlockExtent(static_cast<VkFormat>(10001));
+    auto extent = vkuFormatTexelBlockExtent(static_cast<VkFormat>(10001));  // NOLINT(clang-analyzer-optin.core.EnumCastOutOfRange)
     EXPECT_EQ(extent.width, 0u);
     EXPECT_EQ(extent.height, 0u);
     EXPECT_EQ(extent.depth, 0u);

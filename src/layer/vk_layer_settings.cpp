@@ -129,6 +129,7 @@ VkResult vkuGetLayerSettingValues(VkuLayerSettingSet layerSettingSet, const char
                     for (std::size_t i = 0, n = values.size(); i < n; ++i) {
                         const std::string &setting_value = vl::ToLower(settings[i]);
                         if (vl::IsInteger(setting_value)) {
+                            // NOLINTNEXTLINE(bugprone-unchecked-string-to-number-conversion, cert-err34-c)
                             values[i] = (std::atoi(setting_value.c_str()) != 0) ? VK_TRUE : VK_FALSE;
                         } else if (setting_value == "true" || setting_value == "false") {
                             values[i] = (setting_value == "true") ? VK_TRUE : VK_FALSE;
@@ -178,6 +179,7 @@ VkResult vkuGetLayerSettingValues(VkuLayerSettingSet layerSettingSet, const char
                     for (std::size_t i = 0, n = values.size(); i < n; ++i) {
                         const std::string &setting_value = vl::ToLower(settings[i]);
                         if (vl::IsInteger(setting_value)) {
+                            // NOLINTNEXTLINE(bugprone-unchecked-string-to-number-conversion,cert-err34-c)
                             values[i] = std::atoi(setting_value.c_str());
                         } else {
                             const std::string &message =
@@ -385,6 +387,7 @@ VkResult vkuGetLayerSettingValues(VkuLayerSettingSet layerSettingSet, const char
                     for (std::size_t i = 0, n = values.size(); i < n; ++i) {
                         const std::string &setting_value = vl::ToLower(settings[i]);
                         if (vl::IsFloat(setting_value)) {
+                            // NOLINTNEXTLINE(bugprone-unchecked-string-to-number-conversion,cert-err34-c)
                             values[i] = static_cast<float>(std::atof(setting_value.c_str()));
                         } else {
                             const std::string &message =
@@ -430,6 +433,7 @@ VkResult vkuGetLayerSettingValues(VkuLayerSettingSet layerSettingSet, const char
                     for (std::size_t i = 0, n = values.size(); i < n; ++i) {
                         const std::string &setting_value = vl::ToLower(settings[i]);
                         if (vl::IsFloat(setting_value)) {
+                            // NOLINTNEXTLINE(bugprone-unchecked-string-to-number-conversion,cert-err34-c)
                             values[i] = std::atof(setting_value.c_str());
                         } else {
                             const std::string &message =
@@ -688,6 +692,7 @@ static bool vkuHasSetting(uint32_t settingsCount, const char *const *pSettings, 
     return false;
 }
 
+// NOLINTNEXTLINE(misc-const-correctness)
 VkResult vkuGetUnknownSettings(VkuLayerSettingSet layerSettingSet, uint32_t layerSettingsCount, const char **pLayerSettings,
                                const VkLayerSettingsCreateInfoEXT *pCreateInfo, uint32_t *pUnknownSettingCount,
                                const char **pUnknownSettings) {

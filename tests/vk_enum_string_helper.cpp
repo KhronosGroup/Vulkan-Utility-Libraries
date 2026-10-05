@@ -16,7 +16,7 @@ TEST(vk_enum_string_helper, string_VkResult) {
 
         auto str = string_VkResult(val);
 
-        EXPECT_STREQ(magic_str.data(), str);
+        EXPECT_STREQ(magic_str.data(), str);  // NOLINT(bugprone-suspicious-stringview-data-usage)
     }
 }
 
@@ -27,7 +27,7 @@ TEST(vk_enum_string_helper, string_VkStructureType) {
 
         auto str = string_VkStructureType(val);
 
-        EXPECT_STREQ(magic_str.data(), str);
+        EXPECT_STREQ(magic_str.data(), str);  // NOLINT(bugprone-suspicious-stringview-data-usage)
     }
 }
 
@@ -38,7 +38,7 @@ TEST(vk_enum_string_helper, string_VkPipelineCacheHeaderVersion) {
 
         auto str = string_VkPipelineCacheHeaderVersion(val);
 
-        EXPECT_STREQ(magic_str.data(), str);
+        EXPECT_STREQ(magic_str.data(), str);  // NOLINT(bugprone-suspicious-stringview-data-usage)
     }
 }
 
@@ -49,7 +49,7 @@ TEST(vk_enum_string_helper, string_VkImageLayout) {
 
         auto str = string_VkImageLayout(val);
 
-        EXPECT_STREQ(magic_str.data(), str);
+        EXPECT_STREQ(magic_str.data(), str);  // NOLINT(bugprone-suspicious-stringview-data-usage)
     }
 }
 
@@ -60,7 +60,7 @@ TEST(vk_enum_string_helper, string_VkObjectType) {
 
         auto str = string_VkObjectType(val);
 
-        EXPECT_STREQ(magic_str.data(), str);
+        EXPECT_STREQ(magic_str.data(), str);  // NOLINT(bugprone-suspicious-stringview-data-usage)
     }
 }
 
@@ -71,7 +71,7 @@ TEST(vk_enum_string_helper, string_VkFormat) {
 
         auto str = string_VkFormat(val);
 
-        EXPECT_STREQ(magic_str.data(), str);
+        EXPECT_STREQ(magic_str.data(), str);  // NOLINT(bugprone-suspicious-stringview-data-usage)
     }
 }
 
