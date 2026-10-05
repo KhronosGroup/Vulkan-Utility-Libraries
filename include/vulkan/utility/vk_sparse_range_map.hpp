@@ -765,7 +765,7 @@ class small_range_map {
         using Value = Value_;
         friend Map;
         Value *operator->() const { return map_->get_value(pos_); }
-        Value &operator*() const { return *(map_->get_value(pos_)); }
+        Value &operator*() const { return *map_->get_value(pos_); }
         IteratorImpl &operator++() {
             pos_ = map_->next_range(pos_);
             return *this;
@@ -1302,12 +1302,12 @@ class small_range_map {
     }
     value_type *get_value(SmallIndex index) {
         assert(index < limit_);  // Must be inbounds
-        return reinterpret_cast<value_type *>(&(backing_store_[index]));
+        return reinterpret_cast<value_type *>(&backing_store_[index]);
     }
     const value_type *get_value(SmallIndex index) const {
         assert(index < limit_);                 // Must be inbounds
         assert(index == ranges_[index].begin);  // Must be the record at begin
-        return reinterpret_cast<const value_type *>(&(backing_store_[index]));
+        return reinterpret_cast<const value_type *>(&backing_store_[index]);
     }
 
     template <typename Value>
