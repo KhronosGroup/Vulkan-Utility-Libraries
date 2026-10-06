@@ -3,7 +3,7 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-name: format
+name: lint
 
 on:
     push:
@@ -32,3 +32,26 @@ jobs:
         # turns a violation into a nonzero exit.
         git ls-files -z -- '*.c' '*.h' '*.cpp' '*.hpp' |
           xargs -0 -r clang-format --dry-run --Werror
+
+  clang-tidy:
+    name: clang-tidy
+    runs-on: ubuntu-26.04
+    timeout-minutes: 30
+
+    env:
+      CLANG_TIDY_VERSION: 22
+
+    steps:
+    - uses: actions/checkout@v7
+    - uses: actions/setup-python@v7
+      with:
+        python-version: '3.10'
+    - run: |
+        cmake -S. -B build \
+        -D CMAKE_BUILD_TYPE=Release \
+        -D UPDATE_DEPS=ON \
+        -D VUL_WERROR=ON \
+        -D BUILD_TESTS=ON \
+        -D USE_CLANG_TIDY=ON \
+        -D CLANG_TIDY_EXE=$(command -v clang-tidy-${CLANG_TIDY_VERSION})
+    - run: cmake --build build

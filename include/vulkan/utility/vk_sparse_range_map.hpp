@@ -71,9 +71,7 @@ struct range {
             // all invalid < valid, allows map/set validity check by looking at begin()->first
             // all invalid are equal, thus only equal if this is invalid and rhs is valid
             result = rhs.valid();
-        } else if (begin < rhs.begin) {
-            result = true;
-        } else if ((begin == rhs.begin) && (end < rhs.end)) {
+        } else if ((begin < rhs.begin) || ((begin == rhs.begin) && (end < rhs.end))) {
             result = true;  // Simple common case -- boundary case require equality check for correctness.
         }
         return result;
@@ -86,6 +84,7 @@ struct range {
     bool strictly_greater(const index_type &index) const { return index < begin; }
 
     range &operator=(const range &rhs) {
+        if (this == &rhs) return *this;
         begin = rhs.begin;
         end = rhs.end;
         return *this;
@@ -119,12 +118,12 @@ class range_view {
         }
         const index_type &operator*() const { return current; }
         bool operator!=(const iterator &rhs) const { return current != rhs.current; }
-        iterator(index_type value) : current(value) {}
+        explicit iterator(index_type value) : current(value) {}
 
       private:
         index_type current;
     };
-    range_view(const Range &range) : range_(range) {}
+    explicit range_view(const Range &range) : range_(range) {}
     const iterator begin() const { return iterator(range_.begin); }
     const iterator end() const { return iterator(range_.end); }
 
@@ -455,13 +454,14 @@ class range_map {
         WrappedIterator pos_;
 
         // Create an iterator at a specific internal state -- only from the parent container
-        iterator_impl(const WrappedIterator &pos) : pos_(pos) {}
+        explicit iterator_impl(const WrappedIterator &pos) : pos_(pos) {}
 
       public:
         iterator_impl() : iterator_impl(WrappedIterator()) {}
         iterator_impl(const iterator_impl &other) : pos_(other.pos_) {}
 
         iterator_impl &operator=(const iterator_impl &rhs) {
+            if (this == &rhs) return *this;
             pos_ = rhs.pos_;
             return *this;
         }
@@ -498,15 +498,16 @@ class range_map {
 
       public:
         const_iterator &operator=(const const_iterator &other) {
+            if (&other == this) return *this;
             Base::operator=(other);
             return *this;
         }
         const_iterator(const const_iterator &other) : Base(other) {}
-        const_iterator(const iterator &it) : Base(ImplConstIterator(it.get_pos())) {}
+        explicit const_iterator(const iterator &it) : Base(ImplConstIterator(it.get_pos())) {}
         const_iterator() : Base() {}
 
       private:
-        const_iterator(const ImplConstIterator &pos) : Base(pos) {}
+        explicit const_iterator(const ImplConstIterator &pos) : Base(pos) {}
     };
 
   protected:
@@ -587,7 +588,7 @@ class range_map {
     const_iterator find(const key_type &key) const { return const_iterator(impl_map_.find(key)); }
 
     iterator find(const index_type &index) {
-        auto lower = lower_bound(range<index_type>(index, index + 1));
+        const auto lower = lower_bound(range<index_type>(index, index + 1));
         if (!at_end(lower) && lower->first.includes(index)) {
             return lower;
         }
@@ -626,12 +627,12 @@ class range_map {
 
         // Look for range conflicts (and an insertion point, which makes the lower_bound *not* wasted work)
         // we don't have to check upper if just check that lower doesn't intersect (which it would if lower != upper)
-        auto lower = lower_bound_impl(key);
+        const auto lower = lower_bound_impl(key);
         if (at_impl_end(lower) || !lower->first.intersects(key)) {
             // range is not even partially overlapped, and lower is strictly > than key
-            auto impl_insert = impl_map_.emplace_hint(lower, value);
+            const auto impl_insert = impl_map_.emplace_hint(lower, value);
             // auto impl_insert = impl_map_.emplace(value);
-            iterator wrap_it(impl_insert);
+            const iterator wrap_it(impl_insert);
             return std::make_pair(wrap_it, true);
         }
         // We don't replace
@@ -765,7 +766,7 @@ class small_range_map {
         using Value = Value_;
         friend Map;
         Value *operator->() const { return map_->get_value(pos_); }
-        Value &operator*() const { return *(map_->get_value(pos_)); }
+        Value &operator*() const { return *map_->get_value(pos_); }
         IteratorImpl &operator++() {
             pos_ = map_->next_range(pos_);
             return *this;
@@ -775,6 +776,7 @@ class small_range_map {
             return *this;
         }
         IteratorImpl &operator=(const IteratorImpl &other) {
+            if (&other == this) return *this;
             map_ = other.map_;
             pos_ = other.pos_;
             return *this;
@@ -812,7 +814,7 @@ class small_range_map {
         friend small_range_map;
 
       public:
-        const_iterator(const iterator &it) : Base(it.get_map(), it.get_pos()) {}
+        explicit const_iterator(const iterator &it) : Base(it.get_map(), it.get_pos()) {}
         const_iterator() : Base() {}
 
       private:
@@ -1100,7 +1102,7 @@ class small_range_map {
     iterator upper_bound(const key_type &key) { return iterator(this, upper_bound_impl(this, key)); }
     const_iterator upper_bound(const key_type &key) const { return const_iterator(this, upper_bound_impl(this, key)); }
 
-    small_range_map(index_type limit = N) : size_(0), limit_(static_cast<SmallIndex>(limit)) {
+    explicit small_range_map(index_type limit = N) : size_(0), limit_(static_cast<SmallIndex>(limit)) {
         assert(limit <= std::numeric_limits<SmallIndex>::max());
         init_range();
     }
@@ -1302,12 +1304,12 @@ class small_range_map {
     }
     value_type *get_value(SmallIndex index) {
         assert(index < limit_);  // Must be inbounds
-        return reinterpret_cast<value_type *>(&(backing_store_[index]));
+        return reinterpret_cast<value_type *>(&backing_store_[index]);
     }
     const value_type *get_value(SmallIndex index) const {
         assert(index < limit_);                 // Must be inbounds
         assert(index == ranges_[index].begin);  // Must be the record at begin
-        return reinterpret_cast<const value_type *>(&(backing_store_[index]));
+        return reinterpret_cast<const value_type *>(&backing_store_[index]);
     }
 
     template <typename Value>
@@ -1600,7 +1602,7 @@ const MappedType &evaluate(const CachedLowerBound &clb, const MappedType &defaul
     if (clb->valid) {
         return clb->lower_bound->second;
     }
-    return default_value;
+    return default_value;  // NOLINT(bugprone-return-const-ref-from-parameter)
 }
 
 // Split a range into pieces bound by the intersection of the iterator's range and the supplied range
@@ -2023,8 +2025,8 @@ void consolidate(RangeMap &map) {
 
 // Returns the intersection of the ranges [x, x + x_size) and [y, y + y_size)
 static inline range<int64_t> GetRangeIntersection(int64_t x, uint64_t x_size, int64_t y, uint64_t y_size) {
-    int64_t intersection_min = std::max(x, y);
-    int64_t intersection_max = std::min(x + static_cast<int64_t>(x_size), y + static_cast<int64_t>(y_size));
+    const int64_t intersection_min = std::max(x, y);
+    const int64_t intersection_max = std::min(x + static_cast<int64_t>(x_size), y + static_cast<int64_t>(y_size));
 
     return {intersection_min, intersection_max};
 }

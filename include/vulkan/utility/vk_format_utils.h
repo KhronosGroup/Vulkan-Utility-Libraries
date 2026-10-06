@@ -269,7 +269,7 @@ static inline uint32_t vkuFormatPlaneCount(VkFormat format);
 // Returns whether a VkFormat is multiplane
 // Note - Formats like VK_FORMAT_G8B8G8R8_422_UNORM are NOT multi-planar, they require a
 //        VkSamplerYcbcrConversion and you should use vkuFormatRequiresYcbcrConversion instead
-static inline bool vkuFormatIsMultiplane(VkFormat format) { return ((vkuFormatPlaneCount(format)) > 1u); }
+static inline bool vkuFormatIsMultiplane(VkFormat format) { return (vkuFormatPlaneCount(format) > 1u); }
 
 // Returns a VkFormat that is compatible with a given plane of a multiplane format
 // Will return VK_FORMAT_UNDEFINED if given a plane aspect that doesn't exist for the format

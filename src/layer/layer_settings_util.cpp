@@ -19,17 +19,15 @@ namespace vl {
 std::vector<std::string> Split(const std::string &pValues, char delimiter) {
     std::vector<std::string> result;
 
-    std::string parse = pValues;
-
     std::size_t start = 0;
-    std::size_t end = parse.find(delimiter);
+    std::size_t end = pValues.find(delimiter);
     while (end != std::string::npos) {
-        result.push_back(parse.substr(start, end - start));
+        result.push_back(pValues.substr(start, end - start));
         start = end + 1;
-        end = parse.find(delimiter, start);
+        end = pValues.find(delimiter, start);
     }
 
-    const std::string last = parse.substr(start, end);
+    const std::string last = pValues.substr(start, end);
     if (!last.empty()) {
         result.push_back(last);
     }
@@ -37,12 +35,12 @@ std::vector<std::string> Split(const std::string &pValues, char delimiter) {
     return result;
 }
 
-std::string GetFileSettingName(const char *pLayerName, const char *pSettingName) {
-    assert(pLayerName != nullptr);
-    assert(pSettingName != nullptr);
+std::string GetFileSettingName(const char *layer_key, const char *setting_key) {
+    assert(layer_key != nullptr);
+    assert(setting_key != nullptr);
 
     std::stringstream settingName;
-    settingName << vl::ToLower(TrimPrefix(pLayerName)) << "." << pSettingName;
+    settingName << vl::ToLower(TrimPrefix(layer_key)) << "." << setting_key;
 
     return settingName.str();
 }
@@ -109,7 +107,8 @@ char GetEnvDelimiter() {
 char FindDelimiter(const std::string &s) {
     if (s.find(',') != std::string::npos) {
         return ',';
-    } else if (s.find(GetEnvDelimiter()) != std::string::npos) {
+    }
+    if (s.find(GetEnvDelimiter()) != std::string::npos) {
         return GetEnvDelimiter();
     } else {
         return ',';
@@ -128,21 +127,21 @@ std::string TrimWhitespace(const std::string &s) {
     return s.substr(trimmed_beg, trimmed_end - trimmed_beg + 1);
 }
 
-std::string TrimPrefix(const std::string &layer_key) {
+std::string TrimPrefix(const std::string &layer_name) {
     std::string key{};
-    if (layer_key.find("VK_LAYER_") == 0) {
-        std::size_t prefix = std::strlen("VK_LAYER_");
-        key = layer_key.substr(prefix, layer_key.size() - prefix);
+    if (layer_name.find("VK_LAYER_") == 0) {
+        const std::size_t prefix = std::strlen("VK_LAYER_");
+        key = layer_name.substr(prefix, layer_name.size() - prefix);
     } else {
-        key = layer_key;
+        key = layer_name;
     }
     return key;
 }
 
-std::string TrimVendor(const std::string &layer_key) {
+std::string TrimVendor(const std::string &layer_name) {
     static const char *separator = "_";
 
-    const std::string &namespace_key = TrimPrefix(layer_key);
+    const std::string &namespace_key = TrimPrefix(layer_name);
 
     const auto trimmed_beg = namespace_key.find_first_of(separator);
     if (trimmed_beg == std::string::npos) return namespace_key;
@@ -216,12 +215,15 @@ VkuFrameset ToFrameSet(const std::string &s) {
 
     const std::vector<std::string> &frameset_split = vl::Split(s, '-');
     if (frameset_split.size() >= 1) {
+        // NOLINTNEXTLINE(bugprone-unchecked-string-to-number-conversion,cert-err34-c)
         frameset.first = static_cast<std::uint32_t>(std::atoll(frameset_split[0].c_str()));
     }
     if (frameset_split.size() >= 2) {
+        // NOLINTNEXTLINE(bugprone-unchecked-string-to-number-conversion,cert-err34-c)
         frameset.count = static_cast<std::uint32_t>(std::atoll(frameset_split[1].c_str()));
     }
     if (frameset_split.size() >= 3) {
+        // NOLINTNEXTLINE(bugprone-unchecked-string-to-number-conversion,cert-err34-c)
         frameset.step = static_cast<std::uint32_t>(std::atoll(frameset_split[2].c_str()));
     }
 
@@ -258,7 +260,7 @@ bool IsFloat(const std::string &s) {
     return std::regex_search(s, FRAME_REGEX);
 }
 
-std::string FormatString(const char *message, ...) {
+std::string FormatString(const char *message, ...) {  // NOLINT(cert-dcl50-cpp)
     std::size_t const STRING_BUFFER(4096);
 
     assert(message != nullptr);
@@ -268,7 +270,7 @@ std::string FormatString(const char *message, ...) {
     va_list list;
 
     va_start(list, message);
-    vsnprintf(buffer, STRING_BUFFER, message, list);
+    vsnprintf(buffer, STRING_BUFFER, message, list);  // NOLINT(cert-err33-c)
     va_end(list);
 
     return buffer;

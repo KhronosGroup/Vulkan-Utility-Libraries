@@ -23393,24 +23393,6 @@ struct safe_VkClusterAccelerationStructureMoveObjectsInputNV {
         return reinterpret_cast<VkClusterAccelerationStructureMoveObjectsInputNV const*>(this);
     }
 };
-union safe_VkClusterAccelerationStructureOpInputNV {
-    safe_VkClusterAccelerationStructureClustersBottomLevelInputNV* pClustersBottomLevel;
-    safe_VkClusterAccelerationStructureTriangleClusterInputNV* pTriangleClusters;
-    safe_VkClusterAccelerationStructureMoveObjectsInputNV* pMoveObjects;
-
-    safe_VkClusterAccelerationStructureOpInputNV(const VkClusterAccelerationStructureOpInputNV* in_struct,
-                                                 PNextCopyState* copy_state = {});
-    safe_VkClusterAccelerationStructureOpInputNV(const safe_VkClusterAccelerationStructureOpInputNV& copy_src);
-    safe_VkClusterAccelerationStructureOpInputNV& operator=(const safe_VkClusterAccelerationStructureOpInputNV& copy_src);
-    safe_VkClusterAccelerationStructureOpInputNV();
-    ~safe_VkClusterAccelerationStructureOpInputNV();
-    void initialize(const VkClusterAccelerationStructureOpInputNV* in_struct, PNextCopyState* copy_state = {});
-    void initialize(const safe_VkClusterAccelerationStructureOpInputNV* copy_src, PNextCopyState* copy_state = {});
-    VkClusterAccelerationStructureOpInputNV* ptr() { return reinterpret_cast<VkClusterAccelerationStructureOpInputNV*>(this); }
-    VkClusterAccelerationStructureOpInputNV const* ptr() const {
-        return reinterpret_cast<VkClusterAccelerationStructureOpInputNV const*>(this);
-    }
-};
 struct safe_VkClusterAccelerationStructureInputInfoNV {
     VkStructureType sType;
     void* pNext{};
@@ -23418,7 +23400,7 @@ struct safe_VkClusterAccelerationStructureInputInfoNV {
     VkBuildAccelerationStructureFlagsKHR flags;
     VkClusterAccelerationStructureOpTypeNV opType;
     VkClusterAccelerationStructureOpModeNV opMode;
-    safe_VkClusterAccelerationStructureOpInputNV opInput;
+    VkClusterAccelerationStructureOpInputNV opInput;
 
     safe_VkClusterAccelerationStructureInputInfoNV(const VkClusterAccelerationStructureInputInfoNV* in_struct,
                                                    PNextCopyState* copy_state = {}, bool copy_pnext = true);

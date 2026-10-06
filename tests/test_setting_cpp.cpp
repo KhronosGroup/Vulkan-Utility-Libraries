@@ -368,7 +368,8 @@ TEST(test_layer_setting_cpp, vkuGetLayerSettingValues_Double) {
 TEST(test_layer_setting_cpp, vkuGetLayerSettingValue_String) {
     const char* value_data[] = {"VALUE_A"};
 
-    const VkLayerSettingEXT setting{"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_STRING_EXT, 1, value_data};
+    const VkLayerSettingEXT setting{"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_STRING_EXT, 1,
+                                    reinterpret_cast<const char*>(value_data)};
 
     const VkLayerSettingsCreateInfoEXT layer_settings_create_info{VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT, nullptr, 1,
                                                                   &setting};
@@ -387,8 +388,8 @@ TEST(test_layer_setting_cpp, vkuGetLayerSettingValue_Strings) {
     const char* values_data[] = {"VALUE_A", "VALUE_B"};
     const uint32_t value_count = static_cast<uint32_t>(std::size(values_data));
 
-    const VkLayerSettingEXT settings[] = {
-        {"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_STRING_EXT, value_count, values_data}};
+    const VkLayerSettingEXT settings[] = {{"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_STRING_EXT, value_count,
+                                           reinterpret_cast<const char*>(values_data)}};
     const uint32_t settings_size = static_cast<uint32_t>(std::size(settings));
 
     const VkLayerSettingsCreateInfoEXT layer_settings_create_info{VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT, nullptr,
@@ -408,8 +409,8 @@ TEST(test_layer_setting_cpp, vkuGetLayerSettingValues_String) {
     const char* values_data[] = {"VALUE_A", "VALUE_B"};
     const uint32_t value_count = static_cast<uint32_t>(std::size(values_data));
 
-    const VkLayerSettingEXT settings[] = {
-        {"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_STRING_EXT, value_count, values_data}};
+    const VkLayerSettingEXT settings[] = {{"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_STRING_EXT, value_count,
+                                           reinterpret_cast<const char*>(values_data)}};
     const uint32_t settings_size = static_cast<uint32_t>(std::size(settings));
 
     const VkLayerSettingsCreateInfoEXT layer_settings_create_info{VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT, nullptr,
@@ -503,7 +504,7 @@ TEST(test_layer_setting_cpp, vkuGetUnknownSettings_legacy) {
     setting_int32_value.valueCount = 1;
     settings.push_back(setting_int32_value);
 
-    std::int64_t value_int64 = static_cast<int64_t>(1) << static_cast<int64_t>(40);
+    std::int64_t value_int64 = static_cast<uint64_t>(1) << static_cast<uint64_t>(40);
     VkLayerSettingEXT setting_int64_value{};
     setting_int64_value.pLayerName = "VK_LAYER_LUNARG_test";
     setting_int64_value.pSettingName = "int64_value";

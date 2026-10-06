@@ -86,7 +86,7 @@ static std::string GetEnvironment(const char *variable) {
     delete[] buffer;
     return output;
 #else
-    const char *output = std::getenv(variable);
+    const char *output = std::getenv(variable);  // NOLINT(concurrency-mt-unsafe)
     return output == nullptr ? "" : output;
 #endif
 }
@@ -133,7 +133,7 @@ LayerSettings::LayerSettings(const char *pLayerName, const VkLayerSettingsCreate
     (void)pAllocator;
     assert(pLayerName != nullptr);
 
-    std::filesystem::path settings_file = this->FindSettingsFile();
+    const std::filesystem::path settings_file = this->FindSettingsFile();
     this->ParseSettingsFile(settings_file);
 }
 
@@ -207,7 +207,7 @@ std::filesystem::path LayerSettings::FindSettingsFile() {
     if (search_path != "") {
         std::string home_file = search_path + "/vulkan/settings.d/vk_layer_settings.txt";
         if (stat(home_file.c_str(), &info) == 0) {
-            if (info.st_mode & S_IFREG) {
+            if (S_ISREG(info.st_mode)) {
                 return home_file;
             }
         }
@@ -275,6 +275,7 @@ void LayerSettings::Log(const char *pSettingName, const char *pMessage) {
     this->last_log_message = pMessage;
 
     if (this->pCallback == nullptr) {
+        // NOLINTNEXTLINE(cert-err33-c)
         fprintf(stderr, "LAYER SETTING (%s) error: %s\n", this->last_log_setting.c_str(), this->last_log_message.c_str());
     } else {
         this->pCallback(this->last_log_setting.c_str(), this->last_log_message.c_str());
@@ -304,7 +305,7 @@ bool LayerSettings::HasEnvSetting(const char *pSettingName) {
 bool LayerSettings::HasFileSetting(const char *pSettingName) {
     assert(pSettingName != nullptr);
 
-    std::string file_setting_name = vl::GetFileSettingName(this->layer_name.c_str(), pSettingName);
+    const std::string file_setting_name = vl::GetFileSettingName(this->layer_name.c_str(), pSettingName);
 
     return setting_file_values.find(file_setting_name) != setting_file_values.end();
 }
@@ -347,8 +348,8 @@ std::string LayerSettings::GetEnvSetting(const char *pSettingName) {
 std::string LayerSettings::GetFileSetting(const char *pSettingName) {
     const std::string file_setting_name = vl::GetFileSettingName(this->layer_name.c_str(), pSettingName);
 
-    std::map<std::string, std::string>::const_iterator it;
-    if ((it = this->setting_file_values.find(file_setting_name)) == this->setting_file_values.end()) {
+    const std::map<std::string, std::string>::const_iterator it = this->setting_file_values.find(file_setting_name);
+    if (it == this->setting_file_values.end()) {
         return "";
     } else {
         return it->second;
@@ -364,7 +365,7 @@ void LayerSettings::SetFileSetting(const char *pSettingName, const std::string &
 const VkLayerSettingEXT *LayerSettings::GetAPISetting(const char *pSettingName) {
     assert(pSettingName != nullptr);
 
-    return reinterpret_cast<const VkLayerSettingEXT *>(this->FindLayerSettingValue(pSettingName));
+    return this->FindLayerSettingValue(pSettingName);
 }
 
 }  // namespace vl

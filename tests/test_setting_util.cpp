@@ -599,7 +599,7 @@ TEST(test_layer_settings_util, vkuGetUnknownSettings_SingleCreateInfo) {
     setting_int32_value.valueCount = 1;
     settings.push_back(setting_int32_value);
 
-    std::int64_t value_int64 = static_cast<int64_t>(1) << static_cast<int64_t>(40);
+    std::int64_t value_int64 = static_cast<uint64_t>(1) << static_cast<uint64_t>(40);
     VkLayerSettingEXT setting_int64_value{};
     setting_int64_value.pLayerName = "VK_LAYER_LUNARG_test";
     setting_int64_value.pSettingName = "int64_value";
@@ -708,7 +708,7 @@ TEST(test_layer_settings_util, vlGetUnknownSettings_MultipleCreateInfo) {
     setting_int32_value.valueCount = 1;
     settingsA.push_back(setting_int32_value);
 
-    std::int64_t value_int64 = static_cast<int64_t>(1) << static_cast<int64_t>(40);
+    std::int64_t value_int64 = static_cast<uint64_t>(1) << static_cast<uint64_t>(40);
     VkLayerSettingEXT setting_int64_value{};
     setting_int64_value.pLayerName = "VK_LAYER_LUNARG_test";
     setting_int64_value.pSettingName = "int64_value";

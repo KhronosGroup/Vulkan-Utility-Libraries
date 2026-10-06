@@ -22611,78 +22611,6 @@ void safe_VkClusterAccelerationStructureMoveObjectsInputNV::initialize(
     pNext = SafePnextCopy(copy_src->pNext);
 }
 
-safe_VkClusterAccelerationStructureOpInputNV::safe_VkClusterAccelerationStructureOpInputNV(
-    const VkClusterAccelerationStructureOpInputNV* in_struct, PNextCopyState*) {
-    initialize(in_struct);
-}
-
-safe_VkClusterAccelerationStructureOpInputNV::safe_VkClusterAccelerationStructureOpInputNV() : pClustersBottomLevel(nullptr) {}
-
-safe_VkClusterAccelerationStructureOpInputNV::safe_VkClusterAccelerationStructureOpInputNV(
-    const safe_VkClusterAccelerationStructureOpInputNV& copy_src) {
-    pClustersBottomLevel = nullptr;
-    pTriangleClusters = nullptr;
-    pMoveObjects = nullptr;
-    if (copy_src.pClustersBottomLevel)
-        pClustersBottomLevel = new safe_VkClusterAccelerationStructureClustersBottomLevelInputNV(*copy_src.pClustersBottomLevel);
-    if (copy_src.pTriangleClusters)
-        pTriangleClusters = new safe_VkClusterAccelerationStructureTriangleClusterInputNV(*copy_src.pTriangleClusters);
-    if (copy_src.pMoveObjects) pMoveObjects = new safe_VkClusterAccelerationStructureMoveObjectsInputNV(*copy_src.pMoveObjects);
-}
-
-safe_VkClusterAccelerationStructureOpInputNV& safe_VkClusterAccelerationStructureOpInputNV::operator=(
-    const safe_VkClusterAccelerationStructureOpInputNV& copy_src) {
-    if (&copy_src == this) return *this;
-
-    if (pClustersBottomLevel) delete pClustersBottomLevel;
-    if (pTriangleClusters) delete pTriangleClusters;
-    if (pMoveObjects) delete pMoveObjects;
-
-    pClustersBottomLevel = nullptr;
-    pTriangleClusters = nullptr;
-    pMoveObjects = nullptr;
-    if (copy_src.pClustersBottomLevel)
-        pClustersBottomLevel = new safe_VkClusterAccelerationStructureClustersBottomLevelInputNV(*copy_src.pClustersBottomLevel);
-    if (copy_src.pTriangleClusters)
-        pTriangleClusters = new safe_VkClusterAccelerationStructureTriangleClusterInputNV(*copy_src.pTriangleClusters);
-    if (copy_src.pMoveObjects) pMoveObjects = new safe_VkClusterAccelerationStructureMoveObjectsInputNV(*copy_src.pMoveObjects);
-
-    return *this;
-}
-
-safe_VkClusterAccelerationStructureOpInputNV::~safe_VkClusterAccelerationStructureOpInputNV() {
-    if (pClustersBottomLevel) delete pClustersBottomLevel;
-    if (pTriangleClusters) delete pTriangleClusters;
-    if (pMoveObjects) delete pMoveObjects;
-}
-
-void safe_VkClusterAccelerationStructureOpInputNV::initialize(const VkClusterAccelerationStructureOpInputNV* in_struct,
-                                                              [[maybe_unused]] PNextCopyState* copy_state) {
-    if (pClustersBottomLevel) delete pClustersBottomLevel;
-    if (pTriangleClusters) delete pTriangleClusters;
-    if (pMoveObjects) delete pMoveObjects;
-    pClustersBottomLevel = nullptr;
-    pTriangleClusters = nullptr;
-    pMoveObjects = nullptr;
-    if (in_struct->pClustersBottomLevel)
-        pClustersBottomLevel = new safe_VkClusterAccelerationStructureClustersBottomLevelInputNV(in_struct->pClustersBottomLevel);
-    if (in_struct->pTriangleClusters)
-        pTriangleClusters = new safe_VkClusterAccelerationStructureTriangleClusterInputNV(in_struct->pTriangleClusters);
-    if (in_struct->pMoveObjects) pMoveObjects = new safe_VkClusterAccelerationStructureMoveObjectsInputNV(in_struct->pMoveObjects);
-}
-
-void safe_VkClusterAccelerationStructureOpInputNV::initialize(const safe_VkClusterAccelerationStructureOpInputNV* copy_src,
-                                                              [[maybe_unused]] PNextCopyState* copy_state) {
-    pClustersBottomLevel = nullptr;
-    pTriangleClusters = nullptr;
-    pMoveObjects = nullptr;
-    if (copy_src->pClustersBottomLevel)
-        pClustersBottomLevel = new safe_VkClusterAccelerationStructureClustersBottomLevelInputNV(*copy_src->pClustersBottomLevel);
-    if (copy_src->pTriangleClusters)
-        pTriangleClusters = new safe_VkClusterAccelerationStructureTriangleClusterInputNV(*copy_src->pTriangleClusters);
-    if (copy_src->pMoveObjects) pMoveObjects = new safe_VkClusterAccelerationStructureMoveObjectsInputNV(*copy_src->pMoveObjects);
-}
-
 safe_VkClusterAccelerationStructureInputInfoNV::safe_VkClusterAccelerationStructureInputInfoNV(
     const VkClusterAccelerationStructureInputInfoNV* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
     : sType(in_struct->sType),
@@ -22690,7 +22618,7 @@ safe_VkClusterAccelerationStructureInputInfoNV::safe_VkClusterAccelerationStruct
       flags(in_struct->flags),
       opType(in_struct->opType),
       opMode(in_struct->opMode),
-      opInput(&in_struct->opInput) {
+      opInput(in_struct->opInput) {
     if (copy_pnext) {
         pNext = SafePnextCopy(in_struct->pNext, copy_state);
     }
@@ -22702,7 +22630,8 @@ safe_VkClusterAccelerationStructureInputInfoNV::safe_VkClusterAccelerationStruct
       maxAccelerationStructureCount(),
       flags(),
       opType(),
-      opMode() {}
+      opMode(),
+      opInput() {}
 
 safe_VkClusterAccelerationStructureInputInfoNV::safe_VkClusterAccelerationStructureInputInfoNV(
     const safe_VkClusterAccelerationStructureInputInfoNV& copy_src) {
@@ -22711,7 +22640,7 @@ safe_VkClusterAccelerationStructureInputInfoNV::safe_VkClusterAccelerationStruct
     flags = copy_src.flags;
     opType = copy_src.opType;
     opMode = copy_src.opMode;
-    opInput.initialize(&copy_src.opInput);
+    opInput = copy_src.opInput;
     pNext = SafePnextCopy(copy_src.pNext);
 }
 
@@ -22726,7 +22655,7 @@ safe_VkClusterAccelerationStructureInputInfoNV& safe_VkClusterAccelerationStruct
     flags = copy_src.flags;
     opType = copy_src.opType;
     opMode = copy_src.opMode;
-    opInput.initialize(&copy_src.opInput);
+    opInput = copy_src.opInput;
     pNext = SafePnextCopy(copy_src.pNext);
 
     return *this;
@@ -22742,7 +22671,7 @@ void safe_VkClusterAccelerationStructureInputInfoNV::initialize(const VkClusterA
     flags = in_struct->flags;
     opType = in_struct->opType;
     opMode = in_struct->opMode;
-    opInput.initialize(&in_struct->opInput);
+    opInput = in_struct->opInput;
     pNext = SafePnextCopy(in_struct->pNext, copy_state);
 }
 
@@ -22753,7 +22682,7 @@ void safe_VkClusterAccelerationStructureInputInfoNV::initialize(const safe_VkClu
     flags = copy_src->flags;
     opType = copy_src->opType;
     opMode = copy_src->opMode;
-    opInput.initialize(&copy_src->opInput);
+    opInput = copy_src->opInput;
     pNext = SafePnextCopy(copy_src->pNext);
 }
 

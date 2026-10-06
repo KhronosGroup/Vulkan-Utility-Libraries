@@ -12,7 +12,6 @@
 #include "vk_layer_settings.h"
 
 #include <string>
-#include <utility>
 #include <vector>
 
 VkResult vkuGetLayerSettingValue(VkuLayerSettingSet layerSettingSet, const char *pSettingName, bool &settingValue);
