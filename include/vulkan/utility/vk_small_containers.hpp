@@ -45,17 +45,18 @@ class vector {
 
     vector(const vector &other) : size_(0), capacity_(N), working_store_(GetSmallStore()) { PushBackFrom(other); }
 
-    vector(vector &&other) : size_(0), capacity_(N), working_store_(GetSmallStore()) {
+    vector(vector &&other) noexcept : size_(0), capacity_(N), working_store_(GetSmallStore()) {
         if (other.large_store_) {
             MoveLargeStore(other);
+            // Per the spec, when constructing from other, other is guaranteed to be empty after the constructor runs
+            other.clear();
         } else {
             PushBackFrom(std::move(other));
         }
-        // Per the spec, when constructing from other, other is guaranteed to be empty after the constructor runs
-        other.clear();
     }
 
-    vector(size_type size, const value_type &value = value_type()) : size_(0), capacity_(N), working_store_(GetSmallStore()) {
+    explicit vector(size_type size, const value_type &value = value_type()) noexcept
+        : size_(0), capacity_(N), working_store_(GetSmallStore()) {
         reserve(size);
         auto dest = GetWorkingStore();
         for (size_type i = 0; i < size; i++) {
@@ -115,7 +116,7 @@ class vector {
         return *this;
     }
 
-    vector &operator=(vector &&other) {
+    vector &operator=(vector &&other) noexcept {
         if (this != &other) {
             // Note: move assign doesn't require other to become empty (as does move construction)
             //       so we'll leave other alone except in the large store case, while moving the object
@@ -271,7 +272,7 @@ class vector {
         } else if ((capacity_ > kSmallCapacity) && (capacity_ > size_)) {
             auto source = GetWorkingStore();
             // Keep the source from disappearing until the end of the function
-            auto old_store = std::unique_ptr<BackingStore[]>(std::move(large_store_));
+            const auto old_store = std::unique_ptr<BackingStore[]>(std::move(large_store_));
             assert(!large_store_);
             if (size_ < kSmallCapacity) {
                 capacity_ = kSmallCapacity;

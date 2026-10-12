@@ -9,7 +9,6 @@
 #define MAGIC_ENUM_RANGE_MIN 0
 #define MAGIC_ENUM_RANGE_MAX 512
 #include <magic_enum.hpp>
-#include <magic_enum_flags.hpp>
 #include <vulkan/utility/vk_format_utils.h>
 
 #include <string_view>
@@ -483,7 +482,7 @@ TEST(format_utils, vkuFormatTexelBlockExtent) {
             EXPECT_EQ(extent.depth, 1u);
         }
     }
-    auto extent = vkuFormatTexelBlockExtent(static_cast<VkFormat>(10001));
+    auto extent = vkuFormatTexelBlockExtent(static_cast<VkFormat>(10001));  // NOLINT(clang-analyzer-optin.core.EnumCastOutOfRange)
     EXPECT_EQ(extent.width, 0u);
     EXPECT_EQ(extent.height, 0u);
     EXPECT_EQ(extent.depth, 0u);

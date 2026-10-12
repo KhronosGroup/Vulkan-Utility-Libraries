@@ -17,7 +17,7 @@ inline VKAPI_ATTR PFN_vkVoidFunction local_vkGetInstanceProcAddr(VkInstance inst
         return NULL;
     }
 
-    if (strcmp(pName, "vkGetInstanceProcAddr")) {
+    if (0 == strcmp(pName, "vkGetInstanceProcAddr")) {
         return reinterpret_cast<PFN_vkVoidFunction>(&local_vkGetInstanceProcAddr);
     }
 
@@ -29,7 +29,7 @@ inline VKAPI_ATTR PFN_vkVoidFunction local_vkGetDeviceProcAddr(VkDevice device, 
         return NULL;
     }
 
-    if (strcmp(pName, "vkGetDeviceProcAddr")) {
+    if (0 == strcmp(pName, "vkGetDeviceProcAddr")) {
         return reinterpret_cast<PFN_vkVoidFunction>(&local_vkGetDeviceProcAddr);
     }
 

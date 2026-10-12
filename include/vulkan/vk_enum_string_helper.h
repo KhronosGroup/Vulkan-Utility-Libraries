@@ -6403,14 +6403,14 @@ static inline const char* string_VkFormatFeatureFlagBits(VkFormatFeatureFlagBits
 #ifdef __cplusplus
 static inline std::string string_VkFormatFeatureFlags(VkFormatFeatureFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkFormatFeatureFlagBits(static_cast<VkFormatFeatureFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkFormatFeatureFlags(0)");
     return ret;
@@ -6468,14 +6468,14 @@ static inline const char* string_VkImageCreateFlagBits(VkImageCreateFlagBits inp
 #ifdef __cplusplus
 static inline std::string string_VkImageCreateFlags(VkImageCreateFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkImageCreateFlagBits(static_cast<VkImageCreateFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkImageCreateFlags(0)");
     return ret;
@@ -6505,14 +6505,14 @@ static inline const char* string_VkSampleCountFlagBits(VkSampleCountFlagBits inp
 #ifdef __cplusplus
 static inline std::string string_VkSampleCountFlags(VkSampleCountFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkSampleCountFlagBits(static_cast<VkSampleCountFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkSampleCountFlags(0)");
     return ret;
@@ -6578,14 +6578,14 @@ static inline const char* string_VkImageUsageFlagBits(VkImageUsageFlagBits input
 #ifdef __cplusplus
 static inline std::string string_VkImageUsageFlags(VkImageUsageFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkImageUsageFlagBits(static_cast<VkImageUsageFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkImageUsageFlags(0)");
     return ret;
@@ -6603,14 +6603,14 @@ static inline const char* string_VkInstanceCreateFlagBits(VkInstanceCreateFlagBi
 #ifdef __cplusplus
 static inline std::string string_VkInstanceCreateFlags(VkInstanceCreateFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkInstanceCreateFlagBits(static_cast<VkInstanceCreateFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkInstanceCreateFlags(0)");
     return ret;
@@ -6632,14 +6632,14 @@ static inline const char* string_VkMemoryHeapFlagBits(VkMemoryHeapFlagBits input
 #ifdef __cplusplus
 static inline std::string string_VkMemoryHeapFlags(VkMemoryHeapFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkMemoryHeapFlagBits(static_cast<VkMemoryHeapFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkMemoryHeapFlags(0)");
     return ret;
@@ -6673,14 +6673,14 @@ static inline const char* string_VkMemoryPropertyFlagBits(VkMemoryPropertyFlagBi
 #ifdef __cplusplus
 static inline std::string string_VkMemoryPropertyFlags(VkMemoryPropertyFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkMemoryPropertyFlagBits(static_cast<VkMemoryPropertyFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkMemoryPropertyFlags(0)");
     return ret;
@@ -6714,14 +6714,14 @@ static inline const char* string_VkQueueFlagBits(VkQueueFlagBits input_value) {
 #ifdef __cplusplus
 static inline std::string string_VkQueueFlags(VkQueueFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkQueueFlagBits(static_cast<VkQueueFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkQueueFlags(0)");
     return ret;
@@ -6775,14 +6775,14 @@ static inline std::string string_VkShaderStageFlags(VkShaderStageFlags input_val
     if (input_value == VK_SHADER_STAGE_ALL_GRAPHICS) { return "VK_SHADER_STAGE_ALL_GRAPHICS"; }
     if (input_value == VK_SHADER_STAGE_ALL) { return "VK_SHADER_STAGE_ALL"; }
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkShaderStageFlagBits(static_cast<VkShaderStageFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkShaderStageFlags(0)");
     return ret;
@@ -6802,14 +6802,14 @@ static inline const char* string_VkDeviceQueueCreateFlagBits(VkDeviceQueueCreate
 #ifdef __cplusplus
 static inline std::string string_VkDeviceQueueCreateFlags(VkDeviceQueueCreateFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkDeviceQueueCreateFlagBits(static_cast<VkDeviceQueueCreateFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkDeviceQueueCreateFlags(0)");
     return ret;
@@ -6879,14 +6879,14 @@ static inline const char* string_VkPipelineStageFlagBits(VkPipelineStageFlagBits
 #ifdef __cplusplus
 static inline std::string string_VkPipelineStageFlags(VkPipelineStageFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkPipelineStageFlagBits(static_cast<VkPipelineStageFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkPipelineStageFlags(0)");
     return ret;
@@ -6904,14 +6904,14 @@ static inline const char* string_VkMemoryMapFlagBits(VkMemoryMapFlagBits input_v
 #ifdef __cplusplus
 static inline std::string string_VkMemoryMapFlags(VkMemoryMapFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkMemoryMapFlagBits(static_cast<VkMemoryMapFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkMemoryMapFlags(0)");
     return ret;
@@ -6951,14 +6951,14 @@ static inline const char* string_VkImageAspectFlagBits(VkImageAspectFlagBits inp
 #ifdef __cplusplus
 static inline std::string string_VkImageAspectFlags(VkImageAspectFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkImageAspectFlagBits(static_cast<VkImageAspectFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkImageAspectFlags(0)");
     return ret;
@@ -6980,14 +6980,14 @@ static inline const char* string_VkSparseImageFormatFlagBits(VkSparseImageFormat
 #ifdef __cplusplus
 static inline std::string string_VkSparseImageFormatFlags(VkSparseImageFormatFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkSparseImageFormatFlagBits(static_cast<VkSparseImageFormatFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkSparseImageFormatFlags(0)");
     return ret;
@@ -7005,14 +7005,14 @@ static inline const char* string_VkSparseMemoryBindFlagBits(VkSparseMemoryBindFl
 #ifdef __cplusplus
 static inline std::string string_VkSparseMemoryBindFlags(VkSparseMemoryBindFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkSparseMemoryBindFlagBits(static_cast<VkSparseMemoryBindFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkSparseMemoryBindFlags(0)");
     return ret;
@@ -7030,14 +7030,14 @@ static inline const char* string_VkFenceCreateFlagBits(VkFenceCreateFlagBits inp
 #ifdef __cplusplus
 static inline std::string string_VkFenceCreateFlags(VkFenceCreateFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkFenceCreateFlagBits(static_cast<VkFenceCreateFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkFenceCreateFlags(0)");
     return ret;
@@ -7055,14 +7055,14 @@ static inline const char* string_VkQueryPoolCreateFlagBits(VkQueryPoolCreateFlag
 #ifdef __cplusplus
 static inline std::string string_VkQueryPoolCreateFlags(VkQueryPoolCreateFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkQueryPoolCreateFlagBits(static_cast<VkQueryPoolCreateFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkQueryPoolCreateFlags(0)");
     return ret;
@@ -7106,14 +7106,14 @@ static inline const char* string_VkQueryPipelineStatisticFlagBits(VkQueryPipelin
 #ifdef __cplusplus
 static inline std::string string_VkQueryPipelineStatisticFlags(VkQueryPipelineStatisticFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkQueryPipelineStatisticFlagBits(static_cast<VkQueryPipelineStatisticFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkQueryPipelineStatisticFlags(0)");
     return ret;
@@ -7139,14 +7139,14 @@ static inline const char* string_VkQueryResultFlagBits(VkQueryResultFlagBits inp
 #ifdef __cplusplus
 static inline std::string string_VkQueryResultFlags(VkQueryResultFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkQueryResultFlagBits(static_cast<VkQueryResultFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkQueryResultFlags(0)");
     return ret;
@@ -7176,14 +7176,14 @@ static inline const char* string_VkBufferCreateFlagBits(VkBufferCreateFlagBits i
 #ifdef __cplusplus
 static inline std::string string_VkBufferCreateFlags(VkBufferCreateFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkBufferCreateFlagBits(static_cast<VkBufferCreateFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkBufferCreateFlags(0)");
     return ret;
@@ -7257,14 +7257,14 @@ static inline const char* string_VkBufferUsageFlagBits(VkBufferUsageFlagBits inp
 #ifdef __cplusplus
 static inline std::string string_VkBufferUsageFlags(VkBufferUsageFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkBufferUsageFlagBits(static_cast<VkBufferUsageFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkBufferUsageFlags(0)");
     return ret;
@@ -7286,14 +7286,14 @@ static inline const char* string_VkImageViewCreateFlagBits(VkImageViewCreateFlag
 #ifdef __cplusplus
 static inline std::string string_VkImageViewCreateFlags(VkImageViewCreateFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkImageViewCreateFlagBits(static_cast<VkImageViewCreateFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkImageViewCreateFlags(0)");
     return ret;
@@ -7367,14 +7367,14 @@ static inline const char* string_VkAccessFlagBits(VkAccessFlagBits input_value) 
 #ifdef __cplusplus
 static inline std::string string_VkAccessFlags(VkAccessFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkAccessFlagBits(static_cast<VkAccessFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkAccessFlags(0)");
     return ret;
@@ -7402,14 +7402,14 @@ static inline const char* string_VkDependencyFlagBits(VkDependencyFlagBits input
 #ifdef __cplusplus
 static inline std::string string_VkDependencyFlags(VkDependencyFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkDependencyFlagBits(static_cast<VkDependencyFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkDependencyFlags(0)");
     return ret;
@@ -7431,14 +7431,14 @@ static inline const char* string_VkCommandPoolCreateFlagBits(VkCommandPoolCreate
 #ifdef __cplusplus
 static inline std::string string_VkCommandPoolCreateFlags(VkCommandPoolCreateFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkCommandPoolCreateFlagBits(static_cast<VkCommandPoolCreateFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkCommandPoolCreateFlags(0)");
     return ret;
@@ -7456,14 +7456,14 @@ static inline const char* string_VkCommandPoolResetFlagBits(VkCommandPoolResetFl
 #ifdef __cplusplus
 static inline std::string string_VkCommandPoolResetFlags(VkCommandPoolResetFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkCommandPoolResetFlagBits(static_cast<VkCommandPoolResetFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkCommandPoolResetFlags(0)");
     return ret;
@@ -7481,14 +7481,14 @@ static inline const char* string_VkQueryControlFlagBits(VkQueryControlFlagBits i
 #ifdef __cplusplus
 static inline std::string string_VkQueryControlFlags(VkQueryControlFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkQueryControlFlagBits(static_cast<VkQueryControlFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkQueryControlFlags(0)");
     return ret;
@@ -7510,14 +7510,14 @@ static inline const char* string_VkCommandBufferUsageFlagBits(VkCommandBufferUsa
 #ifdef __cplusplus
 static inline std::string string_VkCommandBufferUsageFlags(VkCommandBufferUsageFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkCommandBufferUsageFlagBits(static_cast<VkCommandBufferUsageFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkCommandBufferUsageFlags(0)");
     return ret;
@@ -7535,14 +7535,14 @@ static inline const char* string_VkCommandBufferResetFlagBits(VkCommandBufferRes
 #ifdef __cplusplus
 static inline std::string string_VkCommandBufferResetFlags(VkCommandBufferResetFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkCommandBufferResetFlagBits(static_cast<VkCommandBufferResetFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkCommandBufferResetFlags(0)");
     return ret;
@@ -7560,14 +7560,14 @@ static inline const char* string_VkEventCreateFlagBits(VkEventCreateFlagBits inp
 #ifdef __cplusplus
 static inline std::string string_VkEventCreateFlags(VkEventCreateFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkEventCreateFlagBits(static_cast<VkEventCreateFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkEventCreateFlags(0)");
     return ret;
@@ -7587,14 +7587,14 @@ static inline const char* string_VkPipelineCacheCreateFlagBits(VkPipelineCacheCr
 #ifdef __cplusplus
 static inline std::string string_VkPipelineCacheCreateFlags(VkPipelineCacheCreateFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkPipelineCacheCreateFlagBits(static_cast<VkPipelineCacheCreateFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkPipelineCacheCreateFlags(0)");
     return ret;
@@ -7674,14 +7674,14 @@ static inline const char* string_VkPipelineCreateFlagBits(VkPipelineCreateFlagBi
 #ifdef __cplusplus
 static inline std::string string_VkPipelineCreateFlags(VkPipelineCreateFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkPipelineCreateFlagBits(static_cast<VkPipelineCreateFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkPipelineCreateFlags(0)");
     return ret;
@@ -7701,14 +7701,14 @@ static inline const char* string_VkPipelineLayoutCreateFlagBits(VkPipelineLayout
 #ifdef __cplusplus
 static inline std::string string_VkPipelineLayoutCreateFlags(VkPipelineLayoutCreateFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkPipelineLayoutCreateFlagBits(static_cast<VkPipelineLayoutCreateFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkPipelineLayoutCreateFlags(0)");
     return ret;
@@ -7728,14 +7728,14 @@ static inline const char* string_VkPipelineShaderStageCreateFlagBits(VkPipelineS
 #ifdef __cplusplus
 static inline std::string string_VkPipelineShaderStageCreateFlags(VkPipelineShaderStageCreateFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkPipelineShaderStageCreateFlagBits(static_cast<VkPipelineShaderStageCreateFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkPipelineShaderStageCreateFlags(0)");
     return ret;
@@ -7761,14 +7761,14 @@ static inline const char* string_VkSamplerCreateFlagBits(VkSamplerCreateFlagBits
 #ifdef __cplusplus
 static inline std::string string_VkSamplerCreateFlags(VkSamplerCreateFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkSamplerCreateFlagBits(static_cast<VkSamplerCreateFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkSamplerCreateFlags(0)");
     return ret;
@@ -7794,14 +7794,14 @@ static inline const char* string_VkDescriptorPoolCreateFlagBits(VkDescriptorPool
 #ifdef __cplusplus
 static inline std::string string_VkDescriptorPoolCreateFlags(VkDescriptorPoolCreateFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkDescriptorPoolCreateFlagBits(static_cast<VkDescriptorPoolCreateFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkDescriptorPoolCreateFlags(0)");
     return ret;
@@ -7831,14 +7831,14 @@ static inline const char* string_VkDescriptorSetLayoutCreateFlagBits(VkDescripto
 #ifdef __cplusplus
 static inline std::string string_VkDescriptorSetLayoutCreateFlags(VkDescriptorSetLayoutCreateFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkDescriptorSetLayoutCreateFlagBits(static_cast<VkDescriptorSetLayoutCreateFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkDescriptorSetLayoutCreateFlags(0)");
     return ret;
@@ -7862,14 +7862,14 @@ static inline const char* string_VkColorComponentFlagBits(VkColorComponentFlagBi
 #ifdef __cplusplus
 static inline std::string string_VkColorComponentFlags(VkColorComponentFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkColorComponentFlagBits(static_cast<VkColorComponentFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkColorComponentFlags(0)");
     return ret;
@@ -7894,14 +7894,14 @@ static inline const char* string_VkCullModeFlagBits(VkCullModeFlagBits input_val
 static inline std::string string_VkCullModeFlags(VkCullModeFlags input_value) {
     if (input_value == VK_CULL_MODE_FRONT_AND_BACK) { return "VK_CULL_MODE_FRONT_AND_BACK"; }
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkCullModeFlagBits(static_cast<VkCullModeFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkCullModeFlags(0)");
     return ret;
@@ -7919,14 +7919,14 @@ static inline const char* string_VkPipelineColorBlendStateCreateFlagBits(VkPipel
 #ifdef __cplusplus
 static inline std::string string_VkPipelineColorBlendStateCreateFlags(VkPipelineColorBlendStateCreateFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkPipelineColorBlendStateCreateFlagBits(static_cast<VkPipelineColorBlendStateCreateFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkPipelineColorBlendStateCreateFlags(0)");
     return ret;
@@ -7946,14 +7946,14 @@ static inline const char* string_VkPipelineDepthStencilStateCreateFlagBits(VkPip
 #ifdef __cplusplus
 static inline std::string string_VkPipelineDepthStencilStateCreateFlags(VkPipelineDepthStencilStateCreateFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkPipelineDepthStencilStateCreateFlagBits(static_cast<VkPipelineDepthStencilStateCreateFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkPipelineDepthStencilStateCreateFlags(0)");
     return ret;
@@ -7975,14 +7975,14 @@ static inline const char* string_VkAttachmentDescriptionFlagBits(VkAttachmentDes
 #ifdef __cplusplus
 static inline std::string string_VkAttachmentDescriptionFlags(VkAttachmentDescriptionFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkAttachmentDescriptionFlagBits(static_cast<VkAttachmentDescriptionFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkAttachmentDescriptionFlags(0)");
     return ret;
@@ -8000,14 +8000,14 @@ static inline const char* string_VkFramebufferCreateFlagBits(VkFramebufferCreate
 #ifdef __cplusplus
 static inline std::string string_VkFramebufferCreateFlags(VkFramebufferCreateFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkFramebufferCreateFlagBits(static_cast<VkFramebufferCreateFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkFramebufferCreateFlags(0)");
     return ret;
@@ -8027,14 +8027,14 @@ static inline const char* string_VkRenderPassCreateFlagBits(VkRenderPassCreateFl
 #ifdef __cplusplus
 static inline std::string string_VkRenderPassCreateFlags(VkRenderPassCreateFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkRenderPassCreateFlagBits(static_cast<VkRenderPassCreateFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkRenderPassCreateFlags(0)");
     return ret;
@@ -8068,14 +8068,14 @@ static inline const char* string_VkSubpassDescriptionFlagBits(VkSubpassDescripti
 #ifdef __cplusplus
 static inline std::string string_VkSubpassDescriptionFlags(VkSubpassDescriptionFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkSubpassDescriptionFlagBits(static_cast<VkSubpassDescriptionFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkSubpassDescriptionFlags(0)");
     return ret;
@@ -8098,14 +8098,14 @@ static inline const char* string_VkStencilFaceFlagBits(VkStencilFaceFlagBits inp
 static inline std::string string_VkStencilFaceFlags(VkStencilFaceFlags input_value) {
     if (input_value == VK_STENCIL_FACE_FRONT_AND_BACK) { return "VK_STENCIL_FACE_FRONT_AND_BACK"; }
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkStencilFaceFlagBits(static_cast<VkStencilFaceFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkStencilFaceFlags(0)");
     return ret;
@@ -8143,14 +8143,14 @@ static inline const char* string_VkSubgroupFeatureFlagBits(VkSubgroupFeatureFlag
 #ifdef __cplusplus
 static inline std::string string_VkSubgroupFeatureFlags(VkSubgroupFeatureFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkSubgroupFeatureFlagBits(static_cast<VkSubgroupFeatureFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkSubgroupFeatureFlags(0)");
     return ret;
@@ -8174,14 +8174,14 @@ static inline const char* string_VkPeerMemoryFeatureFlagBits(VkPeerMemoryFeature
 #ifdef __cplusplus
 static inline std::string string_VkPeerMemoryFeatureFlags(VkPeerMemoryFeatureFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkPeerMemoryFeatureFlagBits(static_cast<VkPeerMemoryFeatureFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkPeerMemoryFeatureFlags(0)");
     return ret;
@@ -8205,14 +8205,14 @@ static inline const char* string_VkMemoryAllocateFlagBits(VkMemoryAllocateFlagBi
 #ifdef __cplusplus
 static inline std::string string_VkMemoryAllocateFlags(VkMemoryAllocateFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkMemoryAllocateFlagBits(static_cast<VkMemoryAllocateFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkMemoryAllocateFlags(0)");
     return ret;
@@ -8264,14 +8264,14 @@ static inline const char* string_VkExternalMemoryHandleTypeFlagBits(VkExternalMe
 #ifdef __cplusplus
 static inline std::string string_VkExternalMemoryHandleTypeFlags(VkExternalMemoryHandleTypeFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkExternalMemoryHandleTypeFlagBits(static_cast<VkExternalMemoryHandleTypeFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkExternalMemoryHandleTypeFlags(0)");
     return ret;
@@ -8293,14 +8293,14 @@ static inline const char* string_VkExternalMemoryFeatureFlagBits(VkExternalMemor
 #ifdef __cplusplus
 static inline std::string string_VkExternalMemoryFeatureFlags(VkExternalMemoryFeatureFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkExternalMemoryFeatureFlagBits(static_cast<VkExternalMemoryFeatureFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkExternalMemoryFeatureFlags(0)");
     return ret;
@@ -8324,14 +8324,14 @@ static inline const char* string_VkExternalFenceHandleTypeFlagBits(VkExternalFen
 #ifdef __cplusplus
 static inline std::string string_VkExternalFenceHandleTypeFlags(VkExternalFenceHandleTypeFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkExternalFenceHandleTypeFlagBits(static_cast<VkExternalFenceHandleTypeFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkExternalFenceHandleTypeFlags(0)");
     return ret;
@@ -8351,14 +8351,14 @@ static inline const char* string_VkExternalFenceFeatureFlagBits(VkExternalFenceF
 #ifdef __cplusplus
 static inline std::string string_VkExternalFenceFeatureFlags(VkExternalFenceFeatureFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkExternalFenceFeatureFlagBits(static_cast<VkExternalFenceFeatureFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkExternalFenceFeatureFlags(0)");
     return ret;
@@ -8376,14 +8376,14 @@ static inline const char* string_VkFenceImportFlagBits(VkFenceImportFlagBits inp
 #ifdef __cplusplus
 static inline std::string string_VkFenceImportFlags(VkFenceImportFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkFenceImportFlagBits(static_cast<VkFenceImportFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkFenceImportFlags(0)");
     return ret;
@@ -8401,14 +8401,14 @@ static inline const char* string_VkSemaphoreImportFlagBits(VkSemaphoreImportFlag
 #ifdef __cplusplus
 static inline std::string string_VkSemaphoreImportFlags(VkSemaphoreImportFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkSemaphoreImportFlagBits(static_cast<VkSemaphoreImportFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkSemaphoreImportFlags(0)");
     return ret;
@@ -8436,14 +8436,14 @@ static inline const char* string_VkExternalSemaphoreHandleTypeFlagBits(VkExterna
 #ifdef __cplusplus
 static inline std::string string_VkExternalSemaphoreHandleTypeFlags(VkExternalSemaphoreHandleTypeFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkExternalSemaphoreHandleTypeFlagBits(static_cast<VkExternalSemaphoreHandleTypeFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkExternalSemaphoreHandleTypeFlags(0)");
     return ret;
@@ -8463,14 +8463,14 @@ static inline const char* string_VkExternalSemaphoreFeatureFlagBits(VkExternalSe
 #ifdef __cplusplus
 static inline std::string string_VkExternalSemaphoreFeatureFlags(VkExternalSemaphoreFeatureFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkExternalSemaphoreFeatureFlagBits(static_cast<VkExternalSemaphoreFeatureFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkExternalSemaphoreFeatureFlags(0)");
     return ret;
@@ -8500,14 +8500,14 @@ static inline const char* string_VkResolveModeFlagBits(VkResolveModeFlagBits inp
 #ifdef __cplusplus
 static inline std::string string_VkResolveModeFlags(VkResolveModeFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkResolveModeFlagBits(static_cast<VkResolveModeFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkResolveModeFlags(0)");
     return ret;
@@ -8525,14 +8525,14 @@ static inline const char* string_VkSemaphoreWaitFlagBits(VkSemaphoreWaitFlagBits
 #ifdef __cplusplus
 static inline std::string string_VkSemaphoreWaitFlags(VkSemaphoreWaitFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkSemaphoreWaitFlagBits(static_cast<VkSemaphoreWaitFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkSemaphoreWaitFlags(0)");
     return ret;
@@ -8556,14 +8556,14 @@ static inline const char* string_VkDescriptorBindingFlagBits(VkDescriptorBinding
 #ifdef __cplusplus
 static inline std::string string_VkDescriptorBindingFlags(VkDescriptorBindingFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkDescriptorBindingFlagBits(static_cast<VkDescriptorBindingFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkDescriptorBindingFlags(0)");
     return ret;
@@ -8593,14 +8593,14 @@ static inline const char* string_VkToolPurposeFlagBits(VkToolPurposeFlagBits inp
 #ifdef __cplusplus
 static inline std::string string_VkToolPurposeFlags(VkToolPurposeFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkToolPurposeFlagBits(static_cast<VkToolPurposeFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkToolPurposeFlags(0)");
     return ret;
@@ -8618,14 +8618,14 @@ static inline const char* string_VkPrivateDataSlotCreateFlagBits(VkPrivateDataSl
 #ifdef __cplusplus
 static inline std::string string_VkPrivateDataSlotCreateFlags(VkPrivateDataSlotCreateFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkPrivateDataSlotCreateFlagBits(static_cast<VkPrivateDataSlotCreateFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkPrivateDataSlotCreateFlags(0)");
     return ret;
@@ -8684,14 +8684,14 @@ static inline const char* string_VkPipelineStageFlagBits2(uint64_t input_value) 
 #ifdef __cplusplus
 static inline std::string string_VkPipelineStageFlags2(VkPipelineStageFlags2 input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkPipelineStageFlagBits2(static_cast<uint64_t>(1ULL << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkPipelineStageFlags2(0)");
     return ret;
@@ -8755,14 +8755,14 @@ static inline const char* string_VkAccessFlagBits2(uint64_t input_value) {
 #ifdef __cplusplus
 static inline std::string string_VkAccessFlags2(VkAccessFlags2 input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkAccessFlagBits2(static_cast<uint64_t>(1ULL << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkAccessFlags2(0)");
     return ret;
@@ -8780,14 +8780,14 @@ static inline const char* string_VkSubmitFlagBits(VkSubmitFlagBits input_value) 
 #ifdef __cplusplus
 static inline std::string string_VkSubmitFlags(VkSubmitFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkSubmitFlagBits(static_cast<VkSubmitFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkSubmitFlags(0)");
     return ret;
@@ -8859,14 +8859,14 @@ static inline const char* string_VkFormatFeatureFlagBits2(uint64_t input_value) 
 #ifdef __cplusplus
 static inline std::string string_VkFormatFeatureFlags2(VkFormatFeatureFlags2 input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkFormatFeatureFlagBits2(static_cast<uint64_t>(1ULL << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkFormatFeatureFlags2(0)");
     return ret;
@@ -8888,14 +8888,14 @@ static inline const char* string_VkPipelineCreationFeedbackFlagBits(VkPipelineCr
 #ifdef __cplusplus
 static inline std::string string_VkPipelineCreationFeedbackFlags(VkPipelineCreationFeedbackFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkPipelineCreationFeedbackFlagBits(static_cast<VkPipelineCreationFeedbackFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkPipelineCreationFeedbackFlags(0)");
     return ret;
@@ -8929,14 +8929,14 @@ static inline const char* string_VkRenderingFlagBits(VkRenderingFlagBits input_v
 #ifdef __cplusplus
 static inline std::string string_VkRenderingFlags(VkRenderingFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkRenderingFlagBits(static_cast<VkRenderingFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkRenderingFlags(0)");
     return ret;
@@ -8954,14 +8954,14 @@ static inline const char* string_VkMemoryUnmapFlagBits(VkMemoryUnmapFlagBits inp
 #ifdef __cplusplus
 static inline std::string string_VkMemoryUnmapFlags(VkMemoryUnmapFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkMemoryUnmapFlagBits(static_cast<VkMemoryUnmapFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkMemoryUnmapFlags(0)");
     return ret;
@@ -9010,14 +9010,14 @@ static inline const char* string_VkBufferUsageFlagBits2(uint64_t input_value) {
 #ifdef __cplusplus
 static inline std::string string_VkBufferUsageFlags2(VkBufferUsageFlags2 input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkBufferUsageFlagBits2(static_cast<uint64_t>(1ULL << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkBufferUsageFlags2(0)");
     return ret;
@@ -9035,14 +9035,14 @@ static inline const char* string_VkHostImageCopyFlagBits(VkHostImageCopyFlagBits
 #ifdef __cplusplus
 static inline std::string string_VkHostImageCopyFlags(VkHostImageCopyFlags input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkHostImageCopyFlagBits(static_cast<VkHostImageCopyFlagBits>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkHostImageCopyFlags(0)");
     return ret;
@@ -9101,14 +9101,14 @@ static inline const char* string_VkPipelineCreateFlagBits2(uint64_t input_value)
 #ifdef __cplusplus
 static inline std::string string_VkPipelineCreateFlags2(VkPipelineCreateFlags2 input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkPipelineCreateFlagBits2(static_cast<uint64_t>(1ULL << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkPipelineCreateFlags2(0)");
     return ret;
@@ -9142,14 +9142,14 @@ static inline const char* string_VkSurfaceTransformFlagBitsKHR(VkSurfaceTransfor
 #ifdef __cplusplus
 static inline std::string string_VkSurfaceTransformFlagsKHR(VkSurfaceTransformFlagsKHR input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkSurfaceTransformFlagBitsKHR(static_cast<VkSurfaceTransformFlagBitsKHR>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkSurfaceTransformFlagsKHR(0)");
     return ret;
@@ -9173,14 +9173,14 @@ static inline const char* string_VkCompositeAlphaFlagBitsKHR(VkCompositeAlphaFla
 #ifdef __cplusplus
 static inline std::string string_VkCompositeAlphaFlagsKHR(VkCompositeAlphaFlagsKHR input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkCompositeAlphaFlagBitsKHR(static_cast<VkCompositeAlphaFlagBitsKHR>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkCompositeAlphaFlagsKHR(0)");
     return ret;
@@ -9212,14 +9212,14 @@ static inline const char* string_VkSwapchainCreateFlagBitsKHR(VkSwapchainCreateF
 #ifdef __cplusplus
 static inline std::string string_VkSwapchainCreateFlagsKHR(VkSwapchainCreateFlagsKHR input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkSwapchainCreateFlagBitsKHR(static_cast<VkSwapchainCreateFlagBitsKHR>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkSwapchainCreateFlagsKHR(0)");
     return ret;
@@ -9243,14 +9243,14 @@ static inline const char* string_VkDeviceGroupPresentModeFlagBitsKHR(VkDeviceGro
 #ifdef __cplusplus
 static inline std::string string_VkDeviceGroupPresentModeFlagsKHR(VkDeviceGroupPresentModeFlagsKHR input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkDeviceGroupPresentModeFlagBitsKHR(static_cast<VkDeviceGroupPresentModeFlagBitsKHR>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkDeviceGroupPresentModeFlagsKHR(0)");
     return ret;
@@ -9274,14 +9274,14 @@ static inline const char* string_VkDisplayPlaneAlphaFlagBitsKHR(VkDisplayPlaneAl
 #ifdef __cplusplus
 static inline std::string string_VkDisplayPlaneAlphaFlagsKHR(VkDisplayPlaneAlphaFlagsKHR input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkDisplayPlaneAlphaFlagBitsKHR(static_cast<VkDisplayPlaneAlphaFlagBitsKHR>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkDisplayPlaneAlphaFlagsKHR(0)");
     return ret;
@@ -9313,14 +9313,14 @@ static inline const char* string_VkVideoCodecOperationFlagBitsKHR(VkVideoCodecOp
 #ifdef __cplusplus
 static inline std::string string_VkVideoCodecOperationFlagsKHR(VkVideoCodecOperationFlagsKHR input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkVideoCodecOperationFlagBitsKHR(static_cast<VkVideoCodecOperationFlagBitsKHR>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkVideoCodecOperationFlagsKHR(0)");
     return ret;
@@ -9346,14 +9346,14 @@ static inline const char* string_VkVideoChromaSubsamplingFlagBitsKHR(VkVideoChro
 #ifdef __cplusplus
 static inline std::string string_VkVideoChromaSubsamplingFlagsKHR(VkVideoChromaSubsamplingFlagsKHR input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkVideoChromaSubsamplingFlagBitsKHR(static_cast<VkVideoChromaSubsamplingFlagBitsKHR>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkVideoChromaSubsamplingFlagsKHR(0)");
     return ret;
@@ -9377,14 +9377,14 @@ static inline const char* string_VkVideoComponentBitDepthFlagBitsKHR(VkVideoComp
 #ifdef __cplusplus
 static inline std::string string_VkVideoComponentBitDepthFlagsKHR(VkVideoComponentBitDepthFlagsKHR input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkVideoComponentBitDepthFlagBitsKHR(static_cast<VkVideoComponentBitDepthFlagBitsKHR>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkVideoComponentBitDepthFlagsKHR(0)");
     return ret;
@@ -9404,14 +9404,14 @@ static inline const char* string_VkVideoCapabilityFlagBitsKHR(VkVideoCapabilityF
 #ifdef __cplusplus
 static inline std::string string_VkVideoCapabilityFlagsKHR(VkVideoCapabilityFlagsKHR input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkVideoCapabilityFlagBitsKHR(static_cast<VkVideoCapabilityFlagBitsKHR>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkVideoCapabilityFlagsKHR(0)");
     return ret;
@@ -9439,14 +9439,14 @@ static inline const char* string_VkVideoSessionCreateFlagBitsKHR(VkVideoSessionC
 #ifdef __cplusplus
 static inline std::string string_VkVideoSessionCreateFlagsKHR(VkVideoSessionCreateFlagsKHR input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkVideoSessionCreateFlagBitsKHR(static_cast<VkVideoSessionCreateFlagBitsKHR>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkVideoSessionCreateFlagsKHR(0)");
     return ret;
@@ -9464,14 +9464,14 @@ static inline const char* string_VkVideoSessionParametersCreateFlagBitsKHR(VkVid
 #ifdef __cplusplus
 static inline std::string string_VkVideoSessionParametersCreateFlagsKHR(VkVideoSessionParametersCreateFlagsKHR input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkVideoSessionParametersCreateFlagBitsKHR(static_cast<VkVideoSessionParametersCreateFlagBitsKHR>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkVideoSessionParametersCreateFlagsKHR(0)");
     return ret;
@@ -9493,14 +9493,14 @@ static inline const char* string_VkVideoCodingControlFlagBitsKHR(VkVideoCodingCo
 #ifdef __cplusplus
 static inline std::string string_VkVideoCodingControlFlagsKHR(VkVideoCodingControlFlagsKHR input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkVideoCodingControlFlagBitsKHR(static_cast<VkVideoCodingControlFlagBitsKHR>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkVideoCodingControlFlagsKHR(0)");
     return ret;
@@ -9520,14 +9520,14 @@ static inline const char* string_VkVideoDecodeCapabilityFlagBitsKHR(VkVideoDecod
 #ifdef __cplusplus
 static inline std::string string_VkVideoDecodeCapabilityFlagsKHR(VkVideoDecodeCapabilityFlagsKHR input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkVideoDecodeCapabilityFlagBitsKHR(static_cast<VkVideoDecodeCapabilityFlagBitsKHR>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkVideoDecodeCapabilityFlagsKHR(0)");
     return ret;
@@ -9551,14 +9551,14 @@ static inline const char* string_VkVideoDecodeUsageFlagBitsKHR(VkVideoDecodeUsag
 #ifdef __cplusplus
 static inline std::string string_VkVideoDecodeUsageFlagsKHR(VkVideoDecodeUsageFlagsKHR input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkVideoDecodeUsageFlagBitsKHR(static_cast<VkVideoDecodeUsageFlagBitsKHR>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkVideoDecodeUsageFlagsKHR(0)");
     return ret;
@@ -9596,14 +9596,14 @@ static inline const char* string_VkVideoEncodeH264CapabilityFlagBitsKHR(VkVideoE
 #ifdef __cplusplus
 static inline std::string string_VkVideoEncodeH264CapabilityFlagsKHR(VkVideoEncodeH264CapabilityFlagsKHR input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkVideoEncodeH264CapabilityFlagBitsKHR(static_cast<VkVideoEncodeH264CapabilityFlagBitsKHR>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkVideoEncodeH264CapabilityFlagsKHR(0)");
     return ret;
@@ -9659,14 +9659,14 @@ static inline const char* string_VkVideoEncodeH264StdFlagBitsKHR(VkVideoEncodeH2
 #ifdef __cplusplus
 static inline std::string string_VkVideoEncodeH264StdFlagsKHR(VkVideoEncodeH264StdFlagsKHR input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkVideoEncodeH264StdFlagBitsKHR(static_cast<VkVideoEncodeH264StdFlagBitsKHR>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkVideoEncodeH264StdFlagsKHR(0)");
     return ret;
@@ -9692,14 +9692,14 @@ static inline const char* string_VkVideoEncodeH264RateControlFlagBitsKHR(VkVideo
 #ifdef __cplusplus
 static inline std::string string_VkVideoEncodeH264RateControlFlagsKHR(VkVideoEncodeH264RateControlFlagsKHR input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkVideoEncodeH264RateControlFlagBitsKHR(static_cast<VkVideoEncodeH264RateControlFlagBitsKHR>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkVideoEncodeH264RateControlFlagsKHR(0)");
     return ret;
@@ -9739,14 +9739,14 @@ static inline const char* string_VkVideoEncodeH265CapabilityFlagBitsKHR(VkVideoE
 #ifdef __cplusplus
 static inline std::string string_VkVideoEncodeH265CapabilityFlagsKHR(VkVideoEncodeH265CapabilityFlagsKHR input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkVideoEncodeH265CapabilityFlagBitsKHR(static_cast<VkVideoEncodeH265CapabilityFlagBitsKHR>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkVideoEncodeH265CapabilityFlagsKHR(0)");
     return ret;
@@ -9804,14 +9804,14 @@ static inline const char* string_VkVideoEncodeH265StdFlagBitsKHR(VkVideoEncodeH2
 #ifdef __cplusplus
 static inline std::string string_VkVideoEncodeH265StdFlagsKHR(VkVideoEncodeH265StdFlagsKHR input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkVideoEncodeH265StdFlagBitsKHR(static_cast<VkVideoEncodeH265StdFlagBitsKHR>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkVideoEncodeH265StdFlagsKHR(0)");
     return ret;
@@ -9833,14 +9833,14 @@ static inline const char* string_VkVideoEncodeH265CtbSizeFlagBitsKHR(VkVideoEnco
 #ifdef __cplusplus
 static inline std::string string_VkVideoEncodeH265CtbSizeFlagsKHR(VkVideoEncodeH265CtbSizeFlagsKHR input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkVideoEncodeH265CtbSizeFlagBitsKHR(static_cast<VkVideoEncodeH265CtbSizeFlagBitsKHR>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkVideoEncodeH265CtbSizeFlagsKHR(0)");
     return ret;
@@ -9864,14 +9864,14 @@ static inline const char* string_VkVideoEncodeH265TransformBlockSizeFlagBitsKHR(
 #ifdef __cplusplus
 static inline std::string string_VkVideoEncodeH265TransformBlockSizeFlagsKHR(VkVideoEncodeH265TransformBlockSizeFlagsKHR input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkVideoEncodeH265TransformBlockSizeFlagBitsKHR(static_cast<VkVideoEncodeH265TransformBlockSizeFlagBitsKHR>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkVideoEncodeH265TransformBlockSizeFlagsKHR(0)");
     return ret;
@@ -9897,14 +9897,14 @@ static inline const char* string_VkVideoEncodeH265RateControlFlagBitsKHR(VkVideo
 #ifdef __cplusplus
 static inline std::string string_VkVideoEncodeH265RateControlFlagsKHR(VkVideoEncodeH265RateControlFlagsKHR input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkVideoEncodeH265RateControlFlagBitsKHR(static_cast<VkVideoEncodeH265RateControlFlagBitsKHR>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkVideoEncodeH265RateControlFlagsKHR(0)");
     return ret;
@@ -9926,14 +9926,14 @@ static inline const char* string_VkVideoDecodeH264PictureLayoutFlagBitsKHR(VkVid
 #ifdef __cplusplus
 static inline std::string string_VkVideoDecodeH264PictureLayoutFlagsKHR(VkVideoDecodeH264PictureLayoutFlagsKHR input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkVideoDecodeH264PictureLayoutFlagBitsKHR(static_cast<VkVideoDecodeH264PictureLayoutFlagBitsKHR>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkVideoDecodeH264PictureLayoutFlagsKHR(0)");
     return ret;
@@ -9953,14 +9953,14 @@ static inline const char* string_VkPerformanceCounterDescriptionFlagBitsKHR(VkPe
 #ifdef __cplusplus
 static inline std::string string_VkPerformanceCounterDescriptionFlagsKHR(VkPerformanceCounterDescriptionFlagsKHR input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkPerformanceCounterDescriptionFlagBitsKHR(static_cast<VkPerformanceCounterDescriptionFlagBitsKHR>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkPerformanceCounterDescriptionFlagsKHR(0)");
     return ret;
@@ -9982,14 +9982,14 @@ static inline const char* string_VkVideoEncodeFlagBitsKHR(VkVideoEncodeFlagBitsK
 #ifdef __cplusplus
 static inline std::string string_VkVideoEncodeFlagsKHR(VkVideoEncodeFlagsKHR input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkVideoEncodeFlagBitsKHR(static_cast<VkVideoEncodeFlagBitsKHR>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkVideoEncodeFlagsKHR(0)");
     return ret;
@@ -10013,14 +10013,14 @@ static inline const char* string_VkVideoEncodeCapabilityFlagBitsKHR(VkVideoEncod
 #ifdef __cplusplus
 static inline std::string string_VkVideoEncodeCapabilityFlagsKHR(VkVideoEncodeCapabilityFlagsKHR input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkVideoEncodeCapabilityFlagBitsKHR(static_cast<VkVideoEncodeCapabilityFlagBitsKHR>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkVideoEncodeCapabilityFlagsKHR(0)");
     return ret;
@@ -10044,14 +10044,14 @@ static inline const char* string_VkVideoEncodeRateControlModeFlagBitsKHR(VkVideo
 #ifdef __cplusplus
 static inline std::string string_VkVideoEncodeRateControlModeFlagsKHR(VkVideoEncodeRateControlModeFlagsKHR input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkVideoEncodeRateControlModeFlagBitsKHR(static_cast<VkVideoEncodeRateControlModeFlagBitsKHR>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkVideoEncodeRateControlModeFlagsKHR(0)");
     return ret;
@@ -10087,14 +10087,14 @@ static inline const char* string_VkVideoEncodeFeedbackFlagBitsKHR(VkVideoEncodeF
 #ifdef __cplusplus
 static inline std::string string_VkVideoEncodeFeedbackFlagsKHR(VkVideoEncodeFeedbackFlagsKHR input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkVideoEncodeFeedbackFlagBitsKHR(static_cast<VkVideoEncodeFeedbackFlagBitsKHR>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkVideoEncodeFeedbackFlagsKHR(0)");
     return ret;
@@ -10120,14 +10120,14 @@ static inline const char* string_VkVideoEncodeUsageFlagBitsKHR(VkVideoEncodeUsag
 #ifdef __cplusplus
 static inline std::string string_VkVideoEncodeUsageFlagsKHR(VkVideoEncodeUsageFlagsKHR input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkVideoEncodeUsageFlagBitsKHR(static_cast<VkVideoEncodeUsageFlagBitsKHR>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkVideoEncodeUsageFlagsKHR(0)");
     return ret;
@@ -10151,14 +10151,14 @@ static inline const char* string_VkVideoEncodeContentFlagBitsKHR(VkVideoEncodeCo
 #ifdef __cplusplus
 static inline std::string string_VkVideoEncodeContentFlagsKHR(VkVideoEncodeContentFlagsKHR input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkVideoEncodeContentFlagBitsKHR(static_cast<VkVideoEncodeContentFlagBitsKHR>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkVideoEncodeContentFlagsKHR(0)");
     return ret;
@@ -10186,14 +10186,14 @@ static inline const char* string_VkAddressCommandFlagBitsKHR(VkAddressCommandFla
 #ifdef __cplusplus
 static inline std::string string_VkAddressCommandFlagsKHR(VkAddressCommandFlagsKHR input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkAddressCommandFlagBitsKHR(static_cast<VkAddressCommandFlagBitsKHR>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkAddressCommandFlagsKHR(0)");
     return ret;
@@ -10211,14 +10211,14 @@ static inline const char* string_VkConditionalRenderingFlagBitsEXT(VkConditional
 #ifdef __cplusplus
 static inline std::string string_VkConditionalRenderingFlagsEXT(VkConditionalRenderingFlagsEXT input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkConditionalRenderingFlagBitsEXT(static_cast<VkConditionalRenderingFlagBitsEXT>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkConditionalRenderingFlagsEXT(0)");
     return ret;
@@ -10240,14 +10240,14 @@ static inline const char* string_VkAccelerationStructureCreateFlagBitsKHR(VkAcce
 #ifdef __cplusplus
 static inline std::string string_VkAccelerationStructureCreateFlagsKHR(VkAccelerationStructureCreateFlagsKHR input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkAccelerationStructureCreateFlagBitsKHR(static_cast<VkAccelerationStructureCreateFlagBitsKHR>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkAccelerationStructureCreateFlagsKHR(0)");
     return ret;
@@ -10269,14 +10269,14 @@ static inline const char* string_VkPresentScalingFlagBitsKHR(VkPresentScalingFla
 #ifdef __cplusplus
 static inline std::string string_VkPresentScalingFlagsKHR(VkPresentScalingFlagsKHR input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkPresentScalingFlagBitsKHR(static_cast<VkPresentScalingFlagBitsKHR>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkPresentScalingFlagsKHR(0)");
     return ret;
@@ -10298,14 +10298,14 @@ static inline const char* string_VkPresentGravityFlagBitsKHR(VkPresentGravityFla
 #ifdef __cplusplus
 static inline std::string string_VkPresentGravityFlagsKHR(VkPresentGravityFlagsKHR input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkPresentGravityFlagBitsKHR(static_cast<VkPresentGravityFlagBitsKHR>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkPresentGravityFlagsKHR(0)");
     return ret;
@@ -10333,14 +10333,14 @@ static inline const char* string_VkVideoEncodeAV1CapabilityFlagBitsKHR(VkVideoEn
 #ifdef __cplusplus
 static inline std::string string_VkVideoEncodeAV1CapabilityFlagsKHR(VkVideoEncodeAV1CapabilityFlagsKHR input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkVideoEncodeAV1CapabilityFlagBitsKHR(static_cast<VkVideoEncodeAV1CapabilityFlagBitsKHR>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkVideoEncodeAV1CapabilityFlagsKHR(0)");
     return ret;
@@ -10364,14 +10364,14 @@ static inline const char* string_VkVideoEncodeAV1StdFlagBitsKHR(VkVideoEncodeAV1
 #ifdef __cplusplus
 static inline std::string string_VkVideoEncodeAV1StdFlagsKHR(VkVideoEncodeAV1StdFlagsKHR input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkVideoEncodeAV1StdFlagBitsKHR(static_cast<VkVideoEncodeAV1StdFlagBitsKHR>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkVideoEncodeAV1StdFlagsKHR(0)");
     return ret;
@@ -10391,14 +10391,14 @@ static inline const char* string_VkVideoEncodeAV1SuperblockSizeFlagBitsKHR(VkVid
 #ifdef __cplusplus
 static inline std::string string_VkVideoEncodeAV1SuperblockSizeFlagsKHR(VkVideoEncodeAV1SuperblockSizeFlagsKHR input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkVideoEncodeAV1SuperblockSizeFlagBitsKHR(static_cast<VkVideoEncodeAV1SuperblockSizeFlagBitsKHR>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkVideoEncodeAV1SuperblockSizeFlagsKHR(0)");
     return ret;
@@ -10422,14 +10422,14 @@ static inline const char* string_VkVideoEncodeAV1RateControlFlagBitsKHR(VkVideoE
 #ifdef __cplusplus
 static inline std::string string_VkVideoEncodeAV1RateControlFlagsKHR(VkVideoEncodeAV1RateControlFlagsKHR input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkVideoEncodeAV1RateControlFlagBitsKHR(static_cast<VkVideoEncodeAV1RateControlFlagBitsKHR>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkVideoEncodeAV1RateControlFlagsKHR(0)");
     return ret;
@@ -10451,14 +10451,14 @@ static inline const char* string_VkAddressCopyFlagBitsKHR(VkAddressCopyFlagBitsK
 #ifdef __cplusplus
 static inline std::string string_VkAddressCopyFlagsKHR(VkAddressCopyFlagsKHR input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkAddressCopyFlagBitsKHR(static_cast<VkAddressCopyFlagBitsKHR>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkAddressCopyFlagsKHR(0)");
     return ret;
@@ -10484,14 +10484,14 @@ static inline const char* string_VkVideoEncodeIntraRefreshModeFlagBitsKHR(VkVide
 #ifdef __cplusplus
 static inline std::string string_VkVideoEncodeIntraRefreshModeFlagsKHR(VkVideoEncodeIntraRefreshModeFlagsKHR input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkVideoEncodeIntraRefreshModeFlagBitsKHR(static_cast<VkVideoEncodeIntraRefreshModeFlagBitsKHR>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkVideoEncodeIntraRefreshModeFlagsKHR(0)");
     return ret;
@@ -10519,14 +10519,14 @@ static inline const char* string_VkDeviceFaultFlagBitsKHR(VkDeviceFaultFlagBitsK
 #ifdef __cplusplus
 static inline std::string string_VkDeviceFaultFlagsKHR(VkDeviceFaultFlagsKHR input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkDeviceFaultFlagBitsKHR(static_cast<VkDeviceFaultFlagBitsKHR>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkDeviceFaultFlagsKHR(0)");
     return ret;
@@ -10540,14 +10540,14 @@ static inline const char* string_VkAccessFlagBits3KHR(uint64_t input_value) {
 #ifdef __cplusplus
 static inline std::string string_VkAccessFlags3KHR(VkAccessFlags3KHR input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkAccessFlagBits3KHR(static_cast<uint64_t>(1ULL << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkAccessFlags3KHR(0)");
     return ret;
@@ -10569,14 +10569,14 @@ static inline const char* string_VkVideoEncodePerPartitionFeedbackFlagBitsKHR(Vk
 #ifdef __cplusplus
 static inline std::string string_VkVideoEncodePerPartitionFeedbackFlagsKHR(VkVideoEncodePerPartitionFeedbackFlagsKHR input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkVideoEncodePerPartitionFeedbackFlagBitsKHR(static_cast<VkVideoEncodePerPartitionFeedbackFlagBitsKHR>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkVideoEncodePerPartitionFeedbackFlagsKHR(0)");
     return ret;
@@ -10598,14 +10598,14 @@ static inline const char* string_VkRenderingAttachmentFlagBitsKHR(VkRenderingAtt
 #ifdef __cplusplus
 static inline std::string string_VkRenderingAttachmentFlagsKHR(VkRenderingAttachmentFlagsKHR input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkRenderingAttachmentFlagBitsKHR(static_cast<VkRenderingAttachmentFlagBitsKHR>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkRenderingAttachmentFlagsKHR(0)");
     return ret;
@@ -10625,14 +10625,14 @@ static inline const char* string_VkResolveImageFlagBitsKHR(VkResolveImageFlagBit
 #ifdef __cplusplus
 static inline std::string string_VkResolveImageFlagsKHR(VkResolveImageFlagsKHR input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkResolveImageFlagBitsKHR(static_cast<VkResolveImageFlagBitsKHR>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkResolveImageFlagsKHR(0)");
     return ret;
@@ -10670,14 +10670,14 @@ static inline const char* string_VkImageUsageFlagBits2KHR(uint64_t input_value) 
 #ifdef __cplusplus
 static inline std::string string_VkImageUsageFlags2KHR(VkImageUsageFlags2KHR input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkImageUsageFlagBits2KHR(static_cast<uint64_t>(1ULL << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkImageUsageFlags2KHR(0)");
     return ret;
@@ -10711,14 +10711,14 @@ static inline const char* string_VkImageCreateFlagBits2KHR(uint64_t input_value)
 #ifdef __cplusplus
 static inline std::string string_VkImageCreateFlags2KHR(VkImageCreateFlags2KHR input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkImageCreateFlagBits2KHR(static_cast<uint64_t>(1ULL << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkImageCreateFlags2KHR(0)");
     return ret;
@@ -10744,14 +10744,14 @@ static inline const char* string_VkDebugReportFlagBitsEXT(VkDebugReportFlagBitsE
 #ifdef __cplusplus
 static inline std::string string_VkDebugReportFlagsEXT(VkDebugReportFlagsEXT input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkDebugReportFlagBitsEXT(static_cast<VkDebugReportFlagBitsEXT>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkDebugReportFlagsEXT(0)");
     return ret;
@@ -10775,14 +10775,14 @@ static inline const char* string_VkExternalMemoryHandleTypeFlagBitsNV(VkExternal
 #ifdef __cplusplus
 static inline std::string string_VkExternalMemoryHandleTypeFlagsNV(VkExternalMemoryHandleTypeFlagsNV input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkExternalMemoryHandleTypeFlagBitsNV(static_cast<VkExternalMemoryHandleTypeFlagBitsNV>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkExternalMemoryHandleTypeFlagsNV(0)");
     return ret;
@@ -10804,14 +10804,14 @@ static inline const char* string_VkExternalMemoryFeatureFlagBitsNV(VkExternalMem
 #ifdef __cplusplus
 static inline std::string string_VkExternalMemoryFeatureFlagsNV(VkExternalMemoryFeatureFlagsNV input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkExternalMemoryFeatureFlagBitsNV(static_cast<VkExternalMemoryFeatureFlagBitsNV>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkExternalMemoryFeatureFlagsNV(0)");
     return ret;
@@ -10829,14 +10829,14 @@ static inline const char* string_VkSurfaceCounterFlagBitsEXT(VkSurfaceCounterFla
 #ifdef __cplusplus
 static inline std::string string_VkSurfaceCounterFlagsEXT(VkSurfaceCounterFlagsEXT input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkSurfaceCounterFlagBitsEXT(static_cast<VkSurfaceCounterFlagBitsEXT>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkSurfaceCounterFlagsEXT(0)");
     return ret;
@@ -10860,14 +10860,14 @@ static inline const char* string_VkDebugUtilsMessageSeverityFlagBitsEXT(VkDebugU
 #ifdef __cplusplus
 static inline std::string string_VkDebugUtilsMessageSeverityFlagsEXT(VkDebugUtilsMessageSeverityFlagsEXT input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkDebugUtilsMessageSeverityFlagBitsEXT(static_cast<VkDebugUtilsMessageSeverityFlagBitsEXT>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkDebugUtilsMessageSeverityFlagsEXT(0)");
     return ret;
@@ -10891,14 +10891,14 @@ static inline const char* string_VkDebugUtilsMessageTypeFlagBitsEXT(VkDebugUtils
 #ifdef __cplusplus
 static inline std::string string_VkDebugUtilsMessageTypeFlagsEXT(VkDebugUtilsMessageTypeFlagsEXT input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkDebugUtilsMessageTypeFlagBitsEXT(static_cast<VkDebugUtilsMessageTypeFlagBitsEXT>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkDebugUtilsMessageTypeFlagsEXT(0)");
     return ret;
@@ -10928,14 +10928,14 @@ static inline const char* string_VkGpaSqShaderStageFlagBitsAMD(VkGpaSqShaderStag
 #ifdef __cplusplus
 static inline std::string string_VkGpaSqShaderStageFlagsAMD(VkGpaSqShaderStageFlagsAMD input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkGpaSqShaderStageFlagBitsAMD(static_cast<VkGpaSqShaderStageFlagBitsAMD>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkGpaSqShaderStageFlagsAMD(0)");
     return ret;
@@ -10949,14 +10949,14 @@ static inline const char* string_VkTensorViewCreateFlagBitsARM(uint64_t input_va
 #ifdef __cplusplus
 static inline std::string string_VkTensorViewCreateFlagsARM(VkTensorViewCreateFlagsARM input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkTensorViewCreateFlagBitsARM(static_cast<uint64_t>(1ULL << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkTensorViewCreateFlagsARM(0)");
     return ret;
@@ -10995,14 +10995,14 @@ static inline const char* string_VkSpirvResourceTypeFlagBitsEXT(VkSpirvResourceT
 static inline std::string string_VkSpirvResourceTypeFlagsEXT(VkSpirvResourceTypeFlagsEXT input_value) {
     if (input_value == VK_SPIRV_RESOURCE_TYPE_ALL_EXT) { return "VK_SPIRV_RESOURCE_TYPE_ALL_EXT"; }
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkSpirvResourceTypeFlagBitsEXT(static_cast<VkSpirvResourceTypeFlagBitsEXT>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkSpirvResourceTypeFlagsEXT(0)");
     return ret;
@@ -11022,14 +11022,14 @@ static inline const char* string_VkGeometryFlagBitsKHR(VkGeometryFlagBitsKHR inp
 #ifdef __cplusplus
 static inline std::string string_VkGeometryFlagsKHR(VkGeometryFlagsKHR input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkGeometryFlagBitsKHR(static_cast<VkGeometryFlagBitsKHR>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkGeometryFlagsKHR(0)");
     return ret;
@@ -11057,14 +11057,14 @@ static inline const char* string_VkGeometryInstanceFlagBitsKHR(VkGeometryInstanc
 #ifdef __cplusplus
 static inline std::string string_VkGeometryInstanceFlagsKHR(VkGeometryInstanceFlagsKHR input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkGeometryInstanceFlagBitsKHR(static_cast<VkGeometryInstanceFlagBitsKHR>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkGeometryInstanceFlagsKHR(0)");
     return ret;
@@ -11108,14 +11108,14 @@ static inline const char* string_VkBuildAccelerationStructureFlagBitsKHR(VkBuild
 #ifdef __cplusplus
 static inline std::string string_VkBuildAccelerationStructureFlagsKHR(VkBuildAccelerationStructureFlagsKHR input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkBuildAccelerationStructureFlagBitsKHR(static_cast<VkBuildAccelerationStructureFlagBitsKHR>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkBuildAccelerationStructureFlagsKHR(0)");
     return ret;
@@ -11139,14 +11139,14 @@ static inline const char* string_VkPresentStageFlagBitsEXT(VkPresentStageFlagBit
 #ifdef __cplusplus
 static inline std::string string_VkPresentStageFlagsEXT(VkPresentStageFlagsEXT input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkPresentStageFlagBitsEXT(static_cast<VkPresentStageFlagBitsEXT>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkPresentStageFlagsEXT(0)");
     return ret;
@@ -11166,14 +11166,14 @@ static inline const char* string_VkPastPresentationTimingFlagBitsEXT(VkPastPrese
 #ifdef __cplusplus
 static inline std::string string_VkPastPresentationTimingFlagsEXT(VkPastPresentationTimingFlagsEXT input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkPastPresentationTimingFlagBitsEXT(static_cast<VkPastPresentationTimingFlagBitsEXT>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkPastPresentationTimingFlagsEXT(0)");
     return ret;
@@ -11193,14 +11193,14 @@ static inline const char* string_VkPresentTimingInfoFlagBitsEXT(VkPresentTimingI
 #ifdef __cplusplus
 static inline std::string string_VkPresentTimingInfoFlagsEXT(VkPresentTimingInfoFlagsEXT input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkPresentTimingInfoFlagBitsEXT(static_cast<VkPresentTimingInfoFlagBitsEXT>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkPresentTimingInfoFlagsEXT(0)");
     return ret;
@@ -11218,14 +11218,14 @@ static inline const char* string_VkIndirectStateFlagBitsNV(VkIndirectStateFlagBi
 #ifdef __cplusplus
 static inline std::string string_VkIndirectStateFlagsNV(VkIndirectStateFlagsNV input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkIndirectStateFlagBitsNV(static_cast<VkIndirectStateFlagBitsNV>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkIndirectStateFlagsNV(0)");
     return ret;
@@ -11247,14 +11247,14 @@ static inline const char* string_VkIndirectCommandsLayoutUsageFlagBitsNV(VkIndir
 #ifdef __cplusplus
 static inline std::string string_VkIndirectCommandsLayoutUsageFlagsNV(VkIndirectCommandsLayoutUsageFlagsNV input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkIndirectCommandsLayoutUsageFlagBitsNV(static_cast<VkIndirectCommandsLayoutUsageFlagBitsNV>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkIndirectCommandsLayoutUsageFlagsNV(0)");
     return ret;
@@ -11278,14 +11278,14 @@ static inline const char* string_VkDeviceDiagnosticsConfigFlagBitsNV(VkDeviceDia
 #ifdef __cplusplus
 static inline std::string string_VkDeviceDiagnosticsConfigFlagsNV(VkDeviceDiagnosticsConfigFlagsNV input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkDeviceDiagnosticsConfigFlagBitsNV(static_cast<VkDeviceDiagnosticsConfigFlagBitsNV>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkDeviceDiagnosticsConfigFlagsNV(0)");
     return ret;
@@ -11305,14 +11305,14 @@ static inline const char* string_VkTileShadingRenderPassFlagBitsQCOM(VkTileShadi
 #ifdef __cplusplus
 static inline std::string string_VkTileShadingRenderPassFlagsQCOM(VkTileShadingRenderPassFlagsQCOM input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkTileShadingRenderPassFlagBitsQCOM(static_cast<VkTileShadingRenderPassFlagBitsQCOM>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkTileShadingRenderPassFlagsQCOM(0)");
     return ret;
@@ -11341,14 +11341,14 @@ static inline const char* string_VkExportMetalObjectTypeFlagBitsEXT(VkExportMeta
 #ifdef __cplusplus
 static inline std::string string_VkExportMetalObjectTypeFlagsEXT(VkExportMetalObjectTypeFlagsEXT input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkExportMetalObjectTypeFlagBitsEXT(static_cast<VkExportMetalObjectTypeFlagBitsEXT>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkExportMetalObjectTypeFlagsEXT(0)");
     return ret;
@@ -11373,14 +11373,14 @@ static inline const char* string_VkGraphicsPipelineLibraryFlagBitsEXT(VkGraphics
 #ifdef __cplusplus
 static inline std::string string_VkGraphicsPipelineLibraryFlagsEXT(VkGraphicsPipelineLibraryFlagsEXT input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkGraphicsPipelineLibraryFlagBitsEXT(static_cast<VkGraphicsPipelineLibraryFlagBitsEXT>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkGraphicsPipelineLibraryFlagsEXT(0)");
     return ret;
@@ -11404,14 +11404,14 @@ static inline const char* string_VkImageCompressionFlagBitsEXT(VkImageCompressio
 #ifdef __cplusplus
 static inline std::string string_VkImageCompressionFlagsEXT(VkImageCompressionFlagsEXT input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkImageCompressionFlagBitsEXT(static_cast<VkImageCompressionFlagBitsEXT>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkImageCompressionFlagsEXT(0)");
     return ret;
@@ -11477,14 +11477,14 @@ static inline const char* string_VkImageCompressionFixedRateFlagBitsEXT(VkImageC
 #ifdef __cplusplus
 static inline std::string string_VkImageCompressionFixedRateFlagsEXT(VkImageCompressionFixedRateFlagsEXT input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkImageCompressionFixedRateFlagBitsEXT(static_cast<VkImageCompressionFixedRateFlagBitsEXT>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkImageCompressionFixedRateFlagsEXT(0)");
     return ret;
@@ -11502,14 +11502,14 @@ static inline const char* string_VkDeviceAddressBindingFlagBitsEXT(VkDeviceAddre
 #ifdef __cplusplus
 static inline std::string string_VkDeviceAddressBindingFlagsEXT(VkDeviceAddressBindingFlagsEXT input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkDeviceAddressBindingFlagBitsEXT(static_cast<VkDeviceAddressBindingFlagBitsEXT>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkDeviceAddressBindingFlagsEXT(0)");
     return ret;
@@ -11536,14 +11536,14 @@ static inline const char* string_VkImageConstraintsInfoFlagBitsFUCHSIA(VkImageCo
 #ifdef __cplusplus
 static inline std::string string_VkImageConstraintsInfoFlagsFUCHSIA(VkImageConstraintsInfoFlagsFUCHSIA input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkImageConstraintsInfoFlagBitsFUCHSIA(static_cast<VkImageConstraintsInfoFlagBitsFUCHSIA>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkImageConstraintsInfoFlagsFUCHSIA(0)");
     return ret;
@@ -11562,14 +11562,14 @@ static inline const char* string_VkFrameBoundaryFlagBitsEXT(VkFrameBoundaryFlagB
 #ifdef __cplusplus
 static inline std::string string_VkFrameBoundaryFlagsEXT(VkFrameBoundaryFlagsEXT input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkFrameBoundaryFlagBitsEXT(static_cast<VkFrameBoundaryFlagBitsEXT>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkFrameBoundaryFlagsEXT(0)");
     return ret;
@@ -11595,14 +11595,14 @@ static inline const char* string_VkVideoEncodeRgbModelConversionFlagBitsVALVE(Vk
 #ifdef __cplusplus
 static inline std::string string_VkVideoEncodeRgbModelConversionFlagsVALVE(VkVideoEncodeRgbModelConversionFlagsVALVE input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkVideoEncodeRgbModelConversionFlagBitsVALVE(static_cast<VkVideoEncodeRgbModelConversionFlagBitsVALVE>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkVideoEncodeRgbModelConversionFlagsVALVE(0)");
     return ret;
@@ -11622,14 +11622,14 @@ static inline const char* string_VkVideoEncodeRgbRangeCompressionFlagBitsVALVE(V
 #ifdef __cplusplus
 static inline std::string string_VkVideoEncodeRgbRangeCompressionFlagsVALVE(VkVideoEncodeRgbRangeCompressionFlagsVALVE input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkVideoEncodeRgbRangeCompressionFlagBitsVALVE(static_cast<VkVideoEncodeRgbRangeCompressionFlagBitsVALVE>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkVideoEncodeRgbRangeCompressionFlagsVALVE(0)");
     return ret;
@@ -11649,14 +11649,14 @@ static inline const char* string_VkVideoEncodeRgbChromaOffsetFlagBitsVALVE(VkVid
 #ifdef __cplusplus
 static inline std::string string_VkVideoEncodeRgbChromaOffsetFlagsVALVE(VkVideoEncodeRgbChromaOffsetFlagsVALVE input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkVideoEncodeRgbChromaOffsetFlagBitsVALVE(static_cast<VkVideoEncodeRgbChromaOffsetFlagBitsVALVE>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkVideoEncodeRgbChromaOffsetFlagsVALVE(0)");
     return ret;
@@ -11678,14 +11678,14 @@ static inline const char* string_VkBuildMicromapFlagBitsEXT(VkBuildMicromapFlagB
 #ifdef __cplusplus
 static inline std::string string_VkBuildMicromapFlagsEXT(VkBuildMicromapFlagsEXT input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkBuildMicromapFlagBitsEXT(static_cast<VkBuildMicromapFlagBitsEXT>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkBuildMicromapFlagsEXT(0)");
     return ret;
@@ -11703,14 +11703,14 @@ static inline const char* string_VkMicromapCreateFlagBitsEXT(VkMicromapCreateFla
 #ifdef __cplusplus
 static inline std::string string_VkMicromapCreateFlagsEXT(VkMicromapCreateFlagsEXT input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkMicromapCreateFlagBitsEXT(static_cast<VkMicromapCreateFlagBitsEXT>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkMicromapCreateFlagsEXT(0)");
     return ret;
@@ -11725,14 +11725,14 @@ static inline const char* string_VkPhysicalDeviceSchedulingControlsFlagBitsARM(u
 #ifdef __cplusplus
 static inline std::string string_VkPhysicalDeviceSchedulingControlsFlagsARM(VkPhysicalDeviceSchedulingControlsFlagsARM input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkPhysicalDeviceSchedulingControlsFlagBitsARM(static_cast<uint64_t>(1ULL << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkPhysicalDeviceSchedulingControlsFlagsARM(0)");
     return ret;
@@ -11746,14 +11746,14 @@ static inline const char* string_VkMemoryDecompressionMethodFlagBitsEXT(uint64_t
 #ifdef __cplusplus
 static inline std::string string_VkMemoryDecompressionMethodFlagsEXT(VkMemoryDecompressionMethodFlagsEXT input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkMemoryDecompressionMethodFlagBitsEXT(static_cast<uint64_t>(1ULL << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkMemoryDecompressionMethodFlagsEXT(0)");
     return ret;
@@ -11770,14 +11770,14 @@ static inline const char* string_VkTensorCreateFlagBitsARM(uint64_t input_value)
 #ifdef __cplusplus
 static inline std::string string_VkTensorCreateFlagsARM(VkTensorCreateFlagsARM input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkTensorCreateFlagBitsARM(static_cast<uint64_t>(1ULL << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkTensorCreateFlagsARM(0)");
     return ret;
@@ -11795,14 +11795,14 @@ static inline const char* string_VkTensorUsageFlagBitsARM(uint64_t input_value) 
 #ifdef __cplusplus
 static inline std::string string_VkTensorUsageFlagsARM(VkTensorUsageFlagsARM input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkTensorUsageFlagBitsARM(static_cast<uint64_t>(1ULL << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkTensorUsageFlagsARM(0)");
     return ret;
@@ -11828,14 +11828,14 @@ static inline const char* string_VkOpticalFlowGridSizeFlagBitsNV(VkOpticalFlowGr
 #ifdef __cplusplus
 static inline std::string string_VkOpticalFlowGridSizeFlagsNV(VkOpticalFlowGridSizeFlagsNV input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkOpticalFlowGridSizeFlagBitsNV(static_cast<VkOpticalFlowGridSizeFlagBitsNV>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkOpticalFlowGridSizeFlagsNV(0)");
     return ret;
@@ -11863,14 +11863,14 @@ static inline const char* string_VkOpticalFlowUsageFlagBitsNV(VkOpticalFlowUsage
 #ifdef __cplusplus
 static inline std::string string_VkOpticalFlowUsageFlagsNV(VkOpticalFlowUsageFlagsNV input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkOpticalFlowUsageFlagBitsNV(static_cast<VkOpticalFlowUsageFlagBitsNV>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkOpticalFlowUsageFlagsNV(0)");
     return ret;
@@ -11896,14 +11896,14 @@ static inline const char* string_VkOpticalFlowSessionCreateFlagBitsNV(VkOpticalF
 #ifdef __cplusplus
 static inline std::string string_VkOpticalFlowSessionCreateFlagsNV(VkOpticalFlowSessionCreateFlagsNV input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkOpticalFlowSessionCreateFlagBitsNV(static_cast<VkOpticalFlowSessionCreateFlagBitsNV>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkOpticalFlowSessionCreateFlagsNV(0)");
     return ret;
@@ -11921,14 +11921,14 @@ static inline const char* string_VkOpticalFlowExecuteFlagBitsNV(VkOpticalFlowExe
 #ifdef __cplusplus
 static inline std::string string_VkOpticalFlowExecuteFlagsNV(VkOpticalFlowExecuteFlagsNV input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkOpticalFlowExecuteFlagBitsNV(static_cast<VkOpticalFlowExecuteFlagBitsNV>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkOpticalFlowExecuteFlagsNV(0)");
     return ret;
@@ -11970,14 +11970,14 @@ static inline const char* string_VkShaderCreateFlagBitsEXT(VkShaderCreateFlagBit
 #ifdef __cplusplus
 static inline std::string string_VkShaderCreateFlagsEXT(VkShaderCreateFlagsEXT input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkShaderCreateFlagBitsEXT(static_cast<VkShaderCreateFlagBitsEXT>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkShaderCreateFlagsEXT(0)");
     return ret;
@@ -11992,14 +11992,14 @@ static inline const char* string_VkDataGraphPipelineSessionCreateFlagBitsARM(uin
 #ifdef __cplusplus
 static inline std::string string_VkDataGraphPipelineSessionCreateFlagsARM(VkDataGraphPipelineSessionCreateFlagsARM input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkDataGraphPipelineSessionCreateFlagBitsARM(static_cast<uint64_t>(1ULL << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkDataGraphPipelineSessionCreateFlagsARM(0)");
     return ret;
@@ -12023,14 +12023,14 @@ static inline const char* string_VkDataGraphTOSAQualityFlagBitsARM(VkDataGraphTO
 #ifdef __cplusplus
 static inline std::string string_VkDataGraphTOSAQualityFlagsARM(VkDataGraphTOSAQualityFlagsARM input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkDataGraphTOSAQualityFlagBitsARM(static_cast<VkDataGraphTOSAQualityFlagBitsARM>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkDataGraphTOSAQualityFlagsARM(0)");
     return ret;
@@ -12060,14 +12060,14 @@ static inline const char* string_VkClusterAccelerationStructureAddressResolution
 #ifdef __cplusplus
 static inline std::string string_VkClusterAccelerationStructureAddressResolutionFlagsNV(VkClusterAccelerationStructureAddressResolutionFlagsNV input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkClusterAccelerationStructureAddressResolutionFlagBitsNV(static_cast<VkClusterAccelerationStructureAddressResolutionFlagBitsNV>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkClusterAccelerationStructureAddressResolutionFlagsNV(0)");
     return ret;
@@ -12085,14 +12085,14 @@ static inline const char* string_VkClusterAccelerationStructureClusterFlagBitsNV
 #ifdef __cplusplus
 static inline std::string string_VkClusterAccelerationStructureClusterFlagsNV(VkClusterAccelerationStructureClusterFlagsNV input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkClusterAccelerationStructureClusterFlagBitsNV(static_cast<VkClusterAccelerationStructureClusterFlagBitsNV>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkClusterAccelerationStructureClusterFlagsNV(0)");
     return ret;
@@ -12114,14 +12114,14 @@ static inline const char* string_VkClusterAccelerationStructureGeometryFlagBitsN
 #ifdef __cplusplus
 static inline std::string string_VkClusterAccelerationStructureGeometryFlagsNV(VkClusterAccelerationStructureGeometryFlagsNV input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkClusterAccelerationStructureGeometryFlagBitsNV(static_cast<VkClusterAccelerationStructureGeometryFlagBitsNV>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkClusterAccelerationStructureGeometryFlagsNV(0)");
     return ret;
@@ -12143,14 +12143,14 @@ static inline const char* string_VkClusterAccelerationStructureIndexFormatFlagBi
 #ifdef __cplusplus
 static inline std::string string_VkClusterAccelerationStructureIndexFormatFlagsNV(VkClusterAccelerationStructureIndexFormatFlagsNV input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkClusterAccelerationStructureIndexFormatFlagBitsNV(static_cast<VkClusterAccelerationStructureIndexFormatFlagBitsNV>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkClusterAccelerationStructureIndexFormatFlagsNV(0)");
     return ret;
@@ -12176,14 +12176,14 @@ static inline const char* string_VkPartitionedAccelerationStructureInstanceFlagB
 #ifdef __cplusplus
 static inline std::string string_VkPartitionedAccelerationStructureInstanceFlagsNV(VkPartitionedAccelerationStructureInstanceFlagsNV input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkPartitionedAccelerationStructureInstanceFlagBitsNV(static_cast<VkPartitionedAccelerationStructureInstanceFlagBitsNV>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkPartitionedAccelerationStructureInstanceFlagsNV(0)");
     return ret;
@@ -12203,14 +12203,14 @@ static inline const char* string_VkIndirectCommandsInputModeFlagBitsEXT(VkIndire
 #ifdef __cplusplus
 static inline std::string string_VkIndirectCommandsInputModeFlagsEXT(VkIndirectCommandsInputModeFlagsEXT input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkIndirectCommandsInputModeFlagBitsEXT(static_cast<VkIndirectCommandsInputModeFlagBitsEXT>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkIndirectCommandsInputModeFlagsEXT(0)");
     return ret;
@@ -12230,14 +12230,14 @@ static inline const char* string_VkIndirectCommandsLayoutUsageFlagBitsEXT(VkIndi
 #ifdef __cplusplus
 static inline std::string string_VkIndirectCommandsLayoutUsageFlagsEXT(VkIndirectCommandsLayoutUsageFlagsEXT input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkIndirectCommandsLayoutUsageFlagBitsEXT(static_cast<VkIndirectCommandsLayoutUsageFlagBitsEXT>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkIndirectCommandsLayoutUsageFlagsEXT(0)");
     return ret;
@@ -12263,14 +12263,14 @@ static inline const char* string_VkDataGraphOpticalFlowGridSizeFlagBitsARM(VkDat
 #ifdef __cplusplus
 static inline std::string string_VkDataGraphOpticalFlowGridSizeFlagsARM(VkDataGraphOpticalFlowGridSizeFlagsARM input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkDataGraphOpticalFlowGridSizeFlagBitsARM(static_cast<VkDataGraphOpticalFlowGridSizeFlagBitsARM>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkDataGraphOpticalFlowGridSizeFlagsARM(0)");
     return ret;
@@ -12292,14 +12292,14 @@ static inline const char* string_VkDataGraphOpticalFlowCreateFlagBitsARM(VkDataG
 #ifdef __cplusplus
 static inline std::string string_VkDataGraphOpticalFlowCreateFlagsARM(VkDataGraphOpticalFlowCreateFlagsARM input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkDataGraphOpticalFlowCreateFlagBitsARM(static_cast<VkDataGraphOpticalFlowCreateFlagBitsARM>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkDataGraphOpticalFlowCreateFlagsARM(0)");
     return ret;
@@ -12325,14 +12325,14 @@ static inline const char* string_VkDataGraphOpticalFlowImageUsageFlagBitsARM(VkD
 #ifdef __cplusplus
 static inline std::string string_VkDataGraphOpticalFlowImageUsageFlagsARM(VkDataGraphOpticalFlowImageUsageFlagsARM input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkDataGraphOpticalFlowImageUsageFlagBitsARM(static_cast<VkDataGraphOpticalFlowImageUsageFlagBitsARM>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkDataGraphOpticalFlowImageUsageFlagsARM(0)");
     return ret;
@@ -12358,14 +12358,14 @@ static inline const char* string_VkDataGraphOpticalFlowExecuteFlagBitsARM(VkData
 #ifdef __cplusplus
 static inline std::string string_VkDataGraphOpticalFlowExecuteFlagsARM(VkDataGraphOpticalFlowExecuteFlagsARM input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkDataGraphOpticalFlowExecuteFlagBitsARM(static_cast<VkDataGraphOpticalFlowExecuteFlagBitsARM>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkDataGraphOpticalFlowExecuteFlagsARM(0)");
     return ret;
@@ -12383,14 +12383,14 @@ static inline const char* string_VkCooperativeMatrixFlagBitsEXT(VkCooperativeMat
 #ifdef __cplusplus
 static inline std::string string_VkCooperativeMatrixFlagsEXT(VkCooperativeMatrixFlagsEXT input_value) {
     std::string ret;
-    int index = 0;
+    unsigned int index = 0;
     while(input_value) {
-        if (input_value & 1) {
+        if (input_value & 1u) {
             if( !ret.empty()) ret.append("|");
             ret.append(string_VkCooperativeMatrixFlagBitsEXT(static_cast<VkCooperativeMatrixFlagBitsEXT>(1U << index)));
         }
         ++index;
-        input_value >>= 1;
+        input_value >>= 1u;
     }
     if (ret.empty()) ret.append("VkCooperativeMatrixFlagsEXT(0)");
     return ret;

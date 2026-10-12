@@ -122,7 +122,7 @@ TEST(small_vector, int_resize) {
 }
 
 struct NoDefaultCons {
-    NoDefaultCons(int x) : x(x) {}
+    NoDefaultCons(int x) : x(x) {}  // NOLINT(misc-explicit-constructor)
     int x;
 };
 
@@ -296,7 +296,7 @@ TEST(small_vector, construct) {
     ASSERT_TRUE(HaveSameElements(ref_small, v_small_emplace));
 
     // Copy construct from small_store
-    SmallVector v_small_copy(ref_small);
+    SmallVector v_small_copy(ref_small);  // NOLINT(performance-unnecessary-copy-initialization)
     ASSERT_TRUE(HaveSameElements(ref_small, v_small_copy));
 
     // Move construct from small_store
@@ -315,7 +315,7 @@ TEST(small_vector, construct) {
     ASSERT_TRUE(HaveSameElements(ref_large, v_large_emplace));
 
     // Copy construct from large_store
-    SmallVector v_large_copy(ref_large);
+    SmallVector v_large_copy(ref_large);  // NOLINT(performance-unnecessary-copy-initialization)
     ASSERT_TRUE(HaveSameElements(ref_large, v_large_copy));
 
     // Move construct from large_store
@@ -396,6 +396,7 @@ TEST(small_vector, assign) {
     v_src = ref_large;
     v_dst = ref_xl;
     v_dst = std::move(v_src);
+    // NOLINTNEXTLINE(bugprone-use-after-move)
     ASSERT_TRUE(v_src.empty());  // Since large moves move the large store, the source is empty, but not required by spec of vector
     ASSERT_TRUE(HaveSameElements(ref_large, v_dst));
 
@@ -410,6 +411,6 @@ TEST(small_vector, assign) {
     v_src = ref_xxl;
     v_dst = ref_xl;
     v_dst = std::move(v_src);
-    ASSERT_TRUE(v_src.empty());
+    ASSERT_TRUE(v_src.empty());  // NOLINT(bugprone-use-after-move)
     ASSERT_TRUE(HaveSameElements(ref_xxl, v_dst));
 }

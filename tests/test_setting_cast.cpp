@@ -38,8 +38,8 @@ TEST(test_layer_setting_cast, vkuGetLayerSettingValues_Bool) {
 
     std::vector<const char*> string_values(input_values.size());
 
-    result_complete =
-        vkuGetLayerSettingValues(layerSettingSet, "my_setting", VKU_LAYER_SETTING_TYPE_STRING, &value_count, &string_values[0]);
+    result_complete = vkuGetLayerSettingValues(layerSettingSet, "my_setting", VKU_LAYER_SETTING_TYPE_STRING, &value_count,
+                                               static_cast<void*>(&string_values[0]));
     EXPECT_EQ(VK_SUCCESS, result_complete);
     EXPECT_EQ(2u, value_count);
     EXPECT_STREQ("true", string_values[0]);
@@ -74,8 +74,8 @@ TEST(test_layer_setting_cast, vkuGetLayerSettingValues_Int32) {
 
     std::vector<const char*> string_values(input_values.size());
 
-    result_complete =
-        vkuGetLayerSettingValues(layerSettingSet, "my_setting", VKU_LAYER_SETTING_TYPE_STRING, &value_count, &string_values[0]);
+    result_complete = vkuGetLayerSettingValues(layerSettingSet, "my_setting", VKU_LAYER_SETTING_TYPE_STRING, &value_count,
+                                               static_cast<void*>(&string_values[0]));
     EXPECT_EQ(VK_SUCCESS, result_complete);
     EXPECT_EQ(2u, value_count);
     EXPECT_STREQ("76", string_values[0]);
@@ -110,8 +110,8 @@ TEST(test_layer_setting_cast, vkuGetLayerSettingValues_Int64) {
 
     std::vector<const char*> string_values(input_values.size());
 
-    result_complete =
-        vkuGetLayerSettingValues(layerSettingSet, "my_setting", VKU_LAYER_SETTING_TYPE_STRING, &value_count, &string_values[0]);
+    result_complete = vkuGetLayerSettingValues(layerSettingSet, "my_setting", VKU_LAYER_SETTING_TYPE_STRING, &value_count,
+                                               static_cast<void*>(&string_values[0]));
     EXPECT_EQ(VK_SUCCESS, result_complete);
     EXPECT_EQ(2u, value_count);
     EXPECT_STREQ("76", string_values[0]);
@@ -146,8 +146,8 @@ TEST(test_layer_setting_cast, vkuGetLayerSettingValues_Uint32) {
 
     std::vector<const char*> string_values(input_values.size());
 
-    result_complete =
-        vkuGetLayerSettingValues(layerSettingSet, "my_setting", VKU_LAYER_SETTING_TYPE_STRING, &value_count, &string_values[0]);
+    result_complete = vkuGetLayerSettingValues(layerSettingSet, "my_setting", VKU_LAYER_SETTING_TYPE_STRING, &value_count,
+                                               static_cast<void*>(&string_values[0]));
     EXPECT_EQ(VK_SUCCESS, result_complete);
     EXPECT_EQ(2u, value_count);
     EXPECT_STREQ("76", string_values[0]);
@@ -182,8 +182,8 @@ TEST(test_layer_setting_cast, vkuGetLayerSettingValues_Uint64) {
 
     std::vector<const char*> string_values(input_values.size());
 
-    result_complete =
-        vkuGetLayerSettingValues(layerSettingSet, "my_setting", VKU_LAYER_SETTING_TYPE_STRING, &value_count, &string_values[0]);
+    result_complete = vkuGetLayerSettingValues(layerSettingSet, "my_setting", VKU_LAYER_SETTING_TYPE_STRING, &value_count,
+                                               static_cast<void*>(&string_values[0]));
     EXPECT_EQ(VK_SUCCESS, result_complete);
     EXPECT_EQ(2u, value_count);
     EXPECT_STREQ("76", string_values[0]);
@@ -218,8 +218,8 @@ TEST(test_layer_setting_cast, vkuGetLayerSettingValues_Float) {
 
     std::vector<const char*> string_values(input_values.size());
 
-    result_complete =
-        vkuGetLayerSettingValues(layerSettingSet, "my_setting", VKU_LAYER_SETTING_TYPE_STRING, &value_count, &string_values[0]);
+    result_complete = vkuGetLayerSettingValues(layerSettingSet, "my_setting", VKU_LAYER_SETTING_TYPE_STRING, &value_count,
+                                               static_cast<void*>(&string_values[0]));
     EXPECT_EQ(VK_SUCCESS, result_complete);
     EXPECT_EQ(2u, value_count);
     EXPECT_TRUE(std::strstr(string_values[0], "76.") != nullptr);
@@ -254,8 +254,8 @@ TEST(test_layer_setting_cast, vkuGetLayerSettingValues_Double) {
 
     std::vector<const char*> string_values(input_values.size());
 
-    result_complete =
-        vkuGetLayerSettingValues(layerSettingSet, "my_setting", VKU_LAYER_SETTING_TYPE_STRING, &value_count, &string_values[0]);
+    result_complete = vkuGetLayerSettingValues(layerSettingSet, "my_setting", VKU_LAYER_SETTING_TYPE_STRING, &value_count,
+                                               static_cast<void*>(&string_values[0]));
     EXPECT_EQ(VK_SUCCESS, result_complete);
     EXPECT_EQ(2u, value_count);
     EXPECT_TRUE(std::strstr(string_values[0], "76.") != nullptr);
@@ -297,13 +297,14 @@ TEST(test_layer_setting_cast, vkuGetLayerSettingValues_Frameset) {
     value_count = 0;
     result_complete =
         vkuGetLayerSettingValues(layerSettingSet, "my_setting", VKU_LAYER_SETTING_TYPE_FRAMESET_STRING, &value_count, nullptr);
+    EXPECT_EQ(VK_SUCCESS, result_complete);
     EXPECT_EQ(2u, value_count);
 
     std::vector<const char*> string_values(input_values.size());
 
     value_count = 2;
     result_complete = vkuGetLayerSettingValues(layerSettingSet, "my_setting", VKU_LAYER_SETTING_TYPE_FRAMESET_STRING, &value_count,
-                                               &string_values[0]);
+                                               static_cast<void*>(&string_values[0]));
     EXPECT_EQ(VK_SUCCESS, result_complete);
     EXPECT_EQ(2u, value_count);
     EXPECT_STREQ("76-100-10", string_values[0]);
@@ -315,7 +316,7 @@ TEST(test_layer_setting_cast, vkuGetLayerSettingValues_Frameset) {
 TEST(test_layer_setting_cast, vkuGetLayerSettingValues_String) {
     std::vector<const char*> input_values{"VALUE_A", "VALUE_B"};
     std::vector<VkLayerSettingEXT> settings{{"VK_LAYER_LUNARG_test", "my_setting", VK_LAYER_SETTING_TYPE_STRING_EXT,
-                                             static_cast<uint32_t>(input_values.size()), &input_values[0]}};
+                                             static_cast<uint32_t>(input_values.size()), static_cast<void*>(&input_values[0])}};
 
     VkLayerSettingsCreateInfoEXT layer_settings_create_info{VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT, nullptr,
                                                             static_cast<uint32_t>(settings.size()), &settings[0]};
@@ -328,8 +329,8 @@ TEST(test_layer_setting_cast, vkuGetLayerSettingValues_String) {
     std::vector<const char*> values(input_values.size());
 
     uint32_t value_count = 2;
-    VkResult result_complete =
-        vkuGetLayerSettingValues(layerSettingSet, "my_setting", VKU_LAYER_SETTING_TYPE_STRING, &value_count, &values[0]);
+    VkResult result_complete = vkuGetLayerSettingValues(layerSettingSet, "my_setting", VKU_LAYER_SETTING_TYPE_STRING, &value_count,
+                                                        static_cast<void*>(&values[0]));
     EXPECT_EQ(VK_SUCCESS, result_complete);
     EXPECT_STREQ("VALUE_A", values[0]);
     EXPECT_STREQ("VALUE_B", values[1]);

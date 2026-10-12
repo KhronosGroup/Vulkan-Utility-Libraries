@@ -17,7 +17,7 @@ static void SetEnv(const char* value) {
 #ifdef _WIN32
     _putenv(value);
 #else
-    putenv(const_cast<char*>(value));
+    putenv(const_cast<char*>(value));  // NOLINT(concurrency-mt-unsafe,misc-include-cleaner)
 #endif
 }
 
@@ -165,7 +165,7 @@ TEST(test_layer_setting_env, vkuGetLayerSettingValues_Bool) {
     EXPECT_EQ(VK_SUCCESS, result_count);
     EXPECT_EQ(2u, value_count);
 
-    std::vector<VkBool32> values(static_cast<uint32_t>(value_count));
+    std::vector<VkBool32> values(value_count);
 
     value_count = 1;
     VkResult result_incomplete =
@@ -200,7 +200,7 @@ TEST(test_layer_setting_env, vkuGetLayerSettingValues_Int32) {
     EXPECT_EQ(VK_SUCCESS, result_count);
     EXPECT_EQ(2u, value_count);
 
-    std::vector<std::int32_t> values(static_cast<uint32_t>(value_count));
+    std::vector<std::int32_t> values(value_count);
 
     value_count = 1;
     VkResult result_incomplete =
@@ -235,7 +235,7 @@ TEST(test_layer_setting_env, vkuGetLayerSettingValues_Int64) {
     EXPECT_EQ(VK_SUCCESS, result_count);
     EXPECT_EQ(2u, value_count);
 
-    std::vector<std::int64_t> values(static_cast<uint32_t>(value_count));
+    std::vector<std::int64_t> values(value_count);
 
     value_count = 1;
     VkResult result_incomplete =
@@ -270,7 +270,7 @@ TEST(test_layer_setting_env, vkuGetLayerSettingValues_Uint32) {
     EXPECT_EQ(VK_SUCCESS, result_count);
     EXPECT_EQ(2u, value_count);
 
-    std::vector<std::uint32_t> values(static_cast<uint32_t>(value_count));
+    std::vector<std::uint32_t> values(value_count);
 
     value_count = 1;
     VkResult result_incomplete =
@@ -305,7 +305,7 @@ TEST(test_layer_setting_env, vkuGetLayerSettingValues_Uint64) {
     EXPECT_EQ(VK_SUCCESS, result_count);
     EXPECT_EQ(2u, value_count);
 
-    std::vector<std::uint64_t> values(static_cast<uint32_t>(value_count));
+    std::vector<std::uint64_t> values(value_count);
 
     value_count = 1;
     VkResult result_incomplete =
@@ -340,7 +340,7 @@ TEST(test_layer_setting_env, vkuGetLayerSettingValues_Float) {
     EXPECT_EQ(VK_SUCCESS, result_count);
     EXPECT_EQ(2u, value_count);
 
-    std::vector<float> values(static_cast<uint32_t>(value_count));
+    std::vector<float> values(value_count);
 
     value_count = 1;
     VkResult result_incomplete =
@@ -374,7 +374,7 @@ TEST(test_layer_setting_env, vkuGetLayerSettingValues_Double) {
     EXPECT_EQ(VK_SUCCESS, result_count);
     EXPECT_EQ(2u, value_count);
 
-    std::vector<double> values(static_cast<uint32_t>(value_count));
+    std::vector<double> values(value_count);
 
     value_count = 1;
     VkResult result_incomplete =
@@ -408,7 +408,7 @@ TEST(test_layer_setting_env, vkuGetLayerSettingValues_Frameset) {
     EXPECT_EQ(VK_SUCCESS, result_count);
     EXPECT_EQ(2u, value_count);
 
-    std::vector<VkuFrameset> values(static_cast<uint32_t>(value_count));
+    std::vector<VkuFrameset> values(value_count);
 
     value_count = 1;
     VkResult result_incomplete =
@@ -448,19 +448,19 @@ TEST(test_layer_setting_env, vkuGetLayerSettingValues_String) {
     EXPECT_EQ(VK_SUCCESS, result_count);
     EXPECT_EQ(2u, value_count);
 
-    std::vector<const char*> values(static_cast<uint32_t>(value_count));
+    std::vector<const char*> values(value_count);
 
     value_count = 1;
-    VkResult result_incomplete =
-        vkuGetLayerSettingValues(layerSettingSet, "my_setting", VKU_LAYER_SETTING_TYPE_STRING, &value_count, &values[0]);
+    VkResult result_incomplete = vkuGetLayerSettingValues(layerSettingSet, "my_setting", VKU_LAYER_SETTING_TYPE_STRING,
+                                                          &value_count, static_cast<void*>(&values[0]));
     EXPECT_EQ(VK_INCOMPLETE, result_incomplete);
     EXPECT_STREQ("VALUE_A", values[0]);
     EXPECT_STREQ(nullptr, values[1]);
     EXPECT_EQ(1u, value_count);
 
     value_count = 2;
-    VkResult result_complete =
-        vkuGetLayerSettingValues(layerSettingSet, "my_setting", VKU_LAYER_SETTING_TYPE_STRING, &value_count, &values[0]);
+    VkResult result_complete = vkuGetLayerSettingValues(layerSettingSet, "my_setting", VKU_LAYER_SETTING_TYPE_STRING, &value_count,
+                                                        static_cast<void*>(&values[0]));
     EXPECT_EQ(VK_SUCCESS, result_complete);
     EXPECT_STREQ("VALUE_A", values[0]);
     EXPECT_STREQ("VALUE_B", values[1]);
