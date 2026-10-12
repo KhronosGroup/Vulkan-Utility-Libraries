@@ -5,11 +5,16 @@
 // SPDX-License-Identifier: Apache-2.0
 //
 
+// Include the header under test first to check that it is self-contained
+#include <vulkan/utility/vk_small_containers.hpp>
+
 #include <gtest/gtest.h>
 #include <array>
 #include <limits>
+#include <memory>
+#include <string>
+#include <type_traits>
 #include <vector>
-#include <vulkan/utility/vk_small_containers.hpp>
 
 template <typename T, typename U>
 bool HaveSameElementsUpTo(const T& l1, const U& l2, size_t n) {
@@ -412,4 +417,222 @@ TEST(small_vector, assign) {
     v_dst = std::move(v_src);
     ASSERT_TRUE(v_src.empty());
     ASSERT_TRUE(HaveSameElements(ref_xxl, v_dst));
+}
+
+TEST(small_vector, emplace_back_forwards_arguments) {
+    // Move-only types must be usable with emplace_back
+    vku::small::vector<std::unique_ptr<int>, 2> v;
+    for (int i = 0; i < 4; ++i) {
+        v.emplace_back(std::make_unique<int>(i));
+    }
+    ASSERT_EQ(v.size(), 4u);
+    for (uint32_t i = 0; i < 4; ++i) {
+        ASSERT_EQ(*v[i], i);
+    }
+
+    // Rvalue arguments are moved, not copied
+    struct CopyCounter {
+        int* copies;
+        explicit CopyCounter(int* c) : copies(c) {}
+        CopyCounter(const CopyCounter& other) : copies(other.copies) { ++*copies; }
+        CopyCounter(CopyCounter&& other) noexcept : copies(other.copies) {}
+        CopyCounter& operator=(const CopyCounter&) = default;
+        CopyCounter& operator=(CopyCounter&&) = default;
+    };
+    int copies = 0;
+    vku::small::vector<CopyCounter, 2> c;
+    CopyCounter counter(&copies);
+    c.emplace_back(std::move(counter));
+    ASSERT_EQ(copies, 0);
+}
+
+TEST(small_vector, emplace_back_self_reference) {
+    // Long enough to defeat the small string optimization
+    const std::string a(64, 'a');
+    const std::string b(64, 'b');
+
+    // Growing from the small store to the large store
+    vku::small::vector<std::string, 2> v = {a, b};
+    ASSERT_EQ(v.size(), v.capacity());
+    v.emplace_back(v[0]);
+    ASSERT_EQ(v.size(), 3u);
+    ASSERT_EQ(v[2], a);
+
+    // Growing a large store
+    while (v.size() < v.capacity()) {
+        v.emplace_back(b);
+    }
+    v.emplace_back(v[0]);
+    ASSERT_EQ(v.back(), a);
+    ASSERT_EQ(v[0], a);
+}
+
+TEST(small_vector, emplace_back_growth) {
+    // emplace_back must grow geometrically, not one element at a time
+    vku::small::vector<int, 4> v;
+    uint32_t reallocations = 0;
+    const int* data = v.data();
+    for (int i = 0; i < 10000; ++i) {
+        v.emplace_back(i);
+        if (v.data() != data) {
+            ++reallocations;
+            data = v.data();
+        }
+    }
+    ASSERT_LE(reallocations, 20u);
+    ASSERT_GE(v.capacity(), v.size());
+    for (uint32_t i = 0; i < 10000; ++i) {
+        ASSERT_EQ(v[i], i);
+    }
+
+    // Growth saturates at the size_type maximum
+    vku::small::vector<uint8_t, 2, uint8_t> small_size;
+    for (int i = 0; i < 255; ++i) {
+        small_size.emplace_back(static_cast<uint8_t>(i));
+    }
+    ASSERT_EQ(small_size.size(), 255u);
+    ASSERT_EQ(small_size.capacity(), 255u);
+    ASSERT_EQ(small_size[254], 254u);
+}
+
+TEST(small_vector, resize_self_reference) {
+    // Long enough to defeat the small string optimization
+    const std::string a(64, 'a');
+    const std::string b(64, 'b');
+
+    // Growing from the small store to the large store
+    vku::small::vector<std::string, 2> v = {a, b};
+    v.resize(4, v[0]);
+    ASSERT_EQ(v.size(), 4u);
+    for (uint32_t i = 2; i < v.size(); ++i) {
+        ASSERT_EQ(v[i], a);
+    }
+
+    // Growing a large store
+    v.resize(v.capacity() + 4, v[1]);
+    ASSERT_EQ(v[1], b);
+    for (uint32_t i = 4; i < v.size(); ++i) {
+        ASSERT_EQ(v[i], b);
+    }
+}
+
+TEST(small_vector, shrink_to_fit_non_trivial) {
+    std::vector<std::string> ref;
+    for (char c = 'a'; c < 'i'; ++c) {
+        ref.emplace_back(64, c);  // Long enough to defeat the small string optimization
+    }
+
+    // Shrink to a smaller large store
+    vku::small::vector<std::string, 2> v;
+    for (const auto& str : ref) {
+        v.emplace_back(str);
+    }
+    v.resize(5);
+    v.shrink_to_fit();
+    ASSERT_EQ(v.capacity(), 5u);
+    ref.resize(5);
+    ASSERT_TRUE(HaveSameElements(v, ref));
+
+    // Shrink into the small store
+    v.resize(1);
+    v.shrink_to_fit();
+    ASSERT_EQ(v.capacity(), 2u);
+    ref.resize(1);
+    ASSERT_TRUE(HaveSameElements(v, ref));
+}
+
+TEST(small_vector, shrink_to_fit_small_capacity) {
+    // Shrinking to exactly the small capacity must use the small store
+    vku::small::vector<int, 4> v;
+    for (int i = 0; i < 8; ++i) {
+        v.emplace_back(i);
+    }
+    v.resize(4);
+    v.shrink_to_fit();
+    ASSERT_EQ(v.capacity(), 4u);
+    const auto* object_begin = reinterpret_cast<const uint8_t*>(&v);
+    const auto* data = reinterpret_cast<const uint8_t*>(v.data());
+    ASSERT_TRUE(data >= object_begin && data < object_begin + sizeof(v));
+
+    // Moving must see a consistent small vector
+    vku::small::vector<int, 4> moved(std::move(v));
+    std::vector<int> ref = {0, 1, 2, 3};
+    ASSERT_TRUE(HaveSameElements(moved, ref));
+    vku::small::vector<int, 4> move_assigned;
+    move_assigned = std::move(moved);
+    ASSERT_TRUE(HaveSameElements(move_assigned, ref));
+}
+
+TEST(small_vector, push_back_from) {
+    const std::string a(64, 'a');
+    const std::string b(64, 'b');
+
+    // Non-const lvalue sources must be copied, not moved from
+    std::vector<std::string> std_src = {a, b};
+    vku::small::vector<std::string, 4> small_src = {a, b};
+    vku::small::vector<std::string, 4> v;
+    v.PushBackFrom(std_src);
+    v.PushBackFrom(small_src);
+    std::vector<std::string> ref = {a, b, a, b};
+    ASSERT_TRUE(HaveSameElements(v, ref));
+    ASSERT_EQ(std_src[0], a);
+    ASSERT_EQ(small_src[0], a);
+
+    // Rvalue sources may be moved from
+    v.PushBackFrom(std::move(std_src));
+    ref = {a, b, a, b, a, b};
+    ASSERT_TRUE(HaveSameElements(v, ref));
+}
+
+TEST(small_vector, nothrow_move) {
+    // Lets std::vector and friends move small vectors when reallocating, instead of copying them
+    static_assert(std::is_nothrow_move_constructible_v<vku::small::vector<int, 2>>);
+    static_assert(std::is_nothrow_move_assignable_v<vku::small::vector<int, 2>>);
+    static_assert(std::is_nothrow_move_constructible_v<vku::small::vector<std::string, 2>>);
+    static_assert(std::is_nothrow_move_assignable_v<vku::small::vector<std::string, 2>>);
+
+    struct ThrowingMove {
+        ThrowingMove() = default;
+        ThrowingMove(const ThrowingMove&) = default;
+        ThrowingMove(ThrowingMove&&) noexcept(false) {}
+        ThrowingMove& operator=(const ThrowingMove&) = default;
+        ThrowingMove& operator=(ThrowingMove&&) noexcept(false) { return *this; }
+    };
+    static_assert(!std::is_nothrow_move_constructible_v<vku::small::vector<ThrowingMove, 2>>);
+    static_assert(!std::is_nothrow_move_assignable_v<vku::small::vector<ThrowingMove, 2>>);
+
+    std::vector<vku::small::vector<std::string, 1>> outer;
+    for (int i = 0; i < 32; ++i) {
+        outer.emplace_back();
+        outer.back().emplace_back(64u, 'a');
+    }
+    for (const auto& inner : outer) {
+        ASSERT_EQ(inner.size(), 1u);
+        ASSERT_EQ(inner[0], std::string(64, 'a'));
+    }
+}
+
+TEST(small_unordered_map, erase_releases_value) {
+    auto p = std::make_shared<int>(1);
+
+    vku::small::unordered_map<int, std::shared_ptr<int>, 2> map;
+    map[1] = p;
+    map[2] = p;
+    map[3] = p;  // Stored in the inner map
+    ASSERT_EQ(p.use_count(), 4);
+    map.erase(1);
+    ASSERT_EQ(p.use_count(), 3);
+    ASSERT_FALSE(map.contains(1));
+    map.clear();
+    ASSERT_EQ(p.use_count(), 1);
+    ASSERT_TRUE(map.empty());
+
+    vku::small::unordered_set<std::shared_ptr<int>, 2> set;
+    set.insert(p);
+    ASSERT_EQ(p.use_count(), 2);
+    set.erase(p);
+    ASSERT_EQ(p.use_count(), 1);
+    set.insert(p);
+    set.clear();
+    ASSERT_EQ(p.use_count(), 1);
 }
