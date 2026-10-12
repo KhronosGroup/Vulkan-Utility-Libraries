@@ -426,7 +426,7 @@ TEST(small_vector, emplace_back_forwards_arguments) {
         v.emplace_back(std::make_unique<int>(i));
     }
     ASSERT_EQ(v.size(), 4u);
-    for (int i = 0; i < 4; ++i) {
+    for (uint32_t i = 0; i < 4; ++i) {
         ASSERT_EQ(*v[i], i);
     }
 
@@ -481,7 +481,7 @@ TEST(small_vector, emplace_back_growth) {
     }
     ASSERT_LE(reallocations, 20u);
     ASSERT_GE(v.capacity(), v.size());
-    for (int i = 0; i < 10000; ++i) {
+    for (uint32_t i = 0; i < 10000; ++i) {
         ASSERT_EQ(v[i], i);
     }
 
@@ -604,7 +604,7 @@ TEST(small_vector, nothrow_move) {
     std::vector<vku::small::vector<std::string, 1>> outer;
     for (int i = 0; i < 32; ++i) {
         outer.emplace_back();
-        outer.back().emplace_back(64, 'a');
+        outer.back().emplace_back(64u, 'a');
     }
     for (const auto& inner : outer) {
         ASSERT_EQ(inner.size(), 1u);
