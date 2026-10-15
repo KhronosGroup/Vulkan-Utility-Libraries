@@ -664,7 +664,7 @@ void FreePnextChain(const void *pNext) {
                             construct_txt += f'{member.name} = in_struct->{member.name};\n'
                         else:
                             init_func_txt += f'{member.name} = nullptr;\n'
-                            if not member.fixedSizeArray and (member.length is None or '/' in member.length):
+                            if not member.fixedSizeArray and member.length is None:
                                 construct_txt += f'''
                                     if (in_struct->{member.name}) {{
                                             {member.name} = new {m_type}(*in_struct->{member.name});
@@ -677,6 +677,9 @@ void FreePnextChain(const void *pNext) {
                                 decorated_length = member.length
                                 for other_member in struct.members:
                                     decorated_length = re.sub(r'\b({})\b'.format(other_member.name), r'in_struct->\1', decorated_length)
+                                if '/' in decorated_length:
+                                    # Multiplied by the element size below
+                                    decorated_length = f'({decorated_length})'
                                 try:
                                     concurrent_clause = member_construct_conditions[member.name](struct, member)
                                 except:
