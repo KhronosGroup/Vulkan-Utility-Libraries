@@ -4488,7 +4488,9 @@ safe_VkPipelineMultisampleStateCreateInfo::safe_VkPipelineMultisampleStateCreate
         pNext = SafePnextCopy(in_struct->pNext, copy_state);
     }
     if (in_struct->pSampleMask) {
-        pSampleMask = new VkSampleMask(*in_struct->pSampleMask);
+        pSampleMask = new VkSampleMask[((in_struct->rasterizationSamples + 31) / 32)];
+        memcpy((void*)pSampleMask, (void*)in_struct->pSampleMask,
+               sizeof(VkSampleMask) * ((in_struct->rasterizationSamples + 31) / 32));
     }
 }
 
@@ -4516,7 +4518,8 @@ safe_VkPipelineMultisampleStateCreateInfo::safe_VkPipelineMultisampleStateCreate
     pNext = SafePnextCopy(copy_src.pNext);
 
     if (copy_src.pSampleMask) {
-        pSampleMask = new VkSampleMask(*copy_src.pSampleMask);
+        pSampleMask = new VkSampleMask[((copy_src.rasterizationSamples + 31) / 32)];
+        memcpy((void*)pSampleMask, (void*)copy_src.pSampleMask, sizeof(VkSampleMask) * ((copy_src.rasterizationSamples + 31) / 32));
     }
 }
 
@@ -4524,7 +4527,7 @@ safe_VkPipelineMultisampleStateCreateInfo& safe_VkPipelineMultisampleStateCreate
     const safe_VkPipelineMultisampleStateCreateInfo& copy_src) {
     if (&copy_src == this) return *this;
 
-    if (pSampleMask) delete pSampleMask;
+    if (pSampleMask) delete[] pSampleMask;
     FreePnextChain(pNext);
 
     sType = copy_src.sType;
@@ -4538,20 +4541,21 @@ safe_VkPipelineMultisampleStateCreateInfo& safe_VkPipelineMultisampleStateCreate
     pNext = SafePnextCopy(copy_src.pNext);
 
     if (copy_src.pSampleMask) {
-        pSampleMask = new VkSampleMask(*copy_src.pSampleMask);
+        pSampleMask = new VkSampleMask[((copy_src.rasterizationSamples + 31) / 32)];
+        memcpy((void*)pSampleMask, (void*)copy_src.pSampleMask, sizeof(VkSampleMask) * ((copy_src.rasterizationSamples + 31) / 32));
     }
 
     return *this;
 }
 
 safe_VkPipelineMultisampleStateCreateInfo::~safe_VkPipelineMultisampleStateCreateInfo() {
-    if (pSampleMask) delete pSampleMask;
+    if (pSampleMask) delete[] pSampleMask;
     FreePnextChain(pNext);
 }
 
 void safe_VkPipelineMultisampleStateCreateInfo::initialize(const VkPipelineMultisampleStateCreateInfo* in_struct,
                                                            [[maybe_unused]] PNextCopyState* copy_state) {
-    if (pSampleMask) delete pSampleMask;
+    if (pSampleMask) delete[] pSampleMask;
     FreePnextChain(pNext);
     sType = in_struct->sType;
     flags = in_struct->flags;
@@ -4564,7 +4568,9 @@ void safe_VkPipelineMultisampleStateCreateInfo::initialize(const VkPipelineMulti
     pNext = SafePnextCopy(in_struct->pNext, copy_state);
 
     if (in_struct->pSampleMask) {
-        pSampleMask = new VkSampleMask(*in_struct->pSampleMask);
+        pSampleMask = new VkSampleMask[((in_struct->rasterizationSamples + 31) / 32)];
+        memcpy((void*)pSampleMask, (void*)in_struct->pSampleMask,
+               sizeof(VkSampleMask) * ((in_struct->rasterizationSamples + 31) / 32));
     }
 }
 
@@ -4581,7 +4587,9 @@ void safe_VkPipelineMultisampleStateCreateInfo::initialize(const safe_VkPipeline
     pNext = SafePnextCopy(copy_src->pNext);
 
     if (copy_src->pSampleMask) {
-        pSampleMask = new VkSampleMask(*copy_src->pSampleMask);
+        pSampleMask = new VkSampleMask[((copy_src->rasterizationSamples + 31) / 32)];
+        memcpy((void*)pSampleMask, (void*)copy_src->pSampleMask,
+               sizeof(VkSampleMask) * ((copy_src->rasterizationSamples + 31) / 32));
     }
 }
 
