@@ -25692,6 +25692,65 @@ struct safe_VkBufferDeviceAddressAlignmentAllocateInfoVALVE {
         return reinterpret_cast<VkBufferDeviceAddressAlignmentAllocateInfoVALVE const*>(this);
     }
 };
+struct safe_VkPhysicalDeviceHdrSmpteSt209450FeaturesGOOGLE {
+    VkStructureType sType;
+    void* pNext{};
+    VkBool32 hdrSmpteSt209450;
+
+    safe_VkPhysicalDeviceHdrSmpteSt209450FeaturesGOOGLE(const VkPhysicalDeviceHdrSmpteSt209450FeaturesGOOGLE* in_struct,
+                                                        PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkPhysicalDeviceHdrSmpteSt209450FeaturesGOOGLE(const safe_VkPhysicalDeviceHdrSmpteSt209450FeaturesGOOGLE& copy_src);
+    safe_VkPhysicalDeviceHdrSmpteSt209450FeaturesGOOGLE& operator=(
+        const safe_VkPhysicalDeviceHdrSmpteSt209450FeaturesGOOGLE& copy_src);
+    safe_VkPhysicalDeviceHdrSmpteSt209450FeaturesGOOGLE();
+    ~safe_VkPhysicalDeviceHdrSmpteSt209450FeaturesGOOGLE();
+    void initialize(const VkPhysicalDeviceHdrSmpteSt209450FeaturesGOOGLE* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceHdrSmpteSt209450FeaturesGOOGLE* copy_src, PNextCopyState* copy_state = {});
+    VkPhysicalDeviceHdrSmpteSt209450FeaturesGOOGLE* ptr() {
+        return reinterpret_cast<VkPhysicalDeviceHdrSmpteSt209450FeaturesGOOGLE*>(this);
+    }
+    VkPhysicalDeviceHdrSmpteSt209450FeaturesGOOGLE const* ptr() const {
+        return reinterpret_cast<VkPhysicalDeviceHdrSmpteSt209450FeaturesGOOGLE const*>(this);
+    }
+};
+struct safe_VkHdrSmpteSt209450GOOGLE {
+    VkStructureType sType;
+    const void* pNext{};
+    size_t metadataSize;
+    const void* pMetadata{};
+    VkHdrSmpteSt209450PowerPreferenceGOOGLE powerPreference;
+
+    safe_VkHdrSmpteSt209450GOOGLE(const VkHdrSmpteSt209450GOOGLE* in_struct, PNextCopyState* copy_state = {},
+                                  bool copy_pnext = true);
+    safe_VkHdrSmpteSt209450GOOGLE(const safe_VkHdrSmpteSt209450GOOGLE& copy_src);
+    safe_VkHdrSmpteSt209450GOOGLE& operator=(const safe_VkHdrSmpteSt209450GOOGLE& copy_src);
+    safe_VkHdrSmpteSt209450GOOGLE();
+    ~safe_VkHdrSmpteSt209450GOOGLE();
+    void initialize(const VkHdrSmpteSt209450GOOGLE* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkHdrSmpteSt209450GOOGLE* copy_src, PNextCopyState* copy_state = {});
+    VkHdrSmpteSt209450GOOGLE* ptr() { return reinterpret_cast<VkHdrSmpteSt209450GOOGLE*>(this); }
+    VkHdrSmpteSt209450GOOGLE const* ptr() const { return reinterpret_cast<VkHdrSmpteSt209450GOOGLE const*>(this); }
+};
+struct safe_VkSurfaceCapabilitiesHdrSmpteSt209450GOOGLE {
+    VkStructureType sType;
+    void* pNext{};
+    VkBool32 hdrSmpteSt209450Supported;
+
+    safe_VkSurfaceCapabilitiesHdrSmpteSt209450GOOGLE(const VkSurfaceCapabilitiesHdrSmpteSt209450GOOGLE* in_struct,
+                                                     PNextCopyState* copy_state = {}, bool copy_pnext = true);
+    safe_VkSurfaceCapabilitiesHdrSmpteSt209450GOOGLE(const safe_VkSurfaceCapabilitiesHdrSmpteSt209450GOOGLE& copy_src);
+    safe_VkSurfaceCapabilitiesHdrSmpteSt209450GOOGLE& operator=(const safe_VkSurfaceCapabilitiesHdrSmpteSt209450GOOGLE& copy_src);
+    safe_VkSurfaceCapabilitiesHdrSmpteSt209450GOOGLE();
+    ~safe_VkSurfaceCapabilitiesHdrSmpteSt209450GOOGLE();
+    void initialize(const VkSurfaceCapabilitiesHdrSmpteSt209450GOOGLE* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkSurfaceCapabilitiesHdrSmpteSt209450GOOGLE* copy_src, PNextCopyState* copy_state = {});
+    VkSurfaceCapabilitiesHdrSmpteSt209450GOOGLE* ptr() {
+        return reinterpret_cast<VkSurfaceCapabilitiesHdrSmpteSt209450GOOGLE*>(this);
+    }
+    VkSurfaceCapabilitiesHdrSmpteSt209450GOOGLE const* ptr() const {
+        return reinterpret_cast<VkSurfaceCapabilitiesHdrSmpteSt209450GOOGLE const*>(this);
+    }
+};
 struct safe_VkAccelerationStructureGeometryTrianglesDataKHR {
     VkStructureType sType;
     const void* pNext{};

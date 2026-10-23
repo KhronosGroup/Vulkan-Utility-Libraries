@@ -2654,6 +2654,12 @@ static inline const char* string_VkStructureType(VkStructureType input_value) {
             return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BUFFER_DEVICE_ADDRESS_ALLOCATION_ALIGNMENT_PROPERTIES_VALVE";
         case VK_STRUCTURE_TYPE_BUFFER_DEVICE_ADDRESS_ALIGNMENT_ALLOCATE_INFO_VALVE:
             return "VK_STRUCTURE_TYPE_BUFFER_DEVICE_ADDRESS_ALIGNMENT_ALLOCATE_INFO_VALVE";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HDR_SMPTE_ST_209450_FEATURES_GOOGLE:
+            return "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HDR_SMPTE_ST_209450_FEATURES_GOOGLE";
+        case VK_STRUCTURE_TYPE_HDR_SMPTE_ST_209450_GOOGLE:
+            return "VK_STRUCTURE_TYPE_HDR_SMPTE_ST_209450_GOOGLE";
+        case VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_HDR_SMPTE_ST_209450_GOOGLE:
+            return "VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_HDR_SMPTE_ST_209450_GOOGLE";
         default:
             return "Unhandled VkStructureType";
     }
@@ -2806,6 +2812,8 @@ static inline const char* string_VkVendorId(VkVendorId input_value) {
             return "VK_VENDOR_ID_MOBILEYE";
         case VK_VENDOR_ID_APE:
             return "VK_VENDOR_ID_APE";
+        case VK_VENDOR_ID_APEX:
+            return "VK_VENDOR_ID_APEX";
         default:
             return "Unhandled VkVendorId";
     }
@@ -4412,6 +4420,12 @@ static inline const char* string_VkDriverId(VkDriverId input_value) {
             return "VK_DRIVER_ID_APE_SOFT";
         case VK_DRIVER_ID_RESERVED_31:
             return "VK_DRIVER_ID_RESERVED_31";
+        case VK_DRIVER_ID_APEX:
+            return "VK_DRIVER_ID_APEX";
+        case VK_DRIVER_ID_NIKKI:
+            return "VK_DRIVER_ID_NIKKI";
+        case VK_DRIVER_ID_MOMOTEN:
+            return "VK_DRIVER_ID_MOMOTEN";
         default:
             return "Unhandled VkDriverId";
     }
@@ -6304,6 +6318,16 @@ static inline const char* string_VkImageTilingControlEXT(VkImageTilingControlEXT
             return "VK_IMAGE_TILING_CONTROL_MAX_PERFORMANCE_EXT";
         default:
             return "Unhandled VkImageTilingControlEXT";
+    }
+}
+static inline const char* string_VkHdrSmpteSt209450PowerPreferenceGOOGLE(VkHdrSmpteSt209450PowerPreferenceGOOGLE input_value) {
+    switch (input_value) {
+        case VK_HDR_SMPTE_ST_209450_POWER_PREFERENCE_COLOR_ACCURACY_GOOGLE:
+            return "VK_HDR_SMPTE_ST_209450_POWER_PREFERENCE_COLOR_ACCURACY_GOOGLE";
+        case VK_HDR_SMPTE_ST_209450_POWER_PREFERENCE_LOW_POWER_GOOGLE:
+            return "VK_HDR_SMPTE_ST_209450_POWER_PREFERENCE_LOW_POWER_GOOGLE";
+        default:
+            return "Unhandled VkHdrSmpteSt209450PowerPreferenceGOOGLE";
     }
 }
 static inline const char* string_VkBuildAccelerationStructureModeKHR(VkBuildAccelerationStructureModeKHR input_value) {
@@ -14885,6 +14909,12 @@ static inline const char* string_VkStructureName(VkStructureType input_value) {
             return "VkPhysicalDeviceBufferDeviceAddressAllocationAlignmentPropertiesVALVE";
         case VK_STRUCTURE_TYPE_BUFFER_DEVICE_ADDRESS_ALIGNMENT_ALLOCATE_INFO_VALVE:
             return "VkBufferDeviceAddressAlignmentAllocateInfoVALVE";
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HDR_SMPTE_ST_209450_FEATURES_GOOGLE:
+            return "VkPhysicalDeviceHdrSmpteSt209450FeaturesGOOGLE";
+        case VK_STRUCTURE_TYPE_HDR_SMPTE_ST_209450_GOOGLE:
+            return "VkHdrSmpteSt209450GOOGLE";
+        case VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_HDR_SMPTE_ST_209450_GOOGLE:
+            return "VkSurfaceCapabilitiesHdrSmpteSt209450GOOGLE";
         case VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_TRIANGLES_DATA_KHR:
             return "VkAccelerationStructureGeometryTrianglesDataKHR";
         case VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_GEOMETRY_AABBS_DATA_KHR:
