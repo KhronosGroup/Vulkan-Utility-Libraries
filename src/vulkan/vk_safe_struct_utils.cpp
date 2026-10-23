@@ -2558,6 +2558,15 @@ void *SafePnextCopy(const void *pNext, PNextCopyState* copy_state) {
             case VK_STRUCTURE_TYPE_BUFFER_DEVICE_ADDRESS_ALIGNMENT_ALLOCATE_INFO_VALVE:
                 safe_pNext = new safe_VkBufferDeviceAddressAlignmentAllocateInfoVALVE(reinterpret_cast<const VkBufferDeviceAddressAlignmentAllocateInfoVALVE *>(pNext), copy_state, false);
                 break;
+            case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HDR_SMPTE_ST_209450_FEATURES_GOOGLE:
+                safe_pNext = new safe_VkPhysicalDeviceHdrSmpteSt209450FeaturesGOOGLE(reinterpret_cast<const VkPhysicalDeviceHdrSmpteSt209450FeaturesGOOGLE *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_HDR_SMPTE_ST_209450_GOOGLE:
+                safe_pNext = new safe_VkHdrSmpteSt209450GOOGLE(reinterpret_cast<const VkHdrSmpteSt209450GOOGLE *>(pNext), copy_state, false);
+                break;
+            case VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_HDR_SMPTE_ST_209450_GOOGLE:
+                safe_pNext = new safe_VkSurfaceCapabilitiesHdrSmpteSt209450GOOGLE(reinterpret_cast<const VkSurfaceCapabilitiesHdrSmpteSt209450GOOGLE *>(pNext), copy_state, false);
+                break;
             case VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_ACCELERATION_STRUCTURE_KHR:
                 safe_pNext = new safe_VkWriteDescriptorSetAccelerationStructureKHR(reinterpret_cast<const VkWriteDescriptorSetAccelerationStructureKHR *>(pNext), copy_state, false);
                 break;
@@ -5126,6 +5135,15 @@ void FreePnextChain(const void *pNext) {
             break;
         case VK_STRUCTURE_TYPE_BUFFER_DEVICE_ADDRESS_ALIGNMENT_ALLOCATE_INFO_VALVE:
             delete reinterpret_cast<safe_VkBufferDeviceAddressAlignmentAllocateInfoVALVE *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HDR_SMPTE_ST_209450_FEATURES_GOOGLE:
+            delete reinterpret_cast<safe_VkPhysicalDeviceHdrSmpteSt209450FeaturesGOOGLE *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_HDR_SMPTE_ST_209450_GOOGLE:
+            delete reinterpret_cast<safe_VkHdrSmpteSt209450GOOGLE *>(header);
+            break;
+        case VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_HDR_SMPTE_ST_209450_GOOGLE:
+            delete reinterpret_cast<safe_VkSurfaceCapabilitiesHdrSmpteSt209450GOOGLE *>(header);
             break;
         case VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_ACCELERATION_STRUCTURE_KHR:
             delete reinterpret_cast<safe_VkWriteDescriptorSetAccelerationStructureKHR *>(header);

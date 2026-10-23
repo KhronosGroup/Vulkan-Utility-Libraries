@@ -26743,6 +26743,161 @@ void safe_VkBufferDeviceAddressAlignmentAllocateInfoVALVE::initialize(
     pNext = SafePnextCopy(copy_src->pNext);
 }
 
+safe_VkPhysicalDeviceHdrSmpteSt209450FeaturesGOOGLE::safe_VkPhysicalDeviceHdrSmpteSt209450FeaturesGOOGLE(
+    const VkPhysicalDeviceHdrSmpteSt209450FeaturesGOOGLE* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), hdrSmpteSt209450(in_struct->hdrSmpteSt209450) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceHdrSmpteSt209450FeaturesGOOGLE::safe_VkPhysicalDeviceHdrSmpteSt209450FeaturesGOOGLE()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HDR_SMPTE_ST_209450_FEATURES_GOOGLE), pNext(nullptr), hdrSmpteSt209450() {}
+
+safe_VkPhysicalDeviceHdrSmpteSt209450FeaturesGOOGLE::safe_VkPhysicalDeviceHdrSmpteSt209450FeaturesGOOGLE(
+    const safe_VkPhysicalDeviceHdrSmpteSt209450FeaturesGOOGLE& copy_src) {
+    sType = copy_src.sType;
+    hdrSmpteSt209450 = copy_src.hdrSmpteSt209450;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceHdrSmpteSt209450FeaturesGOOGLE& safe_VkPhysicalDeviceHdrSmpteSt209450FeaturesGOOGLE::operator=(
+    const safe_VkPhysicalDeviceHdrSmpteSt209450FeaturesGOOGLE& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    hdrSmpteSt209450 = copy_src.hdrSmpteSt209450;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceHdrSmpteSt209450FeaturesGOOGLE::~safe_VkPhysicalDeviceHdrSmpteSt209450FeaturesGOOGLE() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkPhysicalDeviceHdrSmpteSt209450FeaturesGOOGLE::initialize(
+    const VkPhysicalDeviceHdrSmpteSt209450FeaturesGOOGLE* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    hdrSmpteSt209450 = in_struct->hdrSmpteSt209450;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceHdrSmpteSt209450FeaturesGOOGLE::initialize(
+    const safe_VkPhysicalDeviceHdrSmpteSt209450FeaturesGOOGLE* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    hdrSmpteSt209450 = copy_src->hdrSmpteSt209450;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkHdrSmpteSt209450GOOGLE::safe_VkHdrSmpteSt209450GOOGLE(const VkHdrSmpteSt209450GOOGLE* in_struct,
+                                                             [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType),
+      metadataSize(in_struct->metadataSize),
+      pMetadata(in_struct->pMetadata),
+      powerPreference(in_struct->powerPreference) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkHdrSmpteSt209450GOOGLE::safe_VkHdrSmpteSt209450GOOGLE()
+    : sType(VK_STRUCTURE_TYPE_HDR_SMPTE_ST_209450_GOOGLE), pNext(nullptr), metadataSize(), pMetadata(nullptr), powerPreference() {}
+
+safe_VkHdrSmpteSt209450GOOGLE::safe_VkHdrSmpteSt209450GOOGLE(const safe_VkHdrSmpteSt209450GOOGLE& copy_src) {
+    sType = copy_src.sType;
+    metadataSize = copy_src.metadataSize;
+    pMetadata = copy_src.pMetadata;
+    powerPreference = copy_src.powerPreference;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkHdrSmpteSt209450GOOGLE& safe_VkHdrSmpteSt209450GOOGLE::operator=(const safe_VkHdrSmpteSt209450GOOGLE& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    metadataSize = copy_src.metadataSize;
+    pMetadata = copy_src.pMetadata;
+    powerPreference = copy_src.powerPreference;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkHdrSmpteSt209450GOOGLE::~safe_VkHdrSmpteSt209450GOOGLE() { FreePnextChain(pNext); }
+
+void safe_VkHdrSmpteSt209450GOOGLE::initialize(const VkHdrSmpteSt209450GOOGLE* in_struct,
+                                               [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    metadataSize = in_struct->metadataSize;
+    pMetadata = in_struct->pMetadata;
+    powerPreference = in_struct->powerPreference;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkHdrSmpteSt209450GOOGLE::initialize(const safe_VkHdrSmpteSt209450GOOGLE* copy_src,
+                                               [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    metadataSize = copy_src->metadataSize;
+    pMetadata = copy_src->pMetadata;
+    powerPreference = copy_src->powerPreference;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkSurfaceCapabilitiesHdrSmpteSt209450GOOGLE::safe_VkSurfaceCapabilitiesHdrSmpteSt209450GOOGLE(
+    const VkSurfaceCapabilitiesHdrSmpteSt209450GOOGLE* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), hdrSmpteSt209450Supported(in_struct->hdrSmpteSt209450Supported) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkSurfaceCapabilitiesHdrSmpteSt209450GOOGLE::safe_VkSurfaceCapabilitiesHdrSmpteSt209450GOOGLE()
+    : sType(VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_HDR_SMPTE_ST_209450_GOOGLE), pNext(nullptr), hdrSmpteSt209450Supported() {}
+
+safe_VkSurfaceCapabilitiesHdrSmpteSt209450GOOGLE::safe_VkSurfaceCapabilitiesHdrSmpteSt209450GOOGLE(
+    const safe_VkSurfaceCapabilitiesHdrSmpteSt209450GOOGLE& copy_src) {
+    sType = copy_src.sType;
+    hdrSmpteSt209450Supported = copy_src.hdrSmpteSt209450Supported;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkSurfaceCapabilitiesHdrSmpteSt209450GOOGLE& safe_VkSurfaceCapabilitiesHdrSmpteSt209450GOOGLE::operator=(
+    const safe_VkSurfaceCapabilitiesHdrSmpteSt209450GOOGLE& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    hdrSmpteSt209450Supported = copy_src.hdrSmpteSt209450Supported;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkSurfaceCapabilitiesHdrSmpteSt209450GOOGLE::~safe_VkSurfaceCapabilitiesHdrSmpteSt209450GOOGLE() { FreePnextChain(pNext); }
+
+void safe_VkSurfaceCapabilitiesHdrSmpteSt209450GOOGLE::initialize(const VkSurfaceCapabilitiesHdrSmpteSt209450GOOGLE* in_struct,
+                                                                  [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    hdrSmpteSt209450Supported = in_struct->hdrSmpteSt209450Supported;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkSurfaceCapabilitiesHdrSmpteSt209450GOOGLE::initialize(const safe_VkSurfaceCapabilitiesHdrSmpteSt209450GOOGLE* copy_src,
+                                                                  [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    hdrSmpteSt209450Supported = copy_src->hdrSmpteSt209450Supported;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
 }  // namespace vku
 
 // NOLINTEND
