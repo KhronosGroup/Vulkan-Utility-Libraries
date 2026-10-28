@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "https://github.com/KhronosGroup/Vulkan-Utility-Libraries/blob/doc/layers_settings_schema.json",
+    "$id": "https://github.com/KhronosGroup/Vulkan-Utility-Libraries/blob/main/docs/layers_settings_schema.json",
     "title": "Vulkan Layer Settings Manifest File JSON Schema",
     "description": "JSON Schema for validating the Vulkan Layer Manifest Files",
     "additionalProperties": true,
@@ -11,7 +11,7 @@
         "version": {
             "description": "Version with a 'major', 'minor' and 'patch' format",
             "type": "string",
-            "pattern": "^[0-9]+.[0-9]+.[0-9]+$"
+            "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
         },
         "status": {
             "description": "The development status of the setting. When missing, this property is inherited from parent nodes. If no parent node defines it, the default value is 'STABLE'.",
@@ -33,20 +33,15 @@
         },
         "dependence": {
             "type": "object",
-            "items": {
-                "additionalProperties": false,
-                "properties": {
-                    "mode": {
-                        "description": "How dependence need to be repected for the setting to be enable ('NONE' by default)",
-                        "type": "array",
-                        "items": {
-                            "type": "string",
-                            "enum": [ "NONE", "ALL", "ANY" ]
-                        }
-                    },
-                    "settings": {
-                        "$ref": "#/definitions/settings_data"
-                    }
+            "additionalProperties": false,
+            "properties": {
+                "mode": {
+                    "description": "How dependence needs to be respected for the setting to be enabled ('NONE' by default)",
+                    "type": "string",
+                    "enum": [ "NONE", "ALL", "ANY" ]
+                },
+                "settings": {
+                    "$ref": "#/definitions/settings_data"
                 }
             }
         },
@@ -215,16 +210,14 @@
             }
         },
         "number_or_string": {
-            "items": {
-                "oneOf": [
-                    {
-                        "type": "string"
-                    },
-                    {
-                        "type": "number"
-                    }
-                ]
-            }
+            "oneOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "number"
+                }
+            ]
         },
         "enabled_number_or_string": {
             "oneOf": [
@@ -296,7 +289,7 @@
                         "$ref": "#/definitions/status"
                     },
                     "deprecated_by_key": {
-                        "description": "Connect this deprecated setting to it's replacement using its key.",
+                        "description": "Connect this deprecated setting to its replacement using its key.",
                         "type": "string"
                     },
                     "view": {
@@ -316,7 +309,7 @@
             }
         },
         "setting_data": {
-            "oneOf": [
+            "anyOf": [
                 {
                     "description": "For preset STRING, FRAMES, ENUM, LOAD_FILE, SAVE_FILE, LOAD_FOLDER, SAVE_FOLDER setting type values",
                     "type": "object",
@@ -382,7 +375,7 @@
                         },
                         "value": {
                             "type": "array",
-                            "contains": {
+                            "items": {
                                 "type": "string"
                             }
                         }
@@ -464,7 +457,7 @@
                                 "$ref": "#/definitions/status"
                             },
                             "deprecated_by_key": {
-                                "description": "Connect this deprecated setting to it's replacement using its key.",
+                                "description": "Connect this deprecated setting to its replacement using its key.",
                                 "type": "string"
                             },
                             "view": {
@@ -631,7 +624,7 @@
                                 "$ref": "#/definitions/status"
                             },
                             "deprecated_by_key": {
-                                "description": "Connect this deprecated setting to it's replacement using its key.",
+                                "description": "Connect this deprecated setting to its replacement using its key.",
                                 "type": "string"
                             },
                             "view": {
@@ -732,7 +725,7 @@
                                 "$ref": "#/definitions/status"
                             },
                             "deprecated_by_key": {
-                                "description": "Connect this deprecated setting to it's replacement using its key.",
+                                "description": "Connect this deprecated setting to its replacement using its key.",
                                 "type": "string"
                             },
                             "view": {
@@ -846,7 +839,7 @@
                                 "$ref": "#/definitions/status"
                             },
                             "deprecated_by_key": {
-                                "description": "Connect this deprecated setting to it's replacement using its key.",
+                                "description": "Connect this deprecated setting to its replacement using its key.",
                                 "type": "string"
                             },
                             "view": {
@@ -957,7 +950,7 @@
                                 "$ref": "#/definitions/status"
                             },
                             "deprecated_by_key": {
-                                "description": "Connect this deprecated setting to it's replacement using its key.",
+                                "description": "Connect this deprecated setting to its replacement using its key.",
                                 "type": "string"
                             },
                             "view": {
@@ -1065,7 +1058,7 @@
                                 "$ref": "#/definitions/status"
                             },
                             "deprecated_by_key": {
-                                "description": "Connect this deprecated setting to it's replacement using its key.",
+                                "description": "Connect this deprecated setting to its replacement using its key.",
                                 "type": "string"
                             },
                             "view": {
@@ -1190,7 +1183,7 @@
                                 "$ref": "#/definitions/status"
                             },
                             "deprecated_by_key": {
-                                "description": "Connect this deprecated setting to it's replacement using its key.",
+                                "description": "Connect this deprecated setting to its replacement using its key.",
                                 "type": "string"
                             },
                             "view": {
@@ -1295,7 +1288,7 @@
                                 "$ref": "#/definitions/status"
                             },
                             "deprecated_by_key": {
-                                "description": "Connect this deprecated setting to it's replacement using its key.",
+                                "description": "Connect this deprecated setting to its replacement using its key.",
                                 "type": "string"
                             },
                             "view": {
@@ -1502,7 +1495,7 @@
                                 "$ref": "#/definitions/status"
                             },
                             "deprecated_by_key": {
-                                "description": "Connect this deprecated setting to it's replacement using its key.",
+                                "description": "Connect this deprecated setting to its replacement using its key.",
                                 "type": "string"
                             },
                             "view": {
@@ -1629,7 +1622,7 @@
                                 "$ref": "#/definitions/status"
                             },
                             "deprecated_by_key": {
-                                "description": "Connect this deprecated setting to it's replacement using its key.",
+                                "description": "Connect this deprecated setting to its replacement using its key.",
                                 "type": "string"
                             },
                             "view": {
@@ -1640,14 +1633,14 @@
                                 "type": "boolean"
                             },
                             "list": {
-                                "description": "Default value of the setting",
+                                "description": "The values the user can choose from",
                                 "type": "array",
                                 "items": {
                                     "$ref": "#/definitions/number_or_string"
                                 }
                             },
                             "list_only": {
-                                "description": "To exclude any additional values that the values in the list",
+                                "description": "Whether only the values in 'list' are allowed, false by default",
                                 "type": "boolean"
                             },
                             "dependence": {
@@ -1710,21 +1703,10 @@
                     }
                 ]
             }
-        }
-    },
-    "properties": {
-        "file_format_version": {
-            "$ref": "#/definitions/version"
-        },
-        "ICD": {
-            "type": "object",
-            "additionalProperties": true,
-            "properties": {
-            }
         },
         "layer": {
             "type": "object",
-            "additionalProperties": true,
+            "additionalProperties": false,
             "required": [
                 "name",
                 "api_version",
@@ -1735,10 +1717,14 @@
                 "name": {
                     "description": "The string used to uniquely identify this layer to applications.",
                     "type": "string",
-                    "pattern": "^VK_LAYER_[A-Z0-9]+_[A-Za-z0-9_]+"
+                    "pattern": "^VK_LAYER_[A-Za-z0-9]+_[A-Za-z0-9_-]+$"
                 },
                 "shortcut": {
                     "description": "Short name used to reference a layer variable. Eg on Android: debug.vvl.validate_core instead of debug.vulkan.khronos_validation.validate_core",
+                    "type": "string"
+                },
+                "prefix": {
+                    "description": "Short name used to reference a layer setting in Android system properties. Eg: debug.vvl.validate_core instead of debug.vulkan.khronos_validation.validate_core",
                     "type": "string"
                 },
                 "library_path": {
@@ -1773,105 +1759,69 @@
                     "description": "The development status of the layer. When the node is missing, the value is gathered from a parent node or set to STABLE when no parent node has defined the node. Introduced with version 1.2.0.",
                     "$ref": "#/definitions/status"
                 },
-                "features": {
-                    "type": "object",
-                    "additionalProperties": true,
-                    "properties": {
-                        "settings": {
-                            "$ref": "#/definitions/settings_meta"
-                        },
-                        "presets": {
-                            "type": "array",
-                            "items": {
-                                "required": [
-                                    "label",
-                                    "description",
-                                    "settings"
-                                ],
-                                "additionalProperties": true,
-                                "properties": {
-                                    "label": {
-                                        "description": "The label used to identify the preset to the user eyes.",
-                                        "type": "string"
-                                    },
-                                    "description": {
-                                        "description": "The description of the preset to example it's purpose.",
-                                        "type": "string"
-                                    },
-                                    "url": {
-                                        "description": "A url for more documentation about the preset.",
-                                        "type": "string"
-                                    },
-                                    "platforms": {
-                                        "$ref": "#/definitions/platforms"
-                                    },
-                                    "status": {
-                                        "$ref": "#/definitions/status"
-                                    },
-                                    "settings": {
-                                        "$ref": "#/definitions/settings_data"
-                                    }
-                                }
-                            }
-                        }
+                "type": {
+                    "description": "Loader property. Deprecated, either 'GLOBAL' or 'INSTANCE'.",
+                    "type": "string"
+                },
+                "library_arch": {
+                    "description": "Loader property. The bit width of the layer library, '32' or '64'.",
+                    "type": "string"
+                },
+                "functions": {
+                    "description": "Loader property. The names of the layer entry points when they differ from the standard names.",
+                    "type": "object"
+                },
+                "pre_instance_functions": {
+                    "description": "Loader property. The names of the functions intercepted before a VkInstance is created.",
+                    "type": "object"
+                },
+                "instance_extensions": {
+                    "description": "Loader property. The instance extensions supported by the layer.",
+                    "type": "array"
+                },
+                "device_extensions": {
+                    "description": "Loader property. The device extensions supported by the layer.",
+                    "type": "array"
+                },
+                "enable_environment": {
+                    "description": "Loader property. The environment variable that enables an implicit layer.",
+                    "type": "object"
+                },
+                "disable_environment": {
+                    "description": "Loader property. The environment variable that disables an implicit layer.",
+                    "type": "object"
+                },
+                "component_layers": {
+                    "description": "Meta-layer property. The layers combined by a meta-layer. No longer supported by the Vulkan Loader.",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
                     }
-                }
-            }
-        },
-        "layers": {
-            "type": "array",
-            "additionalProperties": true,
-            "required": [
-                "name",
-                "api_version",
-                "implementation_version",
-                "description"
-            ],
-            "properties": {
-                "name": {
-                    "description": "The string used to uniquely identify this layer to applications.",
-                    "type": "string",
-                    "pattern": "^VK_LAYER_[A-Z0-9]+_[A-Za-z0-9_]+"
                 },
-                "shortcut": {
-                    "description": "Short name used to reference a layer variable. Eg on Android: debug.vvl.validate_core instead of debug.vulkan.khronos_validation.validate_core",
-                    "type": "string"
+                "override_paths": {
+                    "description": "Meta-layer property. The paths searched for the component layers of a meta-layer. No longer supported by the Vulkan Loader.",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
                 },
-                "library_path": {
-                    "description": "The library_path specifies either a filename, a relative pathname, or a full pathname to a layer shared library file. If library_path specifies a relative pathname, it is relative to the path of the JSON manifest file (e.g. for cases when an application provides a layer that is in the same folder hierarchy as the rest of the application files). If library_path specifies a filename, the library must live in the system's shared object search path. There are no rules about the name of the layer shared library files other than it should end with the appropriate suffix (.DLL on Windows, .so on Linux, and .dylib on macOS). This field must not be present if component_layers is defined.",
-                    "type": "string"
+                "blacklisted_layers": {
+                    "description": "Meta-layer property. The layers disabled by a meta-layer. No longer supported by the Vulkan Loader.",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
                 },
-                "api_version": {
-                    "description": "The major.minor.patch version number of the Vulkan API that the shared library file for the library was built against.",
-                    "$ref": "#/definitions/version"
-                },
-                "implementation_version": {
-                    "description": "The version of the layer implemented. If the layer itself has any major changes, this number should change so the loader and/or application can identify it properly.",
-                    "type": "string"
-                },
-                "description": {
-                    "description": "A high-level description of the layer and its intended use.",
-                    "type": "string"
-                },
-                "introduction": {
-                    "description": "A detailed description of the layer and its intended use. Introduced with version 1.2.0.",
-                    "type": "string"
-                },
-                "url": {
-                    "description": "A link to the layer home page. Introduced with version 1.2.0.",
-                    "type": "string"
-                },
-                "platforms": {
-                    "description": "The list of platforms supported by the layer. Introduced with version 1.2.0.",
-                    "$ref": "#/definitions/platforms"
-                },
-                "status": {
-                    "description": "The development status of the layer. When the node is missing, the value is gathered from a parent node or set to STABLE when no parent node has defined the node. Introduced with version 1.2.0.",
-                    "$ref": "#/definitions/status"
+                "app_keys": {
+                    "description": "Meta-layer property. The executables a meta-layer applies to. No longer supported by the Vulkan Loader.",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
                 },
                 "features": {
                     "type": "object",
-                    "additionalProperties": true,
+                    "additionalProperties": false,
                     "properties": {
                         "settings": {
                             "$ref": "#/definitions/settings_meta"
@@ -1884,14 +1834,14 @@
                                     "description",
                                     "settings"
                                 ],
-                                "additionalProperties": true,
+                                "additionalProperties": false,
                                 "properties": {
                                     "label": {
                                         "description": "The label used to identify the preset to the user eyes.",
                                         "type": "string"
                                     },
                                     "description": {
-                                        "description": "The description of the preset to example it's purpose.",
+                                        "description": "The description of the preset to explain its purpose.",
                                         "type": "string"
                                     },
                                     "url": {
@@ -1915,6 +1865,27 @@
                         }
                     }
                 }
+            }
+        }
+    },
+    "properties": {
+        "file_format_version": {
+            "$ref": "#/definitions/version"
+        },
+        "ICD": {
+            "description": "The driver (ICD) manifest node, used by the Vulkan Loader. It is not specified by this schema, which only covers layer manifests.",
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+            }
+        },
+        "layer": {
+            "$ref": "#/definitions/layer"
+        },
+        "layers": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/layer"
             }
         }
     }
