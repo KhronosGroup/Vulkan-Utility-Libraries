@@ -596,6 +596,8 @@ template <> inline VkStructureType GetSType<VkImageViewUsage2CreateInfoKHR>() { 
 template <> inline VkStructureType GetSType<VkPhysicalDeviceExtendedFlagsFeaturesKHR>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_FLAGS_FEATURES_KHR; }
 template <> inline VkStructureType GetSType<VkImageStencilUsage2CreateInfoKHR>() { return VK_STRUCTURE_TYPE_IMAGE_STENCIL_USAGE_2_CREATE_INFO_KHR; }
 template <> inline VkStructureType GetSType<VkSharedPresentSurfaceCapabilities2KHR>() { return VK_STRUCTURE_TYPE_SHARED_PRESENT_SURFACE_CAPABILITIES_2_KHR; }
+template <> inline VkStructureType GetSType<VkPhysicalDeviceMaintenance12FeaturesKHR>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_12_FEATURES_KHR; }
+template <> inline VkStructureType GetSType<VkPhysicalDeviceMaintenance12PropertiesKHR>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_12_PROPERTIES_KHR; }
 template <> inline VkStructureType GetSType<VkDebugReportCallbackCreateInfoEXT>() { return VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT; }
 template <> inline VkStructureType GetSType<VkPipelineRasterizationStateRasterizationOrderAMD>() { return VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_RASTERIZATION_ORDER_AMD; }
 template <> inline VkStructureType GetSType<VkDebugMarkerObjectNameInfoEXT>() { return VK_STRUCTURE_TYPE_DEBUG_MARKER_OBJECT_NAME_INFO_EXT; }

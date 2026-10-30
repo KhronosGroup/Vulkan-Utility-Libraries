@@ -20263,6 +20263,102 @@ void safe_VkSharedPresentSurfaceCapabilities2KHR::initialize(const safe_VkShared
     pNext = SafePnextCopy(copy_src->pNext);
 }
 
+safe_VkPhysicalDeviceMaintenance12FeaturesKHR::safe_VkPhysicalDeviceMaintenance12FeaturesKHR(
+    const VkPhysicalDeviceMaintenance12FeaturesKHR* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), maintenance12(in_struct->maintenance12) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceMaintenance12FeaturesKHR::safe_VkPhysicalDeviceMaintenance12FeaturesKHR()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_12_FEATURES_KHR), pNext(nullptr), maintenance12() {}
+
+safe_VkPhysicalDeviceMaintenance12FeaturesKHR::safe_VkPhysicalDeviceMaintenance12FeaturesKHR(
+    const safe_VkPhysicalDeviceMaintenance12FeaturesKHR& copy_src) {
+    sType = copy_src.sType;
+    maintenance12 = copy_src.maintenance12;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceMaintenance12FeaturesKHR& safe_VkPhysicalDeviceMaintenance12FeaturesKHR::operator=(
+    const safe_VkPhysicalDeviceMaintenance12FeaturesKHR& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    maintenance12 = copy_src.maintenance12;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceMaintenance12FeaturesKHR::~safe_VkPhysicalDeviceMaintenance12FeaturesKHR() { FreePnextChain(pNext); }
+
+void safe_VkPhysicalDeviceMaintenance12FeaturesKHR::initialize(const VkPhysicalDeviceMaintenance12FeaturesKHR* in_struct,
+                                                               [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    maintenance12 = in_struct->maintenance12;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceMaintenance12FeaturesKHR::initialize(const safe_VkPhysicalDeviceMaintenance12FeaturesKHR* copy_src,
+                                                               [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    maintenance12 = copy_src->maintenance12;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
+safe_VkPhysicalDeviceMaintenance12PropertiesKHR::safe_VkPhysicalDeviceMaintenance12PropertiesKHR(
+    const VkPhysicalDeviceMaintenance12PropertiesKHR* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), maxInputAttachmentIndex(in_struct->maxInputAttachmentIndex) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceMaintenance12PropertiesKHR::safe_VkPhysicalDeviceMaintenance12PropertiesKHR()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_12_PROPERTIES_KHR), pNext(nullptr), maxInputAttachmentIndex() {}
+
+safe_VkPhysicalDeviceMaintenance12PropertiesKHR::safe_VkPhysicalDeviceMaintenance12PropertiesKHR(
+    const safe_VkPhysicalDeviceMaintenance12PropertiesKHR& copy_src) {
+    sType = copy_src.sType;
+    maxInputAttachmentIndex = copy_src.maxInputAttachmentIndex;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceMaintenance12PropertiesKHR& safe_VkPhysicalDeviceMaintenance12PropertiesKHR::operator=(
+    const safe_VkPhysicalDeviceMaintenance12PropertiesKHR& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    maxInputAttachmentIndex = copy_src.maxInputAttachmentIndex;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceMaintenance12PropertiesKHR::~safe_VkPhysicalDeviceMaintenance12PropertiesKHR() { FreePnextChain(pNext); }
+
+void safe_VkPhysicalDeviceMaintenance12PropertiesKHR::initialize(const VkPhysicalDeviceMaintenance12PropertiesKHR* in_struct,
+                                                                 [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    maxInputAttachmentIndex = in_struct->maxInputAttachmentIndex;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceMaintenance12PropertiesKHR::initialize(const safe_VkPhysicalDeviceMaintenance12PropertiesKHR* copy_src,
+                                                                 [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    maxInputAttachmentIndex = copy_src->maxInputAttachmentIndex;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
 safe_VkDeviceOrHostAddressConstKHR::safe_VkDeviceOrHostAddressConstKHR(const VkDeviceOrHostAddressConstKHR* in_struct,
                                                                        PNextCopyState*) {
     initialize(in_struct);
