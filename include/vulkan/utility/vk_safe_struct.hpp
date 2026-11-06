@@ -25556,6 +25556,30 @@ struct safe_VkPhysicalDevicePrimitiveRestartIndexFeaturesEXT {
         return reinterpret_cast<VkPhysicalDevicePrimitiveRestartIndexFeaturesEXT const*>(this);
     }
 };
+struct safe_VkPhysicalDeviceVertexAddressBindingUnrestrictedFeaturesEXT {
+    VkStructureType sType;
+    void* pNext{};
+    VkBool32 vertexAddressBindingUnrestricted;
+
+    safe_VkPhysicalDeviceVertexAddressBindingUnrestrictedFeaturesEXT(
+        const VkPhysicalDeviceVertexAddressBindingUnrestrictedFeaturesEXT* in_struct, PNextCopyState* copy_state = {},
+        bool copy_pnext = true);
+    safe_VkPhysicalDeviceVertexAddressBindingUnrestrictedFeaturesEXT(
+        const safe_VkPhysicalDeviceVertexAddressBindingUnrestrictedFeaturesEXT& copy_src);
+    safe_VkPhysicalDeviceVertexAddressBindingUnrestrictedFeaturesEXT& operator=(
+        const safe_VkPhysicalDeviceVertexAddressBindingUnrestrictedFeaturesEXT& copy_src);
+    safe_VkPhysicalDeviceVertexAddressBindingUnrestrictedFeaturesEXT();
+    ~safe_VkPhysicalDeviceVertexAddressBindingUnrestrictedFeaturesEXT();
+    void initialize(const VkPhysicalDeviceVertexAddressBindingUnrestrictedFeaturesEXT* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceVertexAddressBindingUnrestrictedFeaturesEXT* copy_src,
+                    PNextCopyState* copy_state = {});
+    VkPhysicalDeviceVertexAddressBindingUnrestrictedFeaturesEXT* ptr() {
+        return reinterpret_cast<VkPhysicalDeviceVertexAddressBindingUnrestrictedFeaturesEXT*>(this);
+    }
+    VkPhysicalDeviceVertexAddressBindingUnrestrictedFeaturesEXT const* ptr() const {
+        return reinterpret_cast<VkPhysicalDeviceVertexAddressBindingUnrestrictedFeaturesEXT const*>(this);
+    }
+};
 struct safe_VkPhysicalDeviceImageTilingControlFeaturesEXT {
     VkStructureType sType;
     void* pNext{};

@@ -19163,6 +19163,61 @@ void safe_VkPhysicalDevicePrimitiveRestartIndexFeaturesEXT::initialize(
     pNext = SafePnextCopy(copy_src->pNext);
 }
 
+safe_VkPhysicalDeviceVertexAddressBindingUnrestrictedFeaturesEXT::safe_VkPhysicalDeviceVertexAddressBindingUnrestrictedFeaturesEXT(
+    const VkPhysicalDeviceVertexAddressBindingUnrestrictedFeaturesEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
+    bool copy_pnext)
+    : sType(in_struct->sType), vertexAddressBindingUnrestricted(in_struct->vertexAddressBindingUnrestricted) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceVertexAddressBindingUnrestrictedFeaturesEXT::safe_VkPhysicalDeviceVertexAddressBindingUnrestrictedFeaturesEXT()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ADDRESS_BINDING_UNRESTRICTED_FEATURES_EXT),
+      pNext(nullptr),
+      vertexAddressBindingUnrestricted() {}
+
+safe_VkPhysicalDeviceVertexAddressBindingUnrestrictedFeaturesEXT::safe_VkPhysicalDeviceVertexAddressBindingUnrestrictedFeaturesEXT(
+    const safe_VkPhysicalDeviceVertexAddressBindingUnrestrictedFeaturesEXT& copy_src) {
+    sType = copy_src.sType;
+    vertexAddressBindingUnrestricted = copy_src.vertexAddressBindingUnrestricted;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceVertexAddressBindingUnrestrictedFeaturesEXT&
+safe_VkPhysicalDeviceVertexAddressBindingUnrestrictedFeaturesEXT::operator=(
+    const safe_VkPhysicalDeviceVertexAddressBindingUnrestrictedFeaturesEXT& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    vertexAddressBindingUnrestricted = copy_src.vertexAddressBindingUnrestricted;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceVertexAddressBindingUnrestrictedFeaturesEXT::
+    ~safe_VkPhysicalDeviceVertexAddressBindingUnrestrictedFeaturesEXT() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkPhysicalDeviceVertexAddressBindingUnrestrictedFeaturesEXT::initialize(
+    const VkPhysicalDeviceVertexAddressBindingUnrestrictedFeaturesEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    vertexAddressBindingUnrestricted = in_struct->vertexAddressBindingUnrestricted;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceVertexAddressBindingUnrestrictedFeaturesEXT::initialize(
+    const safe_VkPhysicalDeviceVertexAddressBindingUnrestrictedFeaturesEXT* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    vertexAddressBindingUnrestricted = copy_src->vertexAddressBindingUnrestricted;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+
 safe_VkPhysicalDeviceImageTilingControlFeaturesEXT::safe_VkPhysicalDeviceImageTilingControlFeaturesEXT(
     const VkPhysicalDeviceImageTilingControlFeaturesEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
     : sType(in_struct->sType), imageTilingControl(in_struct->imageTilingControl) {

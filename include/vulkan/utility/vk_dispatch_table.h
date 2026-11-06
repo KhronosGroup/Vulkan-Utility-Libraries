@@ -179,6 +179,7 @@ typedef struct VkuInstanceDispatchTable_ {
     PFN_vkCreateUbmSurfaceSEC CreateUbmSurfaceSEC;
     PFN_vkGetPhysicalDeviceUbmPresentationSupportSEC GetPhysicalDeviceUbmPresentationSupportSEC;
 #endif  // VK_USE_PLATFORM_UBM_SEC
+    PFN_vkGetPhysicalDeviceInternalHandleNV GetPhysicalDeviceInternalHandleNV;
 } VkuInstanceDispatchTable;
 
 // Device function pointer dispatch table
@@ -902,6 +903,9 @@ typedef struct VkuDeviceDispatchTable_ {
     PFN_vkCmdEndRendering2EXT CmdEndRendering2EXT;
     PFN_vkCmdBeginCustomResolveEXT CmdBeginCustomResolveEXT;
     PFN_vkCmdSetComputeOccupancyPriorityNV CmdSetComputeOccupancyPriorityNV;
+    PFN_vkGetDeviceInternalHandleNV GetDeviceInternalHandleNV;
+    PFN_vkGetQueueInternalHandleNV GetQueueInternalHandleNV;
+    PFN_vkGetCommandBufferInternalHandleNV GetCommandBufferInternalHandleNV;
     PFN_vkCmdSetPrimitiveRestartIndexEXT CmdSetPrimitiveRestartIndexEXT;
     PFN_vkCreateAccelerationStructureKHR CreateAccelerationStructureKHR;
     PFN_vkDestroyAccelerationStructureKHR DestroyAccelerationStructureKHR;
@@ -1652,6 +1656,9 @@ static inline void vkuInitDeviceDispatchTable(VkDevice device, VkuDeviceDispatch
     table->CmdEndRendering2EXT = (PFN_vkCmdEndRendering2EXT)gdpa(device, "vkCmdEndRendering2EXT");
     table->CmdBeginCustomResolveEXT = (PFN_vkCmdBeginCustomResolveEXT)gdpa(device, "vkCmdBeginCustomResolveEXT");
     table->CmdSetComputeOccupancyPriorityNV = (PFN_vkCmdSetComputeOccupancyPriorityNV)gdpa(device, "vkCmdSetComputeOccupancyPriorityNV");
+    table->GetDeviceInternalHandleNV = (PFN_vkGetDeviceInternalHandleNV)gdpa(device, "vkGetDeviceInternalHandleNV");
+    table->GetQueueInternalHandleNV = (PFN_vkGetQueueInternalHandleNV)gdpa(device, "vkGetQueueInternalHandleNV");
+    table->GetCommandBufferInternalHandleNV = (PFN_vkGetCommandBufferInternalHandleNV)gdpa(device, "vkGetCommandBufferInternalHandleNV");
     table->CmdSetPrimitiveRestartIndexEXT = (PFN_vkCmdSetPrimitiveRestartIndexEXT)gdpa(device, "vkCmdSetPrimitiveRestartIndexEXT");
     table->CreateAccelerationStructureKHR = (PFN_vkCreateAccelerationStructureKHR)gdpa(device, "vkCreateAccelerationStructureKHR");
     table->DestroyAccelerationStructureKHR = (PFN_vkDestroyAccelerationStructureKHR)gdpa(device, "vkDestroyAccelerationStructureKHR");
@@ -1838,5 +1845,6 @@ static inline void vkuInitInstanceDispatchTable(VkInstance instance, VkuInstance
     table->CreateUbmSurfaceSEC = (PFN_vkCreateUbmSurfaceSEC)gipa(instance, "vkCreateUbmSurfaceSEC");
     table->GetPhysicalDeviceUbmPresentationSupportSEC = (PFN_vkGetPhysicalDeviceUbmPresentationSupportSEC)gipa(instance, "vkGetPhysicalDeviceUbmPresentationSupportSEC");
 #endif  // VK_USE_PLATFORM_UBM_SEC
+    table->GetPhysicalDeviceInternalHandleNV = (PFN_vkGetPhysicalDeviceInternalHandleNV)gipa(instance, "vkGetPhysicalDeviceInternalHandleNV");
 }
 // clang-format on
