@@ -1315,6 +1315,7 @@ template <> inline VkStructureType GetSType<VkPhysicalDeviceDataGraphNeuralAccel
 template <> inline VkStructureType GetSType<VkDataGraphPipelineNeuralStatisticsCreateInfoARM>() { return VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_NEURAL_STATISTICS_CREATE_INFO_ARM; }
 template <> inline VkStructureType GetSType<VkDataGraphPipelineSessionNeuralStatisticsCreateInfoARM>() { return VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SESSION_NEURAL_STATISTICS_CREATE_INFO_ARM; }
 template <> inline VkStructureType GetSType<VkPhysicalDevicePrimitiveRestartIndexFeaturesEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRIMITIVE_RESTART_INDEX_FEATURES_EXT; }
+template <> inline VkStructureType GetSType<VkPhysicalDeviceVertexAddressBindingUnrestrictedFeaturesEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ADDRESS_BINDING_UNRESTRICTED_FEATURES_EXT; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceImageTilingControlFeaturesEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_TILING_CONTROL_FEATURES_EXT; }
 template <> inline VkStructureType GetSType<VkImageTilingControlCreateInfoEXT>() { return VK_STRUCTURE_TYPE_IMAGE_TILING_CONTROL_CREATE_INFO_EXT; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceCooperativeMatrixDecodeVectorFeaturesNV>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_DECODE_VECTOR_FEATURES_NV; }
