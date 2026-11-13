@@ -272,3 +272,22 @@ TEST(safe_struct, shader_module_set_code_no_copy) {
         ASSERT_EQ(code[2], safe_module_ci.pCode[2]);
     }
 }
+
+TEST(safe_struct, multisample_sample_mask_64) {
+    const std::array<VkSampleMask, 2> sample_mask = {0xAAAAAAAA, 0x55555555};
+    VkPipelineMultisampleStateCreateInfo ms_ci = vku::InitStructHelper();
+    ms_ci.rasterizationSamples = VK_SAMPLE_COUNT_64_BIT;
+    ms_ci.pSampleMask = sample_mask.data();
+
+    vku::safe_VkPipelineMultisampleStateCreateInfo safe_ms_ci(&ms_ci);
+    ASSERT_NE(sample_mask.data(), safe_ms_ci.pSampleMask);
+    ASSERT_EQ(sample_mask[0], safe_ms_ci.pSampleMask[0]);
+    ASSERT_EQ(sample_mask[1], safe_ms_ci.pSampleMask[1]);
+
+    vku::safe_VkPipelineMultisampleStateCreateInfo copy_ms_ci(safe_ms_ci);
+    ASSERT_EQ(sample_mask[1], copy_ms_ci.pSampleMask[1]);
+
+    vku::safe_VkPipelineMultisampleStateCreateInfo assigned_ms_ci;
+    assigned_ms_ci = safe_ms_ci;
+    ASSERT_EQ(sample_mask[1], assigned_ms_ci.pSampleMask[1]);
+}
