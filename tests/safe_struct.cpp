@@ -272,3 +272,62 @@ TEST(safe_struct, shader_module_set_code_no_copy) {
         ASSERT_EQ(code[2], safe_module_ci.pCode[2]);
     }
 }
+
+TEST(safe_struct, indirect_commands_layout_token_data) {
+    vku::safe_VkIndirectCommandsLayoutCreateInfoEXT copied;
+    {
+        vku::safe_VkIndirectCommandsLayoutCreateInfoEXT safe_info;
+        {
+            VkIndirectCommandsExecutionSetTokenEXT execution_set = {VK_INDIRECT_EXECUTION_SET_INFO_TYPE_PIPELINES_EXT,
+                                                                    VK_SHADER_STAGE_COMPUTE_BIT};
+            VkIndirectCommandsPushConstantTokenEXT push_constant = {{VK_SHADER_STAGE_COMPUTE_BIT, 4, 8}};
+            VkIndirectCommandsLayoutTokenEXT tokens[3];
+            tokens[0] = vku::InitStructHelper();
+            tokens[0].type = VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT;
+            tokens[0].data.pExecutionSet = &execution_set;
+            tokens[1] = vku::InitStructHelper();
+            tokens[1].type = VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_EXT;
+            tokens[1].data.pPushConstant = &push_constant;
+            tokens[1].offset = 4;
+            tokens[2] = vku::InitStructHelper();
+            tokens[2].type = VK_INDIRECT_COMMANDS_TOKEN_TYPE_DISPATCH_EXT;
+            tokens[2].offset = 12;
+
+            VkIndirectCommandsLayoutCreateInfoEXT info = vku::InitStructHelper();
+            info.tokenCount = 3;
+            info.pTokens = tokens;
+            safe_info.initialize(&info);
+
+            // The data the tokens point to goes out of scope
+            memset(&execution_set, 0x11, sizeof(execution_set));
+            memset(&push_constant, 0x22, sizeof(push_constant));
+        }
+        copied = safe_info;
+    }
+    ASSERT_EQ(3u, copied.tokenCount);
+    EXPECT_EQ(VK_INDIRECT_EXECUTION_SET_INFO_TYPE_PIPELINES_EXT, copied.pTokens[0].data.pExecutionSet->type);
+    EXPECT_EQ(static_cast<VkShaderStageFlags>(VK_SHADER_STAGE_COMPUTE_BIT), copied.pTokens[0].data.pExecutionSet->shaderStages);
+    EXPECT_EQ(4u, copied.pTokens[1].data.pPushConstant->updateRange.offset);
+    EXPECT_EQ(8u, copied.pTokens[1].data.pPushConstant->updateRange.size);
+    EXPECT_EQ(12u, copied.pTokens[2].offset);
+}
+
+TEST(safe_struct, indirect_execution_set_create_info_union) {
+    vku::safe_VkIndirectExecutionSetCreateInfoEXT copied;
+    {
+        vku::safe_VkIndirectExecutionSetCreateInfoEXT safe_info;
+        {
+            VkIndirectExecutionSetPipelineInfoEXT pipeline_info = vku::InitStructHelper();
+            pipeline_info.maxPipelineCount = 7;
+
+            VkIndirectExecutionSetCreateInfoEXT info = vku::InitStructHelper();
+            info.type = VK_INDIRECT_EXECUTION_SET_INFO_TYPE_PIPELINES_EXT;
+            info.info.pPipelineInfo = &pipeline_info;
+            safe_info.initialize(&info);
+            memset(&pipeline_info, 0x11, sizeof(pipeline_info));
+        }
+        copied = safe_info;
+    }
+    ASSERT_NE(nullptr, copied.info.pPipelineInfo);
+    EXPECT_EQ(7u, copied.info.pPipelineInfo->maxPipelineCount);
+}

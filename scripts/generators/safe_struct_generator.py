@@ -43,6 +43,9 @@ class SafeStructOutputGenerator(BaseGenerator):
             'VkPipelineViewportStateCreateInfo',
             # There is a VkSamplerCreateInfo pointer determined by the sourceData union
             'VkDescriptorSetAndBindingMappingEXT',
+            # There is a pointer in the data/info union determined by the type member
+            'VkIndirectCommandsLayoutTokenEXT',
+            'VkIndirectExecutionSetCreateInfoEXT',
         ]
 
         # For abstract types just want to save the pointer away
