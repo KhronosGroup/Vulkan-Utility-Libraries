@@ -1360,4 +1360,231 @@ void safe_VkDescriptorSetAndBindingMappingEXT::initialize(const safe_VkDescripto
     pNext = SafePnextCopy(copy_src->pNext);
     CopyEmbeddedSampler(source, sourceData, copy_src->sourceData, copy_state);
 }
+
+static void CopyIndirectCommandsTokenData(VkIndirectCommandsTokenTypeEXT type, VkIndirectCommandsTokenDataEXT& dst_data,
+                                          const VkIndirectCommandsTokenDataEXT& src_data) {
+    switch (type) {
+        case VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT:
+            if (src_data.pExecutionSet) {
+                dst_data.pExecutionSet = new VkIndirectCommandsExecutionSetTokenEXT(*src_data.pExecutionSet);
+            }
+            break;
+        case VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_EXT:
+        case VK_INDIRECT_COMMANDS_TOKEN_TYPE_SEQUENCE_INDEX_EXT:
+        case VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_DATA_EXT:
+        case VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_DATA_SEQUENCE_INDEX_EXT:
+            if (src_data.pPushConstant) {
+                dst_data.pPushConstant = new VkIndirectCommandsPushConstantTokenEXT(*src_data.pPushConstant);
+            }
+            break;
+        case VK_INDIRECT_COMMANDS_TOKEN_TYPE_INDEX_BUFFER_EXT:
+            if (src_data.pIndexBuffer) {
+                dst_data.pIndexBuffer = new VkIndirectCommandsIndexBufferTokenEXT(*src_data.pIndexBuffer);
+            }
+            break;
+        case VK_INDIRECT_COMMANDS_TOKEN_TYPE_VERTEX_BUFFER_EXT:
+            if (src_data.pVertexBuffer) {
+                dst_data.pVertexBuffer = new VkIndirectCommandsVertexBufferTokenEXT(*src_data.pVertexBuffer);
+            }
+            break;
+        default:
+            // Draw/dispatch tokens have no data
+            break;
+    }
+}
+
+static void FreeIndirectCommandsTokenData(VkIndirectCommandsTokenTypeEXT type, VkIndirectCommandsTokenDataEXT& data) {
+    switch (type) {
+        case VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT:
+            delete data.pExecutionSet;
+            data.pExecutionSet = nullptr;
+            break;
+        case VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_CONSTANT_EXT:
+        case VK_INDIRECT_COMMANDS_TOKEN_TYPE_SEQUENCE_INDEX_EXT:
+        case VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_DATA_EXT:
+        case VK_INDIRECT_COMMANDS_TOKEN_TYPE_PUSH_DATA_SEQUENCE_INDEX_EXT:
+            delete data.pPushConstant;
+            data.pPushConstant = nullptr;
+            break;
+        case VK_INDIRECT_COMMANDS_TOKEN_TYPE_INDEX_BUFFER_EXT:
+            delete data.pIndexBuffer;
+            data.pIndexBuffer = nullptr;
+            break;
+        case VK_INDIRECT_COMMANDS_TOKEN_TYPE_VERTEX_BUFFER_EXT:
+            delete data.pVertexBuffer;
+            data.pVertexBuffer = nullptr;
+            break;
+        default:
+            break;
+    }
+}
+
+safe_VkIndirectCommandsLayoutTokenEXT::safe_VkIndirectCommandsLayoutTokenEXT(const VkIndirectCommandsLayoutTokenEXT* in_struct,
+                                                                             [[maybe_unused]] PNextCopyState* copy_state,
+                                                                             bool copy_pnext)
+    : sType(in_struct->sType), type(in_struct->type), data(in_struct->data), offset(in_struct->offset) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+    CopyIndirectCommandsTokenData(type, data, in_struct->data);
+}
+
+safe_VkIndirectCommandsLayoutTokenEXT::safe_VkIndirectCommandsLayoutTokenEXT()
+    : sType(VK_STRUCTURE_TYPE_INDIRECT_COMMANDS_LAYOUT_TOKEN_EXT), pNext(nullptr), type(), data(), offset() {}
+
+safe_VkIndirectCommandsLayoutTokenEXT::safe_VkIndirectCommandsLayoutTokenEXT(
+    const safe_VkIndirectCommandsLayoutTokenEXT& copy_src) {
+    sType = copy_src.sType;
+    type = copy_src.type;
+    data = copy_src.data;
+    offset = copy_src.offset;
+    pNext = SafePnextCopy(copy_src.pNext);
+    CopyIndirectCommandsTokenData(type, data, copy_src.data);
+}
+
+safe_VkIndirectCommandsLayoutTokenEXT& safe_VkIndirectCommandsLayoutTokenEXT::operator=(
+    const safe_VkIndirectCommandsLayoutTokenEXT& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreeIndirectCommandsTokenData(type, data);
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    type = copy_src.type;
+    data = copy_src.data;
+    offset = copy_src.offset;
+    pNext = SafePnextCopy(copy_src.pNext);
+    CopyIndirectCommandsTokenData(type, data, copy_src.data);
+
+    return *this;
+}
+
+safe_VkIndirectCommandsLayoutTokenEXT::~safe_VkIndirectCommandsLayoutTokenEXT() {
+    FreeIndirectCommandsTokenData(type, data);
+    FreePnextChain(pNext);
+}
+
+void safe_VkIndirectCommandsLayoutTokenEXT::initialize(const VkIndirectCommandsLayoutTokenEXT* in_struct,
+                                                       [[maybe_unused]] PNextCopyState* copy_state) {
+    FreeIndirectCommandsTokenData(type, data);
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    type = in_struct->type;
+    data = in_struct->data;
+    offset = in_struct->offset;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    CopyIndirectCommandsTokenData(type, data, in_struct->data);
+}
+
+void safe_VkIndirectCommandsLayoutTokenEXT::initialize(const safe_VkIndirectCommandsLayoutTokenEXT* copy_src,
+                                                       [[maybe_unused]] PNextCopyState* copy_state) {
+    FreeIndirectCommandsTokenData(type, data);
+    FreePnextChain(pNext);
+    sType = copy_src->sType;
+    type = copy_src->type;
+    data = copy_src->data;
+    offset = copy_src->offset;
+    pNext = SafePnextCopy(copy_src->pNext);
+    CopyIndirectCommandsTokenData(type, data, copy_src->data);
+}
+
+static void CopyIndirectExecutionSetInfo(VkIndirectExecutionSetInfoTypeEXT type, VkIndirectExecutionSetInfoEXT& dst_info,
+                                         const VkIndirectExecutionSetInfoEXT& src_info, PNextCopyState* copy_state) {
+    switch (type) {
+        case VK_INDIRECT_EXECUTION_SET_INFO_TYPE_PIPELINES_EXT:
+            if (src_info.pPipelineInfo) {
+                dst_info.pPipelineInfo =
+                    (new safe_VkIndirectExecutionSetPipelineInfoEXT(src_info.pPipelineInfo, copy_state))->ptr();
+            }
+            break;
+        case VK_INDIRECT_EXECUTION_SET_INFO_TYPE_SHADER_OBJECTS_EXT:
+            if (src_info.pShaderInfo) {
+                dst_info.pShaderInfo = (new safe_VkIndirectExecutionSetShaderInfoEXT(src_info.pShaderInfo, copy_state))->ptr();
+            }
+            break;
+        default:
+            break;
+    }
+}
+
+static void FreeIndirectExecutionSetInfo(VkIndirectExecutionSetInfoTypeEXT type, VkIndirectExecutionSetInfoEXT& info) {
+    switch (type) {
+        case VK_INDIRECT_EXECUTION_SET_INFO_TYPE_PIPELINES_EXT:
+            delete reinterpret_cast<safe_VkIndirectExecutionSetPipelineInfoEXT*>(
+                const_cast<VkIndirectExecutionSetPipelineInfoEXT*>(info.pPipelineInfo));
+            info.pPipelineInfo = nullptr;
+            break;
+        case VK_INDIRECT_EXECUTION_SET_INFO_TYPE_SHADER_OBJECTS_EXT:
+            delete reinterpret_cast<safe_VkIndirectExecutionSetShaderInfoEXT*>(
+                const_cast<VkIndirectExecutionSetShaderInfoEXT*>(info.pShaderInfo));
+            info.pShaderInfo = nullptr;
+            break;
+        default:
+            break;
+    }
+}
+
+safe_VkIndirectExecutionSetCreateInfoEXT::safe_VkIndirectExecutionSetCreateInfoEXT(
+    const VkIndirectExecutionSetCreateInfoEXT* in_struct, [[maybe_unused]] PNextCopyState* copy_state, bool copy_pnext)
+    : sType(in_struct->sType), type(in_struct->type), info(in_struct->info) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+    CopyIndirectExecutionSetInfo(type, info, in_struct->info, copy_state);
+}
+
+safe_VkIndirectExecutionSetCreateInfoEXT::safe_VkIndirectExecutionSetCreateInfoEXT()
+    : sType(VK_STRUCTURE_TYPE_INDIRECT_EXECUTION_SET_CREATE_INFO_EXT), pNext(nullptr), type(), info() {}
+
+safe_VkIndirectExecutionSetCreateInfoEXT::safe_VkIndirectExecutionSetCreateInfoEXT(
+    const safe_VkIndirectExecutionSetCreateInfoEXT& copy_src) {
+    sType = copy_src.sType;
+    type = copy_src.type;
+    info = copy_src.info;
+    pNext = SafePnextCopy(copy_src.pNext);
+    CopyIndirectExecutionSetInfo(type, info, copy_src.info, nullptr);
+}
+
+safe_VkIndirectExecutionSetCreateInfoEXT& safe_VkIndirectExecutionSetCreateInfoEXT::operator=(
+    const safe_VkIndirectExecutionSetCreateInfoEXT& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreeIndirectExecutionSetInfo(type, info);
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    type = copy_src.type;
+    info = copy_src.info;
+    pNext = SafePnextCopy(copy_src.pNext);
+    CopyIndirectExecutionSetInfo(type, info, copy_src.info, nullptr);
+
+    return *this;
+}
+
+safe_VkIndirectExecutionSetCreateInfoEXT::~safe_VkIndirectExecutionSetCreateInfoEXT() {
+    FreeIndirectExecutionSetInfo(type, info);
+    FreePnextChain(pNext);
+}
+
+void safe_VkIndirectExecutionSetCreateInfoEXT::initialize(const VkIndirectExecutionSetCreateInfoEXT* in_struct,
+                                                          [[maybe_unused]] PNextCopyState* copy_state) {
+    FreeIndirectExecutionSetInfo(type, info);
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    type = in_struct->type;
+    info = in_struct->info;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    CopyIndirectExecutionSetInfo(type, info, in_struct->info, copy_state);
+}
+
+void safe_VkIndirectExecutionSetCreateInfoEXT::initialize(const safe_VkIndirectExecutionSetCreateInfoEXT* copy_src,
+                                                          [[maybe_unused]] PNextCopyState* copy_state) {
+    FreeIndirectExecutionSetInfo(type, info);
+    FreePnextChain(pNext);
+    sType = copy_src->sType;
+    type = copy_src->type;
+    info = copy_src->info;
+    pNext = SafePnextCopy(copy_src->pNext);
+    CopyIndirectExecutionSetInfo(type, info, copy_src->info, copy_state);
+}
 }  // namespace vku
