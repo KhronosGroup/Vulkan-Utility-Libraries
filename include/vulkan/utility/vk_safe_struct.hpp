@@ -25244,6 +25244,32 @@ struct safe_VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV {
         return reinterpret_cast<VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV const*>(this);
     }
 };
+#ifdef VK_ENABLE_BETA_EXTENSIONS
+struct safe_VkPhysicalDeviceMultiLevelAccelerationStructureFeaturesAMDX {
+    VkStructureType sType;
+    void* pNext{};
+    VkBool32 multiLevelAccelerationStructure;
+
+    safe_VkPhysicalDeviceMultiLevelAccelerationStructureFeaturesAMDX(
+        const VkPhysicalDeviceMultiLevelAccelerationStructureFeaturesAMDX* in_struct, PNextCopyState* copy_state = {},
+        bool copy_pnext = true);
+    safe_VkPhysicalDeviceMultiLevelAccelerationStructureFeaturesAMDX(
+        const safe_VkPhysicalDeviceMultiLevelAccelerationStructureFeaturesAMDX& copy_src);
+    safe_VkPhysicalDeviceMultiLevelAccelerationStructureFeaturesAMDX& operator=(
+        const safe_VkPhysicalDeviceMultiLevelAccelerationStructureFeaturesAMDX& copy_src);
+    safe_VkPhysicalDeviceMultiLevelAccelerationStructureFeaturesAMDX();
+    ~safe_VkPhysicalDeviceMultiLevelAccelerationStructureFeaturesAMDX();
+    void initialize(const VkPhysicalDeviceMultiLevelAccelerationStructureFeaturesAMDX* in_struct, PNextCopyState* copy_state = {});
+    void initialize(const safe_VkPhysicalDeviceMultiLevelAccelerationStructureFeaturesAMDX* copy_src,
+                    PNextCopyState* copy_state = {});
+    VkPhysicalDeviceMultiLevelAccelerationStructureFeaturesAMDX* ptr() {
+        return reinterpret_cast<VkPhysicalDeviceMultiLevelAccelerationStructureFeaturesAMDX*>(this);
+    }
+    VkPhysicalDeviceMultiLevelAccelerationStructureFeaturesAMDX const* ptr() const {
+        return reinterpret_cast<VkPhysicalDeviceMultiLevelAccelerationStructureFeaturesAMDX const*>(this);
+    }
+};
+#endif  // VK_ENABLE_BETA_EXTENSIONS
 struct safe_VkCooperativeMatrixProperties2EXT {
     VkStructureType sType;
     void* pNext{};

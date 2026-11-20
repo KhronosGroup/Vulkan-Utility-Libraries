@@ -1299,6 +1299,9 @@ template <> inline VkStructureType GetSType<VkPhysicalDevicePipelineCacheIncreme
 template <> inline VkStructureType GetSType<VkPhysicalDeviceShaderUniformBufferUnsizedArrayFeaturesEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_UNIFORM_BUFFER_UNSIZED_ARRAY_FEATURES_EXT; }
 template <> inline VkStructureType GetSType<VkComputeOccupancyPriorityParametersNV>() { return VK_STRUCTURE_TYPE_COMPUTE_OCCUPANCY_PRIORITY_PARAMETERS_NV; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMPUTE_OCCUPANCY_PRIORITY_FEATURES_NV; }
+#ifdef VK_ENABLE_BETA_EXTENSIONS
+template <> inline VkStructureType GetSType<VkPhysicalDeviceMultiLevelAccelerationStructureFeaturesAMDX>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTI_LEVEL_ACCELERATION_STRUCTURE_FEATURES_AMDX; }
+#endif  // VK_ENABLE_BETA_EXTENSIONS
 template <> inline VkStructureType GetSType<VkCooperativeMatrixProperties2EXT>() { return VK_STRUCTURE_TYPE_COOPERATIVE_MATRIX_PROPERTIES_2_EXT; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceCooperativeMatrixInfo2EXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_INFO_2_EXT; }
 template <> inline VkStructureType GetSType<VkPhysicalDeviceCooperativeMatrixMaintenance1FeaturesEXT>() { return VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_MAINTENANCE_1_FEATURES_EXT; }
