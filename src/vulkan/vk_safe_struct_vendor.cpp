@@ -25921,6 +25921,63 @@ void safe_VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV::initialize(
     computeOccupancyPriority = copy_src->computeOccupancyPriority;
     pNext = SafePnextCopy(copy_src->pNext);
 }
+#ifdef VK_ENABLE_BETA_EXTENSIONS
+
+safe_VkPhysicalDeviceMultiLevelAccelerationStructureFeaturesAMDX::safe_VkPhysicalDeviceMultiLevelAccelerationStructureFeaturesAMDX(
+    const VkPhysicalDeviceMultiLevelAccelerationStructureFeaturesAMDX* in_struct, [[maybe_unused]] PNextCopyState* copy_state,
+    bool copy_pnext)
+    : sType(in_struct->sType), multiLevelAccelerationStructure(in_struct->multiLevelAccelerationStructure) {
+    if (copy_pnext) {
+        pNext = SafePnextCopy(in_struct->pNext, copy_state);
+    }
+}
+
+safe_VkPhysicalDeviceMultiLevelAccelerationStructureFeaturesAMDX::safe_VkPhysicalDeviceMultiLevelAccelerationStructureFeaturesAMDX()
+    : sType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTI_LEVEL_ACCELERATION_STRUCTURE_FEATURES_AMDX),
+      pNext(nullptr),
+      multiLevelAccelerationStructure() {}
+
+safe_VkPhysicalDeviceMultiLevelAccelerationStructureFeaturesAMDX::safe_VkPhysicalDeviceMultiLevelAccelerationStructureFeaturesAMDX(
+    const safe_VkPhysicalDeviceMultiLevelAccelerationStructureFeaturesAMDX& copy_src) {
+    sType = copy_src.sType;
+    multiLevelAccelerationStructure = copy_src.multiLevelAccelerationStructure;
+    pNext = SafePnextCopy(copy_src.pNext);
+}
+
+safe_VkPhysicalDeviceMultiLevelAccelerationStructureFeaturesAMDX&
+safe_VkPhysicalDeviceMultiLevelAccelerationStructureFeaturesAMDX::operator=(
+    const safe_VkPhysicalDeviceMultiLevelAccelerationStructureFeaturesAMDX& copy_src) {
+    if (&copy_src == this) return *this;
+
+    FreePnextChain(pNext);
+
+    sType = copy_src.sType;
+    multiLevelAccelerationStructure = copy_src.multiLevelAccelerationStructure;
+    pNext = SafePnextCopy(copy_src.pNext);
+
+    return *this;
+}
+
+safe_VkPhysicalDeviceMultiLevelAccelerationStructureFeaturesAMDX::
+    ~safe_VkPhysicalDeviceMultiLevelAccelerationStructureFeaturesAMDX() {
+    FreePnextChain(pNext);
+}
+
+void safe_VkPhysicalDeviceMultiLevelAccelerationStructureFeaturesAMDX::initialize(
+    const VkPhysicalDeviceMultiLevelAccelerationStructureFeaturesAMDX* in_struct, [[maybe_unused]] PNextCopyState* copy_state) {
+    FreePnextChain(pNext);
+    sType = in_struct->sType;
+    multiLevelAccelerationStructure = in_struct->multiLevelAccelerationStructure;
+    pNext = SafePnextCopy(in_struct->pNext, copy_state);
+}
+
+void safe_VkPhysicalDeviceMultiLevelAccelerationStructureFeaturesAMDX::initialize(
+    const safe_VkPhysicalDeviceMultiLevelAccelerationStructureFeaturesAMDX* copy_src, [[maybe_unused]] PNextCopyState* copy_state) {
+    sType = copy_src->sType;
+    multiLevelAccelerationStructure = copy_src->multiLevelAccelerationStructure;
+    pNext = SafePnextCopy(copy_src->pNext);
+}
+#endif  // VK_ENABLE_BETA_EXTENSIONS
 #ifdef VK_USE_PLATFORM_UBM_SEC
 
 safe_VkUbmSurfaceCreateInfoSEC::safe_VkUbmSurfaceCreateInfoSEC(const VkUbmSurfaceCreateInfoSEC* in_struct,
