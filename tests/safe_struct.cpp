@@ -331,3 +331,26 @@ TEST(safe_struct, indirect_execution_set_create_info_union) {
     ASSERT_NE(nullptr, copied.info.pPipelineInfo);
     EXPECT_EQ(7u, copied.info.pPipelineInfo->maxPipelineCount);
 }
+
+TEST(safe_struct, multisample_state_sample_mask_words) {
+    std::array<VkSampleMask, 2> sample_mask = {0x80000001u, 0x80000002u};
+
+    VkPipelineMultisampleStateCreateInfo info = vku::InitStructHelper();
+    info.rasterizationSamples = VK_SAMPLE_COUNT_64_BIT;
+    info.pSampleMask = sample_mask.data();
+
+    vku::safe_VkPipelineMultisampleStateCreateInfo constructed(&info);
+    vku::safe_VkPipelineMultisampleStateCreateInfo initialized;
+    initialized.initialize(&info);
+    sample_mask.fill(0);
+
+    vku::safe_VkPipelineMultisampleStateCreateInfo copy_constructed(constructed);
+    vku::safe_VkPipelineMultisampleStateCreateInfo assigned;
+    assigned = initialized;
+
+    for (const auto *copy : {&constructed, &initialized, &copy_constructed, &assigned}) {
+        ASSERT_NE(nullptr, copy->pSampleMask);
+        EXPECT_EQ(0x80000001u, copy->pSampleMask[0]);
+        EXPECT_EQ(0x80000002u, copy->pSampleMask[1]);
+    }
+}
